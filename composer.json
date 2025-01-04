@@ -2,11 +2,15 @@
     "$schema": "https://getcomposer.org/schema.json",
     "require": {
         "php": "^8.3",
+        "blade-ui-kit/blade-heroicons": "^2.5",
         "laravel/framework": "^11.31",
+        "laravel/horizon": "^5.30",
         "laravel/jetstream": "^5.3",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
-        "livewire/livewire": "^3.0"
+        "livewire/livewire": "^3.5",
+        "spatie/laravel-collection-macros": "^7.14",
+        "spatie/yaml-front-matter": "^2.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -51,7 +55,7 @@
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
-            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan horizon\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=horizon,logs,vite"
         ]
     },
     "extra": {

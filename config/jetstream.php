@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Middleware\Jetstream;
 use Laravel\Jetstream\Features;
+use App\Http\Middleware\Jetstream;
 use Laravel\Jetstream\Http\Middleware\AuthenticateSession;
 
 return [

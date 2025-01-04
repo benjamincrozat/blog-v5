@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 
 pest()
     ->extend(TestCase::class)

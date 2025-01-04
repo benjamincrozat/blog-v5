@@ -7,7 +7,7 @@ use Laravel\Jetstream\Contracts\DeletesUsers;
 
 class DeleteUser implements DeletesUsers
 {
-    public function delete(User $user): void
+    public function delete(User $user) : void
     {
         $user->deleteProfilePhoto();
 

@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Middleware\Jetstream;
 use Laravel\Fortify\Features;
+use App\Http\Middleware\Jetstream;
 
 return [
 

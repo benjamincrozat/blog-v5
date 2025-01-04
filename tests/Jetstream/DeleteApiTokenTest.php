@@ -1,10 +1,10 @@
 <?php
 
 use App\Models\User;
+use Livewire\Livewire;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
 use Laravel\Jetstream\Http\Livewire\ApiTokenManager;
-use Livewire\Livewire;
 
 test('api tokens can be deleted', function () {
     if (Features::hasTeamFeatures()) {
