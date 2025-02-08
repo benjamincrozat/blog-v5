@@ -1,4 +1,5 @@
 <x-app
+    :canonical="$post['canonical']"
     :description="$post['description']"
     :image="$post['image']"
     :title="$post['title']"
@@ -28,4 +29,19 @@
             {!! Str::markdown($post['content']) !!}
         </x-prose>
     </article>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "{{ $post['title'] }}",
+            "description": "{{ $post['description'] }}",
+            "image": "{{ $post['image'] }}",
+            "datePublished": "{{ $post['published_at'] }}",
+            "author": {
+                "@type": "Person",
+                "name": "Benjamin Crozat"
+            }
+        }
+    </script>
 </x-app>

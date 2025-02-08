@@ -35,6 +35,7 @@ class ShowPostController extends Controller
                 'modified_at' => $document->matter('Modified at')
                     ? Date::createFromTimestamp($document->matter('Modified at'))
                     : null,
+                'canonical' => $document->matter('Canonical'),
             ];
         });
 

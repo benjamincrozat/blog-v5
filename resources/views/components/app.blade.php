@@ -1,4 +1,5 @@
 @props([
+    'canonical' => url()->current(),
     'description' => '',
     'image' => '',
     'title' => config('app.name'),
@@ -34,6 +35,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900" />
+
+        <link rel="canonical" href="{{ $canonical }}">
     </head>
     <body {{ $attributes->class('font-light text-gray-600') }}>
         <header class="container mt-4 xl:max-w-screen-lg">

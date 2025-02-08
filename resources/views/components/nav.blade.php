@@ -42,19 +42,6 @@
         Latest
     </a>
 
-    <a href="#" @class([
-        'transition-colors hover:text-blue-600',
-        'text-blue-600' => request()->routeIs(''),
-    ])>
-        @if (request()->routeIs(''))
-            <x-heroicon-s-link class="mx-auto size-7" />
-        @else
-            <x-heroicon-o-link class="mx-auto size-7" />
-        @endif
-
-        Links
-    </a>
-
     <button @class([
         'transition-colors hover:text-blue-600',
         'text-blue-600' => request()->routeIs(''),
