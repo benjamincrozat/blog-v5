@@ -6,7 +6,7 @@ Published at: 2024-09-29
 Categories: laravel
 ---
 
-# Introduction
+## Introduction
 
 Laravel 11 introduces a powerful new caching feature that promises to revolutionize how we handle expensive data operations. The new `Cache::flexible()` method implements a pattern that allows serving cached data while updating it in the background, offering a smart solution to the age-old problem of balancing data freshness with application performance. In this post, we'll explore this feature, starting with the basics and gradually diving into more advanced use cases.
 

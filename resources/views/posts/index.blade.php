@@ -11,7 +11,7 @@
         @endif
 
         @if ($posts->hasPages())
-            <div class="mt-8">
+            <div class="mt-16">
                 {{ $posts->links() }}
             </div>
         @endif
