@@ -1,5 +1,5 @@
 ---
-Image: https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/user-attachments/assets/ec72351d-5c7f-4995-b07b-e13110744fe0
+Image: https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/user-attachments/assets/9a8e9195-2543-4618-8655-bf2fdd9c7f7e
 Title: "Flexible caching in Laravel made super easy"
 Description: "Explore Laravel's new Cache::flexible() method for balancing data freshness and performance in high-traffic applications."
 Published at: 2024-09-29
