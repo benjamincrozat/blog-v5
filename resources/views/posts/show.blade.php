@@ -34,14 +34,16 @@
         {
             "@context": "https://schema.org",
             "@type": "Article",
+            "author": {
+                "@type": "Person",
+                "name": "Benjamin Crozat",
+                "url": "{{ route('home') }}#about"
+            },
             "headline": "{{ $post['title'] }}",
             "description": "{{ $post['description'] }}",
             "image": "{{ $post['image'] }}",
-            "datePublished": "{{ $post['published_at'] }}",
-            "author": {
-                "@type": "Person",
-                "name": "Benjamin Crozat"
-            }
+            "datePublished": "{{ $post['published_at']->toIso8601String() }}",
+            "dateModified": "{{ $post['modified_at']?->toIso8601String() ?? $post['published_at']->toIso8601String() }}"
         }
     </script>
 </x-app>
