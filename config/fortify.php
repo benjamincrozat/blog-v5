@@ -1,7 +1,6 @@
 <?php
 
 use Laravel\Fortify\Features;
-use App\Http\Middleware\Jetstream;
 
 return [
 
@@ -102,7 +101,7 @@ return [
     |
     */
 
-    'middleware' => ['web', Jetstream::class],
+    'middleware' => ['web'],
 
     /*
     |--------------------------------------------------------------------------

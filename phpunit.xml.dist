@@ -10,10 +10,6 @@
         <testsuite name="Feature">
             <directory>tests/Feature</directory>
         </testsuite>
-
-        <testsuite name="Jetstream">
-            <directory>tests/Jetstream</directory>
-        </testsuite>
     </testsuites>
 
     <source>

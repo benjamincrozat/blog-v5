@@ -3,9 +3,9 @@
     "require": {
         "php": "^8.3",
         "blade-ui-kit/blade-heroicons": "^2.5",
+        "laravel/fortify": "^1.25",
         "laravel/framework": "^11.31",
         "laravel/horizon": "^5.30",
-        "laravel/jetstream": "^5.3",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
