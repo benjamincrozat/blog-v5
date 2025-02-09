@@ -42,19 +42,19 @@ Surprisingly, Laravel 12 doesn't bring major new features exclusively to its bra
 
 ### Breaking changes to watch out for
 
-#### 1. `Str::is()` now matches multiline strings
+#### Str::is() now matches multiline strings
 
 The `Str::is()` helper (and `str()->is()`) now truly matches multiline strings using the regex `s` modifier. Previously, wildcard patterns like `*` didn't match newline characters—if your code depended on that behavior, this is a breaking change.
 
 [[12.x] Make Str::is() match multiline strings](https://github.com/laravel/framework/pull/51196).
 
-#### 2. MariaDB schema dump uses native CLI tools
+#### MariaDB schema dump uses native CLI tools
 
 Laravel's migration system now uses MariaDB's native command-line tools (`mariadb-dump` and `mariadb`). The `--column-statistics` flag has been removed since it's not supported by `mariadb-dump`. If you're on MariaDB, make sure these tools are available in your environment.
 
 [Use native MariaDB CLI commands](https://github.com/laravel/framework/pull/51505).
 
-#### 3. ResponseFactory contract updated
+#### ResponseFactory contract updated
 
 The `Illuminate\Contracts\Routing\ResponseFactory` interface now officially includes the `streamJson()` method. While the concrete implementation had this feature in Laravel 11, the contract was missing it. Custom implementations may need updating to match the new interface.
 

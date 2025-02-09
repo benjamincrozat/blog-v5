@@ -1,7 +1,7 @@
 @props(['heading'])
 
 <li {{ $attributes }}>
-    <div class="inline-block group">
+    <div class="inline-block font-normal group">
         <span class="mr-[.35rem] transition-colors group-hover:decoration-blue-600/30 group-hover:text-blue-600">
             <x-heroicon-o-arrow-right class="inline -translate-y-px size-3" />
         </span>
