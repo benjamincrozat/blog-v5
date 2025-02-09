@@ -41,12 +41,4 @@
 
         Latest
     </a>
-
-    <button @class([
-        'transition-colors hover:text-blue-600',
-        'text-blue-600' => request()->routeIs(''),
-    ])>
-        <x-heroicon-o-magnifying-glass class="mx-auto size-7" />
-        Search
-    </button>
 </nav>

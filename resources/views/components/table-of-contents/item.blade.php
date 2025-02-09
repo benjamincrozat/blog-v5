@@ -1,6 +1,6 @@
 @props(['heading'])
 
-<li class="leading-tight">
+<li {{ $attributes }}>
     <div class="inline-block group">
         <span class="mr-[.35rem] transition-colors group-hover:decoration-blue-600/30 group-hover:text-blue-600">
             <x-heroicon-o-arrow-right class="inline -translate-y-px size-3" />
@@ -12,6 +12,6 @@
     </div>
 
     @if (! empty($heading['children']))
-        <x-table-of-contents :headings="$heading['children']" />
+        <x-table-of-contents :headings="$heading['children']" class="ml-4" />
     @endif
 </li>
