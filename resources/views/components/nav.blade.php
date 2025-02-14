@@ -3,7 +3,9 @@
         wire:navigate
         href="{{ route('home') }}"
     >
-        <div class="grid bg-black size-10 rounded-xl"></div>
+        <div class="grid bg-black place-items-center size-9 md:size-10 rounded-[.65rem] md:rounded-xl">
+            <x-heroicon-s-bold class="text-white size-5 md:size-6" />
+        </div>
     </a>
 
     <div class="flex-grow"></div>
@@ -40,5 +42,13 @@
         @endif
 
         Latest
+    </a>
+
+    <a
+        href="{{ route('home') }}#about"
+        class="transition-colors hover:text-blue-600"
+    >
+        <x-heroicon-o-user class="mx-auto size-7" />
+        About
     </a>
 </nav>

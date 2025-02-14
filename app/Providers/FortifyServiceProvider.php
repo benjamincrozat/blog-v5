@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Str;
+use App\Str;
 use Illuminate\Http\Request;
 use Laravel\Fortify\Fortify;
 use App\Actions\Fortify\CreateNewUser;

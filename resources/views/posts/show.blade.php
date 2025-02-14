@@ -11,7 +11,27 @@
             @endif
         </div>
 
-        <h1 class="container mt-8 font-medium tracking-tighter text-center text-black text-balance text-3xl/tight md:mt-16 sm:text-4xl/tight md:text-5xl/tight lg:text-6xl/tight">
+        <div class="m-0 mt-8 text-center md:mt-16">
+            <img
+                src="https://www.gravatar.com/avatar/d58b99650fe5d74abeb9d9dad5da55ad?s=256"
+                alt="Benjamin Crozat"
+                class="mx-auto mb-2 rounded-full ring-1 ring-black/5 size-10"
+            />
+
+            <span class="font-medium underline decoration-black/30 decoration-1 underline-offset-4">Benjamin Crozat</span>
+
+            <br />
+
+            <time datetime="{{ $post['published_at']->toIso8601String() }}">
+                @if ($post['modified_at'])
+                    Updated on {{ $post['modified_at']->isoFormat('LL') }}
+                @else
+                    Published on {{ $post['published_at']->isoFormat('LL') }}
+                @endif
+            </time>
+        </div>
+
+        <h1 class="container mt-4 font-medium tracking-tight text-center text-black text-balance text-3xl/none sm:text-4xl/none md:text-5xl/none lg:text-6xl/none">
             {{ $post['title'] }}
         </h1>
 

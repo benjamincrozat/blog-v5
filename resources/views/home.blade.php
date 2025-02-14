@@ -4,7 +4,7 @@
             <span class="text-blue-600">24,000</span> monthly visitors read my blog
         </div>
 
-        <div class="mt-4 leading-tight text-black/75 sm:text-xl/tight md:text-2xl/tight md:mt-8 lg:text-3xl text-balance">
+        <div class="mt-5 leading-tight text-black/75 text-lg/tight sm:text-xl/tight md:text-2xl/tight md:mt-8 lg:text-3xl text-balance">
             No matter how senior you are, I have something for you. Ready?
         </div>
 

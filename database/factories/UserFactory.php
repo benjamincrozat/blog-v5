@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Str;
 use App\Models\Team;
 use App\Models\User;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

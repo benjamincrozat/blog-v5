@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Str;
+use App\Str;
 
 if (! function_exists('extract_headings_from_markdown')) {
     function extract_headings_from_markdown($markdown)
