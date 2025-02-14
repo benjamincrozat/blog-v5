@@ -143,11 +143,11 @@ This will create a controller with only one action called `__invoke` ([learn mor
 Then, in your routes, you can do this instead:
 
 ```php
-use App\Http\Controllers\PostController; // [tl! --]
-use App\Http\Controllers\ShowPostController; // [tl! ++]
+{-use App\Http\Controllers\PostController;-}
+{+use App\Http\Controllers\ShowPostController;+}
 
-Route::get('/posts/{post}', [PostController::class, 'show']); // [tl! --]
-Route::get('/posts/{post}', ShowPostController::class); // [tl! ++]
+{-Route::get('/posts/{post}', [PostController::class, 'show']);-}
+{+Route::get('/posts/{post}', ShowPostController::class);+}
 ```
 
 This is a subjective best practice and it's up to you to decide whether you want to use single action controllers or not.

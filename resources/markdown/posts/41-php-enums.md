@@ -178,14 +178,13 @@ class SortingHat
             return;
         }
 
-	    // [tl! remove:1,6]
-        $houses = [
-            House::Gryffindor,
-            House::Hufflepuff,
-            House::Ravenclaw,
-            House::Slytherin,
-        ];
-	    $houses = House::cases(); // [tl! ++]
+        {-$houses = [-}
+        {-    House::Gryffindor,-}
+        {-    House::Hufflepuff,-}
+        {-    House::Ravenclaw,-}
+        {-    House::Slytherin,-}
+        {-];-}
+        {+$houses = House::cases();+}
 
         $index = array_rand($houses);
         

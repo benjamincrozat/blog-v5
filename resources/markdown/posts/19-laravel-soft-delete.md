@@ -27,7 +27,7 @@ First, specify that you need a column for soft deletion in your migration (I wro
 public function up()
 {
 	Schema::table('posts', function (Blueprint $table) {
-		$table->softDeletes(); // [tl! ++]
+        {+$table->softDeletes();+}
 	});
 }
 ```
@@ -38,7 +38,7 @@ In the `down()` method, you can remove the column using the `dropSoftDeletes()` 
 public function down()
 {
     Schema::table('posts', function (Blueprint $table) {
-		$table->dropSoftDeletes(); // [tl! ++]
+        {+$table->dropSoftDeletes();+}
 	});
 }
 ```
@@ -49,12 +49,12 @@ Then, in your model, import the `SoftDeletes` trait.
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes; // [tl! ++]
+{+use Illuminate\Database\Eloquent\SoftDeletes;+}
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
-    use HasFactory, SoftDeletes; // [tl! ++]
+    {+use HasFactory, SoftDeletes; +}
 }
 ```
 
@@ -141,7 +141,7 @@ class Post extends Model
   
     public function prunable()
 	{
-		return static::where('deleted_at', '<=', now()->subMonth());
+		return static::where('deleted_a t', '<=', now()->subMonth());
 	}
 }
 ```
@@ -151,7 +151,7 @@ Don't forget to run the `model:prune` command with the scheduler. Add it to your
 ```php
 protected function schedule(Schedule $schedule)
 {
-    $schedule->command('model:prune')->daily(); // [tl! ++]
+    {+$schedule->command('model:prune')->daily();+}
 }
 ```
 

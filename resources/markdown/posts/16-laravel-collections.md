@@ -270,9 +270,9 @@ class FooFactory extends Factory
     {
         return [
 		    'foo' => collect(['Foo', 'Bar', 'Baz'])
-			    ->shuffle() // [tl! --]
-		        ->first(), // [tl! --]
-			    ->random(), // [tl! ++]
+               {- ->shuffle()-}
+               {- ->first(),-}
+			    {+->random(),+}
         ];
     }
 }
@@ -335,15 +335,15 @@ class Client
 Instead of sticking to our old habit of using `count()` to check whether a Collection is empty or not, Laravel Collections provide a way more readable way of doing it.
 
 ```php
-if (! $collection->count()) { // [tl! --]
-if ($collection->isEmpty()) { // [tl! ++]
+{-if (! $collection->count()) {-}
+{+if ($collection->isEmpty()) {+}
     // Do something if the collection is empty.
 }
 ```
 
 ```php
-if ($collection->count()) { // [tl! --]
-if ($collection->isNotEmpty()) { // [tl! ++]
+{-if ($collection->count()) {-}
+{+if ($collection->isNotEmpty()) {+}
     // Do something if the collection is not empty.
 }
 ```

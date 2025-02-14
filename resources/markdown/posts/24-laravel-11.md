@@ -140,8 +140,8 @@ But why is it useful? Let's take this example:
 
 ```php
 RateLimiter::for('invoices', function (Request $request) {
-    return Limit::perMinute(120); // [tl! --]
-    return Limit::perSecond(2); // [tl! ++]
+    {-return Limit::perMinute(120);-}
+    {+return Limit::perSecond(2);+}
 });
 ```
 

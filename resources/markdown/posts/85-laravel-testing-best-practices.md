@@ -101,8 +101,8 @@ In general, people substitute dependencies to make their tests run faster. But t
     …
     <php>
         …
-        <env name="CACHE_DRIVER" value="redis" /> <!-- [tl! ++] -->
-        <env name="DB_CONNECTION" value="mysql" /> <!-- [tl! ++] -->
+        {+<env name="CACHE_DRIVER" value="redis" />+}
+        {+<env name="DB_CONNECTION" value="mysql" />+}
     </php>
 </phpunit>
 ```

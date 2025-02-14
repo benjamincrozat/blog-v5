@@ -29,8 +29,8 @@ If you want to sort your results in descending order, you can also use the `orde
 
 ```php
 $users = User::query()
-    ->orderBy('name', 'desc') // [tl! --]
-    ->orderByDesc('name') // [tl! ++]
+   {- ->orderBy('name', 'desc')-}
+    {+->orderByDesc('name')+}
     ->get();
 ```
 

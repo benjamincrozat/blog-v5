@@ -43,11 +43,11 @@ Add the `Laravel\Sanctum\HasApiTokens` trait in your `User` model:
 ```php
 namespace App\Models;
 
-use Laravel\Sanctum\HasApiTokens; // [tl! ++]
+{+use Laravel\Sanctum\HasApiTokens;+}
 
 class User extends Authenticatable
 {
-    use HasApiTokens; // [tl! ++]
+    {+use HasApiTokens;+}
 }
 ```
 
