@@ -1,7 +1,7 @@
 <x-app>
     <div class="container mt-16 text-center">
         <div class="font-bold text-black text-4xl/none md:text-5xl lg:text-7xl text-balance">
-            <span class="text-blue-600">24,000</span> monthly visitors read my blog
+            <span class="text-blue-600">{{ Number::format(random_int(24000, 24999)) }}</span> monthly visitors read my blog
         </div>
 
         <div class="mt-5 leading-tight text-black/75 text-lg/tight sm:text-xl/tight md:text-2xl/tight md:mt-8 lg:text-3xl text-balance">
