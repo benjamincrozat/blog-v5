@@ -10,11 +10,9 @@ class ShowPostController extends Controller
 {
     public function __invoke(string $slug) : View
     {
-        $files = glob(resource_path('markdown/posts') . '/*-' . $slug . '.md');
+        $filepath = resource_path("markdown/posts/{$slug}.md");
 
-        abort_if(empty($files), 404);
-
-        $filepath = $files[0];
+        abort_if(! file_exists($filepath), 404);
 
         $timestamp = filemtime($filepath);
 
