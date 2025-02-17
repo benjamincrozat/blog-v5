@@ -8,7 +8,7 @@ if (! function_exists('extract_headings_from_markdown')) {
         // Split the markdown into lines (supports various newline types).
         $lines = preg_split('/\R/', $markdown);
 
-        $tree = [];
+        $headings = [];
 
         $stack = [];
 
@@ -33,10 +33,10 @@ if (! function_exists('extract_headings_from_markdown')) {
 
                 if (empty($stack)) {
                     // No parent heading found; this is a top-level heading.
-                    $tree[] = $node;
+                    $headings[] = $node;
 
                     // Push a reference to the new node onto the stack.
-                    $stack[] = &$tree[count($tree) - 1];
+                    $stack[] = &$headings[count($headings) - 1];
                 } else {
                     // The current heading becomes a child of the last heading in the stack.
                     $parent = &$stack[count($stack) - 1];
@@ -49,6 +49,6 @@ if (! function_exists('extract_headings_from_markdown')) {
             }
         }
 
-        return $tree;
+        return $headings;
     }
 }
