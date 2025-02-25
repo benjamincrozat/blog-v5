@@ -10,7 +10,7 @@ if (! function_exists('extract_headings_from_markdown')) {
 
         $headings = [];
 
-        $stack = [];dd
+        $stack = [];
 
         foreach ($lines as $line) {
             // Look for markdown headings (one or more '#' followed by a space and then text).

@@ -58,5 +58,5 @@ it('renders inline code', function () {
 
     $html = Str::markdown($markdown);
 
-    expect($html)->toContain('<code>inline code</code>');
+    expect($html)->toContain('<code>some inline code</code>');
 });
