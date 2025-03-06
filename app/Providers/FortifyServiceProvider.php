@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Str;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Laravel\Fortify\Fortify;
 use App\Actions\Fortify\CreateNewUser;
@@ -15,7 +15,7 @@ use App\Actions\Fortify\UpdateUserProfileInformation;
 
 class FortifyServiceProvider extends ServiceProvider
 {
-    public function boot() : void
+    public function boot(): void
     {
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
