@@ -4,7 +4,17 @@
     :image="$post['image']"
     :title="$post['title']"
 >
-    <article>
+    <x-breadcrumbs class="container xl:max-w-screen-lg">
+        <x-breadcrumbs.item href="{{ route('posts.index') }}">
+            Posts
+        </x-breadcrumbs.item>
+
+        <x-breadcrumbs.item class="line-clamp-1">
+            {{ $post['title'] }}
+        </x-breadcrumbs.item>
+    </x-breadcrumbs>
+
+    <article class="mt-8">
         <div class="container break-all lg:max-w-screen-md">
             @if ($post['image'])
                 <img src="{{ $post['image'] }}" alt="{{ $post['title']  }}" class="object-cover w-full shadow-xl ring-1 ring-black/5 rounded-xl aspect-video" />
