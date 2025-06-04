@@ -6,7 +6,7 @@ use Filament\Actions;
 use App\Filament\Resources\PostResource;
 use Filament\Resources\Pages\ListRecords;
 
-class ListMetrics extends ListRecords
+class ListPosts extends ListRecords
 {
     protected static string $resource = PostResource::class;
 
