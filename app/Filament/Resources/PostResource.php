@@ -203,9 +203,9 @@ class PostResource extends Resource
     public static function getPages() : array
     {
         return [
-            'index' => Pages\ListMetrics::route('/'),
+            'index' => Pages\ListPosts::route('/'),
             'activities' => Pages\ListPostActivities::route('/{record}/activities'),
-            'create' => Pages\CreateMetric::route('/create'),
+            'create' => Pages\CreatePost::route('/create'),
             'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
     }
