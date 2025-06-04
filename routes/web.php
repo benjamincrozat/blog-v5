@@ -25,7 +25,6 @@ Route::get('/categories/{category:slug}', ShowCategoryController::class)
 Route::get('/links', ListLinksController::class)
     ->name('links.index');
 
-// This route needs to be above the links.show route to take precedence.
 Route::get('/links/create', LinkWizard::class)
     ->name('links.create');
 
