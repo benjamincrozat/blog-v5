@@ -2,6 +2,7 @@
 
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
+use function Pest\Laravel\withServerVariables;
 
 use Facades\App\Actions\TrackVisit;
 use Illuminate\Support\Facades\Route;
@@ -46,5 +47,10 @@ it('does not track requests that want JSON', function () {
     get('/', ['Accept' => 'application/json']);
 });
 
-it('only tracks if all required parameters are available')
-    ->todo();
+it('only tracks if all required parameters are available', function () {
+    TrackVisit::shouldReceive('track')->never();
+
+    withServerVariables(['REMOTE_ADDR' => null]);
+
+    get('/');
+});
