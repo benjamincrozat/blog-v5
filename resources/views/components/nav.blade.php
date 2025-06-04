@@ -86,6 +86,13 @@
                     </x-dropdown.item>
                 @endif
 
+                @can('viewHorizon')
+                    <x-dropdown.item href="{{ route('horizon.index') }}">
+                        <x-heroicon-o-bolt class="size-4" />
+                        Horizon
+                    </x-dropdown.item>
+                @endcan
+
                 <x-dropdown.divider />
 
                 <x-dropdown.item href="https://github.com/settings" target="_blank">
