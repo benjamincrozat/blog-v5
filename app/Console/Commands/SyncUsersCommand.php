@@ -38,7 +38,7 @@ Therefore, I decided to take action:
 
 1. I launched this blog in September 2022 with the goal to be in everyone's Google search. I get more than tens of thousands of monthly clicks from it and even more visits overall (my [analytics dashboard](https://benjamincrozat.pirsch.io/?domain=benjamincrozat.com&interval=30d&scale=day) is public by the way).
 2. I also started growing my [X (formerly Twitter) account](https://x.com/benjamincrozat) at the same time, which has now over 7,000 followers.
-3. All the content I write is free thanks my sponsors.
+3. All the content I write is free thanks to my sponsors.
 
 I also want to be completely free with my time and make a living with my own products. In April 2024, I launched [Nobinge](https://nobinge.ai/), a tool to summarize and chat with your content, including YouTube videos.
 
