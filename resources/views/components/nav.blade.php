@@ -200,7 +200,7 @@
             </x-dropdown.divider>
 
             <x-dropdown.item
-                href="#"
+                href="{{ route('feeds.main') }}"
                 data-pirsch-event='Clicked "Atom feed"'
             >
                 <x-heroicon-o-rss class="size-4" />

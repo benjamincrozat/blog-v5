@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Str;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -14,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Post extends Model
+class Post extends Model implements Feedable
 {
     /** @use HasFactory<PostFactory> */
     use HasFactory;
@@ -87,5 +89,26 @@ class Post extends Model
             ->withCount('comments');
 
         return $query;
+    }
+
+    public static function getFeedItems()
+    {
+        return static::query()
+            ->with('user')
+            ->published()
+            ->latest('published_at')
+            ->limit(50)
+            ->get();
+    }
+
+    public function toFeedItem() : FeedItem
+    {
+        return FeedItem::create()
+            ->id($this->slug)
+            ->title($this->title)
+            ->summary(Str::markdown($this->description ?? ''))
+            ->updated($this->modified_at ?? $this->published_at)
+            ->link(route('posts.show', $this))
+            ->authorName($this->user->name);
     }
 }

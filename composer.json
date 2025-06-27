@@ -14,6 +14,7 @@
         "livewire/livewire": "^3.5",
         "spatie/image": "*",
         "spatie/laravel-activitylog": "^4.10",
+        "spatie/laravel-feed": "^4.4",
         "spatie/laravel-livewire-wizard": "^2.4",
         "spatie/laravel-sitemap": "^7.3",
         "tempest/highlight": "^2.11"

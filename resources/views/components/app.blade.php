@@ -37,6 +37,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" />
 
         <link rel="canonical" href="{{ $canonical }}" />
+        <x-feed-links />
     </head>
     <body {{ $attributes->class('font-light text-gray-600') }}>
         <div class="flex flex-col min-h-screen">

@@ -31,6 +31,8 @@ Route::get('/links/create', LinkWizard::class)
 Route::get('/recommends/{slug}', ShowMerchantController::class)
     ->name('merchants.show');
 
+Route::feeds();
+
 // This route needs to be the last one so all others take precedence.
 Route::get('/{post:slug}', ShowPostController::class)
     ->name('posts.show');
