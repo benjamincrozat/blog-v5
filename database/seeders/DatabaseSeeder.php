@@ -24,6 +24,9 @@ class DatabaseSeeder extends Seeder
             CommentSeeder::class,
             LinkSeeder::class,
             ShortUrlSeeder::class,
+            QuizSeeder::class,
+            QuestionSeeder::class,
+            AnswerSeeder::class,
         ]);
     }
 }
