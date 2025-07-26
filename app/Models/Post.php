@@ -107,6 +107,11 @@ class Post extends Model implements Feedable
         return $this->hasOne(Link::class);
     }
 
+    public function quiz() : HasOne
+    {
+        return $this->hasOne(Quiz::class);
+    }
+
     public function formattedContent() : Attribute
     {
         return Attribute::make(

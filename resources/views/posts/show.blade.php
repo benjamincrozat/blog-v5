@@ -59,7 +59,7 @@
                         data-pirsch-event="Clicked post author"
                         data-pirsch-meta-name="{{ $post->user->name }}"
                     >
-                        <div class="p-3 text-center bg-gray-50 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-900">
+                        <div class="p-3 h-full text-center bg-gray-50 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-900">
                             <img
                                 loading="lazy"
                                 src="{{ $post->user->avatar }}"
@@ -79,12 +79,22 @@
                             data-pirsch-meta-post="{{ $post->title }}"
                         >
                             <div @class([
-                                'flex-1 p-3 text-center bg-gray-50 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-900',
+                                'p-3 text-center bg-gray-50 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-900 h-full',
                                 'text-blue-600 bg-blue-50!' => $post->comments_count,
                             ])>
                                 <x-heroicon-o-chat-bubble-oval-left-ellipsis class="mx-auto mb-2 opacity-75 size-6" />
                                 {{ $post->comments_count }}<br />
                                 {{ trans_choice('comment|comments', $post->comments_count) }}
+                            </div>
+                        </a>
+                    @endif
+
+                    @if ($post->quiz && ! $post->is_commercial)
+                        <a href="#" class="group">
+                            <div class="p-3 h-full text-center bg-gray-50 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-900">
+                                <x-heroicon-o-question-mark-circle class="mx-auto mb-2 opacity-75 size-6" />
+                                Take<br />
+                                a quiz
                             </div>
                         </a>
                     @endif
@@ -249,6 +259,28 @@
                         </li>
                     </ul>
                 </div>
+
+                <a wire:navigate href="#">
+                    <div class="flex flex-wrap gap-6 p-4 mt-8 bg-orange-50 rounded-xl sm:gap-4 sm:flex-nowrap md:gap-8 md:p-8 text-orange-950">
+                        <div class="sm:w-2/3">
+                            <p class="font-medium sm:text-xl">
+                                Think you got it all? Prove it.
+                            </p>
+
+                            <p class="mt-2">
+                                Time to separate the skimmers from the pros. Take this quick quiz to see if you actually learned something or just scrolled fast.
+                            </p>
+
+                            <x-btn primary class="mt-[1.15rem] bg-orange-500 hover:bg-orange-600 px-4! rounded-lg! cursor-pointer">
+                                Take the quiz
+                            </x-btn>
+                        </div>
+
+                        <div class="p-4 pt-0 sm:w-1/3 sm:p-0">
+                            <img src="{{ Vite::asset('resources/img/illustrations/quiz.png') }}" />
+                        </div>
+                    </div>
+                </A>
             </article>
 
             @if (! $post->is_commercial)
