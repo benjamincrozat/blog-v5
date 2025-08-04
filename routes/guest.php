@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Quiz;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\LinkWizard\LinkWizard;
 use App\Http\Controllers\HomeController;
@@ -17,6 +18,9 @@ Route::get('/', HomeController::class)
 
 Route::get('/blog', ListPostsController::class)
     ->name('posts.index');
+
+Route::get('/quizzes/{quiz:slug}', Quiz::class)
+    ->name('quizzes.show');
 
 Route::get('/authors/{user:slug}', ShowAuthorController::class)
     ->name('authors.show');

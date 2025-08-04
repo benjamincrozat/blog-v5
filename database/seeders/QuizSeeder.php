@@ -16,7 +16,9 @@ class QuizSeeder extends Seeder
             ->create()
             ->each(function (Quiz $quiz) {
                 $quiz->questions()->saveMany(
-                    Question::factory(random_int(5, 10))->make()
+                    Question::factory(random_int(5, 10))
+                        ->hasAnswers(5)
+                        ->create()
                 );
             });
     }

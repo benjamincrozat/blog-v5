@@ -141,7 +141,8 @@
 
                                 <x-dropdown.item
                                     icon="heroicon-o-question-mark-circle"
-                                    href="#"
+                                    wire:navigate
+                                    href="{{ route('quizzes.show', $post->quiz) }}"
                                 >
                                     Take a quiz
                                 </x-dropdown.item>
@@ -221,27 +222,29 @@
                     @endif
                 </x-prose>
 
-                <a wire:navigate href="#">
-                    <div class="flex flex-wrap gap-6 p-4 mt-8 bg-orange-50 rounded-xl sm:gap-4 sm:flex-nowrap md:gap-8 md:p-8 text-orange-950">
-                        <div class="sm:w-2/3">
-                            <p class="font-medium sm:text-xl">
-                                Think you got it all? Prove it.
-                            </p>
+                @if ($post->quiz)
+                    <a wire:navigate href="{{ route('quizzes.show', $post->quiz) }}">
+                        <div class="flex flex-wrap gap-6 p-4 mt-8 bg-orange-50 rounded-xl sm:gap-4 sm:flex-nowrap md:gap-8 md:p-8 text-orange-950">
+                            <div class="sm:w-2/3">
+                                <p class="font-medium sm:text-xl">
+                                    Think you got it all? Prove it.
+                                </p>
 
-                            <p class="mt-2">
-                                Time to separate the skimmers from the pros. Take this quick quiz to see if you actually learned something or just scrolled fast.
-                            </p>
+                                <p class="mt-2">
+                                    Time to separate the skimmers from the pros. Take this quick quiz to see if you actually learned something or just scrolled fast.
+                                </p>
 
-                            <x-btn primary class="mt-[1.15rem] bg-orange-500 hover:bg-orange-600 px-4! rounded-lg! cursor-pointer">
-                                Take the quiz
-                            </x-btn>
+                                <x-btn primary class="mt-[1.15rem] bg-orange-500 hover:bg-orange-600 px-4! rounded-lg! cursor-pointer">
+                                    Take the quiz
+                                </x-btn>
+                            </div>
+
+                            <div class="p-4 pt-0 sm:w-1/3 sm:p-0">
+                                <img src="{{ Vite::asset('resources/img/illustrations/quiz.png') }}" />
+                            </div>
                         </div>
-
-                        <div class="p-4 pt-0 sm:w-1/3 sm:p-0">
-                            <img src="{{ Vite::asset('resources/img/illustrations/quiz.png') }}" />
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                @endif
 
                 <div class="p-4 mt-8 text-center bg-gray-100 rounded-xl md:p-8 md:text-xl/tight">
                     <p>Help me reach more people by sharing this article on social media!</p>
@@ -284,31 +287,6 @@
                         </li>
                     </ul>
                 </div>
-<<<<<<< HEAD
-
-                <a wire:navigate href="#">
-                    <div class="flex flex-wrap gap-6 p-4 mt-8 bg-orange-50 rounded-xl sm:gap-4 sm:flex-nowrap md:gap-8 md:p-8 text-orange-950">
-                        <div class="sm:w-2/3">
-                            <p class="font-medium sm:text-xl">
-                                Think you got it all? Prove it.
-                            </p>
-
-                            <p class="mt-2">
-                                Time to separate the skimmers from the pros. Take this quick quiz to see if you actually learned something or just scrolled fast.
-                            </p>
-
-                            <x-btn primary class="mt-[1.15rem] bg-orange-500 hover:bg-orange-600 px-4! rounded-lg! cursor-pointer">
-                                Take the quiz
-                            </x-btn>
-                        </div>
-
-                        <div class="p-4 pt-0 sm:w-1/3 sm:p-0">
-                            <img src="{{ Vite::asset('resources/img/illustrations/quiz.png') }}" />
-                        </div>
-                    </div>
-                </A>
-=======
->>>>>>> 93fab1f (Added more clues in the UI)
             </article>
 
             @if (! $post->is_commercial)
@@ -374,7 +352,7 @@
                         <x-btn
                             primary
                             wire:navigate
-                            href="#"
+                            href="{{ route('quizzes.show', $post->quiz) }}"
                             class="mt-[1.05rem] w-full text-center"
                         >
                             Test your knowledge
