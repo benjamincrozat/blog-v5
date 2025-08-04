@@ -17,7 +17,7 @@ class QuestionFactory extends Factory
     {
         return [
             'quiz_id' => Quiz::factory(),
-            'question' => fake()->sentence(),
+            'question' => trim(fake()->sentence(), '.') . '?',
         ];
     }
 }

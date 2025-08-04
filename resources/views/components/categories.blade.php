@@ -13,5 +13,7 @@
                 {{ $category->name }}
             </a>
         @endforeach
+
+        {{ $slot }}
     </div>
 @endif

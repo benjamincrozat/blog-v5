@@ -89,16 +89,6 @@
                         </a>
                     @endif
 
-                    @if ($post->quiz && ! $post->is_commercial)
-                        <a href="#" class="group">
-                            <div class="p-3 h-full text-center bg-gray-50 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-900">
-                                <x-heroicon-o-question-mark-circle class="mx-auto mb-2 opacity-75 size-6" />
-                                Take<br />
-                                a quiz
-                            </div>
-                        </a>
-                    @endif
-
                     <x-dropdown>
                         <x-slot:btn
                             class="p-3 w-full h-full text-center bg-gray-50 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-900"
@@ -143,6 +133,19 @@
                             >
                                 Ask Claude
                             </x-dropdown.item>
+
+                            @if ($post->quiz && ! $post->is_commercial)
+                                <x-dropdown.divider>
+                                    Test yourself
+                                </x-dropdown.divider>
+
+                                <x-dropdown.item
+                                    icon="heroicon-o-question-mark-circle"
+                                    href="#"
+                                >
+                                    Take a quiz
+                                </x-dropdown.item>
+                            @endif
 
                             <x-dropdown.divider>
                                 Share
@@ -218,6 +221,28 @@
                     @endif
                 </x-prose>
 
+                <a wire:navigate href="#">
+                    <div class="flex flex-wrap gap-6 p-4 mt-8 bg-orange-50 rounded-xl sm:gap-4 sm:flex-nowrap md:gap-8 md:p-8 text-orange-950">
+                        <div class="sm:w-2/3">
+                            <p class="font-medium sm:text-xl">
+                                Think you got it all? Prove it.
+                            </p>
+
+                            <p class="mt-2">
+                                Time to separate the skimmers from the pros. Take this quick quiz to see if you actually learned something or just scrolled fast.
+                            </p>
+
+                            <x-btn primary class="mt-[1.15rem] bg-orange-500 hover:bg-orange-600 px-4! rounded-lg! cursor-pointer">
+                                Take the quiz
+                            </x-btn>
+                        </div>
+
+                        <div class="p-4 pt-0 sm:w-1/3 sm:p-0">
+                            <img src="{{ Vite::asset('resources/img/illustrations/quiz.png') }}" />
+                        </div>
+                    </div>
+                </a>
+
                 <div class="p-4 mt-8 text-center bg-gray-100 rounded-xl md:p-8 md:text-xl/tight">
                     <p>Help me reach more people by sharing this article on social media!</p>
 
@@ -259,6 +284,7 @@
                         </li>
                     </ul>
                 </div>
+<<<<<<< HEAD
 
                 <a wire:navigate href="#">
                     <div class="flex flex-wrap gap-6 p-4 mt-8 bg-orange-50 rounded-xl sm:gap-4 sm:flex-nowrap md:gap-8 md:p-8 text-orange-950">
@@ -281,6 +307,8 @@
                         </div>
                     </div>
                 </A>
+=======
+>>>>>>> 93fab1f (Added more clues in the UI)
             </article>
 
             @if (! $post->is_commercial)
@@ -318,6 +346,41 @@
                         <strong class="font-medium">I have even more deals for developers.</strong> Services, apps, and all kinds of tools at a discount. <span class="font-medium underline">Check available deals →</span>
                     </p>
                 </a>
+
+                @if ($post->quiz)
+                    <div class="hidden mt-16 lg:block">
+                        <x-heading tag="p" class="!text-left">Take a quiz</x-heading>
+
+                        @php
+                        $questions = $post->quiz->questions->count() > 3
+                            ? $post->quiz->questions->take(3)
+                            : $post->quiz->questions;
+                        @endphp
+
+                        <ul class="grid gap-2 mt-2">
+                            @foreach ($questions as $question)
+                                <li class="px-4 py-3 leading-tight bg-gray-100 rounded-md">
+                                    <span class="font-medium">{{ $loop->iteration }}.</span> {{ $question->question }}
+                                </li>
+                            @endforeach
+
+                            @if ($post->quiz->questions->count() > 3)
+                                <li class="px-4 py-3 font-medium leading-tight text-center rounded-md border border-gray-200">
+                                    And {{ $post->quiz->questions->count() - 3 }} more
+                                </li>
+                            @endif
+                        </ul>
+
+                        <x-btn
+                            primary
+                            wire:navigate
+                            href="#"
+                            class="mt-[1.05rem] w-full text-center"
+                        >
+                            Test your knowledge
+                        </x-btn>
+                    </div>
+                @endif
 
                 @if ($latestComment)
                     <div class="hidden mt-16 lg:block">
@@ -375,58 +438,50 @@
 
                     <ul class="grid gap-2 mt-4">
                         <li>
-                            <a
+                            <x-btn
                                 href="{{ route('feeds.main') }}"
                                 data-pirsch-event="Clicked on Atom feed"
-                                class="group"
+                                class="group flex! gap-3 items-center px-4! py-3! text-white! bg-orange-400!"
                             >
-                                <div class="flex gap-3 items-center px-4 py-3 text-white bg-orange-400 rounded-md">
-                                    <x-heroicon-o-rss class="size-4 translate-y-[.5px]" />
-                                    <p class="font-medium">Atom feed</p>
-                                </div>
-                            </a>
+                                <x-heroicon-o-rss class="size-4 translate-y-[.5px]" />
+                                <p class="font-medium">Atom feed</p>
+                            </x-btn>
                         </li>
 
                         <li>
-                            <a
+                            <x-btn
                                 href="https://www.linkedin.com/in/benjamincrozat/"
                                 target="_blank"
                                 data-pirsch-event="Clicked on LinkedIn"
-                                class="group"
+                                class="group flex! gap-3 items-center px-4! py-3! text-white! bg-[#0B66C2]!"
                             >
-                                <div class="flex gap-3 items-center px-4 py-3 text-white bg-[#0B66C2] rounded-md">
-                                    <x-iconoir-linkedin class="size-4 translate-y-[.5px]" />
-                                    <p class="font-medium">LinkedIn</p>
-                                </div>
-                            </a>
+                                <x-iconoir-linkedin class="size-4 translate-y-[.5px]" />
+                                <p class="font-medium">LinkedIn</p>
+                            </x-btn>
                         </li>
 
                         <li>
-                            <a
+                            <x-btn
                                 href="https://github.com/benjamincrozat"
                                 target="_blank"
                                 data-pirsch-event="Clicked on GitHub"
-                                class="group"
+                                class="!flex gap-3 items-center bg-white! !px-4 !py-3 ring-1 group ring-black/10"
                             >
-                                <div class="flex gap-3 items-center px-4 py-3 bg-white rounded-md ring-1 ring-black/10">
-                                    <x-iconoir-github class="size-4 translate-y-[.5px]" />
-                                    <p class="font-medium">GitHub</p>
-                                </div>
-                            </a>
+                                <x-iconoir-github class="size-4 translate-y-[.5px]" />
+                                <p class="font-medium">GitHub</p>
+                            </x-btn>
                         </li>
 
                         <li>
-                            <a
+                            <x-btn
                                 href="https://x.com/benjamincrozat"
                                 target="_blank"
                                 data-pirsch-event="Clicked on X"
-                                class="group"
+                                class="group flex! gap-3 items-center px-4! py-3! bg-black! text-white!"
                             >
-                                <div class="flex gap-3 items-center px-4 py-3 text-white bg-black rounded-md">
-                                    <x-iconoir-x class="size-4 translate-y-[.5px]" />
-                                    <p class="font-medium">X</p>
-                                </div>
-                            </a>
+                                <x-iconoir-x class="size-4 translate-y-[.5px]" />
+                                <p class="font-medium">X</p>
+                            </x-btn>
                         </li>
                     </ul>
                 </div>

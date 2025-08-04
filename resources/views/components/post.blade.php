@@ -3,12 +3,14 @@
 <div {{ $attributes->class('flex flex-col h-full') }}>
     <a wire:navigate href="{{ route('posts.show', $post->slug) }}">
         @if ($post->hasImage())
-            <img
-                fetchpriority="high"
-                src="{{ $post->image_url }}"
-                alt="{{ $post->title  }}"
-                class="object-cover rounded-xl ring-1 shadow-md transition-opacity shadow-black/5 aspect-video hover:opacity-50 ring-black/5"
-            />
+            <div class="relative">
+                <img
+                    fetchpriority="high"
+                    src="{{ $post->image_url }}"
+                    alt="{{ $post->title  }}"
+                    class="object-cover rounded-xl ring-1 shadow-md transition-opacity shadow-black/5 aspect-video hover:opacity-50 ring-black/5"
+                />
+            </div>
         @else
             @php
             $bgColors = collect([
@@ -20,7 +22,19 @@
         @endif
     </a>
 
-    <x-categories :categories="$post->categories" class="mt-6" />
+    <x-categories :categories="$post->categories" class="mt-6">
+        @if ($post->quiz && ! $post->is_commercial)
+            <a
+                wire:navigate
+                href="#"
+                class="px-2 py-1 text-xs font-medium text-orange-600 uppercase rounded-sm border border-orange-300"
+                data-pirsch-event="Clicked quiz badge"
+                data-pirsch-meta-post="{{ $post->title }}"
+            >
+                Quiz
+            </a>
+        @endif
+    </x-categories>
 
     <div class="flex gap-6 justify-between items-center mt-5">
         <a
