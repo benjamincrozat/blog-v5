@@ -15,7 +15,6 @@ class LinkFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'post_id' => Post::factory(),
             'url' => fake()->unique()->url(),
             'image_url' => 'https://picsum.photos/' . random_int(1024, 1280) . '/' . random_int(640, 720),
             'title' => fake()->sentence(),
@@ -23,10 +22,15 @@ class LinkFactory extends Factory
         ];
     }
 
+    public function withPost() : static
+    {
+        return $this->state(fn () => ['post_id' => Post::factory()]);
+    }
+
     public function approved() : static
     {
         return $this->state([
-            'is_approved' => now(),
+            'is_approved' => fake()->dateTimeBetween('-1 year', 'now'),
             'is_declined' => null,
         ]);
     }
@@ -34,7 +38,7 @@ class LinkFactory extends Factory
     public function declined() : static
     {
         return $this->state([
-            'is_declined' => now(),
+            'is_declined' => fake()->dateTimeBetween('-1 year', 'now'),
             'is_approved' => null,
         ]);
     }
