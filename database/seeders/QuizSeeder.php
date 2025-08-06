@@ -11,15 +11,18 @@ class QuizSeeder extends Seeder
 {
     public function run() : void
     {
-        Quiz::factory(50)
-            ->recycle(Post::all())
-            ->create()
-            ->each(function (Quiz $quiz) {
-                $quiz->questions()->saveMany(
-                    Question::factory(random_int(5, 10))
-                        ->hasAnswers(5)
-                        ->create()
-                );
-            });
+        Quiz::factory(30)
+            ->recycle(
+                Post::query()
+                    ->published()
+                    ->whereDoesntHave('link')
+                    ->inRandomOrder()
+                    ->get()
+            )
+            ->has(
+                Question::factory(random_int(3, 10))
+                    ->hasAnswers(random_int(2, 5))
+            )
+            ->create();
     }
 }

@@ -2,7 +2,7 @@
     <x-section title="Your comments ({{ $comments->total() }})">
         <div class="grid gap-4 mt-8 md:grid-cols-2">
             @foreach ($comments as $comment)
-                <a href="{{ route('posts.show', $comment->post) }}#comments" class="flex gap-4 p-4 rounded-xl border-2 border-gray-200 transition-colors group md:gap-6 hover:border-blue-300 md:p-6">
+                <a href="{{ route('posts.show', $comment->post) }}#comments" class="flex gap-4 p-4 rounded-xl transition-colors bg-gray-100/75 group md:gap-6 hover:bg-blue-50 md:p-6">
                     <div class="flex gap-4">
                         <img
                             loading="lazy"
@@ -13,9 +13,9 @@
 
                         <div>
                             <div>
-                                {{ $comment->user->name }}
+                                <span class="font-medium text-black">{{ $comment->user->name }}</span>
 
-                                <span class="ml-1">
+                                <span class="ml-1 text-gray-500">
                                     {{ $comment->created_at->diffForHumans(short: true) }}
                                 </span>
                             </div>

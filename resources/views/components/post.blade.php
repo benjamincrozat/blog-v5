@@ -26,7 +26,7 @@
         @if ($post->quiz && ! $post->is_commercial)
             <a
                 wire:navigate
-                href="#"
+                href="{{ route('quizzes.show', $post->quiz) }}"
                 class="px-2 py-1 text-xs font-medium text-orange-600 uppercase rounded-sm border border-orange-300"
                 data-pirsch-event="Clicked quiz badge"
                 data-pirsch-meta-post="{{ $post->title }}"

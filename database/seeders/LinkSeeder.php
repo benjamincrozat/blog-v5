@@ -13,13 +13,12 @@ class LinkSeeder extends Seeder
     {
         Link::factory(30)
             ->recycle(User::all())
-            ->recycle(Post::all())
             ->approved()
             ->create();
 
         Link::factory(10)
             ->recycle(User::all())
-            ->recycle(Post::all())
+            ->recycle(Post::query()->inRandomOrder()->get())
             ->approved()
             ->withPost()
             ->create();

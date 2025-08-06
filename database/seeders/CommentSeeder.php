@@ -13,7 +13,7 @@ class CommentSeeder extends Seeder
     {
         Comment::factory(100)
             ->recycle(User::all())
-            ->recycle(Post::query()->where('is_commercial', false)->get())
+            ->recycle(Post::query()->where('is_commercial', false)->inRandomOrder()->get())
             ->create();
     }
 }

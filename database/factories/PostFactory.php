@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,5 +25,14 @@ class PostFactory extends Factory
             'published_at' => fake()->dateTimeBetween('-1 year', 'now'),
             'sessions_count' => fake()->numberBetween(0, 1000),
         ];
+    }
+
+    public function configure() : static
+    {
+        return $this->afterCreating(function (Post $post) {
+            $post->categories()->saveMany(
+                Category::factory(random_int(1, 3))->create()
+            );
+        });
     }
 }

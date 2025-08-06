@@ -337,14 +337,14 @@
 
                         <ul class="grid gap-2 mt-2">
                             @foreach ($questions as $question)
-                                <li class="px-4 py-3 leading-tight bg-gray-100 rounded-md">
+                                <li class="px-4 py-3 leading-tight bg-gray-100 rounded-md last:rounded-t-md!">
                                     <span class="font-medium">{{ $loop->iteration }}.</span> {{ $question->question }}
                                 </li>
                             @endforeach
 
                             @if ($post->quiz->questions->count() > 3)
-                                <li class="px-4 py-3 font-medium leading-tight text-center rounded-md border border-gray-200">
-                                    And {{ $post->quiz->questions->count() - 3 }} more
+                                <li class="px-4 py-3 -mt-2 leading-tight text-center bg-gradient-to-b from-gray-100 to-transparent rounded-b-md">
+                                    And {{ $post->quiz->questions->count() - 3 }} more…
                                 </li>
                             @endif
                         </ul>
