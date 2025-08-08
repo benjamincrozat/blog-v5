@@ -287,6 +287,8 @@
                     </p>
                 </a>
 
+                <x-newsletter-form.mini class="mt-16" />
+
                 @if ($latestComment)
                     <div class="hidden mt-16 lg:block">
                         <p class="font-bold tracking-widest text-black uppercase text-balance">

@@ -110,7 +110,9 @@ class Post extends Model implements Feedable
     public function formattedContent() : Attribute
     {
         return Attribute::make(
-            fn () => Str::markdown($this->content),
+            function () {
+                return inject_newsletter_form(Str::markdown($this->content));
+            },
         )->shouldCache();
     }
 

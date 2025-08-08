@@ -83,3 +83,75 @@ if (! function_exists('extract_headings_from_markdown')) {
         return $headings;
     }
 }
+
+if (! function_exists('inject_newsletter_form')) {
+    /**
+     * Injects a newsletter form before in the middle of a given
+     * piece of content. This helper has been written by GPT-5.
+     */
+    function inject_newsletter_form(string $content) : string
+    {
+        if ('' === $content) {
+            return $content;
+        }
+
+        // Parse content as a fragment wrapped in a known root.
+        $document = new DOMDocument('1.0', 'UTF-8');
+        libxml_use_internal_errors(true);
+        $document->loadHTML('<div id="__root__">' . $content . '</div>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        $root = $document->getElementById('__root__');
+        if (! $root) {
+            return $content;
+        }
+
+        // Find all H2 headings.
+        $headings = $document->getElementsByTagName('h2');
+
+        // Create the test node to inject.
+        $fragment = $document->createDocumentFragment();
+        $fragment->appendXML('<p>Hello, World!</p>');
+
+        if (0 === $headings->length) {
+            // No H2 found, inject at the end of the content.
+            $root->appendChild($fragment);
+
+            $result = '';
+            foreach ($root->childNodes as $childNode) {
+                $result .= $document->saveHTML($childNode);
+            }
+
+            libxml_clear_errors();
+
+            return $result;
+        }
+
+        $count = $headings->length;
+        // Choose a position roughly at two-thirds of the way through the headings list.
+        $insertBeforeIndex = (int) ceil($count * 2 / 3); // 6 -> 4, 3 -> 2, 1 -> 1
+        if ($insertBeforeIndex < 1) {
+            $insertBeforeIndex = 1;
+        }
+        if ($insertBeforeIndex > $count) {
+            $insertBeforeIndex = $count;
+        }
+
+        /** @var DOMElement $targetHeading */
+        $targetHeading = $headings->item($insertBeforeIndex - 1);
+        if ($targetHeading && $targetHeading->parentNode) {
+            $targetHeading->parentNode->insertBefore($fragment, $targetHeading);
+        } else {
+            $root->appendChild($fragment);
+        }
+
+        // Extract inner HTML of the root container only.
+        $result = '';
+        foreach ($root->childNodes as $childNode) {
+            $result .= $document->saveHTML($childNode);
+        }
+
+        libxml_clear_errors();
+
+        return $result;
+    }
+}
