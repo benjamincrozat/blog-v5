@@ -76,12 +76,20 @@ class AdminPanelProvider extends PanelProvider
                     ->url('/')
                     ->icon('heroicon-o-arrow-right-circle')
                     ->sort(0),
+                NavigationItem::make('Horizon')
+                    ->url('/horizon')
+                    ->icon('icon-horizon')
+                    ->sort(1),
             ])
             ->userMenuItems([
                 MenuItem::make()
                     ->label('Go to site')
                     ->url('/')
                     ->icon('heroicon-o-arrow-right-circle'),
+                MenuItem::make()
+                    ->label('Horizon')
+                    ->url('/horizon')
+                    ->icon('icon-horizon'),
             ]);
     }
 }
