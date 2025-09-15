@@ -2,13 +2,14 @@
 
 namespace App\Filament\Resources\Revisions\Pages;
 
-use App\Filament\Resources\Revisions\RevisionResource;
 use App\Models\Revision;
+use Illuminate\Support\Js;
 use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Illuminate\Support\Js;
+use App\Filament\Resources\Revisions\RevisionResource;
 
 class ViewRevision extends ViewRecord
 {
@@ -17,10 +18,16 @@ class ViewRevision extends ViewRecord
     protected function getHeaderActions() : array
     {
         return [
-            $this->makeCopyMarkdownAction(),
-            $this->makeCopyAction('title'),
-            $this->makeCopyAction('description'),
-            $this->makeCopyAction('content'),
+            ActionGroup::make([
+                $this->makeCopyAction('title'),
+                $this->makeCopyAction('description'),
+                $this->makeCopyAction('content'),
+            ])
+                ->label('Copy')
+                ->icon('heroicon-o-clipboard-document')
+                ->button()
+                ->color('gray')
+                ->tooltip('Copy revision values to your clipboard'),
 
             Action::make('complete')
                 ->label('Mark as completed')
@@ -54,19 +61,6 @@ class ViewRevision extends ViewRecord
             ->icon('heroicon-o-clipboard-document')
             ->alpineClickHandler(fn (Revision $record) => $this->copyToClipboardScript($record->data[$field] ?? null, "{$labelTitleCase} copied to your clipboard"))
             ->disabled(fn (Revision $record) : bool => blank($record->data[$field] ?? null));
-    }
-
-    protected function makeCopyMarkdownAction() : Action
-    {
-        $message = 'Revision content copied to your clipboard';
-
-        return Action::make('copy')
-            ->label('Copy as Markdown')
-            ->tooltip('Copy the content as Markdown to your clipboard')
-            ->color('gray')
-            ->icon('heroicon-o-clipboard-document')
-            ->alpineClickHandler(fn (Revision $record) => $this->copyToClipboardScript($record->data['content'] ?? null, $message))
-            ->disabled(fn (Revision $record) : bool => blank($record->data['content'] ?? null));
     }
 
     protected function copyToClipboardScript(?string $value, string $message) : string
