@@ -9,6 +9,7 @@ use Filament\Actions\ActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
+use Filament\Support\Enums\IconPosition;
 use App\Filament\Resources\Revisions\RevisionResource;
 
 class ViewRevision extends ViewRecord
@@ -24,14 +25,12 @@ class ViewRevision extends ViewRecord
                 $this->makeCopyAction('content'),
             ])
                 ->label('Copy')
-                ->icon('heroicon-o-clipboard-document')
+                ->icon('heroicon-o-chevron-down')
+                ->iconPosition(IconPosition::After)
                 ->button()
-                ->color('gray')
-                ->tooltip('Copy revision values to your clipboard'),
+                ->color('gray'),
 
             Action::make('complete')
-                ->label('Mark as completed')
-                ->tooltip('Mark as completed')
                 ->icon('heroicon-o-check')
                 ->action(function (Revision $record) {
                     $record->update(['completed_at' => now()]);
@@ -56,9 +55,6 @@ class ViewRevision extends ViewRecord
 
         return Action::make("copy_{$field}")
             ->label("Copy {$labelTitleCase}")
-            ->tooltip("Copy the {$labelLowerCase} to your clipboard")
-            ->color('gray')
-            ->icon('heroicon-o-clipboard-document')
             ->alpineClickHandler(fn (Revision $record) => $this->copyToClipboardScript($record->data[$field] ?? null, "{$labelTitleCase} copied to your clipboard"))
             ->disabled(fn (Revision $record) : bool => blank($record->data[$field] ?? null));
     }
