@@ -2,12 +2,10 @@
 
 namespace App\Providers;
 
-use App\Models\Metric;
 use Livewire\Livewire;
 use Carbon\CarbonImmutable;
 use League\Flysystem\Filesystem;
 use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\View;
 use App\Livewire\LinkWizard\FirstStep;
 use App\Livewire\LinkWizard\LinkWizard;
 use App\Livewire\LinkWizard\SecondStep;
@@ -55,14 +53,5 @@ class AppServiceProvider extends ServiceProvider
 
             return new FilesystemAdapter($filesystem, $adapter, $config);
         });
-
-        View::composer('*', fn (\Illuminate\View\View $view) => $view->with([
-            'user' => auth()->user(),
-            'visitors' => $this->visitors ??= cache()->remember(
-                'visitors', 600, fn () => Metric::query()
-                    ->where('key', 'visitors')
-                    ->value('value') ?? 0
-            ),
-        ]));
     }
 }
