@@ -23,20 +23,31 @@ class FetchPostSessions
      */
     public function fetch(?CarbonImmutable $from = null, ?CarbonImmutable $to = null) : void
     {
-        $pirschAccessToken = $this->http
-            ->post('https://api.pirsch.io/api/v1/token', [
-                'client_id' => $this->pirschClientId,
-                'client_secret' => $this->pirschClientSecret,
-            ])
-            ->throw()
-            ->json('access_token');
+        $shouldAuthenticate = filled($this->pirschClientId) && filled($this->pirschClientSecret);
+
+        $pirschAccessToken = null;
+
+        if ($shouldAuthenticate) {
+            $pirschAccessToken = $this->http
+                ->post('https://api.pirsch.io/api/v1/token', [
+                    'client_id' => $this->pirschClientId,
+                    'client_secret' => $this->pirschClientSecret,
+                ])
+                ->throw()
+                ->json('access_token');
+        }
 
         $from ??= now()->subDays(7);
 
         $to ??= now();
 
-        $this->http
-            ->withToken($pirschAccessToken)
+        $request = $this->http;
+
+        if ($shouldAuthenticate && filled($pirschAccessToken)) {
+            $request = $request->withToken($pirschAccessToken);
+        }
+
+        $request
             ->get('https://api.pirsch.io/api/v1/statistics/page', [
                 'id' => config('services.pirsch.domain_id'),
                 'from' => $from->toDateString(),

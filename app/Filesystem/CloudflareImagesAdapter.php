@@ -18,16 +18,27 @@ use League\Flysystem\InvalidVisibilityProvided;
 
 class CloudflareImagesAdapter implements FilesystemAdapter
 {
+    protected bool $useFakeStorage;
+
+    /** @var array<string, array{contents:string, mime_type:string, timestamp:int}> */
+    protected array $fakeStorage = [];
+
     public function __construct(
         protected string $token,
         protected string $accountId,
         protected string $accountHash,
         protected string $variant = 'public',
-    ) {}
+    ) {
+        $this->useFakeStorage = blank($this->token) || blank($this->accountId) || blank($this->accountHash);
+    }
 
     /* @inheritdoc */
     public function fileExists(string $path) : bool
     {
+        if ($this->usingFakeStorage()) {
+            return array_key_exists($path, $this->fakeStorage);
+        }
+
         $response = Http::withToken($this->token)
             ->get($this->api("images/v1/{$path}"));
 
@@ -43,6 +54,12 @@ class CloudflareImagesAdapter implements FilesystemAdapter
     /* @inheritdoc */
     public function write(string $path, string $contents, Config $config) : void
     {
+        if ($this->usingFakeStorage()) {
+            $this->storeFakeFile($path, $contents, $config->get('mime_type'));
+
+            return;
+        }
+
         $tmp = tmpfile();
 
         if (false === $tmp) {
@@ -61,11 +78,25 @@ class CloudflareImagesAdapter implements FilesystemAdapter
     /* @inheritdoc */
     public function writeStream(string $path, $contents, Config $config) : void
     {
+        if ($this->usingFakeStorage()) {
+            $data = $this->streamToString($contents);
+
+            $this->storeFakeFile($path, $data, $config->get('mime_type'));
+
+            return;
+        }
+
         $this->upload($path, $contents);
     }
 
     protected function upload(string $path, $resource) : void
     {
+        if ($this->usingFakeStorage()) {
+            $this->storeFakeFile($path, $this->streamToString($resource));
+
+            return;
+        }
+
         $response = Http::withToken($this->token)
             ->asMultipart()
             ->attach('file', $resource, basename($path))
@@ -83,6 +114,10 @@ class CloudflareImagesAdapter implements FilesystemAdapter
     /* @inheritdoc */
     public function read(string $path) : string
     {
+        if ($this->usingFakeStorage()) {
+            return $this->getFakeFile($path)['contents'];
+        }
+
         $response = Http::get($this->getUrl($path));
 
         if (! $response->ok()) {
@@ -95,6 +130,19 @@ class CloudflareImagesAdapter implements FilesystemAdapter
     /* @inheritdoc */
     public function readStream(string $path)
     {
+        if ($this->usingFakeStorage()) {
+            $stream = fopen('php://temp', 'rb+');
+
+            if (false === $stream) {
+                throw UnableToReadFile::fromLocation($path, 'Unable to create temporary stream.');
+            }
+
+            fwrite($stream, $this->getFakeFile($path)['contents']);
+            rewind($stream);
+
+            return $stream;
+        }
+
         $response = Http::withOptions(['stream' => true])
             ->get($this->getUrl($path));
 
@@ -108,6 +156,12 @@ class CloudflareImagesAdapter implements FilesystemAdapter
     /* @inheritdoc */
     public function delete(string $path) : void
     {
+        if ($this->usingFakeStorage()) {
+            unset($this->fakeStorage[$path]);
+
+            return;
+        }
+
         $response = Http::withToken($this->token)
             ->delete($this->api("images/v1/{$path}"));
 
@@ -137,12 +191,22 @@ class CloudflareImagesAdapter implements FilesystemAdapter
     /* @inheritdoc */
     public function visibility(string $path) : FileAttributes
     {
+        if ($this->usingFakeStorage()) {
+            return new FileAttributes($path, null, 'public');
+        }
+
         return new FileAttributes($path, null, 'public');
     }
 
     /* @inheritdoc */
     public function mimeType(string $path) : FileAttributes
     {
+        if ($this->usingFakeStorage()) {
+            $file = $this->getFakeFile($path);
+
+            return new FileAttributes($path, null, 'public', null, $file['mime_type']);
+        }
+
         $headers = $this->getHeaders($path);
 
         return new FileAttributes($path, null, 'public', null, $headers['content-type'] ?? null);
@@ -151,6 +215,12 @@ class CloudflareImagesAdapter implements FilesystemAdapter
     /* @inheritdoc */
     public function lastModified(string $path) : FileAttributes
     {
+        if ($this->usingFakeStorage()) {
+            $file = $this->getFakeFile($path);
+
+            return new FileAttributes($path, null, 'public', $file['timestamp']);
+        }
+
         $headers = $this->getHeaders($path);
 
         $timestamp = isset($headers['last-modified']) ? strtotime($headers['last-modified']) ?: null : null;
@@ -161,6 +231,12 @@ class CloudflareImagesAdapter implements FilesystemAdapter
     /* @inheritdoc */
     public function fileSize(string $path) : FileAttributes
     {
+        if ($this->usingFakeStorage()) {
+            $file = $this->getFakeFile($path);
+
+            return new FileAttributes($path, strlen($file['contents']));
+        }
+
         $headers = $this->getHeaders($path);
 
         $size = isset($headers['content-length']) ? (int) $headers['content-length'] : null;
@@ -175,6 +251,14 @@ class CloudflareImagesAdapter implements FilesystemAdapter
     /* @inheritdoc */
     public function listContents(string $path, bool $deep) : iterable
     {
+        if ($this->usingFakeStorage()) {
+            foreach ($this->fakeStorage as $key => $file) {
+                yield new FileAttributes($key, strlen($file['contents']), 'public', $file['timestamp'], $file['mime_type']);
+            }
+
+            return;
+        }
+
         return []; // Listing is not required for now.
     }
 
@@ -203,6 +287,10 @@ class CloudflareImagesAdapter implements FilesystemAdapter
      */
     public function getUrl(string $path) : string
     {
+        if ($this->usingFakeStorage()) {
+            return sprintf('https://cloudflare-images.test/%s', trim($path, '/'));
+        }
+
         return sprintf('https://imagedelivery.net/%s/%s/%s', $this->accountHash, trim($path, '/'), $this->variant);
     }
 
@@ -213,6 +301,16 @@ class CloudflareImagesAdapter implements FilesystemAdapter
      */
     protected function getHeaders(string $path) : array
     {
+        if ($this->usingFakeStorage()) {
+            $file = $this->getFakeFile($path);
+
+            return [
+                'content-length' => (string) strlen($file['contents']),
+                'content-type' => $file['mime_type'],
+                'last-modified' => gmdate('D, d M Y H:i:s \G\M\T', $file['timestamp']),
+            ];
+        }
+
         $response = Http::withoutVerifying()->head($this->getUrl($path));
 
         if (! $response->ok()) {
@@ -229,5 +327,72 @@ class CloudflareImagesAdapter implements FilesystemAdapter
         }
 
         return $headers;
+    }
+
+    protected function usingFakeStorage() : bool
+    {
+        return $this->useFakeStorage;
+    }
+
+    protected function storeFakeFile(string $path, string $contents, ?string $mimeType = null) : void
+    {
+        $this->fakeStorage[$path] = [
+            'contents' => $contents,
+            'mime_type' => $mimeType ?? $this->guessMimeType($path, $contents),
+            'timestamp' => time(),
+        ];
+    }
+
+    /**
+     * @return array{contents:string, mime_type:string, timestamp:int}
+     */
+    protected function getFakeFile(string $path) : array
+    {
+        if (! array_key_exists($path, $this->fakeStorage)) {
+            throw UnableToReadFile::fromLocation($path, 'File does not exist in fake storage.');
+        }
+
+        return $this->fakeStorage[$path];
+    }
+
+    protected function guessMimeType(string $path, string $contents) : string
+    {
+        $finfo = new \finfo(FILEINFO_MIME_TYPE);
+
+        $mimeType = $finfo->buffer($contents) ?: null;
+
+        if ($mimeType) {
+            return $mimeType;
+        }
+
+        $extension = pathinfo($path, PATHINFO_EXTENSION);
+
+        return match (strtolower($extension)) {
+            'jpg', 'jpeg' => 'image/jpeg',
+            'png' => 'image/png',
+            'gif' => 'image/gif',
+            default => 'application/octet-stream',
+        };
+    }
+
+    protected function streamToString($resource) : string
+    {
+        if (is_resource($resource)) {
+            $meta = stream_get_meta_data($resource);
+
+            if (($meta['seekable'] ?? false) === true) {
+                rewind($resource);
+            }
+
+            $data = stream_get_contents($resource);
+
+            if (false === $data) {
+                throw UnableToWriteFile::atLocation('', 'Unable to read from resource.');
+            }
+
+            return $data;
+        }
+
+        return (string) $resource;
     }
 }

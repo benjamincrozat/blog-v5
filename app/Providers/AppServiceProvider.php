@@ -6,8 +6,10 @@ use App\Models\Metric;
 use Livewire\Livewire;
 use Carbon\CarbonImmutable;
 use League\Flysystem\Filesystem;
+use Stripe\StripeClient;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\View;
+use App\Support\Stripe\FakeStripeClient;
 use App\Livewire\LinkWizard\FirstStep;
 use App\Livewire\LinkWizard\LinkWizard;
 use App\Livewire\LinkWizard\SecondStep;
@@ -23,6 +25,20 @@ class AppServiceProvider extends ServiceProvider
      * Cached visitors count.
      */
     protected ?int $visitors = null;
+
+    public function register() : void
+    {
+        $this->app->bind(StripeClient::class, function ($app, array $parameters) {
+            $config = $parameters['config'] ?? [];
+            $apiKey = $config['api_key'] ?? config('cashier.secret');
+
+            if (blank($apiKey)) {
+                return new FakeStripeClient($config);
+            }
+
+            return new StripeClient($config);
+        });
+    }
 
     public function boot() : void
     {
