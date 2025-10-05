@@ -3,10 +3,10 @@
 namespace App\Console\Commands;
 
 use App\Models\Job;
+use App\Feed\FeedItem;
 use App\Jobs\ScrapeJob;
 use Illuminate\Console\Command;
 use App\Actions\DiscoverFeedItems;
-use App\Feed\FeedItem;
 use Illuminate\Support\Collection;
 use Symfony\Component\Console\Attribute\AsCommand;
 
@@ -70,7 +70,7 @@ class IngestJobFeedsCommand extends Command
                     );
                 }
 
-                $this->info("Queued " . $toQueue->count() . " new item(s) from '$name'.");
+                $this->info('Queued ' . $toQueue->count() . " new item(s) from '$name'.");
             });
     }
 

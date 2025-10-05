@@ -96,40 +96,6 @@
     </article>
 
     <script type="application/ld+json">
-        {
-            "@@context": "https://schema.org/",
-            "@@type": "JobPosting",
-            "title": @json($job->title),
-            "description": @json($job->description),
-            "identifier": {
-                "@@type": "PropertyValue",
-                "name": @json($job->company->name),
-                "value": @json((string) $job->id)
-            },
-            "datePosted": @json(optional($job->created_at)->toIso8601String()),
-            "employmentType": "FULL_TIME",
-            "hiringOrganization": {
-                "@@type": "Organization",
-                "name": @json($job->company->name),
-                "sameAs": @json($job->company->url),
-                "logo": @json($job->company->logo)
-            },
-            "jobLocationType": @json($job->setting === 'fully-remote' ? 'TELECOMMUTE' : null),
-            "jobLocation": {
-                "@@type": "Place",
-                "name": @json(collect($job->locations)->first())
-            },
-            "baseSalary": {
-                "@@type": "MonetaryAmount",
-                "currency": @json($job->currency ?? 'USD'),
-                "value": {
-                    "@@type": "QuantitativeValue",
-                    "minValue": @json($job->min_salary),
-                    "maxValue": @json($job->max_salary),
-                    "unitText": "YEAR"
-                }
-            },
-            "directApply": false
-        }
+        {!! json_encode($jobPostingSchema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
     </script>
 </x-app>

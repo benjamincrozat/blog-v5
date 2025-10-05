@@ -224,7 +224,7 @@ class LinkResource extends Resource
                     Action::make('decline')
                         ->schema([
                             Textarea::make('reason')
-                            ->nullable(),
+                                ->nullable(),
                         ])
                         ->action(function (Link $record, array $data) {
                             $record->decline($data['reason']);
