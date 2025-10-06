@@ -4,6 +4,7 @@ namespace App\Actions;
 
 use App\Models\Link;
 use App\Models\Post;
+use App\Models\User;
 use RuntimeException;
 use App\Jobs\RecommendPosts;
 use Illuminate\Support\Facades\DB;
@@ -86,9 +87,17 @@ class CreatePostForLink
             throw new RuntimeException('Invalid model output.');
         }
 
-        return DB::transaction(function () use ($link, $json) {
+        $ownerId = User::query()
+            ->where('github_login', 'benjamincrozat')
+            ->value('id');
+
+        if (! $ownerId) {
+            throw new RuntimeException('Benjamin Crozat user not found.');
+        }
+
+        return DB::transaction(function () use ($link, $json, $ownerId) {
             $post = Post::query()->create([
-                'user_id' => $link->user_id,
+                'user_id' => $ownerId,
                 'title' => (string) $json->title,
                 'content' => (string) $json->content,
                 'description' => (string) $json->description,

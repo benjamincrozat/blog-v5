@@ -2,6 +2,7 @@
 
 use App\Models\Link;
 use App\Models\Post;
+use App\Models\User;
 use App\Jobs\RecommendPosts;
 use App\Actions\CreatePostForLink;
 use OpenAI\Laravel\Facades\OpenAI;
@@ -14,8 +15,9 @@ use function Pest\Laravel\assertDatabaseCount;
 use OpenAI\Responses\Responses\CreateResponse;
 
 it('creates a post for a pending link and soft-deletes previous post', function () {
-    $oldPost = Post::factory()->create();
-    $link = Link::factory()->withPost()->create(['post_id' => $oldPost->id]);
+    $admin = User::factory()->create(['github_login' => 'benjamincrozat']);
+    $oldPost = Post::factory()->create(['user_id' => $admin->id]);
+    $link = Link::factory()->create(['post_id' => $oldPost->id]);
 
     $payload = json_encode([
         'title' => 'Sample title',
@@ -65,7 +67,7 @@ it('creates a post for a pending link and soft-deletes previous post', function 
 
     $post = app(CreatePostForLink::class)->create($link);
 
-    expect($post->user_id)->toBe($link->user_id);
+    expect($post->user_id)->toBe($admin->id);
     expect($post->published_at)->toBeNull();
 
     assertDatabaseHas('links', [
@@ -81,6 +83,7 @@ it('creates a post for a pending link and soft-deletes previous post', function 
 });
 
 it('creates a post for an approved link and uses approval date as published_at', function () {
+    User::factory()->create(['github_login' => 'benjamincrozat']);
     $approvedAt = now()->subDay();
     $link = Link::factory()->approved()->create(['is_approved' => $approvedAt]);
 
@@ -137,8 +140,9 @@ it('creates a post for an approved link and uses approval date as published_at',
 });
 
 it('rolls back and throws on invalid model output', function () {
-    $oldPost = Post::factory()->create();
-    $link = Link::factory()->withPost()->create(['post_id' => $oldPost->id]);
+    $admin = User::factory()->create(['github_login' => 'benjamincrozat']);
+    $oldPost = Post::factory()->create(['user_id' => $admin->id]);
+    $link = Link::factory()->create(['post_id' => $oldPost->id]);
 
     $payload = 'not-json';
 
