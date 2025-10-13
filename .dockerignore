@@ -2,9 +2,5 @@
 .git
 .gitignore
 *.log*
-docker-compose*.yml
-storage/framework/cache/data/*
-storage/framework/sessions/*
-storage/framework/views/*
 Thumbs.db
 vendor
