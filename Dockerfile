@@ -26,7 +26,7 @@ FROM php:8.4-fpm-alpine AS runtime
 
 # Install system packages
 RUN apk add --no-cache \
-    nginx supervisor tzdata \
+    nginx supervisor tzdata mariadb-client ca-certificates \
     icu-dev oniguruma-dev libzip-dev \
     libpng-dev libjpeg-turbo-dev freetype-dev
 
