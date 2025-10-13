@@ -4,11 +4,11 @@ WORKDIR /app
 
 # Only copy Composer manifests to leverage Docker layer cache
 COPY composer.json composer.lock ./
-# Install PHP dependencies for production (no dev), skip scripts, ignore platform reqs (runtime has extensions)
-RUN composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader --no-scripts --ignore-platform-reqs
+# Install PHP dependencies, skip scripts, ignore platform reqs (runtime has extensions)
+RUN composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader --no-scripts --ignore-platform-reqs
 
 # Stage 2: Build frontend assets
-FROM node:20-alpine AS assets
+FROM node:24-alpine AS assets
 WORKDIR /app
 
 # Install Node dependencies using lockfile for reproducibility
