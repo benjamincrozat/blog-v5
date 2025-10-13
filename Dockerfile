@@ -176,6 +176,7 @@ RUN set -eux; \
 
 EXPOSE 8080
 
+RUN sed -i 's/\r$//' /var/www/html/entrypoint.sh
 RUN chmod +x /var/www/html/entrypoint.sh
 
 ENTRYPOINT ["/var/www/html/entrypoint.sh"]

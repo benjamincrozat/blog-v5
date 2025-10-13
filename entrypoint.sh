@@ -1,3 +1,6 @@
+#!/usr/bin/env sh
+set -e
+
 php artisan optimize
 
-supervisord -c /etc/supervisord.conf
+exec supervisord -c /etc/supervisord.conf
