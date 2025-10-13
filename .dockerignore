@@ -1,0 +1,12 @@
+.DS_Store
+.git
+.gitignore
+*.lock
+*.log*
+docker-compose*.yml
+node_modules
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+Thumbs.db
+vendor
