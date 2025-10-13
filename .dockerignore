@@ -1,7 +1,6 @@
 .DS_Store
 .git
 .gitignore
-*.lock
 *.log*
 docker-compose*.yml
 node_modules
