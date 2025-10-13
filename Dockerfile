@@ -17,6 +17,8 @@ RUN npm ci
 # Copy the rest of the application to build frontend assets
 COPY . .
 
+COPY --from=vendor /app/vendor ./vendor
+
 RUN npm run build
 
 # Stage 3: Set up runtime environment
