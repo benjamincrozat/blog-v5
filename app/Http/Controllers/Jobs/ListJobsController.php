@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Jobs;
 
 use App\Models\Job;
-use App\Models\Company;
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 

@@ -294,11 +294,7 @@
 
         @if (! $post->is_commercial)
             <div class="lg:col-span-4 xl:col-span-3">
-                @if (random_int(0, 1))
-                    <x-ads.sidebar.sevalla class="max-w-[280px] mx-auto lg:max-w-none lg:mx-0" />
-                @else
-                    <x-ads.sidebar.coderabbit class="max-w-[280px] mx-auto lg:max-w-none lg:mx-0" />
-                @endif
+                <x-ads.sidebar.sevalla class="max-w-[280px] mx-auto lg:max-w-none lg:mx-0" />
 
                 <a
                     href="{{ route('tools.index') }}"
