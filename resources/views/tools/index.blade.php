@@ -16,16 +16,7 @@
         <p class="px-4 mt-2 leading-tight text-center">These companies are sponsoring my blog.<br class="hidden md:inline" /> Big thanks to them and make sure to check them out!</p>
 
         <div class="flex overflow-x-auto gap-8 px-4 mt-8 md:justify-center snap-mandatory snap-x">
-            @php
-            $components = collect([
-                'ads.deals.coderabbit',
-                'ads.deals.sevalla',
-            ])->shuffle()->toArray();
-            @endphp
-
-            @foreach ($components as $component)
-                <x-dynamic-component :$component class="w-[85%] md:w-[45%] lg:w-[45%] xl:w-[40%] snap-start scroll-ml-4 flex-none" />
-            @endforeach
+            <x-ads.deals.sevalla class="w-[85%] md:w-[45%] lg:w-[45%] xl:w-[40%] snap-start scroll-ml-4 flex-none" />
         </div>
     </section>
 
