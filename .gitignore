@@ -14,6 +14,7 @@
 /storage/*.key
 /storage/pail
 /vendor
+/venv
 auth.json
 phpunit.xml
 Thumbs.db
