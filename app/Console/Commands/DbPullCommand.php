@@ -22,7 +22,7 @@ class DbPullCommand extends Command
         // Prefer a compatible MySQL client when running on macOS with MySQL 9.x in PATH.
         $this->ensureCompatibleMysqlClient();
 
-        $this->info("Preparing to pull database from '$from' into '$to'.");
+        $this->info("Preparing to pull database from \"$from\" into \"$to\".");
 
         $fromConfig = config("database.connections.$from");
         $toConfig = config("database.connections.$to");

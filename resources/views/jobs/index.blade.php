@@ -39,7 +39,7 @@
                                 <x-heroicon-o-building-office class="text-gray-500 size-6" />
                             </div>
 
-                            <div>
+                            <div class="grow">
                                 <div class="flex gap-16 justify-between items-start">
                                     <p class="text-sm tracking-widest uppercase">
                                         {{ $job->company->name }}
