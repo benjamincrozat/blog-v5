@@ -40,7 +40,7 @@
                     </x-help-btn>
                 </x-heading>
 
-                <div class="h-px bg-gradient-to-r from-gray-300 to-transparent"></div>
+                <div class="h-px bg-linear-to-r from-gray-300 to-transparent"></div>
 
                 <x-posts-list :posts="$popular" class="mt-8" />
 
@@ -65,7 +65,7 @@
                     </x-help-btn>
                 </x-heading>
 
-                <div class="h-px bg-gradient-to-r from-gray-300 to-transparent"></div>
+                <div class="h-px bg-linear-to-r from-gray-300 to-transparent"></div>
 
                 <x-jobs-list :jobs="$jobs" class="mt-8" />
 

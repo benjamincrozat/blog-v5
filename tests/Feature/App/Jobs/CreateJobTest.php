@@ -27,7 +27,6 @@ it('invokes the action with provided data', function () {
         'currency' => 'USD',
         'equity' => false,
         'interview_process' => [],
-        'how_to_apply' => ['Apply'],
         'company' => (object) [
             'name' => 'Foo LLC',
             'url' => null,

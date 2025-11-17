@@ -35,12 +35,13 @@ class CreateJob
                 'perks' => $data->perks ?? [],
                 'locations' => $data->locations,
                 'setting' => $data->setting,
+                'employment_status' => $data->employment_status ?? null,
+                'seniority' => $data->seniority ?? null,
                 'min_salary' => $data->min_salary ?? 0,
                 'max_salary' => $data->max_salary ?? 0,
                 'currency' => $data->currency,
                 'equity' => (bool) ($data->equity ?? false),
                 'interview_process' => $data->interview_process ?? [],
-                'how_to_apply' => $data->how_to_apply,
             ]);
 
             User::query()

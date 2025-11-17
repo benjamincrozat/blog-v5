@@ -3,6 +3,10 @@
 namespace Database\Factories;
 
 use App\Models\Company;
+use App\Enums\JobSetting;
+use App\Enums\JobSeniority;
+use Illuminate\Support\Arr;
+use App\Enums\EmploymentStatus;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -30,12 +34,13 @@ class JobFactory extends Factory
                 random_int(1, 2),
                 fn () => fake()->city() . ', ' . fake()->country(),
             ),
-            'setting' => collect(['fully-remote', 'hybrid', 'on-site'])->random(),
+            'setting' => Arr::random(JobSetting::values()),
             'min_salary' => $minSalary = fake()->numberBetween(10000, 100000),
             'max_salary' => fake()->numberBetween($minSalary, $minSalary * random_int(2, 4)),
             'currency' => fake()->currencyCode(),
             'equity' => fake()->boolean(),
-            'how_to_apply' => fake()->sentences(random_int(2, 5)),
+            'employment_status' => Arr::random(EmploymentStatus::values()),
+            'seniority' => Arr::random(JobSeniority::values()),
             'perks' => fake()->optional()->sentences(random_int(0, 4)) ?? [],
             'interview_process' => fake()->optional()->sentences(random_int(0, 4)) ?? [],
         ];

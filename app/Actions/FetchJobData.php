@@ -49,25 +49,17 @@ class FetchJobData
                             ],
                             'title' => [
                                 'type' => 'string',
-                                'description' => 'The title of the job.',
+                                'description' => 'The title of the job. In the original language, without the company name, locations, or work setting. Make it specific and distinctive, using at most 12 words. Always include at least one of the main technologies (for example, "Rust", "Laravel", "React"), include the skill level when seniority is known (for example, "Junior", "Mid-level", "Senior", "Lead"), and avoid generic titles like "Senior backend developer" or "Software Engineer".',
                                 'minLength' => 1,
                             ],
                             'description' => [
                                 'type' => 'string',
-                                'description' => 'The description of the job.',
+                                'description' => 'A concise but complete summary of the job. In the original language, without the company name, locations, or work setting. Address the candidate as "you" and refer to the employer as "they" or "the company" (not "we"). Focus on the information a candidate needs to decide whether to apply (for example, mission, main responsibilities, key skills, important constraints or expectations), without omitting anything essential.',
                                 'minLength' => 1,
                             ],
                             'technologies' => [
                                 'type' => 'array',
                                 'description' => 'The technologies required for the job.',
-                                'items' => [
-                                    'type' => 'string',
-                                    'minLength' => 1,
-                                ],
-                            ],
-                            'how_to_apply' => [
-                                'type' => 'array',
-                                'description' => 'Step-by-step instructions to apply for this job.',
                                 'items' => [
                                     'type' => 'string',
                                     'minLength' => 1,
@@ -89,6 +81,48 @@ class FetchJobData
                                     'fully-remote',
                                     'hybrid',
                                     'on-site',
+                                ],
+                            ],
+                            'employment_status' => [
+                                'anyOf' => [
+                                    [
+                                        'type' => 'string',
+                                        'description' => 'Employment status for this role. Use one of: full-time, part-time, contract, temporary, internship, freelance, other.',
+                                        'enum' => [
+                                            'full-time',
+                                            'part-time',
+                                            'contract',
+                                            'temporary',
+                                            'internship',
+                                            'freelance',
+                                            'other',
+                                        ],
+                                    ],
+                                    [
+                                        'type' => 'null',
+                                        'description' => 'Null if employment status is not mentioned or cannot be confidently inferred from the source.',
+                                    ],
+                                ],
+                            ],
+                            'seniority' => [
+                                'anyOf' => [
+                                    [
+                                        'type' => 'string',
+                                        'description' => 'Seniority level for this role. Use one of: intern, junior, mid-level, senior, lead, principal, executive.',
+                                        'enum' => [
+                                            'intern',
+                                            'junior',
+                                            'mid-level',
+                                            'senior',
+                                            'lead',
+                                            'principal',
+                                            'executive',
+                                        ],
+                                    ],
+                                    [
+                                        'type' => 'null',
+                                        'description' => 'Null if seniority is not mentioned or cannot be confidently inferred from the source.',
+                                    ],
                                 ],
                             ],
                             'equity' => [
@@ -167,9 +201,10 @@ class FetchJobData
                             'title',
                             'description',
                             'technologies',
-                            'how_to_apply',
                             'locations',
                             'setting',
+                            'employment_status',
+                            'seniority',
                             'equity',
                             'min_salary',
                             'max_salary',
@@ -218,7 +253,7 @@ class FetchJobData
                                     ],
                                     'about' => [
                                         'type' => 'string',
-                                        'description' => 'What the company is about, based on web research. Include founding year, domain, notable products, and mission. Whatever you can find.',
+                                        'description' => 'What the company is about, based on web research. Include founding year, domain, notable products, and mission. Whatever you can find. Refer to the company as "they" or "the company" (not "we") and do not address the reader as "you".',
                                         'minLength' => 1,
                                     ],
                                 ],

@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
+use App\Models\Traits\JobSlugable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,24 +11,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Job extends Model
 {
     /** @use HasFactory<\Database\Factories\JobFactory> */
-    use HasFactory;
+    use HasFactory, JobSlugable, Searchable;
 
     // Avoid conflict with the already existing jobs table.
     protected $table = 'job_listings';
 
-    protected static function booted() : void
-    {
-        static::creating(function (self $job) {
-            $job->slug = Str::slug($job->title . ' ' . $job->company->name);
-        });
-    }
+    // Slug handling is implemented via JobSlugable.
 
     protected function casts() : array
     {
         return [
             'technologies' => 'array',
             'locations' => 'array',
-            'how_to_apply' => 'array',
             'perks' => 'array',
             'interview_process' => 'array',
             'equity' => 'boolean',

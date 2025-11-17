@@ -1,10 +1,10 @@
 <?php
 
+use App\Livewire\Jobs\Index;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\LinkWizard\LinkWizard;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Jobs\ShowJobController;
-use App\Http\Controllers\Jobs\ListJobsController;
 use App\Http\Controllers\Posts\ShowPostController;
 use App\Http\Controllers\Links\ListLinksController;
 use App\Http\Controllers\Posts\ListPostsController;
@@ -42,7 +42,7 @@ Route::get('/links', ListLinksController::class)
 Route::view('/tools', 'tools.index')
     ->name('tools.index');
 
-Route::get('/jobs', ListJobsController::class)
+Route::get('/jobs', Index::class)
     ->name('jobs.index');
 
 Route::get('/jobs/{job:slug}', ShowJobController::class)

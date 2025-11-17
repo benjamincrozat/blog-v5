@@ -28,9 +28,10 @@ it('updates or creates job from OpenAI structured output', function () {
         'title' => 'Senior PHP Developer',
         'description' => 'Build and maintain Laravel apps.',
         'technologies' => ['PHP', 'Laravel', 'MySQL'],
-        'how_to_apply' => ['Submit resume', 'Complete coding challenge'],
         'locations' => ['Remote', 'US'],
         'setting' => 'fully-remote',
+        'employment_status' => 'full-time',
+        'seniority' => 'senior',
         'equity' => true,
         'min_salary' => 100000,
         'max_salary' => 150000,
@@ -86,7 +87,6 @@ it('updates or creates job from OpenAI structured output', function () {
         ->and($updated->perks)->toMatchArray(['Remote stipend'])
         ->and($updated->locations)->toMatchArray(['Remote', 'US'])
         ->and($updated->setting)->toBe('fully-remote')
-        ->and($updated->how_to_apply)->toMatchArray(['Submit resume', 'Complete coding challenge'])
         ->and($updated->interview_process)->toMatchArray(['Recruiter screen', 'Technical interview']);
 });
 
@@ -104,7 +104,6 @@ it('updates existing job and applies defaults when fields are null', function ()
         'title' => 'PHP Engineer',
         'description' => 'Maintain Laravel applications.',
         'technologies' => ['PHP', 'Laravel'],
-        'how_to_apply' => ['Apply online'],
         'locations' => [],
         'setting' => 'fully-remote',
         'equity' => null,
@@ -163,7 +162,6 @@ it('updates existing job and applies defaults when fields are null', function ()
         ->and($updated->perks)->toMatchArray([])
         ->and($updated->locations)->toMatchArray([])
         ->and($updated->setting)->toBe('fully-remote')
-        ->and($updated->how_to_apply)->toMatchArray(['Apply online'])
         ->and($updated->interview_process)->toMatchArray([]);
 });
 
@@ -183,7 +181,6 @@ it('passes additional instructions to the OpenAI request', function () {
         'title' => 'Title',
         'description' => 'Description',
         'technologies' => ['PHP'],
-        'how_to_apply' => ['Apply'],
         'locations' => [],
         'setting' => 'fully-remote',
         'equity' => false,

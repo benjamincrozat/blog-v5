@@ -30,7 +30,16 @@ class JobPostingSchema
             ],
             'datePosted' => optional($job->created_at)?->toIso8601String(),
             'validThrough' => $validThrough,
-            'employmentType' => 'FULL_TIME',
+            'employmentType' => match ($job->employment_status) {
+                'full-time' => 'FULL_TIME',
+                'part-time' => 'PART_TIME',
+                'contract' => 'CONTRACTOR',
+                'temporary' => 'TEMPORARY',
+                'internship' => 'INTERN',
+                'freelance' => 'CONTRACTOR',
+                'other' => 'OTHER',
+                default => null,
+            },
             'hiringOrganization' => [
                 '@type' => 'Organization',
                 'name' => $job->company->name,

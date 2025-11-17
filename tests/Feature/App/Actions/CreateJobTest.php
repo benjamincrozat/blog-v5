@@ -66,7 +66,6 @@ it('updates existing company and job when matching identifiers', function () {
         'locations' => ['Remote'],
         'min_salary' => null, // Should default to 0.
         'max_salary' => null, // Should default to 0.
-        'how_to_apply' => ['Apply on website'],
         'company' => (object) [
             'name' => 'Acme Inc', // Triggers update for company.
             'url' => 'https://acme.new',
@@ -111,7 +110,6 @@ it('does not error if admin user is missing', function () {
         'max_salary' => 0,
         'equity' => false,
         'interview_process' => [],
-        'how_to_apply' => ['Apply'],
         'company' => (object) [
             'name' => 'Foo LLC',
             'url' => null,
@@ -138,12 +136,13 @@ function defaultJobPayload() : array
         'perks' => ['Remote stipend', 'Wellness budget'],
         'locations' => ['Remote', 'US'],
         'setting' => 'fully-remote',
+        'employment_status' => 'full-time',
+        'seniority' => 'senior',
         'min_salary' => 100000,
         'max_salary' => 150000,
         'currency' => 'USD',
         'equity' => true,
         'interview_process' => ['Recruiter screen', 'Technical interview'],
-        'how_to_apply' => ['Submit resume', 'Complete coding challenge'],
         'company' => (object) [
             'name' => 'Acme Inc',
             'url' => 'https://acme.test',
