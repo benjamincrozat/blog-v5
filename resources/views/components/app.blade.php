@@ -81,7 +81,11 @@
             @endif
 
             @empty($hideAd)
-                <x-ads.top.sevalla />
+                @if (true || random_int(0, 1))
+                    <x-ads.top.sevalla />
+                @else
+                    <x-ads.top.coderabbit />
+                @endif
             @endempty
 
             @empty($hideNavigation)
