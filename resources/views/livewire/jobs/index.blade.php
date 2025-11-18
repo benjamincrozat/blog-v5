@@ -8,10 +8,10 @@
             @if ($this->hasActiveFilters())
                 <ul class="flex flex-wrap gap-2 mb-8">
                     @if ($query)
-                        <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium">
+                        <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium cursor-default">
                             {{ $query }}
 
-                            <button type="button" wire:click="$set('query', '')" class="flex-none mr-[-.125rem]">
+                            <button wire:click="$set('query', '')" class="flex-none mr-[-.125rem]">
                                 <x-heroicon-o-x-mark class="size-4" />
                                 <span class="sr-only">Clear</span>
                             </button>
@@ -24,7 +24,7 @@
                                 Minimum salary: <strong class="font-medium text-white">{{ Number::currency($minSalary, 'USD', precision: 0) }}</strong>
                             </div>
 
-                            <button type="button" wire:click="$set('minSalary', '')" class="flex-none mr-[-.125rem]">
+                            <button wire:click="$set('minSalary', '')" class="flex-none mr-[-.125rem]">
                                 <x-heroicon-o-x-mark class="size-4" />
                                 <span class="sr-only">Clear</span>
                             </button>
@@ -37,7 +37,7 @@
                                 Maximum salary: <strong class="font-medium text-white">{{ Number::currency($maxSalary, 'USD', precision: 0) }}</strong>
                             </div>
 
-                            <button type="button" wire:click="$set('maxSalary', '')" class="flex-none mr-[-.125rem]">
+                            <button wire:click="$set('maxSalary', '')" class="flex-none mr-[-.125rem]">
                                 <x-heroicon-o-x-mark class="size-4" />
                                 <span class="sr-only">Clear</span>
                             </button>
@@ -45,10 +45,10 @@
                     @endif
 
                     @if ($setting)
-                        <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium">
+                        <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium cursor-default">
                             {{ ucfirst($setting) }}
 
-                            <button type="button" wire:click="$set('setting', '')" class="flex-none mr-[-.125rem]">
+                            <button wire:click="$set('setting', '')" class="flex-none mr-[-.125rem]">
                                 <x-heroicon-o-x-mark class="size-4" />
                                 <span class="sr-only">Clear</span>
                             </button>
@@ -56,10 +56,10 @@
                     @endif
 
                     @if ($employmentStatus)
-                        <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium">
+                        <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium cursor-default">
                             {{ ucfirst($employmentStatus) }}
 
-                            <button type="button" wire:click="$set('employmentStatus', '')" class="flex-none mr-[-.125rem]">
+                            <button wire:click="$set('employmentStatus', '')" class="flex-none mr-[-.125rem]">
                                 <x-heroicon-o-x-mark class="size-4" />
                                 <span class="sr-only">Clear</span>
                             </button>
@@ -67,10 +67,10 @@
                     @endif
                     
                     @if ($seniority)
-                        <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium">
+                        <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium cursor-default">
                             {{ ucfirst($seniority) }}
 
-                            <button type="button" wire:click="$set('seniority', '')" class="flex-none mr-[-.125rem]">
+                            <button wire:click="$set('seniority', '')" class="flex-none mr-[-.125rem]">
                                 <x-heroicon-o-x-mark class="size-4" />
                                 <span class="sr-only">Clear</span>
                             </button>
@@ -78,10 +78,10 @@
                     @endif
 
                     @if ($withEquity)
-                        <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium">
+                        <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium cursor-default">
                             With equity
 
-                            <button type="button" wire:click="$set('withEquity', false)" class="flex-none mr-[-.125rem]">
+                            <button wire:click="$set('withEquity', false)" class="flex-none mr-[-.125rem]">
                                 <x-heroicon-o-x-mark class="size-4" />
                                 <span class="sr-only">Clear</span>
                             </button>
@@ -89,7 +89,7 @@
                     @endif
 
                     <li>
-                        <button type="button" wire:click="clearFilters" class="border border-transparent py-[.35rem] ml-1 font-medium transition-colors hover:text-blue-600">
+                        <button wire:click="clearFilters" class="border border-transparent py-[.35rem] ml-1 font-medium transition-colors hover:text-blue-600">
                             Clear all filters
                         </button>
                     </li>

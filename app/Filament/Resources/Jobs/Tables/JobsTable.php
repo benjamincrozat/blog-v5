@@ -8,9 +8,11 @@ use App\Jobs\ScrapeJob;
 use Filament\Tables\Table;
 use Filament\Actions\Action;
 use Illuminate\Support\Number;
+use Filament\Actions\BulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\DeleteAction;
+use Illuminate\Support\Collection;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Forms\Components\Textarea;
@@ -102,7 +104,7 @@ class JobsTable
                         ])
                         ->modalSubmitActionLabel('Revise')
                         ->action(function (Job $record, array $data) {
-                            ReviseJob::dispatch($record, $data['additional_instructions']);
+                            ReviseJob::dispatch($record, $data['additional_instructions'] ?? null);
 
                             Notification::make()
                                 ->title('The job has been queued for revision.')
@@ -119,6 +121,42 @@ class JobsTable
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
+                    BulkAction::make('revise')
+                        ->label('Revise')
+                        ->icon('heroicon-o-arrow-path')
+                        ->modalSubmitActionLabel('Revise')
+                        ->action(function (Collection $records) {
+                            $eligible = $records->filter(fn (Job $record) => (bool) $record->html);
+
+                            if ($eligible->isEmpty()) {
+                                Notification::make()
+                                    ->title('No selected jobs can be revised.')
+                                    ->body('Select jobs that have HTML content before running this action.')
+                                    ->warning()
+                                    ->send();
+
+                                return;
+                            }
+
+                            $eligible->each(fn (Job $record) => ReviseJob::dispatch($record));
+
+                            $title = trans_choice('The job has been queued for revision.|The jobs have been queued for revision.', $eligible->count());
+
+                            $body = $eligible->count() === $records->count()
+                                ? null
+                                : 'Some selected jobs were skipped because they have no HTML content.';
+
+                            $notification = Notification::make()
+                                ->title($title)
+                                ->success();
+
+                            if ($body) {
+                                $notification->body($body);
+                            }
+
+                            $notification->send();
+                        }),
+
                     DeleteBulkAction::make(),
                 ]),
             ]);
