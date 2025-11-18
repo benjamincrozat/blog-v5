@@ -38,8 +38,24 @@ class JobsTable
                         TextColumn::make('salary')
                             ->state(function (Job $record) {
                                 if ($record->min_salary && $record->max_salary) {
-                                    return Number::currency($record->min_salary, $record->currency) . '—' . Number::currency($record->max_salary, $record->currency);
+                                    $currency = $record->currency ?? 'USD';
+
+                                    return Number::currency($record->min_salary, $currency) . '—' . Number::currency($record->max_salary, $currency);
                                 }
+
+                                if ($record->min_salary && ! $record->max_salary) {
+                                    $currency = $record->currency ?? 'USD';
+
+                                    return 'From ' . Number::currency($record->min_salary, $currency);
+                                }
+
+                                if ($record->max_salary && ! $record->min_salary) {
+                                    $currency = $record->currency ?? 'USD';
+
+                                    return 'Up to ' . Number::currency($record->max_salary, $currency);
+                                }
+
+                                return null;
                             }),
 
                         TextColumn::make('equity')
