@@ -127,7 +127,7 @@
                 <label
                     for="with-equity"
                     @class([
-                        'flex items-center gap-3 font-medium cursor-pointer select-none transition-colors',
+                        'flex items-center gap-[.65rem] font-medium transition-colors',
                         'text-blue-600' => $withEquity,
                     ])
                 >
@@ -135,7 +135,7 @@
                         id="with-equity"
                         type="checkbox"
                         wire:model.live="withEquity"
-                        class="size-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900"
+                        class="rounded border-gray-200 shadow shadow-black/5"
                     />
 
                     <span>Only show jobs with equity</span>
