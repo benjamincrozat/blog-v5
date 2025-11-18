@@ -2,7 +2,7 @@
     The latest job offers for developers
 </x-slot>
 
-<div class="grid container md:grid-cols-12 gap-12 md:gap-8">
+<div class="grid container md:grid-cols-12 md:gap-8">
     <div class="md:col-span-9">
         <section id="jobs">
             @if ($this->hasActiveFilters())
@@ -124,101 +124,131 @@
         </section>
     </div>
 
-    <div class="md:col-span-3 -order-1 md:order-0">
-        <x-heading class="md:text-left! mb-4">
-            Filters
-        </x-heading>
-
-        @php($activeFilterClasses = 'border-blue-300! shadow-blue-100! text-blue-600')
-
-        <div class="grid gap-4">
-            <x-form.input 
-                label="Search" 
-                id="query" 
-                wire:model.live.debounce.500ms="query"
-                placeholder="Type “PHP”, “New York City”, etc."
-                :class="filled($query) ? $activeFilterClasses : null"
-            />
-
-            <x-form.input 
-                label="Minimum salary"
-                type="number"
-                min="0"
-                step="500"
-                id="min-salary" 
-                wire:model.live.debounce.500ms="minSalary"
-                placeholder="45000"
-                :class="filled($minSalary) ? $activeFilterClasses : null"
-            />
-
-            <x-form.input 
-                label="Maximum salary"
-                type="number"
-                min="0"
-                step="500"
-                id="max-salary" 
-                wire:model.live.debounce.500ms="maxSalary"
-                placeholder="240000"
-                :class="filled($maxSalary) ? $activeFilterClasses : null"
-            />
-
-            <x-form.select
-                label="Setting"
-                id="setting"
-                wire:model.live="setting"
-                :class="filled($setting) ? $activeFilterClasses : null"
-            >
-                <option value="">Any setting</option>
-
-                @foreach ($settingOptions as $value => $label)
-                    <option value="{{ $value }}">{{ $label }}</option>
-                @endforeach
-            </x-form.select>
-
-            <x-form.select
-                label="Employment status"
-                id="employment-status"
-                wire:model.live="employmentStatus"
-                :class="filled($employmentStatus) ? $activeFilterClasses : null"
-            >
-                <option value="">Any status</option>
-
-                @foreach ($employmentStatusOptions as $value => $label)
-                    <option value="{{ $value }}">{{ $label }}</option>
-                @endforeach
-            </x-form.select>
-
-            <x-form.select
-                label="Seniority"
-                id="seniority"
-                wire:model.live="seniority"
-                :class="filled($seniority) ? $activeFilterClasses : null"
-            >
-                <option value="">Any level</option>
-
-                @foreach ($seniorityOptions as $value => $label)
-                    <option value="{{ $value }}">{{ $label }}</option>
-                @endforeach
-            </x-form.select>
-
-            <div>
-                <label
-                    for="with-equity"
-                    @class([
-                        'flex items-center gap-[.65rem] font-medium transition-colors',
-                        'text-blue-600' => $withEquity,
-                    ])
+    <div
+        class="md:col-span-3 -order-1 md:order-0"
+        x-data="{ open: false }"
+    >
+        <div
+            class="md:block! md:static fixed bottom-0 inset-x-0 bg-white shadow-xl ring-1 ring-black/10 rounded-xl p-4 md:p-0 max-h-[50dvh] overflow-y-auto md:max-h-none md:shadow-none md:ring-0 md:rounded-none pb-24 md:pb-0"
+            x-cloak
+            x-show="open"
+            x-trap="open"
+            @click.away="open = false"
+            @keydown.esc="open = false"
+        >
+            <x-heading class="md:text-left! mb-4 hidden md:block">
+                Filters
+            </x-heading>
+    
+            @php($activeFilterClasses = 'border-blue-300! shadow-blue-100! text-blue-600')
+    
+            <div class="grid gap-4">
+                <x-form.input 
+                    label="Search" 
+                    id="query" 
+                    wire:model.live.debounce.500ms="query"
+                    placeholder="Type “PHP”, “New York City”, etc."
+                    :class="filled($query) ? $activeFilterClasses : null"
+                />
+    
+                <x-form.input 
+                    label="Minimum salary"
+                    type="number"
+                    min="0"
+                    step="500"
+                    id="min-salary" 
+                    wire:model.live.debounce.500ms="minSalary"
+                    placeholder="45000"
+                    :class="filled($minSalary) ? $activeFilterClasses : null"
+                />
+    
+                <x-form.input 
+                    label="Maximum salary"
+                    type="number"
+                    min="0"
+                    step="500"
+                    id="max-salary" 
+                    wire:model.live.debounce.500ms="maxSalary"
+                    placeholder="240000"
+                    :class="filled($maxSalary) ? $activeFilterClasses : null"
+                />
+    
+                <x-form.select
+                    label="Setting"
+                    id="setting"
+                    wire:model.live="setting"
+                    :class="filled($setting) ? $activeFilterClasses : null"
                 >
-                    <input
-                        id="with-equity"
-                        type="checkbox"
-                        wire:model.live="withEquity"
-                        class="rounded border-gray-200 shadow shadow-black/5"
-                    />
-
-                    <span>Only show jobs with equity</span>
-                </label>
+                    <option value="">Any setting</option>
+    
+                    @foreach ($settingOptions as $value => $label)
+                        <option value="{{ $value }}">{{ $label }}</option>
+                    @endforeach
+                </x-form.select>
+    
+                <x-form.select
+                    label="Employment status"
+                    id="employment-status"
+                    wire:model.live="employmentStatus"
+                    :class="filled($employmentStatus) ? $activeFilterClasses : null"
+                >
+                    <option value="">Any status</option>
+    
+                    @foreach ($employmentStatusOptions as $value => $label)
+                        <option value="{{ $value }}">{{ $label }}</option>
+                    @endforeach
+                </x-form.select>
+    
+                <x-form.select
+                    label="Seniority"
+                    id="seniority"
+                    wire:model.live="seniority"
+                    :class="filled($seniority) ? $activeFilterClasses : null"
+                >
+                    <option value="">Any level</option>
+    
+                    @foreach ($seniorityOptions as $value => $label)
+                        <option value="{{ $value }}">{{ $label }}</option>
+                    @endforeach
+                </x-form.select>
+    
+                <div>
+                    <label
+                        for="with-equity"
+                        @class([
+                            'flex items-center gap-[.65rem] font-medium transition-colors',
+                            'text-blue-600' => $withEquity,
+                        ])
+                    >
+                        <input
+                            id="with-equity"
+                            type="checkbox"
+                            wire:model.live="withEquity"
+                            class="rounded border-gray-200 shadow shadow-black/5"
+                        />
+    
+                        <span>Only show jobs with equity</span>
+                    </label>
+                </div>
             </div>
         </div>
+
+        <button
+            class="md:hidden! fixed md:static bottom-4 left-1/2 -translate-x-1/2 size-16 ring-1 ring-black/10 rounded-full bg-white/75 backdrop-blur-md shadow-lg grid place-items-center"
+            @click="open = !open"
+        >
+            <x-heroicon-o-adjustments-vertical
+                class="size-8"
+                x-show="!open"
+            />
+
+            <x-heroicon-o-x-mark
+                class="size-8"
+                x-cloak
+                x-show="open"
+            />
+            
+            <span class="sr-only">Filters</span>
+        </button>
     </div>
 </div>
