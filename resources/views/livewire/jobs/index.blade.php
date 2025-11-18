@@ -3,55 +3,129 @@
 </x-slot>
 
 <div class="grid container md:grid-cols-12 gap-12 md:gap-8">
-    <section id="jobs" class="md:col-span-9">
-        <x-heading class="md:text-left!">
-            @if ($jobs->currentPage() > 1 && ! empty($query))
-                Results for "{{ $query }}" (Page {{ $jobs->currentPage() }})
-            @elseif ($jobs->currentPage() > 1 && empty($query))
-                Page {{ $jobs->currentPage() }}
-            @elseif (! empty($query))
-                Results for "{{ $query }}"
-            @else
-                <span class="text-blue-600">{{ trans_choice(':count new job|:count new jobs', $recentJobsCount) }}</span> in the last 30 days
+    <div class="md:col-span-9">
+        <section id="jobs">
+            @if ($this->hasActiveFilters())
+                <ul class="flex flex-wrap gap-2">
+                    @if ($query)
+                        <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium">
+                            {{ $query }}
+
+                            <button type="button" wire:click="$set('query', '')" class="flex-none mr-[-.125rem]">
+                                <x-heroicon-o-x-mark class="size-4" />
+                                <span class="sr-only">Clear</span>
+                            </button>
+                        </li>
+                    @endif
+
+                    @if ($minSalary)
+                        <li class="bg-blue-600 flex items-center gap-2 text-blue-50 rounded-full px-[.85rem] py-[.35rem]">
+                            <div>
+                                Minimum salary: <strong class="font-medium text-white">{{ Number::currency($minSalary, 'USD', precision: 0) }}</strong>
+                            </div>
+
+                            <button type="button" wire:click="$set('minSalary', '')" class="flex-none mr-[-.125rem]">
+                                <x-heroicon-o-x-mark class="size-4" />
+                                <span class="sr-only">Clear</span>
+                            </button>
+                        </li>
+                    @endif
+
+                    @if ($maxSalary)
+                        <li class="bg-blue-600 flex items-center gap-2 text-blue-50 rounded-full px-[.85rem] py-[.35rem]">
+                            <div>
+                                Maximum salary: <strong class="font-medium text-white">{{ Number::currency($maxSalary, 'USD', precision: 0) }}</strong>
+                            </div>
+
+                            <button type="button" wire:click="$set('maxSalary', '')" class="flex-none mr-[-.125rem]">
+                                <x-heroicon-o-x-mark class="size-4" />
+                                <span class="sr-only">Clear</span>
+                            </button>
+                        </li>
+                    @endif
+
+                    @if ($setting)
+                        <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium">
+                            {{ ucfirst($setting) }}
+
+                            <button type="button" wire:click="$set('setting', '')" class="flex-none mr-[-.125rem]">
+                                <x-heroicon-o-x-mark class="size-4" />
+                                <span class="sr-only">Clear</span>
+                            </button>
+                        </li>
+                    @endif
+
+                    @if ($employmentStatus)
+                        <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium">
+                            {{ ucfirst($employmentStatus) }}
+
+                            <button type="button" wire:click="$set('employmentStatus', '')" class="flex-none mr-[-.125rem]">
+                                <x-heroicon-o-x-mark class="size-4" />
+                                <span class="sr-only">Clear</span>
+                            </button>
+                        </li>
+                    @endif
+                    
+                    @if ($seniority)
+                        <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium">
+                            {{ ucfirst($seniority) }}
+
+                            <button type="button" wire:click="$set('seniority', '')" class="flex-none mr-[-.125rem]">
+                                <x-heroicon-o-x-mark class="size-4" />
+                                <span class="sr-only">Clear</span>
+                            </button>
+                        </li>
+                    @endif
+
+                    @if ($withEquity)
+                        <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium">
+                            With equity
+
+                            <button type="button" wire:click="$set('withEquity', false)" class="flex-none mr-[-.125rem]">
+                                <x-heroicon-o-x-mark class="size-4" />
+                                <span class="sr-only">Clear</span>
+                            </button>
+                        </li>
+                    @endif
+
+                    <li>
+                        <button type="button" wire:click="clearFilters" class="border border-transparent py-[.35rem] ml-1 font-medium transition-colors hover:text-blue-600">
+                            Clear all filters
+                        </button>
+                    </li>
+                </ul>
             @endif
-        </x-heading>
 
-        @if ($jobs->isNotEmpty())
-            <div class="grid mt-4 md:grid-cols-2 gap-4">
-                @foreach ($jobs as $job)
-                    <x-job :$job />
-                @endforeach
-            </div>
-        @else
-            <p class="text-center text-gray-500">
-                There are no job offers at the moment.
-            </p>
-        @endif
+            <x-pagination
+                :paginator="$jobs"
+                class="my-8"
+            />
 
-        <x-pagination
-            :paginator="$jobs"
-            class="mt-16"
-        />
-    </section>
+            @if ($jobs->isNotEmpty())
+                <div class="grid mt-4 md:grid-cols-2 gap-4">
+                    @foreach ($jobs as $job)
+                        <x-job :$job />
+                    @endforeach
+                </div>
+            @else
+                <p class="text-center text-gray-500">
+                    There are no job offers at the moment.
+                </p>
+            @endif
+
+            <x-pagination
+                :paginator="$jobs"
+                class="mt-8 md:mt-16"
+            />
+        </section>
+    </div>
 
     <div class="md:col-span-3 -order-1 md:order-0">
-        <div class="flex justify-between items-baseline mb-4">
-            <x-heading>
-                Filters
-            </x-heading>
+        <x-heading class="md:text-left! mb-4">
+            Filters
+        </x-heading>
 
-            @if ($hasActiveFilters)
-                <button
-                    type="button"
-                    wire:click="clearFilters"
-                    class="text-blue-600 font-medium"
-                >
-                    Clear filters
-                </button>
-            @endif
-        </div>
-
-        @php($activeFilterClasses = 'border-blue-300! shadow-blue-100!')
+        @php($activeFilterClasses = 'border-blue-300! shadow-blue-100! text-blue-600')
 
         <div class="grid gap-4">
             <x-form.input 
