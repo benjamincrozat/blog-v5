@@ -6,7 +6,7 @@
     <div class="md:col-span-9">
         <section id="jobs">
             @if ($this->hasActiveFilters())
-                <ul class="flex flex-wrap gap-2">
+                <ul class="flex flex-wrap gap-2 mb-8">
                     @if ($query)
                         <li class="bg-blue-600 flex items-center gap-2 text-white rounded-full px-[.85rem] py-[.35rem] font-medium">
                             {{ $query }}
@@ -98,18 +98,22 @@
 
             <x-pagination
                 :paginator="$jobs"
-                class="my-8"
+                class="mb-8"
             />
 
             @if ($jobs->isNotEmpty())
-                <div class="grid mt-4 md:grid-cols-2 gap-4">
+                <div class="grid mt-8 md:grid-cols-2 gap-4">
                     @foreach ($jobs as $job)
                         <x-job :$job />
                     @endforeach
                 </div>
             @else
-                <p class="text-center text-gray-500">
-                    There are no job offers at the moment.
+                <p class="text-center mt-8 text-gray-500">
+                    @if ($this->hasActiveFilters())
+                        No results found for your filters.
+                    @else
+                        There are no job offers at the moment.
+                    @endif
                 </p>
             @endif
 
