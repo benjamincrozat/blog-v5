@@ -28,7 +28,7 @@ Instructions:
 6. Never fabricate facts.
 
 7. Cleanup:
-- Remove any footnote markers, citation placeholders, or artifacts such as `cite…`, `[citation needed]`, or similar when extracting text. Only include the actual content from the job posting or company sources.
+- Remove any footnote markers, citation placeholders, or artifacts such as `cite…`, `[citation needed]`, numbered references (e.g., "[1]"), or similar when extracting text. Only include the actual content from the job posting or company sources. This applies to every field, especially `company.about`, which must read as plain prose with no citation remnants.
 
 7. Employment status:
 - Set the employment_status field to one of: "full-time", "part-time", "contract", "temporary", "internship", "freelance", or "other".

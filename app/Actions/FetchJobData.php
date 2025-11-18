@@ -253,7 +253,7 @@ class FetchJobData
                                     ],
                                     'about' => [
                                         'type' => 'string',
-                                        'description' => 'What the company is about, based on web research. Include founding year, domain, notable products, and mission. Whatever you can find. Refer to the company as "they" or "the company" (not "we") and do not address the reader as "you".',
+                                        'description' => 'What the company is about, based on web research. Include founding year, domain, notable products, and mission. Whatever you can find. Refer to the company as "they" or "the company" (not "we") and do not address the reader as "you". Remove any citation markers, footnote artifacts, or placeholders (e.g., "cite…", "[1]", "[citation needed]") so the text is clean prose.',
                                         'minLength' => 1,
                                     ],
                                 ],
