@@ -81,7 +81,7 @@
             @endif
 
             @empty($hideAd)
-                @if (true || random_int(0, 1))
+                @if (random_int(0, 1))
                     <x-ads.top.sevalla />
                 @else
                     <x-ads.top.coderabbit />
