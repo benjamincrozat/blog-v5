@@ -83,3 +83,22 @@ it('resets pagination when filters change', function () {
         ->set('setting', JobSetting::FullyRemote->value)
         ->assertSee($firstPageTitle);
 });
+
+it('clears all filters at once', function () {
+    Livewire::test(Index::class)
+        ->set('query', 'laravel')
+        ->set('minSalary', '50000')
+        ->set('maxSalary', '90000')
+        ->set('setting', JobSetting::Hybrid->value)
+        ->set('employmentStatus', EmploymentStatus::Contract->value)
+        ->set('seniority', JobSeniority::Senior->value)
+        ->set('withEquity', true)
+        ->call('clearFilters')
+        ->assertSet('query', null)
+        ->assertSet('minSalary', null)
+        ->assertSet('maxSalary', null)
+        ->assertSet('setting', null)
+        ->assertSet('employmentStatus', null)
+        ->assertSet('seniority', null)
+        ->assertSet('withEquity', false);
+});

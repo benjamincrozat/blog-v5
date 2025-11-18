@@ -56,6 +56,7 @@ class Index extends Component
             'settingOptions' => JobSetting::options(),
             'employmentStatusOptions' => EmploymentStatus::options(),
             'seniorityOptions' => JobSeniority::options(),
+            'hasActiveFilters' => $this->hasActiveFilters(),
         ]);
     }
 
@@ -72,6 +73,21 @@ class Index extends Component
         if (array_key_exists($propertyName, $this->rules())) {
             $this->validateOnly($propertyName);
         }
+
+        $this->resetPage();
+    }
+
+    public function clearFilters() : void
+    {
+        $this->reset([
+            'query',
+            'minSalary',
+            'maxSalary',
+            'setting',
+            'employmentStatus',
+            'seniority',
+            'withEquity',
+        ]);
 
         $this->resetPage();
     }
@@ -230,5 +246,16 @@ class Index extends Component
     protected function isSearching() : bool
     {
         return strlen((string) $this->query) > 1;
+    }
+
+    protected function hasActiveFilters() : bool
+    {
+        return filled($this->query)
+            || filled($this->minSalary)
+            || filled($this->maxSalary)
+            || filled($this->setting)
+            || filled($this->employmentStatus)
+            || filled($this->seniority)
+            || $this->withEquity;
     }
 }

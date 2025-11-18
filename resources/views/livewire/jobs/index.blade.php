@@ -35,9 +35,23 @@
     </section>
 
     <div class="md:col-span-3 -order-1 md:order-0">
-        <x-heading class="md:text-left! mb-4">
-            Filters
-        </x-heading>
+        <div class="flex justify-between items-baseline mb-4">
+            <x-heading>
+                Filters
+            </x-heading>
+
+            @if ($hasActiveFilters)
+                <button
+                    type="button"
+                    wire:click="clearFilters"
+                    class="text-blue-600 font-medium"
+                >
+                    Clear filters
+                </button>
+            @endif
+        </div>
+
+        @php($activeFilterClasses = 'border-blue-300! shadow-blue-100!')
 
         <div class="grid gap-4">
             <x-form.input 
@@ -45,6 +59,7 @@
                 id="query" 
                 wire:model.live.debounce.500ms="query"
                 placeholder="Type “PHP”, “New York City”, etc."
+                :class="filled($query) ? $activeFilterClasses : null"
             />
 
             <x-form.input 
@@ -55,6 +70,7 @@
                 id="min-salary" 
                 wire:model.live.debounce.500ms="minSalary"
                 placeholder="45000"
+                :class="filled($minSalary) ? $activeFilterClasses : null"
             />
 
             <x-form.input 
@@ -65,12 +81,14 @@
                 id="max-salary" 
                 wire:model.live.debounce.500ms="maxSalary"
                 placeholder="240000"
+                :class="filled($maxSalary) ? $activeFilterClasses : null"
             />
 
             <x-form.select
                 label="Setting"
                 id="setting"
                 wire:model.live="setting"
+                :class="filled($setting) ? $activeFilterClasses : null"
             >
                 <option value="">Any setting</option>
 
@@ -83,6 +101,7 @@
                 label="Employment status"
                 id="employment-status"
                 wire:model.live="employmentStatus"
+                :class="filled($employmentStatus) ? $activeFilterClasses : null"
             >
                 <option value="">Any status</option>
 
@@ -95,6 +114,7 @@
                 label="Seniority"
                 id="seniority"
                 wire:model.live="seniority"
+                :class="filled($seniority) ? $activeFilterClasses : null"
             >
                 <option value="">Any level</option>
 
@@ -104,7 +124,13 @@
             </x-form.select>
 
             <div>
-                <label class="flex items-center gap-3 font-medium cursor-pointer select-none" for="with-equity">
+                <label
+                    for="with-equity"
+                    @class([
+                        'flex items-center gap-3 font-medium cursor-pointer select-none transition-colors',
+                        'text-blue-600' => $withEquity,
+                    ])
+                >
                     <input
                         id="with-equity"
                         type="checkbox"
