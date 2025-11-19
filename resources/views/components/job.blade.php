@@ -1,5 +1,5 @@
 <article class="rounded-xl p-1 flex flex-col ring-1 h-full shadow-md ring-black/10">
-   <div class="grow rounded-xl p-5 bg-linear-to-b from-gray-900 bg-gray-800 text-white/75">
+   <div class="grow rounded-xl p-3 md:p-5 bg-linear-to-b from-gray-900 bg-gray-800 text-white/75">
         <div class="flex-none float-right size-12 rounded-full ring-1 ring-white/50 grid place-items-center">
             <x-heroicon-o-building-office class="text-white size-6" />
         </div>
@@ -19,7 +19,7 @@
         </h1>
     </div>
 
-    <div class="p-5 pt-6 flex items-center gap-6 justify-between">
+    <div class="p-3 pt-4 md:p-5 md:pt-6 flex items-center gap-6 justify-between">
         <div>
             <div class="flex items-center gap-2">
                 @if ($job->min_salary && $job->max_salary)
