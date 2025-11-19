@@ -5,7 +5,7 @@
 
 <{{ $attributes->has('href') ? 'a' : 'button' }}
     {{ $attributes->class([
-        'transition-colors hover:text-blue-600 line-clamp-1',
+        'transition-colors hover:text-blue-600',
         'text-blue-600' => request()->fullUrlIs($attributes->get('href')),
     ])->merge([
         'wire:navigate' => ! $attributes->has('no-wire-navigate') && $attributes->has('href'),

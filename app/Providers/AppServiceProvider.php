@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Job;
 use App\Models\Metric;
 use Livewire\Livewire;
 use Carbon\CarbonImmutable;
@@ -19,6 +20,11 @@ use Illuminate\Filesystem\FilesystemAdapter;
 
 class AppServiceProvider extends ServiceProvider
 {
+    /**
+     * Cached recent jobs count.
+     */
+    protected ?int $recentJobsCount = null;
+
     /**
      * Cached visitors count.
      */
@@ -57,7 +63,12 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('*', fn (\Illuminate\View\View $view) => $view->with([
+            'recentJobsCount' => $this->recentJobsCount ??= Job::query()
+                ->where('created_at', '>=', now()->subDays(7))
+                ->count(),
+
             'user' => auth()->user(),
+
             'visitors' => $this->visitors ??= cache()->remember(
                 'visitors', 600, fn () => Metric::query()
                     ->where('key', 'visitors')

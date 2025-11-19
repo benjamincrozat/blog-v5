@@ -6,7 +6,7 @@
     <div class="md:col-span-9">
         <section id="jobs">
             <x-heading class="mb-8">
-                <span class="text-blue-600">{{ $recentJobsCount }} new job offers</span> in the last 30 days
+                <span class="text-blue-600">{{ $recentJobsCount }} new job offers</span> in the last 7 days
             </x-heading>
 
             @if ($this->hasActiveFilters())

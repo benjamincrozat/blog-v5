@@ -25,10 +25,6 @@ class HomeController extends Controller
             ->latest()
             ->paginate(6);
 
-        $recentJobsCount = Job::query()
-            ->where('created_at', '>=', now()->subDays(30))
-            ->count();
-
         $latest = Post::query()
             ->published()
             ->sponsored()
@@ -52,6 +48,6 @@ class HomeController extends Controller
             ->where('github_login', 'benjamincrozat')
             ->first();
 
-        return view('home', compact('popular', 'jobs', 'recentJobsCount', 'latest', 'links', 'aboutUser'));
+        return view('home', compact('popular', 'jobs', 'latest', 'links', 'aboutUser'));
     }
 }

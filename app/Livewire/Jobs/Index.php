@@ -52,7 +52,6 @@ class Index extends Component
     {
         return view('livewire.jobs.index', [
             'jobs' => $this->paginateJobs(),
-            'recentJobsCount' => $this->recentJobsCount(),
             'settingOptions' => JobSetting::options(),
             'employmentStatusOptions' => EmploymentStatus::options(),
             'seniorityOptions' => JobSeniority::options(),
@@ -123,16 +122,6 @@ class Index extends Component
         return $this->applyFilters(
             Job::query()->latest()
         )->paginate(12);
-    }
-
-    /**
-     * Count the number of jobs we fetched in the last 30 days.
-     */
-    protected function recentJobsCount() : int
-    {
-        return Job::query()
-            ->where('created_at', '>=', now()->subDays(30))
-            ->count();
     }
 
     /**
