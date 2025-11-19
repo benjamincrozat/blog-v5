@@ -5,6 +5,10 @@
 <div class="grid container md:grid-cols-12 md:gap-8">
     <div class="md:col-span-9">
         <section id="jobs">
+            <x-heading class="mb-8">
+                <span class="text-blue-600">{{ $recentJobsCount }} new job offers</span> in the last 30 days
+            </x-heading>
+
             @if ($this->hasActiveFilters())
                 <ul class="flex flex-wrap gap-2 mb-8">
                     @if ($query)
