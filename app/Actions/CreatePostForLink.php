@@ -15,7 +15,7 @@ class CreatePostForLink
     public function create(Link $link) : Post
     {
         $response = OpenAI::responses()->create([
-            'model' => 'gpt-5',
+            'model' => 'gpt-5.1',
             'input' => [
                 [
                     'role' => 'developer',

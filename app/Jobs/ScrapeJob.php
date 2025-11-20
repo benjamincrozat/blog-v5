@@ -21,7 +21,7 @@ class ScrapeJob implements ShouldQueue
     {
         $proxyServer = app(SelectProxy::class)->select();
 
-        $webpage = app(Scrape::class)->scrape($this->url);
+        $webpage = app(Scrape::class)->scrape($this->url, $proxyServer);
 
         FetchJobData::dispatch($webpage);
     }

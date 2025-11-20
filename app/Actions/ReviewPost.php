@@ -16,7 +16,7 @@ class ReviewPost
     public function review(Post $post, ?string $additionalInstructions) : Report
     {
         $response = OpenAI::responses()->create([
-            'model' => 'gpt-5',
+            'model' => 'gpt-5.1',
             'input' => [
                 [
                     'role' => 'developer',

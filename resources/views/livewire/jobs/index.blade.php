@@ -133,7 +133,7 @@
         x-data="{ open: false }"
     >
         <div
-            class="md:block! md:static fixed bottom-0 inset-x-0 bg-white shadow-xl ring-1 ring-black/10 rounded-xl p-4 md:p-0 max-h-[50dvh] overflow-y-auto md:max-h-none md:shadow-none md:ring-0 md:rounded-none pb-24 md:pb-0"
+            class="md:block! md:static fixed bottom-0 inset-x-0 bg-white shadow-xl ring-1 ring-black/10 rounded-xl p-4 md:p-0 max-h-[50dvh] overflow-y-auto md:overflow-y-visible md:max-h-none md:shadow-none md:ring-0 md:rounded-none pb-24 md:pb-0"
             x-cloak
             x-show="open"
             x-trap="open"

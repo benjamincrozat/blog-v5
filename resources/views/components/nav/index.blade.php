@@ -43,13 +43,15 @@
         >
             Jobs
 
-            <span @class([
-                'absolute top-[-.35rem] right-[-.35rem] size-4 md:size-[1.15rem] rounded-full text-white text-[.55rem] md:text-[.6rem] grid place-items-center',
-                'bg-blue-950' => request()->routeIs('jobs.*'),
-                'bg-blue-600' => ! request()->routeIs('jobs.*'),
-            ])">
-                {{ $recentJobsCount }}
-            </span>
+            @if ($recentJobsCount > 0)
+                <span @class([
+                    'absolute top-[-.35rem] right-[-.35rem] size-4 md:size-[1.15rem] rounded-full text-white text-[.55rem] md:text-[.6rem] grid place-items-center',
+                    'bg-blue-950' => request()->routeIs('jobs.*'),
+                    'bg-blue-600' => ! request()->routeIs('jobs.*'),
+                ])">
+                    {{ $recentJobsCount }}
+                </span>
+            @endif
         </x-nav.item>
 
         <x-nav.item

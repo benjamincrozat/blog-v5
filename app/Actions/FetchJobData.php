@@ -11,7 +11,7 @@ class FetchJobData
     public function fetch(Webpage $webpage) : void
     {
         $response = OpenAI::responses()->create([
-            'model' => 'gpt-5',
+            'model' => 'gpt-5.1',
             'input' => [
                 [
                     'role' => 'developer',
