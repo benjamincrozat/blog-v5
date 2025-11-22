@@ -32,10 +32,10 @@
         class="mt-24 text-center"
     >
         <div class="flex flex-wrap gap-y-4 gap-x-8 justify-center items-center px-4 md:gap-x-12 lg:gap-x-16">
+            <x-icon-coderabbit class="flex-none h-6 sm:h-7" />
             <x-icon-kinsta class="flex-none -translate-y-px h-[1.15rem] sm:h-6" />
             <div class="text-2xl font-bold text-red-600 sm:text-3xl">larajobs</div>
             <x-icon-meilisearch class="flex-none h-6 translate-y-px sm:h-7" />
-            <x-icon-coderabbit class="flex-none h-6 sm:h-7" />
             <x-icon-sevalla class="flex-none h-9 sm:h-10" />
         </div>
     </x-section>
