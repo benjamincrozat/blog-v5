@@ -18,7 +18,7 @@ class HomeController extends Controller
             ->whereDoesntHave('link')
             ->where('sessions_count', '>', 0)
             ->orderBy('sessions_count', 'desc')
-            ->limit(6)
+            ->limit(10)
             ->get();
 
         $jobs = Job::query()
