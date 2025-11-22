@@ -73,7 +73,7 @@
         
                     <li class="flex gap-2 items-start">
                         <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
-                        A backlink on a DR 51 domain.
+                        A backlink on a DR 45-50 domain.
                     </li>
                 </ul>
             </div>
@@ -82,7 +82,7 @@
                 <p class="text-7xl font-medium">600€</p>
                 <p class="text-sm text-gray-500">one-time payment</p>
             
-                <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-4 md:mt-8 justify-center md:justify-start">
+                <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-4 md:mt-6 justify-center md:justify-start">
                     <x-btn href="https://benjamincrozat.com/php-85" target="_blank">
                         Live example
                     </x-btn>
@@ -98,7 +98,7 @@
     </x-section>
 
     <x-section
-        id="top-banner"
+        id="sidebar"
         class="mt-24 xl:max-w-(--breakpoint-lg)"
     >
         <x-heading>
@@ -123,7 +123,7 @@
         
                     <li class="flex gap-2 items-start">
                         <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
-                        A backlink on a DR 51 domain.
+                        A backlink on a DR 45-50 domain.
                     </li>
                 </ul>
             </div>
@@ -132,13 +132,68 @@
                 <p class="text-7xl font-medium">400€</p>
                 <p class="text-sm text-gray-500">one-time payment</p>
             
-                <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-4 md:mt-8 justify-center md:justify-start">
+                <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-4 md:mt-6 justify-center md:justify-start">
                     <x-btn href="https://benjamincrozat.com/php-85" target="_blank">
                         Live example
                     </x-btn>
                     
                     <x-btn primary disabled>
                         Sold out!
+                    </x-btn>
+                </div>
+    
+                <p class="mt-4 md:mt-8 text-balance">Once done, <a href="mailto:hello@benjamincrozat.com" class="font-medium underline">email me</a> with the necessary information and you will be live within 24 hours.</p>
+            </div>
+        </div>
+    </x-section>
+
+    <x-section
+        id="sticky-carousel"
+        class="mt-24 xl:max-w-(--breakpoint-lg)"
+    >
+        <x-heading>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="size-16 mx-auto mb-2 -scale-y-100"><path d="M40 56h176v40H40z" opacity=".2"/><path d="M216 40H40c-8.836556 0-16 7.163444-16 16v144c0 8.836556 7.163444 16 16 16h176c8.836556 0 16-7.163444 16-16V56c0-8.836556-7.163444-16-16-16Zm0 16v40H40V56h176Zm0 144H40v-88h176v88Z"/></svg>
+            Secure a position in the sticky carousel
+        </x-heading>
+
+        <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-start mt-8 justify-between gap-8 md:gap-16">
+            <div class="md:w-1/2 w-full">
+                <p class="font-medium">What you get:</p>
+                
+                <ul class="grid gap-2 mt-2 text-left">
+                    <li class="flex gap-2 items-start">
+                        <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
+                        Be visible in the sticky carousel on the bottom of the visitors' screen.
+                    </li>
+        
+                    <li class="flex gap-2 items-start">
+                        <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
+                        Access to {{ Number::format($visitors) }} monthly developers.
+                    </li>
+        
+                    <li class="flex gap-2 items-start">
+                        <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
+                        A backlink on a DR 45-50 domain.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="md:w-1/2 w-full">
+                <div class="flex items-baseline gap-2 text-xl">
+                    <p class="text-7xl font-medium">
+                        {{ Number::currency(299 * 0.8, 'EUR', precision: 0) }}
+                    </p>
+
+                    monthly
+                </div>
+            
+                <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-4 md:mt-6 justify-center md:justify-start">
+                    <x-btn href="https://benjamincrozat.com/php-85" target="_blank">
+                        Live example
+                    </x-btn>
+                    
+                    <x-btn primary href="{{ route('checkout.start', 'sticky_carousel') }}">
+                        Get started
                     </x-btn>
                 </div>
     
@@ -169,7 +224,7 @@
         
                     <li class="flex gap-2 items-start">
                         <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
-                        A backlink on a DR 51 domain.
+                        A backlink on a DR 45-50 domain.
                     </li>
         
                     <li class="flex gap-2 items-start">
@@ -183,7 +238,7 @@
                 <p class="text-7xl font-medium">500€</p>
                 <p class="text-sm text-gray-500">one-time payment</p>
             
-                <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-4 md:mt-8 justify-center md:justify-start">
+                <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-4 md:mt-6 justify-center md:justify-start">
                     <x-btn href="https://benjamincrozat.com/deploy-php-laravel-apps-sevalla" target="_blank">
                         Live example
                     </x-btn>

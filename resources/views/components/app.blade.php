@@ -56,7 +56,9 @@
 
         <x-feed-links />
     </head>
-    <body {{ $attributes->class('font-light text-gray-600') }}>
+    <body {{ $attributes->class('font-light text-gray-600') }} x-data>
+        <div x-intersect:leave="$dispatch('showcase')"></div>
+
         <div class="flex flex-col min-h-screen">
             @if (app('impersonate')->isImpersonating())
                 <div class="text-white bg-orange-600">
@@ -101,6 +103,23 @@
         <x-status />
 
         <livewire:search />
+
+        @empty($hideAd)
+            <x-ads.bottom
+                :ads="[
+                    [
+                        'title' => fake()->company(),
+                        'description' => fake()->sentences(2, true),
+                        'icon' => 'heroicon-s-academic-cap',
+                    ],
+                    [
+                        'title' => fake()->company(),
+                        'description' => fake()->sentences(2, true),
+                        'icon' => 'heroicon-s-heart',
+                    ]
+                ]"
+            />
+        @endempty
 
         @livewireScriptConfig
 
