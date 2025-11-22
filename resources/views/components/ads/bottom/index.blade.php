@@ -6,7 +6,7 @@
     <div
         {{
             $attributes
-                ->class('group fixed bottom-2 sm:bottom-4 group-hover inset-x-2 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 bg-white/75 group backdrop-blur-md rounded-md shadow-xl sm:w-[480px] backdrop-saturate-200 overflow-hidden ring-1 ring-black/10')
+                ->class('group bg-white/75 fixed bottom-2 sm:bottom-4 group-hover inset-x-2 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 group backdrop-blur-md rounded-b-sm rounded-t-md shadow-xl sm:w-[480px] backdrop-saturate-200 overflow-hidden ring-1 ring-black/10')
         }}
         x-cloak
         x-data="data()"
@@ -21,12 +21,24 @@
         @mouseleave="resume()"
         @showcase.window="requestShow()"
     >
-        <div class="py-2 px-3 flex items-center border-b border-black/10">
-            <div class="font-medium text-sm">Announcements</div>
+        <div class="py-1 px-2.5 flex gap-2 items-center border-b border-black/10">
+            <div class="font-normal cursor-default text-sm text-black/75">Announcements</div>
 
             <div class="grow"></div>
 
-            <button @click="closeBanner()">
+            <a
+                wire:navigate
+                href="{{ route('advertise') }}"
+                class="p-1 -mr-1 bg-black/4 transition-colors hover:bg-black/7.5 rounded-md"
+            >
+                <x-heroicon-o-question-mark-circle class="size-4" />
+                <span class="sr-only">Become a sponsor</span>
+            </a>
+
+            <button
+                class="p-1 -mr-1.5 bg-black/4 transition-colors hover:bg-black/7.5 rounded-md"
+                @click="closeBanner()"
+            >
                 <x-heroicon-s-x-mark class="size-4" />
                 <span class="sr-only">Close</span>
             </button>
@@ -34,29 +46,28 @@
 
         <template x-if="ads.length">
             <div
-                class="flex items-center gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth"
-                x-ref="adsContainer"
+                class="flex items-center gap-4 sm:gap-6 overflow-x-hidden snap-x snap-mandatory scroll-smooth"
+                x-ref="container"
             >
                 <template x-for="(ad, index) in ads" x-bind:key="index">
                     <div
                         class="flex items-center gap-4 sm:gap-6 basis-full shrink-0 snap-center sm:py-4 p-4 sm:px-6"
                         x-bind:data-ad-index="index"
                     >
-                        <x-heroicon-s-academic-cap class="size-8 flex-none" />
+                        <div x-html="ad.icon"></div>
 
                         <div class="leading-tight">
-                            <h1 class="font-semibold text-black" x-text="ad.title"></h1>
-
-                            <p x-text="ad.description"></p>
+                            <h1 class="font-semibold text-black/95" x-text="ad.title"></h1>
+                            <p class="text-black/75" x-text="ad.description"></p>
                         </div>
                     </div>
                 </template>
             </div>
         </template>
         
-        <div class="h-1.5 overflow-hidden">
-            <span class="block h-full bg-blue-600/20" x-bind:style="progressStyle()"></span>
-        </div>
+        <template x-if="ads.length">
+            <div class="block h-1.25 bg-linear-to-r from-transparent to-blue-600/30" x-bind:style="progressStyle()"></div>
+        </template>
     </div>
 
     <script>
@@ -67,7 +78,7 @@
                 return {
                     ads: {{ Js::from($ads) }},
                     show: false,
-                    dismissedUntil: this.$persist(null).as('ads-bottom-banner-dismissed-until'),
+                    dismissedUntil: this.$persist(null),
                     currentIndex: 0,
                     cycleDuration: 5000,
                     cycleTimeoutId: null,
@@ -78,7 +89,7 @@
                     isPaused: false,
 
                     init() {
-                        if (! this.ads.length) {
+                        if (! this.hasAds()) {
                             return
                         }
 
@@ -86,13 +97,14 @@
                             this.show = false
                         }
 
+                        this.$watch('currentIndex', () => this.scrollToCurrent())
                         this.scrollToCurrent()
 
                         this.startCycle()
                     },
 
                     startCycle(duration = this.cycleDuration, elapsedOffset = 0) {
-                        if (! this.ads.length) {
+                        if (! this.hasAds()) {
                             return
                         }
 
@@ -120,15 +132,13 @@
                     },
 
                     showNext() {
-                        if (! this.ads.length) {
+                        if (! this.hasAds()) {
                             return
                         }
 
                         const nextIndex = (this.currentIndex + 1) % this.ads.length
 
                         this.currentIndex = nextIndex
-
-                        this.scrollToCurrent()
 
                         if (! this.isPaused) {
                             this.startCycle(this.cycleDuration)
@@ -140,7 +150,7 @@
                             return
                         }
 
-                        const elapsed = performance.now() - this.cycleStartTime
+                        const elapsed = this.elapsedSinceCycleStart()
 
                         this.remainingCycleDuration = Math.max(this.cycleDuration - elapsed, 0)
                         this.isPaused = true
@@ -165,10 +175,8 @@
                     animateProgress() {
                         this.stopProgressAnimation()
 
-                        const start = this.cycleStartTime ?? performance.now()
-
                         const update = () => {
-                            const elapsed = performance.now() - start
+                            const elapsed = this.elapsedSinceCycleStart()
                             const percentage = Math.min(elapsed / this.cycleDuration, 1) * 100
 
                             this.progress = percentage
@@ -201,7 +209,7 @@
 
                     scrollToCurrent() {
                         this.$nextTick(() => {
-                            const container = this.$refs.adsContainer
+                            const container = this.$refs.container
 
                             if (! container) {
                                 return
@@ -240,6 +248,18 @@
                         }
 
                         return Date.now() < this.dismissedUntil
+                    },
+
+                    hasAds() {
+                        return Array.isArray(this.ads) && this.ads.length > 0
+                    },
+
+                    elapsedSinceCycleStart() {
+                        if (! this.cycleStartTime) {
+                            return 0
+                        }
+
+                        return performance.now() - this.cycleStartTime
                     },
                 }
             })
