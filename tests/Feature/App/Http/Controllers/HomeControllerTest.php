@@ -22,7 +22,7 @@ it("renders with popular and latest posts, links, and the creator's about sectio
     get(route('home'))
         ->assertOk()
         ->assertViewIs('home')
-        ->assertViewHas('popular', fn (Collection $popular) => 6 === $popular->count())
+        ->assertViewHas('popular', fn (Collection $popular) => 10 === $popular->count())
         ->assertViewHas('latest', fn (Collection $latest) => 12 === $latest->count())
         ->assertViewHas('links', fn (Collection $links) => 12 === $links->count())
         ->assertViewHas('aboutUser', fn (User $aboutUser) => 'benjamincrozat' === $aboutUser->github_login);
