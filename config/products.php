@@ -1,6 +1,12 @@
 <?php
 
 return [
-    'sticky_carousel' => env('STRIPE_PRODUCT_STICKY_CAROUSEL'),
-    'sponsored_article' => env('STRIPE_PRODUCT_SPONSOR_ARTICLE'),
+    'sticky_carousel' => [
+        'price_id' => env('STRIPE_PRODUCT_STICKY_CAROUSEL'),
+        'subscription' => true,
+    ],
+    'sponsored_article' => [
+        'price_id' => env('STRIPE_PRODUCT_SPONSOR_ARTICLE'),
+        'subscription' => false,
+    ],
 ];

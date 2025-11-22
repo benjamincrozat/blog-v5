@@ -1,24 +1,26 @@
 <?php
 
-use Laravel\Cashier\Cashier;
+use Laravel\Cashier\Checkout;
 
 use function Pest\Laravel\get;
 
+use Stripe\Checkout\Session as StripeSession;
+
 it('renders a page when the checkout is completed', function () {
-    $session = Cashier::stripe()->checkout->sessions->create([
-        'mode' => 'payment',
-        'line_items' => [[
-            'price' => config('products.sponsored_article'),
-            'quantity' => 1,
-        ]],
-        'billing_address_collection' => 'required',
-        'tax_id_collection' => ['enabled' => true],
-        'automatic_tax' => ['enabled' => true],
-        'invoice_creation' => ['enabled' => true],
-        'customer_creation' => 'always',
-        'success_url' => url('/foo'),
-        'cancel_url' => url('/bar'),
-    ]);
+    $session = Checkout::guest()
+        ->create([
+            [
+                'price' => config('products.sticky_carousel.price_id'),
+                'quantity' => 1,
+            ],
+        ], [
+            'mode' => StripeSession::MODE_SUBSCRIPTION,
+            'automatic_tax' => ['enabled' => true],
+            'billing_address_collection' => 'required',
+            'success_url' => url('/foo'),
+            'cancel_url' => url('/bar'),
+        ])
+        ->asStripeCheckoutSession();
 
     get(route('checkout.completed', [
         'session_id' => $session->id,

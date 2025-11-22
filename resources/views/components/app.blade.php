@@ -106,18 +106,22 @@
 
         @empty($hideAd)
             <x-ads.bottom
-                :ads="[
+                :ads="Arr::shuffle([
                     [
+                        'icon' => 'heroicon-s-academic-cap',
                         'title' => fake()->company(),
                         'description' => fake()->sentences(2, true),
-                        'icon' => 'heroicon-s-academic-cap',
+                        'url' => fake()->url(),
+                        'cta' => 'Learn more',
                     ],
                     [
+                        'icon' => 'heroicon-s-heart',
                         'title' => fake()->company(),
                         'description' => fake()->sentences(2, true),
-                        'icon' => 'heroicon-s-heart',
+                        'url' => fake()->url(),
+                        'cta' => 'Get started',
                     ]
-                ]"
+                ])"
             />
         @endempty
 

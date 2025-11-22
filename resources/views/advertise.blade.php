@@ -170,18 +170,13 @@
                         <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
                         Access to {{ Number::format($visitors) }} monthly developers.
                     </li>
-        
-                    <li class="flex gap-2 items-start">
-                        <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
-                        A backlink on a DR 45-50 domain.
-                    </li>
                 </ul>
             </div>
 
             <div class="md:w-1/2 w-full">
                 <div class="flex items-baseline gap-2 text-xl">
                     <p class="text-7xl font-medium">
-                        {{ Number::currency(299 * 0.8, 'EUR', precision: 0) }}
+                        {{ Number::currency(300, 'EUR', precision: 0) }}
                     </p>
 
                     monthly

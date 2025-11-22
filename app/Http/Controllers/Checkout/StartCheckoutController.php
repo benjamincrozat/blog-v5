@@ -2,35 +2,40 @@
 
 namespace App\Http\Controllers\Checkout;
 
-use Laravel\Cashier\Cashier;
+use Laravel\Cashier\Checkout;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Stripe\Checkout\Session as StripeSession;
 
 class StartCheckoutController extends Controller
 {
     public function __invoke(string $slug) : RedirectResponse
     {
-        $priceId = config("products.$slug");
+        $products = config()->array('products', []);
 
-        if (empty($priceId)) {
+        $product = $products[$slug] ?? null;
+
+        if (! is_array($product) || empty($product['price_id'])) {
             abort(404);
         }
 
-        $session = Cashier::stripe()->checkout->sessions->create([
-            'mode' => 'payment',
-            'line_items' => [[
-                'price' => $priceId,
-                'quantity' => 1,
-            ]],
-            'billing_address_collection' => 'required',
-            'tax_id_collection' => ['enabled' => true],
-            'automatic_tax' => ['enabled' => true],
-            'invoice_creation' => ['enabled' => true],
-            'customer_creation' => 'always',
-            'success_url' => route('checkout.completed') . '?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url' => back()->getTargetUrl(),
-        ]);
+        $isSubscription = $product['subscription'] ?? false;
 
-        return redirect($session->url);
+        $checkout = Checkout::guest()
+            ->create([
+                [
+                    'price' => $product['price_id'],
+                    'quantity' => 1,
+                ],
+            ], [
+                'mode' => $isSubscription
+                    ? StripeSession::MODE_SUBSCRIPTION
+                    : StripeSession::MODE_PAYMENT,
+                'billing_address_collection' => 'required',
+                'success_url' => route('checkout.completed') . '?session_id={CHECKOUT_SESSION_ID}',
+                'cancel_url' => back()->getTargetUrl(),
+            ]);
+
+        return $checkout->redirect();
     }
 }
