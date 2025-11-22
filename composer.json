@@ -6,6 +6,7 @@
         "andreiio/blade-iconoir": "^4.7",
         "blade-ui-kit/blade-heroicons": "^2.6",
         "coconutcraig/laravel-postmark": "^3.3",
+        "codeat3/blade-phosphor-icons": "^2.3",
         "embed/embed": "^4.4",
         "filament/filament": "^4.1",
         "guzzlehttp/guzzle": "^7.10",

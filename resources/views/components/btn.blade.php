@@ -6,7 +6,7 @@
     {{
         $attributes
             ->class([
-                'inline-block disabled:bg-gray-100 disabled:hover:bg-gray-100! disabled:text-gray-300! font-medium rounded-xl text-center tracking-tight transition-colors',
+                'inline-block disabled:bg-gray-100! disabled:hover:bg-gray-100! disabled:text-gray-300! font-medium rounded-xl text-center tracking-tight transition-colors',
                 'bg-gray-200 hover:bg-gray-100' => $attributes->missing('primary') && $attributes->missing('primary-alt') && $attributes->missing('disabled'),
                 'bg-blue-600 hover:bg-blue-500 text-white' => $attributes->has('primary'),
                 'bg-blue-100 hover:bg-blue-50 text-blue-900' => $attributes->has('primary-alt'),
