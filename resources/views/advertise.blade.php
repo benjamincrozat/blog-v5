@@ -35,6 +35,7 @@
             <x-icon-kinsta class="flex-none -translate-y-px h-[1.15rem] sm:h-6" />
             <div class="text-2xl font-bold text-red-600 sm:text-3xl">larajobs</div>
             <x-icon-meilisearch class="flex-none h-6 translate-y-px sm:h-7" />
+            <x-icon-coderabbit class="flex-none h-6 sm:h-7" />
             <x-icon-sevalla class="flex-none h-9 sm:h-10" />
         </div>
     </x-section>
