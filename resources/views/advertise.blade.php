@@ -1,14 +1,14 @@
 <x-app
-    title="Advertise to {{ Number::format($visitors) }} developers"
+    title="Show off your business to {{ Number::format($visitors) }} developers"
     :hide-ad="true"
 >
     <div class="container text-center md:text-xl xl:max-w-(--breakpoint-lg)">
         <h1 class="text-3xl font-medium tracking-tight text-black lg:text-4xl xl:text-7xl">
-            Advertise to <span class="text-blue-600">{{ Number::format($visitors) }}</span>&nbsp;developers
+            Show off your business to <span class="text-blue-600">{{ Number::format($visitors) }}</span>&nbsp;developers
         </h1>
 
-        <p class="mt-1 text-lg text-gray-800 md:mt-2 md:text-xl lg:text-2xl">
-            This is the right place to show off your product.
+        <p class="mt-4 md:mt-8 text-balance text-lg/tight text-gray-800 md:text-xl/tight lg:text-2xl/tight">
+            Access an audience of developers while bypassing adblockers.
         </p>
 
         <div class="flex flex-wrap md:flex-nowrap text-center md:text-left gap-4 justify-center">
@@ -33,10 +33,10 @@
     </div>
 
     <x-section
-        title="Trusted by"
+        title="Previously sponsored by"
         class="mt-24 text-center"
     >
-        <div class="flex flex-wrap md:flex-nowrap text-center md:text-left flex-wrap gap-y-4 gap-x-8 justify-center items-center px-4 md:gap-x-12 lg:gap-x-16">
+        <div class="flex flex-wrap md:flex-nowrap text-center md:text-left gap-y-4 gap-x-8 justify-center items-center px-4 md:gap-x-12 lg:gap-x-16">
             <x-icon-coderabbit class="flex-none translate-y-[.5px] sm:translate-y-0 h-[1.35rem] sm:h-[1.65rem]" />
             <x-icon-kinsta class="flex-none -translate-y-px sm:translate-y-0 h-[1.15rem] sm:h-[1.35rem]" />
             <div class="text-2xl font-bold text-red-600 sm:text-3xl">larajobs</div>

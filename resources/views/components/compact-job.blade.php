@@ -6,12 +6,12 @@
     </div>
 
     <div class="grow">
-        <div class="flex justify-between">
-            <p class="text-gray-500">
+        <div class="flex gap-4 md:gap-6 justify-between">
+            <p class="text-gray-500 line-clamp-1">
                 {{ $job->company->name }}
             </p>
 
-            <p class="text-gray-500">
+            <p class="text-gray-500 flex-none">
                 {{ $job->created_at->diffForHumans() }}
             </p>
         </div>

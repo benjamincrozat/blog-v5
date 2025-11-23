@@ -175,7 +175,7 @@
                     wire:navigate
                     href="{{ route('advertise') }}"
                 >
-                    Advertise
+                    Show off your business
                 </x-dropdown.item>
 
                 <x-dropdown.item
