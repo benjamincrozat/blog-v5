@@ -104,9 +104,17 @@
                         }
 
                         this.$watch('currentIndex', () => this.scrollToCurrent())
-                        this.scrollToCurrent()
+                        this.$watch('show', (visible) => {
+                            if (visible) {
+                                this.startCycle(this.cycleDuration)
 
-                        this.startCycle()
+                                return
+                            }
+
+                            this.stopCycleCompletely()
+                        })
+
+                        this.scrollToCurrent()
                     },
 
                     startCycle(duration = this.cycleDuration, elapsedOffset = 0) {
@@ -114,6 +122,7 @@
                             return
                         }
 
+                        this.isPaused = false
                         this.clearCycleTimeout()
                         this.stopProgressAnimation()
 
@@ -238,10 +247,11 @@
                     closeBanner() {
                         this.show = false
                         this.dismissedUntil = Date.now() + ADS_BANNER_DISMISS_DURATION
+                        this.stopCycleCompletely()
                     },
 
                     requestShow() {
-                        if (this.isDismissed()) {
+                        if (this.isDismissed() || this.show) {
                             return
                         }
 
@@ -258,6 +268,15 @@
 
                     hasAds() {
                         return Array.isArray(this.ads) && this.ads.length > 0
+                    },
+
+                    stopCycleCompletely() {
+                        this.clearCycleTimeout()
+                        this.stopProgressAnimation()
+                        this.progress = 0
+                        this.cycleStartTime = null
+                        this.remainingCycleDuration = this.cycleDuration
+                        this.isPaused = true
                     },
 
                     elapsedSinceCycleStart() {
