@@ -196,7 +196,7 @@
             
                 <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-4 md:mt-6 justify-center md:justify-start">
                     <x-btn @click="$dispatch('force-sticky-carousel')">
-                        Live example
+                        Show the sticky carousel
                     </x-btn>
                     
                     <x-btn primary href="{{ route('checkout.start', 'sticky_carousel') }}">
@@ -248,7 +248,7 @@
             
                 <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-4 md:mt-6 justify-center md:justify-start">
                     <x-btn href="https://benjamincrozat.com/deploy-php-laravel-apps-sevalla" target="_blank">
-                        Live example
+                        Example sponsored article
                     </x-btn>
                     
                     <x-btn href="{{ route('checkout.start', 'sponsored_article') }}" primary>
