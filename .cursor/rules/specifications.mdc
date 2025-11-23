@@ -9,4 +9,5 @@ alwaysApply: true
 - This is a blog made with Laravel.
 - It generates money through affiliate links.
 - I use Model::unguard() because I'd rather rely on validation.
+- The project is served through Laravel Valet on benjamincrozat.test.
 - Visits are tracked in the backend to bypass ad blockers using Pirsch Analytics' API.
