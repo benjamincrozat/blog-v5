@@ -54,6 +54,7 @@
         <x-heading>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="size-16 mx-auto mb-2"><path d="M40 56h176v40H40z" opacity=".2"/><path d="M216 40H40c-8.836556 0-16 7.163444-16 16v144c0 8.836556 7.163444 16 16 16h176c8.836556 0 16-7.163444 16-16V56c0-8.836556-7.163444-16-16-16Zm0 16v40H40V56h176Zm0 144H40v-88h176v88Z"/></svg>
             Stay on top of every page
+            <span class="bg-yellow-500 inline-block ml-2 font-normal p-2 leading-tight px-4 rounded-full normal-case tracking-normal">Sold out!</span>
         </x-heading>
 
         <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-start mt-8 justify-between gap-8 md:gap-16">
@@ -79,9 +80,14 @@
             </div>
 
             <div class="md:w-1/2 w-full">
-                <p class="text-7xl font-medium">600€</p>
-                <p class="text-sm text-gray-500">one-time payment</p>
-            
+                <div class="inline-flex items-baseline gap-2 text-xl">
+                    <p class="text-7xl font-medium">
+                        {{ Number::currency(600, 'EUR', precision: 0) }}
+                    </p>
+
+                    monthly
+                </div>
+
                 <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-4 md:mt-6 justify-center md:justify-start">
                     <x-btn href="https://benjamincrozat.com/php-85" target="_blank">
                         Live example
@@ -104,6 +110,7 @@
         <x-heading>
             <x-phosphor-sidebar-duotone class="size-16 mx-auto mb-2 -scale-x-100" />
             Be visible in the sidebar
+            <span class="bg-yellow-500 inline-block ml-2 font-normal p-2 leading-tight px-4 rounded-full normal-case tracking-normal">Sold out!</span>
         </x-heading>
 
         <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-start mt-8 justify-between gap-8 md:gap-16">
@@ -129,8 +136,13 @@
             </div>
 
             <div class="md:w-1/2 w-full">
-                <p class="text-7xl font-medium">400€</p>
-                <p class="text-sm text-gray-500">one-time payment</p>
+                <div class="inline-flex items-baseline gap-2 text-xl">
+                    <p class="text-7xl font-medium">
+                        {{ Number::currency(400, 'EUR', precision: 0) }}
+                    </p>
+
+                    monthly
+                </div>
             
                 <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-4 md:mt-6 justify-center md:justify-start">
                     <x-btn href="https://benjamincrozat.com/php-85" target="_blank">
@@ -174,7 +186,7 @@
             </div>
 
             <div class="md:w-1/2 w-full">
-                <div class="flex items-baseline gap-2 text-xl">
+                <div class="inline-flex items-baseline gap-2 text-xl">
                     <p class="text-7xl font-medium">
                         {{ Number::currency(300, 'EUR', precision: 0) }}
                     </p>
@@ -229,9 +241,10 @@
                 </ul>
             </div>
 
-            <div  class="w-1/2">
-                <p class="text-7xl font-medium">500€</p>
-                <p class="text-sm text-gray-500">one-time payment</p>
+            <div class="md:w-1/2 w-full">
+                <p class="text-7xl font-medium">
+                    {{ Number::currency(500, 'EUR', precision: 0) }}
+                </p>
             
                 <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-4 md:mt-6 justify-center md:justify-start">
                     <x-btn href="https://benjamincrozat.com/deploy-php-laravel-apps-sevalla" target="_blank">
