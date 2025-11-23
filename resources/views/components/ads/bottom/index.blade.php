@@ -77,7 +77,9 @@
     </div>
 
     <script>
-        const ADS_BANNER_DISMISS_DURATION = 24 * 60 * 60 * 1000
+        if (typeof window.ADS_BANNER_DISMISS_DURATION === 'undefined') {
+            window.ADS_BANNER_DISMISS_DURATION = 24 * 60 * 60 * 1000
+        }
 
         document.addEventListener('alpine:init', () => {
             Alpine.data('data', function () {
@@ -246,7 +248,7 @@
 
                     closeBanner() {
                         this.show = false
-                        this.dismissedUntil = Date.now() + ADS_BANNER_DISMISS_DURATION
+                        this.dismissedUntil = Date.now() + window.ADS_BANNER_DISMISS_DURATION
                         this.stopCycleCompletely()
                     },
 
