@@ -57,8 +57,6 @@
         <x-feed-links />
     </head>
     <body {{ $attributes->class('font-light text-gray-600') }} x-data>
-        <div x-intersect:leave="$dispatch('showcase')"></div>
-
         <div class="flex flex-col min-h-screen">
             @if (app('impersonate')->isImpersonating())
                 <div class="text-white bg-orange-600">
@@ -82,6 +80,8 @@
                 @endif
             @endempty
 
+            <div x-intersect:leave="$dispatch('toggle-sticky-carousel')"></div>
+    
             @empty($hideNavigation)
                 <header class="container mt-4 xl:max-w-(--breakpoint-lg)">
                     <x-nav />

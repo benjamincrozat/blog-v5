@@ -19,7 +19,7 @@
         x-transition:leave-end="opacity-0 translate-y-4"
         @mouseenter="pause()"
         @mouseleave="resume()"
-        @showcase.window="requestShow()"
+        @toggle-sticky-carousel.window="requestShow()"
     >
         <div class="py-1 px-2.5 flex gap-2 items-center border-b border-black/10">
             <div class="font-normal cursor-default text-sm text-black/75">My sponsors</div>
@@ -50,23 +50,7 @@
                 x-ref="container"
             >
                 <template x-for="(ad, index) in ads" x-bind:key="index">
-                    <a
-                        x-bind:href="ad.url"
-                        target="_blank"
-                        class="flex items-start gap-4 sm:gap-6 basis-full shrink-0 snap-center sm:py-4 p-4 sm:px-6"
-                        x-bind:data-ad-index="index"
-                    >
-                        <div x-html="ad.icon" class="mt-1"></div>
-
-                        <div class="leading-tight">
-                            <h1 class="font-semibold text-black/95" x-text="ad.title"></h1>
-                            
-                            <p class="text-black/75">
-                                <span x-text="ad.description"></span>
-                                <span class="font-medium underline" x-text="`${ad.cta} →`"></span>
-                            </p>
-                        </div>
-                    </a>
+                    <x-ads.bottom.item />
                 </template>
             </div>
         </template>
