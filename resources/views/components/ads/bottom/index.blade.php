@@ -6,7 +6,7 @@
     <div
         {{
             $attributes
-                ->class('group bg-white/75 fixed bottom-2 sm:bottom-4 group-hover inset-x-2 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 group backdrop-blur-md rounded-b-sm rounded-t-md shadow-xl sm:w-[480px] backdrop-saturate-200 overflow-hidden ring-1 ring-black/10')
+                    ->class('group bg-white/75 fixed bottom-2 sm:bottom-4 group-hover inset-x-2 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 group backdrop-blur-md rounded-b-sm rounded-t-md shadow-xl sm:w-[480px] backdrop-saturate-200 overflow-hidden ring-1 ring-black/10')
         }}
         x-cloak
         x-data="data()"
@@ -95,7 +95,7 @@
                     isPaused: false,
 
                     init() {
-                        if (! this.hasAds()) {
+                        if (! Array.isArray(this.ads) || ! this.ads.length) {
                             return
                         }
 
@@ -118,7 +118,7 @@
                     },
 
                     startCycle(duration = this.cycleDuration, elapsedOffset = 0) {
-                        if (! this.hasAds()) {
+                        if (! this.canCycle()) {
                             return
                         }
 
@@ -147,7 +147,7 @@
                     },
 
                     showNext() {
-                        if (! this.hasAds()) {
+                        if (! this.canCycle()) {
                             return
                         }
 
@@ -266,10 +266,6 @@
                         return Date.now() < this.dismissedUntil
                     },
 
-                    hasAds() {
-                        return Array.isArray(this.ads) && this.ads.length > 0
-                    },
-
                     stopCycleCompletely() {
                         this.clearCycleTimeout()
                         this.stopProgressAnimation()
@@ -285,6 +281,10 @@
                         }
 
                         return performance.now() - this.cycleStartTime
+                    },
+
+                    canCycle() {
+                        return Array.isArray(this.ads) && this.ads.length > 1
                     },
                 }
             })
