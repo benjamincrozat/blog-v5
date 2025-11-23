@@ -1,5 +1,5 @@
 <x-app
-    :hide-ad="true"
+    :hide-top-ad="true"
     :hide-footer="true"
     :hide-navigation="true"
     title="Sign in"

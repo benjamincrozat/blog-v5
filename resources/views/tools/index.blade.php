@@ -1,5 +1,5 @@
 <x-app
-    :hide-ad="true"
+    :hide-top-ad="true"
     title="Unlock the best tools for developers"
     description="Browse the great tools I gathered from across the web. Services and apps of all kinds to help you do your job more efficiently."
 >

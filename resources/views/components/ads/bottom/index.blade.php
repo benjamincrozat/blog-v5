@@ -19,7 +19,8 @@
         x-transition:leave-end="opacity-0 translate-y-4"
         @mouseenter="pause()"
         @mouseleave="resume()"
-        @toggle-sticky-carousel.window="requestShow()"
+        @toggle-sticky-carousel.window="showcase()"
+        @force-sticky-carousel.window="forceShowcase()"
     >
         <div class="py-1 px-2.5 flex gap-2 items-center border-b border-black/10">
             <div class="font-normal cursor-default text-sm text-black/75">My sponsors</div>
@@ -37,7 +38,7 @@
 
             <button
                 class="p-1 -mr-1.5 bg-black/4 transition-colors hover:bg-black/7.5 rounded-md"
-                @click="closeBanner()"
+                @click="hide()"
             >
                 <x-heroicon-s-x-mark class="size-4" />
                 <span class="sr-only">Close</span>
@@ -61,8 +62,8 @@
     </div>
 
     <script>
-        if (typeof window.ADS_BANNER_DISMISS_DURATION === 'undefined') {
-            window.ADS_BANNER_DISMISS_DURATION = 24 * 60 * 60 * 1000
+        if (typeof window.DISMISS_DURATION === 'undefined') {
+            window.DISMISS_DURATION = 24 * 60 * 60 * 1000
         }
 
         document.addEventListener('alpine:init', () => {
@@ -230,18 +231,24 @@
                         })
                     },
 
-                    closeBanner() {
+                    hide() {
                         this.show = false
-                        this.dismissedUntil = Date.now() + window.ADS_BANNER_DISMISS_DURATION
+                        this.dismissedUntil = Date.now() + window.DISMISS_DURATION
                         this.stopCycleCompletely()
                     },
 
-                    requestShow() {
+                    showcase() {
                         if (this.isDismissed() || this.show) {
                             return
                         }
 
                         this.show = true
+                    },
+
+                    forceShowcase() {
+                        this.dismissedUntil = null
+
+                        this.showcase()
                     },
 
                     isDismissed() {

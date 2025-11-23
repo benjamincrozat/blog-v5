@@ -1,6 +1,6 @@
 <x-app
     title="Thanks for your purchase!"
-    :hide-ad="true"
+    :hide-top-ad="true"
 >
     <x-heroicon-o-check-circle class="mx-auto mb-2 text-green-600 size-12" />
 

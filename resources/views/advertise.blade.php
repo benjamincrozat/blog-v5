@@ -1,6 +1,6 @@
 <x-app
     title="Show off your business to {{ Number::format($visitors) }} developers"
-    :hide-ad="true"
+    :hide-top-ad="true"
 >
     <div class="container text-center md:text-xl xl:max-w-(--breakpoint-lg)">
         <h1 class="text-3xl font-medium tracking-tight text-black lg:text-4xl xl:text-7xl">
@@ -195,7 +195,7 @@
                 </div>
             
                 <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-4 md:mt-6 justify-center md:justify-start">
-                    <x-btn href="https://benjamincrozat.com/php-85" target="_blank">
+                    <x-btn @click="$dispatch('force-sticky-carousel')">
                         Live example
                     </x-btn>
                     

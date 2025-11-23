@@ -72,7 +72,7 @@
                 </div>
             @endif
 
-            @empty($hideAd)
+            @empty($hideTopAd)
                 @if (random_int(0, 1))
                     <x-ads.top.sevalla />
                 @else
@@ -104,7 +104,7 @@
 
         <livewire:search />
 
-        @empty($hideAd)
+        @empty($hideStickyCarousel)
             @php
                 $bottomAds = app()->isProduction() ? [] : Arr::shuffle([
                     [

@@ -1,6 +1,6 @@
 <x-app
     title="Whoops, this article doesn't exist anymore."
-    :hide-ad="true"
+    :hide-top-ad="true"
     :hide-navigation="true"
     :hide-footer="true"
 >
