@@ -171,7 +171,7 @@
 
                 <x-dropdown.item
                     icon="heroicon-o-megaphone"
-                    description="Show off your business through display ads or sponsored articles."
+                    description="Sponsor me and show off your business to {{ Number::format($visitors) }} monthly visitors."
                     wire:navigate
                     href="{{ route('advertise') }}"
                 >

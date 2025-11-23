@@ -86,7 +86,7 @@
                     show: false,
                     dismissedUntil: this.$persist(null),
                     currentIndex: 0,
-                    cycleDuration: 5000,
+                    cycleDuration: 8000,
                     cycleTimeoutId: null,
                     cycleStartTime: null,
                     progress: 0,
