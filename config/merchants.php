@@ -69,6 +69,7 @@ return [
         'headshotpro' => 'https://www.headshotpro.com/?via=benjamincrozat',
         'hostgator' => 'https://partners.hostgator.com/Py6kbX',
         'kinsta' => 'https://kinsta.com/application-hosting/?kaid=AEFAUTRRTINA',
+        'magicpost' => 'https://go.magicpost.in/benjamin-crozat',
         'mailcoach' => 'https://mailcoach.app/?via=benjamincrozat',
         'namecheap' => 'https://namecheap.pxf.io/c/3801334/1712998/5618',
         'oh-dear' => 'https://ohdear.app/?via=benjamincrozat',
