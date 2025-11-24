@@ -6,7 +6,7 @@
     <div
         {{
             $attributes
-                    ->class('group bg-white/75 fixed bottom-2 sm:bottom-4 group-hover inset-x-2 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 group backdrop-blur-md rounded-b-sm rounded-t-md shadow-xl sm:w-[480px] backdrop-saturate-200 overflow-hidden ring-1 ring-black/10')
+                ->class('group bg-white/75 fixed bottom-2 sm:bottom-4 group-hover inset-x-2 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 group backdrop-blur-md rounded-b-sm rounded-t-md shadow-xl sm:w-[480px] backdrop-saturate-200 overflow-hidden ring-1 ring-black/10')
         }}
         x-cloak
         x-data="data()"
@@ -62,10 +62,6 @@
     </div>
 
     <script>
-        if (typeof window.DISMISS_DURATION === 'undefined') {
-            window.DISMISS_DURATION = 24 * 60 * 60 * 1000
-        }
-
         document.addEventListener('alpine:init', () => {
             Alpine.data('data', function () {
                 return {
@@ -233,7 +229,7 @@
 
                     hide() {
                         this.show = false
-                        this.dismissedUntil = Date.now() + window.DISMISS_DURATION
+                        this.dismissedUntil = Date.now() + 24 * 60 * 60 * 1000
                         this.stopCycleCompletely()
                     },
 
