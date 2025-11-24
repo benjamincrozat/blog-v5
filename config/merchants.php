@@ -57,6 +57,7 @@ return [
     ],
 
     'services' => [
+        'cleanmymac' => 'https://macpaw.audw.net/c/3801334/3398815/1733?u=https%3A%2F%2Fmacpaw.com%2Fcleanmymac',
         'cloudways-php' => 'https://www.cloudways.com/en/php-hosting.php?id=1242932',
         'cloudways' => 'https://www.cloudways.com/en/laravel-hosting?id=1242932',
         'codecademy' => 'https://www.pjtra.com/t/2-438168-292025-213588',
