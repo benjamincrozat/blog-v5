@@ -6,7 +6,7 @@
     <div
         {{
             $attributes
-                ->class('group bg-white/75 fixed bottom-2 sm:bottom-4 group-hover inset-x-2 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 group backdrop-blur-md rounded-b-sm rounded-t-md shadow-xl sm:w-[480px] backdrop-saturate-200 overflow-hidden ring-1 ring-black/10')
+                ->class('group bg-white/75 fixed bottom-2 sm:bottom-4 group-hover inset-x-2 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 group backdrop-blur-md rounded-b-sm rounded-t-md shadow-xl sm:w-[560px] backdrop-saturate-200 overflow-hidden ring-1 ring-black/10')
         }}
         x-cloak
         x-data="data()"
@@ -22,9 +22,7 @@
         @toggle-sticky-carousel.window="showcase()"
         @force-sticky-carousel.window="forceShowcase($event.detail)"
     >
-        <div class="py-1 px-2.5 flex gap-2 items-center border-b border-black/10">
-            <div class="font-normal cursor-default text-sm text-black/75">My sponsors</div>
-
+        <div class="py-1 px-2.5 flex gap-2 items-center">
             <div class="grow"></div>
 
             <a

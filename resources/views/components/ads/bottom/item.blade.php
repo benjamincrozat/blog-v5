@@ -1,7 +1,7 @@
 <a
     {{
         $attributes
-            ->class('flex items-start gap-4 sm:gap-6 basis-full shrink-0 snap-center sm:py-4 p-4 sm:px-6')
+            ->class('flex items-start gap-4 sm:gap-6 basis-full shrink-0 snap-center px-4 pb-4 sm:px-6')
             ->merge([
                 'target' => '_blank',
                 'x-bind:href' => 'ad.url',
@@ -9,14 +9,16 @@
             ])
     }}
 >
-    <div x-html="ad.icon" class="mt-1"></div>
+    <div x-html="ad.icon" class="mt-1 flex-none"></div>
 
-    <div class="leading-tight">
-        <h1 class="font-semibold text-black/95" x-text="ad.title"></h1>
-        
-        <p class="text-black/75">
-            <span x-text="ad.description"></span>
-            <span class="font-medium underline" x-text="`${ad.cta} →`"></span>
-        </p>
+    <div class="grid gap-2 leading-tight">
+        <h1 class="font-semibold text-balance text-black/95" x-html="ad.title"></h1>
+        <div x-text="ad.description"></div>
+        <x-btn 
+            primary-alt 
+            size="sm" 
+            class="pointer-events-none mt-[.55rem] bg-blue-200/50" 
+            x-html="`${ad.cta}&nbsp;→`"
+        ></x-btn>
     </div>
 </a>

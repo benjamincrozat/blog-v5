@@ -106,22 +106,15 @@
 
         @empty($hideStickyCarousel)
             @php
-                $bottomAds = app()->isProduction() ? [] : Arr::shuffle([
+                $bottomAds = [
                     [
-                        'icon' => '<div class="size-8 bg-red-600"></div>',
-                        'title' => 'Some Company',
-                        'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
-                        'url' => 'https://example.com',
-                        'cta' => 'Claim $50 free credits',
+                        'icon' => '<img src="https://avatars.githubusercontent.com/u/3613731?v=4" class="rounded-full size-8" />',
+                        'title' => 'Limited time Black Friday&nbsp;/&nbsp;Cyber Monday offers',
+                        'description' => 'I gathered the best deals for developers from across the web. Get them before they\'re gone!',
+                        'url' => 'https://benjamincrozat.com/2025-black-friday-cyber-monday-deals',
+                        'cta' => 'Check&nbsp;prices',
                     ],
-                    [
-                        'icon' => '<div class="size-8 bg-green-600"></div>',
-                        'title' => 'Another Company',
-                        'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
-                        'url' => 'https://example.com',
-                        'cta' => 'Start for free for 14 days',
-                    ],
-                ]);
+                ];
             @endphp
 
             <x-ads.bottom :ads="$bottomAds" />
