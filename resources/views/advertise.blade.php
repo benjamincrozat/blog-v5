@@ -58,6 +58,34 @@
         </x-heading>
 
         <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-start mt-8 justify-between gap-8 md:gap-16">
+            @php
+                $demoStickyCarouselAds = [
+                    [
+                        'icon' => '<div class="size-8 bg-emerald-500"></div>',
+                        'title' => 'Demo Sponsor',
+                        'description' => 'A fake sponsor to help you preview the sticky carousel instantly.',
+                        'cta' => 'Visit demo',
+                        'url' => 'https://example.com/demo',
+                    ],
+                    [
+                        'icon' => '<div class="size-8 bg-blue-600"></div>',
+                        'title' => 'Another Demo Sponsor',
+                        'description' => 'Swap in your own ads by editing the payload sent with the event.',
+                        'cta' => 'Get started',
+                        'url' => 'https://example.com/docs',
+                    ],
+                    [
+                        'icon' => '<div class="size-8 bg-red-600"></div>',
+                        'title' => 'Another Demo Sponsor',
+                        'description' => 'Swap in your own ads by editing the payload sent with the event.',
+                        'cta' => 'Buy now',
+                        'url' => 'https://example.com/docs',
+                    ],
+                ];
+
+                $demoStickyCarouselAdsJson = Js::from($demoStickyCarouselAds);
+            @endphp
+
             <div class="md:w-1/2 w-full">
                 <p class="font-medium">What you get:</p>
                 
@@ -195,7 +223,7 @@
                 </div>
             
                 <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-4 md:mt-6 justify-center md:justify-start">
-                    <x-btn @click="$dispatch('force-sticky-carousel')">
+                    <x-btn @click="$nextTick(() => window.dispatchEvent(new CustomEvent('force-sticky-carousel', { detail: { ads: {{ $demoStickyCarouselAdsJson }} } })))">
                         Show the sticky carousel
                     </x-btn>
                     

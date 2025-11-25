@@ -20,7 +20,7 @@
         @mouseenter="pause()"
         @mouseleave="resume()"
         @toggle-sticky-carousel.window="showcase()"
-        @force-sticky-carousel.window="forceShowcase()"
+        @force-sticky-carousel.window="forceShowcase($event.detail)"
     >
         <div class="py-1 px-2.5 flex gap-2 items-center border-b border-black/10">
             <div class="font-normal cursor-default text-sm text-black/75">My sponsors</div>
@@ -88,7 +88,7 @@
 
                         this.$watch('currentIndex', () => this.scrollToCurrent())
                         this.$watch('show', (visible) => {
-                            if (visible) {
+                            if (visible && this.canCycle()) {
                                 this.startCycle(this.cycleDuration)
 
                                 return
@@ -241,10 +241,30 @@
                         this.show = true
                     },
 
-                    forceShowcase() {
+                    forceShowcase(detail = null) {
+                        const customAds = this.extractAds(detail)
+
+                        if (customAds?.length) {
+                            this.ads = customAds
+                            this.currentIndex = 0
+
+                            this.stopCycleCompletely()
+                            this.scrollToCurrent()
+                        }
+
                         this.dismissedUntil = null
 
-                        this.showcase()
+                        if (! this.show) {
+                            this.showcase()
+
+                            return
+                        }
+
+                        if (this.canCycle()) {
+                            this.startCycle(this.cycleDuration)
+                        } else {
+                            this.stopCycleCompletely()
+                        }
                     },
 
                     isDismissed() {
@@ -274,6 +294,36 @@
 
                     canCycle() {
                         return Array.isArray(this.ads) && this.ads.length > 1
+                    },
+
+                    extractAds(detail) {
+                        if (! detail) {
+                            return null
+                        }
+
+                        let ads = detail.ads ?? detail
+
+                        if (typeof ads === 'string') {
+                            try {
+                                ads = JSON.parse(ads)
+                            } catch (_) {
+                                return null
+                            }
+                        }
+
+                        if (! Array.isArray(ads)) {
+                            return null
+                        }
+
+                        return ads
+                            .map((ad) => ({
+                                icon: ad.icon ?? '',
+                                title: ad.title ?? '',
+                                description: ad.description ?? '',
+                                cta: ad.cta ?? '',
+                                url: ad.url ?? '#',
+                            }))
+                            .filter((ad) => ad.title || ad.description || ad.cta || ad.icon)
                     },
                 }
             })
