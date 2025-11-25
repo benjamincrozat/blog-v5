@@ -2,6 +2,7 @@
     :canonical="$post->canonical_url"
     :description="$post->description"
     :hide-top-ad="$post->is_commercial"
+    :hide-sticky-carousel="$post->is_commercial"
     :image="$post->image_url"
     :title="! empty($post->serp_title) ? $post->serp_title : $post->title"
 >

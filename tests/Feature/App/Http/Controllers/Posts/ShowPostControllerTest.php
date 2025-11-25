@@ -69,3 +69,23 @@ it('returns 410 gone when the post is soft deleted', function () {
     get(route('posts.show', $post))
         ->assertStatus(410);
 });
+
+it('shows the sticky carousel for non-commercial posts', function () {
+    $post = Post::factory()->create([
+        'is_commercial' => false,
+    ]);
+
+    get(route('posts.show', $post))
+        ->assertOk()
+        ->assertSee('Black Friday', escape: false);
+});
+
+it('hides the sticky carousel for commercial posts', function () {
+    $post = Post::factory()->create([
+        'is_commercial' => true,
+    ]);
+
+    get(route('posts.show', $post))
+        ->assertOk()
+        ->assertDontSee('Black Friday');
+});
