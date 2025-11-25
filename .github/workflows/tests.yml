@@ -17,6 +17,8 @@ jobs:
       PIRSCH_DOMAIN_ID: ${{ secrets.PIRSCH_DOMAIN_ID }}
       STRIPE_KEY: ${{ secrets.STRIPE_KEY }}
       STRIPE_SECRET: ${{ secrets.STRIPE_SECRET }}
+      STRIPE_PRODUCT_SPONSOR_ARTICLE: ${{ secrets.STRIPE_PRODUCT_SPONSOR_ARTICLE }}
+      STRIPE_PRODUCT_STICKY_CAROUSEL: ${{ secrets.STRIPE_PRODUCT_STICKY_CAROUSEL }}
     steps:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2

@@ -1,6 +1,7 @@
 <x-app
     title="Show off your business to {{ Number::format($visitors) }} developers"
     :hide-top-ad="true"
+    :hide-sticky-carousel="true"
 >
     <div class="container text-center md:text-xl xl:max-w-(--breakpoint-lg)">
         <h1 class="text-3xl font-medium tracking-tight text-black lg:text-4xl xl:text-7xl">
@@ -195,37 +196,12 @@
                 </div>
             
                 <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-4 md:mt-6 justify-center md:justify-start">
-                    @php
-                    $demoStickyCarouselAdsJson = Js::from([
-                        [
-                            'icon' => '<div class="size-8 bg-emerald-500"></div>',
-                            'title' => 'Demo Sponsor',
-                            'description' => 'A fake sponsor to help you preview the sticky carousel instantly.',
-                            'cta' => 'Visit demo',
-                            'url' => 'https://example.com/demo',
-                        ],
-                        [
-                            'icon' => '<div class="size-8 bg-blue-600"></div>',
-                            'title' => 'Another Demo Sponsor',
-                            'description' => 'Swap in your own ads by editing the payload sent with the event.',
-                            'cta' => 'Get started',
-                            'url' => 'https://example.com/docs',
-                        ],
-                        [
-                            'icon' => '<div class="size-8 bg-red-600"></div>',
-                            'title' => 'Another Demo Sponsor',
-                            'description' => 'Swap in your own ads by editing the payload sent with the event.',
-                            'cta' => 'Buy now',
-                            'url' => 'https://example.com/docs',
-                        ],
-                    ]);
-                    @endphp
-
                     <x-btn
-                        @click="$nextTick(() => window.dispatchEvent(new CustomEvent('force-sticky-carousel', { detail: { ads: {{ $demoStickyCarouselAdsJson }} } })))"
+                        wire:navigate
+                        href="https://benjamincrozat.com/php-85"
                         data-pirsch-event="Clicked sticky carousel demo"
                     >
-                        Show the sticky carousel
+                        Click + scroll to see it
                     </x-btn>
 
                     <x-btn

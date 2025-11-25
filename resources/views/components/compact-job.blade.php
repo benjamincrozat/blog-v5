@@ -28,9 +28,26 @@
             </a>
         </p>
 
-        <p class="flex items-center gap-2 mt-1 font-medium">
-            <x-heroicon-o-banknotes class="size-4 opacity-75" />
-            {{ Number::currency($job->min_salary, $job->currency ?? 'USD') }}—{{ Number::currency($job->max_salary, $job->currency ?? 'USD') }}
-        </p>
+        <div class="flex items-center gap-2 mt-1">
+            @if ($job->min_salary && $job->max_salary)
+                <x-heroicon-o-banknotes 
+                    class="size-4 opacity-75" 
+                />
+
+                <p class="font-medium">
+                    {{ Number::currency($job->min_salary, $job->currency ?? 'USD') }}—{{ Number::currency($job->max_salary, $job->currency ?? 'USD') }}
+                </p>
+            @else
+                <p>Salary is negotiable</p>
+
+                <x-help-btn class="translate-y-px">
+                    <p>The salary was unspecified.</p>
+
+                    <p class="mt-2">Some companies choose not to disclose a range upfront to allow more flexibility in negotiations (aka "save money").</p>
+                    
+                    <p class="mt-2 font-medium">Tip: aim higher than your ideal salary so their counter-offer lands close.</p>
+                </x-help-btn>
+            @endif
+        </div>
     </div>
 </div>
