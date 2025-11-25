@@ -6,6 +6,8 @@
                 'target' => '_blank',
                 'x-bind:href' => 'ad.url',
                 'x-bind:data-ad-index' => 'index',
+                'x-on:click' => 'trackAdClick(ad)',
+                'x-intersect.once' => 'trackAdView(ad, index)',
             ])
     }}
 >

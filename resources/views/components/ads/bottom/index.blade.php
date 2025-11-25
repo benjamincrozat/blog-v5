@@ -29,6 +29,8 @@
                 wire:navigate
                 href="{{ route('advertise') }}"
                 class="p-1 -mr-1 bg-black/4 transition-colors hover:bg-black/7.5 rounded-md"
+                data-pirsch-event="Clicked sticky carousel info"
+                data-pirsch-meta-destination="Advertise"
             >
                 <x-heroicon-o-question-mark-circle class="size-4" />
                 <span class="sr-only">Become a sponsor</span>
@@ -36,7 +38,9 @@
 
             <button
                 class="p-1 -mr-1.5 bg-black/4 transition-colors hover:bg-black/7.5 rounded-md"
+                type="button"
                 @click="hide()"
+                data-pirsch-event="Closed sticky carousel"
             >
                 <x-heroicon-s-x-mark class="size-4" />
                 <span class="sr-only">Close</span>
@@ -74,6 +78,8 @@
                     progressRequestAnimationFrameId: null,
                     remainingCycleDuration: null,
                     isPaused: false,
+                    hasBeenShown: false,
+                    trackedAdViews: [],
 
                     init() {
                         if (! Array.isArray(this.ads) || ! this.ads.length) {
@@ -88,6 +94,10 @@
                         this.$watch('show', (visible) => {
                             if (visible && this.canCycle()) {
                                 this.startCycle(this.cycleDuration)
+                            }
+
+                            if (visible) {
+                                this.trackShow()
 
                                 return
                             }
@@ -226,6 +236,8 @@
                     },
 
                     hide() {
+                        this.trackEvent('Closed sticky carousel')
+
                         this.show = false
                         this.dismissedUntil = Date.now() + 24 * 60 * 60 * 1000
                         this.stopCycleCompletely()
@@ -245,6 +257,8 @@
                         if (customAds?.length) {
                             this.ads = customAds
                             this.currentIndex = 0
+                            this.trackedAdViews = []
+                            this.hasBeenShown = false
 
                             this.stopCycleCompletely()
                             this.scrollToCurrent()
@@ -292,6 +306,52 @@
 
                     canCycle() {
                         return Array.isArray(this.ads) && this.ads.length > 1
+                    },
+
+                    trackShow() {
+                        if (this.hasBeenShown) {
+                            return
+                        }
+
+                        this.hasBeenShown = true
+
+                        this.trackEvent('Sticky carousel shown', {
+                            ads: this.ads.length,
+                        })
+                    },
+
+                    trackAdView(ad, index) {
+                        if (this.trackedAdViews.includes(index)) {
+                            return
+                        }
+
+                        this.trackedAdViews.push(index)
+
+                        this.trackEvent('Sticky carousel ad shown', {
+                            title: ad?.title ?? '',
+                            position: (index ?? 0) + 1,
+                        })
+                    },
+
+                    trackAdClick(ad) {
+                        this.trackEvent('Sticky carousel ad clicked', {
+                            title: ad?.title ?? '',
+                            url: ad?.url ?? '',
+                        })
+                    },
+
+                    trackEvent(eventName, meta = null) {
+                        if (typeof pirsch !== 'function') {
+                            return
+                        }
+
+                        if (meta && Object.keys(meta).length) {
+                            pirsch(eventName, { meta })
+
+                            return
+                        }
+
+                        pirsch(eventName)
                     },
 
                     extractAds(detail) {

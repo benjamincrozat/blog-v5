@@ -221,11 +221,19 @@
                     ]);
                     @endphp
 
-                    <x-btn @click="$nextTick(() => window.dispatchEvent(new CustomEvent('force-sticky-carousel', { detail: { ads: {{ $demoStickyCarouselAdsJson }} } })))">
+                    <x-btn
+                        @click="$nextTick(() => window.dispatchEvent(new CustomEvent('force-sticky-carousel', { detail: { ads: {{ $demoStickyCarouselAdsJson }} } })))"
+                        data-pirsch-event="Clicked sticky carousel demo"
+                    >
                         Show the sticky carousel
                     </x-btn>
-                    
-                    <x-btn primary href="{{ route('checkout.start', 'sticky_carousel') }}">
+
+                    <x-btn
+                        primary
+                        href="{{ route('checkout.start', 'sticky_carousel') }}"
+                        data-pirsch-event="Clicked sticky carousel checkout"
+                        data-pirsch-meta-product="Sticky carousel"
+                    >
                         Get started
                     </x-btn>
                 </div>
