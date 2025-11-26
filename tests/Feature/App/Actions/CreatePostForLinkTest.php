@@ -19,50 +19,7 @@ it('creates a post for a pending link and soft-deletes previous post', function 
     $oldPost = Post::factory()->create(['user_id' => $admin->id]);
     $link = Link::factory()->create(['post_id' => $oldPost->id]);
 
-    $payload = json_encode([
-        'title' => 'Sample title',
-        'content' => 'Sample content',
-        'description' => 'Sample description',
-    ]);
-
-    OpenAI::fake([
-        CreateResponse::fake([
-            'text' => [
-                'format' => [
-                    'type' => 'json_schema',
-                    'name' => 'blog_post',
-                    'strict' => true,
-                    'schema' => [
-                        'type' => 'object',
-                        'properties' => [
-                            'title' => ['type' => 'string'],
-                            'content' => ['type' => 'string'],
-                            'description' => ['type' => 'string'],
-                        ],
-                        'required' => ['title', 'content', 'description'],
-                        'additionalProperties' => false,
-                    ],
-                ],
-            ],
-            'output' => [
-                [
-                    'type' => 'message',
-                    'status' => 'completed',
-                    'role' => 'assistant',
-                    'content' => [[
-                        'type' => 'output_text',
-                        'text' => $payload,
-                        'annotations' => [],
-                    ]],
-                ],
-                [
-                    'type' => 'web_search_call',
-                    'id' => 'ws_dummy',
-                    'status' => 'completed',
-                ],
-            ],
-        ]),
-    ]);
+    fakeBlogPostResponse(blogPostPayload());
     Bus::fake();
 
     $post = app(CreatePostForLink::class)->create($link);
@@ -87,50 +44,11 @@ it('creates a post for an approved link and uses approval date as published_at',
     $approvedAt = now()->subDay();
     $link = Link::factory()->approved()->create(['is_approved' => $approvedAt]);
 
-    $payload = json_encode([
+    fakeBlogPostResponse(blogPostPayload([
         'title' => 'Approved title',
         'content' => 'Approved content',
         'description' => 'Approved description',
-    ]);
-
-    OpenAI::fake([
-        CreateResponse::fake([
-            'text' => [
-                'format' => [
-                    'type' => 'json_schema',
-                    'name' => 'blog_post',
-                    'strict' => true,
-                    'schema' => [
-                        'type' => 'object',
-                        'properties' => [
-                            'title' => ['type' => 'string'],
-                            'content' => ['type' => 'string'],
-                            'description' => ['type' => 'string'],
-                        ],
-                        'required' => ['title', 'content', 'description'],
-                        'additionalProperties' => false,
-                    ],
-                ],
-            ],
-            'output' => [
-                [
-                    'type' => 'message',
-                    'status' => 'completed',
-                    'role' => 'assistant',
-                    'content' => [[
-                        'type' => 'output_text',
-                        'text' => $payload,
-                        'annotations' => [],
-                    ]],
-                ],
-                [
-                    'type' => 'web_search_call',
-                    'id' => 'ws_dummy',
-                    'status' => 'completed',
-                ],
-            ],
-        ]),
-    ]);
+    ]));
     Bus::fake();
 
     $post = app(CreatePostForLink::class)->create($link);
@@ -144,39 +62,7 @@ it('rolls back and throws on invalid model output', function () {
     $oldPost = Post::factory()->create(['user_id' => $admin->id]);
     $link = Link::factory()->create(['post_id' => $oldPost->id]);
 
-    $payload = 'not-json';
-
-    OpenAI::fake([
-        CreateResponse::fake([
-            'text' => [
-                'format' => [
-                    'type' => 'json_schema',
-                    'name' => 'blog_post',
-                    'strict' => true,
-                    'schema' => [
-                        'type' => 'object',
-                        'properties' => [
-                            'title' => ['type' => 'string'],
-                            'content' => ['type' => 'string'],
-                            'description' => ['type' => 'string'],
-                        ],
-                        'required' => ['title', 'content', 'description'],
-                        'additionalProperties' => false,
-                    ],
-                ],
-            ],
-            'output' => [[
-                'type' => 'message',
-                'status' => 'completed',
-                'role' => 'assistant',
-                'content' => [[
-                    'type' => 'output_text',
-                    'text' => $payload,
-                    'annotations' => [],
-                ]],
-            ]],
-        ]),
-    ]);
+    fakeBlogPostResponse('not-json', includeSearch: false);
     Bus::fake();
 
     expect(fn () => app(CreatePostForLink::class)->create($link))
@@ -184,6 +70,7 @@ it('rolls back and throws on invalid model output', function () {
 
     // No new posts created and link unchanged.
     assertDatabaseCount('posts', 1);
+
     assertDatabaseHas('links', [
         'id' => $link->id,
         'post_id' => $oldPost->id,
@@ -191,3 +78,87 @@ it('rolls back and throws on invalid model output', function () {
 
     Bus::assertNotDispatched(RecommendPosts::class);
 });
+
+it('throws when Benjamin Crozat user is missing', function () {
+    $link = Link::factory()->create();
+
+    fakeBlogPostResponse(blogPostPayload([
+        'title' => 'Missing owner title',
+        'content' => 'Missing owner content',
+        'description' => 'Missing owner description',
+    ]), 'ws_missing_owner');
+    Bus::fake();
+
+    expect(fn () => app(CreatePostForLink::class)->create($link))
+        ->toThrow(RuntimeException::class, 'Benjamin Crozat user not found.');
+
+    assertDatabaseCount('posts', 0);
+
+    assertDatabaseHas('links', [
+        'id' => $link->id,
+        'post_id' => null,
+    ]);
+
+    Bus::assertNotDispatched(RecommendPosts::class);
+});
+
+function blogPostPayload(array $overrides = []) : string
+{
+    return json_encode(array_merge([
+        'title' => 'Sample title',
+        'content' => 'Sample content',
+        'description' => 'Sample description',
+    ], $overrides));
+}
+
+function fakeBlogPostResponse(
+    string $text, string $searchId = 'ws_dummy', bool $includeSearch = true
+) : void {
+    $output = [[
+        'type' => 'message',
+        'status' => 'completed',
+        'role' => 'assistant',
+        'content' => [[
+            'type' => 'output_text',
+            'text' => $text,
+            'annotations' => [],
+        ]],
+    ]];
+
+    if ($includeSearch) {
+        $output[] = [
+            'type' => 'web_search_call',
+            'id' => $searchId,
+            'status' => 'completed',
+        ];
+    }
+
+    OpenAI::fake([
+        CreateResponse::fake([
+            'text' => [
+                'format' => blogPostResponseFormat(),
+            ],
+            'output' => $output,
+        ]),
+    ]);
+}
+
+// Keeps the OpenAI schema definition in one place for the suite.
+function blogPostResponseFormat() : array
+{
+    return [
+        'type' => 'json_schema',
+        'name' => 'blog_post',
+        'strict' => true,
+        'schema' => [
+            'type' => 'object',
+            'properties' => [
+                'title' => ['type' => 'string'],
+                'content' => ['type' => 'string'],
+                'description' => ['type' => 'string'],
+            ],
+            'required' => ['title', 'content', 'description'],
+            'additionalProperties' => false,
+        ],
+    ];
+}
