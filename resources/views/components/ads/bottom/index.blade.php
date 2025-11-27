@@ -7,7 +7,7 @@
     }}
     x-cloak
     x-data="data()"
-    x-show="show"
+    x-show="show && ads.length"
     x-transition:enter="transition ease-out duration-600"
     x-transition:enter-start="opacity-0 translate-y-4"
     x-transition:enter-end="opacity-100 translate-y-0"
