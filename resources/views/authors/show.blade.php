@@ -17,7 +17,7 @@ $description = Str::limit(
                 src="{{ $author->avatar }}"
                 alt="{{ $author->name }}"
                 class="mx-auto mt-1 rounded-full size-16"
-            >
+            />
 
             <h1 class="mt-2 font-semibold text-center text-xl/tight">
                 {{ $author->name }}
@@ -40,31 +40,31 @@ $description = Str::limit(
     <x-section title="Articles by {{ $author->name }}" class="mt-12 md:mt-16">
         @if ($posts->isNotEmpty())
             <x-posts-grid :$posts />
+
+            <x-pagination
+                :paginator="$posts"
+                class="mt-16"
+            />
         @else
             <p class="-mt-4 text-center text-gray-500">
                 So far, {{ $author->name }} didn't write any article.
             </p>
         @endif
-
-        <x-pagination
-            :paginator="$posts"
-            class="mt-16"
-        />
     </x-section>
 
     <x-section title="Links sent by {{ $author->name }}" class="mt-12 md:mt-16">
         @if ($links->isNotEmpty())
             <x-links-grid :$links />
+
+            <x-pagination
+                :paginator="$links"
+                class="mt-16"
+            />
         @else
             <p class="-mt-4 text-center text-gray-500">
                 So far, {{ $author->name }} didn't send any link.
             </p>
         @endif
-
-        <x-pagination
-            :paginator="$links"
-            class="mt-16"
-        />
     </x-section>
 
     <script type="application/ld+json">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Posts;
 
+use App\Models\Job;
 use App\Models\Post;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -40,6 +41,8 @@ class ShowPostController extends Controller
                 ->whereRelation('user', 'github_login', '!=', 'benjamincrozat')
                 ->latest()
                 ->first(),
+
+            'latestJobs' => Job::query()->limit(5)->get(),
         ]);
     }
 }

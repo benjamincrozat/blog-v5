@@ -1,9 +1,16 @@
-@props(['job'])
+@props([
+    'job',
+    'minimal' => false,
+])
 
-<div {{ $attributes->class('flex items-center gap-4 md:gap-6') }}>
-    <div class="flex-none size-12 rounded-full ring-1 ring-black/10 grid place-items-center">
-        <x-heroicon-o-building-office class="text-gray-500 size-6" />
-    </div>
+<div {{ $attributes->class([
+    'flex items-start gap-4 md:gap-6' => empty($minimal),
+]) }}>
+    @empty($minimal)
+        <div class="flex-none size-10 mt-1 rounded-full ring-1 ring-black/10 grid place-items-center">
+            <x-heroicon-o-building-office class="text-gray-500 size-4.5" />
+        </div>
+    @endempty
 
     <div class="grow">
         <div class="flex gap-4 md:gap-6 justify-between">
@@ -12,7 +19,7 @@
             </p>
 
             <p class="text-gray-500 flex-none">
-                {{ $job->created_at->diffForHumans() }}
+                {{ $job->created_at->diffForHumans(short: $minimal) }}
             </p>
         </div>
 

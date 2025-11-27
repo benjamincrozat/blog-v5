@@ -23,7 +23,7 @@ Route::get('/', HomeController::class)
 Route::get('/blog', ListPostsController::class)
     ->name('posts.index');
 
-Route::get('/authors/{user:slug}', ShowAuthorController::class)
+Route::get('/authors/{slug}', ShowAuthorController::class)
     ->name('authors.show');
 
 Route::get('/categories', ListCategoriesController::class)

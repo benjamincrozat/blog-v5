@@ -236,7 +236,7 @@
                     this.trackEvent('Closed sticky carousel')
 
                     this.show = false
-                    this.dismissedUntil = Date.now() + 24 * 60 * 60 * 1000
+                    this.dismissedUntil = Date.now() + 30 * 24 * 60 * 60 * 1000
                     this.stopCycleCompletely()
                 },
 

@@ -8,7 +8,7 @@
 >
     <div @class([
         'container',
-        '2xl:max-w-(--breakpoint-xl) grid lg:grid-cols-12 gap-16 lg:gap-12' => ! $post->is_commercial,
+        'grid lg:grid-cols-12 gap-16 lg:gap-12' => ! $post->is_commercial,
         'lg:max-w-(--breakpoint-md)' => $post->is_commercial,
     ])>
         <div @class([
@@ -356,6 +356,20 @@
                                     </a>
                                 </p>
                             </div>
+                        </div>
+                    </div>
+                @endif
+
+                @if ($latestJobs)
+                    <div class="hidden mt-16 lg:block">
+                        <p class="font-bold tracking-widest text-black uppercase text-balance">
+                            Latest jobs
+                        </p>
+
+                        <div class="grid gap-8 mt-4">
+                            @foreach ($latestJobs as $job)
+                                <x-compact-job :job="$job" :minimal="true" />
+                            @endforeach
                         </div>
                     </div>
                 @endif

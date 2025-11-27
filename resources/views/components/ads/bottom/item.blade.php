@@ -1,10 +1,14 @@
+@php
+$domain = preg_replace('/https?:\/\//', '', config('app.url'));
+@endphp
+
 <a
     {{
         $attributes
             ->class('flex items-start gap-4 sm:gap-6 basis-full shrink-0 snap-center px-4 pb-4 sm:px-6')
             ->merge([
-                'target' => '_blank',
                 'x-bind:href' => 'ad.url',
+                'x-bind:target' => "ad.url.includes('$domain') ? null : '_blank'",
                 'x-bind:data-ad-index' => 'index',
                 'x-on:click' => 'trackAdClick(ad)',
                 'x-intersect.once' => 'trackAdView(ad, index)',

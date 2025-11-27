@@ -106,15 +106,7 @@
 
         @empty($hideStickyCarousel)
             @php
-                $bottomAds = [
-                    [
-                        'icon' => '<img src="https://avatars.githubusercontent.com/u/3613731?v=4" class="rounded-full size-8" />',
-                        'title' => 'Limited time Black Friday&nbsp;/&nbsp;Cyber Monday offers',
-                        'description' => 'I gathered the best deals for developers from across the web. Get them before they\'re gone!',
-                        'url' => 'https://benjamincrozat.com/2025-black-friday-cyber-monday-deals',
-                        'cta' => 'Check&nbsp;prices',
-                    ],
-                ];
+                $bottomAds = [];
             @endphp
 
             <x-ads.bottom :ads="$bottomAds" />
