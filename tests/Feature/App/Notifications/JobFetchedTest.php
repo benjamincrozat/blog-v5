@@ -4,34 +4,53 @@ use App\Models\Job;
 use App\Models\User;
 use App\Notifications\JobFetched;
 use Illuminate\Support\HtmlString;
+use Illuminate\Notifications\Messages\MailMessage;
 
 it('renders as an email', function () {
-    $job = Job::factory()->create();
-
-    $rendered = (new JobFetched($job))
-        ->toMail(User::factory()->create())
-        ->render();
-
-    expect($rendered)->toBeInstanceOf(HtmlString::class);
+    expect(jobFetchedMail()->render())->toBeInstanceOf(HtmlString::class);
 });
 
-it('has the expected subject, content, and action', function () {
+it('uses a descriptive subject line', function () {
+    expect(jobFetchedMail()->subject)->toBe('A new job was just fetched');
+});
+
+it('uses a single intro line', function () {
+    expect(jobFetchedMail()->introLines)->toHaveCount(1);
+});
+
+it('mentions the job title in the intro line', function () {
     $job = Job::factory()->create(['title' => 'Senior Laravel Developer']);
 
-    $message = (new JobFetched($job))->toMail(User::factory()->create());
-
-    expect($message->subject)->toBe('A new job was just fetched');
-    expect($message->introLines)->toHaveCount(1);
-    expect($message->introLines[0])->toContain('Senior Laravel Developer');
-    expect($message->actionText)->toBe('Check Job');
-    expect($message->actionUrl)->toBe(route('jobs.show', $job));
+    expect(jobFetchedMail($job)->introLines[0])->toContain('Senior Laravel Developer');
 });
 
-it('sends via the mail channel and is queueable', function () {
+it('labels the call-to-action button', function () {
+    expect(jobFetchedMail()->actionText)->toBe('Check Job');
+});
+
+it('links the call-to-action button to the job page', function () {
+    $job = Job::factory()->create();
+
+    expect(jobFetchedMail($job)->actionUrl)->toBe(route('jobs.show', $job));
+});
+
+it('sends via the mail channel', function () {
     $job = Job::factory()->create();
 
     $notification = new JobFetched($job);
 
     expect($notification->via(User::factory()->create()))->toBe(['mail']);
-    expect($notification)->toBeInstanceOf(\Illuminate\Contracts\Queue\ShouldQueue::class);
 });
+
+it('queues the notification for async sending', function () {
+    $job = Job::factory()->create();
+
+    expect(new JobFetched($job))->toBeInstanceOf(\Illuminate\Contracts\Queue\ShouldQueue::class);
+});
+
+function jobFetchedMail(?Job $job = null) : MailMessage
+{
+    $job ??= Job::factory()->create();
+
+    return (new JobFetched($job))->toMail(User::factory()->create());
+}

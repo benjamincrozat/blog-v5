@@ -117,25 +117,33 @@ it('throws when file size header is missing', function () {
         ->toThrow(UnableToRetrieveMetadata::class);
 });
 
-it('handles directories, visibility, listing, and URL formatting', function () {
+it('reports directories as unsupported', function () {
     $adapter = new CloudflareImagesAdapter('test-token', 'acct_123', 'hash_abc', 'public');
 
-    // Directories are not supported.
     expect($adapter->directoryExists('any'))->toBeFalse();
     expect(fn () => $adapter->createDirectory('any', new Config))
         ->toThrow(UnableToCreateDirectory::class);
     expect(fn () => $adapter->deleteDirectory('any'))
         ->toThrow(UnableToDeleteDirectory::class);
+});
 
-    // Visibility is always public.
+it('enforces public visibility', function () {
+    $adapter = new CloudflareImagesAdapter('test-token', 'acct_123', 'hash_abc', 'public');
+
     expect(fn () => $adapter->setVisibility('any', 'private'))
         ->toThrow(InvalidVisibilityProvided::class);
     expect($adapter->visibility('any')->visibility())->toBe('public');
+});
 
-    // No listing support for now.
+it('returns empty listing results', function () {
+    $adapter = new CloudflareImagesAdapter('test-token', 'acct_123', 'hash_abc', 'public');
+
     expect(iterator_to_array($adapter->listContents('any', false)))->toBe([]);
+});
 
-    // URL formatting.
+it('formats Cloudflare URLs with the configured variant', function () {
+    $adapter = new CloudflareImagesAdapter('test-token', 'acct_123', 'hash_abc', 'public');
+
     expect($adapter->getUrl('folder/image.jpg'))
         ->toBe('https://imagedelivery.net/hash_abc/folder/image.jpg/public');
 });
@@ -178,7 +186,7 @@ it('reads an uploaded image both as a string and as a stream using the Cloudflar
     expect($disk->delete($id))->toBeTrue();
 });
 
-it('throws the proper exceptions for unsupported operations on the Cloudflare Images adapter', function () {
+it('does not allow moving files', function () {
     /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
     $disk = Storage::disk('cloudflare-images');
 
@@ -187,15 +195,17 @@ it('throws the proper exceptions for unsupported operations on the Cloudflare Im
 
     expect(fn () => $adapter->move('source', 'destination', new \League\Flysystem\Config))
         ->toThrow(\League\Flysystem\UnableToMoveFile::class);
+});
+
+it('does not allow copying files', function () {
+    /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
+    $disk = Storage::disk('cloudflare-images');
+
+    /** @var \App\Filesystem\CloudflareImagesAdapter $adapter */
+    $adapter = $disk->getAdapter();
 
     expect(fn () => $adapter->copy('source', 'destination', new \League\Flysystem\Config))
         ->toThrow(\League\Flysystem\UnableToCopyFile::class);
-
-    expect(fn () => $adapter->setVisibility('source', 'private'))
-        ->toThrow(\League\Flysystem\InvalidVisibilityProvided::class);
-
-    expect(fn () => $adapter->createDirectory('foo', new \League\Flysystem\Config))
-        ->toThrow(\League\Flysystem\UnableToCreateDirectory::class);
 });
 
 it('throws when reading content fails', function () {
@@ -220,15 +230,20 @@ it('throws when streaming content fails', function () {
         ->toThrow(\League\Flysystem\UnableToReadFile::class);
 });
 
-it('returns empty headers when head request fails', function () {
-    $adapter = new CloudflareImagesAdapter('token', 'acct', 'hash', 'public');
-
+it('returns null mime type when head request fails', function () {
     Http::fake([
         'https://imagedelivery.net/*' => Http::response('', 500),
     ]);
 
-    expect($adapter->mimeType('missing.jpg')->mimeType())->toBeNull();
-    expect($adapter->lastModified('missing.jpg')->lastModified())->toBeNull();
+    expect(adapter()->mimeType('missing.jpg')->mimeType())->toBeNull();
+});
+
+it('returns null last modified timestamp when head request fails', function () {
+    Http::fake([
+        'https://imagedelivery.net/*' => Http::response('', 500),
+    ]);
+
+    expect(adapter()->lastModified('missing.jpg')->lastModified())->toBeNull();
 });
 
 class FaultyTempFileAdapter extends CloudflareImagesAdapter
@@ -240,8 +255,12 @@ class FaultyTempFileAdapter extends CloudflareImagesAdapter
 }
 
 it('throws when a temporary file cannot be created during write', function () {
-    $adapter = new FaultyTempFileAdapter('token', 'acct', 'hash', 'public');
-
-    expect(fn () => $adapter->write('foo.jpg', 'contents', new Config))
-        ->toThrow(\League\Flysystem\UnableToWriteFile::class);
+    expect(fn () => (new FaultyTempFileAdapter('token', 'acct', 'hash', 'public'))
+        ->write('foo.jpg', 'contents', new Config)
+    )->toThrow(\League\Flysystem\UnableToWriteFile::class);
 });
+
+function adapter() : CloudflareImagesAdapter
+{
+    return new CloudflareImagesAdapter('token', 'acct', 'hash', 'public');
+}

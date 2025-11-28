@@ -4,7 +4,7 @@ use App\Jobs\CreateJob;
 use App\Scraper\Webpage;
 use Facades\App\Actions\CreateJob as CreateJobAction;
 
-it('invokes the action with provided data', function () {
+it('invokes the CreateJob action with provided data', function () {
     $webpage = new Webpage(
         'https://example.com/jobs/789',
         'https://example.com/jobs/789/logo.png',

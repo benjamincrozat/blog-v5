@@ -6,6 +6,7 @@ alwaysApply: true
 
 - Always import namespaces.
 - Take inspiration from the codebase.
+- Tests must be as granular as possible.
 - Avoid one letter or ambiguous variable names.
 - Don't create a variable if it's used only once.
 - Comments start with a capital letter and end with a period.

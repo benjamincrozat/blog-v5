@@ -181,7 +181,9 @@ it('scopes published posts', function () {
 
     Post::factory()->create(['published_at' => null]);
 
-    expect(Post::query()->published()->get())->toHaveCount(1);
+    $publishedCount = Post::query()->published()->count();
+
+    expect($publishedCount)->toBe(1);
 });
 
 it('scopes unpublished posts', function () {
@@ -189,7 +191,9 @@ it('scopes unpublished posts', function () {
 
     Post::factory()->create(['published_at' => now()]);
 
-    expect(Post::query()->unpublished()->get())->toHaveCount(1);
+    $unpublishedCount = Post::query()->unpublished()->count();
+
+    expect($unpublishedCount)->toBe(1);
 });
 
 it('belongs to a user', function () {
@@ -244,21 +248,20 @@ it('calculates the read_time attribute based on word count', function () {
     expect($post->read_time)->toBe(2.0);
 });
 
-it('returns recommended posts with mapped reasons', function () {
-    $recommended = Post::factory()->create();
-
-    $post = Post::factory()->create([
-        'recommendations' => [
-            ['id' => $recommended->id, 'reason' => 'Great follow-up'],
-        ],
-    ]);
+it('returns recommended posts for each stored recommendation id', function () {
+    [$post, $recommended] = createPostWithRecommendation();
 
     $results = $post->recommended_posts;
 
-    expect($results)->not->toBeNull()
-        ->and($results)->toHaveCount(1)
-        ->and($results->first()->is($recommended))->toBeTrue()
-        ->and($results->first()->reason)->toBe('Great follow-up');
+    expect($results)->not->toBeNull();
+    expect($results)->toHaveCount(1);
+    expect($results->first()->is($recommended))->toBeTrue();
+});
+
+it('maps recommendation reasons to each recommended post', function () {
+    [$post] = createPostWithRecommendation('Great follow-up');
+
+    expect($post->recommended_posts->first()->reason)->toBe('Great follow-up');
 });
 
 it('accurately detects if a post has an attached image via hasImage()', function () {
@@ -394,18 +397,33 @@ it('scopes sponsored posts first within a week, then by sponsored_at desc, else 
     ]);
 
     // Query with sponsored ordering then latest published.
-    $list = Post::query()
+    $orderedIds = Post::query()
         ->published()
         ->sponsored()
         ->latest('published_at')
-        ->get();
+        ->pluck('id')
+        ->all();
 
-    // Expect: recent sponsored posts (within a week) listed first.
-    expect($list->first()->is($recentlySponsored))->toBeTrue();
-    expect($list->get(1)->is($olderButRecentlySponsored))->toBeTrue();
-
-    // Posts not boosted by sponsorship follow. Between $normalPosts
-    // (1 day ago) and $sponsoredAWhileAgo (8 days), normal comes next.
-    expect($list->get(2)->is($normalPosts))->toBeTrue();
-    expect($list->last()->is($sponsoredAWhileAgo))->toBeTrue();
+    expect($orderedIds)->toBe([
+        $recentlySponsored->id,
+        $olderButRecentlySponsored->id,
+        $normalPosts->id,
+        $sponsoredAWhileAgo->id,
+    ]);
 });
+
+/**
+ * @return array{0: \App\Models\Post, 1: \App\Models\Post}
+ */
+function createPostWithRecommendation(string $reason = 'Great follow-up') : array
+{
+    $recommended = Post::factory()->create();
+
+    $post = Post::factory()->create([
+        'recommendations' => [
+            ['id' => $recommended->id, 'reason' => $reason],
+        ],
+    ]);
+
+    return [$post, $recommended];
+}
