@@ -14,6 +14,7 @@ class ShowJobController extends Controller
         return view('jobs.show', [
             'job' => $job,
             'jobPostingSchema' => JobPostingSchema::fromJob($job),
+            'otherJobs' => Job::query()->where('id', '!=', $job->id)->inRandomOrder()->limit(10)->get(),
         ]);
     }
 }
