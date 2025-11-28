@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Jobs\Index;
+use App\Livewire\Newsletter;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\LinkWizard\LinkWizard;
 use App\Http\Controllers\HomeController;
@@ -39,14 +40,17 @@ Route::get('/links/create', LinkWizard::class)
 Route::get('/links', ListLinksController::class)
     ->name('links.index');
 
-Route::view('/tools', 'tools.index')
-    ->name('tools.index');
-
 Route::get('/jobs', Index::class)
     ->name('jobs.index');
 
 Route::get('/jobs/{job:slug}', ShowJobController::class)
     ->name('jobs.show');
+
+Route::view('/tools', 'tools.index')
+    ->name('tools.index');
+
+Route::get('/newsletter', Newsletter::class)
+    ->name('newsletter');
 
 Route::get('/advertise', ShowAdvertisingLandingPageController::class)
     ->name('advertise');

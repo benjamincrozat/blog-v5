@@ -1,6 +1,6 @@
 <div>
     @if (! empty($label))
-        <label for="{{ $id }}" class="inline-block mb-2 font-medium">
+        <label for="{{ $id }}" class="inline-block mb-1 font-medium">
             {{ $label }}@if (! empty($required))*@endif
         </label>
     @endif

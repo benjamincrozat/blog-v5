@@ -1,12 +1,12 @@
 <x-app :title="config('app.name')">
-    <div class="container text-center">
+    <div class="container xl:max-w-(--breakpoint-lg) text-center">
         <div class="font-medium tracking-tight text-black text-4xl/none md:text-5xl lg:text-7xl text-balance">
-            <span class="text-blue-600">{{ Number::format($visitors) }}</span> monthly visitors read my blog
+            The modern hub for
+            <span class="text-blue-600">{{ Number::format($visitors) }}</span> monthly developers
         </div>
 
-        <div class="mt-5 tracking-tight text-black/75 text-lg/tight sm:text-xl/tight md:text-2xl/tight md:mt-8">
-            No matter how senior,<br />
-            I have something for you. Ready?
+        <div class="mt-5 text-balance tracking-tight text-black/75 text-lg/tight sm:text-xl/tight md:text-2xl/tight md:mt-8">
+            Let me help you survive in this industry without getting replaced by AI. I'll tell you about the latest news, techniques, and tools.
         </div>
 
         <div class="flex gap-2 justify-center items-center mt-7 text-center md:mt-11">

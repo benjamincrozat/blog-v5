@@ -62,6 +62,14 @@
             Tools
         </x-nav.item>
 
+        <x-nav.item
+            active-icon="heroicon-s-envelope-open"
+            icon="heroicon-o-envelope-open"
+            href="{{ route('newsletter') }}"
+        >
+            Digest
+        </x-nav.item>
+
         @auth
             <x-dropdown>
                 <x-slot:btn>
