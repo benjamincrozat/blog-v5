@@ -19,7 +19,17 @@ class IngestJobFeedsCommand extends Command
 
     public function handle() : void
     {
-        $feeds = (array) (config('job_feeds') ?? []);
+        $config = config('job_feeds') ?? [];
+
+        if (array_is_list($config)) {
+            $feeds = $config;
+            $globalLimit = 10;
+            $perSourceLimit = 2;
+        } else {
+            $feeds = (array) ($config['feeds'] ?? []);
+            $globalLimit = (int) ($config['global_limit'] ?? 10);
+            $perSourceLimit = (int) ($config['per_source_limit'] ?? 2);
+        }
 
         $feedFilter = (string) ($this->argument('feed') ?? '');
         $isDryRun = (bool) $this->option('dry-run');
@@ -44,9 +54,6 @@ class IngestJobFeedsCommand extends Command
             })
             ->shuffle()
             ->values();
-
-        $globalLimit = 10;
-        $perSourceLimit = 2;
 
         $queuedItems = collect();
         $queuedByFeed = [];

@@ -134,3 +134,32 @@ it('checks if it is declined', function () {
 
     expect($link->isDeclined())->toBeTrue();
 });
+
+it('maps searchable attributes and only indexes approved links', function () {
+    $user = User::factory()->create([
+        'name' => 'Jane Author',
+    ]);
+
+    $approvedLink = Link::factory()->for($user)->create([
+        'title' => 'Product Hunt',
+        'description' => 'A curated tool.',
+        'url' => 'https://example.com/tool',
+        'is_approved' => now(),
+        'is_declined' => null,
+    ]);
+
+    expect($approvedLink->toSearchableArray())->toMatchArray([
+        'user_name' => 'Jane Author',
+        'title' => 'Product Hunt',
+        'description' => 'A curated tool.',
+        'url' => 'https://example.com/tool',
+    ]);
+    expect($approvedLink->shouldBeSearchable())->toBeTrue();
+
+    $pendingLink = Link::factory()->create([
+        'is_approved' => null,
+        'is_declined' => null,
+    ]);
+
+    expect($pendingLink->shouldBeSearchable())->toBeFalse();
+});

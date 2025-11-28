@@ -42,3 +42,19 @@ it('ensures the URL is unique', function () {
         ->call('submit')
         ->assertHasErrors(['url' => 'unique']);
 });
+
+it('automatically advances when mounting with a pre-filled url', function () {
+    Http::fake();
+
+    livewire(FirstStep::class, ['url' => 'https://example.com'])
+        ->assertDispatched('nextStep');
+});
+
+it('surfaces a validation error when the URL cannot be reached', function () {
+    Http::fake(fn () => throw new \Illuminate\Http\Client\ConnectionException);
+
+    livewire(FirstStep::class)
+        ->set('url', 'https://example.com')
+        ->call('submit')
+        ->assertHasErrors(['url']);
+});

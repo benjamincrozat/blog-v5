@@ -146,6 +146,18 @@ it('updates existing redirects to avoid multi-hop chains', function () {
     ]);
 });
 
+it('does not create redirects when the new slug is empty', function () {
+    $post = Post::factory()->create([
+        'slug' => 'original',
+    ]);
+
+    assertDatabaseCount(Redirect::class, 0);
+
+    $post->update(['slug' => '']);
+
+    assertDatabaseCount(Redirect::class, 0);
+});
+
 it('casts the published_at attribute to a datetime', function () {
     $post = Post::factory()->create();
 
@@ -336,6 +348,12 @@ it('has many comments and counts them automatically', function () {
 
     expect($post->comments)->toHaveCount(3)
         ->and($post->comments_count)->toBe(3);
+});
+
+it('has many reports', function () {
+    $post = Post::factory()->hasReports(2)->create();
+
+    expect($post->reports)->toHaveCount(2);
 });
 
 it('has one link', function () {

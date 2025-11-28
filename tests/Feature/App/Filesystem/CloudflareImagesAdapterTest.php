@@ -197,3 +197,51 @@ it('throws the proper exceptions for unsupported operations on the Cloudflare Im
     expect(fn () => $adapter->createDirectory('foo', new \League\Flysystem\Config))
         ->toThrow(\League\Flysystem\UnableToCreateDirectory::class);
 });
+
+it('throws when reading content fails', function () {
+    $adapter = new CloudflareImagesAdapter('token', 'acct', 'hash', 'public');
+
+    Http::fake([
+        'https://imagedelivery.net/*' => Http::response('', 404),
+    ]);
+
+    expect(fn () => $adapter->read('missing.jpg'))
+        ->toThrow(\League\Flysystem\UnableToReadFile::class);
+});
+
+it('throws when streaming content fails', function () {
+    $adapter = new CloudflareImagesAdapter('token', 'acct', 'hash', 'public');
+
+    Http::fake([
+        'https://imagedelivery.net/*' => Http::response('', 500),
+    ]);
+
+    expect(fn () => $adapter->readStream('missing.jpg'))
+        ->toThrow(\League\Flysystem\UnableToReadFile::class);
+});
+
+it('returns empty headers when head request fails', function () {
+    $adapter = new CloudflareImagesAdapter('token', 'acct', 'hash', 'public');
+
+    Http::fake([
+        'https://imagedelivery.net/*' => Http::response('', 500),
+    ]);
+
+    expect($adapter->mimeType('missing.jpg')->mimeType())->toBeNull();
+    expect($adapter->lastModified('missing.jpg')->lastModified())->toBeNull();
+});
+
+class FaultyTempFileAdapter extends CloudflareImagesAdapter
+{
+    protected function createTempFile()
+    {
+        return false;
+    }
+}
+
+it('throws when a temporary file cannot be created during write', function () {
+    $adapter = new FaultyTempFileAdapter('token', 'acct', 'hash', 'public');
+
+    expect(fn () => $adapter->write('foo.jpg', 'contents', new Config))
+        ->toThrow(\League\Flysystem\UnableToWriteFile::class);
+});

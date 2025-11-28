@@ -43,7 +43,7 @@ class CloudflareImagesAdapter implements FilesystemAdapter
     /* @inheritdoc */
     public function write(string $path, string $contents, Config $config) : void
     {
-        $tmp = tmpfile();
+        $tmp = $this->createTempFile();
 
         if (false === $tmp) {
             throw UnableToWriteFile::atLocation($path, 'Unable to create temporary file.');
@@ -188,6 +188,16 @@ class CloudflareImagesAdapter implements FilesystemAdapter
     public function copy(string $source, string $destination, Config $config) : void
     {
         throw UnableToCopyFile::because($source, $destination, 'Cloudflare Images does not support copying files.');
+    }
+
+    /**
+     * Create a temporary file resource.
+     *
+     * @return resource|false
+     */
+    protected function createTempFile()
+    {
+        return tmpfile();
     }
 
     /**

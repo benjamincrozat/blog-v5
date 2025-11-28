@@ -21,7 +21,8 @@
             <x-btn
                 primary
                 size="md"
-                href="#popular"
+                wire:navigate
+                href="{{ route('posts.index') }}"
             >
                 Start reading
             </x-btn>

@@ -7,6 +7,46 @@ use App\Enums\JobSeniority;
 use App\Livewire\Jobs\Index;
 use App\Enums\EmploymentStatus;
 
+class TestableJobsIndex extends Index
+{
+    public bool $pageReset = false;
+
+    public function setPublicProperty(string $property, $value) : void
+    {
+        $this->{$property} = $value;
+    }
+
+    public function normalize(string $property) : void
+    {
+        $this->normalizeEmptyProperty($property);
+    }
+
+    public function salaryBoundsPublic() : array
+    {
+        return $this->salaryBounds();
+    }
+
+    public function normalizeSalaryPublic(?string $value) : ?int
+    {
+        return $this->normalizeSalary($value);
+    }
+
+    public function hasActiveFiltersPublic() : bool
+    {
+        return $this->hasActiveFilters();
+    }
+
+    public function isSearchingPublic() : bool
+    {
+        return $this->isSearching();
+    }
+
+    public function resetPage($pageName = 'page') : void
+    {
+        $this->pageReset = true;
+    }
+}
+
 it('filters jobs by salary range and setting', function () {
     $matchingJob = Job::factory()->create([
         'title' => 'Fully Remote Senior Laravel Developer',
@@ -101,4 +141,60 @@ it('clears all filters at once', function () {
         ->assertSet('employmentStatus', null)
         ->assertSet('seniority', null)
         ->assertSet('withEquity', false);
+});
+
+it('normalizes empty query-string backed properties', function () {
+    $component = new TestableJobsIndex;
+    $component->setPublicProperty('query', '');
+    $component->normalize('query');
+    expect($component->query)->toBeNull();
+
+    $component->setPublicProperty('minSalary', '');
+    $component->normalize('minSalary');
+    expect($component->minSalary)->toBeNull();
+
+    // Properties outside the allow-list remain untouched.
+    $component->setPublicProperty('withEquity', '');
+    $component->normalize('withEquity');
+    expect($component->withEquity)->toBeFalse();
+});
+
+it('normalizes salary inputs and ignores invalid ranges', function () {
+    $component = new TestableJobsIndex;
+
+    expect($component->normalizeSalaryPublic(null))->toBeNull();
+    expect($component->normalizeSalaryPublic(''))->toBeNull();
+    expect($component->normalizeSalaryPublic('0'))->toBeNull();
+    expect($component->normalizeSalaryPublic('-10'))->toBeNull();
+    expect($component->normalizeSalaryPublic('75000'))->toBe(75000);
+
+    $component->setPublicProperty('minSalary', '90000');
+    $component->setPublicProperty('maxSalary', '80000'); // flipped range.
+
+    [$min, $max] = $component->salaryBoundsPublic();
+
+    expect($min)->toBe(90000);
+    expect($max)->toBeNull();
+});
+
+it('detects active filters and search mode', function () {
+    $component = new TestableJobsIndex;
+
+    expect($component->hasActiveFiltersPublic())->toBeFalse();
+
+    $component->setPublicProperty('withEquity', true);
+    expect($component->hasActiveFiltersPublic())->toBeTrue();
+
+    $component->setPublicProperty('query', 'a');
+    expect($component->isSearchingPublic())->toBeFalse();
+
+    $component->setPublicProperty('query', 'laravel');
+    expect($component->isSearchingPublic())->toBeTrue();
+});
+
+it('ignores pagination updates when the page property changes', function () {
+    $component = new TestableJobsIndex;
+    $component->updated('page');
+
+    expect($component->pageReset)->toBeFalse();
 });

@@ -15,6 +15,28 @@ use function Pest\Laravel\assertDatabaseHas;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\LinkWaitingForValidation;
 
+class TestableSecondStep extends SecondStep
+{
+    public bool $wentBack = false;
+
+    public bool $dispatched = false;
+
+    public function previousStep() : void
+    {
+        $this->wentBack = true;
+    }
+
+    public function dispatch($event, ...$parameters)
+    {
+        $this->dispatched = true;
+
+        return new class
+        {
+            public function self() : void {}
+        };
+    }
+}
+
 it('submits the link and notifies the admin', function () {
     Notification::fake();
 
@@ -58,4 +80,50 @@ it('submits the link and notifies the admin', function () {
 it("doesn't allow guests", function () {
     getJson(route('links.create'))
         ->assertUnauthorized();
+});
+
+it('falls back to previous step when no url is provided on mount', function () {
+    $component = app(TestableSecondStep::class);
+    $component->url = '';
+
+    $component->mount();
+
+    expect($component->wentBack)->toBeTrue();
+    expect($component->dispatched)->toBeTrue();
+});
+
+it('fetches metadata when cache is empty', function () {
+    cache()->forget('embed_' . Str::slug('https://fetch.me', '_'));
+
+    $embed = new class
+    {
+        public int $calls = 0;
+
+        public function get(string $url) : object
+        {
+            $this->calls++;
+
+            return (object) [
+                'image' => 'https://foo.test/image.png',
+                'title' => 'Fetched title',
+                'description' => 'Fetched description',
+            ];
+        }
+    };
+
+    app()->instance(\Embed\Embed::class, $embed);
+
+    livewire(SecondStep::class, ['url' => 'https://fetch.me'])
+        ->call('fetch')
+        ->assertSet('imageUrl', 'https://foo.test/image.png')
+        ->assertSet('title', 'Fetched title')
+        ->assertSet('description', 'Fetched description');
+
+    expect($embed->calls)->toBe(1);
+
+    livewire(SecondStep::class, ['url' => 'https://fetch.me'])
+        ->call('fetch')
+        ->assertSet('title', 'Fetched title');
+
+    expect($embed->calls)->toBe(1);
 });

@@ -2,6 +2,9 @@
 
 use App\Models\Job;
 use App\Jobs\ScrapeJob;
+
+use function Pest\Laravel\artisan;
+
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Http;
 use App\Console\Commands\IngestJobFeedsCommand;
@@ -45,7 +48,7 @@ XML;
 
     Bus::fake();
 
-    $this->artisan(IngestJobFeedsCommand::class)->assertExitCode(0);
+    artisan(IngestJobFeedsCommand::class)->assertExitCode(0);
 
     // Should dispatch only once (the new url) due to dedupe+limit.
     Bus::assertDispatchedTimes(ScrapeJob::class, 1);
@@ -77,7 +80,7 @@ it('skips disabled feeds and handles 500 responses gracefully', function () {
 
     Bus::fake();
 
-    $this->artisan(IngestJobFeedsCommand::class)->assertExitCode(0);
+    artisan(IngestJobFeedsCommand::class)->assertExitCode(0);
 
     // No jobs dispatched.
     Bus::assertNotDispatched(ScrapeJob::class);
@@ -122,7 +125,7 @@ XML;
     Bus::fake();
 
     // Dry-run with filter; should not dispatch any jobs.
-    $this->artisan('app:ingest-job-feeds', ['feed' => 'SecondFeed', '--dry-run' => true])
+    artisan('app:ingest-job-feeds', ['feed' => 'SecondFeed', '--dry-run' => true])
         ->assertExitCode(0);
 
     Bus::assertNotDispatched(ScrapeJob::class);
@@ -133,7 +136,7 @@ XML;
     ]);
 
     // Real run should dispatch once.
-    $this->artisan('app:ingest-job-feeds', ['feed' => 'SecondFeed'])
+    artisan('app:ingest-job-feeds', ['feed' => 'SecondFeed'])
         ->assertExitCode(0);
 
     Bus::assertDispatchedTimes(ScrapeJob::class, 1);
@@ -173,8 +176,117 @@ XML;
 
     Bus::fake();
 
-    $this->artisan(IngestJobFeedsCommand::class)->assertExitCode(0);
+    artisan(IngestJobFeedsCommand::class)->assertExitCode(0);
 
     // Assert two jobs dispatched.
     Bus::assertDispatchedTimes(ScrapeJob::class, 2);
+});
+
+it('warns when a feed is missing its URL', function () {
+    config()->set('job_feeds', [
+        [
+            'name' => 'BrokenFeed',
+            'url' => '',
+            'enabled' => true,
+        ],
+    ]);
+
+    artisan(IngestJobFeedsCommand::class)
+        ->expectsOutput("Skipped feed 'BrokenFeed' because URL is empty.")
+        ->assertExitCode(0);
+});
+
+it('respects configurable global limits and stops processing additional feeds', function () {
+    $xml = <<<'XML'
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Limited</title>
+    <item>
+      <title>Only</title>
+      <link>https://limited.test/only</link>
+      <pubDate>Wed, 01 Oct 2025 01:49:18 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
+XML;
+
+    config()->set('job_feeds', [
+        'global_limit' => 1,
+        'per_source_limit' => 1,
+        'feeds' => [
+            ['name' => 'First', 'url' => 'https://first.example.com/feed', 'enabled' => true],
+            ['name' => 'Second', 'url' => 'https://second.example.com/feed', 'enabled' => true],
+        ],
+    ]);
+
+    Http::fake([
+        'https://first.example.com/feed' => Http::response($xml, 200),
+        'https://second.example.com/feed' => Http::response($xml, 200),
+    ]);
+
+    Bus::fake();
+
+    artisan(IngestJobFeedsCommand::class)->assertExitCode(0);
+
+    Bus::assertDispatchedTimes(ScrapeJob::class, 1);
+    Http::assertSentCount(1);
+});
+
+it('short-circuits all processing when the configured global limit is zero', function () {
+    config()->set('job_feeds', [
+        'global_limit' => 0,
+        'per_source_limit' => 1,
+        'feeds' => [
+            ['name' => 'First', 'url' => 'https://first.example.com/feed', 'enabled' => true],
+        ],
+    ]);
+
+    Http::fake([
+        'https://first.example.com/feed' => Http::response('', 200),
+    ]);
+
+    Bus::fake();
+
+    artisan(IngestJobFeedsCommand::class)->assertExitCode(0);
+
+    Bus::assertNotDispatched(ScrapeJob::class);
+    Http::assertNothingSent();
+});
+
+it('skips remaining feeds when per-source limit prevents queuing more items', function () {
+    $xml = <<<'XML'
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Limited</title>
+    <item>
+      <title>Only</title>
+      <link>https://limited.example.com/only</link>
+      <pubDate>Wed, 01 Oct 2025 01:49:18 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
+XML;
+
+    config()->set('job_feeds', [
+        'global_limit' => 5,
+        'per_source_limit' => 0,
+        'feeds' => [
+            ['name' => 'First', 'url' => 'https://first.example.com/feed', 'enabled' => true],
+            ['name' => 'Second', 'url' => 'https://second.example.com/feed', 'enabled' => true],
+        ],
+    ]);
+
+    Http::fake([
+        'https://first.example.com/feed' => Http::response($xml, 200),
+        'https://second.example.com/feed' => Http::response($xml, 200),
+    ]);
+
+    Bus::fake();
+
+    artisan(IngestJobFeedsCommand::class)->assertExitCode(0);
+
+    Bus::assertNotDispatched(ScrapeJob::class);
+    Http::assertSentCount(1);
 });
