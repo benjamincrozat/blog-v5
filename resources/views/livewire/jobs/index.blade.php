@@ -3,28 +3,26 @@
 </x-slot>
 
 <div>
-    @if (false)
-        <div class="container text-center mb-16 md:mb-24">
-            <h1 class="px-4 font-medium tracking-tight text-center text-black text-4xl/none md:text-5xl lg:text-7xl text-balance">
-                AI won't replace you.<br />
-                Apply to jobs.
-            </h1>
+    <div class="container text-center mb-16 md:mb-24">
+        <h1 class="px-4 font-medium tracking-tight text-center text-black text-4xl/none md:text-5xl lg:text-7xl text-balance">
+            AI won't replace you.<br />
+            Apply to jobs.
+        </h1>
 
-            <p class="text-xl text-balance md:text-2xl mt-8 md:mt-12">
-                I gathered <strong class="font-medium text-black">{{ $recentJobsCount }} new job offers</strong> during the last 7 days.
-            </p>
+        <p class="text-xl text-balance md:text-2xl mt-8 md:mt-12">
+            I gathered <strong class="font-medium text-black">{{ $recentJobsCount }} new job offers</strong> during the last 7 days.
+        </p>
 
-            <div class="flex gap-4 justify-center mt-8 md:mt-12">
-                <x-btn href="#jobs">
-                    Browse jobs
-                </x-btn>
+        <div class="flex gap-4 justify-center mt-8 md:mt-12">
+            <x-btn href="#jobs">
+                Browse jobs
+            </x-btn>
 
-                <x-btn primary>
-                    Maximize your chances
-                </x-btn>
-            </div>
+            {{-- <x-btn primary>
+                Maximize your chances
+            </x-btn> --}}
         </div>
-    @endif
+    </div>
     
     <div class="grid container md:grid-cols-12 md:gap-8">
         <div id="jobs" class="md:col-span-9">
