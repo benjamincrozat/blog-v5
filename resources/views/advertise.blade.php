@@ -69,10 +69,15 @@
                                 <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
                                 Featured on top of every page.
                             </li>
-                
+
                             <li class="flex gap-2 items-start">
                                 <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
                                 Access to {{ Number::format($visitors) }} monthly developers.
+                            </li>
+
+                            <li class="flex gap-2 items-start">
+                                <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
+                                Bypass any adblocker.
                             </li>
                 
                             <li class="flex gap-2 items-start">
@@ -126,6 +131,11 @@
                             <li class="flex gap-2 items-start">
                                 <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
                                 Visibility in the sidebar on every article.
+                            </li>
+
+                            <li class="flex gap-2 items-start">
+                                <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
+                                Bypass any adblocker.
                             </li>
                 
                             <li class="flex gap-2 items-start">
@@ -184,10 +194,15 @@
                                 <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
                                 Be visible in the sticky carousel on the bottom of the visitors' screen.
                             </li>
-                
+
                             <li class="flex gap-2 items-start">
                                 <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
                                 Access to {{ Number::format($visitors) }} monthly developers.
+                            </li>
+
+                            <li class="flex gap-2 items-start">
+                                <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
+                                Bypass any adblocker.
                             </li>
                         </ul>
                     </div>
