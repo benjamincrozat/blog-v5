@@ -6,7 +6,7 @@ alwaysApply: true
 
 - I'm using Filament v4.
 - Tests are written using Pest.
-- This is a blog made with Laravel.
+- This platform is based on Laravel.
 - It generates money through affiliate links.
 - I use Model::unguard() because I'd rather rely on validation.
 - The project is served through Laravel Valet on benjamincrozat.test.
