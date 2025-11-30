@@ -206,7 +206,7 @@
 
                 <x-dropdown.item
                     icon="iconoir-git-fork"
-                    description="This blog is open source and the codebase becomes bigger fast. There's a lot to learn and this is free."
+                    description="This platform is open source and the codebase is becoming bigger fast. There's a lot to learn and this is free."
                     href="https://github.com/benjamincrozat/blog-v5"
                     target="_blank"
                 >
@@ -215,7 +215,7 @@
 
                 <x-dropdown.item
                     icon="heroicon-o-chart-bar"
-                    description="See how my blog is doing by directly checking the numbers because, why not?"
+                    description="See how the platform is doing by directly checking the numbers because, why not?"
                     href="https://benjamincrozat.pirsch.io/?domain=benjamincrozat.com&interval=30d&scale=day"
                     target="_blank"
                 >

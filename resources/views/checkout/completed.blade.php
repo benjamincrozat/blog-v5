@@ -84,6 +84,6 @@
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
 
     <script>
-        new JSConfetti().addConfetti();
+        new JSConfetti().addConfetti()
     </script>
 </x-app>

@@ -36,10 +36,10 @@
 
             ## SEO
 
-            This blog has a DR of 51. To get the maximum value of your sponsored article, you should write your articles with Google's algorithm in mind and the practices below help achieving that.
+            This platform has a DR of ~50. To get the maximum value of your sponsored article, you should write your articles with Google's algorithm in mind and the practices below help achieving that.
 
             - Do keyword research.
-            - Link to other articles on the blog.
+            - Link to other articles on the platform.
             - Cite facts and benchmarks to strengthen your claims.
             - Don't plagiarize or copy content from other articles you sponsored.
 

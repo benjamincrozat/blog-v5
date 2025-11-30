@@ -1,6 +1,6 @@
 @props([
     'canonical' => $canonical ?? url()->current(),
-    'description' => 'The best blog about PHP, Laravel, AI, and every other topics involved in building software.',
+    'description' => 'The best hub for developers. Learn about PHP, Laravel, AI, and every other topics involved in building web applications.',
     'image' => '',
     'title',
 ])

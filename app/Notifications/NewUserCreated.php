@@ -25,7 +25,7 @@ class NewUserCreated extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->subject('A new user was just created')
-            ->line("{$this->user->name} has just joined the blog.")
+            ->line("{$this->user->name} has just joined the platform.")
             ->action('Check Profile', route('authors.show', $this->user));
     }
 }

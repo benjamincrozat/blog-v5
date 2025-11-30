@@ -27,8 +27,6 @@
                     '@click.away' => 'open = false',
                 ])
         }}
-        {{-- I have no idea why this attribute causes an error if it's in merge() --}}
-        x-transition
     >
         {{ $items }}
     </div>

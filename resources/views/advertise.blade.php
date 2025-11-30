@@ -243,11 +243,15 @@
 
         <div class="container xl:max-w-(--breakpoint-lg)">
             <x-section
-                title="Write a sponsored article"
                 id="sponsored-article"
                 class="bg-white shadow-md shadow-black/10 ring-1 ring-black/10 rounded-xl p-4 md:p-8"
             >
-                <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-start justify-between gap-8 md:gap-16">
+                <x-heading>
+                    <x-heroicon-o-newspaper class="size-16 mx-auto mb-2" />
+                    Write a sponsored article
+                </x-heading>
+
+                <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-start justify-between gap-8 md:gap-16 mt-8">
                     <div class="md:w-1/2 w-full">
                         <p class="font-medium">What you get:</p>
                         
@@ -269,7 +273,7 @@
                 
                             <li class="flex gap-2 items-start">
                                 <x-heroicon-o-check class="flex-none text-green-600 translate-y-1 size-4" />
-                                <span>A secured position on the blog, <strong class="font-medium">forever</strong>.</span>
+                                <span>A secured position on the platform, <strong class="font-medium">forever</strong>.</span>
                             </li>
                         </ul>
                     </div>
@@ -297,7 +301,7 @@
     </div>
 
     <x-section
-        title="The past 30 days on my blog"
+        title="The past 30 days on benjamincrozat.com"
         class="mt-24 xl:max-w-(--breakpoint-lg)"
     >
         <div class="grid grid-cols-2 gap-2 mt-6 text-center md:text-xl">

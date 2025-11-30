@@ -1,8 +1,8 @@
 <x-app :title="config('app.name')">
     <div class="container xl:max-w-(--breakpoint-lg) text-center">
         <div class="font-medium tracking-tight text-black text-4xl/none md:text-5xl lg:text-7xl text-balance">
-            The modern hub for
-            <span class="text-blue-600">{{ Number::format($visitors) }}</span> monthly developers
+            The modern hub for<br class="md:inline hidden" />
+            <span class="text-blue-600">{{ Number::format($visitors) }}</span> monthly web developers
         </div>
 
         <div class="mt-5 text-balance tracking-tight text-black/75 text-lg/tight sm:text-xl/tight md:text-2xl/tight md:mt-8">

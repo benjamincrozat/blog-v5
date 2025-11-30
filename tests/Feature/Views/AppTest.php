@@ -9,7 +9,7 @@ it('has a default title', function () {
 
 it('has a default description', function () {
     get('/')
-        ->assertSee('description', 'The best blog about PHP, Laravel, AI, and every other topics involved in building software.');
+        ->assertSee('<meta name="description" content="', false);
 });
 
 it('signals the Atom feed', function () {
