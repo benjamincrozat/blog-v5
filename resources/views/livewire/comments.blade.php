@@ -3,9 +3,9 @@
     class="mt-24 scroll-mt-4"
 >
     <div class="flex gap-8 justify-between items-center">
-        <x-heading>
+        <x-typography.heading>
             {{ trans_choice(':count comment|:count comments', $commentsCount) }}
-        </x-heading>
+        </x-typography.heading>
 
         <x-dropdown>
             <x-slot:btn

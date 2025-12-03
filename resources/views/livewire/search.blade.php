@@ -39,12 +39,12 @@
                 wire:model.live="query"
                 placeholder="Search"
                 autofocus
-                class="flex-grow ring-0 border-0 pr-3 pl-9 py-[.65rem] bg-transparent border-b border-black/10 placeholder-black/10"
+                class="grow ring-0 border-0 pr-3 pl-9 py-[.65rem] bg-transparent border-b border-black/10 placeholder-black/10"
             />
         </div>
 
         @if (! empty($query))
-            <div class="flex-growp">
+            <div class="growp">
                 <div>
                     <p class="sticky top-0 z-10 px-4 py-3 text-sm font-medium text-black uppercase border-b border-gray-200 backdrop-blur-md bg-white/75">Posts</p>
 

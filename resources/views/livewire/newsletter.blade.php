@@ -7,23 +7,44 @@
 <x-slot:hide-sticky-carousel></x-slot>
 
 <div>
-    <div class="container text-center">
-        <h1 class="px-4 font-medium tracking-tight text-center text-black text-4xl/none md:text-5xl lg:text-7xl text-balance">
+    <div class="container">
+        <x-typography.headline>
             Survive the AI era as a developer
-        </h1>
+        </x-typography.headline>
 
-        <p class="px-4 mt-5 text-balance tracking-tight text-black/75 text-xl md:text-2xl md:mt-8">
+        <x-typography.subheadline class="mt-6 md:mt-10">
             Receive the best tips and tricks to stay ahead of the curve.
-        </p>
+        </x-typography.subheadline>
 
-        <div class="flex justify-center gap-4 mt-6.5 md:mt-10">
-            <x-btn href="#about">
-                Who the F are you?
-            </x-btn>
-
-            <x-btn primary href="#subscribe">
-                Subscribe
-            </x-btn>
+        <div class="sm:max-w-[480px] mx-auto mt-8 md:mt-10">
+            @if ($subscribed)
+                <div
+                    x-init="new JSConfetti().addConfetti()"
+                    class="text-center text-lg/tight text-green-900"
+                >
+                    <x-heroicon-o-check-circle class="mx-auto text-green-600 size-16" />
+    
+                    <p class="mt-2">
+                        Thanks for your interest!<br />
+                        A confirmation email has been sent to your inbox.
+                    </p>
+                </div>
+            @else
+                <x-form wire:submit="subscribe" class="grid mt-4">
+                    <x-form.input
+                        label="Your email"
+                        type="email"
+                        id="email"
+                        wire:model="email"
+                        placeholder="you@example.com"
+                        required
+                    />
+    
+                    <x-btn primary class="table mx-auto mt-4">
+                        Keep me posted
+                    </x-btn>
+                </x-form>
+            @endif
         </div>
     </div>
 
@@ -58,46 +79,6 @@
             </li>
         </ul>
     </x-section>
-
-    <div class="container md:max-w-(--breakpoint-sm) mt-16">
-        @if ($subscribed)
-            <div
-                x-init="new JSConfetti().addConfetti()"
-                class="text-center text-lg/tight text-green-900"
-            >
-                <x-heroicon-o-check-circle class="mx-auto text-green-600 size-16" />
-
-                <p class="mt-2">
-                    Thanks for your interest!<br />
-                    A confirmation email has been sent to your inbox.
-                </p>
-            </div>
-        @else
-            <div
-                id="subscribe"
-                class="scroll-mt-4"
-            >
-                <x-heading>
-                    Join us, now
-                </x-heading>
-    
-                <x-form wire:submit="subscribe" class="grid mt-4">
-                    <x-form.input
-                        label="Your email"
-                        type="email"
-                        id="email"
-                        wire:model="email"
-                        placeholder="you@example.com"
-                        required
-                    />
-    
-                    <x-btn primary class="table mx-auto mt-4">
-                        Keep me posted
-                    </x-btn>
-                </x-form>
-            </div>
-        @endif
-    </div>
     
     @if ($aboutUser)
         <div class="h-px my-16 bg-linear-to-r from-transparent via-gray-200 to-transparent"></div>

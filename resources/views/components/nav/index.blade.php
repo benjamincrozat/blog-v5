@@ -18,7 +18,7 @@
         </span>
     </a>
 
-    <div class="flex flex-grow gap-6 justify-around items-center md:justify-end md:gap-8">
+    <div class="flex grow gap-6 justify-around items-center md:justify-end md:gap-8">
         <x-nav.item
             active-icon="heroicon-s-fire"
             icon="heroicon-o-fire"

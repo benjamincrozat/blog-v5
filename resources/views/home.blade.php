@@ -1,13 +1,13 @@
 <x-app :title="config('app.name')">
-    <div class="container xl:max-w-(--breakpoint-lg) text-center">
-        <div class="font-medium tracking-tight text-black text-4xl/none md:text-5xl lg:text-7xl text-balance">
+    <div class="container xl:max-w-(--breakpoint-lg)">
+        <x-typography.headline>
             The modern hub for<br class="md:inline hidden" />
             <span class="text-blue-600">{{ Number::format($visitors) }}</span> monthly web developers
-        </div>
+        </x-typography.headline>
 
-        <div class="mt-5 text-balance tracking-tight text-black/75 text-lg/tight sm:text-xl/tight md:text-2xl/tight md:mt-8">
+        <x-typography.subheadline class="mt-6 md:mt-10">
             Let me help you survive in this industry without getting replaced by AI. I'll tell you about the latest news, techniques, and tools.
-        </div>
+        </x-typography.subheadline>
 
         <div class="flex gap-2 justify-center items-center mt-7 text-center md:mt-11">
             <x-btn
@@ -32,14 +32,14 @@
     <div class="grid container lg:grid-cols-12 gap-16 mt-24 md:mt-32">
         @if ($popular->isNotEmpty())
             <section id="popular" class="lg:col-span-6">
-                <x-heading class="text-left! mb-[.35rem] flex items-center gap-2">
+                <x-typography.heading class="text-left! mb-[.35rem] flex items-center gap-2">
                     Popular articles
 
                     <x-help-btn>
                         The most popular articles people click on.<br />
                         They are mostly driven by search engines.
                     </x-help-btn>
-                </x-heading>
+                </x-typography.heading>
 
                 <div class="h-px bg-linear-to-r from-gray-300 to-transparent"></div>
 
@@ -58,13 +58,13 @@
             </section>
 
             <section id="jobs" class="lg:col-span-6">
-                <x-heading class="text-left! mb-[.35rem] flex items-center gap-2">
+                <x-typography.heading class="text-left! mb-[.35rem] flex items-center gap-2">
                     Latest jobs ({{ $recentJobsCount }})
 
                     <x-help-btn>
                         The counter shows the number of jobs posted in the last 30 days.
                     </x-help-btn>
-                </x-heading>
+                </x-typography.heading>
 
                 <div class="h-px bg-linear-to-r from-gray-300 to-transparent"></div>
 

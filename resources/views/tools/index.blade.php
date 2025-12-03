@@ -3,15 +3,15 @@
     title="Unlock the best tools for developers"
     description="Browse the great tools I gathered from across the web. Services and apps of all kinds to help you do your job more efficiently."
 >
-    <h1 class="px-4 font-medium tracking-tight text-center text-black text-4xl/none md:text-5xl lg:text-7xl text-balance">
+    <x-typography.headline>
         Discover the best tools<br class="hidden md:inline" />
         for developers
-    </h1>
+    </x-typography.headline>
 
     <section class="mt-16 md:mt-24">
-        <x-heading>
+        <x-typography.heading>
             Featured tools
-        </x-heading>
+        </x-typography.heading>
 
         <p class="px-4 mt-2 leading-tight text-center">These companies are sponsoring my blog.<br class="hidden md:inline" /> Big thanks to them and make sure to check them out!</p>
 

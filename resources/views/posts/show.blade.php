@@ -276,9 +276,9 @@
                 </div>
 
                 <section class="mt-24">
-                    <x-heading>
+                    <x-typography.heading>
                         Great tools for developers
-                    </x-heading>
+                    </x-typography.heading>
 
                     <div class="grid gap-4 mt-8">
                         <x-tools.tinkerwell />

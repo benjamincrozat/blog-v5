@@ -4,13 +4,13 @@
 >
     <article class="container">
         @if ($posts->currentPage() === 1)
-            <x-heading>
+            <x-typography.heading>
                 Articles in the {{ $category->name }} category
-            </x-heading>
+            </x-typography.heading>
         @else
-            <x-heading>
+            <x-typography.heading>
                 Page {{ $posts->currentPage() }}
-            </x-heading>
+            </x-typography.heading>
         @endif
 
         <x-posts-grid :$posts class="mt-10" />

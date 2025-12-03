@@ -27,7 +27,7 @@
             {{ $headline }}
         </p>
 
-        <x-prose class="flex-grow mt-4 leading-normal sm:text-balance">
+        <x-prose class="grow mt-4 leading-normal sm:text-balance">
             {!! Markdown::parse($subheadline) !!}
         </x-prose>
 

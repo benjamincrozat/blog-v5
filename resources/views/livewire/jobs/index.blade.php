@@ -4,24 +4,20 @@
 
 <div>
     @if ($jobs->currentPage() === 1)
-        <div class="container text-center mb-16 md:mb-24">
-            <h1 class="px-4 font-medium tracking-tight text-center text-black text-4xl/none md:text-5xl lg:text-7xl text-balance">
+        <div class="container mb-16 md:mb-24">
+            <x-typography.headline>
                 AI won't replace you.<br />
                 Apply to jobs.
-            </h1>
+            </x-typography.headline>
 
-            <p class="text-xl text-balance md:text-2xl mt-8 md:mt-12">
+            <x-typography.subheadline class="mt-6 md:mt-10">
                 I gathered <strong class="font-medium text-black">{{ $recentJobsCount }} new job offers</strong> during the last 7 days.
-            </p>
+            </x-typography.subheadline>
 
             <div class="flex gap-4 justify-center mt-8 md:mt-12">
                 <x-btn href="#jobs">
                     Browse jobs
                 </x-btn>
-
-                {{-- <x-btn primary>
-                    Maximize your chances
-                </x-btn> --}}
             </div>
         </div>
     @endif
@@ -158,9 +154,9 @@
                 @click.away="open = false"
                 @keydown.esc="open = false"
             >
-                <x-heading class="md:text-left! mb-4 hidden md:block">
+                <x-typography.heading class="md:text-left! mb-4 hidden md:block">
                     Filters
-                </x-heading>
+                </x-typography.heading>
         
                 @php($activeFilterClasses = 'border-blue-300! shadow-blue-100! text-blue-600')
         

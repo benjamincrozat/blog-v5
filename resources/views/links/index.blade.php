@@ -4,13 +4,13 @@
 >
     @if ($links->currentPage() === 1)
         <div class="container text-center">
-            <h1 class="font-medium tracking-tight text-black text-4xl/none md:text-5xl lg:text-7xl text-balance">
+            <x-typography.headline>
                 <span class="text-blue-600">Keep learning</span> with the community
-            </h1>
+            </x-typography.headline>
 
-            <div class="mt-5 tracking-tight text-balance text-black/75 text-lg/tight sm:text-xl/tight md:text-2xl/tight md:mt-8">
+            <x-typography.subheadline class="mt-6 md:mt-10">
                 Find tons of resources written and shared by <span class="font-medium">{{ $distinctUsersCount }} web developers</span>.
-            </div>
+            </x-typography.subheadline>
 
             <div class="flex justify-center items-center mt-4 md:mt-6">
                 @foreach ($distinctUserAvatars as $avatar)

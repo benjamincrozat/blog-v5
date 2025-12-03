@@ -3,16 +3,16 @@
     :hide-top-ad="true"
     :hide-sticky-carousel="true"
 >
-    <div class="container text-center md:text-xl xl:max-w-(--breakpoint-lg)">
-        <h1 class="text-3xl font-medium tracking-tight text-black lg:text-4xl xl:text-7xl">
+    <div class="container md:text-xl xl:max-w-(--breakpoint-lg)">
+        <x-typography.headline>
             Show off your business to <span class="text-blue-600">{{ Number::format($visitors) }}</span>&nbsp;developers
-        </h1>
+        </x-typography.headline>
 
-        <p class="mt-6 md:mt-8 text-balance text-lg/tight text-gray-800 md:text-xl/tight lg:text-2xl/tight">
+        <x-typography.subheadline class="mt-6 md:mt-10">
             Access an audience of developers while bypassing adblockers.
-        </p>
+        </x-typography.subheadline>
 
-        <div class="flex flex-wrap md:flex-nowrap text-center md:text-left gap-4 justify-center">
+        <div class="flex flex-wrap md:flex-nowrap md:text-left gap-4 justify-center">
             <x-btn
                 size="md"
                 href="https://benjamincrozat.pirsch.io/?domain=benjamincrozat.com&interval=30d&scale=day"
@@ -54,11 +54,11 @@
                 id="top-banner"
                 class="mt-24 bg-white shadow-md shadow-black/10 ring-1 ring-black/10 rounded-xl p-4 md:p-8"
             >
-                <x-heading>
+                <x-typography.heading>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="size-16 mx-auto mb-2"><path d="M40 56h176v40H40z" opacity=".2"/><path d="M216 40H40c-8.836556 0-16 7.163444-16 16v144c0 8.836556 7.163444 16 16 16h176c8.836556 0 16-7.163444 16-16V56c0-8.836556-7.163444-16-16-16Zm0 16v40H40V56h176Zm0 144H40v-88h176v88Z"/></svg>
                     Stay on top of every page
                     <span class="bg-yellow-500 inline-block ml-2 font-normal p-2 leading-tight px-4 rounded-full normal-case tracking-normal">Sold out!</span>
-                </x-heading>
+                </x-typography.heading>
 
                 <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-start mt-8 justify-between gap-8 md:gap-16">
                     <div class="md:w-1/2 w-full">
@@ -117,11 +117,11 @@
                 id="sidebar"
                 class="bg-white shadow-md shadow-black/10 ring-1 ring-black/10 rounded-xl p-4 md:p-8"
             >
-                <x-heading>
+                <x-typography.heading>
                     <x-phosphor-sidebar-duotone class="size-16 mx-auto mb-2 -scale-x-100" />
                     Be visible in the sidebar
                     <span class="bg-yellow-500 inline-block ml-2 font-normal p-2 leading-tight px-4 rounded-full normal-case tracking-normal">Sold out!</span>
-                </x-heading>
+                </x-typography.heading>
 
                 <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-start mt-8 justify-between gap-8 md:gap-16">
                     <div class="md:w-1/2 w-full">
@@ -180,10 +180,10 @@
                 id="sticky-carousel"
                 class="bg-white shadow-md shadow-black/10 ring-1 ring-black/10 rounded-xl p-4 md:p-8"
             >
-                <x-heading>
+                <x-typography.heading>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="size-16 mx-auto mb-2 -scale-y-100"><path d="M40 56h176v40H40z" opacity=".2"/><path d="M216 40H40c-8.836556 0-16 7.163444-16 16v144c0 8.836556 7.163444 16 16 16h176c8.836556 0 16-7.163444 16-16V56c0-8.836556-7.163444-16-16-16Zm0 16v40H40V56h176Zm0 144H40v-88h176v88Z"/></svg>
                     Secure a position in the sticky carousel
-                </x-heading>
+                </x-typography.heading>
 
                 <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-start mt-8 justify-between gap-8 md:gap-16">
                     <div class="md:w-1/2 w-full">
@@ -246,10 +246,10 @@
                 id="sponsored-article"
                 class="bg-white shadow-md shadow-black/10 ring-1 ring-black/10 rounded-xl p-4 md:p-8"
             >
-                <x-heading>
+                <x-typography.heading>
                     <x-heroicon-o-newspaper class="size-16 mx-auto mb-2" />
                     Write a sponsored article
-                </x-heading>
+                </x-typography.heading>
 
                 <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-start justify-between gap-8 md:gap-16 mt-8">
                     <div class="md:w-1/2 w-full">
