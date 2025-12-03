@@ -1,10 +1,14 @@
 <?php
 
 use App\Models\Subscriber;
+use Illuminate\Support\Str;
 use App\Livewire\Newsletter;
 
 use function Pest\Livewire\livewire;
-use function Pest\Laravel\assertDatabaseHas;
+
+use App\Notifications\ConfirmSubscription;
+use Illuminate\Support\Facades\Notification;
+
 use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\assertDatabaseEmpty;
 
@@ -14,18 +18,25 @@ it('renders', function () {
         ->assertSet('subscribed', false);
 });
 
-it('subscribes a user', function () {
+it('subscribes a user and queues a confirmation email', function () {
+    Notification::fake();
+
     assertDatabaseEmpty(Subscriber::class);
 
     livewire(Newsletter::class)
         ->set('email', 'test@example.com')
         ->call('subscribe')
-        ->assertSet('subscribed', true)
-        ->assertSet('email', '');
+        ->assertRedirect(route('newsletter'))
+        ->assertSessionHas('status', 'Thanks for subscribing! A confirmation email has been sent to your inbox.')
+        ->assertSessionHas('status_type', 'success');
 
-    assertDatabaseHas(Subscriber::class, [
-        'email' => 'test@example.com',
-    ]);
+    $subscriber = Subscriber::query()->first();
+
+    expect($subscriber->confirmation_token)->not->toBeNull();
+    expect($subscriber->confirmation_sent_at)->not->toBeNull();
+    expect($subscriber->hasTag('general'))->toBeTrue();
+
+    Notification::assertSentTo($subscriber, ConfirmSubscription::class);
 });
 
 it('does not subscribe a user if the email is invalid', function () {
@@ -37,15 +48,46 @@ it('does not subscribe a user if the email is invalid', function () {
     assertDatabaseEmpty(Subscriber::class);
 });
 
-it('does not subscribe a user if the email is already subscribed', function () {
-    Subscriber::query()->create([
+it('resends confirmation when the subscriber already exists but is unconfirmed', function () {
+    Notification::fake();
+
+    $subscriber = Subscriber::factory()->create([
         'email' => 'test@example.com',
+        'confirmation_token' => $previousToken = hash('sha256', Str::random(40)),
+        'confirmation_sent_at' => $previousSentAt = now()->subDay(),
+    ])->attachTag('foo');
+
+    livewire(Newsletter::class)
+        ->set('email', 'test@example.com')
+        ->call('subscribe')
+        ->assertRedirect(route('newsletter'))
+        ->assertSessionHas('status', 'Another confirmation email is on its way!')
+        ->assertSessionHas('status_type', 'success');
+
+    $subscriber->refresh();
+
+    expect($subscriber->confirmation_token)->not->toEqual($previousToken);
+    expect($subscriber->confirmation_sent_at->greaterThan($previousSentAt))->toBeTrue();
+    expect($subscriber->hasTag('foo'))->toBeTrue();
+    expect($subscriber->tags)->toHaveCount(1);
+
+    Notification::assertSentTo($subscriber, ConfirmSubscription::class);
+
+    assertDatabaseCount(Subscriber::class, 1);
+});
+
+it('does not subscribe a user if the email is already confirmed', function () {
+    Subscriber::factory()->create([
+        'email' => 'test@example.com',
+        'confirmed_at' => now(),
     ]);
 
     livewire(Newsletter::class)
         ->set('email', 'test@example.com')
         ->call('subscribe')
-        ->assertHasErrors(['email' => 'unique']);
+        ->assertRedirect(route('newsletter'))
+        ->assertSessionHas('status', 'You already are subscribed.')
+        ->assertSessionHas('status_type', 'error');
 
     assertDatabaseCount(Subscriber::class, 1);
 });

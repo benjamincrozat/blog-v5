@@ -11,6 +11,9 @@ return new class extends Migration
         Schema::create('subscribers', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
+            $table->string('confirmation_token', 64)->nullable()->index();
+            $table->timestamp('confirmed_at')->nullable();
+            $table->timestamp('confirmation_sent_at')->nullable();
             $table->timestamps();
         });
     }

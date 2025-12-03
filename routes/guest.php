@@ -15,6 +15,7 @@ use App\Http\Controllers\Merchants\ShowMerchantController;
 use App\Http\Controllers\Categories\ShowCategoryController;
 use App\Http\Controllers\Categories\ListCategoriesController;
 use App\Http\Controllers\Checkout\CompletedCheckoutController;
+use App\Http\Controllers\Subscribers\ConfirmSubscriberController;
 use App\Http\Controllers\Advertising\RedirectToAdvertiserController;
 use App\Http\Controllers\Advertising\ShowAdvertisingLandingPageController;
 
@@ -51,6 +52,10 @@ Route::view('/tools', 'tools.index')
 
 Route::get('/newsletter', Newsletter::class)
     ->name('newsletter');
+
+Route::get('/subscribers/{subscriber}/confirm', ConfirmSubscriberController::class)
+    ->middleware(['signed', 'throttle:6,1'])
+    ->name('subscribers.confirm');
 
 Route::get('/advertise', ShowAdvertisingLandingPageController::class)
     ->name('advertise');

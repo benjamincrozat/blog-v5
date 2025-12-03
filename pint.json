@@ -19,6 +19,7 @@
         "return_type_declaration": {
             "space_before": "one"
         },
+        "single_trait_insert_per_statement": false,
         "yoda_style": true
     }
 }

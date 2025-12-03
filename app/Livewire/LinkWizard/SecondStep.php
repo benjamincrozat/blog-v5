@@ -96,6 +96,6 @@ class SecondStep extends StepComponent
             ->first()
             ->notify(new LinkWaitingForValidation($link));
 
-        $this->redirect(route('links.index', ['submitted' => true]), true);
+        $this->redirectRoute('links.index', ['submitted' => true], navigate: true);
     }
 }

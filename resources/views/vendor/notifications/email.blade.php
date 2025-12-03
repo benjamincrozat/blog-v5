@@ -41,7 +41,7 @@
 @else
 <p>@lang('Regards,')</p>
 <p>Benjamin</p>
-<p>P.S. Please reply to this email for any questions.</p>
+<p>P.S. Reply to this email for any questions.</p>
 @endif
 
 {{-- Subcopy --}}

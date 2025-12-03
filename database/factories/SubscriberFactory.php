@@ -16,6 +16,9 @@ class SubscriberFactory extends Factory
     {
         return [
             'email' => fake()->unique()->safeEmail(),
+            'confirmation_token' => null,
+            'confirmed_at' => null,
+            'confirmation_sent_at' => null,
         ];
     }
 }

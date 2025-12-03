@@ -17,34 +17,20 @@
         </x-typography.subheadline>
 
         <div class="sm:max-w-[480px] mx-auto mt-8 md:mt-10">
-            @if ($subscribed)
-                <div
-                    x-init="new JSConfetti().addConfetti()"
-                    class="text-center text-lg/tight text-green-900"
-                >
-                    <x-heroicon-o-check-circle class="mx-auto text-green-600 size-16" />
-    
-                    <p class="mt-2">
-                        Thanks for your interest!<br />
-                        A confirmation email has been sent to your inbox.
-                    </p>
-                </div>
-            @else
-                <x-form wire:submit="subscribe" class="grid mt-4">
-                    <x-form.input
-                        label="Your email"
-                        type="email"
-                        id="email"
-                        wire:model="email"
-                        placeholder="you@example.com"
-                        required
-                    />
-    
-                    <x-btn primary class="table mx-auto mt-4">
-                        Keep me posted
-                    </x-btn>
-                </x-form>
-            @endif
+            <x-form wire:submit="subscribe" class="grid mt-4">
+                <x-form.input
+                    label="Your email"
+                    type="email"
+                    id="email"
+                    wire:model="email"
+                    placeholder="you@example.com"
+                    required
+                />
+
+                <x-btn primary class="table mx-auto mt-4">
+                    Keep me posted
+                </x-btn>
+            </x-form>
         </div>
     </div>
 
