@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Subscribe>
+ * @extends \Illuminate\Database\Eloquent\Factories.Factory<\App\Models\Subscriber>
  */
-class SubscribeFactory extends Factory
+class SubscriberFactory extends Factory
 {
     /**
      * @return array<string, mixed>

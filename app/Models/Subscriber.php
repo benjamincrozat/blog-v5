@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Subscribe extends Model
+class Subscriber extends Model
 {
-    /** @use HasFactory<\Database\Factories\SubscribeFactory> */
+    /** @use HasFactory<\Database\Factories\SubscriberFactory> */
     use HasFactory;
 }

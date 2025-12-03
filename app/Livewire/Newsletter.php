@@ -4,13 +4,13 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
-use App\Models\Subscribe;
 use Illuminate\View\View;
+use App\Models\Subscriber;
 use Livewire\Attributes\Validate;
 
 class Newsletter extends Component
 {
-    #[Validate('required|email:filter|max:255|unique:subscribes,email')]
+    #[Validate('required|email:filter|max:255|unique:subscribers,email')]
     public string $email = '';
 
     public bool $subscribed = false;
@@ -30,7 +30,7 @@ class Newsletter extends Component
 
         $this->validate();
 
-        Subscribe::query()->create([
+        Subscriber::query()->create([
             'email' => $this->email,
         ]);
 
