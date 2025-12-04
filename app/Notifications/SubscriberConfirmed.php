@@ -24,7 +24,7 @@ class SubscriberConfirmed extends Notification implements ShouldQueue
     public function toMail(object $notifiable) : MailMessage
     {
         return (new MailMessage)
-            ->subject('New confirmed subscriber!')
+            ->subject('A subscriber just confirmed')
             ->greeting('Hooray!')
             ->line("{$this->subscriber->email} just confirmed their newsletter subscription.")
             ->action('View subscribers', route('filament.admin.resources.subscribers.index'));
