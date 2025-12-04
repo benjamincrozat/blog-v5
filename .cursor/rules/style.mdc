@@ -14,6 +14,9 @@ alwaysApply: true
 - I like to not feel claustrophobic in my code. Use space between control structures.
 - Run `php vendor/bin/pint --parallel` to format the code whenever you make a change.
 - Prefer generating code through Artisan commands to stay up to date with the latest changes.
+- Pest tests must always import the global functions like "use function Pest\Laravel\actingAs".
 - Use helper functions instead of Facades if available. E.g., session() instead of Session::get().
-- When you write tests, run and fix them until they pass. (Use the --parallel option to speed up the process.)
+- Changes in the UI or Filament must be tested through your web browser, even if you wrote tests to confirm.
+- When you see $this in Pest tests, it's a smell. Nuke it by importing the equivalent function when possible.
 - In tests, fake OpenAI calls using OpenAI::fake() with Responses CreateResponse::fake() instead of mocking from scratch.
+- When writing tests, run and fix them until they pass. (Filter or use the --parallel option to speed up the process.)
