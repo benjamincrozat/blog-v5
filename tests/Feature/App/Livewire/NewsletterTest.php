@@ -3,6 +3,8 @@
 use App\Models\Subscriber;
 use Illuminate\Support\Str;
 use App\Livewire\Newsletter;
+use Spatie\Honeypot\Honeypot;
+use Spatie\Honeypot\EncryptedTime;
 
 use function Pest\Livewire\livewire;
 
@@ -23,7 +25,10 @@ it('subscribes a user and queues a confirmation email', function () {
 
     assertDatabaseEmpty(Subscriber::class);
 
+    $honeypot = app(Honeypot::class);
+
     livewire(Newsletter::class)
+        ->set("honeypot.data.{$honeypot->validFromFieldName()}", (string) EncryptedTime::create(now()->subSeconds(5)))
         ->set('email', 'test@example.com')
         ->call('subscribe')
         ->assertRedirect(route('newsletter'))
@@ -40,7 +45,10 @@ it('subscribes a user and queues a confirmation email', function () {
 });
 
 it('does not subscribe a user if the email is invalid', function () {
+    $honeypot = app(Honeypot::class);
+
     livewire(Newsletter::class)
+        ->set("honeypot.data.{$honeypot->validFromFieldName()}", (string) EncryptedTime::create(now()->subSeconds(5)))
         ->set('email', 'invalid-email')
         ->call('subscribe')
         ->assertHasErrors(['email']);
@@ -57,7 +65,10 @@ it('resends confirmation when the subscriber already exists but is unconfirmed',
         'confirmation_sent_at' => $previousSentAt = now()->subDay(),
     ])->attachTag('foo');
 
+    $honeypot = app(Honeypot::class);
+
     livewire(Newsletter::class)
+        ->set("honeypot.data.{$honeypot->validFromFieldName()}", (string) EncryptedTime::create(now()->subSeconds(5)))
         ->set('email', 'test@example.com')
         ->call('subscribe')
         ->assertRedirect(route('newsletter'))
@@ -82,7 +93,10 @@ it('does not subscribe a user if the email is already confirmed', function () {
         'confirmed_at' => now(),
     ]);
 
+    $honeypot = app(Honeypot::class);
+
     livewire(Newsletter::class)
+        ->set("honeypot.data.{$honeypot->validFromFieldName()}", (string) EncryptedTime::create(now()->subSeconds(5)))
         ->set('email', 'test@example.com')
         ->call('subscribe')
         ->assertRedirect(route('newsletter'))
@@ -90,4 +104,19 @@ it('does not subscribe a user if the email is already confirmed', function () {
         ->assertSessionHas('status_type', 'error');
 
     assertDatabaseCount(Subscriber::class, 1);
+});
+
+it('blocks spam submissions with the honeypot', function () {
+    $honeypot = app(Honeypot::class);
+
+    $nameField = $honeypot->unrandomizedNameFieldName();
+    $validFromField = $honeypot->validFromFieldName();
+
+    livewire(Newsletter::class)
+        ->set("honeypot.data.{$validFromField}", (string) EncryptedTime::create(now()->subSeconds(5)))
+        ->set("honeypot.data.{$nameField}", 'bot')
+        ->call('subscribe')
+        ->assertStatus(403);
+
+    assertDatabaseEmpty(Subscriber::class);
 });

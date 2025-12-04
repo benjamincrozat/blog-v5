@@ -18,6 +18,8 @@
 
         <div class="sm:max-w-[480px] mx-auto mt-8 md:mt-10">
             <x-form wire:submit="subscribe" class="grid mt-4">
+                <x-honeypot livewire-model="honeypot" />
+
                 <x-form.input
                     label="Your email"
                     type="email"

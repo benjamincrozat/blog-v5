@@ -9,14 +9,23 @@ use App\Models\Subscriber;
 use Livewire\Attributes\Validate;
 use Illuminate\Validation\ValidationException;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
+use Spatie\Honeypot\Http\Livewire\Concerns\UsesSpamProtection;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 
 class Newsletter extends Component
 {
-    use WithRateLimiting;
+    use UsesSpamProtection, WithRateLimiting;
 
     #[Validate('required|email:filter|max:255')]
     public string $email = '';
+
+    public HoneypotData $honeypot;
+
+    public function mount() : void
+    {
+        $this->honeypot = new HoneypotData;
+    }
 
     public function render() : View
     {
@@ -36,6 +45,8 @@ class Newsletter extends Component
                 'email' => "Please wait another {$exception->secondsUntilAvailable} seconds.",
             ]);
         }
+
+        $this->protectAgainstSpam();
 
         $this->email = (string) str($this->email)->trim()->lower();
 
