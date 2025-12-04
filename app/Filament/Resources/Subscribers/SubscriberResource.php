@@ -53,11 +53,6 @@ class SubscriberResource extends Resource
         return $pending > 0 ? number_format($pending) : null;
     }
 
-    public static function getNavigationBadgeColor() : ?string
-    {
-        return 'warning';
-    }
-
     public static function getGloballySearchableAttributes() : array
     {
         return ['email'];

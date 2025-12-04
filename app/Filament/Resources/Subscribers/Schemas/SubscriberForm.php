@@ -62,6 +62,7 @@ class SubscriberForm
                             ->state(fn (?Subscriber $record) => static::formatTimestamp($record?->created_at) ?? '—')
                             ->label('Creation Date'),
                     ])
+                    ->key('status-section')
                     ->columnSpan([
                         'default' => 12,
                         'lg' => 4,
