@@ -31,7 +31,17 @@ class Comment extends Model
 
     public function user() : BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withDefault(
+            fn () => new User([
+                'name' => 'Deleted user',
+                'github_login' => 'deleted-user',
+                'github_data' => [
+                    'user' => [
+                        'html_url' => '#',
+                    ],
+                ],
+            ]),
+        );
     }
 
     public function post() : BelongsTo

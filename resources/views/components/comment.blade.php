@@ -1,22 +1,23 @@
 @php
 // Temporary fix.
 $parentId = $this->parentId ?? $attributes->get('parentId');
+$commentUser = $comment->user;
 @endphp
 
 <div {{ $attributes }}>
     <div class="flex gap-4">
         <img
             loading="lazy"
-            src="{{ $comment->user->avatar }}"
-            alt="{{ $comment->user->name }}"
+            src="{{ $commentUser->avatar }}"
+            alt="{{ $commentUser->name ?? 'Deleted user' }}"
             class="flex-none mt-1 rounded-full ring-1 shadow-sm shadow-black/5 ring-black/10 size-7 md:size-8"
         />
 
         <div class="grow">
             <div class="flex gap-4 justify-between">
                 <div>
-                    <a href="{{ $comment->user->github_data['user']['html_url'] }}" target="_blank" class="font-medium">
-                        {{ $comment->user->name }}
+                    <a href="{{ data_get($commentUser->github_data, 'user.html_url') ?? '#' }}" target="_blank" class="font-medium">
+                        {{ $commentUser->name ?? 'Deleted user' }}
                     </a>
 
                     <span class="ml-1 text-gray-500">
