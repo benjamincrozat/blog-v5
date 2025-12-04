@@ -19,7 +19,7 @@ class SubscriberResource extends Resource
 
     protected static string|\UnitEnum|null $navigationGroup = 'Audience';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-envelope';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-user-group';
 
     protected static ?string $recordTitleAttribute = 'email';
 
