@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Subscribers;
 
+use App\Models\User;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use App\Notifications\SubscriberConfirmed;
 
 class ConfirmSubscriberController extends Controller
 {
@@ -28,6 +30,11 @@ class ConfirmSubscriberController extends Controller
         }
 
         $subscriber->markAsConfirmed();
+
+        User::query()
+            ->where('github_login', 'benjamincrozat')
+            ->first()
+            ?->notify(new SubscriberConfirmed($subscriber));
 
         return to_route('newsletter')
             ->with([

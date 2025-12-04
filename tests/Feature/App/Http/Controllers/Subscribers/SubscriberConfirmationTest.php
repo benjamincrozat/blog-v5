@@ -1,11 +1,14 @@
 <?php
 
+use App\Models\User;
 use App\Models\Subscriber;
 use Illuminate\Support\Str;
 
 use function Pest\Laravel\get;
 
 use Illuminate\Support\Facades\URL;
+use App\Notifications\SubscriberConfirmed;
+use Illuminate\Support\Facades\Notification;
 
 it('confirms a subscriber when the token is valid', function () {
     $token = Str::random(40);
@@ -61,4 +64,28 @@ it('tells the user when the subscription is already confirmed', function () {
         ->assertRedirect(route('newsletter'))
         ->assertSessionHas('status', 'Thanks, but you already confirmed your subscription.')
         ->assertSessionHas('status_type', 'info');
+});
+
+it('notifies the admin when the subscriber confirms', function () {
+    Notification::fake();
+
+    $admin = User::factory()->create([
+        'github_login' => 'benjamincrozat',
+    ]);
+
+    $token = Str::random(40);
+
+    $subscriber = Subscriber::factory()->create([
+        'confirmation_token' => hash('sha256', $token),
+        'confirmation_sent_at' => now()->subMinutes(5),
+    ]);
+
+    $url = URL::temporarySignedRoute('subscribers.confirm', now()->addMinutes(5), [
+        'subscriber' => $subscriber->id,
+        'token' => $token,
+    ]);
+
+    get($url);
+
+    Notification::assertSentToTimes($admin, SubscriberConfirmed::class, 1);
 });
