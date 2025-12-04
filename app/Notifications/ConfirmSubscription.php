@@ -35,7 +35,7 @@ class ConfirmSubscription extends Notification implements ShouldQueue
         return (new MailMessage)
             ->subject('Are you a bot?')
             ->greeting('Thanks for subscribing to the newsletter!')
-            ->line('Please confirm the human nature of your actions by clicking the button below.')
+            ->line('Please confirm the human nature of your action by clicking the button below.')
             ->action("Beep bo… I'm a human!", $url);
     }
 }

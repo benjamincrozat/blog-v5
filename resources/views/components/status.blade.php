@@ -71,7 +71,7 @@
             <span class="sr-only">Close</span>
         </button>
 
-        <p class="mt-4 px-4 py-3">
+        <p class="px-4 py-3 mt-6">
             @if (! empty(request()->submitted))
                 Your link has been submitted for validation.
             @else
