@@ -46,6 +46,23 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
+    public function avatar() : Attribute
+    {
+        return Attribute::make(
+            function (?string $value) {
+                $avatar = $value
+                    ?? data_get($this->github_data, 'user.avatar_url')
+                    ?? data_get($this->github_data, 'avatar_url');
+
+                if (! empty($avatar)) {
+                    return $avatar;
+                }
+
+                return secure_asset('img/placeholder.png');
+            },
+        );
+    }
+
     public function posts() : HasMany
     {
         return $this->hasMany(Post::class)->published();
