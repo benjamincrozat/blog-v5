@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\Companies\Schemas;
 
 use Filament\Schemas\Schema;
-use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Group;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\MarkdownEditor;
@@ -36,12 +35,6 @@ class CompanyForm
 
                     TextInput::make('logo')
                         ->nullable(),
-
-                    TextInput::make('extra_attributes')
-                        ->nullable(),
-
-                    Toggle::make('is_highlighted')
-                        ->label('Highlighted'),
                 ])
                     ->columnSpan([
                         'default' => 12,

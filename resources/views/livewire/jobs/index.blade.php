@@ -13,9 +13,31 @@
                 Remote for the travelers, hybrid for a better work-life balance, or on-site for the full experience.
             </x-typography.subheadline>
         </header>
+
+        <div class="mt-12 lg:mt-20">
+            <x-typography.heading>
+                They're hiring
+            </x-typography.heading>
+
+            <div class="flex px-4 overflow-x-auto overflow-y-hidden items-center mt-2 justify-center gap-x-8 gap-y-4">
+                <img src="https://d2i1lec1hyrmti.cloudfront.net/wp-content/themes/clouddev2020/cdev25/images/newblue.svg" alt="CloudDevs" class="h-7" />
+
+                <img src="https://media.cmsmax.cloud/52pqMYw3f0h6sIityigBIf8T/cms-max-logo-horizontal.png" alt="CMS Max" class="h-5" />
+
+                <img src="https://upload.wikimedia.org/wikipedia/en/d/d1/Hopper_Inc._Logo.png" alt="Hopper" class="h-14 translate-y-2" />
+
+                <img src="https://r2.remoteok.com/jobs/356f231845e627c4ad7afc3801434ca01755705609.png" alt="Manifest" class="h-9 translate-y-0.5" />
+
+                <img src="https://mms.businesswire.com/media/20240130740190/en/2014262/4/Metronome_Logo.jpg" alt="Metronome LLC" class="h-5 translate-y-0.5" />
+
+                <img src="https://wpforms.com/wp-content/uploads/2023/09/WPForms-Logo-Dark.png" alt="wpforms" class="h-9" />
+
+                <img src="https://wunderite.com/wp-content/uploads/2021/09/wunderite-logo-blue-text-1024x135.png" alt="Wunderite" class="h-5" />
+            </div>
+        </div>
     @endif
     
-    <div class="grid container lg:grid-cols-12 mt-8 md:mt-14 lg:mt-20">
+    <div class="grid container lg:grid-cols-12 mt-24 lg:mt-32">
         <div id="jobs" class="lg:col-span-9">
             @if ($this->hasActiveFilters())
                 <ul class="flex flex-wrap gap-2 mb-8">
