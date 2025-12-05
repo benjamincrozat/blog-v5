@@ -1,29 +1,22 @@
 <x-slot:title>
-    The latest job offers for developers
+    Find your next software development job
 </x-slot>
 
 <div>
     @if ($jobs->currentPage() === 1)
-        <div class="container mb-16 md:mb-24">
+        <header class="container">
             <x-typography.headline>
-                AI won't replace you.<br />
-                Apply to jobs.
+                Find your next software<br /> development job
             </x-typography.headline>
-
-            <x-typography.subheadline class="mt-6 md:mt-10">
-                I gathered <strong class="font-medium text-black">{{ $recentJobsCount }} new job offers</strong> during the last 7 days.
+    
+            <x-typography.subheadline class="mt-4 lg:mt-8">
+                Remote for the travelers, hybrid for a better work-life balance, or on-site for the full experience.
             </x-typography.subheadline>
-
-            <div class="flex gap-4 justify-center mt-8 md:mt-12">
-                <x-btn href="#jobs">
-                    Browse jobs
-                </x-btn>
-            </div>
-        </div>
+        </header>
     @endif
     
-    <div class="grid container md:grid-cols-12 md:gap-8">
-        <div id="jobs" class="md:col-span-9">
+    <div class="grid container lg:grid-cols-12 mt-8 md:mt-14 lg:mt-20">
+        <div id="jobs" class="lg:col-span-9">
             @if ($this->hasActiveFilters())
                 <ul class="flex flex-wrap gap-2 mb-8">
                     @if ($query)
@@ -143,18 +136,18 @@
         </div>
     
         <div
-            class="md:col-span-3 -order-1 md:order-0"
+            class="lg:col-span-3 lg:ml-8 -order-1 lg:order-0"
             x-data="{ open: false }"
         >
             <div
-                class="md:block! md:static fixed bottom-0 inset-x-0 bg-white shadow-xl ring-1 ring-black/10 rounded-xl p-4 md:p-0 max-h-[50dvh] overflow-y-auto md:overflow-y-visible md:max-h-none md:shadow-none md:ring-0 md:rounded-none pb-24 md:pb-0"
+                class="lg:block! lg:static fixed bottom-0 inset-x-0 bg-white shadow-xl ring-1 ring-black/10 rounded-xl p-4 lg:p-0 max-h-[50dvh] overflow-y-auto lg:overflow-y-visible lg:max-h-none lg:shadow-none lg:ring-0 lg:rounded-none pb-24 lg:pb-0"
                 x-cloak
                 x-show="open"
                 x-trap="open"
                 @click.away="open = false"
                 @keydown.esc="open = false"
             >
-                <x-typography.heading class="md:text-left! mb-4 hidden md:block">
+                <x-typography.heading class="lg:text-left! mb-4 hidden lg:block">
                     Filters
                 </x-typography.heading>
         
@@ -252,7 +245,7 @@
             </div>
     
             <button
-                class="md:hidden! fixed md:static bottom-4 left-1/2 -translate-x-1/2 size-16 ring-1 ring-black/10 rounded-full bg-white/75 backdrop-blur-md shadow-lg grid place-items-center"
+                class="lg:hidden! fixed lg:static bottom-4 left-1/2 -translate-x-1/2 size-16 ring-1 ring-black/10 rounded-full bg-white/75 backdrop-blur-md shadow-lg grid place-items-center"
                 @click="open = !open"
             >
                 <x-heroicon-o-adjustments-vertical

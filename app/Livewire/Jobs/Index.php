@@ -116,12 +116,12 @@ class Index extends Component
             // Use Scout whenever the query string is long enough, but still layer filters on the SQL builder.
             return Job::search($this->query)
                 ->query(fn (Builder $builder) => $this->applyFilters($builder))
-                ->paginate(12);
+                ->paginate(20);
         }
 
         return $this->applyFilters(
             Job::query()->latest()
-        )->paginate(12);
+        )->paginate(20);
     }
 
     /**
