@@ -20,7 +20,7 @@
             </x-typography.heading>
 
             <div class="flex px-4 overflow-x-auto overflow-y-hidden items-center mt-2 justify-center 
-gap-x-8 gap-y-4">
+gap-x-12 gap-y-4">
                 @foreach ($logos as $logo)
                     <img src="{{ $logo['src'] }}" alt="{{ $logo['alt'] }}" class="{{ $logo['class'] }}" />
                 @endforeach
