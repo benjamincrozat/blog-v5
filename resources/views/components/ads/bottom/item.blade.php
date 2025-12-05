@@ -17,7 +17,7 @@ $domain = preg_replace('/https?:\/\//', '', config('app.url'));
 >
     <div x-html="ad.icon" class="mt-1 flex-none"></div>
 
-    <div class="grid gap-2 leading-tight">
+    <div class="grid grow gap-2 leading-tight">
         <h1 class="font-semibold text-balance text-black/95" x-html="ad.title"></h1>
         <div x-text="ad.description"></div>
         <x-btn 
