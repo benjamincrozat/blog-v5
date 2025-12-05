@@ -1,8 +1,7 @@
 <x-app :title="config('app.name')">
     <div class="container xl:max-w-(--breakpoint-lg)">
         <x-typography.headline>
-            The modern hub for<br class="md:inline hidden" />
-            <span class="text-blue-600">{{ Number::format($visitors) }}</span> monthly web developers
+            The hub for <span class="text-blue-600">{{ Number::format($visitors) }}</span> web developers, monthly
         </x-typography.headline>
 
         <x-typography.subheadline class="mt-6 md:mt-10">
