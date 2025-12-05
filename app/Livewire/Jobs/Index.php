@@ -7,6 +7,7 @@ use Livewire\Component;
 use App\Enums\JobSetting;
 use Illuminate\View\View;
 use App\Enums\JobSeniority;
+use Illuminate\Support\Arr;
 use Livewire\Attributes\Url;
 use Livewire\WithPagination;
 use App\Enums\EmploymentStatus;
@@ -51,6 +52,43 @@ class Index extends Component
     public function render() : View
     {
         return view('livewire.jobs.index', [
+            'logos' => Arr::shuffle([
+                [
+                    'src' => 'https://d2i1lec1hyrmti.cloudfront.net/wp-content/themes/clouddev2020/cdev25/images/newblue.svg',
+                    'alt' => 'CloudDevs',
+                    'class' => 'h-7 translate-y-0.5',
+                ],
+                [
+                    'src' => 'https://media.cmsmax.cloud/52pqMYw3f0h6sIityigBIf8T/cms-max-logo-horizontal.png',
+                    'alt' => 'CMS Max',
+                    'class' => 'h-5 translate-y-0.5',
+                ],
+                [
+                    'src' => 'https://upload.wikimedia.org/wikipedia/en/d/d1/Hopper_Inc._Logo.png',
+                    'alt' => 'Hopper',
+                    'class' => 'h-14 translate-y-2',
+                ],
+                [
+                    'src' => 'https://r2.remoteok.com/jobs/356f231845e627c4ad7afc3801434ca01755705609.png',
+                    'alt' => 'Manifest',
+                    'class' => 'h-9 translate-y-0.5',
+                ],
+                [
+                    'src' => 'https://mms.businesswire.com/media/20240130740190/en/2014262/4/Metronome_Logo.jpg',
+                    'alt' => 'Metronome LLC',
+                    'class' => 'h-4.5 translate-y-0.5',
+                ],
+                [
+                    'src' => 'https://wpforms.com/wp-content/uploads/2023/09/WPForms-Logo-Dark.png',
+                    'alt' => 'wpforms',
+                    'class' => 'h-9',
+                ],
+                [
+                    'src' => 'https://wunderite.com/wp-content/uploads/2021/09/wunderite-logo-blue-text-1024x135.png',
+                    'alt' => 'Wunderite',
+                    'class' => 'h-5',
+                ],
+            ]),
             'jobs' => $this->paginateJobs(),
             'settingOptions' => JobSetting::options(),
             'employmentStatusOptions' => EmploymentStatus::options(),
