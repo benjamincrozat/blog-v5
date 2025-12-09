@@ -193,7 +193,6 @@ class ReviseJob
                             'title',
                             'description',
                             'technologies',
-                            'locations',
                             'location_entities',
                             'setting',
                             'employment_status',
