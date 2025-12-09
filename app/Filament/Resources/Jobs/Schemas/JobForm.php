@@ -20,12 +20,13 @@ class JobForm
                     TextInput::make('title')
                         ->required(),
 
-                    Select::make('location_id')
-                        ->relationship('location', 'display_name')
-                        ->nullable()
+                    Select::make('locations')
+                        ->label('Locations')
+                        ->relationship('locations', 'id')
+                        ->getOptionLabelFromRecordUsing(fn (\App\Models\Location $location) => $location->display_name)
+                        ->multiple()
                         ->searchable()
-                        ->preload()
-                        ->label('Location'),
+                        ->preload(),
 
                     CodeEditor::make('technologies')
                         ->json()
