@@ -18,7 +18,7 @@ class ReviseJob
         }
 
         $response = OpenAI::responses()->create([
-            'model' => 'gpt-5.1-mini',
+            'model' => 'gpt-5-mini',
             'input' => [
                 [
                     'role' => 'developer',
