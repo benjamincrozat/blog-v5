@@ -2,6 +2,8 @@
 
 namespace App\Actions;
 
+use DOMXPath;
+use DOMDocument;
 use App\Feed\FeedItem;
 use App\Feed\FeedReader;
 use Illuminate\Support\Collection;
@@ -10,7 +12,7 @@ use Illuminate\Support\Facades\Http;
 class DiscoverFeedItems
 {
     public function __construct(
-        private FeedReader $reader,
+        protected FeedReader $reader,
     ) {}
 
     /**
@@ -39,12 +41,12 @@ class DiscoverFeedItems
         return collect($items);
     }
 
-    private function detectBaseUrl(string $xml, string $fallback) : string
+    protected function detectBaseUrl(string $xml, string $fallback) : string
     {
-        $document = new \DOMDocument('1.0', 'UTF-8');
+        $document = new DOMDocument('1.0', 'UTF-8');
         @$document->loadXML($xml, LIBXML_NOWARNING | LIBXML_NOERROR | LIBXML_NONET);
 
-        $xpath = new \DOMXPath($document);
+        $xpath = new DOMXPath($document);
         $xpath->registerNamespace('atom', 'http://www.w3.org/2005/Atom');
 
         $selfHref = $xpath->query('//atom:link[@rel="self"]/@href')?->item(0)?->nodeValue ?? '';

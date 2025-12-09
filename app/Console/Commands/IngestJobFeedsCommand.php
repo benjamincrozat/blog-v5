@@ -118,7 +118,7 @@ class IngestJobFeedsCommand extends Command
         }
     }
 
-    private function matchesFilter(string $name, string $url, string $filter) : bool
+    protected function matchesFilter(string $name, string $url, string $filter) : bool
     {
         return str_contains(mb_strtolower($name), mb_strtolower($filter))
             || str_contains(mb_strtolower($url), mb_strtolower($filter));

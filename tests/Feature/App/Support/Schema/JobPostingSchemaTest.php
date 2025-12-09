@@ -2,6 +2,7 @@
 
 use App\Models\Job;
 use App\Models\Company;
+use App\Models\Location;
 use App\Enums\JobSetting;
 use App\Enums\EmploymentStatus;
 use App\Support\Schema\JobPostingSchema;
@@ -32,7 +33,6 @@ it('builds schema for fully remote jobs without explicit locations', function ()
         'description' => 'Build distributed systems.',
         'employment_status' => EmploymentStatus::FullTime->value,
         'setting' => JobSetting::FullyRemote->value,
-        'locations' => [],
         'currency' => 'EUR',
         'min_salary' => 120000,
         'max_salary' => 180000,
@@ -40,6 +40,7 @@ it('builds schema for fully remote jobs without explicit locations', function ()
     ]);
 
     $job->setRelation('company', $company);
+    $job->setRelation('locations', collect());
 
     $schema = JobPostingSchema::fromJob($job);
 
@@ -102,12 +103,6 @@ it('builds schema for jobs with mixed applicant locations', function () {
         'description' => 'Design thoughtful experiences.',
         'employment_status' => EmploymentStatus::Contract->value,
         'setting' => JobSetting::Hybrid->value,
-        'locations' => [
-            'Paris, Île-de-France, France',
-            'Irvine, Orange County, CA, United States',
-            'France',
-            ' , , ',
-        ],
         'currency' => 'CAD',
         'min_salary' => 70000,
         'max_salary' => 90000,
@@ -115,12 +110,17 @@ it('builds schema for jobs with mixed applicant locations', function () {
     ]);
 
     $job->setRelation('company', $company);
+    $job->setRelation('locations', collect([
+        Location::factory()->make([
+            'city' => 'Paris',
+            'region' => 'Île-de-France',
+            'country' => 'France',
+        ]),
+    ]));
 
     $schema = JobPostingSchema::fromJob($job);
 
-    expect($schema['jobLocation'])->toHaveCount(4);
-
-    expect($schema['jobLocation'][0])->toMatchArray([
+    expect($schema['jobLocation'])->toMatchArray([
         '@type' => 'Place',
         'name' => 'Paris, Île-de-France, France',
         'address' => [
@@ -131,29 +131,9 @@ it('builds schema for jobs with mixed applicant locations', function () {
         ],
     ]);
 
-    expect($schema['jobLocation'][1]['address'])->toMatchArray([
-        '@type' => 'PostalAddress',
-        'addressLocality' => 'Irvine',
-        'addressRegion' => 'Orange County, CA',
-        'addressCountry' => 'United States',
-    ]);
-
-    expect($schema['jobLocation'][2]['address'])->toMatchArray([
-        '@type' => 'PostalAddress',
-        'addressCountry' => 'France',
-    ]);
-
-    expect($schema['jobLocation'][3]['address']['addressCountry'])->toBe('Worldwide');
-
     expect($schema['applicantLocationRequirements'])->toBe([
-        [
-            '@type' => 'Country',
-            'name' => 'France',
-        ],
-        [
-            '@type' => 'Country',
-            'name' => 'United States',
-        ],
+        '@type' => 'Country',
+        'name' => 'France',
     ]);
 
     expect($schema['employmentType'])->toBe('CONTRACTOR');
@@ -174,7 +154,6 @@ it('omits nullable sections and defaults currency when details are missing', fun
         'description' => 'Keep the team aligned.',
         'employment_status' => null,
         'setting' => JobSetting::OnSite->value,
-        'locations' => null,
         'currency' => null,
         'min_salary' => 50000,
         'max_salary' => 80000,
@@ -182,6 +161,7 @@ it('omits nullable sections and defaults currency when details are missing', fun
     ]);
 
     $job->setRelation('company', $company);
+    $job->setRelation('locations', collect());
 
     $schema = JobPostingSchema::fromJob($job);
 
@@ -206,7 +186,6 @@ it('maps employment statuses to structured data values', function (?string $stat
         'description' => 'Own several workflows.',
         'employment_status' => $status,
         'setting' => JobSetting::OnSite->value,
-        'locations' => ['Paris, Île-de-France, France'],
         'currency' => 'USD',
         'min_salary' => 60000,
         'max_salary' => 90000,
@@ -214,6 +193,13 @@ it('maps employment statuses to structured data values', function (?string $stat
     ]);
 
     $job->setRelation('company', $company);
+    $job->setRelation('locations', collect([
+        Location::factory()->make([
+            'city' => 'Paris',
+            'region' => 'Île-de-France',
+            'country' => 'France',
+        ]),
+    ]));
 
     $schema = JobPostingSchema::fromJob($job);
 

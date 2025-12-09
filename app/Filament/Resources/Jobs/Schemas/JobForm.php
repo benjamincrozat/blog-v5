@@ -20,14 +20,12 @@ class JobForm
                     TextInput::make('title')
                         ->required(),
 
-                    CodeEditor::make('locations')
-                        ->json()
+                    Select::make('location_id')
+                        ->relationship('location', 'display_name')
                         ->nullable()
-                        ->formatStateUsing(function ($state) {
-                            return is_array($state)
-                                ? json_encode($state, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
-                                : (is_string($state) ? $state : null);
-                        }),
+                        ->searchable()
+                        ->preload()
+                        ->label('Location'),
 
                     CodeEditor::make('technologies')
                         ->json()

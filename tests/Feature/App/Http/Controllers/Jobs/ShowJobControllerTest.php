@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Job;
+use App\Models\Location;
 
 use function Pest\Laravel\get;
 
@@ -24,11 +25,18 @@ it('returns 404 for unknown job', function () {
 it('renders JobPosting JSON-LD on the job detail page', function () {
     Carbon::setTestNow(Carbon::create(2024, 1, 1, 0, 0, 0));
 
+    $location = Location::factory()->create([
+        'city' => 'Paris',
+        'region' => null,
+        'country' => 'France',
+    ]);
+
     $job = Job::factory()->create([
-        'locations' => ['Paris, France'],
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now(),
     ]);
+
+    $job->locations()->sync([$location->id]);
 
     $response = get(route('jobs.show', $job->slug));
 

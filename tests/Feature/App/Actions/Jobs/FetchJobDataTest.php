@@ -1,14 +1,11 @@
 <?php
 
-use App\Jobs\CreateJob;
 use App\Scraper\Webpage;
 use OpenAI\Laravel\Facades\OpenAI;
-use Illuminate\Support\Facades\Queue;
 use OpenAI\Responses\Responses\CreateResponse;
-use App\Actions\FetchJobData as FetchJobDataAction;
+use App\Actions\Jobs\FetchJobData as FetchJobDataAction;
 
-it('dispatches CreateJob with parsed data from OpenAI', function () {
-    Queue::fake();
+it('returns parsed data from OpenAI as an array', function () {
 
     $webpage = new Webpage(
         url: 'https://example.com/job/123',
@@ -23,7 +20,12 @@ it('dispatches CreateJob with parsed data from OpenAI', function () {
         'title' => 'Senior PHP Developer',
         'description' => 'Build and maintain Laravel apps.',
         'technologies' => ['PHP', 'Laravel', 'MySQL'],
-        'locations' => ['Remote', 'US'],
+        'locations' => ['San Francisco, California, United States'],
+        'location_entities' => [[
+            'city' => 'San Francisco',
+            'region' => 'California',
+            'country' => 'United States',
+        ]],
         'setting' => 'fully-remote',
         'employment_status' => 'full-time',
         'seniority' => 'senior',
@@ -77,9 +79,10 @@ it('dispatches CreateJob with parsed data from OpenAI', function () {
         ]),
     ]);
 
-    app(FetchJobDataAction::class)->fetch($webpage);
+    $data = app(FetchJobDataAction::class)->fetch($webpage);
 
-    Queue::assertPushed(CreateJob::class, function ($job) use ($webpage) {
-        return isset($job->data) && is_object($job->data) && $job->data->url === $webpage->url;
-    });
+    expect($data)->toBeArray()
+        ->and($data['url'])->toBe($webpage->url)
+        ->and($data['company']['url'])->toBe('https://acme.test')
+        ->and($data['location_entities'][0]['city'])->toBe('San Francisco');
 });

@@ -2,7 +2,7 @@
 
 use App\Jobs\CreateJob;
 use App\Scraper\Webpage;
-use Facades\App\Actions\CreateJob as CreateJobAction;
+use Facades\App\Actions\Jobs\CreateJob as CreateJobAction;
 
 it('invokes the CreateJob action with provided data', function () {
     $webpage = new Webpage(
@@ -21,6 +21,7 @@ it('invokes the CreateJob action with provided data', function () {
         'technologies' => ['PHP'],
         'perks' => [],
         'locations' => [],
+        'location_entities' => [],
         'setting' => 'fully-remote',
         'min_salary' => 0,
         'max_salary' => 0,

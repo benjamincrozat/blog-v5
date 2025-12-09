@@ -1,36 +1,29 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Jobs;
 
-use Exception;
-use App\Models\Job;
+use App\Scraper\Webpage;
 use OpenAI\Laravel\Facades\OpenAI;
 
-// The reason for this action to exist is to allow me to revise existing
-// jobs. The prompts used below will evolve and so should the jobs.
-class ReviseJob
+class FetchJobData
 {
-    public function revise(Job $job, ?string $additionalInstructions = null) : Job
+    public function fetch(Webpage $webpage) : array
     {
-        if (! $job->html) {
-            throw new Exception('The job cannot be revised because it has no HTML content.');
-        }
-
         $response = OpenAI::responses()->create([
-            'model' => 'gpt-5.1-mini',
+            'model' => 'gpt-5.1',
             'input' => [
                 [
                     'role' => 'developer',
                     'content' => [[
                         'type' => 'input_text',
-                        'text' => view('components.prompts.revise-job.developer')->render(),
+                        'text' => view('components.prompts.fetch-job-data.developer')->render(),
                     ]],
                 ],
                 [
                     'role' => 'user',
                     'content' => [[
                         'type' => 'input_text',
-                        'text' => view('components.prompts.revise-job.user', compact('job', 'additionalInstructions'))->render(),
+                        'text' => view('components.prompts.fetch-job-data.user', compact('webpage'))->render(),
                     ]],
                 ],
             ],
@@ -42,9 +35,14 @@ class ReviseJob
                     'schema' => [
                         'type' => 'object',
                         'properties' => [
+                            'url' => [
+                                'type' => 'string',
+                                'description' => 'Direct link to the job posting.',
+                                'minLength' => 1,
+                            ],
                             'language' => [
                                 'type' => 'string',
-                                'description' => "Language code of the job in ISO 639 format, for example 'en', 'fr', or 'de'.",
+                                'description' => "Language code of the original job posting in ISO 639 format, for example 'en', 'fr', or 'de'.",
                                 'pattern' => '^[a-zA-Z]{2,3}(-[a-zA-Z]{2,3})?$',
                                 'minLength' => 2,
                             ],
@@ -66,12 +64,11 @@ class ReviseJob
                                     'minLength' => 1,
                                 ],
                             ],
-                            'locations' => [
+                            'location_entities' => [
                                 'type' => 'array',
-                                'description' => 'Array of locations.',
+                                'description' => 'Structured locations to store or reuse Location records.',
                                 'items' => [
-                                    'type' => 'string',
-                                    'minLength' => 1,
+                                    '$ref' => '#/$defs/location',
                                 ],
                                 'minItems' => 0,
                             ],
@@ -187,13 +184,23 @@ class ReviseJob
                                 ],
                                 'minItems' => 0,
                             ],
+                            'company' => [
+                                '$ref' => '#/$defs/company',
+                            ],
+                            'source' => [
+                                'type' => 'string',
+                                'description' => 'Name of the website or source where this job was found.',
+                                'minLength' => 1,
+                            ],
                         ],
                         'required' => [
+                            'url',
                             'language',
                             'title',
                             'description',
                             'technologies',
                             'locations',
+                            'location_entities',
                             'setting',
                             'employment_status',
                             'seniority',
@@ -203,11 +210,107 @@ class ReviseJob
                             'currency',
                             'perks',
                             'interview_process',
+                            'company',
+                            'source',
                         ],
                         'additionalProperties' => false,
+                        '$defs' => [
+                            'company' => [
+                                'type' => 'object',
+                                'description' => 'Information about the company offering the job',
+                                'properties' => [
+                                    'name' => [
+                                        'type' => 'string',
+                                        'description' => 'Exact name of the company.',
+                                        'minLength' => 1,
+                                    ],
+                                    'url' => [
+                                        'anyOf' => [
+                                            [
+                                                'type' => 'string',
+                                                'description' => 'Official company website or profile.',
+                                                'minLength' => 1,
+                                            ],
+                                            [
+                                                'type' => 'null',
+                                                'description' => 'Null if no company URL is provided.',
+                                            ],
+                                        ],
+                                    ],
+                                    'logo' => [
+                                        'anyOf' => [
+                                            [
+                                                'type' => 'string',
+                                                'description' => 'An URL to the company logo image.',
+                                                'minLength' => 1,
+                                            ],
+                                            [
+                                                'type' => 'null',
+                                                'description' => 'Null if no company logo is provided.',
+                                            ],
+                                        ],
+                                    ],
+                                    'about' => [
+                                        'type' => 'string',
+                                        'description' => 'What the company is about, based on web research. Include founding year, domain, notable products, and mission. Whatever you can find. Refer to the company as "they" or "the company" (not "we") and do not address the reader as "you". Remove any citation markers, footnote artifacts, or placeholders (e.g., "cite…", "[1]", "[citation needed]") so the text is clean prose.',
+                                        'minLength' => 1,
+                                    ],
+                                ],
+                                'required' => [
+                                    'name',
+                                    'url',
+                                    'logo',
+                                    'about',
+                                ],
+                                'additionalProperties' => false,
+                            ],
+                            'location' => [
+                                'type' => 'object',
+                                'description' => 'Normalized location components for storage or reuse.',
+                                'properties' => [
+                                    'city' => [
+                                        'anyOf' => [
+                                            [
+                                                'type' => 'string',
+                                                'description' => 'City name if present.',
+                                                'minLength' => 1,
+                                            ],
+                                            [
+                                                'type' => 'null',
+                                                'description' => 'Null when city is missing.',
+                                            ],
+                                        ],
+                                    ],
+                                    'region' => [
+                                        'anyOf' => [
+                                            [
+                                                'type' => 'string',
+                                                'description' => 'Region, state, or province if present.',
+                                                'minLength' => 1,
+                                            ],
+                                            [
+                                                'type' => 'null',
+                                                'description' => 'Null when region is missing.',
+                                            ],
+                                        ],
+                                    ],
+                                    'country' => [
+                                        'type' => 'string',
+                                        'description' => 'Full country name (for example, "United States", not "USA").',
+                                        'minLength' => 1,
+                                    ],
+                                ],
+                                'required' => [
+                                    'city',
+                                    'region',
+                                    'country',
+                                ],
+                                'additionalProperties' => false,
+                            ],
+                        ],
                     ],
                 ],
-                'verbosity' => 'medium',
+                'verbosity' => 'high',
             ],
             'reasoning' => [
                 'effort' => 'high',
@@ -215,7 +318,7 @@ class ReviseJob
             ],
             'tools' => [[
                 'type' => 'web_search_preview',
-                'search_context_size' => 'medium',
+                'search_context_size' => 'high',
                 'user_location' => [
                     'type' => 'approximate',
                     'country' => 'US',
@@ -228,26 +331,6 @@ class ReviseJob
             ],
         ]);
 
-        $data = json_decode($response->outputText ?? '');
-
-        return Job::query()->updateOrCreate([
-            'url' => $job->url,
-        ], [
-            'source' => $job->source,
-            'language' => $data->language,
-            'title' => $data->title,
-            'description' => $data->description,
-            'technologies' => $data->technologies,
-            'perks' => $data->perks ?? [],
-            'locations' => $data->locations,
-            'setting' => $data->setting,
-            'employment_status' => $data->employment_status ?? null,
-            'seniority' => $data->seniority ?? null,
-            'min_salary' => $data->min_salary ?? 0,
-            'max_salary' => $data->max_salary ?? 0,
-            'currency' => $data->currency,
-            'equity' => (bool) ($data->equity ?? false),
-            'interview_process' => $data->interview_process ?? [],
-        ]);
+        return json_decode($response->outputText ?? '', associative: true) ?? [];
     }
 }

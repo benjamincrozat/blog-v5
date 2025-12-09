@@ -91,7 +91,7 @@ class FeedReader
         return $items;
     }
 
-    private function firstAttr(DOMXPath $xpath, string $query, \DOMNode $contextNode) : ?string
+    protected function firstAttr(DOMXPath $xpath, string $query, \DOMNode $contextNode) : ?string
     {
         $nodes = $xpath->query($query, $contextNode);
 
@@ -104,7 +104,7 @@ class FeedReader
         return '' !== $value ? $value : null;
     }
 
-    private function parseDate(?string $value) : ?CarbonImmutable
+    protected function parseDate(?string $value) : ?CarbonImmutable
     {
         $value = trim((string) ($value ?? ''));
 
@@ -123,7 +123,7 @@ class FeedReader
         }
     }
 
-    private function normalizeUrl(?string $url, string $baseUrl) : ?string
+    protected function normalizeUrl(?string $url, string $baseUrl) : ?string
     {
         $url = trim((string) ($url ?? ''));
         if ('' === $url) {
@@ -157,7 +157,7 @@ class FeedReader
         return '' !== $rebuilt ? $rebuilt : null;
     }
 
-    private function resolveRelativeUrl(string $relative, string $base) : string
+    protected function resolveRelativeUrl(string $relative, string $base) : string
     {
         // Very small resolver; good enough for typical feed links.
         $baseUrlParts = parse_url($base) ?: [];
@@ -176,7 +176,7 @@ class FeedReader
         return ($baseUrlParts['scheme'] ?? 'https') . '://' . ($baseUrlParts['host'] ?? '') . $path . $relative;
     }
 
-    private function buildUrl(array $parts) : string
+    protected function buildUrl(array $parts) : string
     {
         $scheme = isset($parts['scheme']) ? $parts['scheme'] . '://' : '';
         $host = $parts['host'] ?? '';

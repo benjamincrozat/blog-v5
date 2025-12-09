@@ -6,7 +6,7 @@ use App\Models\Company;
 use App\Scraper\Webpage;
 use App\Notifications\JobFetched;
 use Illuminate\Support\Facades\Notification;
-use App\Actions\CreateJob as CreateJobAction;
+use App\Actions\Jobs\CreateJob as CreateJobAction;
 
 it('creates a job and company with the provided payload', function () {
     [$job, $data] = performCreateJobActionForTest();
@@ -14,6 +14,8 @@ it('creates a job and company with the provided payload', function () {
     expect($job)->toBeInstanceOf(Job::class);
     expect($job->url)->toBe($data->url);
     expect($job->company->name)->toBe('Acme Inc');
+    expect($job->locations)->toHaveCount(1);
+    expect($job->locations->first()->display_name)->toBe('San Francisco, California, United States');
     expect($job->technologies)->toMatchArray(['PHP', 'Laravel', 'MySQL']);
     expect($job->perks)->toMatchArray(['Remote stipend', 'Wellness budget']);
     expect($job->equity)->toBeTrue();
@@ -32,6 +34,7 @@ it('updates matching jobs when payloads reference an existing url', function () 
     expect($updated->title)->toBe('New title');
     expect($updated->min_salary)->toBe(0);
     expect($updated->max_salary)->toBe(0);
+    expect($updated->locations->pluck('display_name')->all())->toBe(['Paris, France']);
 });
 
 it('updates matching companies when payloads reference an existing name', function () {
@@ -39,8 +42,41 @@ it('updates matching companies when payloads reference an existing name', functi
 
     expect($updated->company_id)->toBe($company->id);
     expect($updated->company->url)->toBe('https://acme.new');
+    expect($updated->company->domain)->toBe('acme.new');
     expect($updated->company->logo)->toBe('https://cdn.test/acme-new.png');
     expect($updated->company->about)->toBe('Updated about.');
+});
+
+it('reuses company by normalized domain even when the provided name differs', function () {
+    Notification::fake();
+
+    $existing = Company::factory()->create([
+        'name' => 'Old Name Co',
+        'url' => 'https://www.example.org/about',
+    ]);
+
+    $webpage = new Webpage(
+        'https://example.org/job',
+        'https://example.org/image.jpg',
+        'Title',
+        '<html><body><h1>Title</h1><p>Content</p></body></html>'
+    );
+
+    $data = (object) array_merge(defaultJobPayload(), [
+        'company' => (object) [
+            'name' => 'New Name Inc',
+            'url' => 'HTTPS://example.org/careers?utm=1',
+            'logo' => 'https://cdn.example.org/logo.png',
+            'about' => 'Updated about.',
+        ],
+    ]);
+
+    $job = app(CreateJobAction::class)->create($webpage, $data)->refresh();
+
+    expect($job->company_id)->toBe($existing->id)
+        ->and($job->company->name)->toBe('New Name Inc')
+        ->and($job->company->domain)->toBe('example.org')
+        ->and($job->company->url)->toBe('https://example.org/careers');
 });
 
 it('does not error if admin user is missing', function () {
@@ -61,6 +97,7 @@ it('does not error if admin user is missing', function () {
         'technologies' => ['PHP'],
         'perks' => [],
         'locations' => [],
+        'location_entities' => [],
         'min_salary' => 0,
         'max_salary' => 0,
         'equity' => false,
@@ -113,6 +150,8 @@ function updateExistingJobScenario() : array
 
     $company = Company::factory()->create([
         'name' => 'Acme Inc',
+        'url' => 'https://acme.test',
+        'domain' => 'acme.test',
     ]);
 
     $existing = Job::factory()->for($company)->create([
@@ -135,7 +174,12 @@ function updateExistingJobScenario() : array
         'description' => 'New description',
         'technologies' => ['PHP'],
         'perks' => [],
-        'locations' => ['Remote'],
+        'locations' => ['Paris, France'],
+        'location_entities' => [[
+            'city' => 'Paris',
+            'region' => null,
+            'country' => 'France',
+        ]],
         'min_salary' => null,
         'max_salary' => null,
         'company' => (object) [
@@ -163,7 +207,12 @@ function defaultJobPayload() : array
         'description' => 'Build and maintain Laravel apps.',
         'technologies' => ['PHP', 'Laravel', 'MySQL'],
         'perks' => ['Remote stipend', 'Wellness budget'],
-        'locations' => ['Remote', 'US'],
+        'locations' => ['San Francisco, California, United States'],
+        'location_entities' => [[
+            'city' => 'San Francisco',
+            'region' => 'California',
+            'country' => 'United States',
+        ]],
         'setting' => 'fully-remote',
         'employment_status' => 'full-time',
         'seniority' => 'senior',

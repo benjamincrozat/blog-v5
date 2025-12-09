@@ -2,6 +2,7 @@
 
 use App\Models\Job;
 use App\Models\Company;
+use App\Models\Location;
 use App\Models\Redirect;
 
 use function Pest\Laravel\assertDatabaseHas;
@@ -47,7 +48,9 @@ it('casts attributes correctly', function () {
     $job = Job::factory()->create();
 
     expect($job->technologies)->toBeArray()
-        ->and($job->locations)->toBeIterable()
+        ->and($job->locations->count())->toBeGreaterThanOrEqual(1)
+        ->and($job->locations->first())->toBeInstanceOf(Location::class)
+        ->and($job->locations->first()->display_name)->toBeString()
         ->and($job->perks)->toBeArray()
         ->and($job->interview_process)->toBeArray()
         ->and($job->equity)->toBeBool();

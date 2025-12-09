@@ -18,7 +18,7 @@ class CommentFactory extends Factory
             'post_id' => Post::factory(),
             'parent_id' => null,
             'content' => fake()->paragraph(),
-            'created_at' => fake()->dateTimeBetween('-1 year', 'now'),
+            'created_at' => now()->subDays(fake()->numberBetween(0, 365)),
         ];
     }
 }

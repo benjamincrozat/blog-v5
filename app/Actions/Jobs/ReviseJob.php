@@ -1,30 +1,37 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Jobs;
 
-use App\Jobs\CreateJob;
-use App\Scraper\Webpage;
+use Exception;
+use App\Models\Job;
+use App\Models\Location;
 use OpenAI\Laravel\Facades\OpenAI;
 
-class FetchJobData
+// The reason for this action to exist is to allow me to revise existing
+// jobs. The prompts used below will evolve and so should the jobs.
+class ReviseJob
 {
-    public function fetch(Webpage $webpage) : void
+    public function revise(Job $job, ?string $additionalInstructions = null) : Job
     {
+        if (! $job->html) {
+            throw new Exception('The job cannot be revised because it has no HTML content.');
+        }
+
         $response = OpenAI::responses()->create([
-            'model' => 'gpt-5.1',
+            'model' => 'gpt-5.1-mini',
             'input' => [
                 [
                     'role' => 'developer',
                     'content' => [[
                         'type' => 'input_text',
-                        'text' => view('components.prompts.fetch-job-data.developer')->render(),
+                        'text' => view('components.prompts.revise-job.developer')->render(),
                     ]],
                 ],
                 [
                     'role' => 'user',
                     'content' => [[
                         'type' => 'input_text',
-                        'text' => view('components.prompts.fetch-job-data.user', compact('webpage'))->render(),
+                        'text' => view('components.prompts.revise-job.user', compact('job', 'additionalInstructions'))->render(),
                     ]],
                 ],
             ],
@@ -36,14 +43,9 @@ class FetchJobData
                     'schema' => [
                         'type' => 'object',
                         'properties' => [
-                            'url' => [
-                                'type' => 'string',
-                                'description' => 'Direct link to the job posting.',
-                                'minLength' => 1,
-                            ],
                             'language' => [
                                 'type' => 'string',
-                                'description' => "Language code of the original job posting in ISO 639 format, for example 'en', 'fr', or 'de'.",
+                                'description' => "Language code of the job in ISO 639 format, for example 'en', 'fr', or 'de'.",
                                 'pattern' => '^[a-zA-Z]{2,3}(-[a-zA-Z]{2,3})?$',
                                 'minLength' => 2,
                             ],
@@ -65,12 +67,11 @@ class FetchJobData
                                     'minLength' => 1,
                                 ],
                             ],
-                            'locations' => [
+                            'location_entities' => [
                                 'type' => 'array',
-                                'description' => 'Array of locations (city and/or country). Can be empty if none are provided.',
+                                'description' => 'Structured locations to store or reuse Location records.',
                                 'items' => [
-                                    'type' => 'string',
-                                    'minLength' => 1,
+                                    '$ref' => '#/$defs/location',
                                 ],
                                 'minItems' => 0,
                             ],
@@ -186,22 +187,14 @@ class FetchJobData
                                 ],
                                 'minItems' => 0,
                             ],
-                            'company' => [
-                                '$ref' => '#/$defs/company',
-                            ],
-                            'source' => [
-                                'type' => 'string',
-                                'description' => 'Name of the website or source where this job was found.',
-                                'minLength' => 1,
-                            ],
                         ],
                         'required' => [
-                            'url',
                             'language',
                             'title',
                             'description',
                             'technologies',
                             'locations',
+                            'location_entities',
                             'setting',
                             'employment_status',
                             'seniority',
@@ -211,64 +204,56 @@ class FetchJobData
                             'currency',
                             'perks',
                             'interview_process',
-                            'company',
-                            'source',
                         ],
                         'additionalProperties' => false,
                         '$defs' => [
-                            'company' => [
+                            'location' => [
                                 'type' => 'object',
-                                'description' => 'Information about the company offering the job',
+                                'description' => 'Normalized location components for storage or reuse.',
                                 'properties' => [
-                                    'name' => [
-                                        'type' => 'string',
-                                        'description' => 'Exact name of the company.',
-                                        'minLength' => 1,
-                                    ],
-                                    'url' => [
+                                    'city' => [
                                         'anyOf' => [
                                             [
                                                 'type' => 'string',
-                                                'description' => 'Official company website or profile.',
+                                                'description' => 'City name if present.',
                                                 'minLength' => 1,
                                             ],
                                             [
                                                 'type' => 'null',
-                                                'description' => 'Null if no company URL is provided.',
+                                                'description' => 'Null when city is missing.',
                                             ],
                                         ],
                                     ],
-                                    'logo' => [
+                                    'region' => [
                                         'anyOf' => [
                                             [
                                                 'type' => 'string',
-                                                'description' => 'An URL to the company logo image.',
+                                                'description' => 'Region, state, or province if present.',
                                                 'minLength' => 1,
                                             ],
                                             [
                                                 'type' => 'null',
-                                                'description' => 'Null if no company logo is provided.',
+                                                'description' => 'Null when region is missing.',
                                             ],
                                         ],
                                     ],
-                                    'about' => [
+                                    'country' => [
                                         'type' => 'string',
-                                        'description' => 'What the company is about, based on web research. Include founding year, domain, notable products, and mission. Whatever you can find. Refer to the company as "they" or "the company" (not "we") and do not address the reader as "you". Remove any citation markers, footnote artifacts, or placeholders (e.g., "cite…", "[1]", "[citation needed]") so the text is clean prose.',
+                                        'description' => 'Full country name (for example, "United States", not "USA").',
                                         'minLength' => 1,
                                     ],
                                 ],
                                 'required' => [
-                                    'name',
-                                    'url',
-                                    'logo',
-                                    'about',
+                                    'city',
+                                    'region',
+                                    'country',
                                 ],
                                 'additionalProperties' => false,
                             ],
                         ],
                     ],
                 ],
-                'verbosity' => 'high',
+                'verbosity' => 'medium',
             ],
             'reasoning' => [
                 'effort' => 'high',
@@ -276,7 +261,7 @@ class FetchJobData
             ],
             'tools' => [[
                 'type' => 'web_search_preview',
-                'search_context_size' => 'high',
+                'search_context_size' => 'medium',
                 'user_location' => [
                     'type' => 'approximate',
                     'country' => 'US',
@@ -289,8 +274,47 @@ class FetchJobData
             ],
         ]);
 
-        $data = json_decode($response->outputText ?? '', associative: false);
+        $data = json_decode($response->outputText ?? '');
 
-        CreateJob::dispatch($webpage, $data);
+        $job = Job::query()->updateOrCreate([
+            'url' => $job->url,
+        ], [
+            'source' => $job->source,
+            'language' => $data->language,
+            'title' => $data->title,
+            'description' => $data->description,
+            'technologies' => $data->technologies,
+            'perks' => $data->perks ?? [],
+            'setting' => $data->setting,
+            'employment_status' => $data->employment_status ?? null,
+            'seniority' => $data->seniority ?? null,
+            'min_salary' => $data->min_salary ?? 0,
+            'max_salary' => $data->max_salary ?? 0,
+            'currency' => $data->currency,
+            'equity' => (bool) ($data->equity ?? false),
+            'interview_process' => $data->interview_process ?? [],
+        ]);
+
+        $job->locations()->sync($this->resolveLocationIds($data));
+
+        return $job;
+    }
+
+    /**
+     * @return array<int>
+     */
+    protected function resolveLocationIds(object $data) : array
+    {
+        return collect($data->location_entities ?? [])
+            ->filter(fn ($entry) => null !== data_get($entry, 'country'))
+            ->map(function ($entry) {
+                return Location::query()->firstOrCreate([
+                    'city' => data_get($entry, 'city'),
+                    'region' => data_get($entry, 'region'),
+                    'country' => data_get($entry, 'country'),
+                ])->id;
+            })
+            ->values()
+            ->all();
     }
 }

@@ -37,18 +37,18 @@
                 @endif
             </div>
 
-            @if ('fully-remote' === $job->setting)
-                <p>Remote</p>
-            @else
-                <p>
-                    @php $locations = collect($job->locations); @endphp
+            @php $locations = $job->locations; @endphp
 
-                    <span>{{ $locations->first() }}</span>
+            @if ($locations->isNotEmpty())
+                <p>
+                    <span>{{ $locations->first()->display_name }}</span>
 
                     @if ($locations->count() > 1)
                         <span>(+ {{ $locations->count() - 1 }} more)</span>
                     @endif
                 </p>
+            @elseif ('fully-remote' === $job->setting)
+                <p>Remote</p>
             @endif
         </div>
 

@@ -17,7 +17,7 @@ class CreateJob implements ShouldQueue
 
     public function handle() : void
     {
-        app(\App\Actions\CreateJob::class)
+        app(\App\Actions\Jobs\CreateJob::class)
             ->create($this->webpage, $this->data);
     }
 }

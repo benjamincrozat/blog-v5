@@ -17,6 +17,6 @@ class ReviseJob implements ShouldQueue
 
     public function handle() : void
     {
-        app(\App\Actions\ReviseJob::class)->revise($this->jobModel, $this->additionalInstructions);
+        app(\App\Actions\Jobs\ReviseJob::class)->revise($this->jobModel, $this->additionalInstructions);
     }
 }

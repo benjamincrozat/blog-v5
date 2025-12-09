@@ -8,7 +8,7 @@ class JobPostingSchema
 {
     public static function fromJob(Job $job) : array
     {
-        $locations = collect($job->locations ?? []);
+        $locations = $job->locations->pluck('display_name')->filter();
 
         $jobLocations = self::buildJobLocations($job, $locations->all());
         $applicantLocationRequirements = self::buildApplicantLocationRequirements($job, $locations->all());

@@ -57,10 +57,18 @@
                     <td class="py-2 md:py-4 pl-2 md:pl-4">{{ $job->equity ? 'Yes' : 'No' }}</td>
                 </tr>
 
-                @if (!empty($job->locations))
+                @php $locations = $job->locations; @endphp
+
+                @if ($locations->isNotEmpty())
                     <tr>
-                        <th class="text-right align-top py-2 pr-2 md:py-4 md:pr-4">Locations</th>
-                        <td class="py-2 md:py-4 text-balance pl-2 md:pl-4">{{ collect($job->locations)->join(', ') }}</td>
+                        <th class="text-right align-top py-2 pr-2 md:py-4 md:pr-4">Location</th>
+                        <td class="py-2 md:py-4 text-balance pl-2 md:pl-4">
+                            <span>{{ $locations->first()->display_name }}</span>
+
+                            @if ($locations->count() > 1)
+                                <span>(+ {{ $locations->count() - 1 }} more)</span>
+                            @endif
+                        </td>
                     </tr>
                 @endif
 

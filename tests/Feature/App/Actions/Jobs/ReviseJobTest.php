@@ -2,8 +2,8 @@
 
 use App\Models\Job;
 use OpenAI\Laravel\Facades\OpenAI;
-use App\Actions\ReviseJob as ReviseJobAction;
 use OpenAI\Responses\Responses\CreateResponse;
+use App\Actions\Jobs\ReviseJob as ReviseJobAction;
 
 it('throws when job has no html content', function () {
     $job = Job::factory()->make([
@@ -28,7 +28,12 @@ it('updates or creates job from OpenAI structured output', function () {
         'title' => 'Senior PHP Developer',
         'description' => 'Build and maintain Laravel apps.',
         'technologies' => ['PHP', 'Laravel', 'MySQL'],
-        'locations' => ['Remote', 'US'],
+        'locations' => ['San Francisco, California, United States'],
+        'location_entities' => [[
+            'city' => 'San Francisco',
+            'region' => 'California',
+            'country' => 'United States',
+        ]],
         'setting' => 'fully-remote',
         'employment_status' => 'full-time',
         'seniority' => 'senior',
@@ -85,7 +90,7 @@ it('updates or creates job from OpenAI structured output', function () {
         ->and($updated->equity)->toBeTrue()
         ->and($updated->technologies)->toMatchArray(['PHP', 'Laravel', 'MySQL'])
         ->and($updated->perks)->toMatchArray(['Remote stipend'])
-        ->and($updated->locations)->toMatchArray(['Remote', 'US'])
+        ->and($updated->locations->pluck('display_name')->all())->toBe(['San Francisco, California, United States'])
         ->and($updated->setting)->toBe('fully-remote')
         ->and($updated->interview_process)->toMatchArray(['Recruiter screen', 'Technical interview']);
 });
@@ -105,6 +110,7 @@ it('updates existing job and applies defaults when fields are null', function ()
         'description' => 'Maintain Laravel applications.',
         'technologies' => ['PHP', 'Laravel'],
         'locations' => [],
+        'location_entities' => [],
         'setting' => 'fully-remote',
         'equity' => null,
         'min_salary' => null,
@@ -160,7 +166,7 @@ it('updates existing job and applies defaults when fields are null', function ()
         ->and($updated->equity)->toBeFalse()
         ->and($updated->technologies)->toMatchArray(['PHP', 'Laravel'])
         ->and($updated->perks)->toMatchArray([])
-        ->and($updated->locations)->toMatchArray([])
+        ->and($updated->locations)->toHaveCount(0)
         ->and($updated->setting)->toBe('fully-remote')
         ->and($updated->interview_process)->toMatchArray([]);
 });
@@ -182,6 +188,7 @@ it('passes additional instructions to the OpenAI request', function () {
         'description' => 'Description',
         'technologies' => ['PHP'],
         'locations' => [],
+        'location_entities' => [],
         'setting' => 'fully-remote',
         'equity' => false,
         'min_salary' => null,

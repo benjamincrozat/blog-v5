@@ -7,6 +7,7 @@ use App\Models\Traits\JobSlugable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Job extends Model
 {
@@ -22,7 +23,6 @@ class Job extends Model
     {
         return [
             'technologies' => 'array',
-            'locations' => 'array',
             'perks' => 'array',
             'interview_process' => 'array',
             'equity' => 'boolean',
@@ -32,5 +32,15 @@ class Job extends Model
     public function company() : BelongsTo
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function locations() : BelongsToMany
+    {
+        return $this->belongsToMany(
+            Location::class,
+            'job_listing_location',
+            'job_listing_id',
+            'location_id'
+        );
     }
 }
