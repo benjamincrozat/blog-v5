@@ -114,7 +114,7 @@ def visit_with_fallback(browser: Camoufox, target_url: str) -> dict:
     except Exception as e:
         # Surface debugging context and exit with non-zero status.
         print(f"Error visiting {target_url}: {str(e)}")
-        print(f"Browser info: {browser.browser_type.name()}")
+        print(f"Browser info: {getattr(getattr(browser, 'browser_type', None), 'name', 'unknown')}")
         print(f"Context options: {browser.context.options}")
         sys.exit(1)
 
