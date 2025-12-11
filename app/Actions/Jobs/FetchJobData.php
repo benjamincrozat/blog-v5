@@ -64,6 +64,15 @@ class FetchJobData
                                     'minLength' => 1,
                                 ],
                             ],
+                            'locations' => [
+                                'type' => 'array',
+                                'description' => 'Array of display-ready location strings built from the structured entries. Can be empty.',
+                                'items' => [
+                                    'type' => 'string',
+                                    'minLength' => 1,
+                                ],
+                                'minItems' => 0,
+                            ],
                             'location_entities' => [
                                 'type' => 'array',
                                 'description' => 'Structured locations to store or reuse Location records.',
