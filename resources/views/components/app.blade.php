@@ -73,11 +73,7 @@
             @endif
 
             @empty($hideTopAd)
-                @if (random_int(0, 1))
-                    <x-ads.top.sevalla />
-                @else
-                    <x-ads.top.coderabbit />
-                @endif
+                <x-ads.top.sevalla />
             @endempty
 
             <div x-intersect:leave="$dispatch('toggle-sticky-carousel')"></div>
