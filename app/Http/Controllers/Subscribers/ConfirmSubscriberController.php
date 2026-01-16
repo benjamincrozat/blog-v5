@@ -4,14 +4,19 @@ namespace App\Http\Controllers\Subscribers;
 
 use App\Models\User;
 use App\Models\Subscriber;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Notifications\SubscriberConfirmed;
 
+/**
+ * Confirms a newsletter subscription from a signed link.
+ *
+ * Extracted to keep confirmation logic out of route files and views.
+ * Callers can rely on a redirect back to the newsletter page with a status message.
+ */
 class ConfirmSubscriberController extends Controller
 {
-    public function __invoke(Request $request, Subscriber $subscriber) : RedirectResponse
+    public function __invoke(Subscriber $subscriber) : RedirectResponse
     {
         if (! $subscriber->needsConfirmation()) {
             return to_route('newsletter')
@@ -21,7 +26,7 @@ class ConfirmSubscriberController extends Controller
                 ]);
         }
 
-        if (! $subscriber->tokenMatches($request->query('token'))) {
+        if (! $subscriber->tokenMatches(request()->query('token'))) {
             return to_route('newsletter')
                 ->with([
                     'status' => 'This confirmation link is invalid or has expired.',

@@ -13,12 +13,14 @@ it('leaves impersonation and redirects to the stored return url', function () {
     $manager = Mockery::mock(ImpersonateManager::class);
     $manager->shouldReceive('isImpersonating')->once()->andReturnTrue();
     $manager->shouldReceive('leave')->once();
+    app()->instance(ImpersonateManager::class, $manager);
 
     session()->put('impersonate.return', '/admin/users');
 
     $request = Request::create('/impersonation/leave', 'GET');
+    app()->instance('request', $request);
 
-    $response = (new LeaveImpersonationController)($request, $manager);
+    $response = (new LeaveImpersonationController)();
 
     expect($response->getTargetUrl())->toBe(url('/admin/users'));
 });
@@ -27,12 +29,14 @@ it('falls back to the referer header when not impersonating', function () {
     $manager = Mockery::mock(ImpersonateManager::class);
     $manager->shouldReceive('isImpersonating')->once()->andReturnFalse();
     $manager->shouldReceive('leave')->never();
+    app()->instance(ImpersonateManager::class, $manager);
 
     $request = Request::create('/impersonation/leave', 'GET', [], [], [], [
         'HTTP_REFERER' => 'https://example.com/dashboard',
     ]);
+    app()->instance('request', $request);
 
-    $response = (new LeaveImpersonationController)($request, $manager);
+    $response = (new LeaveImpersonationController)();
 
     expect($response->getTargetUrl())->toBe('https://example.com/dashboard');
 });
@@ -41,10 +45,12 @@ it('redirects to the default route when no hints exist', function () {
     $manager = Mockery::mock(ImpersonateManager::class);
     $manager->shouldReceive('isImpersonating')->once()->andReturnFalse();
     $manager->shouldReceive('leave')->never();
+    app()->instance(ImpersonateManager::class, $manager);
 
     $request = Request::create('/impersonation/leave', 'GET');
+    app()->instance('request', $request);
 
-    $response = (new LeaveImpersonationController)($request, $manager);
+    $response = (new LeaveImpersonationController)();
 
     expect($response->getTargetUrl())->toBe(route('filament.admin.resources.users.index'));
 });

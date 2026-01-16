@@ -6,6 +6,12 @@ use DOMXPath;
 use DOMDocument;
 use Carbon\CarbonImmutable;
 
+/**
+ * Parses Atom and RSS feeds into FeedItem value objects.
+ *
+ * Extracted to keep feed parsing rules centralized and reusable across actions.
+ * Callers can rely on invalid XML returning an empty array.
+ */
 class FeedReader
 {
     /**
@@ -15,7 +21,15 @@ class FeedReader
     {
         $document = new DOMDocument('1.0', 'UTF-8');
         $document->preserveWhiteSpace = false;
-        @$document->loadXML($xml, LIBXML_NOWARNING | LIBXML_NOERROR | LIBXML_NONET);
+        $previous = libxml_use_internal_errors(true);
+        libxml_clear_errors();
+        $loaded = $document->loadXML($xml, LIBXML_NONET);
+        libxml_clear_errors();
+        libxml_use_internal_errors($previous);
+
+        if (! $loaded) {
+            return [];
+        }
 
         $xpath = new DOMXPath($document);
         $xpath->registerNamespace('atom', 'http://www.w3.org/2005/Atom');

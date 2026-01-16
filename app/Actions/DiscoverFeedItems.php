@@ -9,12 +9,14 @@ use App\Feed\FeedReader;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 
+/**
+ * Fetches a feed URL and returns normalized items for ingestion.
+ *
+ * Extracted to isolate network fetching and base URL detection from commands.
+ * Callers can rely on an empty collection when the feed is unavailable.
+ */
 class DiscoverFeedItems
 {
-    public function __construct(
-        protected FeedReader $reader,
-    ) {}
-
     /**
      * @return Collection<FeedItem>
      */
@@ -36,7 +38,7 @@ class DiscoverFeedItems
         // Prefer self link as base URL when available.
         $baseUrl = $this->detectBaseUrl($xml, $feedUrl);
 
-        $items = $this->reader->read($xml, $baseUrl);
+        $items = app(FeedReader::class)->read($xml, $baseUrl);
 
         return collect($items);
     }
@@ -44,7 +46,15 @@ class DiscoverFeedItems
     protected function detectBaseUrl(string $xml, string $fallback) : string
     {
         $document = new DOMDocument('1.0', 'UTF-8');
-        @$document->loadXML($xml, LIBXML_NOWARNING | LIBXML_NOERROR | LIBXML_NONET);
+        $previous = libxml_use_internal_errors(true);
+        libxml_clear_errors();
+        $loaded = $document->loadXML($xml, LIBXML_NONET);
+        libxml_clear_errors();
+        libxml_use_internal_errors($previous);
+
+        if (! $loaded) {
+            return $fallback;
+        }
 
         $xpath = new DOMXPath($document);
         $xpath->registerNamespace('atom', 'http://www.w3.org/2005/Atom');

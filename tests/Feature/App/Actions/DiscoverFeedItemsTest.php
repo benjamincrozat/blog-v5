@@ -1,6 +1,5 @@
 <?php
 
-use App\Feed\FeedReader;
 use App\Actions\DiscoverFeedItems;
 use Illuminate\Support\Facades\Http;
 
@@ -55,8 +54,7 @@ XML;
         'https://larajobs.com/feed' => Http::response($xml, 200, ['Content-Type' => 'application/rss+xml']),
     ]);
 
-    $reader = new FeedReader;
-    $action = new DiscoverFeedItems($reader);
+    $action = new DiscoverFeedItems;
 
     $items = $action->discover('https://larajobs.com/feed');
 
@@ -100,8 +98,7 @@ XML;
         'https://example.com/feed' => Http::response($xml, 200, ['Content-Type' => 'application/atom+xml']),
     ]);
 
-    $reader = new FeedReader;
-    $action = new DiscoverFeedItems($reader);
+    $action = new DiscoverFeedItems;
 
     $items = $action->discover('https://example.com/feed');
 
@@ -138,8 +135,7 @@ XML;
         'https://example.com/feed' => Http::response($xml, 200, ['Content-Type' => 'application/rss+xml']),
     ]);
 
-    $reader = new FeedReader;
-    $action = new DiscoverFeedItems($reader);
+    $action = new DiscoverFeedItems;
 
     $items = $action->discover('https://example.com/feed');
 
@@ -153,10 +149,32 @@ it('returns empty collection on non-2xx responses', function () {
         'https://example.com/feed' => Http::response('error', 500, ['Content-Type' => 'text/plain']),
     ]);
 
-    $reader = new FeedReader;
-    $action = new DiscoverFeedItems($reader);
+    $action = new DiscoverFeedItems;
 
     $items = $action->discover('https://example.com/feed');
 
     expect($items)->toHaveCount(0);
+});
+
+it('uses the self link to resolve relative urls', function () {
+    $xml = <<<'XML'
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <link href="https://alt.example.com/feed/index.xml" rel="self" />
+  <entry>
+    <title>Item A</title>
+    <link href="/posts/a" rel="alternate" type="text/html" />
+    <published>2025-10-01T00:00:00Z</published>
+  </entry>
+</feed>
+XML;
+
+    Http::fake([
+        'https://example.com/feed' => Http::response($xml, 200, ['Content-Type' => 'application/atom+xml']),
+    ]);
+
+    $items = (new DiscoverFeedItems)->discover('https://example.com/feed');
+
+    expect($items)->toHaveCount(1);
+    expect($items[0]->url)->toBe('https://alt.example.com/posts/a');
 });

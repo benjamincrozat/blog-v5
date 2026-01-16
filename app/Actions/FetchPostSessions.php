@@ -5,29 +5,25 @@ namespace App\Actions;
 use App\Models\Post;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Collection;
-use Illuminate\Http\Client\Factory;
-use Illuminate\Container\Attributes\Config;
+use Illuminate\Support\Facades\Http;
 
+/**
+ * Syncs Pirsch session counts into posts.
+ *
+ * Extracted to keep analytics integration isolated from commands and jobs.
+ * Callers can rely on sessions being aggregated by slug and stored on posts.
+ */
 class FetchPostSessions
 {
-    public function __construct(
-        protected Factory $http,
-        #[Config('services.pirsch.client_id')]
-        protected string $pirschClientId,
-        #[Config('services.pirsch.client_secret')]
-        protected string $pirschClientSecret,
-    ) {}
-
     /**
      * Fetch the number of sessions for each post from Pirsch.
      */
     public function fetch(?CarbonImmutable $from = null, ?CarbonImmutable $to = null) : void
     {
-        $pirschAccessToken = $this->http
-            ->post('https://api.pirsch.io/api/v1/token', [
-                'client_id' => $this->pirschClientId,
-                'client_secret' => $this->pirschClientSecret,
-            ])
+        $pirschAccessToken = Http::post('https://api.pirsch.io/api/v1/token', [
+            'client_id' => config('services.pirsch.client_id'),
+            'client_secret' => config('services.pirsch.client_secret'),
+        ])
             ->throw()
             ->json('access_token');
 
@@ -35,8 +31,7 @@ class FetchPostSessions
 
         $to ??= now();
 
-        $this->http
-            ->withToken($pirschAccessToken)
+        Http::withToken($pirschAccessToken)
             ->get('https://api.pirsch.io/api/v1/statistics/page', [
                 'id' => config('services.pirsch.domain_id'),
                 'from' => $from->toDateString(),

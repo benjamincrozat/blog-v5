@@ -7,6 +7,12 @@ use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Support\Schema\JobPostingSchema;
 
+/**
+ * Displays a single job page.
+ *
+ * Extracted as a single-action controller to keep routing thin and explicit.
+ * Callers can rely on the job being resolved from the route binding.
+ */
 class ShowJobController extends Controller
 {
     public function __invoke(Job $job) : View

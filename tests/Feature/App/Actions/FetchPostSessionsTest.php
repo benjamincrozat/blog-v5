@@ -20,6 +20,7 @@ it("successfully fetches sessions from Pirsch's API and updates the related post
     ]);
 
     Http::fake([
+        'api.pirsch.io/api/v1/token' => Http::response(['access_token' => 'token'], 200),
         'api.pirsch.io/api/v1/statistics/page*' => Http::response([
             ['path' => '/foo', 'sessions' => 10],
             ['path' => '/foo#section', 'sessions' => 5],
@@ -40,6 +41,10 @@ it('throws when Pirsch refuses credentials', function () {
         'services.pirsch.client_secret' => 'wrong_secret',
     ]);
 
+    Http::fake([
+        'api.pirsch.io/api/v1/token' => Http::response(['message' => 'Unauthorized'], 401),
+    ]);
+
     app(FetchPostSessions::class)->fetch();
 })->throws(RequestException::class);
 
@@ -48,6 +53,7 @@ it('sends the provided date range to Pirsch', function () {
     $to = now()->subDays(7)->endOfDay()->toImmutable();
 
     Http::fake([
+        'api.pirsch.io/api/v1/token' => Http::response(['access_token' => 'token'], 200),
         'api.pirsch.io/api/v1/statistics/page*' => Http::response([], 200),
     ]);
 

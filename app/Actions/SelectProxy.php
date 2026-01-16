@@ -2,19 +2,18 @@
 
 namespace App\Actions;
 
-use Illuminate\Container\Attributes\Config;
-
+/**
+ * Picks a proxy host string for scraping.
+ *
+ * Extracted to keep proxy selection consistent across jobs/actions.
+ * Callers can rely on a hostname:port string being returned.
+ */
 class SelectProxy
 {
-    public function __construct(
-        #[Config('proxies')]
-        protected readonly array $proxies
-    ) {}
-
     public function select(?string $country = null) : string
     {
         if ($country) {
-            $proxy = $this->proxies[$country];
+            $proxy = config('proxies')[$country];
 
             $port = collect(range($proxy['port_range'], $proxy['port_range'] + 100))->random();
 

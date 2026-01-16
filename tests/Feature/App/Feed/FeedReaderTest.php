@@ -82,3 +82,10 @@ it('normalizes tricky urls via the helper', function () {
     expect($normalize('//cdn.example.com/assets/script.js#frag'))->toBe('https://cdn.example.com/assets/script.js');
     expect($normalize('changelog/launch'))->toBe('https://example.com/feeds/blog/changelog/launch');
 });
+
+it('returns an empty list for invalid xml', function () {
+    $items = (new FeedReader)->read('<not-xml', 'https://example.com/feed/index.xml');
+
+    expect($items)->toBeArray()
+        ->and($items)->toHaveCount(0);
+});

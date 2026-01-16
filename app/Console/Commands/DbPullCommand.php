@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Console\Attribute\AsCommand;
 
+/**
+ * Pulls a remote database snapshot into a local connection.
+ *
+ * Extracted to keep snapshot orchestration and safety checks in one place.
+ * Callers can rely on compatible client handling before snapshot operations.
+ */
 #[AsCommand(
     name: 'app:db:pull',
     description: 'Dump a remote database connection and restore it into the local database.'
@@ -78,11 +84,11 @@ class DbPullCommand extends Command
 
     protected function ensureCompatibleMysqlClient() : void
     {
-        if (PHP_OS_FAMILY !== 'Darwin') {
+        if (! $this->isDarwin()) {
             return;
         }
 
-        $versionOutput = @shell_exec('mysqldump --version 2>&1') ?: '';
+        $versionOutput = $this->mysqldumpVersionOutput();
 
         if (str_contains($versionOutput, 'Ver 9')) {
             $candidatePaths = [
@@ -91,7 +97,7 @@ class DbPullCommand extends Command
             ];
 
             foreach ($candidatePaths as $binPath) {
-                if (is_file($binPath . '/mysqldump')) {
+                if ($this->mysqldumpExistsAt($binPath)) {
                     $currentPath = (string) getenv('PATH');
                     $newPath = $binPath . PATH_SEPARATOR . $currentPath;
                     putenv('PATH=' . $newPath);
@@ -105,6 +111,26 @@ class DbPullCommand extends Command
 
             $this->warn('mysqldump 9.x detected and mysql-client@8.4 not found. Install it with: brew install mysql-client@8.4');
         }
+    }
+
+    protected function isDarwin() : bool
+    {
+        return PHP_OS_FAMILY === 'Darwin';
+    }
+
+    protected function mysqldumpVersionOutput() : string
+    {
+        $output = [];
+        $exitCode = 0;
+
+        exec('mysqldump --version 2>&1', $output, $exitCode);
+
+        return trim(implode("\n", $output));
+    }
+
+    protected function mysqldumpExistsAt(string $binPath) : bool
+    {
+        return is_file($binPath . '/mysqldump');
     }
 
     protected function configure() : void

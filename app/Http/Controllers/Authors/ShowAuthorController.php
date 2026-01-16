@@ -7,6 +7,12 @@ use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * Displays an author page with their posts and links.
+ *
+ * Extracted as a single-action controller to keep routing thin and explicit.
+ * Callers can rely on `slug` being present in the route parameters.
+ */
 class ShowAuthorController extends Controller
 {
     public function __invoke(string $slug) : View

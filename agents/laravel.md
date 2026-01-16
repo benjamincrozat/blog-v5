@@ -10,6 +10,7 @@ This file exists to keep Laravel edits consistent across the repo.
 - Jobs: thin + idempotent; delegate business logic to Actions.
 - Avoid events unless they materially simplify flow; default to explicit code paths.
 - Do not use dependency injection in app code. Prefer helpers, facades, Real-Time Facades, or `app()`.
+- Avoid assigning helper/facade/app() results to locals unless reused.
 - Never call `env()` outside `config/*.php`.
 - Prefer named routes + `route()` over hardcoded URLs (including in app code and tests).
 - Prefer Eloquent/Query Builder over raw SQL. If raw SQL is unavoidable, parameterize and document why.
