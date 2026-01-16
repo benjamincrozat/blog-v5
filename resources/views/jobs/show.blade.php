@@ -1,6 +1,13 @@
+@php
+    $description = Str::limit(
+        strip_tags(Markdown::parse($job->description)),
+        160
+    );
+@endphp
+
 <x-app
     :title="$job->title"
-    :description="$job->description"
+    :description="$description"
 >
     <article class="container lg:max-w-(--breakpoint-md)">
         <h1 class="font-medium tracking-tight text-black text-balance text-3xl/none sm:text-4xl/none lg:text-5xl/none">

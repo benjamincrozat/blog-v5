@@ -8,7 +8,7 @@ $description = Str::limit(
 <x-app
     title="About {{ $author->name }}"
     :description="$description"
-    :image="$author->avatar"
+    :image="filled($author->avatar) ? $author->avatar : Vite::asset('resources/img/apple-touch-icon.png')"
 >
     <article class="container lg:max-w-(--breakpoint-md)">
         <header>

@@ -1,8 +1,9 @@
 @props([
-    'canonical' => $canonical ?? url()->current(),
+    'canonical' => url()->current(),
     'description' => 'The best hub for developers. Learn about PHP, Laravel, AI, and every other topics involved in building web applications.',
-    'image' => '',
+    'image' => Vite::asset('resources/img/apple-touch-icon.png'),
     'title',
+    'type' => 'website',
 ])
 
 <!DOCTYPE html>
@@ -16,14 +17,15 @@
         <meta name="title" content="{{ $title }}" />
         <meta name="description" content="{{ $description }}" />
 
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="{{ url()->current() }}" />
+        <meta property="og:type" content="{{ $type }}" />
+        <meta property="og:url" content="{{ $canonical }}" />
+        <meta property="og:site_name" content="{{ config('app.name') }}" />
         <meta property="og:title" content="{{ $title }}" />
         <meta property="og:description" content="{{ $description }}" />
         <meta property="og:image" content="{{ $image }}" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content="{{ url()->current() }}" />
+        <meta name="twitter:url" content="{{ $canonical }}" />
         <meta name="twitter:title" content="{{ $title }}" />
         <meta name="twitter:description" content="{{ $description }}" />
         <meta name="twitter:image" content="{{ $image }}" />

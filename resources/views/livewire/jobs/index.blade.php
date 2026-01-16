@@ -2,6 +2,10 @@
     Find your next software development job
 </x-slot>
 
+<x-slot:description>
+    Browse the latest software development jobs. Filter by salary, setting, seniority, and more.
+</x-slot:description>
+
 <div>
     @if ($jobs->currentPage() === 1)
         <header class="container">
@@ -15,7 +19,7 @@
         </header>
 
         <div class="mt-12 lg:mt-20">
-            <x-typography.heading>
+            <x-typography.heading tag="h2">
                 They're hiring
             </x-typography.heading>
 
@@ -30,6 +34,12 @@ gap-x-12 gap-y-4">
     
     <div class="grid container lg:grid-cols-12 mt-24 lg:mt-32">
         <div id="jobs" class="lg:col-span-9">
+            @if ($jobs->currentPage() > 1)
+                <x-typography.heading tag="h1" class="mb-8">
+                    Jobs - Page {{ $jobs->currentPage() }}
+                </x-typography.heading>
+            @endif
+
             @if ($this->hasActiveFilters())
                 <ul class="flex flex-wrap gap-2 mb-8">
                     @if ($query)
@@ -160,7 +170,7 @@ gap-x-12 gap-y-4">
                 @click.away="open = false"
                 @keydown.esc="open = false"
             >
-                <x-typography.heading class="lg:text-left! mb-4 hidden lg:block">
+                <x-typography.heading tag="h2" class="lg:text-left! mb-4 hidden lg:block">
                     Filters
                 </x-typography.heading>
         

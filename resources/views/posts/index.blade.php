@@ -3,6 +3,7 @@
         :title="$posts->currentPage() > 1
             ? 'Page ' . $posts->currentPage()
             : 'Latest'"
+        heading-tag="h1"
         :big-title="$posts->currentPage() === 1"
     >
         @if ($posts->isNotEmpty())

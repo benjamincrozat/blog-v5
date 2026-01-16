@@ -38,7 +38,9 @@
 
     <x-section :title="$links->currentPage() > 1
         ? 'Page ' . $links->currentPage()
-        : 'Latest Links'" id="links" @class([
+        : 'Latest Links'"
+    :heading-tag="$links->currentPage() === 1 ? 'h2' : 'h1'"
+    id="links" @class([
         'mt-16 md:mt-24' => $links->currentPage() === 1,
     ])>
         @if ($links->isNotEmpty())

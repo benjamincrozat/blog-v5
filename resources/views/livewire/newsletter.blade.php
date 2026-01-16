@@ -2,6 +2,10 @@
     Survive the AI era as a developer
 </x-slot>
 
+<x-slot:description>
+    Practical tips and insights to stay ahead as a web developer, delivered by email.
+</x-slot:description>
+
 <x-slot:hide-top-ad></x-slot>
 
 <x-slot:hide-sticky-carousel></x-slot>

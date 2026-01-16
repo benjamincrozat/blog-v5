@@ -4,6 +4,7 @@
 >
     <x-section
         title="Categories"
+        heading-tag="h1"
         :big-title="true"
         class="xl:max-w-(--breakpoint-lg)"
     >

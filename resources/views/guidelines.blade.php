@@ -1,5 +1,6 @@
 <x-app
     title="Advertising guidelines"
+    description="Guidelines for advertising and sponsored content on benjamincrozat.com."
 >
     <article class="container lg:max-w-(--breakpoint-md)">
         <x-prose>

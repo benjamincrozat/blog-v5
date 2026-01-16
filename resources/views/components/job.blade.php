@@ -12,11 +12,11 @@
             {{ $job->company->name }}
         </p>
 
-        <h1 class="mt-2 font-medium tracking-tight text-xl/tight">
+        <h2 class="mt-2 font-medium tracking-tight text-xl/tight">
             <a wire:navigate href="{{ route('jobs.show', $job->slug) }}">
                 {{ $job->title }}
             </a>
-        </h1>
+        </h2>
     </div>
 
     <div class="p-3 pt-4 md:p-5 md:pt-6 flex items-center gap-6 justify-between">

@@ -9,7 +9,7 @@
     </x-typography.headline>
 
     <section class="mt-16 md:mt-24">
-        <x-typography.heading>
+        <x-typography.heading tag="h2">
             Featured tools
         </x-typography.heading>
 

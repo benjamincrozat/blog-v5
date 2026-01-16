@@ -1,10 +1,11 @@
 <x-app
-    :canonical="$post->canonical_url"
+    :canonical="filled($post->canonical_url) ? $post->canonical_url : url()->current()"
     :description="$post->description"
     :hide-top-ad="$post->is_commercial"
     :hide-sticky-carousel="$post->is_commercial"
-    :image="$post->image_url"
+    :image="filled($post->image_url) ? $post->image_url : Vite::asset('resources/img/apple-touch-icon.png')"
     :title="! empty($post->serp_title) ? $post->serp_title : $post->title"
+    type="article"
 >
     <div @class([
         'container',
@@ -276,7 +277,7 @@
                 </div>
 
                 <section class="mt-24">
-                    <x-typography.heading>
+                    <x-typography.heading tag="h2">
                         Great tools for developers
                     </x-typography.heading>
 
