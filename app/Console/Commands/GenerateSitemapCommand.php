@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
@@ -27,23 +28,33 @@ class GenerateSitemapCommand extends Command
         Post::query()
             ->published()
             ->cursor()
-            ->each(fn (Post $post) => $sitemap->add(route('posts.show', $post)));
+            ->each(function (Post $post) use ($sitemap) : void {
+                $sitemap->add(
+                    Url::create(route('posts.show', $post))
+                        ->setLastModificationDate($post->modified_at ?? $post->published_at ?? $post->created_at)
+                );
+            });
 
         User::query()
             ->cursor()
-            ->each(fn (User $user) => $sitemap->add(route('authors.show', $user)));
+            ->each(fn (User $user) => $sitemap->add(route('authors.show', $user->slug)));
 
         $sitemap->add(route('categories.index'));
 
         Category::query()
             ->cursor()
-            ->each(fn (Category $category) => $sitemap->add(route('categories.show', $category)));
+            ->each(function (Category $category) use ($sitemap) : void {
+                $sitemap->add(
+                    Url::create(route('categories.show', $category->slug))
+                        ->setLastModificationDate($category->modified_at ?? $category->updated_at ?? $category->created_at)
+                );
+            });
 
         $sitemap->add(route('links.index'));
 
         Job::query()
             ->cursor()
-            ->each(fn (Job $job) => $sitemap->add(route('jobs.show', $job)));
+            ->each(fn (Job $job) => $sitemap->add(route('jobs.show', $job->slug)));
 
         $sitemap->add(route('links.index'));
 

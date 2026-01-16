@@ -57,6 +57,16 @@
         <link rel="canonical" href="{{ $canonical }}" />
 
         <x-feed-links />
+
+        <script type="application/ld+json">
+            {!! json_encode([
+                '@context' => 'https://schema.org',
+                '@type' => 'Organization',
+                'name' => config('app.name'),
+                'url' => url('/'),
+                'logo' => Vite::asset('resources/img/apple-touch-icon.png'),
+            ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+        </script>
     </head>
     <body {{ $attributes->class('font-light text-gray-600') }} x-data>
         <div class="flex flex-col min-h-screen">

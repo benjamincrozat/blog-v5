@@ -1,3 +1,41 @@
+@php
+    $primaryCategory = $post->categories->first();
+
+    $breadcrumbs = [
+        ['label' => 'Home', 'url' => route('home')],
+        ['label' => 'Blog', 'url' => route('posts.index')],
+    ];
+
+    if ($primaryCategory) {
+        $breadcrumbs[] = [
+            'label' => $primaryCategory->name,
+            'url' => route('categories.show', $primaryCategory),
+        ];
+    }
+
+    $breadcrumbs[] = [
+        'label' => $post->title,
+        'url' => route('posts.show', $post),
+    ];
+
+    $breadcrumbSchemaItems = [];
+
+    foreach ($breadcrumbs as $index => $breadcrumb) {
+        $breadcrumbSchemaItems[] = [
+            '@type' => 'ListItem',
+            'position' => $index + 1,
+            'name' => $breadcrumb['label'],
+            'item' => $breadcrumb['url'],
+        ];
+    }
+
+    $breadcrumbSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => $breadcrumbSchemaItems,
+    ];
+@endphp
+
 <x-app
     :canonical="filled($post->canonical_url) ? $post->canonical_url : url()->current()"
     :description="$post->description"
@@ -26,6 +64,8 @@
                         class="object-cover mb-11 w-full rounded-xl ring-1 shadow-xl ring-black/5 aspect-video"
                     />
                 @endif
+
+                <x-breadcrumbs :items="$breadcrumbs" class="justify-center mb-6" />
 
                 <x-categories :categories="$post->categories" class="justify-center mt-11 mb-8">
                     @if ($post->isSponsored())
@@ -456,4 +496,8 @@
             }
         </script>
     @endif
+
+    <script type="application/ld+json">
+        {!! json_encode($breadcrumbSchema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
 </x-app>

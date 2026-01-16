@@ -31,13 +31,13 @@ it('generates a sitemap with the most important pages', function () {
 
     User::query()
         ->cursor()
-        ->each(fn (User $user) => expect($content)->toContain(route('authors.show', $user)));
+        ->each(fn (User $user) => expect($content)->toContain(route('authors.show', $user->slug)));
 
     expect($content)->toContain(route('categories.index'));
 
     Category::query()
         ->cursor()
-        ->each(fn (Category $category) => expect($content)->toContain(route('categories.show', $category)));
+        ->each(fn (Category $category) => expect($content)->toContain(route('categories.show', $category->slug)));
 
     expect($content)->toContain(route('links.index'));
 });

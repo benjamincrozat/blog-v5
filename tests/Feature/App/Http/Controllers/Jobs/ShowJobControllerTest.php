@@ -44,12 +44,15 @@ it('renders JobPosting JSON-LD on the job detail page', function () {
 
     $response->assertSee('<script type="application/ld+json">', false);
 
-    $jsonLd = (new Crawler($response->getContent()))
-        ->filter('script[type="application/ld+json"]')
-        ->first()
-        ->text();
+    $schemas = collect(
+        (new Crawler($response->getContent()))
+            ->filter('script[type="application/ld+json"]')
+            ->each(fn (Crawler $node) => json_decode(trim($node->text()), true, 512, JSON_THROW_ON_ERROR))
+    );
 
-    $schema = json_decode(trim($jsonLd), true, 512, JSON_THROW_ON_ERROR);
+    $schema = $schemas->firstWhere('@type', 'JobPosting');
+
+    expect($schema)->not->toBeNull();
 
     expect($schema['@type'])->toBe('JobPosting');
     expect($schema['title'])->toBe($job->title);
