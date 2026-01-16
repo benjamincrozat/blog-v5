@@ -1,6 +1,6 @@
 # Nobinge
 
-This repo is benjamlincrozat.com, a personal blog about web developent.
+This repo is my personal blog about web developent.
 
 ## Check and tidy your work with these commands
 
@@ -13,7 +13,7 @@ This repo is benjamlincrozat.com, a personal blog about web developent.
 - `composer setup`
 - `composer dev`
   - This runs multiple processes concurrently.
-- Assume the project is always accessible at `https://benjamincrozat.com`. Never use `php artisan serve`.
+- Assume the project is always accessible at `https://benjamincrozat.test`. Never use `php artisan serve`.
 - Don't commit or push code unless you have my approval.
 - When you have to commit, start the message with a short summary (10 words, tops). Then, add a detailed description of the changes.
 
