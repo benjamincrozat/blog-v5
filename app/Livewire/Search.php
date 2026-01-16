@@ -7,23 +7,37 @@ use App\Models\Post;
 use Livewire\Component;
 use Illuminate\View\View;
 
+/**
+ * Renders the search modal results for posts and links.
+ *
+ * Extracted to keep search UI logic centralized in a Livewire component.
+ * Callers can rely on non-string query payloads being treated as empty input.
+ */
 class Search extends Component
 {
-    public string $query = '';
+    public string|array $query = '';
 
     public function render() : View
     {
+        $query = $this->normalizedQuery();
+
         return view('livewire.search', [
-            'posts' => empty($this->query)
+            'query' => $query,
+            'posts' => '' === $query
                 ? collect()
-                : Post::search($this->query)
+                : Post::search($query)
                     ->take(5)
                     ->get(),
-            'links' => empty($this->query)
+            'links' => '' === $query
                 ? collect()
-                : Link::search($this->query)
+                : Link::search($query)
                     ->take(5)
                     ->get(),
         ]);
+    }
+
+    protected function normalizedQuery() : string
+    {
+        return is_string($this->query) ? $this->query : '';
     }
 }
