@@ -188,10 +188,12 @@ class LinkResource extends Resource
                                 ->helperText('These notes will help when generating the small companion article designed to entice readers to click.'),
                         ])
                         ->modalHeading('Approve Link')
-                        ->action(function (array $data, Link $record) {
+                        ->action(function (array $data, Link $record, Action $action) {
                             $record->approve($data['notes']);
 
-                            if ($record->post_id) {
+                            $shouldGeneratePost = (bool) ($action->getArguments()['generate_post'] ?? true);
+
+                            if ($record->post_id || ! $shouldGeneratePost) {
                                 Notification::make()
                                     ->title('The link has been approved.')
                                     ->success()
@@ -206,17 +208,11 @@ class LinkResource extends Resource
                             }
                         })
                         ->modalSubmitActionLabel('Approve and generate post')
-                        ->modalCancelActionLabel('Approve without post')
-                        ->modalCancelAction(function (Action $action) {
-                            $action->action(function (Link $record) {
-                                $record->approve();
-
-                                Notification::make()
-                                    ->title('The link has been approved.')
-                                    ->success()
-                                    ->send();
-                            });
-                        })
+                        ->extraModalFooterActions(fn (Action $action) => [
+                            $action
+                                ->makeModalSubmitAction('approve_without_post', ['generate_post' => false])
+                                ->label('Approve without post'),
+                        ])
                         ->hidden(fn (Link $record) => $record->isApproved())
                         ->icon('heroicon-o-check')
                         ->label('Approve'),
