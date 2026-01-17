@@ -188,8 +188,8 @@ class LinkResource extends Resource
                                 ->helperText('These notes will help when generating the small companion article designed to entice readers to click.'),
                         ])
                         ->modalHeading('Approve Link')
-                        ->action(function (array $data, Link $record) {
-                            $record->approve($data['notes']);
+                        ->action(function (Link $record, array $data) {
+                            $record->approve($data['notes'] ?? null);
 
                             if ($record->post_id) {
                                 Notification::make()
@@ -206,20 +206,22 @@ class LinkResource extends Resource
                             }
                         })
                         ->modalSubmitActionLabel('Approve and generate post')
-                        ->modalCancelActionLabel('Approve without post')
-                        ->modalCancelAction(function (Action $action) {
-                            $action->action(function (Link $record) {
-                                $record->approve();
-
-                                Notification::make()
-                                    ->title('The link has been approved.')
-                                    ->success()
-                                    ->send();
-                            });
-                        })
                         ->hidden(fn (Link $record) => $record->isApproved())
                         ->icon('heroicon-o-check')
                         ->label('Approve'),
+
+                    Action::make('approve_without_post')
+                        ->action(function (Link $record) {
+                            $record->approve();
+
+                            Notification::make()
+                                ->title('The link has been approved.')
+                                ->success()
+                                ->send();
+                        })
+                        ->hidden(fn (Link $record) => $record->isApproved())
+                        ->icon('heroicon-o-check')
+                        ->label('Approve without post'),
 
                     Action::make('decline')
                         ->schema([
