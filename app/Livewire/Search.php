@@ -19,7 +19,9 @@ class Search extends Component
 
     public function render() : View
     {
-        $query = $this->normalizedQuery();
+        $this->query = $this->normalizedQuery();
+
+        $query = $this->query;
 
         return view('livewire.search', [
             'query' => $query,

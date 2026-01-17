@@ -13,6 +13,14 @@ it('shows a message when no posts or links are found', function () {
 
 it('treats array query payloads as empty input', function () {
     livewire(Search::class)
+        ->set('query', ['oops'])
+        ->assertSee('Try to type something…', false);
+
+    livewire(Search::class)
         ->set('query', [])
+        ->assertSee('Try to type something…', false);
+
+    livewire(Search::class)
+        ->set('query', ['query' => 'oops'])
         ->assertSee('Try to type something…', false);
 });
