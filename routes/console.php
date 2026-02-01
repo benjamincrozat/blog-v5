@@ -12,7 +12,7 @@ Schedule::command(GenerateSitemapCommand::class)
     ->thenPing(config('services.forge.heatbeats.generate-sitemap'));
 
 Schedule::command(IngestJobFeedsCommand::class)
-    ->daily()
+    ->weekly()
     ->at('01:00')
     ->withoutOverlapping()
     ->thenPing(config('services.forge.heatbeats.ingest-job-feeds'));
