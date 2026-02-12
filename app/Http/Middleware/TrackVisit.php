@@ -46,7 +46,8 @@ class TrackVisit
      */
     protected function shouldTrack(Request $request) : bool
     {
-        return 'production' === config('app.env') &&
+        return config('services.pirsch.enabled') &&
+            'production' === config('app.env') &&
             ! $request->hasHeader('X-Livewire') &&
             ! $request->wantsJson() &&
             'GET' === $request->method() &&

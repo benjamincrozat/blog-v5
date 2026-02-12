@@ -8,6 +8,10 @@ class TrackEvent
 {
     public function track(string $name, array $meta, string $url, string $ip, string $userAgent, string $acceptLanguage, ?string $referrer = null)
     {
+        if (! config('services.pirsch.enabled')) {
+            return;
+        }
+
         Http::withToken(config('services.pirsch.access_key'))
             ->retry(3)
             ->post('https://api.pirsch.io/api/v1/event', [

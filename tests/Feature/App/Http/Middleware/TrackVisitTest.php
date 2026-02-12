@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 use function Pest\Laravel\withServerVariables;
 
 beforeEach(function () {
-    config(['app.env' => 'production']);
+    config([
+        'app.env' => 'production',
+        'services.pirsch.enabled' => true,
+    ]);
 });
 
 it('tracks visits in production', function () {
@@ -27,6 +30,14 @@ it('does not track visits in non-production environments', function () {
     TrackVisit::shouldReceive('track')->never();
 
     config(['app.env' => 'testing']);
+
+    get('/');
+});
+
+it('does not track visits when Pirsch is disabled', function () {
+    TrackVisit::shouldReceive('track')->never();
+
+    config(['services.pirsch.enabled' => false]);
 
     get('/');
 });

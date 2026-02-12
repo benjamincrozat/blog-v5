@@ -8,6 +8,9 @@ use Illuminate\Http\Client\RequestException;
 beforeEach(fn () => Http::allowStrayRequests());
 
 it("successfully makes a call to Pirsch's API with valid parameters", function () {
+    config(['services.pirsch.enabled' => true]);
+    Http::fake(['api.pirsch.io/api/v1/hit' => Http::response([], 200)]);
+
     app(TrackVisit::class)->track(...trackVisitParameters());
 })->throwsNoExceptions();
 
@@ -34,12 +37,18 @@ it('sanitizes malformed UTF-8 so the payload can be JSON encoded', function () {
 });
 
 it('handles an invalid token appropriately', function () {
-    config(['services.pirsch.access_key' => 'invalid_token']);
+    config([
+        'services.pirsch.enabled' => true,
+        'services.pirsch.access_key' => 'invalid_token',
+    ]);
+    Http::fake(['api.pirsch.io/api/v1/hit' => Http::response([], 401)]);
 
     app(TrackVisit::class)->track(...trackVisitParameters());
 })->throws(RequestException::class);
 
 it('retries on network failure and does not throw if it succeeds', function () {
+    config(['services.pirsch.enabled' => true]);
+
     Http::fakeSequence('api.pirsch.io/api/v1/hit')
         ->pushStatus(503)
         ->pushStatus(503)
@@ -49,7 +58,9 @@ it('retries on network failure and does not throw if it succeeds', function () {
 })->throwsNoExceptions();
 
 it('properly handles request timeouts', function () {
-    Http::fakeSequence()
+    config(['services.pirsch.enabled' => true]);
+
+    Http::fakeSequence('api.pirsch.io/api/v1/hit')
         ->pushStatus(408)
         ->pushStatus(408)
         ->pushStatus(200);

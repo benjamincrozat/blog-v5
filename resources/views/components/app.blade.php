@@ -34,13 +34,15 @@
 
         @vite('resources/css/app.css')
 
-        <script
-            defer
-            src="https://api.pirsch.io/pa.js"
-            id="pianjs"
-            data-code="{{ 'production' === config('app.env') ? '5N2hIsUQsCVX1LQtvPdJ3AGwQZHGxtt5' : '2kktajcETdWwbGKEyt3Zi4SnhwxOVSY6' }}"
-            data-disable-page-views
-        ></script>
+        @if (config('services.pirsch.enabled'))
+            <script
+                defer
+                src="https://api.pirsch.io/pa.js"
+                id="pianjs"
+                data-code="{{ 'production' === config('app.env') ? '5N2hIsUQsCVX1LQtvPdJ3AGwQZHGxtt5' : '2kktajcETdWwbGKEyt3Zi4SnhwxOVSY6' }}"
+                data-disable-page-views
+            ></script>
+        @endif
 
         <link
             rel="preload"

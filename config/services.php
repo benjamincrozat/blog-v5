@@ -25,6 +25,7 @@ return [
     ],
 
     'pirsch' => [
+        'enabled' => false,
         'access_key' => env('PIRSCH_ACCESS_KEY'),
         'client_id' => env('PIRSCH_CLIENT_ID'),
         'client_secret' => env('PIRSCH_CLIENT_SECRET'),

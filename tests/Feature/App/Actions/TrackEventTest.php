@@ -5,7 +5,10 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\RequestException;
 
 it('posts event to Pirsch with retries and expected payload', function () {
-    config(['services.pirsch.access_key' => 'pirsch-test-key']);
+    config([
+        'services.pirsch.enabled' => true,
+        'services.pirsch.access_key' => 'pirsch-test-key',
+    ]);
 
     Http::fake([
         'api.pirsch.io/api/v1/event' => Http::sequence()
@@ -42,7 +45,10 @@ it('posts event to Pirsch with retries and expected payload', function () {
 });
 
 it('throws when Pirsch returns errors after retries', function () {
-    config(['services.pirsch.access_key' => 'pirsch-test-key']);
+    config([
+        'services.pirsch.enabled' => true,
+        'services.pirsch.access_key' => 'pirsch-test-key',
+    ]);
 
     Http::fake([
         'api.pirsch.io/api/v1/event' => Http::sequence()
@@ -60,17 +66,26 @@ it('throws when Pirsch returns errors after retries', function () {
 beforeEach(fn () => Http::allowStrayRequests());
 
 it("successfully makes a call to Pirsch's API with valid parameters", function () {
+    config(['services.pirsch.enabled' => true]);
+    Http::fake(['api.pirsch.io/api/v1/event' => Http::response([], 200)]);
+
     app(TrackEvent::class)->track(...trackEventParameters());
 })->throwsNoExceptions();
 
 it('handles an invalid token appropriately', function () {
-    config(['services.pirsch.access_key' => 'invalid_token']);
+    config([
+        'services.pirsch.enabled' => true,
+        'services.pirsch.access_key' => 'invalid_token',
+    ]);
+    Http::fake(['api.pirsch.io/api/v1/event' => Http::response([], 401)]);
 
     app(TrackEvent::class)->track(...trackEventParameters());
 })->throws(RequestException::class);
 
 it('retries on network failure and does not throw if it succeeds', function () {
-    Http::fakeSequence('api.pirsch.io/api/v1/hit')
+    config(['services.pirsch.enabled' => true]);
+
+    Http::fakeSequence('api.pirsch.io/api/v1/event')
         ->pushStatus(503)
         ->pushStatus(503)
         ->pushStatus(200);
@@ -79,7 +94,9 @@ it('retries on network failure and does not throw if it succeeds', function () {
 })->throwsNoExceptions();
 
 it('properly handles request timeouts', function () {
-    Http::fakeSequence()
+    config(['services.pirsch.enabled' => true]);
+
+    Http::fakeSequence('api.pirsch.io/api/v1/event')
         ->pushStatus(408)
         ->pushStatus(408)
         ->pushStatus(200);
