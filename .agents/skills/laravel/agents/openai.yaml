@@ -1,0 +1,4 @@
+interface:
+  display_name: "Laravel"
+  short_description: "Canonical Laravel app-layer architecture"
+  default_prompt: "Use $laravel for app-layer conventions: keep request->action->model flow explicit, favor thin single-action controllers and Form Requests, keep jobs idempotent, avoid unnecessary events, keep env() inside config, prefer Eloquent/Query Builder over raw SQL, enforce migration/seeder discipline, and pair with $laravel-blade, $delivery-standards, and $pest-feature-tests."
