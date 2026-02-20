@@ -1,0 +1,4 @@
+interface:
+  display_name: "Laravel Blade"
+  short_description: "Canonical Blade templates and components"
+  default_prompt: "Use $laravel-blade for Blade templates/components: keep views presentation-only, move non-trivial PHP/data prep out of templates, enforce semantic and accessible markup, prefer reusable x-namespace components, apply class composition with $attributes->class and named slots, and preserve rendered behavior."

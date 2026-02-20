@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pest Feature Tests"
+  short_description: "Apply feature-first Pest testing rules"
+  default_prompt: "Use $pest-feature-tests to write feature-first tests that mirror app paths, add regression coverage for bug fixes, require class-based Blade component tests, prefer strict fakes over mocks, assert typed action-contract parity, use Artisan output assertions when command helpers are ambiguous, and keep filesystem usage isolated and deterministic."
