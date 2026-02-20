@@ -1,0 +1,4 @@
+interface:
+  display_name: "Alpine.js"
+  short_description: "Canonical Alpine.js local-state rules"
+  default_prompt: "Use $alpine-js for local browser interactivity: keep Alpine state small and local, use x-cloak to prevent flashes, keep ARIA state synchronized, and avoid placing business logic in Alpine expressions."

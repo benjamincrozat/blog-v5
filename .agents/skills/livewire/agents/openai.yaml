@@ -1,0 +1,4 @@
+interface:
+  display_name: "Livewire"
+  short_description: "Canonical Livewire v4 reactive interface rules"
+  default_prompt: "Use $livewire for Livewire v4 behavior: prefer conventions over boilerplate, keep full-page components on Route::livewire when appropriate, use closed component tags, apply wire:model.deep and navigate:true patterns correctly, use loading/island placeholders, and prefer Livewire interceptors over deprecated hooks."
