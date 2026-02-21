@@ -19,7 +19,7 @@ class GenerateSitemapCommand extends Command
 {
     public function handle() : void
     {
-        $sitemap = Sitemap::create(config('app.url'));
+        $sitemap = Sitemap::create();
 
         $sitemap->add(route('home'));
 

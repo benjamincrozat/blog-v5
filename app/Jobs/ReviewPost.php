@@ -12,7 +12,7 @@ class ReviewPost implements ShouldQueue
 
     public function __construct(
         public Post $post,
-        public ?string $additionalInstructions,
+        public ?string $additionalInstructions = null,
     ) {}
 
     public function handle() : void

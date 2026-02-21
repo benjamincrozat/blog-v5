@@ -81,21 +81,21 @@ class User extends Authenticatable implements FilamentUser
     public function about() : Attribute
     {
         return Attribute::make(
-            fn () => $this->biography ?? $this->github_data['user']['bio'] ?? '',
+            fn () => $this->biography ?? data_get($this->github_data, 'user.bio', ''),
         );
     }
 
     public function blogUrl() : Attribute
     {
         return Attribute::make(
-            fn () => $this->github_data['user']['blog'] ?? null,
+            fn () => data_get($this->github_data, 'user.blog'),
         );
     }
 
     public function company() : Attribute
     {
         return Attribute::make(
-            fn () => $this->github_data['user']['company'] ?? null,
+            fn () => data_get($this->github_data, 'user.company'),
         );
     }
 
