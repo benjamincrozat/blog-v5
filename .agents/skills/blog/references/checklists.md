@@ -12,8 +12,8 @@
 
 - For code changes, run `./vendor/bin/pint`.
 - For code changes, run `php artisan test`.
-- Run impacted artisan commands.
-- For Markdown/content-only changes, run `php artisan blog:sync` (no `pint` / test run required).
+- Run impacted framework/project commands.
+- For content-only changes, run the project's content-sync command (for example, the command that ingests source posts/pages).
 - For route changes, verify with `php artisan route:list`.
 
 ## Documentation Checklist

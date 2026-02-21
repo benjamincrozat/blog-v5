@@ -1,8 +1,8 @@
 ---
 name: laravel-blade
-description: Canonical Blade template and component guidance for this blog repo.
+description: Canonical Blade template and component guidance for Laravel projects.
 metadata:
-  short-description: Canonical Blade templates and components for this blog
+  short-description: Canonical Blade templates and components
 ---
 
 # Laravel Blade
@@ -27,10 +27,7 @@ Use for Blade views, Blade components, internal template navigation, and semanti
 - Use Blade components broadly and prefer existing `x-<namespace>.*` components over inlining repeated markup.
 - If a UI pattern repeats, extract it into `resources/views/components/<namespace>/`.
 - Avoid placeholder/demo content (for example `fake()`) in shipped core components.
-- Group related components by theme under `resources/views/components/<theme>/`.
-- Do not use `resources/views/components/ui/`.
-- If a subfolder contains only one component, move it to `resources/views/components/` and rename to avoid conflicts.
-- Keep standalone components in `resources/views/components/`.
+- Follow the target project's component directory and naming conventions consistently.
 - Use class-based components for logic-bearing components and add tests.
 - Do not use component properties just to pass class strings.
 - Use `$attributes->class(...)` for base classes, and use class arrays for conditional class application.

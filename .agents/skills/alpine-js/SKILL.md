@@ -1,6 +1,6 @@
 ---
 name: alpine-js
-description: Canonical Alpine.js conventions for local reactive behavior in this Laravel blog repo.
+description: Canonical Alpine.js conventions for local reactive behavior in Laravel Blade interfaces.
 metadata:
   short-description: Canonical Alpine.js local-state conventions
 ---

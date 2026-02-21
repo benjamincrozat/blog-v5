@@ -1,6 +1,6 @@
 ---
 name: livewire
-description: Canonical Livewire v4 conventions for reactive interfaces in this Laravel blog repo.
+description: Canonical Livewire v4 conventions for reactive interfaces in Laravel projects.
 metadata:
   short-description: Canonical Livewire v4 reactive UI conventions
 ---

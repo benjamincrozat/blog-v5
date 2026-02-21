@@ -1,8 +1,8 @@
 ---
 name: laravel
-description: Canonical Laravel app-layer architecture guidance for this blog repo.
+description: Canonical Laravel app-layer architecture guidance.
 metadata:
-  short-description: Canonical Laravel architecture for this blog
+  short-description: Canonical Laravel architecture
 ---
 
 # Laravel
@@ -13,8 +13,6 @@ Use for app-layer Laravel changes: requests, controllers, actions, models, jobs,
 
 ## Required Rules
 
-- Keep Markdown files as the source of truth for posts.
-- Preserve SEO-safe routing/status behavior (`404`, `410`, `301`) and keep catch-all post routes last.
 - Keep class-level intent docblocks in PHP classes.
 - Import namespaces, avoid ambiguous names, prefer guard clauses, and default to `protected` for non-public members.
 - PHPStan note: `Collection` template types are invariant, so return annotations should match array-shape reality or stay broad enough to avoid covariance issues.

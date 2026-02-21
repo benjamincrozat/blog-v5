@@ -1,8 +1,8 @@
 ---
 name: blog
-description: Coordinate production-grade work for this local Laravel blog across routing, markdown sync, rendering, testing, and delivery standards.
+description: Coordinate production-grade Laravel blog work across routing, content sync, rendering, testing, and delivery standards.
 metadata:
-  short-description: Orchestrator for local blog implementation standards
+  short-description: Orchestrator for Laravel blog implementation standards
 ---
 
 # Blog
@@ -13,7 +13,7 @@ Use this skill as the entrypoint for multi-subsystem blog changes.
 
 ## Required Rules
 
-- Keep Markdown files as the source of truth for posts.
+- Keep content files as the source of truth for posts.
 - Preserve SEO-safe status semantics (`404`, `410`, `301`).
 - Delegate Blade template/component rules to `laravel-blade`.
 - Delegate Livewire behavior to `livewire` and Alpine state behavior to `alpine-js`.

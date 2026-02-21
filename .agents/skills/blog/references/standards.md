@@ -3,19 +3,19 @@
 ## Product Standards
 
 - Keep SEO-safe URL behavior stable.
-- Preserve existing route semantics and post visibility rules.
+- Preserve existing route semantics and publication visibility rules.
 - Avoid regressions in status codes (`404`, `410`, `301`).
 
 ## Content Standards
 
-- Markdown files are the source of truth.
-- Frontmatter contract must stay strict and explicit.
-- Category input is YAML list and normalized safely.
+- Source content files are the source of truth.
+- Frontmatter/content metadata contracts must stay strict and explicit.
+- Category/tag input should be normalized safely.
 
 ## Rendering Standards
 
-- Use centralized Markdown renderer.
-- Keep Tempest Highlight extension wired into Markdown conversion.
+- Use a centralized Markdown/content renderer.
+- Keep syntax highlighting extensions wired into content conversion.
 - Keep highlighted code readable in theme CSS.
 
 ## UI Standards
