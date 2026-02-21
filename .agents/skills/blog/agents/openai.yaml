@@ -1,4 +1,4 @@
 interface:
   display_name: "Blog"
   short_description: "Coordinate Laravel blog implementation standards"
-  default_prompt: "Use $blog to orchestrate multi-subsystem blog work, choose the minimal focused skills (including $livewire and $alpine-js for reactive behavior), preserve content source-of-truth and SEO status semantics, validate with $delivery-standards and $pest-feature-tests, and keep granular commits without pushing."
+  default_prompt: "Use $blog to orchestrate multi-subsystem blog work, choose the minimal focused skills (including $livewire and $alpine-js for reactive behavior), preserve content source-of-truth and SEO status semantics, validate with $delivery-standards and $pest-feature-tests, and defer repo-wide workflow/validation/git policy to AGENTS.md."

@@ -10,8 +10,7 @@
 
 ## Validation Checklist
 
-- For code changes, run `./vendor/bin/pint`.
-- For code changes, run `php artisan test`.
+- Follow `AGENTS.md` validation commands.
 - Run impacted framework/project commands.
 - For content-only changes, run the project's content-sync command (for example, the command that ingests source posts/pages).
 - For route changes, verify with `php artisan route:list`.
@@ -24,6 +23,5 @@
 
 ## Git Checklist
 
-- Use granular commits.
+- Follow `AGENTS.md` git workflow and commit policy.
 - Avoid destructive git commands unless requested.
-- Do not push.

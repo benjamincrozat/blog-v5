@@ -1,4 +1,4 @@
 interface:
   display_name: "Delivery Standards"
-  short_description: "Apply documentation, validation, and commit standards"
-  default_prompt: "Use $delivery-standards to enforce class intent docblocks, apply Blade view comment rules through $laravel-blade, run required quality gates, use screenshots for static UI states and Playwright CLI video capture (`video-start` / `video-stop`) for animated behavior in visual QA (Chrome default browser), report blocked checks, and keep granular sentence-style commits without pushing."
+  short_description: "Apply documentation, validation, and implementation standards"
+  default_prompt: "Use $delivery-standards to enforce class intent docblocks, apply Blade view comment rules through $laravel-blade, run required quality gates, use screenshots for static UI states and Playwright CLI video capture (`video-start` / `video-stop`) for animated behavior in visual QA (Chrome default browser), report blocked checks, and defer repo-wide workflow/validation/git policy to AGENTS.md."

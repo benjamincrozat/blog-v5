@@ -17,7 +17,7 @@ Use this skill as the entrypoint for multi-subsystem blog changes.
 - Preserve SEO-safe status semantics (`404`, `410`, `301`).
 - Delegate Blade template/component rules to `laravel-blade`.
 - Delegate Livewire behavior to `livewire` and Alpine state behavior to `alpine-js`.
-- Use granular commits and do not push unless requested.
+- Follow `AGENTS.md` for repo-wide workflow, validation commands, and git policy.
 
 ## Workflow
 
@@ -34,7 +34,6 @@ Use this skill as the entrypoint for multi-subsystem blog changes.
    - `delivery-standards`
 3. Implement by subsystem, preserving public behavior unless explicitly requested.
 4. Validate with `delivery-standards` and relevant `pest-feature-tests` coverage.
-5. Commit each coherent slice with sentence-style commit messages.
 
 ## References
 
