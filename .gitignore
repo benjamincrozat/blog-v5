@@ -12,6 +12,7 @@
 /public/sitemap.xml
 /public/storage
 /storage/*.key
+/storage/phpstan
 /storage/pail
 /vendor
 /venv
