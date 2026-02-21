@@ -1,3 +1,7 @@
+{{--
+Renders the components pagination view.
+--}}
+
 @props(['paginator'])
 
 @if ($paginator->hasPages())

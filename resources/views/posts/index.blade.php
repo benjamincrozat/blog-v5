@@ -1,3 +1,7 @@
+{{--
+Renders the posts index view.
+--}}
+
 <x-app title="The latest articles about web development in {{ date('Y') }}">
     <x-section
         :title="$posts->currentPage() > 1

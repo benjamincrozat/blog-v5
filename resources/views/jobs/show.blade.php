@@ -1,3 +1,7 @@
+{{--
+Renders the jobs show view.
+--}}
+
 @php
     $description = Str::limit(
         strip_tags(Markdown::parse($job->description)),

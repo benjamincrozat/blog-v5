@@ -1,3 +1,7 @@
+{{--
+Renders the components app view.
+--}}
+
 @props([
     'canonical' => url()->current(),
     'description' => 'The best hub for developers. Learn about PHP, Laravel, AI, and every other topics involved in building web applications.',

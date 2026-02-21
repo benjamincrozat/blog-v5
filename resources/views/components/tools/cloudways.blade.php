@@ -1,3 +1,7 @@
+{{--
+Renders the components tools cloudways view.
+--}}
+
 <x-tools.item
     name="Cloudways"
     headline="Easily deploy PHP web apps"

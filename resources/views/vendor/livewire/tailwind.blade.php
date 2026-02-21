@@ -1,3 +1,7 @@
+{{--
+Renders the vendor livewire tailwind view.
+--}}
+
 @php
 if (! isset($scrollTo)) {
     $scrollTo = 'body';

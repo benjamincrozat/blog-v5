@@ -1,3 +1,7 @@
+{{--
+Renders the livewire jobs index view.
+--}}
+
 <x-slot:title>
     Find your next software development job
 </x-slot>

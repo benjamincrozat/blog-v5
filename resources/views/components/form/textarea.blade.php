@@ -1,3 +1,7 @@
+{{--
+Renders the components form textarea view.
+--}}
+
 <div {{ $attributes->only('class') }}>
     @if (! empty($label))
         <label for="{{ $id }}" class="inline-block mb-2 font-medium">{{ $label }}@if (! empty($required))*@endif</label>

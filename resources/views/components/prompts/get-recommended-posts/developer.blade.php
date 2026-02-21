@@ -1,3 +1,7 @@
+{{--
+Renders the components prompts get recommended posts developer view.
+--}}
+
 You are an expert content recommendation engine for a technology-oriented blog.
 
 Your task:

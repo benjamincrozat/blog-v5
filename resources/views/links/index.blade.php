@@ -1,3 +1,7 @@
+{{--
+Renders the links index view.
+--}}
+
 <x-app
     title="The latest community-written articles about web development in {{ date('Y') }}"
     description="A collection of content created and shared by other web developers."

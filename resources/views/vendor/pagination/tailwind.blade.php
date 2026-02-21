@@ -1,3 +1,7 @@
+{{--
+Renders the vendor pagination tailwind view.
+--}}
+
 @if ($paginator->hasPages())
     <nav role="navigation" aria-label="Pagination Navigation" class="flex flex-wrap gap-4 justify-center items-center md:flex-nowrap md:justify-between">
         <div class="text-gray-500">

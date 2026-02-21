@@ -1,3 +1,7 @@
+{{--
+Renders the components posts grid view.
+--}}
+
 @props([
     'posts',
     'compact' => false,

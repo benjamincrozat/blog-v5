@@ -1,3 +1,7 @@
+{{--
+Renders the categories show view.
+--}}
+
 @php
     $breadcrumbs = [
         ['label' => 'Home', 'url' => route('home')],

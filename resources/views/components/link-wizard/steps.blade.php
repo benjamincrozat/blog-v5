@@ -1,3 +1,7 @@
+{{--
+Renders the components link wizard steps view.
+--}}
+
 @props(['steps'])
 
 <div class="flex items-center rounded-sm bg-gray-50 ring-1 ring-black/[.075]">

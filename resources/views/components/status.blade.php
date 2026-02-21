@@ -1,3 +1,7 @@
+{{--
+Renders the components status view.
+--}}
+
 @if (session('status') || ! empty(request()->submitted))
     <div
         {{ 

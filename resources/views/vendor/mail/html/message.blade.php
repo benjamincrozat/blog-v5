@@ -1,3 +1,7 @@
+{{--
+Renders the vendor mail html message view.
+--}}
+
 <x-mail::layout>
 {{-- Header --}}
 <x-slot:header>

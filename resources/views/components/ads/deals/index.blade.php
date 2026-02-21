@@ -1,3 +1,7 @@
+{{--
+Renders the components ads deals index view.
+--}}
+
 @props([
     'name',
     'description',

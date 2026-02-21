@@ -1,3 +1,7 @@
+{{--
+Renders the components help btn view.
+--}}
+
 <div {{ $attributes->merge([
     'x-data' => '{ open: false }',
     'x-trap' => 'open',

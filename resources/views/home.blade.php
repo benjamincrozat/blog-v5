@@ -1,3 +1,7 @@
+{{--
+Renders the home view.
+--}}
+
 <x-app :title="config('app.name')">
     <div class="container xl:max-w-(--breakpoint-lg)">
         <x-typography.headline>

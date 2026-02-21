@@ -1,3 +1,7 @@
+{{--
+Renders the components dropdown item view.
+--}}
+
 @props([
     'icon' => null,
     'iconClass' => null,

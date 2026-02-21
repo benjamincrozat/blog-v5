@@ -1,8 +1,12 @@
+{{--
+Renders the user comments view.
+--}}
+
 <x-app title="Your comments">
     <x-section title="Your comments ({{ $comments->total() }})">
         <div class="grid gap-4 mt-8 md:grid-cols-2">
             @foreach ($comments as $comment)
-                <a href="{{ route('posts.show', $comment->post) }}#comments" class="flex gap-4 justify-between p-4 rounded-xl border border-gray-200 transition-colors group md:gap-6 hover:border-blue-300">
+                <a wire:navigate href="{{ route('posts.show', $comment->post) }}#comments" class="flex gap-4 justify-between p-4 rounded-xl border border-gray-200 transition-colors group md:gap-6 hover:border-blue-300">
                     <div class="flex gap-4">
                         <img
                             loading="lazy"

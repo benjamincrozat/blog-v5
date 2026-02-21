@@ -1,3 +1,7 @@
+{{--
+Renders the errors 404 view.
+--}}
+
 <x-app
     title="Whoops, this page doesn't exist."
     :hide-top-ad="true"

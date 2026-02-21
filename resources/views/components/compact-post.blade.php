@@ -1,3 +1,7 @@
+{{--
+Renders the components compact post view.
+--}}
+
 @props(['post'])
 
 <div {{ $attributes->class('flex items-center gap-4 md:gap-6') }}>
@@ -50,7 +54,7 @@
 
             <div class="text-xs opacity-50">/</div>
 
-            <a href="{{ route('posts.show', $post->slug) }}#comments" class="hover:text-blue-600 transition-colors">
+            <a wire:navigate href="{{ route('posts.show', $post->slug) }}#comments" class="hover:text-blue-600 transition-colors">
                 <p class="flex items-center gap-2">
                     <x-heroicon-o-chat-bubble-oval-left class="size-[.65lh] opacity-75" />
                     {{ $post->comments_count }}

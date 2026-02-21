@@ -1,3 +1,7 @@
+{{--
+Renders the components tools tinkerwell view.
+--}}
+
 <x-tools.item
     name="Tinkerwell"
     headline="Prototype and debug on the fly"

@@ -1,3 +1,7 @@
+{{--
+Renders the components typography headline view.
+--}}
+
 @props([
     'tag' => 'h1',
 ])

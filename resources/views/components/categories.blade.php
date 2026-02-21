@@ -1,3 +1,7 @@
+{{--
+Renders the components categories view.
+--}}
+
 @props(['categories'])
 
 @if ($categories->isNotEmpty())

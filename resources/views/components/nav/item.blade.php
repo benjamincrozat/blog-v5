@@ -1,3 +1,7 @@
+{{--
+Renders the components nav item view.
+--}}
+
 @props([
     'icon' => null,
     'activeIcon' => null,

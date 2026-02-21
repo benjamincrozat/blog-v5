@@ -1,3 +1,7 @@
+{{--
+Renders the components btn view.
+--}}
+
 @if ($attributes->has('href'))
 <a
 @else

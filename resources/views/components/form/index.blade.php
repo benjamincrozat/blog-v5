@@ -1,3 +1,7 @@
+{{--
+Renders the components form index view.
+--}}
+
 <form {{ $attributes }}>
     @csrf
 

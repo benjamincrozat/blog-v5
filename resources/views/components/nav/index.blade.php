@@ -1,3 +1,7 @@
+{{--
+Renders the components nav index view.
+--}}
+
 <nav {{ $attributes->class('flex flex-wrap md:flex-nowrap justify-center items-center md:justify-between gap-6 md:gap-8 font-normal text-xs') }}>
     <a
         wire:navigate

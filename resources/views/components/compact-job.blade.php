@@ -1,3 +1,7 @@
+{{--
+Renders the components compact job view.
+--}}
+
 @props([
     'job',
     'minimal' => false,

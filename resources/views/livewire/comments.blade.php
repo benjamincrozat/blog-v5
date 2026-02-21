@@ -1,3 +1,7 @@
+{{--
+Renders the livewire comments view.
+--}}
+
 <section
     id="comments"
     class="mt-24 scroll-mt-4"

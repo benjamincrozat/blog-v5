@@ -1,3 +1,7 @@
+{{--
+Renders the livewire link wizard first step view.
+--}}
+
 <x-slot:title>
     Submit a link
 </x-slot>

@@ -1,3 +1,7 @@
+{{--
+Renders the components prompts revise post user view.
+--}}
+
 ## Editor's Report
 
 {{ $report->content }}

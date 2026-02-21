@@ -1,3 +1,7 @@
+{{--
+Renders the components form input view.
+--}}
+
 <div>
     @if (! empty($label))
         <label for="{{ $id }}" class="inline-block mb-1 font-medium">

@@ -1,3 +1,7 @@
+{{--
+Renders the components tools wincher view.
+--}}
+
 <x-tools.item
     name="Wincher"
     headline="Rank higher on Google"

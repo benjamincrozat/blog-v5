@@ -1,3 +1,7 @@
+{{--
+Renders the posts show view.
+--}}
+
 @php
     $primaryCategory = $post->categories->first();
 

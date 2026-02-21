@@ -1,3 +1,7 @@
+{{--
+Renders the components ads bottom index view.
+--}}
+
 @props(['ads' => []])
 
 <div

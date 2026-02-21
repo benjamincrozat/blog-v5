@@ -1,3 +1,7 @@
+{{--
+Renders the components tools fathom analytics view.
+--}}
+
 <x-tools.item
     name="Fathom Analytics"
     headline="Know who visits your site"

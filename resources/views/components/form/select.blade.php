@@ -1,3 +1,7 @@
+{{--
+Renders the components form select view.
+--}}
+
 <div>
     @if (! empty($label))
         <label for="{{ $id }}" class="inline-block mb-2 font-medium">

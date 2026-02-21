@@ -1,3 +1,7 @@
+{{--
+Renders the categories index view.
+--}}
+
 <x-app
     title="Categories"
     description="Level up as a web developer in {{ date('Y') }} with this collection of articles I wrote sorted by category."

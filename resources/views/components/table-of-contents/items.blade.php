@@ -1,3 +1,7 @@
+{{--
+Renders the components table of contents items view.
+--}}
+
 @props(['items'])
 
 <ul {{ $attributes->class('ml-4 grid gap-1') }}>

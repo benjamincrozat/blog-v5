@@ -1,3 +1,7 @@
+{{--
+Renders the components ads top sevalla view.
+--}}
+
 <a
     {{
         $attributes

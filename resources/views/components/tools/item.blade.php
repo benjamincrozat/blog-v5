@@ -1,3 +1,7 @@
+{{--
+Renders the components tools item view.
+--}}
+
 @props([
     'cta',
     'ctaColor',

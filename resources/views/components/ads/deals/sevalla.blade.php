@@ -1,3 +1,7 @@
+{{--
+Renders the components ads deals sevalla view.
+--}}
+
 <x-ads.deals
     {{
         $attributes

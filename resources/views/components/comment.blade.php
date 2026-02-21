@@ -1,3 +1,7 @@
+{{--
+Renders the components comment view.
+--}}
+
 @php
 // Temporary fix.
 $parentId = $this->parentId ?? $attributes->get('parentId');

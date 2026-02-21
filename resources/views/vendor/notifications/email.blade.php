@@ -1,3 +1,7 @@
+{{--
+Renders the vendor notifications email view.
+--}}
+
 <x-mail::message>
 {{-- Greeting --}}
 @if (! empty($greeting))

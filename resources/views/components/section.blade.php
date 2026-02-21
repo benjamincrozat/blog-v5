@@ -1,3 +1,7 @@
+{{--
+Renders the components section view.
+--}}
+
 @props([
     'title' => null,
     'bigTitle' => false,

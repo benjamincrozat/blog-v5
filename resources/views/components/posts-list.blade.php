@@ -1,3 +1,7 @@
+{{--
+Renders the components posts list view.
+--}}
+
 @props(['posts'])
 
 <ul {{ $attributes->class('grid gap-6') }}>

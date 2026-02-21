@@ -1,3 +1,7 @@
+{{--
+Renders the components prompts revise job developer view.
+--}}
+
 You are an expert job-listing parser.
 
 Objectives:

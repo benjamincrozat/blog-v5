@@ -1,3 +1,7 @@
+{{--
+Renders the components tools mailcoach view.
+--}}
+
 <x-tools.item
     name="Mailcoach"
     headline="Send emails to your users"

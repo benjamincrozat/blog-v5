@@ -1,3 +1,7 @@
+{{--
+Renders the tools index view.
+--}}
+
 <x-app
     :hide-top-ad="true"
     title="Unlock the best tools for developers"

@@ -1,3 +1,7 @@
+{{--
+Renders the components breadcrumbs view.
+--}}
+
 @props(['items'])
 
 <nav {{ $attributes->class('text-sm text-gray-500') }} aria-label="Breadcrumb">

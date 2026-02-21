@@ -1,3 +1,7 @@
+{{--
+Renders the components post view.
+--}}
+
 @props(['post'])
 
 <div {{ $attributes->class('flex flex-col h-full') }}>

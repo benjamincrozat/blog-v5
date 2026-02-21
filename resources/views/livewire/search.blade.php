@@ -1,3 +1,7 @@
+{{--
+Renders the livewire search view.
+--}}
+
 <div
     class="fixed inset-4"
     x-cloak

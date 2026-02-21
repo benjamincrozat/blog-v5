@@ -1,3 +1,7 @@
+{{--
+Renders the components tools uptimia view.
+--}}
+
 <x-tools.item
     name="Uptimia"
     headline="Get alerts when your site is down"

@@ -1,3 +1,7 @@
+{{--
+Renders the components dropdown index view.
+--}}
+
 <div
     {{ $attributes->merge([
         'x-data' => '{ open: false }',

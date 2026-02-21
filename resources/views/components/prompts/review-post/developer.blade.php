@@ -1,3 +1,7 @@
+{{--
+Renders the components prompts review post developer view.
+--}}
+
 Role and Objective:
 - Act as a blog editor to critically review already published blog posts for factual accuracy, SEO effectiveness, and writing quality.
 

@@ -1,3 +1,7 @@
+{{--
+Renders the components tools tower view.
+--}}
+
 <x-tools.item
     name="Tower"
     headline="Unlock the power of Git"

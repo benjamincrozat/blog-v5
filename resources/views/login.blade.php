@@ -1,3 +1,7 @@
+{{--
+Renders the login view.
+--}}
+
 <x-app
     :hide-top-ad="true"
     :hide-footer="true"

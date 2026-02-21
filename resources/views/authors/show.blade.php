@@ -1,3 +1,7 @@
+{{--
+Renders the authors show view.
+--}}
+
 @php
 $description = Str::limit(
     strip_tags(Markdown::parse($author->about)),

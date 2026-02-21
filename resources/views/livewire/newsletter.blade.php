@@ -1,3 +1,7 @@
+{{--
+Renders the livewire newsletter view.
+--}}
+
 <x-slot:title>
     Survive the AI era as a developer
 </x-slot>

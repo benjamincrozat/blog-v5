@@ -1,3 +1,7 @@
+{{--
+Renders the livewire comment form view.
+--}}
+
 <div>
     <x-form wire:submit="submit" class="flex gap-4">
         <img
@@ -54,7 +58,7 @@
                 <p class="mt-8">
                     Hey, you need to sign in with your GitHub account to comment.
 
-                    <a href="{{ route('auth.redirect') }}" class="font-medium underline">
+                    <a wire:navigate href="{{ route('auth.redirect') }}" class="font-medium underline">
                         Get&nbsp;started&nbsp;→
                     </a>
                 </p>

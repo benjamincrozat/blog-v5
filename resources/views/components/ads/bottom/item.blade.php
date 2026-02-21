@@ -1,3 +1,7 @@
+{{--
+Renders the components ads bottom item view.
+--}}
+
 @php
 $domain = preg_replace('/https?:\/\//', '', config('app.url'));
 @endphp

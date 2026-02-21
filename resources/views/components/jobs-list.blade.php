@@ -1,3 +1,7 @@
+{{--
+Renders the components jobs list view.
+--}}
+
 @props(['jobs'])
 
 <ul {{ $attributes->class('grid gap-6') }}>

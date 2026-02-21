@@ -1,3 +1,7 @@
+{{--
+Renders the user links view.
+--}}
+
 <x-app title="Your links">
     <x-section class="lg:max-w-screen-md">
         <header class="flex gap-8 justify-between items-center">

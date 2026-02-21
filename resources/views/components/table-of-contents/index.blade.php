@@ -1,3 +1,7 @@
+{{--
+Renders the components table of contents index view.
+--}}
+
 @props(['items'])
 
 @if (! empty($items))

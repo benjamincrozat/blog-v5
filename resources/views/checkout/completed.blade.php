@@ -1,3 +1,7 @@
+{{--
+Renders the checkout completed view.
+--}}
+
 <x-app
     title="Thanks for your purchase!"
     :hide-top-ad="true"

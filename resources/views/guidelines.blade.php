@@ -1,3 +1,7 @@
+{{--
+Renders the guidelines view.
+--}}
+
 <x-app
     title="Advertising guidelines"
     description="Guidelines for advertising and sponsored content on benjamincrozat.com."

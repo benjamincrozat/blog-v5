@@ -1,3 +1,7 @@
+{{--
+Renders the advertise view.
+--}}
+
 <x-app
     title="Show off your business to {{ Number::format($visitors) }} developers"
     description="Reach web developers with sponsorships, sponsored articles, and placements on benjamincrozat.com."

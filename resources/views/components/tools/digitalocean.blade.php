@@ -1,3 +1,7 @@
+{{--
+Renders the components tools digitalocean view.
+--}}
+
 <x-tools.item
     name="DigitalOcean"
     headline="Host your web apps on a VPS"

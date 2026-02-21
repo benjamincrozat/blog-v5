@@ -1,3 +1,7 @@
+{{--
+Renders the components prompts fetch job data developer view.
+--}}
+
 You are an expert job-listing parser and company researcher.
 
 Objectives:
