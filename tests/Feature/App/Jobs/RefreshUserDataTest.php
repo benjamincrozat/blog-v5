@@ -2,14 +2,19 @@
 
 use App\Models\User;
 use App\Jobs\RefreshUserData;
-use Facades\App\Actions\RefreshUserData as RefreshUserDataAction;
+use Mockery\MockInterface;
+use App\Actions\RefreshUserData as RefreshUserDataAction;
 
 it('delegates refreshing user data', function () {
     $user = User::factory()->make();
 
-    RefreshUserDataAction::shouldReceive('refresh')
-        ->once()
-        ->with($user);
+    $action = mock(RefreshUserDataAction::class, function (MockInterface $mock) use ($user) {
+        $mock->shouldReceive('refresh')
+            ->once()
+            ->with($user);
+    });
+
+    app()->instance(RefreshUserDataAction::class, $action);
 
     (new RefreshUserData($user))->handle();
 });

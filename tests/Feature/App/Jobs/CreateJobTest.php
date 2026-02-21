@@ -2,7 +2,8 @@
 
 use App\Jobs\CreateJob;
 use App\Scraper\Webpage;
-use Facades\App\Actions\Jobs\CreateJob as CreateJobAction;
+use Mockery\MockInterface;
+use App\Actions\Jobs\CreateJob as CreateJobAction;
 
 it('invokes the CreateJob action with provided data', function () {
     $webpage = new Webpage(
@@ -36,9 +37,13 @@ it('invokes the CreateJob action with provided data', function () {
         ],
     ];
 
-    CreateJobAction::shouldReceive('create')
-        ->once()
-        ->with($webpage, $data);
+    $action = mock(CreateJobAction::class, function (MockInterface $mock) use ($webpage, $data) {
+        $mock->shouldReceive('create')
+            ->once()
+            ->with($webpage, $data);
+    });
+
+    app()->instance(CreateJobAction::class, $action);
 
     (new CreateJob($webpage, $data))->handle();
 });

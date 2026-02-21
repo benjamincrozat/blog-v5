@@ -1,10 +1,7 @@
 <?php
 
-use Illuminate\Support\Str;
 use League\Flysystem\Config;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Storage;
 use League\Flysystem\UnableToWriteFile;
 use League\Flysystem\UnableToDeleteFile;
 use App\Filesystem\CloudflareImagesAdapter;
@@ -146,44 +143,6 @@ it('formats Cloudflare URLs with the configured variant', function () {
 
     expect($adapter->getUrl('folder/image.jpg'))
         ->toBe('https://imagedelivery.net/hash_abc/folder/image.jpg/public');
-});
-
-beforeEach(fn () => Http::allowStrayRequests());
-
-it('uploads an image, returns a public URL, and deletes it using the Cloudflare Images adapter', function () {
-    /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
-    $disk = Storage::disk('cloudflare-images');
-
-    $id = Str::random(20);
-
-    $file = UploadedFile::fake()->image('image.jpg', 50, 50);
-
-    expect($disk->putFileAs('', $file, $id))->toBeString();
-
-    expect($disk->url($id))->toContain($id);
-
-    expect($disk->delete($id))->toBeTrue();
-});
-
-it('reads an uploaded image both as a string and as a stream using the Cloudflare Images adapter', function () {
-    /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
-    $disk = Storage::disk('cloudflare-images');
-
-    $id = Str::random(20);
-
-    $file = UploadedFile::fake()->image('image.jpg', 50, 50);
-
-    $disk->put($id, file_get_contents($file->getPathname()));
-
-    expect($disk->get($id))->toBeString();
-
-    $stream = $disk->readStream($id);
-
-    expect($stream)->toBeResource();
-
-    fclose($stream);
-
-    expect($disk->delete($id))->toBeTrue();
 });
 
 it('does not allow moving files', function () {

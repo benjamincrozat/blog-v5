@@ -23,7 +23,7 @@ beforeEach(function () {
     actingAs($admin);
 
     Bus::fake([CreatePostForLink::class]);
-    Notification::fake([LinkApproved::class]);
+    Notification::fake();
 });
 
 it('can approve a link and generate a post from the table action', function () {

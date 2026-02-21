@@ -15,15 +15,11 @@ it("successfully makes a call to Pirsch's API with valid parameters", function (
 })->throwsNoExceptions();
 
 it('sanitizes malformed UTF-8 so the payload can be JSON encoded', function () {
-    Http::fake(function (Request $request) {
-        $data = $request->data();
+    config(['services.pirsch.enabled' => true]);
 
-        expect(mb_check_encoding($data['url'], 'UTF-8'))->toBeTrue()
-            ->and(mb_check_encoding($data['user_agent'], 'UTF-8'))->toBeTrue()
-            ->and(mb_check_encoding($data['accept_language'], 'UTF-8'))->toBeTrue();
-
-        return Http::response('', 200);
-    });
+    Http::fake([
+        'api.pirsch.io/api/v1/hit' => Http::response('', 200),
+    ]);
 
     $invalidUtf8 = "https://example.com/\xC3\x28";
 
@@ -34,6 +30,16 @@ it('sanitizes malformed UTF-8 so the payload can be JSON encoded', function () {
         "en-US\xC3\x28",
         null,
     );
+
+    Http::assertSent(function (Request $request) {
+        $data = $request->data();
+
+        return mb_check_encoding($data['url'], 'UTF-8')
+            && mb_check_encoding($data['user_agent'], 'UTF-8')
+            && mb_check_encoding($data['accept_language'], 'UTF-8');
+    });
+
+    Http::assertSentCount(1);
 });
 
 it('handles an invalid token appropriately', function () {

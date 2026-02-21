@@ -1,11 +1,11 @@
 <?php
 
 use App\Models\User;
+use Mockery\MockInterface;
+use App\Actions\TrackVisit as TrackVisitAction;
 
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
-
-use Facades\App\Actions\TrackVisit;
 
 use function Pest\Laravel\actingAs;
 
@@ -21,13 +21,18 @@ beforeEach(function () {
 });
 
 it('tracks visits in production', function () {
-    TrackVisit::expects('track');
+    $action = mockTrackVisitAction();
+
+    $action->shouldReceive('track')
+        ->once();
 
     get('/');
 });
 
 it('does not track visits in non-production environments', function () {
-    TrackVisit::shouldReceive('track')->never();
+    $action = mockTrackVisitAction();
+
+    $action->shouldReceive('track')->never();
 
     config(['app.env' => 'testing']);
 
@@ -35,7 +40,9 @@ it('does not track visits in non-production environments', function () {
 });
 
 it('does not track visits when Pirsch is disabled', function () {
-    TrackVisit::shouldReceive('track')->never();
+    $action = mockTrackVisitAction();
+
+    $action->shouldReceive('track')->never();
 
     config(['services.pirsch.enabled' => false]);
 
@@ -43,7 +50,9 @@ it('does not track visits when Pirsch is disabled', function () {
 });
 
 it('only tracks GET requests', function () {
-    TrackVisit::shouldReceive('track')->never();
+    $action = mockTrackVisitAction();
+
+    $action->shouldReceive('track')->never();
 
     Route::post('/foo', fn () => '')
         ->middleware(\App\Http\Middleware\TrackVisit::class);
@@ -53,19 +62,25 @@ it('only tracks GET requests', function () {
 });
 
 it('does not track Livewire requests', function () {
-    TrackVisit::shouldReceive('track')->never();
+    $action = mockTrackVisitAction();
+
+    $action->shouldReceive('track')->never();
 
     get('/', ['X-Livewire' => 'true']);
 });
 
 it('does not track requests that want JSON', function () {
-    TrackVisit::shouldReceive('track')->never();
+    $action = mockTrackVisitAction();
+
+    $action->shouldReceive('track')->never();
 
     get('/', ['Accept' => 'application/json']);
 });
 
 it('only tracks if all required parameters are available', function () {
-    TrackVisit::shouldReceive('track')->never();
+    $action = mockTrackVisitAction();
+
+    $action->shouldReceive('track')->never();
 
     withServerVariables(['REMOTE_ADDR' => null]);
 
@@ -73,16 +88,28 @@ it('only tracks if all required parameters are available', function () {
 });
 
 it('does not track requests from crawlers', function () {
-    TrackVisit::shouldReceive('track')->never();
+    $action = mockTrackVisitAction();
+
+    $action->shouldReceive('track')->never();
 
     get('/', ['User-Agent' => 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/W.X.Y.Z Safari/537.36']);
 });
 
 it('does not track requests from admins', function () {
-    TrackVisit::shouldReceive('track')->never();
+    $action = mockTrackVisitAction();
+
+    $action->shouldReceive('track')->never();
 
     $user = User::factory()->create(['github_login' => 'benjamincrozat']);
 
     actingAs($user)
         ->get('/');
 });
+
+function mockTrackVisitAction() : MockInterface
+{
+    $action = mock(TrackVisitAction::class);
+    app()->instance(TrackVisitAction::class, $action);
+
+    return $action;
+}

@@ -2,14 +2,16 @@
 
 use App\Console\Commands\DbPullCommand;
 
-beforeEach(function () {
-    $this->originalPath = (string) getenv('PATH');
+$originalPath = null;
+
+beforeEach(function () use (&$originalPath) {
+    $originalPath = (string) getenv('PATH');
 });
 
-afterEach(function () {
-    if (isset($this->originalPath)) {
-        putenv('PATH=' . $this->originalPath);
-        $_SERVER['PATH'] = $this->originalPath;
+afterEach(function () use (&$originalPath) {
+    if (null !== $originalPath) {
+        putenv('PATH=' . $originalPath);
+        $_SERVER['PATH'] = $originalPath;
     }
 });
 
@@ -68,7 +70,7 @@ it('prepends a compatible mysql-client path when mysqldump is v9', function () {
         ->toStartWith('/opt/homebrew/opt/mysql-client@8.4/bin' . PATH_SEPARATOR);
 });
 
-it('does not change PATH when mysqldump is not v9', function () {
+it('does not change PATH when mysqldump is not v9', function () use (&$originalPath) {
     $command = new TestableDbPullCommand;
     $command->darwin = true;
     $command->versionOutput = 'mysqldump  Ver 8.4.0';
@@ -76,5 +78,5 @@ it('does not change PATH when mysqldump is not v9', function () {
 
     $command->runEnsureCompatibleMysqlClient();
 
-    expect((string) getenv('PATH'))->toBe($this->originalPath);
+    expect((string) getenv('PATH'))->toBe($originalPath);
 });

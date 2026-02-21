@@ -2,14 +2,19 @@
 
 use App\Models\Post;
 use App\Jobs\RecommendPosts;
-use Facades\App\Actions\RecommendPosts as RecommendPostsAction;
+use Mockery\MockInterface;
+use App\Actions\RecommendPosts as RecommendPostsAction;
 
 it('delegates recommending posts for a post', function () {
     $post = Post::factory()->make();
 
-    RecommendPostsAction::shouldReceive('recommend')
-        ->once()
-        ->with($post);
+    $action = mock(RecommendPostsAction::class, function (MockInterface $mock) use ($post) {
+        $mock->shouldReceive('recommend')
+            ->once()
+            ->with($post);
+    });
+
+    app()->instance(RecommendPostsAction::class, $action);
 
     (new RecommendPosts($post))->handle();
 });
