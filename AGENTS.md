@@ -13,7 +13,7 @@ This repo is my personal blog about web developent.
 - `composer setup`
 - `composer dev`
   - This runs multiple processes concurrently.
-- Assume the project is always accessible at `https://benjamincrozat.test`. Never use `php artisan serve` unless `https://benjamincrozat.test` is not accessible.
+- Assume the project is always accessible at `https://blog-v5.test`. Never use `php artisan serve` unless `https://blog-v5.test` is not accessible.
 - Commit every change you make to the codebase. Be as granular as possible.
 - When you have to commit, start the message with a short summary (10 words, tops). Then, add a detailed description of the changes (use lists to make it easier to read).
 - **Don't push code unless you have my approval.**
