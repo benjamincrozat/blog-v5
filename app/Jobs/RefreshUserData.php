@@ -6,6 +6,9 @@ use App\Models\User;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * Defines the RefreshUserData implementation.
+ */
 class RefreshUserData implements ShouldQueue
 {
     use Queueable;

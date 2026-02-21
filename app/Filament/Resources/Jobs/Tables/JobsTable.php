@@ -21,6 +21,9 @@ use Filament\Notifications\Notification;
 use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\Layout\Stack;
 
+/**
+ * Defines the JobsTable implementation.
+ */
 class JobsTable
 {
     public static function configure(Table $table) : Table

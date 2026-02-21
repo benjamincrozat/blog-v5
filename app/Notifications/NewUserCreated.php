@@ -8,6 +8,9 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
+/**
+ * Defines the NewUserCreated implementation.
+ */
 class NewUserCreated extends Notification implements ShouldQueue
 {
     use Queueable;

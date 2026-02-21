@@ -6,6 +6,9 @@ use App\Models\Job;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * Defines the ReviseJob implementation.
+ */
 class ReviseJob implements ShouldQueue
 {
     use Queueable;

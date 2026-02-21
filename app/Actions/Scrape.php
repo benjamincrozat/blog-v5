@@ -6,6 +6,9 @@ use Exception;
 use App\Scraper\Webpage;
 use Illuminate\Support\Facades\Process;
 
+/**
+ * Defines the Scrape implementation.
+ */
 class Scrape
 {
     public function scrape(string $url, ?string $proxyServer = null) : Webpage

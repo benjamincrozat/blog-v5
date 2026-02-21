@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Defines the Revision implementation.
+ */
 class Revision extends Model
 {
     /** @use HasFactory<\Database\Factories\RevisionFactory> */

@@ -7,6 +7,9 @@ use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\Posts\PostResource;
 
+/**
+ * Defines the ListPosts implementation.
+ */
 class ListPosts extends ListRecords
 {
     protected static string $resource = PostResource::class;

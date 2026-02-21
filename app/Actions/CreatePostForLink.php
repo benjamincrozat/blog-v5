@@ -10,6 +10,9 @@ use App\Jobs\RecommendPosts;
 use Illuminate\Support\Facades\DB;
 use OpenAI\Laravel\Facades\OpenAI;
 
+/**
+ * Defines the CreatePostForLink implementation.
+ */
 class CreatePostForLink
 {
     public function create(Link $link) : Post

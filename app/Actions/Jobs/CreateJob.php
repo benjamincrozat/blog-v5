@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\DB;
 use App\Actions\NormalizeCompanyUrl;
 use App\Actions\NormalizeCompanyDomain;
 
+/**
+ * Defines the CreateJob implementation.
+ */
 class CreateJob
 {
     public function create(Webpage $webpage, object $data) : Job

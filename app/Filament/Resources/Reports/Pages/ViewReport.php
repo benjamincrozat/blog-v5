@@ -11,6 +11,9 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
 use App\Filament\Resources\Reports\ReportResource;
 
+/**
+ * Defines the ViewReport implementation.
+ */
 class ViewReport extends ViewRecord
 {
     protected static string $resource = ReportResource::class;

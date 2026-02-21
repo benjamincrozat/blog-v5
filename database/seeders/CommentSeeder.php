@@ -7,6 +7,9 @@ use App\Models\User;
 use App\Models\Comment;
 use Illuminate\Database\Seeder;
 
+/**
+ * Defines the CommentSeeder implementation.
+ */
 class CommentSeeder extends Seeder
 {
     public function run() : void

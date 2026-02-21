@@ -6,6 +6,9 @@ use App\Models\Post;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * Defines the ReviewPost implementation.
+ */
 class ReviewPost implements ShouldQueue
 {
     use Queueable;

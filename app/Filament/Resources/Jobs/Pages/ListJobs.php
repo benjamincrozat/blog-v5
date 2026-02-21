@@ -6,6 +6,9 @@ use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use App\Filament\Resources\Jobs\JobResource;
 
+/**
+ * Defines the ListJobs implementation.
+ */
 class ListJobs extends ListRecords
 {
     protected static string $resource = JobResource::class;

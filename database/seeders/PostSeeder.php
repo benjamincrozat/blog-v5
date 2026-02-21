@@ -10,6 +10,9 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * Defines the PostSeeder implementation.
+ */
 class PostSeeder extends Seeder
 {
     public function run() : void

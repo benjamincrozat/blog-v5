@@ -7,6 +7,9 @@ use Illuminate\View\View;
 use Illuminate\Support\Number;
 use App\Http\Controllers\Controller;
 
+/**
+ * Defines the ShowAdvertisingLandingPageController implementation.
+ */
 class ShowAdvertisingLandingPageController extends Controller
 {
     public function __invoke() : View

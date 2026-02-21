@@ -8,6 +8,9 @@ use Illuminate\Support\Number;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
+/**
+ * Defines the PostsStats implementation.
+ */
 class PostsStats extends StatsOverviewWidget
 {
     protected ?string $heading = 'Posts stats';

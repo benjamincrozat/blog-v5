@@ -6,6 +6,9 @@ use App\Models\Post;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * Defines the RecommendPosts implementation.
+ */
 class RecommendPosts implements ShouldQueue
 {
     use Queueable;

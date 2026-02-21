@@ -9,6 +9,9 @@ use Illuminate\Console\Command;
 use App\Actions\DiscoverFeedItems;
 use Symfony\Component\Console\Attribute\AsCommand;
 
+/**
+ * Defines the IngestJobFeedsCommand implementation.
+ */
 #[AsCommand(
     name: 'app:ingest-job-feeds',
     description: 'Fetch configured job feeds and enqueue scraping for new items',

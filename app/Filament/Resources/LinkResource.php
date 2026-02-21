@@ -30,6 +30,9 @@ use App\Filament\Resources\LinkResource\Pages\EditLink;
 use App\Filament\Resources\LinkResource\Pages\ListLinks;
 use App\Filament\Resources\LinkResource\Pages\CreateLink;
 
+/**
+ * Defines the LinkResource implementation.
+ */
 class LinkResource extends Resource
 {
     protected static ?string $model = Link::class;

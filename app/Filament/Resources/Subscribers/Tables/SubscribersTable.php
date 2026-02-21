@@ -16,6 +16,9 @@ use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Filters\TernaryFilter;
 
+/**
+ * Defines the SubscribersTable implementation.
+ */
 class SubscribersTable
 {
     public static function configure(Table $table) : Table

@@ -8,6 +8,9 @@ use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 use App\Filament\Resources\RedirectResource;
 
+/**
+ * Defines the EditRedirect implementation.
+ */
 class EditRedirect extends EditRecord
 {
     protected static string $resource = RedirectResource::class;

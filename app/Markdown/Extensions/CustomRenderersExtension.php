@@ -9,6 +9,9 @@ use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 use League\CommonMark\Environment\EnvironmentBuilderInterface;
 use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 
+/**
+ * Defines the CustomRenderersExtension implementation.
+ */
 class CustomRenderersExtension implements ExtensionInterface
 {
     public function register(EnvironmentBuilderInterface $environment) : void

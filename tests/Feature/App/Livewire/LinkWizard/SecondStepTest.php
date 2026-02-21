@@ -15,6 +15,9 @@ use function Pest\Laravel\assertDatabaseHas;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\LinkWaitingForValidation;
 
+/**
+ * Defines the TestableSecondStep implementation.
+ */
 class TestableSecondStep extends SecondStep
 {
     public bool $wentBack = false;

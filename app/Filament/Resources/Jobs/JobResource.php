@@ -14,6 +14,9 @@ use App\Filament\Resources\Jobs\Pages\CreateJob;
 use App\Filament\Resources\Jobs\Schemas\JobForm;
 use App\Filament\Resources\Jobs\Tables\JobsTable;
 
+/**
+ * Defines the JobResource implementation.
+ */
 class JobResource extends Resource
 {
     protected static ?string $model = Job::class;

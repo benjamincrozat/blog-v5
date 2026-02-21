@@ -7,6 +7,9 @@ use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * Defines the ListLinksController implementation.
+ */
 class ListLinksController extends Controller
 {
     public function __invoke() : View

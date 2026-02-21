@@ -7,6 +7,9 @@ use Illuminate\Support\Number;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
+/**
+ * Defines the VisitorStats implementation.
+ */
 class VisitorStats extends StatsOverviewWidget
 {
     protected ?string $heading = 'Visitors during the last 30 days';

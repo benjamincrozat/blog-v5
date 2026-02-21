@@ -9,6 +9,9 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 use App\Filament\Resources\Jobs\JobResource;
 
+/**
+ * Defines the CreateJob implementation.
+ */
 class CreateJob extends CreateRecord
 {
     protected static string $resource = JobResource::class;

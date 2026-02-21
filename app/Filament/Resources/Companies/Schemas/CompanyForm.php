@@ -7,6 +7,9 @@ use Filament\Schemas\Components\Group;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\MarkdownEditor;
 
+/**
+ * Defines the CompanyForm implementation.
+ */
 class CompanyForm
 {
     public static function configure(Schema $schema) : Schema

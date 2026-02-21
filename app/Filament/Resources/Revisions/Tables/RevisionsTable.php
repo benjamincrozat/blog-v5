@@ -14,6 +14,9 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * Defines the RevisionsTable implementation.
+ */
 class RevisionsTable
 {
     public static function configure(Table $table) : Table

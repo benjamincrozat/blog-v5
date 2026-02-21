@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Jaybizzle\CrawlerDetect\CrawlerDetect;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Defines the TrackVisit implementation.
+ */
 class TrackVisit
 {
     public function handle(Request $request, Closure $next, string ...$guards) : Response

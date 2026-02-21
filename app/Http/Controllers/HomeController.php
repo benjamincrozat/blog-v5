@@ -8,6 +8,9 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\View\View;
 
+/**
+ * Defines the HomeController implementation.
+ */
 class HomeController extends Controller
 {
     public function __invoke() : View

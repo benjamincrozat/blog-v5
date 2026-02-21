@@ -6,6 +6,9 @@ use App\Models\User;
 use App\Jobs\RefreshUserData;
 use Illuminate\Console\Command;
 
+/**
+ * Defines the RefreshUserDataCommand implementation.
+ */
 class RefreshUserDataCommand extends Command
 {
     protected $signature = 'app:refresh-user-data {id?}';

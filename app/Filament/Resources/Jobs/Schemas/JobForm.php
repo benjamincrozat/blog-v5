@@ -10,6 +10,9 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\CodeEditor;
 
+/**
+ * Defines the JobForm implementation.
+ */
 class JobForm
 {
     public static function configure(Schema $schema) : Schema

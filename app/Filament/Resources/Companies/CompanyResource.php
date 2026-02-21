@@ -13,6 +13,9 @@ use App\Filament\Resources\Companies\Pages\ListCompanies;
 use App\Filament\Resources\Companies\Schemas\CompanyForm;
 use App\Filament\Resources\Companies\Tables\CompaniesTable;
 
+/**
+ * Defines the CompanyResource implementation.
+ */
 class CompanyResource extends Resource
 {
     protected static ?string $model = Company::class;

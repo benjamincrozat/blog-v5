@@ -14,6 +14,9 @@ use Filament\Schemas\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Infolists\Components\TextEntry;
 
+/**
+ * Defines the SubscriberForm implementation.
+ */
 class SubscriberForm
 {
     public static function configure(Schema $schema) : Schema

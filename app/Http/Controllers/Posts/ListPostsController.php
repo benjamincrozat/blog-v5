@@ -6,6 +6,9 @@ use App\Models\Post;
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 
+/**
+ * Defines the ListPostsController implementation.
+ */
 class ListPostsController extends Controller
 {
     public function __invoke() : View

@@ -20,6 +20,9 @@ use App\Filament\Resources\UserResource\Pages\EditUser;
 use App\Filament\Resources\UserResource\Pages\ListUsers;
 use App\Filament\Resources\UserResource\Pages\CreateUser;
 
+/**
+ * Defines the UserResource implementation.
+ */
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;

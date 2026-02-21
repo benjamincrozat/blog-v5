@@ -9,6 +9,9 @@ use OpenAI\Laravel\Facades\OpenAI;
 
 // The reason for this action to exist is to allow me to revise existing
 // jobs. The prompts used below will evolve and so should the jobs.
+/**
+ * Defines the ReviseJob implementation.
+ */
 class ReviseJob
 {
     public function revise(Job $job, ?string $additionalInstructions = null) : Job

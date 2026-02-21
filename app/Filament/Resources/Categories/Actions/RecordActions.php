@@ -8,6 +8,9 @@ use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
 use App\Filament\Resources\Categories\Pages\EditCategory;
 
+/**
+ * Defines the RecordActions implementation.
+ */
 class RecordActions
 {
     public static function configure() : array

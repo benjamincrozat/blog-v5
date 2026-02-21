@@ -6,6 +6,9 @@ use App\Scraper\Webpage;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * Defines the CreateJob implementation.
+ */
 class CreateJob implements ShouldQueue
 {
     use Queueable;

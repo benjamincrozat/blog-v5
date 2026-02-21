@@ -12,6 +12,9 @@ use App\Filament\Resources\Reports\Pages\ListReports;
 use App\Filament\Resources\Reports\Tables\ReportsTable;
 use App\Filament\Resources\Reports\Schemas\ReportInfolist;
 
+/**
+ * Defines the ReportResource implementation.
+ */
 class ReportResource extends Resource
 {
     protected static ?string $model = Report::class;

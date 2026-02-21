@@ -6,6 +6,9 @@ use Filament\Actions\CreateAction;
 use App\Filament\Resources\UserResource;
 use Filament\Resources\Pages\ListRecords;
 
+/**
+ * Defines the ListUsers implementation.
+ */
 class ListUsers extends ListRecords
 {
     protected static string $resource = UserResource::class;

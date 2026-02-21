@@ -11,6 +11,9 @@ use Spatie\Sitemap\Tags\Url;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
+/**
+ * Defines the GenerateSitemapCommand implementation.
+ */
 #[AsCommand(
     name: 'app:generate-sitemap',
     description: 'Generate the sitemap.'

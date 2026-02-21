@@ -4,6 +4,9 @@ namespace App\Support\Schema;
 
 use App\Models\Job;
 
+/**
+ * Defines the JobPostingSchema implementation.
+ */
 class JobPostingSchema
 {
     public static function fromJob(Job $job) : array

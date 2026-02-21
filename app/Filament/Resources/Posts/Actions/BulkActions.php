@@ -12,6 +12,9 @@ use Filament\Actions\RestoreBulkAction;
 use Filament\Notifications\Notification;
 use Filament\Actions\ForceDeleteBulkAction;
 
+/**
+ * Defines the BulkActions implementation.
+ */
 class BulkActions
 {
     public static function configure() : array

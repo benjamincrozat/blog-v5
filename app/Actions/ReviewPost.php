@@ -8,6 +8,9 @@ use App\Models\Report;
 use App\Notifications\NewReport;
 use OpenAI\Laravel\Facades\OpenAI;
 
+/**
+ * Defines the ReviewPost implementation.
+ */
 class ReviewPost
 {
     /**

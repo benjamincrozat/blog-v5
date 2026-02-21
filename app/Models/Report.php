@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Defines the Report implementation.
+ */
 class Report extends Model
 {
     /** @use HasFactory<\Database\Factories\ReportFactory> */

@@ -7,6 +7,9 @@ use App\Models\Redirect;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Defines the HandleRedirects implementation.
+ */
 class HandleRedirects
 {
     /**

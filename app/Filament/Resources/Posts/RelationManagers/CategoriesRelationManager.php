@@ -7,6 +7,9 @@ use Filament\Schemas\Schema;
 use App\Filament\Resources\Categories\CategoryResource;
 use Filament\Resources\RelationManagers\RelationManager;
 
+/**
+ * Defines the CategoriesRelationManager implementation.
+ */
 class CategoriesRelationManager extends RelationManager
 {
     protected static string $relationship = 'categories';

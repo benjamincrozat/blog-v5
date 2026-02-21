@@ -8,6 +8,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\Events\QueueFailedOver;
 use Illuminate\Notifications\Messages\MailMessage;
 
+/**
+ * Defines the QueueFailoverHappened implementation.
+ */
 class QueueFailoverHappened extends Notification implements ShouldQueue
 {
     use Queueable;

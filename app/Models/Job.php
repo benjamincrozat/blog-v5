@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+/**
+ * Defines the Job implementation.
+ */
 class Job extends Model
 {
     /** @use HasFactory<\Database\Factories\JobFactory> */

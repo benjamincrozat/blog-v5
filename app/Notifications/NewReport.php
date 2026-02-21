@@ -8,6 +8,9 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
+/**
+ * Defines the NewReport implementation.
+ */
 class NewReport extends Notification implements ShouldQueue
 {
     use Queueable;

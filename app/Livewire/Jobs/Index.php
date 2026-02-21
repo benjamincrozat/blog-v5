@@ -15,6 +15,9 @@ use Illuminate\Validation\Rule;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
+/**
+ * Defines the Index implementation.
+ */
 class Index extends Component
 {
     use WithPagination;

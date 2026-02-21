@@ -6,6 +6,9 @@ use App\Models\Post;
 use App\Jobs\RecommendPosts;
 use Illuminate\Console\Command;
 
+/**
+ * Defines the GenerateRecommendationsCommand implementation.
+ */
 class GenerateRecommendationsCommand extends Command
 {
     protected $signature = 'app:generate-recommendations {slug? : The slug of the post to generate recommendations for}';

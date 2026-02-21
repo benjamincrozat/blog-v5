@@ -5,6 +5,9 @@ namespace App\Jobs;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * Defines the TrackEvent implementation.
+ */
 class TrackEvent implements ShouldQueue
 {
     use Queueable;

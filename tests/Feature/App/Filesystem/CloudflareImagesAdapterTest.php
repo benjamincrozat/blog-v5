@@ -205,6 +205,9 @@ it('returns null last modified timestamp when head request fails', function () {
     expect(adapter()->lastModified('missing.jpg')->lastModified())->toBeNull();
 });
 
+/**
+ * Defines the FaultyTempFileAdapter implementation.
+ */
 class FaultyTempFileAdapter extends CloudflareImagesAdapter
 {
     protected function createTempFile()

@@ -7,6 +7,9 @@ use App\Models\User;
 use Github\Exception\RuntimeException;
 use Github\Exception\ApiLimitExceedException;
 
+/**
+ * Defines the RefreshUserData implementation.
+ */
 class RefreshUserData
 {
     /**

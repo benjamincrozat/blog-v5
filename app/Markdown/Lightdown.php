@@ -8,6 +8,9 @@ use App\Markdown\Extensions\CustomRenderersExtension;
 use League\CommonMark\Node\Inline\AbstractStringContainer;
 use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 
+/**
+ * Defines the Lightdown implementation.
+ */
 class Lightdown
 {
     public static function parse(string $string) : string

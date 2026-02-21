@@ -7,6 +7,9 @@ use Filament\Schemas\Schema;
 use App\Filament\Resources\Posts\PostResource;
 use Filament\Resources\RelationManagers\RelationManager;
 
+/**
+ * Defines the PostsRelationManager implementation.
+ */
 class PostsRelationManager extends RelationManager
 {
     protected static string $relationship = 'posts';

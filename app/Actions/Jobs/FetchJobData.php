@@ -5,6 +5,9 @@ namespace App\Actions\Jobs;
 use App\Scraper\Webpage;
 use OpenAI\Laravel\Facades\OpenAI;
 
+/**
+ * Defines the FetchJobData implementation.
+ */
 class FetchJobData
 {
     public function fetch(Webpage $webpage) : array

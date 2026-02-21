@@ -11,6 +11,9 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Client\ConnectionException;
 use Spatie\LivewireWizard\Components\StepComponent;
 
+/**
+ * Defines the FirstStep implementation.
+ */
 class FirstStep extends StepComponent
 {
     #[Validate('required|url|unique:links,url', message: [

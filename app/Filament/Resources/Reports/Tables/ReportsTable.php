@@ -18,6 +18,9 @@ use Filament\Notifications\Notification;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * Defines the ReportsTable implementation.
+ */
 class ReportsTable
 {
     public static function configure(Table $table) : Table

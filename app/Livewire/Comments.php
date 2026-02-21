@@ -12,6 +12,9 @@ use App\Notifications\NewReply;
 use Livewire\Attributes\Locked;
 use App\Notifications\NewComment;
 
+/**
+ * Defines the Comments implementation.
+ */
 class Comments extends Component
 {
     use WithPagination;

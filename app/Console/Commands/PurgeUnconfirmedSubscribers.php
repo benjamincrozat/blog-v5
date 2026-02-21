@@ -5,6 +5,9 @@ namespace App\Console\Commands;
 use App\Models\Subscriber;
 use Illuminate\Console\Command;
 
+/**
+ * Defines the PurgeUnconfirmedSubscribers implementation.
+ */
 class PurgeUnconfirmedSubscribers extends Command
 {
     protected $signature = 'subscribers:purge-unconfirmed {--days=30 : The number of days to wait before purging.}';

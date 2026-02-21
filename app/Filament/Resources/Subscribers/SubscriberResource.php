@@ -13,6 +13,9 @@ use App\Filament\Resources\Subscribers\Pages\CreateSubscriber;
 use App\Filament\Resources\Subscribers\Schemas\SubscriberForm;
 use App\Filament\Resources\Subscribers\Tables\SubscribersTable;
 
+/**
+ * Defines the SubscriberResource implementation.
+ */
 class SubscriberResource extends Resource
 {
     protected static ?string $model = Subscriber::class;

@@ -15,6 +15,9 @@ afterEach(function () use (&$originalPath) {
     }
 });
 
+/**
+ * Defines the TestableDbPullCommand implementation.
+ */
 class TestableDbPullCommand extends DbPullCommand
 {
     public bool $darwin = true;

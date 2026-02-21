@@ -7,6 +7,9 @@ use App\Models\Report;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * Defines the RevisePost implementation.
+ */
 class RevisePost implements ShouldQueue
 {
     use Queueable;

@@ -20,6 +20,9 @@ use Filament\Forms\Components\DateTimePicker;
 use App\Filament\Resources\MetricResource\Pages\ViewMetric;
 use App\Filament\Resources\MetricResource\Pages\ListMetrics;
 
+/**
+ * Defines the MetricResource implementation.
+ */
 class MetricResource extends Resource
 {
     protected static ?string $model = Metric::class;

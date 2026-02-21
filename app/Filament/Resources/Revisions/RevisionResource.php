@@ -12,6 +12,9 @@ use App\Filament\Resources\Revisions\Pages\ListRevisions;
 use App\Filament\Resources\Revisions\Tables\RevisionsTable;
 use App\Filament\Resources\Revisions\Schemas\RevisionInfolist;
 
+/**
+ * Defines the RevisionResource implementation.
+ */
 class RevisionResource extends Resource
 {
     protected static ?string $model = Revision::class;

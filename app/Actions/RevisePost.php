@@ -9,6 +9,9 @@ use App\Models\Revision;
 use App\Notifications\NewRevision;
 use OpenAI\Laravel\Facades\OpenAI;
 
+/**
+ * Defines the RevisePost implementation.
+ */
 class RevisePost
 {
     public function revise(Post $post, Report $report, ?string $additionalInstructions)

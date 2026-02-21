@@ -7,6 +7,9 @@ use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Grid;
 use Filament\Infolists\Components\TextEntry;
 
+/**
+ * Defines the RevisionInfolist implementation.
+ */
 class RevisionInfolist
 {
     public static function configure(Schema $schema) : Schema

@@ -7,6 +7,9 @@ use App\Actions\SelectProxy;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * Defines the ScrapeJob implementation.
+ */
 class ScrapeJob implements ShouldQueue
 {
     use Queueable;

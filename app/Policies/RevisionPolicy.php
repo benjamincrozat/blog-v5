@@ -5,6 +5,9 @@ namespace App\Policies;
 use App\Models\User;
 use App\Models\Revision;
 
+/**
+ * Defines the RevisionPolicy implementation.
+ */
 class RevisionPolicy
 {
     public function create(User $user) : bool

@@ -4,6 +4,9 @@ namespace App\Markdown;
 
 use Illuminate\Support\Str;
 
+/**
+ * Defines the TableOfContents implementation.
+ */
 class TableOfContents
 {
     public function __construct(

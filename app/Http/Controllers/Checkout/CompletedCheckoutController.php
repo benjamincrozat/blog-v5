@@ -10,6 +10,9 @@ use Laravel\Cashier\Cashier;
 use App\Http\Controllers\Controller;
 use Stripe\Exception\ApiErrorException;
 
+/**
+ * Defines the CompletedCheckoutController implementation.
+ */
 class CompletedCheckoutController extends Controller
 {
     public function __invoke(Request $request) : View

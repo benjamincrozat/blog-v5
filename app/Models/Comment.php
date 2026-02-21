@@ -11,6 +11,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Defines the Comment implementation.
+ */
 class Comment extends Model
 {
     /** @use HasFactory<CommentFactory> */

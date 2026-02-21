@@ -7,6 +7,9 @@ use Laravel\Horizon\Horizon;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Horizon\HorizonApplicationServiceProvider;
 
+/**
+ * Defines the HorizonServiceProvider implementation.
+ */
 class HorizonServiceProvider extends HorizonApplicationServiceProvider
 {
     public function boot() : void

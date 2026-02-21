@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Stripe\Checkout\Session as StripeSession;
 
+/**
+ * Defines the StartCheckoutController implementation.
+ */
 class StartCheckoutController extends Controller
 {
     public function __invoke(string $slug) : RedirectResponse

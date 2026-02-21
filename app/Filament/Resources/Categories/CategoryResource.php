@@ -20,6 +20,9 @@ use App\Filament\Resources\Categories\Pages\ListCategories;
 use App\Filament\Resources\Categories\Actions\RecordActions;
 use App\Filament\Resources\Categories\RelationManagers\PostsRelationManager;
 
+/**
+ * Defines the CategoryResource implementation.
+ */
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;

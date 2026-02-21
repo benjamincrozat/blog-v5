@@ -15,6 +15,9 @@ use Filament\Forms\Components\Textarea;
 use Filament\Notifications\Notification;
 use App\Filament\Resources\Posts\Pages\EditPost as EditPostPage;
 
+/**
+ * Defines the RecordActions implementation.
+ */
 class RecordActions
 {
     public static function configure() : array

@@ -9,6 +9,9 @@ use Illuminate\Notifications\Notifiable;
 use App\Notifications\ConfirmSubscription;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Defines the Subscriber implementation.
+ */
 class Subscriber extends Model
 {
     /** @use HasFactory<\Database\Factories\SubscriberFactory> */

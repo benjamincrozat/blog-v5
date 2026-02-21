@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 use App\Console\Commands\SyncVisitorsCommand;
 
+/**
+ * Defines the DatabaseSeeder implementation.
+ */
 class DatabaseSeeder extends Seeder
 {
     public function run() : void

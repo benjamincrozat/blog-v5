@@ -12,6 +12,9 @@ use Filament\Resources\Pages\ViewRecord;
 use Filament\Support\Enums\IconPosition;
 use App\Filament\Resources\Revisions\RevisionResource;
 
+/**
+ * Defines the ViewRevision implementation.
+ */
 class ViewRevision extends ViewRecord
 {
     protected static string $resource = RevisionResource::class;

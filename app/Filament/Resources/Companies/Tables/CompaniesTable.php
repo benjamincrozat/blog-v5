@@ -9,6 +9,9 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 
+/**
+ * Defines the CompaniesTable implementation.
+ */
 class CompaniesTable
 {
     public static function configure(Table $table) : Table

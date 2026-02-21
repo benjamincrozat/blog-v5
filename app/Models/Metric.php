@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Defines the Metric implementation.
+ */
 class Metric extends Model
 {
     /** @use HasFactory<MetricFactory> */

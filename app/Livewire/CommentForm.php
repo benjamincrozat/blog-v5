@@ -5,6 +5,9 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 
+/**
+ * Defines the CommentForm implementation.
+ */
 class CommentForm extends Component
 {
     #[Validate('nullable|exists:comments,id')]

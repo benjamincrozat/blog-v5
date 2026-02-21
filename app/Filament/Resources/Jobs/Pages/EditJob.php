@@ -12,6 +12,9 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
 use App\Filament\Resources\Jobs\JobResource;
 
+/**
+ * Defines the EditJob implementation.
+ */
 class EditJob extends EditRecord
 {
     protected static string $resource = JobResource::class;

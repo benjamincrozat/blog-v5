@@ -5,6 +5,9 @@ namespace App\Actions;
 use App\Models\Post;
 use OpenAI\Laravel\Facades\OpenAI;
 
+/**
+ * Defines the RecommendPosts implementation.
+ */
 class RecommendPosts
 {
     /**

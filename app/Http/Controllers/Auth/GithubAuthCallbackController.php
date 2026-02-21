@@ -9,6 +9,9 @@ use App\Notifications\NewUserCreated;
 use Illuminate\Http\RedirectResponse;
 use Laravel\Socialite\Facades\Socialite;
 
+/**
+ * Defines the GithubAuthCallbackController implementation.
+ */
 class GithubAuthCallbackController extends Controller
 {
     public function __invoke() : RedirectResponse

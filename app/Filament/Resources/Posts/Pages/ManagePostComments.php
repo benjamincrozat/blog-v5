@@ -9,6 +9,9 @@ use App\Filament\Resources\CommentResource;
 use App\Filament\Resources\Posts\PostResource;
 use Filament\Resources\Pages\ManageRelatedRecords;
 
+/**
+ * Defines the ManagePostComments implementation.
+ */
 class ManagePostComments extends ManageRelatedRecords
 {
     protected static string $resource = PostResource::class;

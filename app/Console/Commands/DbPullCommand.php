@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 /**
+ * Defines the DbPullCommand implementation.
+ */
+/**
  * Pulls a remote database snapshot into a local connection.
  *
  * Extracted to keep snapshot orchestration and safety checks in one place.

@@ -21,6 +21,9 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 
+/**
+ * Defines the AdminPanelProvider implementation.
+ */
 class AdminPanelProvider extends PanelProvider
 {
     public function boot() : void

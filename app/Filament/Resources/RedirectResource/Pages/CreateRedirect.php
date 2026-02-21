@@ -6,6 +6,9 @@ use Filament\Actions\Action;
 use Filament\Resources\Pages\CreateRecord;
 use App\Filament\Resources\RedirectResource;
 
+/**
+ * Defines the CreateRedirect implementation.
+ */
 class CreateRedirect extends CreateRecord
 {
     protected static string $resource = RedirectResource::class;

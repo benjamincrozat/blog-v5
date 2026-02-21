@@ -13,6 +13,9 @@ use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
 use Spatie\Honeypot\Http\Livewire\Concerns\UsesSpamProtection;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 
+/**
+ * Defines the Newsletter implementation.
+ */
 class Newsletter extends Component
 {
     use UsesSpamProtection, WithRateLimiting;

@@ -19,6 +19,9 @@ use App\Filament\Resources\RedirectResource\Pages\EditRedirect;
 use App\Filament\Resources\RedirectResource\Pages\ListRedirects;
 use App\Filament\Resources\RedirectResource\Pages\CreateRedirect;
 
+/**
+ * Defines the RedirectResource implementation.
+ */
 class RedirectResource extends Resource
 {
     protected static ?string $model = Redirect::class;

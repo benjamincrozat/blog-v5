@@ -21,6 +21,9 @@ use App\Filament\Resources\CommentResource\Pages\EditComment;
 use App\Filament\Resources\CommentResource\Pages\ListComments;
 use App\Filament\Resources\CommentResource\Pages\CreateComment;
 
+/**
+ * Defines the CommentResource implementation.
+ */
 class CommentResource extends Resource
 {
     protected static ?string $model = Comment::class;

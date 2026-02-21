@@ -6,6 +6,9 @@ use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 use App\Filament\Resources\Subscribers\SubscriberResource;
 
+/**
+ * Defines the EditSubscriber implementation.
+ */
 class EditSubscriber extends EditRecord
 {
     protected static string $resource = SubscriberResource::class;

@@ -7,6 +7,9 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\Console\Attribute\AsCommand;
 
+/**
+ * Defines the SyncVisitorsCommand implementation.
+ */
 // This command uses Pirsch Analytics' API (https://benjamincrozat.com/recommends/pirsch-analytics) to fetch fresh numbers about my visitors.
 #[AsCommand(
     name: 'app:sync-visitors',

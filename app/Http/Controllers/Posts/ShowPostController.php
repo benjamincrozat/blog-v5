@@ -8,6 +8,9 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+/**
+ * Defines the ShowPostController implementation.
+ */
 class ShowPostController extends Controller
 {
     /**

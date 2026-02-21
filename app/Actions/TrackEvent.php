@@ -4,6 +4,9 @@ namespace App\Actions;
 
 use Illuminate\Support\Facades\Http;
 
+/**
+ * Defines the TrackEvent implementation.
+ */
 class TrackEvent
 {
     public function track(string $name, array $meta, string $url, string $ip, string $userAgent, string $acceptLanguage, ?string $referrer = null)

@@ -7,6 +7,9 @@ use Illuminate\Http\RedirectResponse;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\GithubProvider;
 
+/**
+ * Defines the GithubAuthRedirectController implementation.
+ */
 class GithubAuthRedirectController extends Controller
 {
     public function __invoke() : RedirectResponse

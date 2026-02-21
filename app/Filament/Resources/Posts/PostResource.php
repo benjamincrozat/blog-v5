@@ -37,6 +37,9 @@ use App\Filament\Resources\Categories\CategoryResource;
 use App\Filament\Resources\Posts\Actions\RecordActions;
 use App\Filament\Resources\Posts\Pages\ManagePostComments;
 
+/**
+ * Defines the PostResource implementation.
+ */
 class PostResource extends Resource
 {
     protected static ?string $model = Post::class;

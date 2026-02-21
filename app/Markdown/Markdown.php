@@ -11,6 +11,9 @@ use League\CommonMark\Extension\SmartPunct\SmartPunctExtension;
 use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 use League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension;
 
+/**
+ * Defines the Markdown implementation.
+ */
 class Markdown
 {
     public static function parse(string $string) : string

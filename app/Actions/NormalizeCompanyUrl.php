@@ -4,6 +4,9 @@ namespace App\Actions;
 
 use Throwable;
 
+/**
+ * Defines the NormalizeCompanyUrl implementation.
+ */
 class NormalizeCompanyUrl
 {
     public function handle(?string $url) : ?string

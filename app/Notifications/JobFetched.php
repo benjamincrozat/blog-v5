@@ -8,6 +8,9 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
+/**
+ * Defines the JobFetched implementation.
+ */
 class JobFetched extends Notification implements ShouldQueue
 {
     use Queueable;

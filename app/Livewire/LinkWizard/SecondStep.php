@@ -14,6 +14,9 @@ use Livewire\Attributes\Validate;
 use App\Notifications\LinkWaitingForValidation;
 use Spatie\LivewireWizard\Components\StepComponent;
 
+/**
+ * Defines the SecondStep implementation.
+ */
 class SecondStep extends StepComponent
 {
     #[Locked]

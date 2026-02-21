@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Filters\TrashedFilter;
 
+/**
+ * Defines the Filters implementation.
+ */
 class Filters
 {
     public static function configure() : array

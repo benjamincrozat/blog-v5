@@ -16,6 +16,9 @@ use App\Filament\Resources\ShortUrlResource\Pages\EditShortUrl;
 use App\Filament\Resources\ShortUrlResource\Pages\ListShortUrls;
 use App\Filament\Resources\ShortUrlResource\Pages\CreateShortUrl;
 
+/**
+ * Defines the ShortUrlResource implementation.
+ */
 class ShortUrlResource extends Resource
 {
     protected static ?string $model = ShortUrl::class;

@@ -16,6 +16,9 @@ use League\Flysystem\UnableToDeleteDirectory;
 use League\Flysystem\UnableToRetrieveMetadata;
 use League\Flysystem\InvalidVisibilityProvided;
 
+/**
+ * Defines the CloudflareImagesAdapter implementation.
+ */
 class CloudflareImagesAdapter implements FilesystemAdapter
 {
     public function __construct(

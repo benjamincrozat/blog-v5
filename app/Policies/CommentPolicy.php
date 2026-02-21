@@ -5,6 +5,9 @@ namespace App\Policies;
 use App\Models\User;
 use App\Models\Comment;
 
+/**
+ * Defines the CommentPolicy implementation.
+ */
 class CommentPolicy
 {
     public function before(User $user)

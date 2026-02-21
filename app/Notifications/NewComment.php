@@ -9,6 +9,9 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
+/**
+ * Defines the NewComment implementation.
+ */
 class NewComment extends Notification implements ShouldQueue
 {
     use Queueable;

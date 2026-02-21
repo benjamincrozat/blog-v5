@@ -8,6 +8,9 @@ use App\Actions\NormalizeCompanyDomain;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Defines the Company implementation.
+ */
 class Company extends Model
 {
     /** @use HasFactory<\Database\Factories\CompanyFactory> */
