@@ -45,6 +45,9 @@ jobs:
       - name: Setup SQLite database
         run: touch database/database.sqlite
 
+      - name: Run static analysis
+        run: php vendor/bin/phpstan analyse --memory-limit=2G
+
       - name: Run tests
         run: php artisan test --parallel
 

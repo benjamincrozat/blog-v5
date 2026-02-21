@@ -35,6 +35,7 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.16",
         "fakerphp/faker": "^1.24",
+        "larastan/larastan": "^3.0",
         "laravel/pail": "^1.2",
         "laravel/pint": "^1.25",
         "mockery/mockery": "^1.6",
@@ -78,7 +79,8 @@
         "dev": [
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan horizon\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=horizon,logs,vite"
-        ]
+        ],
+        "analyse": "phpstan analyse --memory-limit=2G"
     },
     "extra": {
         "laravel": {
