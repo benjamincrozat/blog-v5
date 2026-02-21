@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\Link;
-use App\Jobs\CreatePostForLink;
 use Mockery\MockInterface;
+use App\Jobs\CreatePostForLink;
 use App\Actions\CreatePostForLink as CreatePostForLinkAction;
 
 it('delegates the create post for link job to its action', function () {

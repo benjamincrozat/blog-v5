@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\User;
-use App\Jobs\RefreshUserData;
 use Mockery\MockInterface;
+use App\Jobs\RefreshUserData;
 use App\Actions\RefreshUserData as RefreshUserDataAction;
 
 it('delegates refreshing user data', function () {

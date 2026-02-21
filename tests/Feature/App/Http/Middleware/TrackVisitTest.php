@@ -2,16 +2,16 @@
 
 use App\Models\User;
 use Mockery\MockInterface;
-use App\Actions\TrackVisit as TrackVisitAction;
 
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
-
 use function Pest\Laravel\actingAs;
 
 use Illuminate\Support\Facades\Route;
 
 use function Pest\Laravel\withServerVariables;
+
+use App\Actions\TrackVisit as TrackVisitAction;
 
 beforeEach(function () {
     config([

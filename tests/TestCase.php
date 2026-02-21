@@ -7,7 +7,4 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 /**
  * Defines the TestCase implementation.
  */
-abstract class TestCase extends BaseTestCase
-{
-    //
-}
+abstract class TestCase extends BaseTestCase {}

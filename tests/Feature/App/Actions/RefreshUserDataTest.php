@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\User;
 use Github\Client;
-use Github\Api\User as GithubUserApi;
+use App\Models\User;
 use Mockery\MockInterface;
 use App\Actions\RefreshUserData;
 use Illuminate\Support\Facades\Date;
+use Github\Api\User as GithubUserApi;
 use Github\Exception\RuntimeException;
 
 it('fetches GitHub user data and updates the user model', function () {

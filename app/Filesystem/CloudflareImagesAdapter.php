@@ -28,7 +28,6 @@ class CloudflareImagesAdapter implements FilesystemAdapter
         protected string $variant = 'public',
     ) {}
 
-    /* @inheritdoc */
     public function fileExists(string $path) : bool
     {
         $response = Http::withToken($this->token)
@@ -37,13 +36,11 @@ class CloudflareImagesAdapter implements FilesystemAdapter
         return $response->ok();
     }
 
-    /* @inheritdoc */
     public function directoryExists(string $path) : bool
     {
         return false; // Cloudflare Images has no directories concept.
     }
 
-    /* @inheritdoc */
     public function write(string $path, string $contents, Config $config) : void
     {
         $tmp = $this->createTempFile();
@@ -61,7 +58,6 @@ class CloudflareImagesAdapter implements FilesystemAdapter
         fclose($tmp);
     }
 
-    /* @inheritdoc */
     public function writeStream(string $path, $contents, Config $config) : void
     {
         $this->upload($path, $contents);
@@ -83,7 +79,6 @@ class CloudflareImagesAdapter implements FilesystemAdapter
         }
     }
 
-    /* @inheritdoc */
     public function read(string $path) : string
     {
         $response = Http::get($this->getUrl($path));
@@ -95,7 +90,6 @@ class CloudflareImagesAdapter implements FilesystemAdapter
         return $response->body();
     }
 
-    /* @inheritdoc */
     public function readStream(string $path)
     {
         $response = Http::withOptions(['stream' => true])
@@ -108,7 +102,6 @@ class CloudflareImagesAdapter implements FilesystemAdapter
         return $response->toPsrResponse()->getBody()->detach();
     }
 
-    /* @inheritdoc */
     public function delete(string $path) : void
     {
         $response = Http::withToken($this->token)
@@ -119,31 +112,26 @@ class CloudflareImagesAdapter implements FilesystemAdapter
         }
     }
 
-    /* @inheritdoc */
     public function deleteDirectory(string $path) : void
     {
         throw UnableToDeleteDirectory::atLocation($path, 'Directories are not supported by Cloudflare Images.');
     }
 
-    /* @inheritdoc */
     public function createDirectory(string $path, Config $config) : void
     {
         throw UnableToCreateDirectory::atLocation($path, 'Directories are not supported by Cloudflare Images.');
     }
 
-    /* @inheritdoc */
     public function setVisibility(string $path, string $visibility) : void
     {
         throw InvalidVisibilityProvided::withVisibility($visibility, 'public');
     }
 
-    /* @inheritdoc */
     public function visibility(string $path) : FileAttributes
     {
         return new FileAttributes($path, null, 'public');
     }
 
-    /* @inheritdoc */
     public function mimeType(string $path) : FileAttributes
     {
         $headers = $this->getHeaders($path);
@@ -151,7 +139,6 @@ class CloudflareImagesAdapter implements FilesystemAdapter
         return new FileAttributes($path, null, 'public', null, $headers['content-type'] ?? null);
     }
 
-    /* @inheritdoc */
     public function lastModified(string $path) : FileAttributes
     {
         $headers = $this->getHeaders($path);
@@ -161,7 +148,6 @@ class CloudflareImagesAdapter implements FilesystemAdapter
         return new FileAttributes($path, null, 'public', $timestamp);
     }
 
-    /* @inheritdoc */
     public function fileSize(string $path) : FileAttributes
     {
         $headers = $this->getHeaders($path);
@@ -175,19 +161,16 @@ class CloudflareImagesAdapter implements FilesystemAdapter
         return new FileAttributes($path, $size);
     }
 
-    /* @inheritdoc */
     public function listContents(string $path, bool $deep) : iterable
     {
         return []; // Listing is not required for now.
     }
 
-    /* @inheritdoc */
     public function move(string $source, string $destination, Config $config) : void
     {
         throw UnableToMoveFile::because($source, $destination, 'Cloudflare Images does not support moving files.');
     }
 
-    /* @inheritdoc */
     public function copy(string $source, string $destination, Config $config) : void
     {
         throw UnableToCopyFile::because($source, $destination, 'Cloudflare Images does not support copying files.');

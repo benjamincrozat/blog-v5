@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\Post;
-use App\Jobs\RecommendPosts;
 use Mockery\MockInterface;
+use App\Jobs\RecommendPosts;
 use App\Actions\RecommendPosts as RecommendPostsAction;
 
 it('delegates recommending posts for a post', function () {
