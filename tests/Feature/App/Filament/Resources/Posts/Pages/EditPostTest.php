@@ -2,12 +2,8 @@
 
 use App\Models\Post;
 use App\Models\User;
-use App\Jobs\RecommendPosts;
 
 use function Pest\Laravel\actingAs;
-
-use Illuminate\Support\Facades\Bus;
-
 use function Pest\Livewire\livewire;
 
 use App\Filament\Resources\Posts\Pages\EditPost;
@@ -33,13 +29,10 @@ it('loads data for editing', function () {
         ]);
 });
 
-it('saves changes and dispatches recommendations if missing', function () {
-    Bus::fake([RecommendPosts::class]);
-
+it('saves changes', function () {
     $post = Post::factory()->create([
         'title' => 'Existing title',
         'slug' => 'existing-title',
-        'recommendations' => null,
     ]);
 
     livewire(EditPost::class, ['record' => $post->slug])
@@ -51,6 +44,4 @@ it('saves changes and dispatches recommendations if missing', function () {
         ->assertHasNoFormErrors();
 
     expect($post->refresh()->title)->toBe('Updated title');
-
-    Bus::assertDispatched(RecommendPosts::class);
 });

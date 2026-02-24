@@ -30,5 +30,4 @@ trait PostTransformable
 
         return "---\n{$frontMatterLines}\n---\n\n# {$this->title}\n\n{$this->content}\n";
     }
-
 }

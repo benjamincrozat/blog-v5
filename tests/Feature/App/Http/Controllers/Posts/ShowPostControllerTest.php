@@ -18,7 +18,10 @@ it('shows a post', function () {
             ->latest()
             ->first())
         ->assertSee("<title>{$post->serp_title}</title>", escape: false)
-        ->assertSee("<meta name=\"description\" content=\"{$post->description}\" />", escape: false);
+        ->assertSee("<meta name=\"description\" content=\"{$post->description}\" />", escape: false)
+        ->assertDontSee('Ask ChatGPT')
+        ->assertDontSee('Ask Claude')
+        ->assertDontSee('Did you like this article? Then, keep learning:');
 });
 
 it('without a SERP title, the title is used', function () {

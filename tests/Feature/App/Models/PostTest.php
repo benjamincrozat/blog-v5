@@ -4,7 +4,6 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Redirect;
 use Carbon\CarbonImmutable;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 
 use function Pest\Laravel\assertDatabaseHas;
@@ -170,12 +169,6 @@ it('casts the modified_at attribute to a datetime', function () {
     expect($post->modified_at)->toBeInstanceOf(CarbonImmutable::class);
 });
 
-it('casts the recommendations attribute to a collection', function () {
-    $post = Post::factory()->create(['recommendations' => []]);
-
-    expect($post->recommendations)->toBeInstanceOf(Collection::class);
-});
-
 it('scopes published posts', function () {
     Post::factory()->create(['published_at' => now()]);
 
@@ -200,16 +193,6 @@ it('belongs to a user', function () {
     $post = Post::factory()->create();
 
     expect($post->user)->toBeInstanceOf(User::class);
-});
-
-it('generates a prompt for LLMs', function () {
-    $post = Post::factory()->create([
-        'title' => 'Foo Bar Baz',
-        'content' => 'Foo **bar** baz [qux](https://example.com)',
-    ]);
-
-    expect($post->toPrompt())->toContain('Foo Bar Baz Foo bar baz');
-    expect($post->toPrompt())->toContain('href="https://example.com">qux</a>');
 });
 
 it('converts Markdown content to HTML via the formatted_content attribute', function () {
@@ -246,22 +229,6 @@ it('calculates the read_time attribute based on word count', function () {
     $post = Post::factory()->create(['content' => $content]);
 
     expect($post->read_time)->toBe(2.0);
-});
-
-it('returns recommended posts for each stored recommendation id', function () {
-    [$post, $recommended] = createPostWithRecommendation();
-
-    $results = $post->recommended_posts;
-
-    expect($results)->not->toBeNull();
-    expect($results)->toHaveCount(1);
-    expect($results->first()->is($recommended))->toBeTrue();
-});
-
-it('maps recommendation reasons to each recommended post', function () {
-    [$post] = createPostWithRecommendation('Great follow-up');
-
-    expect($post->recommended_posts->first()->reason)->toBe('Great follow-up');
 });
 
 it('accurately detects if a post has an attached image via hasImage()', function () {
@@ -353,12 +320,6 @@ it('has many comments and counts them automatically', function () {
         ->and($post->comments_count)->toBe(3);
 });
 
-it('has many reports', function () {
-    $post = Post::factory()->hasReports(2)->create();
-
-    expect($post->reports)->toHaveCount(2);
-});
-
 it('has one link', function () {
     $post = Post::factory()->create();
     $link = \App\Models\Link::factory()->create(['post_id' => $post->id]);
@@ -411,19 +372,3 @@ it('scopes sponsored posts first within a week, then by sponsored_at desc, else 
         $sponsoredAWhileAgo->id,
     ]);
 });
-
-/**
- * @return array{0: \App\Models\Post, 1: \App\Models\Post}
- */
-function createPostWithRecommendation(string $reason = 'Great follow-up') : array
-{
-    $recommended = Post::factory()->create();
-
-    $post = Post::factory()->create([
-        'recommendations' => [
-            ['id' => $recommended->id, 'reason' => $reason],
-        ],
-    ]);
-
-    return [$post, $recommended];
-}

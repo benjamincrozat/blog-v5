@@ -3,12 +3,8 @@
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Str;
-use App\Jobs\RecommendPosts;
 
 use function Pest\Laravel\actingAs;
-
-use Illuminate\Support\Facades\Bus;
-
 use function Pest\Livewire\livewire;
 use function Pest\Laravel\assertDatabaseHas;
 
@@ -22,9 +18,7 @@ beforeEach(function () {
     actingAs($admin);
 });
 
-it('creates a post and dispatches recommendations job', function () {
-    Bus::fake([RecommendPosts::class]);
-
+it('creates a post', function () {
     $author = User::factory()->create();
     $category = Category::factory()->create();
 
@@ -50,8 +44,6 @@ it('creates a post and dispatches recommendations job', function () {
         'user_id' => $author->getKey(),
         'canonical_url' => 'https://example.com/foo',
     ]);
-
-    Bus::assertDispatched(RecommendPosts::class);
 });
 
 it('validates required fields on create', function () {

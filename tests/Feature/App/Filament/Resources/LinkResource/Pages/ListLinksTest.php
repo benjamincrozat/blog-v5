@@ -2,13 +2,9 @@
 
 use App\Models\Link;
 use App\Models\User;
-use App\Jobs\CreatePostForLink;
 use App\Notifications\LinkApproved;
 
 use function Pest\Laravel\actingAs;
-
-use Illuminate\Support\Facades\Bus;
-
 use function Pest\Livewire\livewire;
 
 use Illuminate\Support\Facades\Notification;
@@ -22,11 +18,10 @@ beforeEach(function () {
     /** @var User $admin */
     actingAs($admin);
 
-    Bus::fake([CreatePostForLink::class]);
     Notification::fake();
 });
 
-it('can approve a link and generate a post from the table action', function () {
+it('can approve a link from the table action', function () {
     $link = Link::factory()->create([
         'post_id' => null,
         'is_approved' => null,
@@ -35,20 +30,19 @@ it('can approve a link and generate a post from the table action', function () {
 
     livewire(ListLinks::class)
         ->callTableAction('approve', $link, data: [
-            'notes' => 'Some notes for post generation.',
+            'notes' => 'Some moderation notes.',
         ])
         ->assertHasNoTableActionErrors();
 
     $link->refresh();
 
     expect($link->isApproved())->toBeTrue();
-    expect($link->notes)->toBe('Some notes for post generation.');
+    expect($link->notes)->toBe('Some moderation notes.');
 
-    Bus::assertDispatched(CreatePostForLink::class);
     Notification::assertSentTo($link->user, LinkApproved::class);
 });
 
-it('can approve a link without generating a post from the table action', function () {
+it('does not show a generate-post option in the approve modal', function () {
     $link = Link::factory()->create([
         'post_id' => null,
         'is_approved' => null,
@@ -59,20 +53,5 @@ it('can approve a link without generating a post from the table action', functio
         ->mountTableAction('approve', $link);
 
     expect($component->getMountedActionModalHtml())
-        ->toContain('Approve without post');
-
-    $component
-        ->setTableActionData([
-            'notes' => 'Notes, but do not generate a post.',
-        ])
-        ->callMountedTableAction(['generate_post' => false])
-        ->assertHasNoTableActionErrors();
-
-    $link->refresh();
-
-    expect($link->isApproved())->toBeTrue();
-    expect($link->notes)->toBe('Notes, but do not generate a post.');
-
-    Bus::assertNotDispatched(CreatePostForLink::class);
-    Notification::assertSentTo($link->user, LinkApproved::class);
+        ->not->toContain('Approve without post');
 });
