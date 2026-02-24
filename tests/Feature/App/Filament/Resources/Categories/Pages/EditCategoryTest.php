@@ -33,4 +33,3 @@ it('locks slug changes on existing categories', function () {
     expect($category->refresh()->name)->toBe('New Name')
         ->and($category->slug)->toBe('old-slug');
 });
-

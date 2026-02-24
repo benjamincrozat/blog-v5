@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\MarkdownSync\SyncPosts;
-use Symfony\Component\Console\Attribute\AsCommand;
+use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Attribute\AsCommand;
 
 /**
  * Synchronizes markdown post files into the posts database read model.

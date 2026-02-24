@@ -4,11 +4,11 @@ namespace App\MarkdownSync;
 
 use Throwable;
 use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Collection;
 
 /**
  * Exports active production posts into markdown files and migrates embedded images.
@@ -294,4 +294,3 @@ class BootstrapPostsFromProduction
         return 'imagedelivery.net' === $host && str_starts_with((string) $path, "/{$accountHash}/");
     }
 }
-

@@ -27,4 +27,3 @@ class BootstrapPostsFromProductionResult
         return [] !== $this->errors;
     }
 }
-

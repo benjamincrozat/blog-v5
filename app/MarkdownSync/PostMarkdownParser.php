@@ -5,7 +5,6 @@ namespace App\MarkdownSync;
 use Throwable;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Date;
-use App\MarkdownSync\Exceptions\InvalidPostMarkdownException;
 
 /**
  * Parses and validates post markdown files with strict YAML frontmatter.
@@ -37,9 +36,7 @@ class PostMarkdownParser
         $contents = file_get_contents($path);
 
         if (false === $contents) {
-            throw new InvalidPostMarkdownException([
-                "Unable to read markdown file: {$path}",
-            ]);
+            throw new \RuntimeException("Unable to read markdown file: {$path}");
         }
 
         return $this->parse($path, $contents);
@@ -50,10 +47,10 @@ class PostMarkdownParser
         $errors = [];
 
         if (! preg_match('/^---\R(.*?)\R---\R?(.*)\z/s', $contents, $matches)) {
-            throw new InvalidPostMarkdownException([
+            throw new \RuntimeException(implode("\n", [
                 "Invalid frontmatter format in {$path}.",
                 'Expected a leading "---" block with YAML frontmatter.',
-            ]);
+            ]));
         }
 
         $frontMatter = $this->parseFrontMatter($matches[1], $errors);
@@ -134,11 +131,11 @@ class PostMarkdownParser
         }
 
         if ([] !== $errors) {
-            throw new InvalidPostMarkdownException(
-                array_map(
+            throw new \RuntimeException(
+                implode("\n", array_map(
                     fn (string $error) => "{$path}: {$error}",
                     $errors,
-                )
+                )),
             );
         }
 

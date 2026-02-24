@@ -4,14 +4,15 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\File;
 
 use function Pest\Laravel\artisan;
+
+use Illuminate\Support\Facades\File;
+use App\Console\Commands\SyncPostsCommand;
+
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertSoftDeleted;
 use function Pest\Laravel\assertDatabaseMissing;
-
-use App\Console\Commands\SyncPostsCommand;
 
 beforeEach(function () {
     $this->markdownDirectory = storage_path('framework/testing/markdown-posts-' . Str::uuid());
@@ -26,7 +27,7 @@ afterEach(function () {
 it('creates a post from markdown and syncs categories by slug', function () {
     $author = User::factory()->create(['name' => 'Author Slug']);
 
-    File::put($this->markdownDirectory . '/my-post.md', <<<MD
+    File::put($this->markdownDirectory . '/my-post.md', <<<'MD'
 ---
 title: 'My post'
 slug: 'my-post'
@@ -75,7 +76,7 @@ it('updates posts, resets missing optional fields, and preserves sessions_count'
         Category::factory()->create(['slug' => 'old-category'])->getKey(),
     ]);
 
-    File::put($this->markdownDirectory . '/my-post.md', <<<MD
+    File::put($this->markdownDirectory . '/my-post.md', <<<'MD'
 ---
 title: 'New title'
 slug: 'my-post'
@@ -105,7 +106,7 @@ it('soft deletes posts that are missing from markdown files', function () {
     $author = User::factory()->create(['name' => 'Author Slug']);
     $post = Post::factory()->for($author)->create(['slug' => 'remove-me']);
 
-    File::put($this->markdownDirectory . '/keep-me.md', <<<MD
+    File::put($this->markdownDirectory . '/keep-me.md', <<<'MD'
 ---
 title: 'Keep me'
 slug: 'keep-me'
@@ -122,7 +123,7 @@ MD);
 });
 
 it('fails with clear errors when the author slug is unknown', function () {
-    File::put($this->markdownDirectory . '/my-post.md', <<<MD
+    File::put($this->markdownDirectory . '/my-post.md', <<<'MD'
 ---
 title: 'My post'
 slug: 'my-post'
@@ -141,7 +142,7 @@ MD);
 it('fails with clear errors when filename and slug do not match', function () {
     User::factory()->create(['name' => 'Author Slug']);
 
-    File::put($this->markdownDirectory . '/filename-slug.md', <<<MD
+    File::put($this->markdownDirectory . '/filename-slug.md', <<<'MD'
 ---
 title: 'My post'
 slug: 'frontmatter-slug'

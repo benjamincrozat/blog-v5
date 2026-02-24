@@ -121,4 +121,3 @@ class PostMarkdownSerializer
         return "'" . str_replace("'", "''", $value) . "'";
     }
 }
-

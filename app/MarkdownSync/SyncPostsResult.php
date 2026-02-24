@@ -27,4 +27,3 @@ class SyncPostsResult
         return [] !== $this->errors;
     }
 }
-

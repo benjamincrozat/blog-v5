@@ -6,10 +6,9 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
-use App\MarkdownSync\Exceptions\InvalidPostMarkdownException;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 /**
  * Synchronizes markdown source posts into the database read model.
@@ -48,10 +47,10 @@ class SyncPosts
         $files->each(function (\SplFileInfo $file) use ($result) : void {
             try {
                 $parsed = $this->parser->parseFile($file->getPathname());
-            } catch (InvalidPostMarkdownException $exception) {
+            } catch (\RuntimeException $exception) {
                 $result->skipped++;
 
-                foreach ($exception->errors as $error) {
+                foreach (array_filter(explode("\n", $exception->getMessage())) as $error) {
                     $result->errors[] = $error;
                 }
 

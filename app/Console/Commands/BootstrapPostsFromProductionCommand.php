@@ -4,8 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Attribute\AsCommand;
 use App\MarkdownSync\BootstrapPostsFromProduction;
+use Symfony\Component\Console\Attribute\AsCommand;
 
 /**
  * Bootstraps markdown post files from the production database content.
@@ -58,4 +58,3 @@ class BootstrapPostsFromProductionCommand extends Command
         );
     }
 }
-

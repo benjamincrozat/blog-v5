@@ -28,4 +28,3 @@ it('loads post details in read-only view mode', function () {
         ->assertSee('Existing title')
         ->assertSee('SERP description');
 });
-

@@ -1,15 +1,15 @@
 <?php
 
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Database\Schema\Blueprint;
 
 use function Pest\Laravel\artisan;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Schema\Blueprint;
 use App\Console\Commands\BootstrapPostsFromProductionCommand;
 
 beforeEach(function () {
@@ -116,7 +116,7 @@ it('migrates embedded and featured external images during bootstrap', function (
             'user_id' => 1,
             'title' => 'Image post',
             'slug' => 'image-post',
-            'content' => <<<MARKDOWN
+            'content' => <<<'MARKDOWN'
 ![Screenshot](https://old-cdn.test/content-image.png)
 <img src="https://old-cdn.test/content-html-image.png" alt="html" />
 MARKDOWN,

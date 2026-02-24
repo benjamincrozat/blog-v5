@@ -31,4 +31,3 @@ class ParsedPostMarkdown
         public readonly ?CarbonImmutable $sponsoredAt,
     ) {}
 }
-
