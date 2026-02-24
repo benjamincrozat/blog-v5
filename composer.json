@@ -22,7 +22,6 @@
         "laravel/tinker": "^2.10",
         "league/flysystem-aws-s3-v3": "^3.30",
         "livewire/livewire": "^3.6",
-        "openai-php/laravel": "^0.14.0",
         "sentry/sentry-laravel": "^4.18",
         "spatie/laravel-activitylog": "^4.10",
         "spatie/laravel-feed": "^4.4",

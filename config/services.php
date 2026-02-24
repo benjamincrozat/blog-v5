@@ -62,16 +62,10 @@ return [
     'forge' => [
         'heatbeats' => [
             'generate-sitemap' => env('FORGE_HEARTBEAT_URL_GENERATE_SITEMAP'),
-            'ingest-job-feeds' => env('FORGE_HEARTBEAT_URL_INJEST_JOB_FEEDS'),
             'refresh-user-data' => env('FORGE_HEARTBEAT_URL_REFRESH_USER_DATA'),
             'sync-visitors' => env('FORGE_HEARTBEAT_URL_SYNC_VISITORS'),
             'purge-unconfirmed-subscribers' => env('FORGE_HEARTBEAT_URL_PURGE_UNCONFIRMED_SUBSCRIBERS'),
         ],
-    ],
-
-    'smartproxy' => [
-        'proxy_username' => env('SMARTPROXY_PROXY_USERNAME'),
-        'proxy_password' => env('SMARTPROXY_PROXY_PASSWORD'),
     ],
 
 ];
