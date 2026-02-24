@@ -32,10 +32,10 @@ Displays the home view.
         </div>
     </div>
 
-    <div class="grid container lg:grid-cols-12 gap-16 mt-24 md:mt-32">
+    <div class="container mt-24 md:mt-32">
         @if ($popular->isNotEmpty())
-            <section id="popular" class="lg:col-span-6">
-            <x-typography.heading tag="h2" class="text-left! mb-[.35rem] flex items-center gap-2">
+            <section id="popular">
+                <x-typography.heading tag="h2" class="text-left! mb-[.35rem] flex items-center gap-2">
                     Popular articles
 
                     <x-help-btn>
@@ -46,7 +46,7 @@ Displays the home view.
 
                 <div class="h-px bg-linear-to-r from-gray-300 to-transparent"></div>
 
-                <x-posts-list :posts="$popular" class="mt-8" />
+                <x-posts-grid :posts="$popular" class="mt-8" />
 
                 <div class="mt-7">
                     <a
@@ -59,7 +59,6 @@ Displays the home view.
                     </a>
                 </div>
             </section>
-
         @endif
     </div>
 
