@@ -35,7 +35,7 @@ it('renders jobs with columns and values', function () {
         ->assertSuccessful()
         ->assertCanSeeTableRecords([$job])
         ->assertSeeText('Senior PHP Engineer')
-        ->assertSeeText('Fully-remote')
+        ->assertSeeText('Fully remote')
         ->assertSeeText('Equity: Yes');
 });
 

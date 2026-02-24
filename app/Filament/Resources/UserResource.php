@@ -109,7 +109,7 @@ class UserResource extends Resource
 
                         auth()->user()->impersonate($record);
 
-                        return redirect('/');
+                        return redirect()->route('home');
                     }),
 
                 EditAction::make()

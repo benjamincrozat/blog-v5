@@ -222,32 +222,14 @@ Renders the advertise view.
                         </div>
                     
                         <div class="flex flex-wrap md:flex-nowrap text-center md:text-left items-center gap-4 mt-6 justify-center md:justify-start">
-                            @php
-                                $ads = [
-                                    [
-                                        'icon' => '<div class="size-8 bg-red-600"></div>',
-                                        'title' => 'Featured on every page',
-                                        'description' => 'Each ad is shown for 8 seconds.',
-                                        'cta' => 'Example call to action',
-                                        'url' => 'https://example.com',
-                                    ],
-                                    [
-                                        'icon' => '<div class="size-8 bg-green-600"></div>',
-                                        'title' => 'Your ad is beautiful',
-                                        'description' => 'People will read it and eventually click on it.',
-                                        'cta' => 'Another call to action',
-                                        'url' => 'https://example.com',
-                                    ],
-                                ];
-                            @endphp
-
-                            <x-btn @click="$dispatch('force-sticky-carousel', { ads: {{ json_encode($ads) }} })">
+                            <x-btn @click="$dispatch('force-sticky-carousel', { ads: {{ json_encode($stickyCarouselExampleAds) }} })">
                                 See live example
                             </x-btn>
 
                             <x-btn
                                 primary
                                 href="{{ route('checkout.start', 'sticky_carousel') }}"
+                                no-wire-navigate
                                 data-pirsch-event="Clicked sticky carousel checkout"
                                 data-pirsch-meta-product="Sticky carousel"
                             >
@@ -308,7 +290,7 @@ Renders the advertise view.
                                 Example sponsored article
                             </x-btn>
                             
-                            <x-btn href="{{ route('checkout.start', 'sponsored_article') }}" primary>
+                            <x-btn href="{{ route('checkout.start', 'sponsored_article') }}" primary no-wire-navigate>
                                 Get started
                             </x-btn>
                         </div>

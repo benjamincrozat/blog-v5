@@ -7,6 +7,7 @@ use App\Models\Post;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Actions\BuildBreadcrumbSchema;
 
 /**
  * Defines the ShowPostController implementation.
@@ -39,6 +40,24 @@ class ShowPostController extends Controller
             }
         }
 
+        $primaryCategory = $post->categories->first();
+        $breadcrumbs = [
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Blog', 'url' => route('posts.index')],
+        ];
+
+        if ($primaryCategory) {
+            $breadcrumbs[] = [
+                'label' => $primaryCategory->name,
+                'url' => route('categories.show', $primaryCategory),
+            ];
+        }
+
+        $breadcrumbs[] = [
+            'label' => $post->title,
+            'url' => route('posts.show', $post),
+        ];
+
         return view('posts.show', compact('post') + [
             'latestComment' => $post->comments()
                 ->whereRelation('user', 'github_login', '!=', 'benjamincrozat')
@@ -46,6 +65,9 @@ class ShowPostController extends Controller
                 ->first(),
 
             'latestJobs' => Job::query()->limit(5)->get(),
+            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbSchema' => app(BuildBreadcrumbSchema::class)->handle($breadcrumbs),
+            'aiPrompt' => "Read this blog post and help me with follow-up questions:\n\n{$post->title}\n" . route('posts.show', $post),
         ]);
     }
 }

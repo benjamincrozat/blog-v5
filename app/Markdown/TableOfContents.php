@@ -57,7 +57,7 @@ class TableOfContents
             if (preg_match('/^(#+)\s+(.*)$/', $line, $matches)) {
                 $level = strlen($matches[1]);  // The heading level is determined by the number of '#' characters
 
-                $text = trim(strip_tags(Markdown::parse($matches[2])));
+                $text = trim(strip_tags(MarkdownRenderer::parse($matches[2])));
 
                 $node = [
                     'level' => $level,

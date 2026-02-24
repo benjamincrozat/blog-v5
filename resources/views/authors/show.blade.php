@@ -2,13 +2,6 @@
 Renders the authors show view.
 --}}
 
-@php
-$description = Str::limit(
-    strip_tags(Markdown::parse($author->about)),
-    160
-);
-@endphp
-
 <x-app
     title="About {{ $author->name }}"
     :description="$description"

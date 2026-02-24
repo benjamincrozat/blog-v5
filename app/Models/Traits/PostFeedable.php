@@ -3,7 +3,7 @@
 namespace App\Models\Traits;
 
 use Spatie\Feed\FeedItem;
-use App\Markdown\Markdown;
+use App\Markdown\MarkdownRenderer;
 use Illuminate\Support\Collection;
 
 /**
@@ -28,7 +28,7 @@ trait PostFeedable
         return FeedItem::create()
             ->id($this->slug)
             ->title($this->title)
-            ->summary(Markdown::parse($this->description . <<<MARKDOWN
+            ->summary(MarkdownRenderer::parse($this->description . <<<MARKDOWN
 
 [Read more →]($link)
 

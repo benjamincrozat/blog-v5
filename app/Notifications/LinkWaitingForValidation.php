@@ -29,6 +29,6 @@ class LinkWaitingForValidation extends Notification implements ShouldQueue
             ->subject('A link is waiting for validation')
             ->greeting('Heads up!')
             ->line("A link to {$this->link->domain} from {$this->link->user->name} is waiting for validation.")
-            ->action('Check', url('/admin/links'));
+            ->action('Check', route('filament.admin.resources.links.index'));
     }
 }

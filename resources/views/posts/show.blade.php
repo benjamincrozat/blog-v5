@@ -2,46 +2,6 @@
 Renders the posts show view.
 --}}
 
-@php
-    $primaryCategory = $post->categories->first();
-
-    $breadcrumbs = [
-        ['label' => 'Home', 'url' => route('home')],
-        ['label' => 'Blog', 'url' => route('posts.index')],
-    ];
-
-    if ($primaryCategory) {
-        $breadcrumbs[] = [
-            'label' => $primaryCategory->name,
-            'url' => route('categories.show', $primaryCategory),
-        ];
-    }
-
-    $breadcrumbs[] = [
-        'label' => $post->title,
-        'url' => route('posts.show', $post),
-    ];
-
-    $breadcrumbSchemaItems = [];
-
-    foreach ($breadcrumbs as $index => $breadcrumb) {
-        $breadcrumbSchemaItems[] = [
-            '@type' => 'ListItem',
-            'position' => $index + 1,
-            'name' => $breadcrumb['label'],
-            'item' => $breadcrumb['url'],
-        ];
-    }
-
-    $breadcrumbSchema = [
-        '@context' => 'https://schema.org',
-        '@type' => 'BreadcrumbList',
-        'itemListElement' => $breadcrumbSchemaItems,
-    ];
-
-    $aiPrompt = "Read this blog post and help me with follow-up questions:\n\n{$post->title}\n" . route('posts.show', $post);
-@endphp
-
 <x-app
     :canonical="filled($post->canonical_url) ? $post->canonical_url : url()->current()"
     :description="$post->description"
@@ -323,6 +283,7 @@ Renders the posts show view.
                 <x-ads.sidebar.sevalla class="max-w-[280px] mx-auto lg:max-w-none lg:mx-0" />
 
                 <a
+                    wire:navigate
                     href="{{ route('tools.index') }}"
                     class="hidden lg:block"
                     data-pirsch-event="Clicked on tools in sidebar"
@@ -461,7 +422,9 @@ Renders the posts show view.
         @endif
     </div>
 
-    {{-- This kind of information is only relevant for published posts. --}}
+    {{--
+    Includes Article schema only for published posts.
+    --}}
     @if ($post->published_at)
         <script type="application/ld+json">
             {

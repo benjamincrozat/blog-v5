@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Jobs\Schemas;
 
+use App\Enums\JobSetting;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
@@ -88,11 +89,7 @@ class JobForm
                         ->required(),
 
                     Select::make('setting')
-                        ->options([
-                            'fully-remote' => 'Fully-remote',
-                            'hybrid' => 'Hybrid',
-                            'on-site' => 'On-site',
-                        ])
+                        ->options(JobSetting::options())
                         ->required(),
 
                     TextInput::make('min_salary')

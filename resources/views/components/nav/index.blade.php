@@ -233,6 +233,7 @@ Renders the components nav index view.
                 <x-dropdown.item
                     icon="heroicon-o-rss"
                     href="{{ route('feeds.main') }}"
+                    no-wire-navigate
                 >
                     Atom feed
                 </x-dropdown.item>

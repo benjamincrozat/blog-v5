@@ -37,7 +37,7 @@ Renders the login view.
                     By signing in, you will be able to use the comments section and share links with my {{ Number::format($visitors) }} monthly visitors.
                 </div>
 
-                <x-btn href="{{ route('auth.redirect') }}" primary class="mt-8">
+                <x-btn href="{{ route('auth.redirect') }}" primary no-wire-navigate class="mt-8">
                     Sign in with GitHub
                 </x-btn>
             </div>

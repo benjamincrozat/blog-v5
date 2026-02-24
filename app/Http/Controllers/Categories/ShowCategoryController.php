@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Categories;
 use App\Models\Category;
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
+use App\Actions\BuildBreadcrumbSchema;
 
 /**
  * Displays a category page with its posts.
@@ -16,6 +17,12 @@ class ShowCategoryController extends Controller
 {
     public function __invoke(Category $category) : View
     {
+        $breadcrumbs = [
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Categories', 'url' => route('categories.index')],
+            ['label' => $category->name, 'url' => route('categories.show', $category)],
+        ];
+
         return view('categories.show', compact('category') + [
             'posts' => $category
                 ->posts()
@@ -23,6 +30,8 @@ class ShowCategoryController extends Controller
                 ->latest('published_at')
                 ->published()
                 ->paginate(24),
+            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbSchema' => app(BuildBreadcrumbSchema::class)->handle($breadcrumbs),
         ]);
     }
 }

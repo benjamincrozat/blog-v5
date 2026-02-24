@@ -31,7 +31,7 @@ class EditUser extends EditRecord
 
                     Auth::user()->impersonate($this->record);
 
-                    return redirect('/');
+                    return redirect()->route('home');
                 }),
 
             DeleteAction::make(),

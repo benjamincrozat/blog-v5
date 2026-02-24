@@ -51,7 +51,7 @@ Renders the components job view.
                         <span>(+ {{ $locations->count() - 1 }} more)</span>
                     @endif
                 </p>
-            @elseif ('fully-remote' === $job->setting)
+            @elseif (\App\Enums\JobSetting::FullyRemote === $job->setting)
                 <p>Remote</p>
             @endif
         </div>

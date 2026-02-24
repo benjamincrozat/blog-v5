@@ -3,6 +3,8 @@
 namespace App\Support\Schema;
 
 use App\Models\Job;
+use App\Enums\JobSetting;
+use App\Enums\EmploymentStatus;
 
 /**
  * Defines the JobPostingSchema implementation.
@@ -34,13 +36,13 @@ class JobPostingSchema
             'datePosted' => optional($job->created_at)?->toIso8601String(),
             'validThrough' => $validThrough,
             'employmentType' => match ($job->employment_status) {
-                'full-time' => 'FULL_TIME',
-                'part-time' => 'PART_TIME',
-                'contract' => 'CONTRACTOR',
-                'temporary' => 'TEMPORARY',
-                'internship' => 'INTERN',
-                'freelance' => 'CONTRACTOR',
-                'other' => 'OTHER',
+                EmploymentStatus::FullTime => 'FULL_TIME',
+                EmploymentStatus::PartTime => 'PART_TIME',
+                EmploymentStatus::Contract => 'CONTRACTOR',
+                EmploymentStatus::Temporary => 'TEMPORARY',
+                EmploymentStatus::Internship => 'INTERN',
+                EmploymentStatus::Freelance => 'CONTRACTOR',
+                EmploymentStatus::Other => 'OTHER',
                 default => null,
             },
             'hiringOrganization' => [
@@ -49,7 +51,7 @@ class JobPostingSchema
                 'sameAs' => $job->company->url,
                 'logo' => $job->company->logo,
             ],
-            'jobLocationType' => 'fully-remote' === $job->setting ? 'TELECOMMUTE' : null,
+            'jobLocationType' => JobSetting::FullyRemote === $job->setting ? 'TELECOMMUTE' : null,
             'jobLocation' => $jobLocations,
             'applicantLocationRequirements' => $applicantLocationRequirements,
             'baseSalary' => [
@@ -78,7 +80,7 @@ class JobPostingSchema
     private static function buildJobLocations(Job $job, array $locations) : array
     {
         if ([] === $locations) {
-            if ('fully-remote' === $job->setting) {
+            if (JobSetting::FullyRemote === $job->setting) {
                 return [
                     '@type' => 'Place',
                     'name' => 'Remote',
@@ -115,7 +117,7 @@ class JobPostingSchema
             ->values();
 
         if ($countries->isEmpty()) {
-            if ('fully-remote' === $job->setting) {
+            if (JobSetting::FullyRemote === $job->setting) {
                 return [
                     '@type' => 'Country',
                     'name' => 'Worldwide',

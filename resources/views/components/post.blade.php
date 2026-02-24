@@ -70,6 +70,7 @@ Renders the components post view.
 
         @if (! $post->is_commercial)
             <a
+                wire:navigate
                 href="{{ route('posts.show', $post->slug) }}#comments"
                 class="group"
                 data-pirsch-event="Clicked comments"

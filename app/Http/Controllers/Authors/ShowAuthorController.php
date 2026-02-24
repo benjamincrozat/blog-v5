@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Authors;
 
 use App\Models\User;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
+use App\Markdown\MarkdownRenderer;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -28,6 +30,10 @@ class ShowAuthorController extends Controller
 
         return view('authors.show', [
             'author' => $user,
+            'description' => Str::limit(
+                strip_tags(MarkdownRenderer::parse($user->about)),
+                160
+            ),
 
             'posts' => $user->posts()
                 ->latest('published_at')

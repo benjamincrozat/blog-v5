@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\Enums\JobSetting;
+use App\Enums\JobSeniority;
 use Laravel\Scout\Searchable;
+use App\Enums\EmploymentStatus;
 use App\Models\Traits\JobSlugable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -29,6 +32,9 @@ class Job extends Model
             'perks' => 'array',
             'interview_process' => 'array',
             'equity' => 'boolean',
+            'setting' => JobSetting::class,
+            'employment_status' => EmploymentStatus::class,
+            'seniority' => JobSeniority::class,
         ];
     }
 

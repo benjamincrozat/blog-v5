@@ -32,7 +32,7 @@ class JobsTable
                             ->html(),
 
                         TextColumn::make('setting')
-                            ->state(fn (Job $record) => ucfirst($record->setting)),
+                            ->state(fn (Job $record) => $record->setting?->label() ?? 'Unspecified'),
 
                         TextColumn::make('salary')
                             ->state(function (Job $record) {

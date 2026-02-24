@@ -2,31 +2,6 @@
 Renders the categories show view.
 --}}
 
-@php
-    $breadcrumbs = [
-        ['label' => 'Home', 'url' => route('home')],
-        ['label' => 'Categories', 'url' => route('categories.index')],
-        ['label' => $category->name, 'url' => route('categories.show', $category)],
-    ];
-
-    $breadcrumbSchemaItems = [];
-
-    foreach ($breadcrumbs as $index => $breadcrumb) {
-        $breadcrumbSchemaItems[] = [
-            '@type' => 'ListItem',
-            'position' => $index + 1,
-            'name' => $breadcrumb['label'],
-            'item' => $breadcrumb['url'],
-        ];
-    }
-
-    $breadcrumbSchema = [
-        '@context' => 'https://schema.org',
-        '@type' => 'BreadcrumbList',
-        'itemListElement' => $breadcrumbSchemaItems,
-    ];
-@endphp
-
 <x-app
     title="The best articles about {{ $category->name }} in {{ date('Y') }}"
     description="Level up in {{ date('Y') }} as a web developer with this collection of articles I wrote about {{ $category->name }}."

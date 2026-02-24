@@ -15,7 +15,7 @@ dataset('employment_status_mappings', [
     'internship' => [EmploymentStatus::Internship->value, 'INTERN'],
     'freelance' => [EmploymentStatus::Freelance->value, 'CONTRACTOR'],
     'other' => [EmploymentStatus::Other->value, 'OTHER'],
-    'default' => ['custom-status', null],
+    'unset' => [null, null],
 ]);
 
 it('builds schema for fully remote jobs without explicit locations', function () {
