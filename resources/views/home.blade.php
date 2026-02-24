@@ -9,7 +9,7 @@ Renders the home view.
         </x-typography.headline>
 
         <x-typography.subheadline class="mt-6 md:mt-10">
-            Let me help you survive in this industry without getting replaced by AI. I'll tell you about the latest news, techniques, and tools.
+            Stay ahead in web development with practical news, techniques, and tools.
         </x-typography.subheadline>
 
         <div class="flex gap-2 justify-center items-center mt-7 text-center md:mt-11">

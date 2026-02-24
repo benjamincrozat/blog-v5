@@ -4,7 +4,7 @@ Renders the components app view.
 
 @props([
     'canonical' => url()->current(),
-    'description' => 'The best hub for developers. Learn about PHP, Laravel, AI, and every other topics involved in building web applications.',
+    'description' => 'The best hub for developers. Learn about PHP, Laravel, and practical web application engineering.',
     'image' => Vite::asset('resources/img/apple-touch-icon.png'),
     'title',
     'type' => 'website',

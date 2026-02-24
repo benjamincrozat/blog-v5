@@ -3,7 +3,7 @@ Renders the livewire newsletter view.
 --}}
 
 <x-slot:title>
-    Survive the AI era as a developer
+    Stay sharp as a web developer
 </x-slot>
 
 <x-slot:description>
@@ -17,7 +17,7 @@ Renders the livewire newsletter view.
 <div>
     <div class="container">
         <x-typography.headline>
-            Survive the AI era as a developer
+            Stay sharp as a web developer
         </x-typography.headline>
 
         <x-typography.subheadline class="mt-6 md:mt-10">

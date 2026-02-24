@@ -20,7 +20,7 @@ Renders the guidelines view.
             - Be helpful to developers.
             - Show how your product solves a real problem.
             - Teach something. Add a mini tutorial, checklist, or case study.
-            - Include real screenshots, terminal output, or code so it doesn’t read like something copied and pasted from ChatGPT.
+            - Include real screenshots, terminal output, or code so it feels grounded in real usage.
 
             ## Lead with free value
 
@@ -51,10 +51,6 @@ Renders the guidelines view.
             ## Style and tone
 
             People love expert humans. Use the first person and share real life stories.
-
-            ## AI usage (allowed, but tastefully)
-
-            Not using AI to write nowadays is crazy. But everybody does it and most of the time, it's really obvious. Let's be smarter about it.
 
             ## Performance and guarantees
 

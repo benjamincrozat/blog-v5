@@ -18,7 +18,7 @@ This is the source code for my revenue-generating 45K monthly visitors [develope
   See how I implemented affiliate links, ad-blocker-resistant analytics, etc.
 
 - **Automation & background jobs:**  
-  See how I automate content, recommendations, and more using AI, queues (managed by Horizon), and scheduled tasks.
+  See how I automate background operations with queues (managed by Horizon) and scheduled tasks.
 
 - **Cloudflare Images integration:**  
   Because I didn't want to develop my own image upload flow from scratch and Cloudflare Images is pretty damn good.

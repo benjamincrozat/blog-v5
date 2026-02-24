@@ -14,8 +14,7 @@ class TableOfContents
     ) {}
 
     /**
-     * This handy helper was written by ChatGPT and helps
-     * me display the table of contents in articles.
+     * Build a hierarchical table of contents from Markdown headings.
      *
      * @return array<int, array{
      *     level: int,
