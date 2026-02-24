@@ -1,11 +1,8 @@
 <?php
 
-use App\Livewire\Jobs\Index;
-use App\Livewire\Newsletter;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\LinkWizard\LinkWizard;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Jobs\ShowJobController;
 use App\Http\Controllers\Posts\ShowPostController;
 use App\Http\Controllers\Links\ListLinksController;
 use App\Http\Controllers\Posts\ListPostsController;
@@ -15,7 +12,6 @@ use App\Http\Controllers\Merchants\ShowMerchantController;
 use App\Http\Controllers\Categories\ShowCategoryController;
 use App\Http\Controllers\Categories\ListCategoriesController;
 use App\Http\Controllers\Checkout\CompletedCheckoutController;
-use App\Http\Controllers\Subscribers\ConfirmSubscriberController;
 use App\Http\Controllers\Advertising\RedirectToAdvertiserController;
 use App\Http\Controllers\Advertising\ShowAdvertisingLandingPageController;
 
@@ -41,21 +37,15 @@ Route::get('/links/create', LinkWizard::class)
 Route::get('/links', ListLinksController::class)
     ->name('links.index');
 
-Route::get('/jobs', Index::class)
-    ->name('jobs.index');
-
-Route::get('/jobs/{job:slug}', ShowJobController::class)
-    ->name('jobs.show');
+Route::get('/jobs', fn () => abort(410));
+Route::get('/jobs/{any}', fn () => abort(410))
+    ->where('any', '.*');
 
 Route::view('/tools', 'tools.index')
     ->name('tools.index');
 
-Route::get('/newsletter', Newsletter::class)
-    ->name('newsletter');
-
-Route::get('/subscribers/{subscriber}/confirm', ConfirmSubscriberController::class)
-    ->middleware(['signed', 'throttle:6,1'])
-    ->name('subscribers.confirm');
+Route::get('/newsletter', fn () => abort(410));
+Route::get('/subscribers/{subscriber}/confirm', fn () => abort(410));
 
 Route::get('/advertise', ShowAdvertisingLandingPageController::class)
     ->name('advertise');

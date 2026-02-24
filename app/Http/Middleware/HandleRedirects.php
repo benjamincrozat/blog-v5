@@ -30,19 +30,6 @@ class HandleRedirects
             return redirect($target, status: 301);
         }
 
-        // Handle job redirects: /jobs/{slug}
-        if (str_starts_with($path, 'jobs/') && 1 === substr_count($path, '/')) {
-            if ($redirect = Redirect::query()->where('from', $path)->first()) {
-                $target = '/' . ltrim($redirect->to, '/');
-
-                if ($request->getQueryString()) {
-                    $target .= '?' . $request->getQueryString();
-                }
-
-                return redirect($target, status: 301);
-            }
-        }
-
         return $next($request);
     }
 }

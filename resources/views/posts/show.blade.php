@@ -342,20 +342,6 @@ Displays the posts show view.
                     </div>
                 @endif
 
-                @if ($latestJobs)
-                    <div class="hidden mt-16 lg:block">
-                        <p class="font-bold tracking-widest text-black uppercase text-balance">
-                            Latest jobs
-                        </p>
-
-                        <div class="grid gap-8 mt-4">
-                            @foreach ($latestJobs as $job)
-                                <x-compact-job :job="$job" :minimal="true" />
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-
                 <div class="hidden mt-16 lg:block">
                     <p class="font-bold tracking-widest text-black uppercase text-balance">
                         Follow me

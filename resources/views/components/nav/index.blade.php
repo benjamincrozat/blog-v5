@@ -40,38 +40,11 @@ Displays the components nav index component and accepts component props, Blade a
         </x-nav.item>
 
         <x-nav.item
-            active-icon="heroicon-s-briefcase"
-            icon="heroicon-o-briefcase"
-            href="{{ route('jobs.index') }}"
-            class="relative"
-        >
-            Jobs
-
-            @if ($recentJobsCount > 0)
-                <span @class([
-                    'absolute top-[-.35rem] right-[-.35rem] size-4 md:size-[1.15rem] rounded-full text-white text-[.55rem] md:text-[.6rem] grid place-items-center',
-                    'bg-blue-950' => request()->routeIs('jobs.*'),
-                    'bg-blue-600' => ! request()->routeIs('jobs.*'),
-                ])">
-                    {{ $recentJobsCount }}
-                </span>
-            @endif
-        </x-nav.item>
-
-        <x-nav.item
             active-icon="heroicon-s-computer-desktop"
             icon="heroicon-o-computer-desktop"
             href="{{ route('tools.index') }}"
         >
             Tools
-        </x-nav.item>
-
-        <x-nav.item
-            active-icon="heroicon-s-envelope-open"
-            icon="heroicon-o-envelope-open"
-            href="{{ route('newsletter') }}"
-        >
-            Digest
         </x-nav.item>
 
         @auth

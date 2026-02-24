@@ -60,30 +60,6 @@ Displays the home view.
                 </div>
             </section>
 
-            <section id="jobs" class="lg:col-span-6">
-            <x-typography.heading tag="h2" class="text-left! mb-[.35rem] flex items-center gap-2">
-                    Latest jobs ({{ $recentJobsCount }})
-
-                    <x-help-btn>
-                        The counter shows the number of jobs posted in the last 30 days.
-                    </x-help-btn>
-                </x-typography.heading>
-
-                <div class="h-px bg-linear-to-r from-gray-300 to-transparent"></div>
-
-                <x-jobs-list :jobs="$jobs" class="mt-8" />
-
-                <div class="mt-7">
-                    <a
-                        wire:navigate
-                        href="{{ route('jobs.index') }}"
-                        class="underline font-medium hover:text-blue-600 transition-colors"
-                        data-pirsch-event='Clicked "browse all jobs"'
-                    >
-                        Browse all jobs →
-                    </a>
-                </div>
-            </section>
         @endif
     </div>
 
