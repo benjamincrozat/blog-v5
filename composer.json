@@ -7,7 +7,6 @@
         "blade-ui-kit/blade-heroicons": "^2.6",
         "coconutcraig/laravel-postmark": "^3.3",
         "codeat3/blade-phosphor-icons": "^2.3",
-        "danharrin/livewire-rate-limiting": "^2.1",
         "embed/embed": "^4.4",
         "filament/filament": "^4.1",
         "guzzlehttp/guzzle": "^7.10",
@@ -25,10 +24,8 @@
         "sentry/sentry-laravel": "^4.18",
         "spatie/laravel-activitylog": "^4.10",
         "spatie/laravel-feed": "^4.4",
-        "spatie/laravel-honeypot": "^4.6",
         "spatie/laravel-livewire-wizard": "^2.4",
         "spatie/laravel-sitemap": "^7.3",
-        "spatie/laravel-tags": "^4.10",
         "tempest/highlight": "^2.13"
     },
     "require-dev": {
