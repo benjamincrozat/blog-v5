@@ -19,6 +19,7 @@ class PostFactory extends Factory
             'title' => fake()->sentence(),
             'content' => fake()->paragraphs(random_int(3, 10), true),
             'serp_title' => fake()->sentence(),
+            'serp_description' => fake()->sentences(random_int(1, 2), true),
             'description' => fake()->sentences(random_int(1, 2), true),
             'canonical_url' => fake()->url(),
             'is_commercial' => fake()->boolean(),

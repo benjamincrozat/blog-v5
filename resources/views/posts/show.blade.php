@@ -4,7 +4,7 @@ Displays the posts show view.
 
 <x-app
     :canonical="filled($post->canonical_url) ? $post->canonical_url : url()->current()"
-    :description="$post->description"
+    :description="$post->serp_description ?: $post->description"
     :hide-top-ad="$post->is_commercial"
     :hide-sticky-carousel="$post->is_commercial"
     :image="filled($post->image_url) ? $post->image_url : Vite::asset('resources/img/apple-touch-icon.png')"

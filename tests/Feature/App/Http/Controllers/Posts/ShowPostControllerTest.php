@@ -18,7 +18,7 @@ it('shows a post', function () {
             ->latest()
             ->first())
         ->assertSee("<title>{$post->serp_title}</title>", escape: false)
-        ->assertSee("<meta name=\"description\" content=\"{$post->description}\" />", escape: false)
+        ->assertSee("<meta name=\"description\" content=\"{$post->serp_description}\" />", escape: false)
         ->assertSee('Ask ChatGPT')
         ->assertSee('Ask Claude')
         ->assertDontSee('Did you like this article? Then, keep learning:');
@@ -29,6 +29,16 @@ it('without a SERP title, the title is used', function () {
 
     get(route('posts.show', $post))
         ->assertSee("<title>{$post->title}</title>", escape: false);
+});
+
+it('falls back to description when the SERP description is empty', function () {
+    $post = Post::factory()->create([
+        'serp_description' => null,
+        'description' => 'Fallback summary',
+    ]);
+
+    get(route('posts.show', $post))
+        ->assertSee('<meta name="description" content="Fallback summary" />', escape: false);
 });
 
 it('throws a 404 if the post does not exist', function () {
