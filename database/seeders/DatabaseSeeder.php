@@ -26,8 +26,6 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class,
             CommentSeeder::class,
             LinkSeeder::class,
-            CompanySeeder::class,
-            JobSeeder::class,
             ShortUrlSeeder::class,
         ]);
     }

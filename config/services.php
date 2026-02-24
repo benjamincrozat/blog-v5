@@ -64,7 +64,6 @@ return [
             'generate-sitemap' => env('FORGE_HEARTBEAT_URL_GENERATE_SITEMAP'),
             'refresh-user-data' => env('FORGE_HEARTBEAT_URL_REFRESH_USER_DATA'),
             'sync-visitors' => env('FORGE_HEARTBEAT_URL_SYNC_VISITORS'),
-            'purge-unconfirmed-subscribers' => env('FORGE_HEARTBEAT_URL_PURGE_UNCONFIRMED_SUBSCRIBERS'),
         ],
     ],
 
