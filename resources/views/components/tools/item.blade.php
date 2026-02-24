@@ -32,7 +32,7 @@ Displays the components tools item component and accepts component props, Blade 
         </p>
 
         <x-prose class="grow mt-4 leading-normal sm:text-balance">
-            {!! Markdown::parse($subheadline) !!}
+            {!! \App\Markdown\MarkdownRenderer::parse($subheadline) !!}
         </x-prose>
 
         <x-btn

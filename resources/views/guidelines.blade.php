@@ -8,7 +8,7 @@ Displays the guidelines view.
 >
     <article class="container lg:max-w-(--breakpoint-md)">
         <x-prose>
-            {!! Markdown::parse(<<< 'MD'
+            {!! \App\Markdown\MarkdownRenderer::parse(<<< 'MD'
             # Advertising guidelines
 
             ## Audience fit

@@ -59,7 +59,7 @@ Displays the components post component and accepts component props, Blade attrib
     </div>
 
     <div class="mt-4 grow">
-        {!! Markdown::parse($post->description ?? '') !!}
+        {!! \App\Markdown\MarkdownRenderer::parse($post->description ?? '') !!}
     </div>
 
     <div class="grid grid-cols-none grid-flow-col auto-cols-fr gap-4 mt-6 text-sm/tight">

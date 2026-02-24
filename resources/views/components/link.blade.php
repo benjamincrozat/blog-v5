@@ -77,6 +77,6 @@ Displays the components link component and accepts component props, Blade attrib
     </div>
 
     <div class="mt-2">
-        {!! Markdown::parse($link->description ?? '') !!}
+        {!! \App\Markdown\MarkdownRenderer::parse($link->description ?? '') !!}
     </div>
 </div>

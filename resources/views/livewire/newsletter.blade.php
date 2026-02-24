@@ -88,7 +88,7 @@ Displays the livewire newsletter Livewire view.
                     class="float-right mt-4 ml-4 rounded-full! size-20 sm:size-28 md:size-32"
                 />
 
-                {!! Markdown::parse($aboutUser->biography) !!}
+                {!! \App\Markdown\MarkdownRenderer::parse($aboutUser->biography) !!}
             </x-prose>
         </x-section>
     @endif

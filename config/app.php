@@ -129,7 +129,6 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Lightdown' => App\Markdown\Lightdown::class,
-        'Markdown' => App\Markdown\Markdown::class,
     ])->toArray(),
 
 ];

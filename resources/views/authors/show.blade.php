@@ -29,7 +29,7 @@ Displays the authors show view.
 
         @if ($author->biography)
             <x-prose class="mt-6 md:mt-8">
-                {!! Markdown::parse($author->about) !!}
+                {!! \App\Markdown\MarkdownRenderer::parse($author->about) !!}
             </x-prose>
         @endif
     </article>

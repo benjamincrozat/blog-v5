@@ -82,7 +82,7 @@ Displays the jobs show view.
 
             <h2>Description summary</h2>
 
-            {!! Markdown::parse($job->description) !!}
+            {!! \App\Markdown\MarkdownRenderer::parse($job->description) !!}
 
             @if (! empty($technologies))
                 <h2>Technologies</h2>
@@ -101,7 +101,7 @@ Displays the jobs show view.
 
                 <ul>
                     @foreach ($job->perks as $perk)
-                        <li>{!! Markdown::parse($perk) !!}</li>
+                        <li>{!! \App\Markdown\MarkdownRenderer::parse($perk) !!}</li>
                     @endforeach
                 </ul>
             @endif
@@ -111,14 +111,14 @@ Displays the jobs show view.
 
                 <ul>
                     @foreach ($job->interview_process as $step)
-                        <li>{!! Markdown::parse($step) !!}</li>
+                        <li>{!! \App\Markdown\MarkdownRenderer::parse($step) !!}</li>
                     @endforeach
                 </ul>
             @endif
 
             <h2>What you need to know about {{ $job->company->name }}, the company</h2>
 
-            {!! Markdown::parse($job->company->about) !!}
+            {!! \App\Markdown\MarkdownRenderer::parse($job->company->about) !!}
 
                 <div class="text-center not-prose">
                     <x-btn primary href="{{ $job->url }}" target="_blank">

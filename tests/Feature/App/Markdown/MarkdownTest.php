@@ -1,17 +1,17 @@
 <?php
 
-use App\Markdown\Markdown;
+use App\Markdown\MarkdownRenderer;
 
 it('adds IDs to headings', function () {
     $markdown = '# Foo';
 
-    $html = Markdown::parse($markdown);
+    $html = MarkdownRenderer::parse($markdown);
 
     expect($html)->toContain('id="foo"');
 });
 
 it('disallows some HTML', function (string $input) {
-    $html = Markdown::parse($input);
+    $html = MarkdownRenderer::parse($input);
 
     expect($html)->toContain('&lt;');
 })->with([
@@ -28,7 +28,7 @@ it('disallows some HTML', function (string $input) {
 it('opens external links in new windows', function () {
     $markdown = 'https://example.com';
 
-    $html = Markdown::parse($markdown);
+    $html = MarkdownRenderer::parse($markdown);
 
     expect($html)->toContain('target="_blank"');
 });
@@ -36,7 +36,7 @@ it('opens external links in new windows', function () {
 it('converts quotes to smart quotes', function () {
     $markdown = '"';
 
-    $html = Markdown::parse($markdown);
+    $html = MarkdownRenderer::parse($markdown);
 
     expect($html)->toContain('“');
 });
@@ -48,7 +48,7 @@ $user = User::find(1);
 ```
 MD;
 
-    $html = Markdown::parse($markdown);
+    $html = MarkdownRenderer::parse($markdown);
 
     expect($html)->toContain('<pre data-lang="php" class="notranslate">');
 });
@@ -56,7 +56,7 @@ MD;
 it('renders inline code', function () {
     $markdown = '`some inline code`';
 
-    $html = Markdown::parse($markdown);
+    $html = MarkdownRenderer::parse($markdown);
 
     expect($html)->toContain('<code>some inline code</code>');
 });
@@ -64,7 +64,7 @@ it('renders inline code', function () {
 it('gets text content from nested nodes', function () {
     $markdown = '## [*Foo*](https://example.com)';
 
-    $html = Markdown::parse($markdown);
+    $html = MarkdownRenderer::parse($markdown);
 
     expect($html)->toContain(
         '<h2',
