@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Job;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
@@ -52,12 +51,6 @@ class GenerateSitemapCommand extends Command
                         ->setLastModificationDate($category->modified_at ?? $category->updated_at ?? $category->created_at)
                 );
             });
-
-        $sitemap->add(route('links.index'));
-
-        Job::query()
-            ->cursor()
-            ->each(fn (Job $job) => $sitemap->add(route('jobs.show', $job->slug)));
 
         $sitemap->add(route('links.index'));
 

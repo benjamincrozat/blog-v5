@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Job;
 use App\Models\Link;
 use App\Models\Post;
 use App\Models\User;
@@ -23,10 +22,6 @@ class HomeController extends Controller
             ->orderBy('sessions_count', 'desc')
             ->limit(10)
             ->get();
-
-        $jobs = Job::query()
-            ->latest()
-            ->paginate(6);
 
         $latest = Post::query()
             ->published()
@@ -51,6 +46,6 @@ class HomeController extends Controller
             ->where('github_login', 'benjamincrozat')
             ->first();
 
-        return view('home', compact('popular', 'jobs', 'latest', 'links', 'aboutUser'));
+        return view('home', compact('popular', 'latest', 'links', 'aboutUser'));
     }
 }

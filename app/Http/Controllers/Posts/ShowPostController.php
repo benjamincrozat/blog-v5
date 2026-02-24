@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Posts;
 
-use App\Models\Job;
 use App\Models\Post;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -63,8 +62,6 @@ class ShowPostController extends Controller
                 ->whereRelation('user', 'github_login', '!=', 'benjamincrozat')
                 ->latest()
                 ->first(),
-
-            'latestJobs' => Job::query()->limit(5)->get(),
             'breadcrumbs' => $breadcrumbs,
             'breadcrumbSchema' => app(BuildBreadcrumbSchema::class)->handle($breadcrumbs),
             'aiPrompt' => "Read this blog post and help me with follow-up questions:\n\n{$post->title}\n" . route('posts.show', $post),
