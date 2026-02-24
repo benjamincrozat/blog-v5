@@ -181,26 +181,6 @@ Renders the posts show view.
                             @endif
 
                             <x-dropdown.divider>
-                                Chat
-                            </x-dropdown.divider>
-
-                            <x-dropdown.item
-                                icon="icon-openai"
-                                :href="'https://chatgpt.com/?q=' . urlencode($post->toPrompt())"
-                                target="_blank"
-                            >
-                                Ask ChatGPT
-                            </x-dropdown.item>
-
-                            <x-dropdown.item
-                                icon="icon-claude"
-                                :href="'https://claude.ai/new?q=' . urlencode($post->toPrompt())"
-                                target="_blank"
-                            >
-                                Ask Claude
-                            </x-dropdown.item>
-
-                            <x-dropdown.divider>
                                 Share
                             </x-dropdown.divider>
 
@@ -248,26 +228,6 @@ Renders the posts show view.
                         </p>
                     @endif
 
-                    @if (! empty($post->recommendedPosts) && ! $post->is_commercial)
-                        <hr />
-
-                        <p>Did you like this article? Then, keep learning:</p>
-
-                        <ul>
-                            @foreach ($post->recommendedPosts as $recommendedPost)
-                                <li>
-                                    <a
-                                        wire:navigate
-                                        href="{{ route('posts.show', $recommendedPost) }}"
-                                        data-pirsch-event="Clicked on recommended post"
-                                        data-pirsch-meta-title="{{ $recommendedPost->title }}"
-                                    >
-                                        {{ trim($recommendedPost->reason, '.') }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    @endif
                 </x-prose>
 
                 @if (! $post->isSponsored())

@@ -10,7 +10,6 @@ use Filament\Resources\Resource;
 use Filament\Support\Icons\Heroicon;
 use App\Filament\Resources\Jobs\Pages\EditJob;
 use App\Filament\Resources\Jobs\Pages\ListJobs;
-use App\Filament\Resources\Jobs\Pages\CreateJob;
 use App\Filament\Resources\Jobs\Schemas\JobForm;
 use App\Filament\Resources\Jobs\Tables\JobsTable;
 
@@ -43,7 +42,6 @@ class JobResource extends Resource
     {
         return [
             'index' => ListJobs::route('/'),
-            'create' => CreateJob::route('/create'),
             'edit' => EditJob::route('/{record}/edit'),
         ];
     }

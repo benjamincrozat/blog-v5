@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\Posts\Pages;
 
-use App\Jobs\RecommendPosts;
 use Filament\Actions\ActionGroup;
 use Filament\Resources\Pages\EditRecord;
 use App\Filament\Resources\Posts\PostResource;
@@ -20,12 +19,5 @@ class EditPost extends EditRecord
         return [
             ActionGroup::make(RecordActions::configure()),
         ];
-    }
-
-    protected function afterSave() : void
-    {
-        if (! $this->record->recommendations) {
-            RecommendPosts::dispatch($this->record);
-        }
     }
 }

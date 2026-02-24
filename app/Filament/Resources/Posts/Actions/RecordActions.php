@@ -3,16 +3,12 @@
 namespace App\Filament\Resources\Posts\Actions;
 
 use App\Models\Post;
-use App\Jobs\ReviewPost;
 use Illuminate\Support\Js;
-use App\Jobs\RecommendPosts;
 use Filament\Actions\Action;
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\RestoreAction;
 use Filament\Actions\ForceDeleteAction;
-use Filament\Forms\Components\Textarea;
-use Filament\Notifications\Notification;
 use App\Filament\Resources\Posts\Pages\EditPost as EditPostPage;
 
 /**
@@ -46,33 +42,6 @@ class RecordActions
 
                     return "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3A$domain&breakdown=query&page=!" . rawurlencode(route('posts.show', $record));
                 }, shouldOpenInNewTab: true),
-
-            Action::make('Refresh recommendations')
-                ->action(function (Post $record) {
-                    RecommendPosts::dispatch($record);
-
-                    Notification::make()
-                        ->title('A job has been queued to refresh the recommendations.')
-                        ->success()
-                        ->send();
-                })
-                ->icon('heroicon-o-arrow-path'),
-
-            Action::make('Ask for editor review')
-                ->schema([
-                    Textarea::make('additional_instructions')
-                        ->nullable(),
-                ])
-                ->modalSubmitActionLabel('Review')
-                ->action(function (Post $record, array $data) {
-                    ReviewPost::dispatch($record, $data['additional_instructions']);
-
-                    Notification::make()
-                        ->title('The post has been queued for review.')
-                        ->success()
-                        ->send();
-                })
-                ->icon('heroicon-o-document-text'),
 
             EditAction::make()
                 ->hidden(fn ($livewire) => $livewire instanceof EditPostPage)

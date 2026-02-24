@@ -6,7 +6,6 @@ use App\Models\Link;
 use Filament\Tables\Table;
 use Filament\Actions\Action;
 use Filament\Schemas\Schema;
-use App\Jobs\CreatePostForLink;
 use Filament\Actions\BulkAction;
 use Filament\Actions\EditAction;
 use Filament\Resources\Resource;
@@ -71,7 +70,7 @@ class LinkResource extends Resource
                     ->searchable()
                     ->columnSpanFull()
                     ->label('Post')
-                    ->helperText("Any link can be associated with a post. Usually, they're AI-generated."),
+                    ->helperText('Any link can be associated with a post.'),
 
                 TextInput::make('url')
                     ->required()
@@ -188,34 +187,18 @@ class LinkResource extends Resource
                     Action::make('approve')
                         ->schema([
                             Textarea::make('notes')
-                                ->helperText('These notes will help when generating the small companion article designed to entice readers to click.'),
+                                ->helperText('Optional notes for this link approval.'),
                         ])
                         ->modalHeading('Approve Link')
-                        ->action(function (array $data, Link $record, Action $action) {
+                        ->action(function (array $data, Link $record) {
                             $record->approve($data['notes']);
 
-                            $shouldGeneratePost = (bool) ($action->getArguments()['generate_post'] ?? true);
-
-                            if ($record->post_id || ! $shouldGeneratePost) {
-                                Notification::make()
-                                    ->title('The link has been approved.')
-                                    ->success()
-                                    ->send();
-                            } else {
-                                CreatePostForLink::dispatch($record);
-
-                                Notification::make()
-                                    ->title('The link has been approved and a post is being created.')
-                                    ->success()
-                                    ->send();
-                            }
+                            Notification::make()
+                                ->title('The link has been approved.')
+                                ->success()
+                                ->send();
                         })
-                        ->modalSubmitActionLabel('Approve and generate post')
-                        ->extraModalFooterActions(fn (Action $action) => [
-                            $action
-                                ->makeModalSubmitAction('approve_without_post', ['generate_post' => false])
-                                ->label('Approve without post'),
-                        ])
+                        ->modalSubmitActionLabel('Approve')
                         ->hidden(fn (Link $record) => $record->isApproved())
                         ->icon('heroicon-o-check')
                         ->label('Approve'),
@@ -239,27 +222,6 @@ class LinkResource extends Resource
                         ->hidden(fn (Link $record) => $record->isDeclined())
                         ->color('danger')
                         ->icon('heroicon-o-x-circle'),
-
-                    Action::make('generate_post')
-                        ->action(function (Link $record, array $data) {
-                            $record->update([
-                                'notes' => $data['notes'],
-                            ]);
-
-                            CreatePostForLink::dispatch($record);
-
-                            Notification::make()
-                                ->title('A new post is being regenerated.')
-                                ->success()
-                                ->send();
-                        })
-                        ->schema([
-                            Textarea::make('notes')
-                                ->helperText('These notes will help when generating the small companion article designed to entice readers to click.'),
-                        ])
-                        ->modalHeading('Generate Post')
-                        ->modalSubmitActionLabel('Generate')
-                        ->icon('heroicon-o-arrow-path'),
 
                     Action::make('Put back in pending')
                         ->action(fn (Link $record) => $record->update([
