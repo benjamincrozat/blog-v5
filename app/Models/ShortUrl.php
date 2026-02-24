@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Defines the ShortUrl implementation.
+ * Represents short url records.
  */
 class ShortUrl extends Model
 {

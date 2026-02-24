@@ -1,5 +1,5 @@
 {{--
-Renders the components nav item view.
+Displays the components nav item component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props([

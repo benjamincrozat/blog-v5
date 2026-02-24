@@ -7,7 +7,7 @@ use Filament\Actions\RestoreBulkAction;
 use Filament\Actions\ForceDeleteBulkAction;
 
 /**
- * Defines the BulkActions implementation.
+ * Provides reusable bulk actions Filament actions.
  */
 class BulkActions
 {

@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * Defines the User implementation.
+ * Represents user records.
  */
 class User extends Authenticatable implements FilamentUser
 {

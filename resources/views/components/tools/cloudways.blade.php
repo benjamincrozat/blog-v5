@@ -1,5 +1,5 @@
 {{--
-Renders the components tools cloudways view.
+Displays the components tools cloudways component and accepts component props, Blade attributes, and slot content.
 --}}
 
 <x-tools.item

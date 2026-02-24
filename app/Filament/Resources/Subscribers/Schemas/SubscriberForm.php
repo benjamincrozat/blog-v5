@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Filament\Infolists\Components\TextEntry;
 
 /**
- * Defines the SubscriberForm implementation.
+ * Builds the subscriber form Filament schema.
  */
 class SubscriberForm
 {

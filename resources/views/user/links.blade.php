@@ -1,5 +1,5 @@
 {{--
-Renders the user links view.
+Displays the user links view.
 --}}
 
 <x-app title="Your links">

@@ -30,7 +30,7 @@ use App\Filament\Resources\LinkResource\Pages\ListLinks;
 use App\Filament\Resources\LinkResource\Pages\CreateLink;
 
 /**
- * Defines the LinkResource implementation.
+ * Configures the link resource Filament resource.
  */
 class LinkResource extends Resource
 {

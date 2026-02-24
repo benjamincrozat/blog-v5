@@ -1,5 +1,5 @@
 {{--
-Renders the components footer view.
+Displays the components footer component and accepts component props, Blade attributes, and slot content.
 --}}
 
 <div {{ $attributes->class('bg-gray-100') }}>

@@ -1,5 +1,5 @@
 {{--
-Renders the components compact job view.
+Displays the components compact job component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props([

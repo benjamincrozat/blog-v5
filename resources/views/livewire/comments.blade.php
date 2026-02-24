@@ -1,5 +1,5 @@
 {{--
-Renders the livewire comments view.
+Displays the livewire comments Livewire view.
 --}}
 
 <section

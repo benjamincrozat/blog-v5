@@ -1,5 +1,5 @@
 {{--
-Renders the tools index view.
+Displays the tools index view.
 --}}
 
 <x-app

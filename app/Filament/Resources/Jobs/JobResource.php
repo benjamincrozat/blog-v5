@@ -14,7 +14,7 @@ use App\Filament\Resources\Jobs\Schemas\JobForm;
 use App\Filament\Resources\Jobs\Tables\JobsTable;
 
 /**
- * Defines the JobResource implementation.
+ * Configures the job resource Filament resource.
  */
 class JobResource extends Resource
 {

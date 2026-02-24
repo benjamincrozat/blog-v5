@@ -1,5 +1,5 @@
 {{--
-Renders the components dropdown item view.
+Displays the components dropdown item component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props([

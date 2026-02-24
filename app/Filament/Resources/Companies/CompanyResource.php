@@ -14,7 +14,7 @@ use App\Filament\Resources\Companies\Schemas\CompanyForm;
 use App\Filament\Resources\Companies\Tables\CompaniesTable;
 
 /**
- * Defines the CompanyResource implementation.
+ * Configures the company resource Filament resource.
  */
 class CompanyResource extends Resource
 {

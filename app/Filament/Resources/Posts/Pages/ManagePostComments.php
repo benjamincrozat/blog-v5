@@ -10,7 +10,7 @@ use App\Filament\Resources\Posts\PostResource;
 use Filament\Resources\Pages\ManageRelatedRecords;
 
 /**
- * Defines the ManagePostComments implementation.
+ * Configures the manage post comments Filament page.
  */
 class ManagePostComments extends ManageRelatedRecords
 {

@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
- * Defines the Job implementation.
+ * Represents job records.
  */
 class Job extends Model
 {

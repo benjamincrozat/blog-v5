@@ -9,7 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 use App\Filament\Resources\Jobs\JobResource;
 
 /**
- * Defines the EditJob implementation.
+ * Configures the edit job Filament page.
  */
 class EditJob extends EditRecord
 {

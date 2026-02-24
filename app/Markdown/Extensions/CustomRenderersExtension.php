@@ -10,7 +10,7 @@ use League\CommonMark\Environment\EnvironmentBuilderInterface;
 use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 
 /**
- * Defines the CustomRenderersExtension implementation.
+ * Provides custom renderers extension markdown behavior.
  */
 class CustomRenderersExtension implements ExtensionInterface
 {

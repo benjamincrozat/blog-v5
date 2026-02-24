@@ -10,7 +10,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 
 /**
- * Defines the CompaniesTable implementation.
+ * Builds the companies table Filament table.
  */
 class CompaniesTable
 {

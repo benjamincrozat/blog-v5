@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Defines the Comment implementation.
+ * Represents comment records.
  */
 class Comment extends Model
 {

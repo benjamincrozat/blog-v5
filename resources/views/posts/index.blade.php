@@ -1,5 +1,5 @@
 {{--
-Renders the posts index view.
+Displays the posts index view.
 --}}
 
 <x-app title="The latest articles about web development in {{ date('Y') }}">

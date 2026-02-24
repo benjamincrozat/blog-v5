@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\Comment;
 
 /**
- * Defines the CommentPolicy implementation.
+ * Defines authorization rules for comment policy.
  */
 class CommentPolicy
 {

@@ -17,7 +17,7 @@ use League\Flysystem\UnableToRetrieveMetadata;
 use League\Flysystem\InvalidVisibilityProvided;
 
 /**
- * Defines the CloudflareImagesAdapter implementation.
+ * Implements cloudflare images adapter filesystem behavior.
  */
 class CloudflareImagesAdapter implements FilesystemAdapter
 {

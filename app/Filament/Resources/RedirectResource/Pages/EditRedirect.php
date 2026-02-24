@@ -9,7 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 use App\Filament\Resources\RedirectResource;
 
 /**
- * Defines the EditRedirect implementation.
+ * Configures the edit redirect Filament page.
  */
 class EditRedirect extends EditRecord
 {

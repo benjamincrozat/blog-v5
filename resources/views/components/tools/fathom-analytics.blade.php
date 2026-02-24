@@ -1,5 +1,5 @@
 {{--
-Renders the components tools fathom analytics view.
+Displays the components tools fathom analytics component and accepts component props, Blade attributes, and slot content.
 --}}
 
 <x-tools.item

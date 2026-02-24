@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * Defines the ShowMerchantController implementation.
+ * Handles show merchant controller requests.
  */
 class ShowMerchantController extends Controller
 {

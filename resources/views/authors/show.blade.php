@@ -1,5 +1,5 @@
 {{--
-Renders the authors show view.
+Displays the authors show view.
 --}}
 
 <x-app

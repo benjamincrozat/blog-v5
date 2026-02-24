@@ -1,5 +1,5 @@
 {{--
-Renders the vendor notifications email view.
+Displays the vendor notifications email view.
 --}}
 
 <x-mail::message>

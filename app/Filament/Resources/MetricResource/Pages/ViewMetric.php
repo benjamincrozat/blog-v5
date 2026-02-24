@@ -6,7 +6,7 @@ use Filament\Resources\Pages\ViewRecord;
 use App\Filament\Resources\MetricResource;
 
 /**
- * Defines the ViewMetric implementation.
+ * Configures the view metric Filament page.
  */
 class ViewMetric extends ViewRecord
 {

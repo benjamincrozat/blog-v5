@@ -1,5 +1,5 @@
 {{--
-Renders the livewire link wizard first step view.
+Displays the livewire link wizard first step Livewire view.
 --}}
 
 <x-slot:title>

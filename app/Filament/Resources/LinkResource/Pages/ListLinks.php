@@ -7,7 +7,7 @@ use App\Filament\Resources\LinkResource;
 use Filament\Resources\Pages\ListRecords;
 
 /**
- * Defines the ListLinks implementation.
+ * Configures the list links Filament page.
  */
 class ListLinks extends ListRecords
 {

@@ -1,5 +1,5 @@
 {{--
-Renders the components post view.
+Displays the components post component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props(['post'])

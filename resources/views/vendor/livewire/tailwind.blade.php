@@ -1,5 +1,5 @@
 {{--
-Renders the vendor livewire tailwind view.
+Displays the vendor livewire tailwind view.
 --}}
 
 @php

@@ -7,7 +7,7 @@ use Filament\Resources\Pages\EditRecord;
 use App\Filament\Resources\Companies\CompanyResource;
 
 /**
- * Defines the EditCompany implementation.
+ * Configures the edit company Filament page.
  */
 class EditCompany extends EditRecord
 {

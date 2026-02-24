@@ -8,7 +8,7 @@ use App\Filament\Resources\Categories\CategoryResource;
 use App\Filament\Resources\Categories\Actions\RecordActions;
 
 /**
- * Defines the EditCategory implementation.
+ * Configures the edit category Filament page.
  */
 class EditCategory extends EditRecord
 {

@@ -8,7 +8,7 @@ use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
 /**
- * Defines the VisitorStats implementation.
+ * Provides the visitor stats Filament widget.
  */
 class VisitorStats extends StatsOverviewWidget
 {

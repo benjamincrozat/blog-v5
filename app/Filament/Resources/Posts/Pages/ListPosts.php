@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\Posts\PostResource;
 
 /**
- * Defines the ListPosts implementation.
+ * Configures the list posts Filament page.
  */
 class ListPosts extends ListRecords
 {

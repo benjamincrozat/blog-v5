@@ -7,7 +7,7 @@ use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
- * Defines the RefreshUserData implementation.
+ * Queues refresh user data work.
  */
 class RefreshUserData implements ShouldQueue
 {

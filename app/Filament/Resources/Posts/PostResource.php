@@ -38,7 +38,7 @@ use App\Filament\Resources\Posts\Actions\RecordActions;
 use App\Filament\Resources\Posts\Pages\ManagePostComments;
 
 /**
- * Defines the PostResource implementation.
+ * Configures the post resource Filament resource.
  */
 class PostResource extends Resource
 {

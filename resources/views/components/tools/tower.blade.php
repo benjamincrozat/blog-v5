@@ -1,5 +1,5 @@
 {{--
-Renders the components tools tower view.
+Displays the components tools tower component and accepts component props, Blade attributes, and slot content.
 --}}
 
 <x-tools.item

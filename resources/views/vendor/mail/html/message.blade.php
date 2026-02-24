@@ -1,5 +1,5 @@
 {{--
-Renders the vendor mail html message view.
+Displays the vendor mail html message view.
 --}}
 
 <x-mail::layout>

@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 /**
- * Defines the JobPolicy implementation.
+ * Defines authorization rules for job policy.
  */
 class JobPolicy
 {

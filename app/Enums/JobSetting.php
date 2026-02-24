@@ -2,6 +2,9 @@
 
 namespace App\Enums;
 
+/**
+ * Defines available job setting values.
+ */
 enum JobSetting : string
 {
     case FullyRemote = 'fully-remote';

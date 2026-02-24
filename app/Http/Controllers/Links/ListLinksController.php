@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Defines the ListLinksController implementation.
+ * Handles list links controller requests.
  */
 class ListLinksController extends Controller
 {

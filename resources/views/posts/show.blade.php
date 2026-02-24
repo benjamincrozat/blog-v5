@@ -1,5 +1,5 @@
 {{--
-Renders the posts show view.
+Displays the posts show view.
 --}}
 
 <x-app

@@ -7,7 +7,7 @@ use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 
 /**
- * Defines the ListCategoriesController implementation.
+ * Handles list categories controller requests.
  */
 class ListCategoriesController extends Controller
 {

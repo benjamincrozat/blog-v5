@@ -19,7 +19,7 @@ use App\Filesystem\CloudflareImagesAdapter;
 use Illuminate\Filesystem\FilesystemAdapter;
 
 /**
- * Defines the AppServiceProvider implementation.
+ * Registers app service provider services.
  */
 class AppServiceProvider extends ServiceProvider
 {

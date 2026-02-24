@@ -8,7 +8,7 @@ use App\Filament\Resources\Posts\PostResource;
 use Filament\Resources\RelationManagers\RelationManager;
 
 /**
- * Defines the PostsRelationManager implementation.
+ * Configures the posts relation manager Filament resource.
  */
 class PostsRelationManager extends RelationManager
 {

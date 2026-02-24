@@ -1,5 +1,5 @@
 {{--
-Renders the errors 410 view.
+Displays the errors 410 view.
 --}}
 
 <x-app

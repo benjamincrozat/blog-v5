@@ -1,5 +1,5 @@
 {{--
-Renders the components typography subheadline view.
+Displays the components typography subheadline component and accepts component props, Blade attributes, and slot content.
 --}}
 
 <h2 {{ $attributes->class('text-center text-balance tracking-tight text-black/75 text-lg/tight sm:text-xl/tight md:text-2xl/tight') }}>

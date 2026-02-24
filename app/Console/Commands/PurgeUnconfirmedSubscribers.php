@@ -6,7 +6,7 @@ use App\Models\Subscriber;
 use Illuminate\Console\Command;
 
 /**
- * Defines the PurgeUnconfirmedSubscribers implementation.
+ * Runs the purge unconfirmed subscribers artisan command.
  */
 class PurgeUnconfirmedSubscribers extends Command
 {

@@ -6,7 +6,7 @@ use App\Filament\Resources\LinkResource;
 use Filament\Resources\Pages\CreateRecord;
 
 /**
- * Defines the CreateLink implementation.
+ * Configures the create link Filament page.
  */
 class CreateLink extends CreateRecord
 {

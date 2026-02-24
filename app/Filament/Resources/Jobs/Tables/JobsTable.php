@@ -16,7 +16,7 @@ use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\Layout\Stack;
 
 /**
- * Defines the JobsTable implementation.
+ * Builds the jobs table Filament table.
  */
 class JobsTable
 {

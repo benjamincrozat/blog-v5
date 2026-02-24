@@ -1,5 +1,5 @@
 {{--
-Renders the components job view.
+Displays the components job component and accepts component props, Blade attributes, and slot content.
 --}}
 
 <article class="rounded-xl p-1 flex flex-col ring-1 h-full shadow-md ring-black/10">

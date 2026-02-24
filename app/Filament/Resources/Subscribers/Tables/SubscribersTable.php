@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Filters\TernaryFilter;
 
 /**
- * Defines the SubscribersTable implementation.
+ * Builds the subscribers table Filament table.
  */
 class SubscribersTable
 {

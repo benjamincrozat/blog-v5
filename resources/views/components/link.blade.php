@@ -1,5 +1,5 @@
 {{--
-Renders the components link view.
+Displays the components link component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props(['link'])

@@ -1,5 +1,5 @@
 {{--
-Renders the home view.
+Displays the home view.
 --}}
 
 <x-app :title="config('app.name')">

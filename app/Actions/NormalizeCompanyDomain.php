@@ -5,7 +5,7 @@ namespace App\Actions;
 use Throwable;
 
 /**
- * Defines the NormalizeCompanyDomain implementation.
+ * Executes the normalize company domain action.
  */
 class NormalizeCompanyDomain
 {

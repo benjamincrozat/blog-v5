@@ -1,5 +1,5 @@
 {{--
-Renders the components typography headline view.
+Displays the components typography headline component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props([

@@ -6,7 +6,7 @@ use App\Filament\Resources\UserResource;
 use Filament\Resources\Pages\CreateRecord;
 
 /**
- * Defines the CreateUser implementation.
+ * Configures the create user Filament page.
  */
 class CreateUser extends CreateRecord
 {

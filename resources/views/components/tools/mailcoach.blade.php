@@ -1,5 +1,5 @@
 {{--
-Renders the components tools mailcoach view.
+Displays the components tools mailcoach component and accepts component props, Blade attributes, and slot content.
 --}}
 
 <x-tools.item

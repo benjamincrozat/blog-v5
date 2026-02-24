@@ -1,5 +1,5 @@
 {{--
-Renders the guidelines view.
+Displays the guidelines view.
 --}}
 
 <x-app

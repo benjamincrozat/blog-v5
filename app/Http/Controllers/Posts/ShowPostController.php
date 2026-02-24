@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Actions\BuildBreadcrumbSchema;
 
 /**
- * Defines the ShowPostController implementation.
+ * Handles show post controller requests.
  */
 class ShowPostController extends Controller
 {

@@ -12,7 +12,7 @@ use Filament\Actions\ForceDeleteAction;
 use App\Filament\Resources\Posts\Pages\EditPost as EditPostPage;
 
 /**
- * Defines the RecordActions implementation.
+ * Provides reusable record actions Filament actions.
  */
 class RecordActions
 {

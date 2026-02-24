@@ -7,7 +7,7 @@ use Filament\Resources\Pages\ListRecords;
 use App\Filament\Resources\Categories\CategoryResource;
 
 /**
- * Defines the ListCategories implementation.
+ * Configures the list categories Filament page.
  */
 class ListCategories extends ListRecords
 {

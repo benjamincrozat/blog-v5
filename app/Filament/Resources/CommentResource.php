@@ -22,7 +22,7 @@ use App\Filament\Resources\CommentResource\Pages\ListComments;
 use App\Filament\Resources\CommentResource\Pages\CreateComment;
 
 /**
- * Defines the CommentResource implementation.
+ * Configures the comment resource Filament resource.
  */
 class CommentResource extends Resource
 {

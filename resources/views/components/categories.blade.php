@@ -1,5 +1,5 @@
 {{--
-Renders the components categories view.
+Displays the components categories component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props(['categories'])

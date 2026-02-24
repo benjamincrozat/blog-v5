@@ -6,7 +6,7 @@ use Livewire\Component;
 use Livewire\Attributes\Validate;
 
 /**
- * Defines the CommentForm implementation.
+ * Renders and coordinates the comment form Livewire component.
  */
 class CommentForm extends Component
 {

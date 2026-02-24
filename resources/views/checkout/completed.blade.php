@@ -1,5 +1,5 @@
 {{--
-Renders the checkout completed view.
+Displays the checkout completed view.
 --}}
 
 <x-app

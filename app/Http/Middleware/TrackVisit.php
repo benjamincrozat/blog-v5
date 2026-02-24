@@ -8,7 +8,7 @@ use Jaybizzle\CrawlerDetect\CrawlerDetect;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Defines the TrackVisit implementation.
+ * Provides track visit behavior.
  */
 class TrackVisit
 {

@@ -9,7 +9,7 @@ use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
 /**
- * Defines the PostsStats implementation.
+ * Provides the posts stats Filament widget.
  */
 class PostsStats extends StatsOverviewWidget
 {

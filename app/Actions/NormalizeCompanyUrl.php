@@ -5,7 +5,7 @@ namespace App\Actions;
 use Throwable;
 
 /**
- * Defines the NormalizeCompanyUrl implementation.
+ * Executes the normalize company url action.
  */
 class NormalizeCompanyUrl
 {

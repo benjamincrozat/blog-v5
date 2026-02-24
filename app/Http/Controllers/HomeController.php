@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\View\View;
 
 /**
- * Defines the HomeController implementation.
+ * Handles home controller requests.
  */
 class HomeController extends Controller
 {

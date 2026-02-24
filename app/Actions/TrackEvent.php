@@ -5,7 +5,7 @@ namespace App\Actions;
 use Illuminate\Support\Facades\Http;
 
 /**
- * Defines the TrackEvent implementation.
+ * Executes the track event action.
  */
 class TrackEvent
 {

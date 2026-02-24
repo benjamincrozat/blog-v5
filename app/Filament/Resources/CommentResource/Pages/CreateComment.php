@@ -6,7 +6,7 @@ use Filament\Resources\Pages\CreateRecord;
 use App\Filament\Resources\CommentResource;
 
 /**
- * Defines the CreateComment implementation.
+ * Configures the create comment Filament page.
  */
 class CreateComment extends CreateRecord
 {

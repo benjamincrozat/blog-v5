@@ -10,7 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 /**
- * Defines the Welcome implementation.
+ * Builds the welcome notification.
  */
 class Welcome extends Notification implements ShouldQueue
 {

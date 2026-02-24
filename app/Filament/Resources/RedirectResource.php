@@ -20,7 +20,7 @@ use App\Filament\Resources\RedirectResource\Pages\ListRedirects;
 use App\Filament\Resources\RedirectResource\Pages\CreateRedirect;
 
 /**
- * Defines the RedirectResource implementation.
+ * Configures the redirect resource Filament resource.
  */
 class RedirectResource extends Resource
 {

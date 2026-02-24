@@ -6,7 +6,7 @@ use Filament\Resources\Pages\CreateRecord;
 use App\Filament\Resources\Companies\CompanyResource;
 
 /**
- * Defines the CreateCompany implementation.
+ * Configures the create company Filament page.
  */
 class CreateCompany extends CreateRecord
 {

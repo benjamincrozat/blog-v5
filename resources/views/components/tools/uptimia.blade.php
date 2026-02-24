@@ -1,5 +1,5 @@
 {{--
-Renders the components tools uptimia view.
+Displays the components tools uptimia component and accepts component props, Blade attributes, and slot content.
 --}}
 
 <x-tools.item

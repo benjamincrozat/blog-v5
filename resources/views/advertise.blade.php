@@ -1,5 +1,5 @@
 {{--
-Renders the advertise view.
+Displays the advertise view.
 --}}
 
 <x-app

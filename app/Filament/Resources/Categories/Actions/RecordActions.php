@@ -9,7 +9,7 @@ use Filament\Actions\DeleteAction;
 use App\Filament\Resources\Categories\Pages\EditCategory;
 
 /**
- * Defines the RecordActions implementation.
+ * Provides reusable record actions Filament actions.
  */
 class RecordActions
 {

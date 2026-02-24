@@ -1,5 +1,5 @@
 {{--
-Renders the components jobs list view.
+Displays the components jobs list component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props(['jobs'])

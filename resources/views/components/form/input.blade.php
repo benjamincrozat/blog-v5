@@ -1,5 +1,5 @@
 {{--
-Renders the components form input view.
+Displays the components form input component and accepts component props, Blade attributes, and slot content.
 --}}
 
 <div>

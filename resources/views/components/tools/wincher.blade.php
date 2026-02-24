@@ -1,5 +1,5 @@
 {{--
-Renders the components tools wincher view.
+Displays the components tools wincher component and accepts component props, Blade attributes, and slot content.
 --}}
 
 <x-tools.item

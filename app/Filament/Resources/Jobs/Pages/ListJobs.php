@@ -6,7 +6,7 @@ use Filament\Resources\Pages\ListRecords;
 use App\Filament\Resources\Jobs\JobResource;
 
 /**
- * Defines the ListJobs implementation.
+ * Configures the list jobs Filament page.
  */
 class ListJobs extends ListRecords
 {

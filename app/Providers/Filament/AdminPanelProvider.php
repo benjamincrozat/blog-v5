@@ -22,7 +22,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 
 /**
- * Defines the AdminPanelProvider implementation.
+ * Registers admin panel provider services.
  */
 class AdminPanelProvider extends PanelProvider
 {

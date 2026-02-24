@@ -7,7 +7,7 @@ use Filament\Resources\Pages\ListRecords;
 use App\Filament\Resources\ShortUrlResource;
 
 /**
- * Defines the ListShortUrls implementation.
+ * Configures the list short urls Filament page.
  */
 class ListShortUrls extends ListRecords
 {

@@ -9,7 +9,7 @@ use Illuminate\Queue\Events\QueueFailedOver;
 use Illuminate\Notifications\Messages\MailMessage;
 
 /**
- * Defines the QueueFailoverHappened implementation.
+ * Builds the queue failover happened notification.
  */
 class QueueFailoverHappened extends Notification implements ShouldQueue
 {

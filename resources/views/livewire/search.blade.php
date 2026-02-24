@@ -1,5 +1,5 @@
 {{--
-Renders the livewire search view.
+Displays the livewire search Livewire view.
 --}}
 
 <div

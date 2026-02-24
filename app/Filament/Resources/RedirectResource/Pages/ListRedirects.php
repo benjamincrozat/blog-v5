@@ -7,7 +7,7 @@ use Filament\Resources\Pages\ListRecords;
 use App\Filament\Resources\RedirectResource;
 
 /**
- * Defines the ListRedirects implementation.
+ * Configures the list redirects Filament page.
  */
 class ListRedirects extends ListRecords
 {

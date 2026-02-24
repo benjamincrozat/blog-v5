@@ -8,7 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\MarkdownEditor;
 
 /**
- * Defines the CompanyForm implementation.
+ * Builds the company form Filament schema.
  */
 class CompanyForm
 {

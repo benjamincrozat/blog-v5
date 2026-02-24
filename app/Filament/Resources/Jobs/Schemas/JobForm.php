@@ -12,7 +12,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\CodeEditor;
 
 /**
- * Defines the JobForm implementation.
+ * Builds the job form Filament schema.
  */
 class JobForm
 {

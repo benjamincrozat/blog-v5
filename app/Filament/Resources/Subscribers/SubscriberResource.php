@@ -14,7 +14,7 @@ use App\Filament\Resources\Subscribers\Schemas\SubscriberForm;
 use App\Filament\Resources\Subscribers\Tables\SubscribersTable;
 
 /**
- * Defines the SubscriberResource implementation.
+ * Configures the subscriber resource Filament resource.
  */
 class SubscriberResource extends Resource
 {

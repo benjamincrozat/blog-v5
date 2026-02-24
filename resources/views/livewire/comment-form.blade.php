@@ -1,5 +1,5 @@
 {{--
-Renders the livewire comment form view.
+Displays the livewire comment form Livewire view.
 --}}
 
 <div>

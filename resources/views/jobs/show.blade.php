@@ -1,5 +1,5 @@
 {{--
-Renders the jobs show view.
+Displays the jobs show view.
 --}}
 
 <x-app

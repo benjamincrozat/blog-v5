@@ -7,7 +7,7 @@ use Filament\Resources\Pages\EditRecord;
 use App\Filament\Resources\ShortUrlResource;
 
 /**
- * Defines the EditShortUrl implementation.
+ * Configures the edit short url Filament page.
  */
 class EditShortUrl extends EditRecord
 {

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Defines the Admin implementation.
+ * Provides admin behavior.
  */
 class Admin
 {

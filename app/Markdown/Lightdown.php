@@ -9,7 +9,7 @@ use League\CommonMark\Node\Inline\AbstractStringContainer;
 use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 
 /**
- * Defines the Lightdown implementation.
+ * Provides lightdown markdown behavior.
  */
 class Lightdown
 {

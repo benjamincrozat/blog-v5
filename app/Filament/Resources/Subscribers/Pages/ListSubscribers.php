@@ -7,7 +7,7 @@ use Filament\Resources\Pages\ListRecords;
 use App\Filament\Resources\Subscribers\SubscriberResource;
 
 /**
- * Defines the ListSubscribers implementation.
+ * Configures the list subscribers Filament page.
  */
 class ListSubscribers extends ListRecords
 {

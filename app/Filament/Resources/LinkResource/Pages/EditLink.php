@@ -7,7 +7,7 @@ use App\Filament\Resources\LinkResource;
 use Filament\Resources\Pages\EditRecord;
 
 /**
- * Defines the EditLink implementation.
+ * Configures the edit link Filament page.
  */
 class EditLink extends EditRecord
 {

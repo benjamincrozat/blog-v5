@@ -7,7 +7,7 @@ use Filament\Resources\Pages\CreateRecord;
 use App\Filament\Resources\RedirectResource;
 
 /**
- * Defines the CreateRedirect implementation.
+ * Configures the create redirect Filament page.
  */
 class CreateRedirect extends CreateRecord
 {

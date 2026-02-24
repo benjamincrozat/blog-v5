@@ -1,5 +1,5 @@
 {{--
-Renders the components comment view.
+Displays the components comment component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @php
@@ -33,6 +33,7 @@ $commentUser = $comment->user;
                     <div class="flex gap-2 items-center">
                         @if ($user?->isAdmin())
                             <a
+                                wire:navigate
                                 href="{{ route('filament.admin.resources.comments.edit', $comment) }}"
                                 class="grid place-items-center bg-gray-100 rounded-full transition-colors hover:bg-gray-200 size-8"
                             >

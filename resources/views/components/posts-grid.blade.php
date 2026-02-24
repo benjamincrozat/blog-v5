@@ -1,5 +1,5 @@
 {{--
-Renders the components posts grid view.
+Displays the components posts grid component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props([

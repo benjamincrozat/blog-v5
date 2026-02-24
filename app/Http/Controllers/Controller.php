@@ -3,6 +3,6 @@
 namespace App\Http\Controllers;
 
 /**
- * Defines the Controller implementation.
+ * Handles controller requests.
  */
 abstract class Controller {}

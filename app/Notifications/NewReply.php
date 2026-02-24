@@ -10,7 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 /**
- * Defines the NewReply implementation.
+ * Builds the new reply notification.
  */
 class NewReply extends Notification implements ShouldQueue
 {

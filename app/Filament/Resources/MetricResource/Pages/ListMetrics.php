@@ -7,7 +7,7 @@ use Filament\Resources\Pages\ListRecords;
 use App\Filament\Resources\MetricResource;
 
 /**
- * Defines the ListMetrics implementation.
+ * Configures the list metrics Filament page.
  */
 class ListMetrics extends ListRecords
 {

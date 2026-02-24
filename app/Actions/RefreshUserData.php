@@ -8,7 +8,7 @@ use Github\Exception\RuntimeException;
 use Github\Exception\ApiLimitExceedException;
 
 /**
- * Defines the RefreshUserData implementation.
+ * Executes the refresh user data action.
  */
 class RefreshUserData
 {

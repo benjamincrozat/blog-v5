@@ -9,7 +9,7 @@ use App\Filament\Resources\UserResource;
 use Filament\Resources\Pages\EditRecord;
 
 /**
- * Defines the EditUser implementation.
+ * Configures the edit user Filament page.
  */
 class EditUser extends EditRecord
 {

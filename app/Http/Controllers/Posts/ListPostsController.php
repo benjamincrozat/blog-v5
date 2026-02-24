@@ -7,7 +7,7 @@ use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 
 /**
- * Defines the ListPostsController implementation.
+ * Handles list posts controller requests.
  */
 class ListPostsController extends Controller
 {

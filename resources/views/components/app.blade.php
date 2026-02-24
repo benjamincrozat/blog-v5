@@ -1,5 +1,5 @@
 {{--
-Renders the components app view.
+Displays the components app component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props([

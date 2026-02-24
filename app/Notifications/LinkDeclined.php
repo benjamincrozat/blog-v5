@@ -10,7 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 /**
- * Defines the LinkDeclined implementation.
+ * Builds the link declined notification.
  */
 class LinkDeclined extends Notification implements ShouldQueue
 {

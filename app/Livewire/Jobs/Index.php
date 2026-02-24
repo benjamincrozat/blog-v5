@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 /**
- * Defines the Index implementation.
+ * Renders and coordinates the index Livewire component.
  */
 class Index extends Component
 {

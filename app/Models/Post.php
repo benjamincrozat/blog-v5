@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
- * Defines the Post implementation.
+ * Represents post records.
  */
 class Post extends Model implements Feedable
 {

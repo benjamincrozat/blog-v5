@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Defines the Company implementation.
+ * Represents company records.
  */
 class Company extends Model
 {

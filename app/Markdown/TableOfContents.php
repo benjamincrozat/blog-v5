@@ -5,7 +5,7 @@ namespace App\Markdown;
 use Illuminate\Support\Str;
 
 /**
- * Defines the TableOfContents implementation.
+ * Provides table of contents markdown behavior.
  */
 class TableOfContents
 {

@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 /**
- * Defines the SubscriberConfirmed implementation.
+ * Builds the subscriber confirmed notification.
  */
 class SubscriberConfirmed extends Notification implements ShouldQueue
 {

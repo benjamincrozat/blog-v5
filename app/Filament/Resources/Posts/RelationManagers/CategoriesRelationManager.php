@@ -8,7 +8,7 @@ use App\Filament\Resources\Categories\CategoryResource;
 use Filament\Resources\RelationManagers\RelationManager;
 
 /**
- * Defines the CategoriesRelationManager implementation.
+ * Configures the categories relation manager Filament resource.
  */
 class CategoriesRelationManager extends RelationManager
 {

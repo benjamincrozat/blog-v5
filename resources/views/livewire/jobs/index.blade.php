@@ -1,5 +1,5 @@
 {{--
-Renders the livewire jobs index view.
+Displays the livewire jobs index Livewire view.
 --}}
 
 <x-slot:title>

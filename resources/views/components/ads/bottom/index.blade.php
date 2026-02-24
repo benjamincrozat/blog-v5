@@ -1,5 +1,5 @@
 {{--
-Renders the components ads bottom index view.
+Displays the components ads bottom index component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props(['ads' => []])

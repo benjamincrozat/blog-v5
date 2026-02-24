@@ -10,7 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 /**
- * Defines the LinkWaitingForValidation implementation.
+ * Builds the link waiting for validation notification.
  */
 class LinkWaitingForValidation extends Notification implements ShouldQueue
 {

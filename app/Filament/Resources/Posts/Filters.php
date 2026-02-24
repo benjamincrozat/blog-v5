@@ -8,7 +8,7 @@ use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Filters\TrashedFilter;
 
 /**
- * Defines the Filters implementation.
+ * Configures the filters Filament resource.
  */
 class Filters
 {

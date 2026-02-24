@@ -1,5 +1,5 @@
 {{--
-Renders the components table of contents index view.
+Displays the components table of contents index component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props(['items'])

@@ -21,7 +21,7 @@ use App\Filament\Resources\Categories\Actions\RecordActions;
 use App\Filament\Resources\Categories\RelationManagers\PostsRelationManager;
 
 /**
- * Defines the CategoryResource implementation.
+ * Configures the category resource Filament resource.
  */
 class CategoryResource extends Resource
 {

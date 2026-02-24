@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Laravel\Socialite\Facades\Socialite;
 
 /**
- * Defines the GithubAuthCallbackController implementation.
+ * Handles github auth callback controller requests.
  */
 class GithubAuthCallbackController extends Controller
 {

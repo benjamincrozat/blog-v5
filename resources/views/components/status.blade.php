@@ -1,5 +1,5 @@
 {{--
-Renders the components status view.
+Displays the components status component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @if (session('status') || ! empty(request()->submitted))

@@ -21,7 +21,7 @@ use App\Filament\Resources\MetricResource\Pages\ViewMetric;
 use App\Filament\Resources\MetricResource\Pages\ListMetrics;
 
 /**
- * Defines the MetricResource implementation.
+ * Configures the metric resource Filament resource.
  */
 class MetricResource extends Resource
 {

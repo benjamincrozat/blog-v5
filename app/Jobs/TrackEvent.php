@@ -6,7 +6,7 @@ use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
- * Defines the TrackEvent implementation.
+ * Queues track event work.
  */
 class TrackEvent implements ShouldQueue
 {

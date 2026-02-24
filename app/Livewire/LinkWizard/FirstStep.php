@@ -12,7 +12,7 @@ use Illuminate\Http\Client\ConnectionException;
 use Spatie\LivewireWizard\Components\StepComponent;
 
 /**
- * Defines the FirstStep implementation.
+ * Renders and coordinates the first step Livewire component.
  */
 class FirstStep extends StepComponent
 {

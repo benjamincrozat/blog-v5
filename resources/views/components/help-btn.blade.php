@@ -1,5 +1,5 @@
 {{--
-Renders the components help btn view.
+Displays the components help btn component and accepts component props, Blade attributes, and slot content.
 --}}
 
 <div {{ $attributes->merge([

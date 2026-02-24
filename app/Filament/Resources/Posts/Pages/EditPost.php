@@ -8,7 +8,7 @@ use App\Filament\Resources\Posts\PostResource;
 use App\Filament\Resources\Posts\Actions\RecordActions;
 
 /**
- * Defines the EditPost implementation.
+ * Configures the edit post Filament page.
  */
 class EditPost extends EditRecord
 {

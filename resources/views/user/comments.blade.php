@@ -1,5 +1,5 @@
 {{--
-Renders the user comments view.
+Displays the user comments view.
 --}}
 
 <x-app title="Your comments">

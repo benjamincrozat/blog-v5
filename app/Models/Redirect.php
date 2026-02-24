@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Defines the Redirect implementation.
+ * Represents redirect records.
  */
 class Redirect extends Model
 {

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
- * Defines the Location implementation.
+ * Represents location records.
  */
 class Location extends Model
 {

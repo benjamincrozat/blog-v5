@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 use Stripe\Exception\ApiErrorException;
 
 /**
- * Defines the CompletedCheckoutController implementation.
+ * Handles completed checkout controller requests.
  */
 class CompletedCheckoutController extends Controller
 {

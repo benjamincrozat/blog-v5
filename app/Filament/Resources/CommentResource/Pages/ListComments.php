@@ -7,7 +7,7 @@ use Filament\Resources\Pages\ListRecords;
 use App\Filament\Resources\CommentResource;
 
 /**
- * Defines the ListComments implementation.
+ * Configures the list comments Filament page.
  */
 class ListComments extends ListRecords
 {

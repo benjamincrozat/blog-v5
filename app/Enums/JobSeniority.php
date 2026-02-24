@@ -2,6 +2,9 @@
 
 namespace App\Enums;
 
+/**
+ * Defines available job seniority values.
+ */
 enum JobSeniority : string
 {
     case Intern = 'intern';

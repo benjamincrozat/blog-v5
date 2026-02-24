@@ -2,6 +2,9 @@
 
 namespace App\Enums;
 
+/**
+ * Defines available employment status values.
+ */
 enum EmploymentStatus : string
 {
     case FullTime = 'full-time';

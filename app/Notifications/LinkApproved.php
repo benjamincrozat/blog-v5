@@ -10,7 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 /**
- * Defines the LinkApproved implementation.
+ * Builds the link approved notification.
  */
 class LinkApproved extends Notification implements ShouldQueue
 {

@@ -1,5 +1,5 @@
 {{--
-Renders the errors 404 view.
+Displays the errors 404 view.
 --}}
 
 <x-app

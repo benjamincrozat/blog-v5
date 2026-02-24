@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 /**
- * Defines the ListUserLinksController implementation.
+ * Handles list user links controller requests.
  */
 class ListUserLinksController extends Controller
 {

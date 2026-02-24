@@ -12,7 +12,7 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 /**
- * Defines the GenerateSitemapCommand implementation.
+ * Builds the public sitemap.xml file from current content routes.
  */
 #[AsCommand(
     name: 'app:generate-sitemap',

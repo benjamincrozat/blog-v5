@@ -7,7 +7,7 @@ use App\Jobs\RefreshUserData;
 use Illuminate\Console\Command;
 
 /**
- * Defines the RefreshUserDataCommand implementation.
+ * Runs the refresh user data command artisan command.
  */
 class RefreshUserDataCommand extends Command
 {

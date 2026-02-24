@@ -1,5 +1,5 @@
 {{--
-Renders the links index view.
+Displays the links index view.
 --}}
 
 <x-app

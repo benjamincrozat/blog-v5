@@ -10,7 +10,7 @@ use App\Notifications\ConfirmSubscription;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Defines the Subscriber implementation.
+ * Represents subscriber records.
  */
 class Subscriber extends Model
 {

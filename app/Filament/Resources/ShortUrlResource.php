@@ -17,7 +17,7 @@ use App\Filament\Resources\ShortUrlResource\Pages\ListShortUrls;
 use App\Filament\Resources\ShortUrlResource\Pages\CreateShortUrl;
 
 /**
- * Defines the ShortUrlResource implementation.
+ * Configures the short url resource Filament resource.
  */
 class ShortUrlResource extends Resource
 {

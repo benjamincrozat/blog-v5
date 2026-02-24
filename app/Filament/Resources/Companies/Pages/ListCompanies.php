@@ -7,7 +7,7 @@ use Filament\Resources\Pages\ListRecords;
 use App\Filament\Resources\Companies\CompanyResource;
 
 /**
- * Defines the ListCompanies implementation.
+ * Configures the list companies Filament page.
  */
 class ListCompanies extends ListRecords
 {

@@ -7,7 +7,7 @@ use App\Filament\Resources\UserResource;
 use Filament\Resources\Pages\ListRecords;
 
 /**
- * Defines the ListUsers implementation.
+ * Configures the list users Filament page.
  */
 class ListUsers extends ListRecords
 {

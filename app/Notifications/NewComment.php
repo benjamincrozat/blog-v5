@@ -10,7 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 /**
- * Defines the NewComment implementation.
+ * Builds the new comment notification.
  */
 class NewComment extends Notification implements ShouldQueue
 {

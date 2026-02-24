@@ -6,7 +6,7 @@ use Filament\Resources\Pages\CreateRecord;
 use App\Filament\Resources\ShortUrlResource;
 
 /**
- * Defines the CreateShortUrl implementation.
+ * Configures the create short url Filament page.
  */
 class CreateShortUrl extends CreateRecord
 {

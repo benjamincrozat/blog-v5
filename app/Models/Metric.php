@@ -8,7 +8,7 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Defines the Metric implementation.
+ * Represents metric records.
  */
 class Metric extends Model
 {

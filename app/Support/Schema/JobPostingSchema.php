@@ -7,7 +7,7 @@ use App\Enums\JobSetting;
 use App\Enums\EmploymentStatus;
 
 /**
- * Defines the JobPostingSchema implementation.
+ * Provides job posting schema support behavior.
  */
 class JobPostingSchema
 {

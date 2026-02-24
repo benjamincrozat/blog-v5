@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\Metric;
 
 /**
- * Defines the MetricPolicy implementation.
+ * Defines authorization rules for metric policy.
  */
 class MetricPolicy
 {

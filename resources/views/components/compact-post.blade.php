@@ -1,5 +1,5 @@
 {{--
-Renders the components compact post view.
+Displays the components compact post component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props(['post'])

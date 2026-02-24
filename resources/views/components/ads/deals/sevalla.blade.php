@@ -1,5 +1,5 @@
 {{--
-Renders the components ads deals sevalla view.
+Displays the components ads deals sevalla component and accepts component props, Blade attributes, and slot content.
 --}}
 
 <x-ads.deals

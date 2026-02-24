@@ -6,7 +6,7 @@ use Filament\Resources\Pages\CreateRecord;
 use App\Filament\Resources\Subscribers\SubscriberResource;
 
 /**
- * Defines the CreateSubscriber implementation.
+ * Configures the create subscriber Filament page.
  */
 class CreateSubscriber extends CreateRecord
 {

@@ -1,5 +1,5 @@
 {{--
-Renders the components form select view.
+Displays the components form select component and accepts component props, Blade attributes, and slot content.
 --}}
 
 <div>

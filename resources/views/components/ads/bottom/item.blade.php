@@ -1,5 +1,5 @@
 {{--
-Renders the components ads bottom item view.
+Displays the components ads bottom item component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @php

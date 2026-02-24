@@ -1,5 +1,5 @@
 {{--
-Renders the login view.
+Displays the login view.
 --}}
 
 <x-app

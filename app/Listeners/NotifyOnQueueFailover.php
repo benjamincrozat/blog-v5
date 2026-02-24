@@ -7,7 +7,7 @@ use App\Notifications\QueueFailoverHappened;
 use Illuminate\Queue\Events\QueueFailedOver;
 
 /**
- * Defines the NotifyOnQueueFailover implementation.
+ * Handles notify on queue failover events.
  */
 class NotifyOnQueueFailover
 {

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
- * Defines the Category implementation.
+ * Represents category records.
  */
 class Category extends Model
 {

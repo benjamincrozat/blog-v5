@@ -6,7 +6,7 @@ use Filament\Resources\Pages\CreateRecord;
 use App\Filament\Resources\Categories\CategoryResource;
 
 /**
- * Defines the CreateCategory implementation.
+ * Configures the create category Filament page.
  */
 class CreateCategory extends CreateRecord
 {

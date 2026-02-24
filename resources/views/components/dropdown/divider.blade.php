@@ -1,5 +1,5 @@
 {{--
-Renders the components dropdown divider view.
+Displays the components dropdown divider component and accepts component props, Blade attributes, and slot content.
 --}}
 
 <div {{ $attributes->class('not-first:h-px not-first:my-2 not-first:bg-black/10') }}></div>

@@ -6,7 +6,7 @@ use Filament\Resources\Pages\CreateRecord;
 use App\Filament\Resources\Posts\PostResource;
 
 /**
- * Defines the CreatePost implementation.
+ * Configures the create post Filament page.
  */
 class CreatePost extends CreateRecord
 {

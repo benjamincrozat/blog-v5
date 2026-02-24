@@ -1,5 +1,5 @@
 {{--
-Renders the components dropdown index view.
+Displays the components dropdown index component and accepts component props, Blade attributes, and slot content.
 --}}
 
 <div

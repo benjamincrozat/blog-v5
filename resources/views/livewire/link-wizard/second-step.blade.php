@@ -1,5 +1,5 @@
 {{--
-Renders the livewire link wizard second step view.
+Displays the livewire link wizard second step Livewire view.
 --}}
 
 <div>

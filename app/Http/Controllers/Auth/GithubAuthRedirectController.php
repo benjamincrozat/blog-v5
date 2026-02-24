@@ -8,7 +8,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\GithubProvider;
 
 /**
- * Defines the GithubAuthRedirectController implementation.
+ * Handles github auth redirect controller requests.
  */
 class GithubAuthRedirectController extends Controller
 {

@@ -5,7 +5,7 @@ namespace App\Livewire\LinkWizard;
 use Spatie\LivewireWizard\Components\WizardComponent;
 
 /**
- * Defines the LinkWizard implementation.
+ * Renders and coordinates the link wizard Livewire component.
  */
 class LinkWizard extends WizardComponent
 {

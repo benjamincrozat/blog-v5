@@ -13,7 +13,7 @@ use Livewire\Attributes\Locked;
 use App\Notifications\NewComment;
 
 /**
- * Defines the Comments implementation.
+ * Renders and coordinates the comments Livewire component.
  */
 class Comments extends Component
 {

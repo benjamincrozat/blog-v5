@@ -1,5 +1,5 @@
 {{--
-Renders the components breadcrumbs view.
+Displays the components breadcrumbs component and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props(['items'])

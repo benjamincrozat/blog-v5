@@ -8,7 +8,7 @@ use Illuminate\Support\Number;
 use App\Http\Controllers\Controller;
 
 /**
- * Defines the ShowAdvertisingLandingPageController implementation.
+ * Handles show advertising landing page controller requests.
  */
 class ShowAdvertisingLandingPageController extends Controller
 {

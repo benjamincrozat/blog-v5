@@ -7,7 +7,7 @@ use Filament\Resources\Pages\EditRecord;
 use App\Filament\Resources\Subscribers\SubscriberResource;
 
 /**
- * Defines the EditSubscriber implementation.
+ * Configures the edit subscriber Filament page.
  */
 class EditSubscriber extends EditRecord
 {

@@ -1,5 +1,5 @@
 {{--
-Renders the livewire newsletter view.
+Displays the livewire newsletter Livewire view.
 --}}
 
 <x-slot:title>

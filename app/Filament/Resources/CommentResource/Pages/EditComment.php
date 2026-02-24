@@ -7,7 +7,7 @@ use Filament\Resources\Pages\EditRecord;
 use App\Filament\Resources\CommentResource;
 
 /**
- * Defines the EditComment implementation.
+ * Configures the edit comment Filament page.
  */
 class EditComment extends EditRecord
 {

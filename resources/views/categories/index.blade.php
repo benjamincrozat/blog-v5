@@ -1,5 +1,5 @@
 {{--
-Renders the categories index view.
+Displays the categories index view.
 --}}
 
 <x-app

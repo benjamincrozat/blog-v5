@@ -1,5 +1,5 @@
 {{--
-Renders the vendor pagination tailwind view.
+Displays the vendor pagination tailwind view.
 --}}
 
 @if ($paginator->hasPages())

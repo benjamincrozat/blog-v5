@@ -21,7 +21,7 @@ use App\Filament\Resources\UserResource\Pages\ListUsers;
 use App\Filament\Resources\UserResource\Pages\CreateUser;
 
 /**
- * Defines the UserResource implementation.
+ * Configures the user resource Filament resource.
  */
 class UserResource extends Resource
 {

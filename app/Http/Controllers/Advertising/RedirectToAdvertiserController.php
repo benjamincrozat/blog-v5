@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * Defines the RedirectToAdvertiserController implementation.
+ * Handles redirect to advertiser controller requests.
  */
 class RedirectToAdvertiserController extends Controller
 {
