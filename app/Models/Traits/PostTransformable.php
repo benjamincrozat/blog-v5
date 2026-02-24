@@ -31,16 +31,4 @@ trait PostTransformable
         return "---\n{$frontMatterLines}\n---\n\n# {$this->title}\n\n{$this->content}\n";
     }
 
-    public function toPrompt() : string
-    {
-        $content = preg_replace(['/\s+/', '/\n+/'], [' ', "\n"], strip_tags($this->formatted_content, allowed_tags: ['a']));
-
-        return <<<MARKDOWN
-$this->title $content
-
----
-
-Highlight the key points of this article.
-MARKDOWN;
-    }
 }

@@ -38,7 +38,6 @@ class Post extends Model implements Feedable
             'sponsored_at' => 'datetime',
             'published_at' => 'datetime',
             'modified_at' => 'datetime',
-            'recommendations' => 'collection',
         ];
     }
 
@@ -83,11 +82,6 @@ class Post extends Model implements Feedable
         return $this->hasMany(Comment::class);
     }
 
-    public function reports() : HasMany
-    {
-        return $this->hasMany(Report::class);
-    }
-
     public function link() : HasOne
     {
         return $this->hasOne(Link::class);
@@ -111,25 +105,6 @@ class Post extends Model implements Feedable
     {
         return Attribute::make(
             fn () => ceil(str_word_count($this->content) / 200),
-        )->shouldCache();
-    }
-
-    public function recommendedPosts() : Attribute
-    {
-        return Attribute::make(
-            fn () => empty($this->recommendations) ? null : Post::query()
-                ->whereIn('id', $this->recommendations->pluck('id'))
-                ->get()
-                ->map(function (self $post) {
-                    $recommendation = collect($this->recommendations)
-                        ->firstWhere('id', $post->id);
-
-                    if (! empty($recommendation['reason'])) {
-                        $post->reason = $recommendation['reason'];
-                    }
-
-                    return $post;
-                }),
         )->shouldCache();
     }
 
