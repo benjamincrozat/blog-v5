@@ -38,6 +38,8 @@ Renders the posts show view.
         '@type' => 'BreadcrumbList',
         'itemListElement' => $breadcrumbSchemaItems,
     ];
+
+    $aiPrompt = "Read this blog post and help me with follow-up questions:\n\n{$post->title}\n" . route('posts.show', $post);
 @endphp
 
 <x-app
@@ -179,6 +181,24 @@ Renders the posts show view.
                                     Edit article
                                 </x-dropdown.item>
                             @endif
+
+                            <x-dropdown.divider>
+                                Chat
+                            </x-dropdown.divider>
+
+                            <x-dropdown.item
+                                :href="'https://chatgpt.com/?q=' . urlencode($aiPrompt)"
+                                target="_blank"
+                            >
+                                Ask ChatGPT
+                            </x-dropdown.item>
+
+                            <x-dropdown.item
+                                :href="'https://claude.ai/new?q=' . urlencode($aiPrompt)"
+                                target="_blank"
+                            >
+                                Ask Claude
+                            </x-dropdown.item>
 
                             <x-dropdown.divider>
                                 Share
