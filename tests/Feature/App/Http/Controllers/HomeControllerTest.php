@@ -8,13 +8,13 @@ use function Pest\Laravel\get;
 
 use Illuminate\Support\Collection;
 
-it('shows the top ten popular posts when sessions have been recorded', function () {
+it('shows the top twelve popular posts when sessions have been recorded', function () {
     Post::factory(10)->create(['sessions_count' => 0]);
     Post::factory(15)->create(['sessions_count' => random_int(100, 500)]);
     ensureHomeCreator();
 
     get(route('home'))
-        ->assertViewHas('popular', fn (Collection $popular) => 10 === $popular->count());
+        ->assertViewHas('popular', fn (Collection $popular) => 12 === $popular->count());
 });
 
 it('limits the latest posts collection to twelve entries', function () {

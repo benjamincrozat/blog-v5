@@ -20,7 +20,7 @@ class HomeController extends Controller
             ->whereDoesntHave('link')
             ->where('sessions_count', '>', 0)
             ->orderBy('sessions_count', 'desc')
-            ->limit(10)
+            ->limit(12)
             ->get();
 
         $latest = Post::query()

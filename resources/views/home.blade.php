@@ -32,35 +32,20 @@ Displays the home view.
         </div>
     </div>
 
-    <div class="container mt-24 md:mt-32">
-        @if ($popular->isNotEmpty())
-            <section id="popular">
-                <x-typography.heading tag="h2" class="text-left! mb-[.35rem] flex items-center gap-2">
-                    Popular articles
+    @if ($popular->isNotEmpty())
+        <x-section title="Latest posts" id="popular" class="mt-24 md:mt-32">
+            <x-posts-grid :posts="$popular" class="mt-8" />
 
-                    <x-help-btn>
-                        The most popular articles people click on.<br />
-                        They are mostly driven by search engines.
-                    </x-help-btn>
-                </x-typography.heading>
-
-                <div class="h-px bg-linear-to-r from-gray-300 to-transparent"></div>
-
-                <x-posts-grid :posts="$popular" class="mt-8" />
-
-                <div class="mt-7">
-                    <a
-                        wire:navigate
-                        href="{{ route('posts.index') }}"
-                        class="underline font-medium hover:text-blue-600 transition-colors"
-                        data-pirsch-event='Clicked "browse all articles"'
-                    >
-                        Browse all articles →
-                    </a>
-                </div>
-            </section>
-        @endif
-    </div>
+            <x-btn
+                primary
+                wire:navigate
+                href="{{ route('posts.index') }}"
+                class="table mx-auto mt-16"
+            >
+                Browse all articles
+            </x-btn>
+        </x-section>
+    @endif
 
     <x-section
         title="Great tools for developers"
