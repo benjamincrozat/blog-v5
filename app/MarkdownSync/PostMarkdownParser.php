@@ -99,9 +99,6 @@ class PostMarkdownParser
         }
 
         $content = $matches[2];
-        if (blank(trim($content))) {
-            $errors[] = 'Markdown body cannot be empty.';
-        }
 
         $description = $this->optionalString('description', $frontMatter, $errors);
         $serpTitle = $this->optionalString('serp_title', $frontMatter, $errors);
@@ -345,4 +342,3 @@ class PostMarkdownParser
         }
     }
 }
-

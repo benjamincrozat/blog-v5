@@ -16,7 +16,6 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\MarkdownEditor;
-use App\Filament\Resources\Posts\Pages\ManagePostComments;
 use App\Filament\Resources\CommentResource\Pages\EditComment;
 use App\Filament\Resources\CommentResource\Pages\ListComments;
 use App\Filament\Resources\CommentResource\Pages\CreateComment;
@@ -88,8 +87,7 @@ class CommentResource extends Resource
 
                 TextColumn::make('post.title')
                     ->searchable()
-                    ->label('Post')
-                    ->hiddenOn(ManagePostComments::class),
+                    ->label('Post'),
 
                 TextColumn::make('content')
                     ->searchable()

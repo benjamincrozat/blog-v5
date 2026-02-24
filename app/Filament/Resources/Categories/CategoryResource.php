@@ -47,7 +47,10 @@ class CategoryResource extends Resource
 
                 TextInput::make('slug')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->disabled(fn (?Category $record) => filled($record))
+                    ->dehydrated(fn (?Category $record) => blank($record))
+                    ->helperText('Slug changes are locked for existing categories.'),
             ]);
     }
 
