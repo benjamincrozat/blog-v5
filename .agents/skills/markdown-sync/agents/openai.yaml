@@ -1,4 +1,0 @@
-interface:
-  display_name: "Markdown Sync"
-  short_description: "Maintain strict frontmatter and sync pipeline"
-  default_prompt: "Use $markdown-sync to evolve markdown ingestion while keeping strict frontmatter validation, deterministic sync behavior, stable sync commands, command-class naming that matches command signatures, explicit counters/errors, and slug/category consistency."

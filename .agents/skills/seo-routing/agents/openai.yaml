@@ -1,4 +1,0 @@
-interface:
-  display_name: "SEO Routing"
-  short_description: "Maintain SEO-safe routes and status behavior"
-  default_prompt: "Use $seo-routing to implement route and redirect changes while preserving URL surface, route order, and exact 404/410/301 semantics with query-string-safe redirects."

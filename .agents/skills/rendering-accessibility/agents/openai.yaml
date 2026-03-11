@@ -1,4 +1,0 @@
-interface:
-  display_name: "Rendering Accessibility"
-  short_description: "Render markdown with highlight and accessible output"
-  default_prompt: "Use $rendering-accessibility to update markdown rendering and Tempest Highlight integration while preserving predictable, semantic, accessible output and code readability without unsolicited redesign."

@@ -31,8 +31,3 @@ Use this skill when posts are managed from `resources/markdown/posts`.
 5. Verify the public page and the Filament posts list.
 6. Keep deploy notes in mind:
    - deployment should run `php artisan blog:sync` before sitemap generation
-
-## References
-
-- Pair with `blog` for cross-cutting blog behavior.
-- Pair with `markdown-sync` for parser and sync internals.

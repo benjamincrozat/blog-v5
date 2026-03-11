@@ -1,4 +1,0 @@
-interface:
-  display_name: "Post Writing"
-  short_description: "Write concise, researched, reader-first posts"
-  default_prompt: "Use $post-writing to draft or revise educational posts that are concise, source-backed, practical, and reader-first, with curiosity-driven, lightly clickbaity titles that stay honest, restrained first-person voice, jargon defined in plain language at first mention, inline contextual links, and verified working/relevant in-post links."
