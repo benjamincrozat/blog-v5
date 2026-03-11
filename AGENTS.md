@@ -1,4 +1,4 @@
-# Nobinge
+# benjamincrozat.com
 
 This repo is my personal blog about web developent.
 
@@ -13,7 +13,7 @@ This repo is my personal blog about web developent.
 - `composer setup`
 - `composer dev`
   - This runs multiple processes concurrently.
-- Assume the project is always accessible at `https://blog-v5.test`. Never use `php artisan serve` unless `https://blog-v5.test` is not accessible.
+- Assume the project is always accessible locally at `https://blog-v5.test`. Never use `php artisan serve` unless `https://blog-v5.test` is not accessible.
 - Commit every change you make to the codebase. Be as granular as possible.
 - When you have to commit, start the message with a short summary (10 words, tops). Then, add a detailed description of the changes (use lists to make it easier to read).
 - **Don't push code unless you have my approval.**
@@ -40,4 +40,4 @@ This repo is my personal blog about web developent.
 - If you need credentials to log in, use what's in ./database/seeders/UserSeeder.php. The password is always `password`.
 - **Format**: `php vendor/bin/pint --parallel`
 - **Test**: `php vendor/bin/pest --parallel` (you can use `--filter` to run specific tests)
-  - **Check coverage**: `php vendor/bin/pest --parallel --coverage` (you can also use `--filter` if necessary too)
+  - **Check coverage**: `php vendor/bin/pest --coverage --parallel` (you can also use `--filter` if necessary too)
