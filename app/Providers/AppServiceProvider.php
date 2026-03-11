@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Cached visitors count.
      */
-    protected ?int $visitors = null;
+    protected ?int $visitors = 50000;
 
     public function boot() : void
     {
