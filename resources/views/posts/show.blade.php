@@ -129,19 +129,6 @@ Displays the posts show view.
                         </x-slot>
 
                         <x-slot:items>
-                            @if ($user?->isAdmin())
-                                <x-dropdown.divider>
-                                    Admin
-                                </x-dropdown.divider>
-
-                                <x-dropdown.item
-                                    icon="heroicon-o-pencil-square"
-                                    href="{{ route('filament.admin.resources.posts.edit', $post) }}"
-                                >
-                                    Edit article
-                                </x-dropdown.item>
-                            @endif
-
                             <x-dropdown.divider>
                                 Chat
                             </x-dropdown.divider>

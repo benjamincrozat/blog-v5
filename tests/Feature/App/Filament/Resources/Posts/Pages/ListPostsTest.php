@@ -25,6 +25,7 @@ it('shows columns, filters and renders posts', function () {
 
     livewire(ListPosts::class)
         ->assertSuccessful()
+        ->assertActionDoesNotExist('create')
         ->assertCanSeeTableRecords([$post])
         ->assertTableColumnExists('image_path')
         ->assertTableColumnExists('title')
@@ -38,7 +39,15 @@ it('shows columns, filters and renders posts', function () {
         ->assertTableFilterExists('link_association')
         ->assertTableFilterExists('published_at')
         ->assertTableFilterExists('updated_stale')
-        ->assertTableFilterExists('trashed');
+        ->assertTableFilterExists('trashed')
+        ->assertTableActionExists('open', null, $post)
+        ->assertTableActionExists('copy_url', null, $post)
+        ->assertTableActionExists('copy', null, $post)
+        ->assertTableActionExists('check_in_gsc', null, $post)
+        ->assertTableActionDoesNotExist('edit', null, $post)
+        ->assertTableActionDoesNotExist('delete', null, $post)
+        ->assertTableActionDoesNotExist('forceDelete', null, $post)
+        ->assertTableActionDoesNotExist('restore', null, $post);
 });
 
 it('searches posts by title and author', function () {

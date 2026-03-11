@@ -5,11 +5,6 @@ namespace App\Filament\Resources\Posts\Actions;
 use App\Models\Post;
 use Illuminate\Support\Js;
 use Filament\Actions\Action;
-use Filament\Actions\EditAction;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\RestoreAction;
-use Filament\Actions\ForceDeleteAction;
-use App\Filament\Resources\Posts\Pages\EditPost as EditPostPage;
 
 /**
  * Provides reusable record actions Filament actions.
@@ -42,17 +37,6 @@ class RecordActions
 
                     return "https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3A$domain&breakdown=query&page=!" . rawurlencode(route('posts.show', $record));
                 }, shouldOpenInNewTab: true),
-
-            EditAction::make()
-                ->hidden(fn ($livewire) => $livewire instanceof EditPostPage)
-                ->icon('heroicon-o-pencil-square'),
-
-            DeleteAction::make()
-                ->icon('heroicon-o-trash'),
-
-            ForceDeleteAction::make(),
-
-            RestoreAction::make(),
         ];
     }
 }

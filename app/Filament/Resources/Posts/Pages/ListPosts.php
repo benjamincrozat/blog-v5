@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\Posts\Pages;
 
-use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\Posts\PostResource;
@@ -16,17 +15,15 @@ class ListPosts extends ListRecords
 
     protected function getHeaderActions() : array
     {
-        return [
-            CreateAction::make(),
-        ];
+        return [];
     }
 
     protected function getTableQuery() : Builder
     {
         return parent::getTableQuery()
             ->with([
-                'user:id,name',
-                'categories:id,name',
+                'user:id,name,github_login',
+                'categories:id,name,slug',
             ]);
     }
 }

@@ -9,10 +9,8 @@ use Filament\Schemas\Schema;
 use Illuminate\Support\Number;
 use Filament\Resources\Resource;
 use Filament\Actions\ActionGroup;
-use Filament\Resources\Pages\Page;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
-use Filament\Actions\BulkActionGroup;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Group;
@@ -22,20 +20,13 @@ use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
-use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
-use Filament\Pages\Enums\SubNavigationPosition;
-use App\Filament\Resources\Posts\Pages\EditPost;
 use App\Filament\Resources\Posts\Pages\ListPosts;
-use App\Filament\Resources\Posts\Pages\CreatePost;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\Posts\Actions\BulkActions;
 use App\Filament\Resources\Categories\CategoryResource;
 use App\Filament\Resources\Posts\Actions\RecordActions;
-use App\Filament\Resources\Posts\Pages\ManagePostComments;
 
 /**
  * Configures the post resource Filament resource.
@@ -264,9 +255,6 @@ class PostResource extends Resource
             ->filters(Filters::configure())
             ->recordActions([
                 ActionGroup::make(RecordActions::configure()),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make(BulkActions::configure()),
             ]);
     }
 
@@ -274,9 +262,6 @@ class PostResource extends Resource
     {
         return [
             'index' => ListPosts::route('/'),
-            'create' => CreatePost::route('/create'),
-            'edit' => EditPost::route('/{record}/edit'),
-            'comments' => ManagePostComments::route('/{record}/comments'),
         ];
     }
 
@@ -288,26 +273,5 @@ class PostResource extends Resource
     public static function getGlobalSearchResultDetails(Model $record) : array
     {
         return ['Author' => $record->user->name];
-    }
-
-    public static function getRecordSubNavigation(Page $page) : array
-    {
-        return $page->generateNavigationItems([
-            EditPost::class,
-            ManagePostComments::class,
-        ]);
-    }
-
-    public static function getSubNavigationPosition() : SubNavigationPosition
-    {
-        return SubNavigationPosition::Top;
-    }
-
-    public static function getRecordRouteBindingEloquentQuery() : Builder
-    {
-        return parent::getRecordRouteBindingEloquentQuery()
-            ->withoutGlobalScopes([
-                SoftDeletingScope::class,
-            ]);
     }
 }
