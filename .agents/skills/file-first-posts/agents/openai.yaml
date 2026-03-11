@@ -1,0 +1,4 @@
+interface:
+  display_name: "File-first Posts"
+  short_description: "Run the Markdown-based post workflow"
+  default_prompt: "Use $file-first-posts when the task is about exporting posts from the local database, editing Markdown-managed posts, publishing via published_at, syncing files back into the database, and keeping Filament read-only for posts."

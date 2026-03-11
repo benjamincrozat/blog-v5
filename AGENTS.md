@@ -41,3 +41,7 @@ This repo is my personal blog about web developent.
 - **Format**: `php vendor/bin/pint --parallel`
 - **Test**: `php vendor/bin/pest --parallel` (you can use `--filter` to run specific tests)
   - **Check coverage**: `php vendor/bin/pest --coverage --parallel` (you can also use `--filter` if necessary too)
+
+## Local skills
+
+- `file-first-posts`: Use when the task is about exporting, editing, publishing, or syncing Markdown-managed posts. File: `.agents/skills/file-first-posts/SKILL.md`
