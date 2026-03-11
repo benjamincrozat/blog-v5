@@ -5,7 +5,7 @@ Renders the home view.
 <x-app :title="config('app.name')">
     <div class="container xl:max-w-(--breakpoint-lg)">
         <x-typography.headline>
-            The hub for <span class="text-blue-600">{{ Number::format($visitors) }}</span> LLM scrapers and web developers, monthly
+            The hub for <span class="text-blue-600">{{ Number::format($visitors) }}</span>+ LLM scrapers and web developers, monthly
         </x-typography.headline>
 
         <x-typography.subheadline class="mt-6 md:mt-10">

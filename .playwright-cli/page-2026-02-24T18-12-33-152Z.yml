@@ -1,0 +1,359 @@
+- generic [ref=e2]:
+  - link "“Deploy web apps using the power of Docker with Sevalla.” Claim $50 →" [ref=e3] [cursor=pointer]:
+    - /url: https://blog-v5.test/redirect/sevalla?utm_medium=top
+    - paragraph [ref=e4]:
+      - img [ref=e5]
+      - generic [ref=e13]: “Deploy web apps using the power of Docker with Sevalla.” Claim $50 →
+  - banner [ref=e14]:
+    - navigation [ref=e15]:
+      - link "benjamincrozat.com" [ref=e16] [cursor=pointer]:
+        - /url: https://blog-v5.test
+        - generic [ref=e17]:
+          - img [ref=e18]
+          - img [ref=e23]
+        - generic [ref=e26]: benjamincrozat.com
+      - generic [ref=e27]:
+        - link "Latest" [ref=e28] [cursor=pointer]:
+          - /url: https://blog-v5.test/blog
+          - img [ref=e29]
+          - text: Latest
+        - link "News" [ref=e32] [cursor=pointer]:
+          - /url: https://blog-v5.test/categories/news
+          - img [ref=e33]
+          - text: News
+        - link "Links" [ref=e35] [cursor=pointer]:
+          - /url: https://blog-v5.test/links
+          - img [ref=e36]
+          - text: Links
+        - link "Tools" [ref=e38] [cursor=pointer]:
+          - /url: https://blog-v5.test/tools
+          - img [ref=e39]
+          - text: Tools
+        - link "Sign in" [ref=e41] [cursor=pointer]:
+          - /url: https://blog-v5.test/auth/redirect
+          - img [ref=e42]
+          - text: Sign in
+        - button "More" [ref=e46]:
+          - img [ref=e47]
+          - text: More
+  - main [ref=e49]:
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - article [ref=e52]:
+          - navigation "Breadcrumb" [ref=e53]:
+            - list [ref=e54]:
+              - listitem [ref=e55]:
+                - link "Home" [ref=e56] [cursor=pointer]:
+                  - /url: https://blog-v5.test
+              - listitem [ref=e57]:
+                - generic [ref=e58]: /
+                - link "Blog" [ref=e59] [cursor=pointer]:
+                  - /url: https://blog-v5.test/blog
+              - listitem [ref=e60]:
+                - generic [ref=e61]: /
+                - generic [ref=e62]: Tailwind CSS 4.2 small features worth knowing
+          - paragraph [ref=e63]:
+            - text: Published
+            - time [ref=e64]: February 24, 2026
+            - text: · 2 minutes read
+          - heading "Tailwind CSS 4.2 small features worth knowing" [level=1] [ref=e65]
+          - generic [ref=e66]:
+            - generic [ref=e67]:
+              - img [ref=e68]
+              - text: Updated
+              - time [ref=e70]: February 24, 2026
+            - link "Benjamin Crozat Written by Benjamin Crozat" [ref=e71] [cursor=pointer]:
+              - /url: https://blog-v5.test/authors/benjamin-crozat
+              - generic [ref=e72]:
+                - img "Benjamin Crozat" [ref=e73]
+                - text: Written by
+                - text: Benjamin Crozat
+            - link "0 comments" [ref=e74] [cursor=pointer]:
+              - /url: "#comments"
+              - generic [ref=e75]:
+                - img [ref=e76]
+                - text: "0"
+                - text: comments
+            - button "Actions" [ref=e79]:
+              - img [ref=e80]
+              - text: Actions
+          - generic [ref=e82]:
+            - heading "Table of contents" [level=2] [ref=e83]
+            - list [ref=e84]:
+              - listitem [ref=e85]:
+                - link "→ Introduction" [ref=e86] [cursor=pointer]:
+                  - /url: "#introduction"
+              - listitem [ref=e87]:
+                - link "→ Four new default color palettes" [ref=e88] [cursor=pointer]:
+                  - /url: "#four-new-default-color-palettes"
+              - listitem [ref=e89]:
+                - link "→ New font-features-* utility" [ref=e90] [cursor=pointer]:
+                  - /url: "#new-font-features-utility"
+              - listitem [ref=e91]:
+                - link "→ aspect-* now supports quarter-step fractions" [ref=e92] [cursor=pointer]:
+                  - /url: "#aspect-now-supports-quarter-step-fractions"
+              - listitem [ref=e93]:
+                - link "→ Better MDX class extraction for dotted values" [ref=e94] [cursor=pointer]:
+                  - /url: "#better-mdx-class-extraction-for-dotted-values"
+              - listitem [ref=e95]:
+                - link "→ Trailing-dash compatibility for functional utility names" [ref=e96] [cursor=pointer]:
+                  - /url: "#trailing-dash-compatibility-for-functional-utility-names"
+              - listitem [ref=e97]:
+                - link "→ Conclusion" [ref=e98] [cursor=pointer]:
+                  - /url: "#conclusion"
+          - generic [ref=e99]:
+            - heading "Introduction" [level=2] [ref=e100]
+            - paragraph [ref=e101]: Not every useful Tailwind change needs a huge announcement.
+            - paragraph [ref=e102]:
+              - text: This post rounds up the smaller additions and fixes from
+              - link "Tailwind CSS 4.2.0" [ref=e103] [cursor=pointer]:
+                - /url: https://github.com/tailwindlabs/tailwindcss/blob/main/CHANGELOG.md#420---2026-02-18
+              - text: and
+              - link "4.2.1" [ref=e104] [cursor=pointer]:
+                - /url: https://github.com/tailwindlabs/tailwindcss/blob/main/CHANGELOG.md#421---2026-02-23
+              - text: that can still improve day-to-day work.
+            - heading "1) Four new default color palettes" [level=2] [ref=e105]
+            - paragraph [ref=e106]:
+              - text: Tailwind 4.2.0 added
+              - code [ref=e107]: "`mauve`"
+              - text: ","
+              - code [ref=e108]: "`olive`"
+              - text: ","
+              - code [ref=e109]: "`mist`"
+              - text: ", and"
+              - code [ref=e110]: "`taupe`"
+              - text: to the default theme (
+              - 'link "PR #19627" [ref=e111] [cursor=pointer]':
+                - /url: https://github.com/tailwindlabs/tailwindcss/pull/19627
+              - text: ).
+            - paragraph [ref=e112]: "You can use them immediately:"
+            - generic [ref=e113]: <div class="bg-mauve-500 text-olive-700 border-mist-300 ring-taupe-400"> New palette demo </div>
+            - 'heading "2) New `font-features-*` utility" [level=2] [ref=e114]':
+              - text: 2) New
+              - code [ref=e115]: "`font-features-*`"
+              - text: utility
+            - paragraph [ref=e116]:
+              - text: Tailwind 4.2.0 added
+              - code [ref=e117]: "`font-features-*`"
+              - text: for
+              - code [ref=e118]: "`font-feature-settings`"
+              - text: (
+              - 'link "PR #19623" [ref=e119] [cursor=pointer]':
+                - /url: https://github.com/tailwindlabs/tailwindcss/pull/19623
+              - text: ).
+            - generic [ref=e120]: <p class='font-features-["smcp"]'>small caps</p> <p class='font-features-["c2sc","smcp"]'>caps + small caps</p>
+            - paragraph [ref=e121]: This is especially useful when a typeface exposes OpenType features and you want utility-level control.
+            - 'heading "3) `aspect-*` now supports quarter-step fractions" [level=2] [ref=e122]':
+              - text: 3)
+              - code [ref=e123]: "`aspect-*`"
+              - text: now supports quarter-step fractions
+            - paragraph [ref=e124]:
+              - text: Tailwind 4.2.0 now allows multiples of
+              - code [ref=e125]: "`.25`"
+              - text: in
+              - code [ref=e126]: "`aspect-*`"
+              - text: fractions, like
+              - code [ref=e127]: "`aspect-8.5/11`"
+              - text: (
+              - 'link "PR #19688" [ref=e128] [cursor=pointer]':
+                - /url: https://github.com/tailwindlabs/tailwindcss/pull/19688
+              - text: ).
+            - generic [ref=e129]: <figure class="aspect-8.5/11 overflow-hidden rounded-lg bg-slate-100"></figure>
+            - paragraph [ref=e130]: Great for paper-like formats and media frames that are not neat integer ratios.
+            - heading "4) Better MDX class extraction for dotted values" [level=2] [ref=e131]
+            - paragraph [ref=e132]:
+              - text: Tailwind 4.2.1 fixed extraction for classes containing
+              - code [ref=e133]: "`.`"
+              - text: inside curly-brace MDX blocks (
+              - 'link "PR #19711" [ref=e134] [cursor=pointer]':
+                - /url: https://github.com/tailwindlabs/tailwindcss/pull/19711
+              - text: ).
+            - paragraph [ref=e135]:
+              - text: The patch specifically covers nested content like
+              - code [ref=e136]: "`px-2.5`"
+              - text: and even string cases like
+              - code [ref=e137]: "`content-['example.js']`"
+              - text: .
+            - paragraph [ref=e138]: If you publish MDX-heavy docs, this removes a subtle source of missing styles.
+            - heading "5) Trailing-dash compatibility for functional utility names" [level=2] [ref=e139]
+            - paragraph [ref=e140]:
+              - text: Tailwind 4.2.1 also restored backwards compatibility for functional utility names ending with a trailing dash root (
+              - 'link "PR #19696" [ref=e141] [cursor=pointer]':
+                - /url: https://github.com/tailwindlabs/tailwindcss/pull/19696
+              - text: ).
+            - paragraph [ref=e142]:
+              - text: This matters mostly if you define custom
+              - code [ref=e143]: "`@utility`"
+              - text: patterns.
+            - generic [ref=e144]: "@utility border--* { border-width: --value(integer); }"
+            - heading "Conclusion" [level=2] [ref=e145]
+            - paragraph [ref=e146]: "None of these changes are flashy alone. Together, they make Tailwind 4.2.x more practical: better defaults, better typography control, fewer extraction edge cases, and a bit less migration friction."
+          - generic [ref=e147]:
+            - paragraph [ref=e148]: Help me reach more people by sharing this article on social media!
+            - list [ref=e149]:
+              - listitem [ref=e150]:
+                - link "Facebook" [ref=e151] [cursor=pointer]:
+                  - /url: https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fblog-v5.test%2Ftailwind-css-42-small-features
+                  - img [ref=e152]
+                  - generic [ref=e154]: Facebook
+              - listitem [ref=e155]:
+                - link "Linkedin" [ref=e156] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fblog-v5.test%2Ftailwind-css-42-small-features&title=Tailwind+CSS+4.2+small+features+worth+knowing
+                  - img [ref=e157]
+                  - generic [ref=e161]: Linkedin
+              - listitem [ref=e162]:
+                - link "X" [ref=e163] [cursor=pointer]:
+                  - /url: https://x.com/intent/tweet?url=https%3A%2F%2Fblog-v5.test%2Ftailwind-css-42-small-features&text=Tailwind+CSS+4.2+small+features+worth+knowing
+                  - img [ref=e164]
+                  - generic [ref=e167]: X
+        - generic [ref=e169]:
+          - generic [ref=e170]:
+            - heading "0 comments" [level=2] [ref=e171]
+            - button "Newest to oldest" [ref=e173]:
+              - text: Newest to oldest
+              - img [ref=e174]
+          - generic [ref=e178]:
+            - img "Guest" [ref=e179]
+            - generic [ref=e180]:
+              - text: Your comment
+              - textbox "Your comment" [disabled] [ref=e181]
+              - paragraph [ref=e182]: Markdown is supported.
+              - paragraph [ref=e183]:
+                - text: Hey, you need to sign in with your GitHub account to comment.
+                - link "Get started →" [ref=e184] [cursor=pointer]:
+                  - /url: https://blog-v5.test/auth/redirect
+        - generic [ref=e185]:
+          - heading "Great tools for developers" [level=2] [ref=e186]
+          - generic [ref=e187]:
+            - link "Prototype and debug on the fly Tinkerwell lets you code and debug your PHP, Laravel, Symfony, WordPress, etc., apps in an editor designed for fast feedback and quick iterations. Get started Tinkerwell" [ref=e188] [cursor=pointer]:
+              - /url: https://blog-v5.test/recommends/tinkerwell
+              - generic [ref=e189]:
+                - paragraph [ref=e190]: Prototype and debug on the fly
+                - paragraph [ref=e192]: Tinkerwell lets you code and debug your PHP, Laravel, Symfony, WordPress, etc., apps in an editor designed for fast feedback and quick iterations.
+                - button "Get started" [ref=e193]
+              - img "Tinkerwell" [ref=e195]
+            - link "Unlock the power of Git Tower is an easy-to-use and powerful Git client for Mac and Windows. Start free Tower" [ref=e196] [cursor=pointer]:
+              - /url: https://blog-v5.test/recommends/tower
+              - generic [ref=e197]:
+                - paragraph [ref=e198]: Unlock the power of Git
+                - paragraph [ref=e200]: Tower is an easy-to-use and powerful Git client for Mac and Windows.
+                - button "Start free" [ref=e201]
+              - img "Tower" [ref=e203]
+            - link "Know who visits your site Fathom Analytics is a simple, privacy-focused web analytics. No cookies, ads, or tracking. Start free + $10 off Fathom Analytics" [ref=e204] [cursor=pointer]:
+              - /url: https://blog-v5.test/recommends/fathom-analytics
+              - generic [ref=e205]:
+                - paragraph [ref=e206]: Know who visits your site
+                - paragraph [ref=e208]: Fathom Analytics is a simple, privacy-focused web analytics. No cookies, ads, or tracking.
+                - button "Start free + $10 off" [ref=e209]
+              - img "Fathom Analytics" [ref=e211]
+            - link "Easily deploy PHP web apps PHP 8, scalability, Cloudflare, caching, 24/7 support, and more with Cloudways. Start free Cloudways" [ref=e212] [cursor=pointer]:
+              - /url: https://blog-v5.test/recommends/cloudways-php
+              - generic [ref=e213]:
+                - paragraph [ref=e214]: Easily deploy PHP web apps
+                - paragraph [ref=e216]: PHP 8, scalability, Cloudflare, caching, 24/7 support, and more with Cloudways.
+                - button "Start free" [ref=e217]
+              - img "Cloudways" [ref=e219]
+            - link "Send emails to your users Self-hosted email marketing built for Laravel developers, by Laravel developers. Start free Mailcoach" [ref=e220] [cursor=pointer]:
+              - /url: https://blog-v5.test/recommends/mailcoach
+              - generic [ref=e221]:
+                - paragraph [ref=e222]: Send emails to your users
+                - paragraph [ref=e224]: Self-hosted email marketing built for Laravel developers, by Laravel developers.
+                - button "Start free" [ref=e225]
+              - img "Mailcoach" [ref=e227]
+            - link "Rank higher on Google Use Wincher to track and grow your business’s search visibility. Use WELCOME30 for 30% off your first invoice. Start free Wincher" [ref=e228] [cursor=pointer]:
+              - /url: https://blog-v5.test/recommends/wincher
+              - generic [ref=e229]:
+                - paragraph [ref=e230]: Rank higher on Google
+                - paragraph [ref=e232]:
+                  - text: Use Wincher to track and grow your business’s search visibility.
+                  - strong [ref=e233]: Use WELCOME30 for 30% off your first invoice.
+                - button "Start free" [ref=e234]
+              - img "Wincher" [ref=e236]
+            - link "Get alerts when your site is down Uptimia monitors your site’s uptime, speed, and SSL from 170+ global checkpoints. Start free Uptimia" [ref=e237] [cursor=pointer]:
+              - /url: https://blog-v5.test/recommends/uptimia
+              - generic [ref=e238]:
+                - paragraph [ref=e239]: Get alerts when your site is down
+                - paragraph [ref=e241]: Uptimia monitors your site’s uptime, speed, and SSL from 170+ global checkpoints.
+                - button "Start free" [ref=e242]
+              - img "Uptimia" [ref=e244]
+      - generic [ref=e245]:
+        - link "Benjamin Crozat “Successful developers automate” Don't waste time on server maintenance. Let Sevalla do it for you. PHP and Laravel-friendly Multiple environments Scheduled tasks and jobs Built-in security Get $50 free credits Sevalla's interface Claim $50 free credits" [ref=e246] [cursor=pointer]:
+          - /url: https://blog-v5.test/redirect/sevalla?utm_medium=sidebar
+          - img "Benjamin Crozat" [ref=e247]
+          - paragraph [ref=e248]:
+            - strong [ref=e249]: “Successful developers automate”
+          - paragraph [ref=e250]: Don't waste time on server maintenance. Let Sevalla do it for you.
+          - list [ref=e251]:
+            - listitem [ref=e252]: PHP and Laravel-friendly
+            - listitem [ref=e253]: Multiple environments
+            - listitem [ref=e254]: Scheduled tasks and jobs
+            - listitem [ref=e255]: Built-in security
+            - listitem [ref=e256]:
+              - strong [ref=e257]: Get $50 free credits
+          - img "Sevalla's interface" [ref=e258]
+          - button "Claim $50 free credits" [ref=e259]
+        - link "I have even more tools for developers. Services, apps, and all kinds of tools at a discount. Check available tools →" [ref=e260] [cursor=pointer]:
+          - /url: https://blog-v5.test/tools
+          - paragraph [ref=e261]:
+            - strong [ref=e262]: I have even more tools for developers.
+            - text: Services, apps, and all kinds of tools at a discount. Check available tools →
+        - generic [ref=e263]:
+          - paragraph [ref=e264]: Follow me
+          - list [ref=e265]:
+            - listitem [ref=e266]:
+              - link "Atom feed" [ref=e267] [cursor=pointer]:
+                - /url: https://blog-v5.test/feed
+                - generic [ref=e268]:
+                  - img [ref=e269]
+                  - paragraph [ref=e271]: Atom feed
+            - listitem [ref=e272]:
+              - link "LinkedIn" [ref=e273] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/benjamincrozat/
+                - generic [ref=e274]:
+                  - img [ref=e275]
+                  - paragraph [ref=e279]: LinkedIn
+            - listitem [ref=e280]:
+              - link "GitHub" [ref=e281] [cursor=pointer]:
+                - /url: https://github.com/benjamincrozat
+                - generic [ref=e282]:
+                  - img [ref=e283]
+                  - paragraph [ref=e286]: GitHub
+            - listitem [ref=e287]:
+              - link "X" [ref=e288] [cursor=pointer]:
+                - /url: https://x.com/benjamincrozat
+                - generic [ref=e289]:
+                  - img [ref=e290]
+                  - paragraph [ref=e293]: X
+  - contentinfo [ref=e295]:
+    - navigation [ref=e296]:
+      - link "Home" [ref=e297] [cursor=pointer]:
+        - /url: https://blog-v5.test
+      - link "Articles" [ref=e298] [cursor=pointer]:
+        - /url: https://blog-v5.test/blog
+      - link "Categories" [ref=e299] [cursor=pointer]:
+        - /url: https://blog-v5.test/categories
+      - link "Links" [ref=e300] [cursor=pointer]:
+        - /url: https://blog-v5.test/links
+      - link "Advertise" [ref=e301] [cursor=pointer]:
+        - /url: https://blog-v5.test/advertise
+      - link "About" [ref=e302] [cursor=pointer]:
+        - /url: https://blog-v5.test/about
+      - link "Contact" [ref=e303] [cursor=pointer]:
+        - /url: https://blog-v5.test/contact
+      - link "Editorial policy" [ref=e304] [cursor=pointer]:
+        - /url: https://blog-v5.test/editorial-policy
+      - link "Corrections policy" [ref=e305] [cursor=pointer]:
+        - /url: https://blog-v5.test/corrections-policy
+      - link "Sponsorship policy" [ref=e306] [cursor=pointer]:
+        - /url: https://blog-v5.test/sponsorship-policy
+      - link "Ownership and funding" [ref=e307] [cursor=pointer]:
+        - /url: https://blog-v5.test/ownership-funding
+    - paragraph [ref=e308]:
+      - text: This platform is hosted on
+      - link "DigitalOcean" [ref=e309] [cursor=pointer]:
+        - /url: https://blog-v5.test/recommends/digitalocean
+      - text: . Analytics provided by
+      - link "Pirsch" [ref=e310] [cursor=pointer]:
+        - /url: https://blog-v5.test/recommends/pirsch-analytics
+      - text: .
+    - paragraph [ref=e311]: Please don't steal my content. © 2026 blah blah blah.
