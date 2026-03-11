@@ -35,6 +35,7 @@ class Post extends Model implements Feedable
     protected function casts() : array
     {
         return [
+            'is_commercial' => 'boolean',
             'sponsored_at' => 'datetime',
             'published_at' => 'datetime',
             'modified_at' => 'datetime',

@@ -253,13 +253,16 @@ it('generates valid Markdown with YAML front matter via toMarkdown()', function 
         'slug' => 'foo-bar',
         'description' => 'Desc',
         'serp_title' => 'SERP',
+        'source_uuid' => '01ARZ3NDEKTSV4RRFFQ69G5FAV',
     ]);
 
     $markdown = $post->toMarkdown();
 
     expect($markdown)->toMatch('/^---\n/')
-        ->and($markdown)->toContain('slug: foo-bar')
-        ->and($markdown)->toContain('# Foo Bar');
+        ->and($markdown)->toContain('id: "01ARZ3NDEKTSV4RRFFQ69G5FAV"')
+        ->and($markdown)->toContain('slug: "foo-bar"')
+        ->and($markdown)->not->toContain('# Foo Bar')
+        ->and($markdown)->toEndWith('Baz');
 });
 
 it('getFeedItems only returns the 50 most recent published posts without links', function () {
