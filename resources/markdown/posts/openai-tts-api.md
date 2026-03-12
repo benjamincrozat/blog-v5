@@ -131,3 +131,10 @@ Here's an old-fashioned table:
 |--------|-------|
 | TTS | $0.015 / 1K characters |
 | TTS-HD | $0.030 / 1K characters |
+
+If you want a few more AI rabbit holes after this:
+
+- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
+- [How to access and use GPT-4o's API, step by step](/gpt-4o)
+- [How to access and use GPT-4 Turbo's API, step by step](/gpt-4-turbo)
+

@@ -124,3 +124,10 @@ php artisan up
 As you can see, to avoid people sumbling upon various errors while the code changes, `composer install` runs, or the database is updated, I put the blog down and show a custom 503 (Service Unavailable) page.
 
 Now, since I'm using [Ploi](/recommends/ploi) to handle my deployments with zero downtime, this trick isn't needed anymore. But for those running in legacy environments, I think you'll find it handy.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
+- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
+- [Create a SPA in seconds using wire:navigate in Livewire v3](/livewire-spa-wire-navigate)
+

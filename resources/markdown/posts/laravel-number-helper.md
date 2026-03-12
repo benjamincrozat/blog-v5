@@ -157,3 +157,10 @@ Blazing through number formatting challenges just got easier with Laravel's Numb
 Each method is designed to handle different nuances associated with number representation, from locales to human-readable formats
 
 It's time to explore these methods and put them to work in your Laravel applications! 💪
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Understanding Laravel's fake() helper](/laravel-fake-helper)
+- [Validation in Laravel made easy](/laravel-validation)
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+

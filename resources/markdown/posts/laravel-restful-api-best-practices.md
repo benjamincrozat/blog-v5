@@ -287,3 +287,10 @@ What I really love is how Ash dives deep into testing strategies and best practi
 [Check out Consuming APIs with Laravel by Ash Allen →](/recommends/consuming-apis-laravel)
 
 [![The Consuming APIs with Laravel book by Ash Allen.](https://github.com/benjamincrozat/content/assets/3613731/5f5e61b5-1ce1-4a31-9ca3-c7ef0cf59636)](/recommends/consuming-apis-laravel)
+
+If you want a few more Laravel rabbit holes after this:
+
+- [The best Laravel 12-ready books you should read in 2025](/best-laravel-books)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [How to publish API and broadcasting routes in Laravel 11](/install-route-files-laravel)
+

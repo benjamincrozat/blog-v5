@@ -131,3 +131,10 @@ Still seeing 404s? Run these quick checks:
 ## Conclusion
 
 The `/livewire/livewire.js` issue typically boils down to server config confusion. But armed with these tweaks, you're set for smooth sailing.
+
+If you want a few more useful reads after this:
+
+- [Prevent a Livewire component from re-rendering](/prevent-render-livewire)
+- [Create a SPA in seconds using wire:navigate in Livewire v3](/livewire-spa-wire-navigate)
+- [How to force re-render a Livewire v3 component](/re-render-livewire-component)
+

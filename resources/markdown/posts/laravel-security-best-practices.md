@@ -315,3 +315,10 @@ As you can imagine, doing security audits isn't free. It might only be worth it 
 ## Bonus: Security.txt & responsible disclosure
 
 Want to look professional and make life easier for white-hats? Add a `/.well-known/security.txt` file pointing to a security contact or bug bounty policy. It’s a tiny effort that can prevent a lot of headaches.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [The "419 Page Expired" error in Laravel: 5 quick fixes](/419-page-expired-laravel)
+- [Fix "No application encryption key has been specified." in Laravel](/laravel-no-application-key-specified)
+- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
+

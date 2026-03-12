@@ -51,3 +51,10 @@ And both also have free third-party plugins that should cover almost all of your
 
 - Browse a list of free packages for Laravel Nova on [Nova Packages](https://novapackages.com).
 - Browse a list of [free and paid packages for Filament](https://filamentphp.com/plugins).
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+

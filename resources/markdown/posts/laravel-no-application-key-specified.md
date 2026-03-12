@@ -47,3 +47,10 @@ So much that Laravel offers you to fix it with just a single click!
 Did you notice the button? Try it, it's so convenient! 👍
 
 ![No application encryption key has been specified.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/140/conversions/CleanShot_2023-06-25_at_11.37.56_2x_qo61rw-medium.jpg)
+
+If you want a few more Laravel rabbit holes after this:
+
+- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
+- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
+- [The "419 Page Expired" error in Laravel: 5 quick fixes](/419-page-expired-laravel)
+

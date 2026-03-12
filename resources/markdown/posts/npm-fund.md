@@ -89,3 +89,10 @@ These actions still significantly help maintainers and the community.
 ## Conclusion
 
 You’ve now got multiple ways to disable npm’s “packages are looking for funding” message. Choose the method that suits you best and enjoy clearer terminal output!
+
+If you want a few more JavaScript rabbit holes after this:
+
+- [npm ci vs. npm install: here's the difference](/npm-ci)
+- [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
+- [Use Bun as your package manager in any PHP project](/bun-php)
+

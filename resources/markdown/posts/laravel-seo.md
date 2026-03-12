@@ -51,3 +51,10 @@ Let's imagine you heard that performing well on social media boosts your ranking
 ## 6. Google renders non-server-side rendered pages, but don't ditch SSR yet!
 
 ## 7. Monitor for errors, because Google will hide you from search results in case of prolonged issues
+
+If you want a few more SEO rabbit holes after this:
+
+- [SEO case study (2022-2023): +10K clicks in 6 months](/seo-case-study)
+- [Core web vitals aren't that important for Google](/google-core-web-vitals)
+- [The best GDPR-compliant Google Analytics alternatives (2024)](/best-gdpr-compliant-google-analytics-alternatives)
+

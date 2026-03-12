@@ -243,3 +243,10 @@ The key to mastering Laravel validation is practice:
 - Try out custom rules whenever you have unconventional needs.
 
 You can do this!
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Easy data integrity with array validation in Laravel](/laravel-array-validation)
+- [The best Laravel 12-ready books you should read in 2025](/best-laravel-books)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+

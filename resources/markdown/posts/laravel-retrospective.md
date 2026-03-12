@@ -158,3 +158,10 @@ The following packages have been added since Laravel 5.8:
 - [Sail](https://laravel.com/docs/sail)
 - [Sanctum](https://laravel.com/docs/sanctum)
 - [Valet](https://laravel.com/docs/valet)
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
+

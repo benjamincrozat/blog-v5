@@ -42,3 +42,10 @@ In PHP 4, as you know, a constructor was declared with the same name as its clas
 For posterity, you can read more about it on the official PHP documentation: [PHP deprecated features in version 7.0.x](https://www.php.net/manual/en/migration70.deprecated.php#migration70.deprecated.php4-constructors)
 
 You can also see the PHP RFC that led to this: [PHP RFC: Remove PHP 4 Constructors](https://wiki.php.net/rfc/remove_php4_constructors)
+
+If you want a few more PHP rabbit holes after this:
+
+- [PHP 8.3's Override attribute in a nutshell](/php-83-override-attribute)
+- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
+- [PHP 9 release date and what to fix now](/php-90)
+

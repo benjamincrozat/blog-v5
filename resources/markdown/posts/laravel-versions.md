@@ -915,3 +915,10 @@ You can learn more in this great blog post I found: [History of Laravel PHP fram
   - Laravel 12 keeps the minimum PHP version at 8.2, ensuring compatibility with the latest language features without forcing another upgrade.
 - **Breeze & Jetstream Sunset**:
   - With the arrival of the new starter kits, Breeze and Jetstream enter maintenance-only status and will no longer receive feature updates.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+- [Laravel 12: new starter kits, changes, and upgrade tips](/laravel-12)
+- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
+

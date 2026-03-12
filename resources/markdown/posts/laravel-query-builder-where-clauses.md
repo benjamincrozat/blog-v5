@@ -113,3 +113,10 @@ Laravel's query builder's where capabilities don't just stop at the basics. It o
 - **Comparing columns**: With the `whereColumn` method, you can effortlessly compare two columns in the same table. Be it checking for equality or any other relation.
 
 [Learn more about additional where clauses.](https://laravel.com/docs/10.x/queries#additional-where-clauses)
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Efficient data filtering with whereIn() in Laravel](/laravel-query-builder-wherein)
+- [Laravel Eloquent: sort query results using orderBy()](/laravel-order-by)
+- [Validation in Laravel made easy](/laravel-validation)
+

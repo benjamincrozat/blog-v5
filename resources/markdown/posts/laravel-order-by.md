@@ -108,3 +108,10 @@ I'll never get bored of Laravel's convenience!
 
 * [`latest()`](https://laravel.com/docs/11.x/queries#retrieving-latest-or-oldest-records) / [`oldest()`](https://laravel.com/docs/11.x/queries#retrieving-latest-or-oldest-records): terser helpers that default to `created_at` but can take any column.
 * [`inRandomOrder()`](https://laravel.com/docs/11.x/queries#random-ordering): for that random "featured" user or contest winner logic.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
+- [Efficient data filtering with whereIn() in Laravel](/laravel-query-builder-wherein)
+- [Laravel retrospective: what changed since version 5.8?](/laravel-retrospective)
+

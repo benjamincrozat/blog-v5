@@ -330,3 +330,10 @@ I won’t disclose everything inside it, but the website provides a pretty good 
 [Check out Battle Ready Laravel](/recommends/battle-ready-laravel)
 
 [![Battle Ready Laravel by Ash Allen](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/3613731/7b6f4c49-cf20-49a7-bdd2-3f01f414df29)](/recommends/battle-ready-laravel)
+
+If you want a few more Laravel rabbit holes after this:
+
+- [What's new in Pest 3 and how to upgrade](/pest-3)
+- [What’s new in Pest 4 and how to upgrade](/pest-4)
+- [Laravel interview questions and answers for 2025](/laravel-interview-questions)
+

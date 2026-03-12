@@ -69,3 +69,10 @@ Usually, yes—but npm ci is plenty fast for most scenarios.
 - Use `npm ci` for speed, consistency, and CI reliability.
 - Use `npm install` locally for flexibility and incremental updates.
 - Always commit and maintain a clean, synced `package-lock.json`.
+
+If you want a few more JavaScript rabbit holes after this:
+
+- [Use Bun as your package manager in any PHP project](/bun-php)
+- [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
+- [Disable "packages are looking for funding" (npm fund message)](/npm-fund)
+

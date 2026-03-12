@@ -406,3 +406,10 @@ It’s boring in the best way possible:
 * Less callback boilerplate.
 * Cleaner configuration helpers (VAT, DB connections, loggers, responses).
 * Easy “run this exact call later” closures using trailing `...`.
+
+If you want a few more PHP rabbit holes after this:
+
+- [Making sense of PHP's array_map() function](/php-array-map)
+- [PHP 8.6: release date and confirmed features](/php-86)
+- [Understanding array_filter() in PHP](/php-array-filter)
+

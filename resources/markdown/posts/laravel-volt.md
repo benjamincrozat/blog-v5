@@ -222,3 +222,10 @@ Learn more about [how to test Volt components](https://livewire.laravel.com/docs
 Oh, before I leave, I wanted to share with you the video from Laracon US where Taylor Otwell himself unveils and demos Laravel Volt (skip to 40:32). Enjoy!
 
 <iframe src="https://www.youtube.com/embed/1P3wLy49t2c?si=-DCMEybpyBuUbJed&start=2432" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+If you want a few more Laravel rabbit holes after this:
+
+- [How to force re-render a Livewire v3 component](/re-render-livewire-component)
+- [Prevent a Livewire component from re-rendering](/prevent-render-livewire)
+- [Create a SPA in seconds using wire:navigate in Livewire v3](/livewire-spa-wire-navigate)
+

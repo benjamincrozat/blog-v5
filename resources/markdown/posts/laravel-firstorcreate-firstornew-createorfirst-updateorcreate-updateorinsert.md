@@ -415,3 +415,10 @@ Use:
 
   * Unsaved: `firstOrNew`, `findOrNew`.
   * Immediate: `firstOrCreate`, `createOrFirst`, `updateOrCreate`.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
+- [Laravel retrospective: what changed since version 5.8?](/laravel-retrospective)
+- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
+

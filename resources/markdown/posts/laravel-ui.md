@@ -118,3 +118,10 @@ export default defineConfig({
     },
 });
 ```
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
+- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
+- [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
+

@@ -24,3 +24,10 @@ Created by [Wendell Adriel](https://wendelladriel.com), Lift lets you create pub
 The package intelligently uses PHP 8's attributes, and gives you complete freedom in setting up your models. For instance, you can put validation rules right into your models - a simple and easy-to-understand arrangement compared to a separate request class. Plus, all these settings are easily reachable through handy new methods.
  
 With a focus on simplicity, Lift depends on Eloquent events to work. This means the package fits easily into your project, without needing any major changes (unless you've turned off event triggering).
+
+If you want a few more Laravel rabbit holes after this:
+
+- [The laravel/ui package: my 2025 guide](/laravel-ui)
+- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
+- [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
+

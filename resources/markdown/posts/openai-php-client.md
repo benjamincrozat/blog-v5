@@ -347,3 +347,10 @@ it('asks GPT to do a thing', function () {
 GPT is the basis for a variety of great products nowadays and only the imagination is the limit. I hope you will create something unique thanks to the power of AI!
 
 Talking about unique products, did you know OpenAI provides an [API endpoint to generate true to life voices](https://benjamincrozat.com/openai-tts-api)?
+
+If you want a few more AI rabbit holes after this:
+
+- [How to access and use GPT-4 Turbo's API, step by step](/gpt-4-turbo)
+- [How to use GPT-3.5 Turbo's API, step by step](/gpt-35-turbo)
+- [How to access and use GPT-4o's API, step by step](/gpt-4o)
+

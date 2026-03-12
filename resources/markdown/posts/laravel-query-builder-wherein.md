@@ -58,3 +58,10 @@ While `whereIn()` is handy, it's important to use it wisely.
 If you have a massive array of items you're filtering by, this can slow down your query. So, always try to limit the size of the array you pass to `whereIn()`.
 
 Instead, I would try to find the common denominator between all those items and use that to run my queries faster.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
+- [Laravel Eloquent: sort query results using orderBy()](/laravel-order-by)
+- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
+

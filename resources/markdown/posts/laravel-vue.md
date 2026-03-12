@@ -153,3 +153,10 @@ npm run dev
 That's all there is to it! Check your browser and it all should be working. 
 
 You've successfully added Vue.js to your Laravel project and you can now start having fun by building something amazing!
+
+If you want a few more JavaScript rabbit holes after this:
+
+- [Add Alpine.js to any Laravel project](/alpine-js-laravel)
+- [Use Bun as Your Package Manager in Any Laravel Project](/bun-laravel)
+- [Alpine.js: a lightweight framework for productive developers](/alpine-js)
+

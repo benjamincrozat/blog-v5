@@ -113,3 +113,10 @@ By now, you're a pro at making your Laravel application "feel" like a speedy sin
 Remember, it's not about turning your application into an SPA - it's about borrowing the benefits.
 
 Fast, seamless browsing is no longer reserved for JavaScript-heavies. With Livewire and `wire:navigate`, we have all the power we need! 🔥
+
+If you want a few more Laravel rabbit holes after this:
+
+- [How to force re-render a Livewire v3 component](/re-render-livewire-component)
+- [Prevent a Livewire component from re-rendering](/prevent-render-livewire)
+- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
+

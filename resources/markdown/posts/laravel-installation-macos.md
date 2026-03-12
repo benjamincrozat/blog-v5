@@ -109,3 +109,10 @@ Options:
       --pest                       Installs the Pest testing framework
       --phpunit                    Installs the PHPUnit testing framework
 ```
+
+If you want a few more Laravel rabbit holes after this:
+
+- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
+- [Laravel Herd: the simplest way to install PHP on macOS and Windows](/laravel-herd)
+- [The 4 best Laravel cloud hosting providers for 2025 (+ my setup)](/best-laravel-hosting-providers)
+

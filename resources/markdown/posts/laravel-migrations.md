@@ -231,3 +231,10 @@ return new class extends Migration {
 ## Conclusion
 
 You now have all the skills to keep leveling up with migrations. Why don't you learn in the official documentation about all the [available methods from the Blueprint class](https://laravel.com/docs/migrations#available-column-types)?
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
+- [A cheat sheet for Laravel's make Artisan commands](/cheat-sheet-make-laravel-artisan)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+

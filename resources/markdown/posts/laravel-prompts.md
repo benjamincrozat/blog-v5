@@ -158,3 +158,10 @@ Now that you got the gist of Laravel Prompts, you can refer to the [super easy t
 ## Contribute to Laravel Prompts
 
 If you ever encounter a bug or feel like Laravel Prompts needs one more feature, you might want to send your pull requests directly to the official repository: https://github.com/laravel/prompts
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
+- [The laravel/ui package: my 2025 guide](/laravel-ui)
+- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
+

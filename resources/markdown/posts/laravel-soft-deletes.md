@@ -163,3 +163,10 @@ protected function schedule(Schedule $schedule)
     $schedule->command('model:prune')->daily(); // [tl! ++]
 }
 ```
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [Efficient data filtering with whereIn() in Laravel](/laravel-query-builder-wherein)
+
