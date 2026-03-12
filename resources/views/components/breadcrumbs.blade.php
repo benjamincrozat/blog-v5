@@ -5,28 +5,22 @@ Provides a responsive breadcrumb trail that accepts label and URL pairs, treatin
 @props(['items'])
 
 <nav
-    {{ $attributes->class('flex w-full max-w-full justify-start overflow-hidden') }}
+    {{ $attributes->class('w-full overflow-x-auto overscroll-x-contain') }}
     aria-label="Breadcrumb"
     x-data
     x-init="$nextTick(() => {
-        const scroller = $refs.scroller;
-
-        if (scroller && scroller.scrollWidth > scroller.clientWidth) {
+        if ($el.scrollWidth > $el.clientWidth) {
             $refs.current?.scrollIntoView({ block: 'nearest', inline: 'end' });
         }
     })"
 >
-    <div
-        x-ref="scroller"
-        class="w-full max-w-full overflow-x-auto overscroll-x-contain"
-    >
-        <ol class="inline-flex min-w-max items-center gap-1 rounded-full border border-black/[0.06] bg-gray-50 p-1.5 text-sm text-gray-600 shadow-sm shadow-black/5">
+    <ol class="inline-flex min-w-max items-center gap-1 rounded-full border border-black/[0.06] bg-gray-50 p-1.5 text-sm shadow-sm shadow-black/5">
         @foreach ($items as $item)
             @php
                 $isCurrentPage = blank($item['url'] ?? null);
             @endphp
 
-            <li class="flex min-w-0 items-center gap-1">
+            <li class="flex items-center gap-1">
                 @if (! $loop->first)
                     <x-heroicon-o-chevron-right
                         aria-hidden="true"
@@ -57,6 +51,5 @@ Provides a responsive breadcrumb trail that accepts label and URL pairs, treatin
                 @endif
             </li>
         @endforeach
-        </ol>
-    </div>
+    </ol>
 </nav>
