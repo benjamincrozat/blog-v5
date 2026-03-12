@@ -32,20 +32,20 @@ Displays the home view.
         </div>
     </div>
 
-    @if ($popular->isNotEmpty())
-        <x-section title="Latest posts" id="popular" class="mt-24 md:mt-32">
-            <x-posts-grid :posts="$popular" class="mt-8" />
+    <x-section title="Latest posts" id="latest" class="mt-24 md:mt-32">
+        @if ($latest->isNotEmpty())
+            <x-posts-grid :posts="$latest" />
+        @endif
 
-            <x-btn
-                primary
-                wire:navigate
-                href="{{ route('posts.index') }}"
-                class="table mx-auto mt-16"
-            >
-                Browse all articles
-            </x-btn>
-        </x-section>
-    @endif
+        <x-btn
+            primary
+            wire:navigate
+            href="{{ route('posts.index') }}"
+            class="table mx-auto mt-16"
+        >
+            Browse all articles
+        </x-btn>
+    </x-section>
 
     <x-section
         title="Great tools for developers"
@@ -60,21 +60,6 @@ Displays the home view.
             <x-tools.wincher />
             <x-tools.uptimia />
         </div>
-    </x-section>
-
-    <x-section title="Latest posts" id="latest" class="mt-24 md:mt-32">
-        @if ($latest->isNotEmpty())
-            <x-posts-grid :posts="$latest" />
-        @endif
-
-        <x-btn
-            primary
-            wire:navigate
-            href="{{ route('posts.index') }}"
-            class="table mx-auto mt-16"
-        >
-            Browse all articles
-        </x-btn>
     </x-section>
 
     <x-section title="Latest links" id="links" class="mt-24 md:mt-32">

@@ -8,15 +8,6 @@ use function Pest\Laravel\get;
 
 use Illuminate\Support\Collection;
 
-it('shows the top twelve popular posts when sessions have been recorded', function () {
-    Post::factory(10)->create(['sessions_count' => 0]);
-    Post::factory(15)->create(['sessions_count' => random_int(100, 500)]);
-    ensureHomeCreator();
-
-    get(route('home'))
-        ->assertViewHas('popular', fn (Collection $popular) => 12 === $popular->count());
-});
-
 it('limits the latest posts collection to twelve entries', function () {
     Post::factory(20)->create(['published_at' => now()]);
     ensureHomeCreator();
@@ -38,14 +29,6 @@ it("exposes Benjamin's about section to the view", function () {
 
     get(route('home'))
         ->assertViewHas('aboutUser', fn (User $aboutUser) => $aboutUser->is($creator));
-});
-
-it('does not show popular posts if there are no sessions', function () {
-    Post::factory(15)->create(['sessions_count' => 0]);
-    ensureHomeCreator();
-
-    get(route('home'))
-        ->assertViewHas('popular', fn (Collection $popular) => $popular->isEmpty());
 });
 
 function ensureHomeCreator() : User
