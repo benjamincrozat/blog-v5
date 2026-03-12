@@ -68,7 +68,6 @@ return [
     ],
 
     'search_console' => [
-        'enabled' => env('SEARCH_CONSOLE_ENABLED', false),
         'property' => env('SEARCH_CONSOLE_PROPERTY'),
         'sitemap_url' => env('SEARCH_CONSOLE_SITEMAP_URL'),
         'token_uri' => env('SEARCH_CONSOLE_TOKEN_URI', 'https://oauth2.googleapis.com/token'),

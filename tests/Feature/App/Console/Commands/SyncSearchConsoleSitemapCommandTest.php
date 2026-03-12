@@ -14,7 +14,6 @@ it('generates the sitemap and submits it with an oauth refresh token', function 
 
     app()['env'] = 'production';
     config()->set('app.url', 'https://benjamincrozat.com');
-    config()->set('services.search_console.enabled', true);
     config()->set('services.search_console.property', 'sc-domain:benjamincrozat.com');
     config()->set('services.search_console.oauth.client_id', 'client-id');
     config()->set('services.search_console.oauth.client_secret', 'client-secret');
@@ -61,7 +60,6 @@ it('generates the sitemap and submits it with service account credentials', func
 
     app()['env'] = 'production';
     config()->set('app.url', 'https://benjamincrozat.com');
-    config()->set('services.search_console.enabled', true);
     config()->set('services.search_console.property', 'https://benjamincrozat.com/');
     config()->set('services.search_console.service_account.client_email', 'search-console@benjamincrozat.com');
     config()->set('services.search_console.service_account.private_key', str_replace("\n", '\n', $exportedPrivateKey));
@@ -90,7 +88,6 @@ it('generates the sitemap and submits it with service account credentials', func
 });
 
 it('checks the configured Google endpoints outside production without submitting', function () {
-    config()->set('services.search_console.enabled', true);
     config()->set('services.search_console.property', 'sc-domain:benjamincrozat.com');
     config()->set('services.search_console.oauth.client_id', 'client-id');
     config()->set('services.search_console.oauth.client_secret', 'client-secret');
@@ -167,7 +164,7 @@ it('checks the configured Google endpoints outside production without submitting
     });
 });
 
-it('explains how to enable local credential verification when the integration is disabled', function () {
+it('explains how to verify access when credentials are missing', function () {
     config()->set('services.search_console.property', 'sc-domain:benjamincrozat.com');
 
     Http::fake([
@@ -194,32 +191,32 @@ it('explains how to enable local credential verification when the integration is
                 ],
                 [
                     'Credentials',
-                    'Skipped',
-                    'Set SEARCH_CONSOLE_ENABLED=true to verify credentials locally.',
-                    'SEARCH_CONSOLE_ENABLED',
+                    'Missing',
+                    'Add OAuth or service account credentials to verify Search Console access locally.',
+                    'Search Console credentials',
                 ],
                 [
                     'Property access',
                     'Skipped',
-                    'Property access was not checked because the integration is disabled.',
+                    'Property access was not checked because no credentials are configured.',
                     'sc-domain:benjamincrozat.com',
                 ],
             ],
         )
-        ->expectsOutput('Google is reachable, but this command could not verify your credentials yet.')
-        ->expectsOutput('Fix: set SEARCH_CONSOLE_ENABLED=true in .env to let this command verify your credentials locally.')
+        ->expectsOutput('Google is reachable, but this command cannot verify Search Console yet because no credentials are configured.')
+        ->expectsOutput('Fix: add either OAuth credentials or service account credentials to your .env file.')
         ->expectsOutput('Non-production mode does not submit sitemaps. It only checks connectivity and validates credentials read-only.')
         ->expectsOutput('Search Console submission skipped outside production.');
 });
 
-it('skips the Search Console submission when it is disabled in production', function () {
+it('skips the Search Console submission when credentials or property are not configured in production', function () {
     app()['env'] = 'production';
 
     Http::fake();
 
     artisan(SyncSearchConsoleSitemapCommand::class)
         ->expectsOutputToContain('Sitemap generated successfully')
-        ->expectsOutput('Search Console submission skipped because it is disabled.');
+        ->expectsOutput('Search Console submission skipped because credentials or property are not configured.');
 
     Http::assertNothingSent();
 });

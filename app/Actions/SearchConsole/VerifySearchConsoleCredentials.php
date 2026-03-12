@@ -20,18 +20,18 @@ class VerifySearchConsoleCredentials
      */
     public function handle() : array
     {
-        if (! (bool) config('services.search_console.enabled')) {
+        if (! $this->fetchSearchConsoleAccessToken->hasCredentials()) {
             return [
                 [
                     'check' => 'Credentials',
-                    'result' => 'Skipped',
-                    'details' => 'Set SEARCH_CONSOLE_ENABLED=true to verify credentials locally.',
-                    'reference' => 'SEARCH_CONSOLE_ENABLED',
+                    'result' => 'Missing',
+                    'details' => 'Add OAuth or service account credentials to verify Search Console access locally.',
+                    'reference' => 'Search Console credentials',
                 ],
                 [
                     'check' => 'Property access',
                     'result' => 'Skipped',
-                    'details' => 'Property access was not checked because the integration is disabled.',
+                    'details' => 'Property access was not checked because no credentials are configured.',
                     'reference' => (string) (config('services.search_console.property') ?: 'SEARCH_CONSOLE_PROPERTY'),
                 ],
             ];

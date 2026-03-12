@@ -69,12 +69,12 @@ php artisan app:sync-search-console-sitemap
 
 What it does:
 - regenerates `public/sitemap.xml`
-- submits that sitemap URL to Google Search Console when the integration is enabled and the app is running in production
+- submits that sitemap URL to Google Search Console in production when credentials and the property are configured
 - runs connection checks outside production instead of submitting anything
-- verifies the configured credentials and property access read-only outside production when the integration is enabled
+- verifies the configured credentials and property access read-only outside production when credentials are present
 
 Configuration:
-- Set `SEARCH_CONSOLE_ENABLED=true`.
+- There is no enable flag. This becomes active when credentials and the property are configured.
 - Set `SEARCH_CONSOLE_PROPERTY` to your Search Console property ID, such as `sc-domain:benjamincrozat.com` or `https://benjamincrozat.com/`.
 - Leave `SEARCH_CONSOLE_SITEMAP_URL` empty to default to `APP_URL/sitemap.xml`, or set it explicitly if needed.
 - Choose one auth method:

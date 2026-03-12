@@ -38,6 +38,11 @@ class FetchSearchConsoleAccessToken
         );
     }
 
+    public function hasCredentials() : bool
+    {
+        return $this->hasServiceAccountCredentials() || $this->hasRefreshTokenCredentials();
+    }
+
     protected function fetchRefreshTokenAccessToken() : string
     {
         return (string) $this->http

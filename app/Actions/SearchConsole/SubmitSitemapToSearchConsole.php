@@ -15,9 +15,10 @@ class SubmitSitemapToSearchConsole
         protected FetchSearchConsoleAccessToken $fetchSearchConsoleAccessToken,
     ) {}
 
-    public function enabled() : bool
+    public function configured() : bool
     {
-        return (bool) config('services.search_console.enabled');
+        return $this->fetchSearchConsoleAccessToken->hasCredentials() &&
+            filled(config('services.search_console.property'));
     }
 
     public function handle(?string $sitemapUrl = null) : void
@@ -26,7 +27,7 @@ class SubmitSitemapToSearchConsole
             throw new RuntimeException('Search Console sitemap submission is only allowed in production.');
         }
 
-        if (! $this->enabled()) {
+        if (! $this->configured()) {
             return;
         }
 

@@ -56,8 +56,8 @@ class SyncSearchConsoleSitemapCommand extends Command
             return self::SUCCESS;
         }
 
-        if (! $submitSitemapToSearchConsole->enabled()) {
-            $this->info('Search Console submission skipped because it is disabled.');
+        if (! $submitSitemapToSearchConsole->configured()) {
+            $this->info('Search Console submission skipped because credentials or property are not configured.');
 
             return self::SUCCESS;
         }
@@ -77,7 +77,7 @@ class SyncSearchConsoleSitemapCommand extends Command
         $credentials = $this->resultFor($results, 'Credentials');
         $propertyAccess = $this->resultFor($results, 'Property access');
 
-        if ('OK' === ($credentials['result'] ?? null) && ! str_starts_with((string) ($propertyAccess['result'] ?? ''), 'HTTP ')) {
+        if ('OK' === ($credentials['result'] ?? null) && ! str_starts_with((string) ($propertyAccess['result'] ?? ''), 'HTTP ') && 'Skipped' !== ($propertyAccess['result'] ?? null)) {
             return 'Your credentials work, this property is accessible, and this environment is only skipping the final sitemap submission because it is not production.';
         }
 
@@ -85,12 +85,16 @@ class SyncSearchConsoleSitemapCommand extends Command
             return 'Google is reachable, but the credentials in your .env file did not work.';
         }
 
-        if ('Skipped' === ($credentials['result'] ?? null)) {
-            return 'Google is reachable, but this command could not verify your credentials yet.';
+        if ('Missing' === ($credentials['result'] ?? null)) {
+            return 'Google is reachable, but this command cannot verify Search Console yet because no credentials are configured.';
         }
 
         if (str_starts_with((string) ($propertyAccess['result'] ?? ''), 'HTTP ')) {
             return 'Your credentials work, but they cannot access the Search Console property you configured.';
+        }
+
+        if ('Skipped' === ($propertyAccess['result'] ?? null)) {
+            return 'Your credentials work, but this command cannot check the property until you set SEARCH_CONSOLE_PROPERTY.';
         }
 
         return 'Google responded, and this environment is only doing read-only checks.';
@@ -106,8 +110,8 @@ class SyncSearchConsoleSitemapCommand extends Command
         $propertyAccess = $this->resultFor($results, 'Property access');
         $fixes = [];
 
-        if ('Skipped' === ($credentials['result'] ?? null)) {
-            $fixes[] = 'Fix: set SEARCH_CONSOLE_ENABLED=true in .env to let this command verify your credentials locally.';
+        if ('Missing' === ($credentials['result'] ?? null)) {
+            $fixes[] = 'Fix: add either OAuth credentials or service account credentials to your .env file.';
         }
 
         if ('Failed' === ($credentials['result'] ?? null)) {
