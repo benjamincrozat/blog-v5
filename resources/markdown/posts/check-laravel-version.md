@@ -7,7 +7,7 @@ description: "Knowing which Laravel version you are running is important before 
 categories:
   - "laravel"
 published_at: 2022-09-10T00:00:00+02:00
-modified_at: 2025-07-04T16:34:00+02:00
+modified_at: 2026-03-12T18:37:53Z
 serp_title: "6 ways to check Laravel's version (2025)"
 serp_description: null
 canonical_url: null
@@ -26,7 +26,8 @@ However, there are other methods to get the version of Laravel. Here's a compreh
 
 ## Using the php artisan about command
 
-The about command Artisan offers not only displays the Laravel version but also other helpful information about your project such as the version of PHP you're running on, Composer's version, cache drivers, etc.
+The Artisan `about` command not only displays the Laravel version, it also shows other helpful information about your project such as the PHP version you're running, Composer's version, cache drivers, etc.
+If Artisan still feels a bit fuzzy, start with [Demystifying Artisan](/laravel-artisan).
 
 However, it's important to note that the about command is only available in Laravel version 9.21 or later.
 
@@ -39,6 +40,8 @@ Composer Version ........................................................ 2.7.1
 ```
 
 ![The php artisan about command in Laravel.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/73/conversions/CleanShot_2023-04-21_at_12.03.38_2x_ydqmbj-medium.jpg)
+
+If you also want to confirm the runtime shown in that output, here are [6 ways to check your version of PHP](/check-php-version).
 
 ## Using the version() method
 
@@ -98,7 +101,7 @@ In your *composer.json*, you will be able to get the minimum version of Laravel 
 
 As you can see, this project is locked on Laravel 11.0.8 or earlier.
 
-But this might not be enough. Since versions earlier than 11.0.8 are supported, you project might use Laravel 11.0.33 or even 11.1.22!
+But this might not be enough. Since versions earlier than 11.0.8 are supported, your project might use Laravel 11.0.33 or even 11.1.22!
 
 Instead, search for "laravel/framework" inside your *composer.lock* file to get the exact Laravel version that's installed on your project :
 
@@ -133,3 +136,8 @@ public function version()
     return static::VERSION;
 }
 ```
+
+If you want a few Laravel rabbit holes after this quick check:
+→ [Learn what Artisan is actually doing](/laravel-artisan)
+→ [See the full history of Laravel's versions](/laravel-versions)
+→ [Understand how Laravel works under the hood](/how-laravel-works)

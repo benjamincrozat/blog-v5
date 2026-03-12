@@ -8,7 +8,7 @@ categories:
   - "laravel"
   - "php"
 published_at: 2023-09-02T00:00:00+02:00
-modified_at: 2025-08-11T06:40:00+02:00
+modified_at: 2026-03-12T18:37:53Z
 serp_title: "6 ways to check your version of PHP in 2025"
 serp_description: null
 canonical_url: ""
@@ -81,6 +81,7 @@ php artisan about
 ```
 
 You'll see your PHP version along with other useful details.
+If you also need the framework version, here are [6 ways to check Laravel's version](/check-laravel-version).
 
 ## FAQ
 
@@ -106,4 +107,9 @@ In the admin panel, go to **Tools → Site Health → Info → Server**.
 
 ### Can I have multiple PHP versions installed?
 
-Yes! Tools like [Homebrew](https://brew.sh) (macOS), [Docker](https://www.docker.com), and version managers allow multiple PHP versions on the same system.
+Yes! Tools like [Laravel Herd](/laravel-herd), [Laravel Valet](/laravel-valet), [Homebrew](https://brew.sh) (macOS), [Docker](https://www.docker.com), and version managers allow multiple PHP versions on the same system.
+
+If you want a few practical PHP follow-ups after this:
+→ [Check Laravel's version without guessing](/check-laravel-version)
+→ [Install and switch PHP on macOS with Laravel Herd](/laravel-herd)
+→ [See what's new in PHP 8.5](/php-85)

@@ -7,7 +7,7 @@ description: "Convert PHP arrays to JSON with `json_encode()`. Ideal for data ex
 categories:
   - "php"
 published_at: 2023-09-16T00:00:00+02:00
-modified_at: 2025-07-04T21:39:00+02:00
+modified_at: 2026-03-12T18:37:53Z
 serp_title: "PHP array to JSON: how everyone does it in 2025"
 serp_description: null
 canonical_url: ""
@@ -40,6 +40,8 @@ That’s it. You’ve turned your PHP array into a JSON string.
 * **Data exchange:** Passing data between PHP and JavaScript, or from backend to frontend? JSON is your bridge.
 * **Storage:** Need a human-readable, lightweight format for structured data? Use JSON.
 * **Legacy:** Forget XML. JSON won. Stop living in the past.
+
+If you're weighing JSON against PHP-specific formats, my [friendly guide to PHP serialization](/a-friendly-guide-to-php-serialization-that-finally-clicked) will help you decide when each one makes sense.
 
 ---
 
@@ -84,6 +86,8 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 
 But you shouldn’t be writing legacy code. Just use the error flag and catch exceptions.
 
+If you want a faster way to inspect data before encoding it, my [`console.log()` in PHP](/console-log-php) guide covers a few simple debugging options.
+
 ## Conclusion
 
 * Use `json_encode($array, JSON_THROW_ON_ERROR)`. Don’t skip the error flag.
@@ -91,7 +95,12 @@ But you shouldn’t be writing legacy code. Just use the error flag and catch ex
 * For readable output, use `JSON_PRETTY_PRINT`.
 * Don’t pass garbage (resources, closures) to `json_encode`.
 
-## Further reading
+If you want a few more PHP rabbit holes after `json_encode()`:
+→ [Understand when PHP serialization is the better fit](/a-friendly-guide-to-php-serialization-that-finally-clicked)
+→ [Debug PHP output without losing your mind](/console-log-php)
+→ [Use PHP's match expression to clean up encoding branches](/a-quick-look-at-the-php-match-expression)
+
+## References
 
 * [Official `json_encode` docs](https://www.php.net/json_encode)
 * [PHP 8.3 release notes](https://www.php.net/releases/8.3/en.php)
