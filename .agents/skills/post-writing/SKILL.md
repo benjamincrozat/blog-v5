@@ -49,10 +49,11 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 - Add context before snippets and explain what they do, why they matter, and what result to expect.
 - Use current primary sources for version-sensitive claims. Link inline at the claim, and prefer relevant internal links before equivalent external links.
 - Every created or revised post must include a short list of interesting posts to read next. If the post already has one, refresh it instead of duplicating it.
-- Format that list as a curiosity-led sentence ending with a colon, followed by one link per line in this exact style:
+- Format that list as a curiosity-led sentence ending with a colon, then a standard Markdown list with one linked item per bullet, like this:
   Curious lead-in text:
-  → [Highly specific anchor text](/target-slug)
-  → [Another highly specific anchor text](/another-target)
+
+  - [Highly specific anchor text](/target-slug)
+  - [Another highly specific anchor text](/another-target)
 - Pick recommended posts that genuinely extend the topic. Matching from titles, slugs, categories, and local context is enough; you do not need to fully read every recommended post before linking it.
 - When creating or revising a post, add or improve natural internal links in the body wherever a reader would want the next step, not only in the closing list.
 - Verify links and commands when feasible. If something cannot be verified, tell the user outside the post copy.
@@ -85,5 +86,5 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
    - title and description make a strong, accurate click promise
    - headings read naturally in the generated table of contents
    - contextual internal links were added or improved where helpful
-   - the post has one up-to-date curiosity-led related-posts list in the required `→ [anchor](link)` format
+   - the post has one up-to-date curiosity-led related-posts list in the required Markdown list format: `- [anchor](link)`
    - code and links support the nearby claim

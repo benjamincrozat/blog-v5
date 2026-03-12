@@ -10,7 +10,7 @@ metadata:
 ## Scope
 
 Use this skill when posts are managed from `resources/markdown/posts`.
-Pair with `post-writing` when creating or revising article copy so internal links and the related-posts list stay current.
+Pair with `post-writing` when creating or revising article copy so internal links and the related-posts Markdown list stay current.
 
 ## Required Rules
 
@@ -23,14 +23,14 @@ Pair with `post-writing` when creating or revising article copy so internal link
 - Publishing is changing `published_at` in the file, then running `php artisan blog:sync`.
 - Fail loudly on invalid front matter, unknown authors/categories, or duplicate IDs/slugs.
 - Do not use Filament to create, edit, delete, or restore posts.
-- If an edit changes article copy or scope, refresh the post's internal links and related-posts list before syncing.
+- If an edit changes article copy or scope, refresh the post's internal links and related-posts Markdown list before syncing.
 
 ## Workflow
 
 1. Bootstrap files when needed:
    - run `php artisan blog:export`
 2. Edit the target file in `resources/markdown/posts`.
-   - if article copy changed, make sure internal links and the related-posts list were added or refreshed
+   - if article copy changed, make sure internal links and the related-posts Markdown list were added or refreshed
 3. Upload images before syncing:
    - hero image: `php artisan blog:upload-image /absolute/path/to/cover.png --markdown=your-post.md`
    - inline image: `php artisan blog:upload-image /absolute/path/to/step.png --alt="Describe the screenshot"` and paste the returned URL into the article body

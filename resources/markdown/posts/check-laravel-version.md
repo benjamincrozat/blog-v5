@@ -138,6 +138,7 @@ public function version()
 ```
 
 If you want a few Laravel rabbit holes after this quick check:
-→ [Learn what Artisan is actually doing](/laravel-artisan)
-→ [See the full history of Laravel's versions](/laravel-versions)
-→ [Understand how Laravel works under the hood](/how-laravel-works)
+
+- [Learn what Artisan is actually doing](/laravel-artisan)
+- [See the full history of Laravel's versions](/laravel-versions)
+- [Understand how Laravel works under the hood](/how-laravel-works)
