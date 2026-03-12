@@ -9,6 +9,17 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 use App\Console\Commands\SyncSearchConsoleSitemapCommand;
 
+beforeEach(function () {
+    config()->set('app.url', 'https://blog-v5.test');
+    config()->set('services.search_console.property', null);
+    config()->set('services.search_console.sitemap_url', null);
+    config()->set('services.search_console.oauth.client_id', null);
+    config()->set('services.search_console.oauth.client_secret', null);
+    config()->set('services.search_console.oauth.refresh_token', null);
+    config()->set('services.search_console.service_account.client_email', null);
+    config()->set('services.search_console.service_account.private_key', null);
+});
+
 it('generates the sitemap and submits it with an oauth refresh token', function () {
     Post::factory()->create();
 
