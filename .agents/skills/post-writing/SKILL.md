@@ -49,7 +49,8 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 - Add context before snippets and explain what they do, why they matter, and what result to expect.
 - Use current primary sources for version-sensitive claims. Link inline at the claim, and prefer relevant internal links before equivalent external links.
 - Every created or revised post must include a short list of interesting posts to read next. If the post already has one, refresh it instead of duplicating it.
-- The sentence before that list must be custom to the article. Do not reuse stock lead-ins across posts. Tie it to the page's specific topic, promise, or next step.
+- The sentence before that list must be custom to the article. Do not reuse stock lead-ins, canned curiosity hooks, or repeatable templates across posts. Tie it to the page's specific topic, promise, friction point, or next step.
+- Do not quote, paraphrase, or simply restate the article title in that lead-in. It should feel like a smooth, natural transition that makes the reader want to keep going.
 - Format the block as a custom lead-in sentence ending with a colon, then a standard Markdown list with one linked item per bullet, like this:
   Custom lead-in text for this specific article:
 
@@ -88,5 +89,5 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
    - title and description make a strong, accurate click promise
    - headings read naturally in the generated table of contents
    - contextual internal links were added or improved where helpful
-   - the post has one up-to-date related-posts list with a custom lead-in and the required Markdown list format: `- [anchor](link)`
+  - the post has one up-to-date related-posts list with a custom, natural lead-in that does not echo the title and the required Markdown list format: `- [anchor](link)`
    - code and links support the nearby claim

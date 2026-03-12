@@ -24,6 +24,7 @@ Pair with `post-writing` when creating or revising article copy so internal link
 - Fail loudly on invalid front matter, unknown authors/categories, or duplicate IDs/slugs.
 - Do not use Filament to create, edit, delete, or restore posts.
 - If an edit changes article copy or scope, refresh the post's internal links and related-posts Markdown list before syncing.
+- That related-posts block must use a smooth article-specific lead-in sentence, not a stock phrase, canned curiosity hook, or title echo.
 - Do not open the public page or Filament just for a routine post edit. Use browser checks only when the post includes tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, a publishing-state change that needs confirmation, or the user explicitly asks for a visual check.
 
 ## Workflow
@@ -31,7 +32,7 @@ Pair with `post-writing` when creating or revising article copy so internal link
 1. Bootstrap files when needed:
    - run `php artisan blog:export`
 2. Edit the target file in `resources/markdown/posts`.
-   - if article copy changed, make sure internal links and the related-posts Markdown list were added or refreshed
+   - if article copy changed, make sure internal links and the related-posts Markdown list were added or refreshed with a natural lead-in that does not quote or rephrase the title
 3. Upload images before syncing:
    - hero image: `php artisan blog:upload-image /absolute/path/to/cover.png --markdown=your-post.md`
    - inline image: `php artisan blog:upload-image /absolute/path/to/step.png --alt="Describe the screenshot"` and paste the returned URL into the article body
