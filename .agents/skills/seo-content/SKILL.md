@@ -9,7 +9,7 @@ metadata:
 
 ## Scope
 
-Use alongside `post-writing` for publication-ready posts, or on its own when the user gives keywords and wants SERP or competitor analysis.
+Use alongside `post-writing` for new or existing publication-ready posts, or on its own when the user gives keywords and wants SERP or competitor analysis.
 
 Read these references as needed:
 - `references/google-2026.md` for current Google guidance
@@ -22,6 +22,7 @@ Read these references as needed:
 - Use Google for competitor checks, not a generic search engine result feed.
 - If the user gives one or more keywords, inspect the current Google SERP and analyze the top 3 organic results before drafting.
 - Use the browser MCP when Google’s real SERP layout, ranking order, or feature mix matters.
+- When revising an existing post, compare the current page promise against the live Google SERP before changing titles, headings, slug, or angle.
 - Identify dominant search intent before writing: fix, definition, comparison, tool choice, list, landing page, or mixed intent.
 - Build around intent plus one clear differentiator. Do not copy a competitor's structure unless you are improving it.
 - Keep `title`, `description`, `slug`, intro, and first useful section aligned on the same promise.
@@ -41,10 +42,11 @@ Read these references as needed:
 ## Workflow
 
 1. If keywords are provided, run the top-3 competitor brief from `references/serp-analysis.md`.
-2. Summarize dominant intent, recurring subtopics, title and snippet patterns, freshness, and weak spots.
-3. Pick the best angle for us to win on clarity, usefulness, originality, or first-hand value.
-4. Draft or revise with `post-writing`.
-5. Do a final SEO pass:
+2. If revising an existing post, compare its current promise, freshness, and gaps against the live SERP before changing structure.
+3. Summarize dominant intent, recurring subtopics, title and snippet patterns, freshness, and weak spots.
+4. Pick the best angle for us to win on clarity, usefulness, originality, or first-hand value.
+5. Draft or revise with `post-writing`.
+6. Do a final SEO pass:
    - title, description, and slug align
    - headings match the SERP without sounding repetitive
    - internal links are relevant and descriptive
