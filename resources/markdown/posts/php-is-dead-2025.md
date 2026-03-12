@@ -157,9 +157,8 @@ The web runs on things that are predictable, maintainable, and well supported. P
 
 If anything, the December 2025 numbers prove that PHP remained one of the most entrenched technologies on the public web.
 
-If you want a few more PHP rabbit holes after this:
+If you want the next data point in the same argument, these are the follow-up snapshots I would keep open:
 
 - [Is PHP dead? Usage statistics and market share (2026)](/php-is-dead-2026)
 - [Is PHP dead? Usage statistics and market share for 2023.](/php-is-dead-2023)
 - [Is PHP dead? Usage and market share for September 2024](/php-is-dead-2024)
-

@@ -144,9 +144,8 @@ This alone probably drives people to update to the latest major version and, the
 | [bcit-ci/CodeIgniter](https://github.com/bcit-ci/CodeIgniter) | > 18,200              |
 | [cakephp/cakephp](https://github.com/cakephp/cakephp) | > 8,600              |
 
-If you want a few more PHP rabbit holes after this:
+If you want to see how the "PHP is dead" story kept aging after this snapshot, these later check-ins are the next reads I would open:
 
 - [Is PHP dead? Usage statistics and market share for 2023.](/php-is-dead-2023)
 - [Is PHP dead? Usage and market share for September 2024](/php-is-dead-2024)
 - [Is PHP dead? Usage statistics and market share (2026)](/php-is-dead-2026)
-

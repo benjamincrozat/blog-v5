@@ -181,9 +181,8 @@ Location: https://your-site.com/new-page
 
 Browser developer tools also show redirect details clearly.
 
-If you want a few more PHP rabbit holes after this:
+If you are still wiring request and response behavior by hand in PHP, these are the next reads I would keep open:
 
 - [Get the current URL path in PHP](/php-current-url-path)
 - [6 ways to check your version of PHP](/check-php-version)
 - [This is the location of your php.ini](/php-ini-location)
-

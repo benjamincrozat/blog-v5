@@ -167,9 +167,8 @@ PHP still powers most of the web, WordPress still dominates CMS usage, Laravel r
 It may not be the noisiest ecosystem on the internet, but that is part of the appeal.
 The web runs on boring, reliable technology more often than people like to admit, and PHP is still one of the clearest examples of that.
 
-If you want a few more PHP rabbit holes after this:
+If you want to compare this snapshot with the earlier years that led here, these are the next reads I would open:
 
 - [Is PHP dead? Usage statistics and market share (2025)](/php-is-dead-2025)
 - [Is PHP dead? Usage statistics and market share for 2022.](/php-is-dead-2022)
 - [Is PHP dead? Usage and market share for September 2024](/php-is-dead-2024)
-

@@ -317,9 +317,8 @@ What I did:
 - I constantly updated all those articles whenever I noticed mistakes or improvements opportunities;
 - I tried to build a few links on relevant websites.
 
-If you want a few more SEO rabbit holes after this:
+If you want to connect the traffic graph to the technical work behind it, these are the next SEO reads I would keep open:
 
 - [Stop overthinking! Here's technical SEO in a nutshell.](/laravel-seo)
 - [Core web vitals aren't that important for Google](/google-core-web-vitals)
 - [The best GDPR-compliant Google Analytics alternatives (2024)](/best-gdpr-compliant-google-analytics-alternatives)
-

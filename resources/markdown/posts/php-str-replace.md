@@ -129,9 +129,8 @@ While versatile, [`str_replace()`](https://www.php.net/str_replace) has its limi
 - **It's unable to replace multi-byte unicode characters:** The [`str_replace()`](https://www.php.net/str_replace) function is not safe for multi-byte characters like those found in UTF-8 strings.
 - **There are problems with case sensitivity:** As noted before, [`str_replace()`](https://www.php.net/str_replace) is case-sensitive. If you need to ignore case, use [`str_ireplace()`](https://www.php.net/str_ireplace).
 
-If you want a few more PHP rabbit holes after this:
+If you are still cleaning up string handling in everyday PHP code, these are the next reads I would keep nearby:
 
-- [Bring order back to your PHP arrays using array_values()](/php-array-values)
 - [PHP explode(): How you can split strings into arrays](/php-explode)
+- [Get the current URL path in PHP](/php-current-url-path)
 - [PHP 8.4: new features and release date](/php-84)
-

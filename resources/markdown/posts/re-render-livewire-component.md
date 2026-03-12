@@ -80,9 +80,8 @@ Here’s the parent component’s Blade view:
 
 You can also call it form Alpine.js using `$wire.$render`.
 
-If you want a few more Laravel rabbit holes after this:
+If you are fine-tuning when Livewire should and should not repaint the page, these are the next reads I would keep close:
 
 - [Prevent a Livewire component from re-rendering](/prevent-render-livewire)
 - [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
 - [Create a SPA in seconds using wire:navigate in Livewire v3](/livewire-spa-wire-navigate)
-

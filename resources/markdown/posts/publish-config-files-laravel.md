@@ -35,9 +35,8 @@ Why is this necessary now? Because starting from [Laravel 11](https://laravel.co
 - Updating the _.env.example_ file with more environment variables to make the framework more configurable in one place.
 - Reducing the amount of published files, which can be overwhelming for new developers. For instance, the _cors.php_, _hashing.php_, and _view.php_ files are missing.
 
-If you want a few more Laravel rabbit holes after this:
+If you are still adapting to the slimmer Laravel 11 skeleton after this, these are the next reads I would keep nearby:
 
 - [How to publish API and broadcasting routes in Laravel 11](/install-route-files-laravel)
-- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+- [How to customize middleware in Laravel 11+](/customize-middleware-laravel-11)
 - [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-

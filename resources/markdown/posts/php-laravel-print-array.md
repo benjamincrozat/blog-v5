@@ -153,9 +153,8 @@ It also accepts an infinite number of arguments:
 dd($a, $b, $c, $d, $e, …);
 ```
 
-If you want a few more Laravel rabbit holes after this:
+If you are still in debugging mode after dumping that array, these are the next reads I would keep nearby:
 
-- [6 ways to check your version of PHP](/check-php-version)
+- [console.log() in PHP](/console-log-php)
+- [PHP: Show all errors (E_ALL) safely](/php-show-all-errors)
 - [Fix "Invalid argument supplied for foreach" in PHP & Laravel](/invalid-argument-supplied-for-foreach)
-- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
-

@@ -21,9 +21,9 @@ It plugs into Eloquent with simple interfaces, and you can set rules like “red
 
 I like tools that make privacy chores simple. If you need GDPR friendly cleanup without dropping rows, this is worth a look.
 
-If you want a few more Laravel rabbit holes after this:
+If you are thinking about privacy work as part of everyday Laravel maintenance now, these are the next reads I would open:
 
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
-- [Inside the Laravel service container](/inside-the-laravel-service-container)
-- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
-
+- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
+- [Soft deletes in Laravel: the 2025 guide](/laravel-soft-deletes)
+- [Should you block compromised passwords?](/block-compromised-password)
+- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)

@@ -129,9 +129,8 @@ For further reading, check the official [PHP manual on static methods](https://w
 
 Happy coding!
 
-If you want a few more PHP rabbit holes after this:
+If you are cleaning up classic PHP object mistakes and want the rest of that mental model tighter, these are the next reads I would keep nearby:
 
-- [Fix "Invalid argument supplied for foreach" in PHP & Laravel](/invalid-argument-supplied-for-foreach)
-- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
-- [Check if your PHP array is empty](/php-array-empty)
-
+- [Methods with the same name as their class will not be constructors in a future version of PHP](/methods-same-name-class-constructors-future-version-php)
+- [PHP exceptions: all you need to know](/php-exceptions)
+- [PHP 8.3's Override attribute in a nutshell](/php-83-override-attribute)

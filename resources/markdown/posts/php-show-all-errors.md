@@ -240,9 +240,8 @@ No. `E_STRICT` was removed in PHP 8.4 and the constant is deprecated. Referencin
 
 Use `E_ALL` and enable display locally to fix issues fast, then deploy with display disabled and comprehensive logging. Choose the right place to configure it: php.ini for global or early errors, `.htaccess` for Apache mod_php, `.user.ini` or FPM pool settings for PHP-FPM, and `-d` flags for one-off CLI runs. With PHP 8.4 now mainstream, drop `E_STRICT` and prefer logging everything so deprecations are visible during upgrades. For reference materials, see [error_reporting()](https://www.php.net/error_reporting), [ini_set()](https://www.php.net/ini_set), [runtime configuration](https://www.php.net/manual/en/errorfunc.configuration.php), and WordPress’s [display_errors](https://developer.wordpress.org/advanced-administration/security/hardening/display-errors/).
 
-If you want a few more PHP rabbit holes after this:
+If you are in the middle of troubleshooting and want the rest of the basics close at hand, these are the next reads I would open:
 
 - [This is the location of your php.ini](/php-ini-location)
 - [6 ways to check your version of PHP](/check-php-version)
 - [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
-

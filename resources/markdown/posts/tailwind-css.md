@@ -423,9 +423,9 @@ These frameworks below can be integrated into any project based on any JavaScrip
 - [shed.css](https://tedconf.github.io/shed-css/)
 - [turretcss](https://turretcss.com)
 
-If you want a few more frontend rabbit holes after this:
+If you are building out a Tailwind stack instead of stopping at the basics, these are the next reads I would open:
 
 - [Tailwind CSS forms plugin: my 2025 guide for v4 and v3](/tailwind-css-forms-plugin)
 - [Tailwind CSS typography plugin: a step-by-step build guide](/tailwind-css-typography-plugin)
 - [Disable hover styles on mobile with Tailwind CSS](/disable-hover-styles-mobile-tailwind-css)
-
+- [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)

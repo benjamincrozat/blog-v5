@@ -220,9 +220,8 @@ So, is PHP dead? Obviously not. The popularity of this language is hardly debata
 
 These statistics paint a clear picture: PHP is very much alive and thriving. Jump on the PHP hype train!
 
-If you want a few more PHP rabbit holes after this:
+If you want to see where the "PHP is dead" argument went after this checkpoint, these are the next snapshots I would open:
 
 - [Is PHP dead? Usage statistics and market share for 2023.](/php-is-dead-2023)
 - [Is PHP dead? Usage statistics and market share for 2022.](/php-is-dead-2022)
 - [Is PHP dead? Usage statistics and market share (2026)](/php-is-dead-2026)
-
