@@ -72,9 +72,8 @@ $even = array_filter($array, fn ($value) => $value % 2 == 0);
 print_r($even);
 ```
 
-If you want a few more PHP rabbit holes after this:
+If you spend a lot of time shaping arrays before they hit the rest of the app, these are the next reads I would keep nearby:
 
 - [Bring order back to your PHP arrays using array_values()](/php-array-values)
 - [Making sense of PHP's array_map() function](/php-array-map)
 - [Check if your PHP array is empty](/php-array-empty)
-

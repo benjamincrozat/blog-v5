@@ -160,9 +160,8 @@ In most scenarios, use the `empty()` function to determine if your PHP array is 
 
 With these guidelines, you should be able to write solid code.
 
-If you want a few more PHP rabbit holes after this:
+If you are still straightening out the small array habits that make PHP code easier to trust, these are the next reads I would open:
 
 - [Understanding array_filter() in PHP](/php-array-filter)
 - [Making sense of PHP's array_map() function](/php-array-map)
 - [Bring order back to your PHP arrays using array_values()](/php-array-values)
-

@@ -180,9 +180,9 @@ Accepted for PHP 8.6 but still pending landing:
 
 Everything else is still a proposal until the RFC status changes.
 
-If you want a few more PHP rabbit holes after this:
+If you are following the next wave of PHP changes before they land, these are the release reads I would keep open:
 
 - [PHP 8.5: 15 new features and changes](/php-85)
-- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
 - [PHP 8.4: new features and release date](/php-84)
-
+- [PHP 9 release date and what to fix now](/php-90)
+- [Partial Function Application in PHP 8.6, made easy](/partial-function-application-php-86)

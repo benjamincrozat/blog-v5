@@ -167,9 +167,9 @@ Not as a real release with a published schedule.
 
 For now, the best way to get ready is to follow the RFCs, watch the public PHP 9 milestone, and keep your code clean on current PHP 8.x releases. That will save you the most time when PHP 9 finally gets a date.
 
-If you want a few more PHP rabbit holes after this:
+If you are treating PHP 9 as a cleanup project instead of a date on a calendar, these are the next reads I would keep nearby:
 
 - [PHP 8.6: release date and confirmed features](/php-86)
-- [Is PHP dead? Usage statistics and market share (2025)](/php-is-dead-2025)
-- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
-
+- [PHP 8.5: 15 new features and changes](/php-85)
+- [Methods with the same name as their class will not be constructors in a future version of PHP](/methods-same-name-class-constructors-future-version-php)
+- [6 ways to check your version of PHP](/check-php-version)

@@ -141,9 +141,8 @@ In this block of code, we build a unique multidimensional array out of two dinst
 ]
 ```
 
-If you want a few more PHP rabbit holes after this:
+If transforming data is the part of PHP you keep coming back to, these are the next reads I would open next:
 
 - [Partial Function Application in PHP 8.6, made easy](/partial-function-application-php-86)
 - [Understanding array_filter() in PHP](/php-array-filter)
 - [Bring order back to your PHP arrays using array_values()](/php-array-values)
-

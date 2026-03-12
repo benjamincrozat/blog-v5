@@ -92,9 +92,8 @@ array_values($fruits);
 var_dump($fruits);
 ```
 
-If you want a few more PHP rabbit holes after this:
+If you keep reindexing arrays after filtering or sorting them, these are the next reads I would open:
 
 - [Learn how to sort any kind of array in PHP](/php-array-sort)
 - [Understanding array_filter() in PHP](/php-array-filter)
 - [Making sense of PHP's array_map() function](/php-array-map)
-

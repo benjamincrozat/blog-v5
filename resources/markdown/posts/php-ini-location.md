@@ -102,9 +102,8 @@ sudo systemctl restart php<version>-fpm
 
 Now you know exactly how and where to find your _php.ini_ file, tweak it safely, and troubleshoot common issues. Bookmark this guide for quick reference anytime you need it.
 
-If you want a few more PHP rabbit holes after this:
+If you are tuning PHP locally and want the rest of that troubleshooting picture nearby, these are the next reads I would open:
 
 - [PHP: Show all errors (E_ALL) safely](/php-show-all-errors)
 - [6 ways to check your version of PHP](/check-php-version)
-- [Is PHP dead? Usage statistics and market share for 2023.](/php-is-dead-2023)
-
+- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)

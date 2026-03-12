@@ -49,9 +49,8 @@ He also reminds us to use allowlists, check `is_callable`, and avoid magic catch
 
 If you ever map routes or commands in PHP, this is a quick read that can save a long night of bugs and security headaches.
 
-If you want a few more PHP rabbit holes after this:
+If you are cleaning up risky dynamic PHP patterns before they bite you, these are the next reads I would keep nearby:
 
-- [PHP 8.5: 15 new features and changes](/php-85)
-- [A friendly guide to PHP serialization that finally clicked](/a-friendly-guide-to-php-serialization-that-finally-clicked)
-- [console.log() in PHP](/console-log-php)
-
+- [Methods with the same name as their class will not be constructors in a future version of PHP](/methods-same-name-class-constructors-future-version-php)
+- [Fix "using $this when not in object context" now](/using-this-when-not-in-object-context)
+- [PHP exceptions: all you need to know](/php-exceptions)

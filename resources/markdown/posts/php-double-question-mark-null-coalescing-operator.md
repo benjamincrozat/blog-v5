@@ -92,9 +92,8 @@ No. It uses isset semantics, so `$_GET['name'] ?? 'Unknown'` will not raise a no
 
 Use the PHP null coalescing operator (??) to read values with safe defaults, and use the null coalescing assignment (??=) to set a value only when it is missing. Keep in mind that `??` differs from `?:` by checking for null or unset, not truthiness, and that parentheses help when you mix operators. I reach for `??=` when I want to provide a default in place and keep the code simple.
 
-If you want a few more PHP rabbit holes after this:
+If you are tidying the everyday operators that make PHP code easier to read, these are the next reads I would keep open:
 
 - [Fix "Invalid argument supplied for foreach" in PHP & Laravel](/invalid-argument-supplied-for-foreach)
 - [PHP 8.5: 15 new features and changes](/php-85)
 - [Check if your PHP array is empty](/php-array-empty)
-

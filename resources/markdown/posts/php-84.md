@@ -215,9 +215,8 @@ By default, `$characters` includes a variety of whitespace characters, but not a
 
 Learn more: [PHP RFC: Multibyte for trim function mb_trim, mb_ltrim and mb_rtrim](https://wiki.php.net/rfc/mb_trim)
 
-If you want a few more PHP rabbit holes after this:
+If you are following the release train to see where PHP is heading next, these are the next reads I would keep open:
 
 - [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
-- [PHP 8.6: release date and confirmed features](/php-86)
 - [PHP 8.5: 15 new features and changes](/php-85)
-
+- [PHP 8.6: release date and confirmed features](/php-86)

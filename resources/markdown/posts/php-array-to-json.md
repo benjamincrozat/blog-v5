@@ -95,7 +95,7 @@ If you want a faster way to inspect data before encoding it, my [`console.log()`
 * For readable output, use `JSON_PRETTY_PRINT`.
 * Don’t pass garbage (resources, closures) to `json_encode`.
 
-If you want a few more PHP rabbit holes after this:
+If you are still moving PHP data across boundaries after this, these are the next reads I would keep close:
 
 - [Print an array with PHP (+ Laravel)](/php-laravel-print-array)
 - [Validate JSON in PHP with json_validate](/validate-json-in-php-with-json-validate)

@@ -152,9 +152,8 @@ echo current_path(true); // Path + query string.
 
 If you’re using a full-blown framework (Laravel, Symfony, Slim, etc.), their routers probably give you cleaner ways to access the path. But for vanilla PHP or legacy codebases, this is what you want.
 
-If you want a few more PHP rabbit holes after this:
+If you are still wiring request context into older PHP code, these are the next reads I would keep nearby:
 
-- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
-- [6 ways to check your version of PHP](/check-php-version)
 - [PHP: Show all errors (E_ALL) safely](/php-show-all-errors)
-
+- [This is the location of your php.ini](/php-ini-location)
+- [6 ways to check your version of PHP](/check-php-version)

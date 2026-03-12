@@ -171,9 +171,8 @@ npx playwright install
 
 Pest 4 is a serious upgrade: **Playwright-powered browser tests**, **smoke & visual checks**, **sharding**, **faster type coverage**, and a few thoughtful niceties. Upgrade is straightforward: PHP 8.3+, bump to `pest:^4.0` (and plugins), regenerate snapshots if needed, and start adding browser coverage where it makes you money. If you test Laravel for a living, this is worth the jump.
 
-If you want a few more PHP rabbit holes after this:
+If you are rethinking the whole testing stack after Pest 4, these are the next reads I would keep open:
 
 - [What's new in Pest 3 and how to upgrade](/pest-3)
 - [A Guide to architecture testing presets in Pest 3](/pest-3-architecture-testing-presets)
 - [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
-

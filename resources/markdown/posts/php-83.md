@@ -498,9 +498,9 @@ The proposed changes include:
 
 Learn more: [PHP RFC: Define proper semantics for range() function](https://wiki.php.net/rfc/proper-range-semantics)
 
-If you want a few more PHP rabbit holes after this:
+If you are tracking PHP releases and what they mean for real code, these are the next reads I would open:
 
 - [PHP 8.4: new features and release date](/php-84)
-- [PHP 8.3's Override attribute in a nutshell](/php-83-override-attribute)
+- [PHP 8.5: 15 new features and changes](/php-85)
 - [PHP 8.6: release date and confirmed features](/php-86)
-
+- [PHP 8.3's Override attribute in a nutshell](/php-83-override-attribute)

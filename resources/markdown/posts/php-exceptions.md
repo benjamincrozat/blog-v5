@@ -189,9 +189,8 @@ class ExceptionHandler {
 set_exception_handler(ExceptionHandler::handle(...));
 ```
 
-If you want a few more PHP rabbit holes after this:
+If you are trying to make failure paths in PHP feel less chaotic, these are the next reads I would keep nearby:
 
-- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
-- [Convert a PHP array to JSON](/php-array-to-json)
 - [PHP: Show all errors (E_ALL) safely](/php-show-all-errors)
-
+- [Convert a PHP array to JSON](/php-array-to-json)
+- [console.log() in PHP](/console-log-php)
