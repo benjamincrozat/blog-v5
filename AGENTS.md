@@ -46,3 +46,4 @@ This repo is my personal blog about web developent.
 
 - `file-first-posts`: Use when the task is about exporting, editing, publishing, or syncing Markdown-managed posts. File: `.agents/skills/file-first-posts/SKILL.md`
 - `post-writing`: Use when the task is about drafting or revising publication-ready Markdown posts for the blog. File: `.agents/skills/post-writing/SKILL.md`
+- `seo-content`: Use when the task is about search intent, titles, snippets, internal links, AI-search visibility, or top-3 competitor analysis for blog posts and keywords. File: `.agents/skills/seo-content/SKILL.md`

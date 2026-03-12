@@ -10,6 +10,7 @@ metadata:
 ## Scope
 
 Use for drafting or revising publication-ready posts in `resources/markdown/posts`.
+Pair with `seo-content` for search intent, SERP review, titles, snippets, and internal linking.
 
 ## Frontmatter Contract
 
