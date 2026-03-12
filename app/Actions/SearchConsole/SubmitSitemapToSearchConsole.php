@@ -23,6 +23,10 @@ class SubmitSitemapToSearchConsole
 
     public function handle(?string $sitemapUrl = null) : void
     {
+        if (! app()->isProduction()) {
+            throw new RuntimeException('Search Console sitemap submission is only allowed in production.');
+        }
+
         if (! $this->enabled()) {
             return;
         }

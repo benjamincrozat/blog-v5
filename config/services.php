@@ -72,7 +72,6 @@ return [
         'property' => env('SEARCH_CONSOLE_PROPERTY'),
         'sitemap_url' => env('SEARCH_CONSOLE_SITEMAP_URL'),
         'token_uri' => env('SEARCH_CONSOLE_TOKEN_URI', 'https://oauth2.googleapis.com/token'),
-        'submit_on_sync' => env('SEARCH_CONSOLE_SUBMIT_ON_SYNC', true),
         'oauth' => [
             'client_id' => env('SEARCH_CONSOLE_OAUTH_CLIENT_ID'),
             'client_secret' => env('SEARCH_CONSOLE_OAUTH_CLIENT_SECRET'),

@@ -12,6 +12,7 @@ use App\Console\Commands\SyncSearchConsoleSitemapCommand;
 it('generates the sitemap and submits it with an oauth refresh token', function () {
     Post::factory()->create();
 
+    app()['env'] = 'production';
     config()->set('app.url', 'https://benjamincrozat.com');
     config()->set('services.search_console.enabled', true);
     config()->set('services.search_console.property', 'sc-domain:benjamincrozat.com');
@@ -58,6 +59,7 @@ it('generates the sitemap and submits it with service account credentials', func
 
     openssl_pkey_export($privateKey, $exportedPrivateKey);
 
+    app()['env'] = 'production';
     config()->set('app.url', 'https://benjamincrozat.com');
     config()->set('services.search_console.enabled', true);
     config()->set('services.search_console.property', 'https://benjamincrozat.com/');
@@ -87,7 +89,36 @@ it('generates the sitemap and submits it with service account credentials', func
     });
 });
 
-it('skips the Search Console submission when it is disabled', function () {
+it('checks the configured Google endpoints outside production without submitting', function () {
+    config()->set('services.search_console.enabled', true);
+    config()->set('services.search_console.property', 'sc-domain:benjamincrozat.com');
+
+    Http::fake([
+        'https://oauth2.googleapis.com/token' => Http::response('', 405),
+        'https://www.googleapis.com/webmasters/v3/sites/*/sitemaps/*' => Http::response('', 401),
+    ]);
+
+    artisan(SyncSearchConsoleSitemapCommand::class)
+        ->expectsOutputToContain('Sitemap generated successfully')
+        ->expectsOutputToContain('Token endpoint reachable (405)')
+        ->expectsOutputToContain('Search Console endpoint reachable (401)')
+        ->expectsOutput('Search Console submission skipped outside production.');
+
+    Http::assertSent(function (Request $request) {
+        return 'HEAD' === $request->method() &&
+            'https://oauth2.googleapis.com/token' === (string) $request->url();
+    });
+
+    Http::assertSent(function (Request $request) {
+        return 'HEAD' === $request->method() &&
+            str_contains((string) $request->url(), rawurlencode('sc-domain:benjamincrozat.com')) &&
+            str_contains((string) $request->url(), rawurlencode('https://blog-v5.test/sitemap.xml'));
+    });
+});
+
+it('skips the Search Console submission when it is disabled in production', function () {
+    app()['env'] = 'production';
+
     Http::fake();
 
     artisan(SyncSearchConsoleSitemapCommand::class)

@@ -8,9 +8,7 @@ use Illuminate\Support\Str;
 
 use function Pest\Laravel\get;
 
-use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Artisan;
 use App\Exceptions\PostMarkdownException;
 
@@ -350,21 +348,11 @@ it('fails on duplicate ids and slugs', function () {
         ->toThrow(PostMarkdownException::class, 'Duplicate slug');
 });
 
-it('regenerates and submits the sitemap when synced content changes', function () {
+it('does not touch the sitemap or search console during blog sync', function () {
     User::factory()->create(['github_login' => 'benjamincrozat']);
     Category::factory()->create(['slug' => 'laravel', 'name' => 'Laravel']);
 
-    config()->set('app.url', 'https://benjamincrozat.com');
-    config()->set('services.search_console.enabled', true);
-    config()->set('services.search_console.property', 'sc-domain:benjamincrozat.com');
-    config()->set('services.search_console.oauth.client_id', 'client-id');
-    config()->set('services.search_console.oauth.client_secret', 'client-secret');
-    config()->set('services.search_console.oauth.refresh_token', 'refresh-token');
-
-    Http::fake([
-        'https://oauth2.googleapis.com/token' => Http::response(['access_token' => 'token'], 200),
-        'https://www.googleapis.com/webmasters/v3/sites/*/sitemaps/*' => Http::response('', 204),
-    ]);
+    File::delete(public_path('sitemap.xml'));
 
     writeMarkdownPost($this->markdownPath, 'search-console-post', [
         'id' => '01ARZ3NDEKTSV4RRFFQ69G5FB1',
@@ -388,46 +376,8 @@ it('regenerates and submits the sitemap when synced content changes', function (
 
     expect(Artisan::output())
         ->toContain('created=1')
-        ->toContain('Sitemap generated successfully')
-        ->toContain('Sitemap submitted to Google Search Console.');
+        ->not->toContain('Sitemap generated successfully')
+        ->not->toContain('Search Console');
 
-    Http::assertSent(function (Request $request) {
-        return 'PUT' === $request->method() &&
-            str_contains((string) $request->url(), rawurlencode('https://benjamincrozat.com/sitemap.xml'));
-    });
-});
-
-it('skips search console work when blog sync finds no content changes', function () {
-    User::factory()->create(['github_login' => 'benjamincrozat']);
-    Category::factory()->create(['slug' => 'laravel', 'name' => 'Laravel']);
-
-    writeMarkdownPost($this->markdownPath, 'no-change-post', [
-        'id' => '01ARZ3NDEKTSV4RRFFQ69G5FB2',
-        'title' => '"No change post"',
-        'slug' => 'no-change-post',
-        'author' => 'benjamincrozat',
-        'description' => '"No change summary"',
-        'categories' => ['laravel'],
-        'published_at' => '"2026-03-11T08:00:00+00:00"',
-        'modified_at' => '"2026-03-11T11:00:00+00:00"',
-        'serp_title' => 'null',
-        'serp_description' => 'null',
-        'canonical_url' => 'null',
-        'is_commercial' => false,
-        'image_disk' => 'null',
-        'image_path' => 'null',
-        'sponsored_at' => 'null',
-    ]);
-
-    Artisan::call('blog:sync');
-
-    Http::fake();
-
-    Artisan::call('blog:sync');
-
-    expect(Artisan::output())
-        ->toContain('created=0, updated=0, restored=0, deleted=0')
-        ->toContain('Search Console submission skipped because no content changes were detected.');
-
-    Http::assertNothingSent();
+    expect(File::exists(public_path('sitemap.xml')))->toBeFalse();
 });

@@ -53,11 +53,9 @@ php artisan blog:sync
 Notes:
 - `blog:export` is for one-time migration or explicit regeneration.
 - `blog:sync` validates every Markdown file before writing anything to the database.
-- `blog:sync` now regenerates `public/sitemap.xml` whenever content changed.
-- If Search Console is enabled, `blog:sync` also submits the sitemap URL automatically after those changes.
 - Unknown authors, unknown categories, duplicate IDs/slugs, and invalid front matter fail loudly.
 - Filament is read-only for posts after the cutover.
-- Deployment can run `php artisan blog:sync` on its own; it already refreshes the sitemap and can notify Search Console.
+- Deployment should run `php artisan blog:sync` before `php artisan app:sync-search-console-sitemap`.
 
 ## Search Console automation
 
@@ -71,7 +69,8 @@ php artisan app:sync-search-console-sitemap
 
 What it does:
 - regenerates `public/sitemap.xml`
-- submits that sitemap URL to Google Search Console when the integration is enabled
+- submits that sitemap URL to Google Search Console when the integration is enabled and the app is running in production
+- runs connection checks against the configured Google endpoints outside production instead of submitting anything
 
 Configuration:
 - Set `SEARCH_CONSOLE_ENABLED=true`.
@@ -84,4 +83,4 @@ Configuration:
 Notes:
 - Google’s general Indexing API is not for normal blog posts; this workflow uses the supported Search Console sitemap submission endpoint instead.
 - If you use a service account, add that service account email to the Search Console property first.
-- `SEARCH_CONSOLE_SUBMIT_ON_SYNC=false` keeps the standalone command available while preventing `blog:sync` from submitting during local or deployment sync runs.
+- `blog:sync` never submits to Search Console; keep sitemap submission as an explicit separate step.
