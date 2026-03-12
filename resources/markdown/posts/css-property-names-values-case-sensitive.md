@@ -33,3 +33,10 @@ Similarly, class and ID selectors are case-sensitive in all document types. So, 
 ## Conclusion
 	
 In summary, it's best practice to always use lowercase for HTML elements, attributes, and CSS properties and values (except for font names and URLs) to ensure consistency and avoid any potential issues.
+
+If you want a few more frontend rabbit holes after this:
+
+- [5 Tailwind CSS best practices for 2025](/tailwind-css)
+- [Tailwind CSS typography plugin: a step-by-step build guide](/tailwind-css-typography-plugin)
+- [Style an HTML dialog's backdrop with Tailwind CSS](/dialog-backdrop-styling-tailwind-css)
+

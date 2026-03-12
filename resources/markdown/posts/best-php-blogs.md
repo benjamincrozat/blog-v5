@@ -87,3 +87,10 @@ Definitely a good add to my "PHP blogs" folder in my feeds aggregator. 👍
 [![Tim MacDonald's blog](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/85/conversions/CleanShot_2023-09-02_at_15.29.49_2x_fx4n0e-medium.jpg)](https://timacdonald.me)
 
 Tim is a core Laravel team member. At the time I'm writing these lines, he is trying to redesign PHP's official website. His blog is interesting and should teach a thing or two even to the best of us.
+
+If you want a few more PHP rabbit holes after this:
+
+- [Is PHP dead? Usage statistics and market share (2026)](/php-is-dead-2026)
+- [Is PHP dead? Usage statistics and market share for 2023.](/php-is-dead-2023)
+- [Is PHP dead? Usage statistics and market share (2025)](/php-is-dead-2025)
+

@@ -174,3 +174,10 @@ No. Most apps run well on a single VPS or a managed platform. Use Kubernetes onl
 Choose a managed platform ([Kinsta](/recommends/kinsta) or [Cloudways](/recommends/cloudways)) if you want speed, backups, and scaling handled for you. Pick a VPS (DigitalOcean or Vultr) if you want more control and lower cost, especially when pairing it with a server manager.
 
 My setup today: [DigitalOcean](/recommends/digitalocean) + [Laravel Forge](/laravel-forge). It’s reliable, fast, and easy to maintain.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
+- [The 6 best PHP cloud hosting providers for 2024](/best-cloud-hosting-provider-php)
+- [The best Black Friday and Cyber Monday deals I found](/2025-black-friday-cyber-monday-deals)
+

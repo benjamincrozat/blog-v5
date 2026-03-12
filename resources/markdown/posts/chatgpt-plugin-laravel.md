@@ -232,3 +232,10 @@ Submitting your plugin for approval is extremely simple:
 It's possible to check your submission status under "Help" > "Messages".
 
 ![The ChatGPT plugin submission bot.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/139/conversions/CleanShot_2023-06-19_at_22.14.48_2x_qtsdx8-medium.jpg)
+
+If you want a few more AI rabbit holes after this:
+
+- [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)
+- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
+- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
+

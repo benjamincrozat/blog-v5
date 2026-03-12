@@ -204,3 +204,10 @@ Details are in the [install docs](https://bun.com/docs/cli/install).
 
 ## Conclusion
 In 2025, Bun’s package manager is a good fit when fast installs, simple CI, and npm compatibility matter. Windows support is stable, and the default text-based `bun.lock` makes reviews easier. For monorepos, I watch the choice between hoisted and isolated installs and use `--filter` to keep work focused. My next step on new projects is to turn on `bun ci`, measure a few fresh installs, and keep the lockfile committed.
+
+If you want a few more JavaScript rabbit holes after this:
+
+- [Use Bun as your package manager in any PHP project](/bun-php)
+- [Use Bun as Your Package Manager in Any Laravel Project](/bun-laravel)
+- [npm ci vs. npm install: here's the difference](/npm-ci)
+

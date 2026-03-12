@@ -118,3 +118,10 @@ bun run dev
 ```
 
 For additional information and options, please refer to the [official documentation of the `bun run` command](https://bun.sh/docs/cli/run).
+
+If you want a few more JavaScript rabbit holes after this:
+
+- [Use Bun as your package manager in any PHP project](/bun-php)
+- [Add Alpine.js to any Laravel project](/alpine-js-laravel)
+- [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
+

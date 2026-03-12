@@ -167,3 +167,10 @@ If you want more background and examples from the platform teams, check the **[C
 ## Conclusion
 
 `lh` and `rlh` let me size space in “lines,” not pixels. That simple shift makes layouts scale with the text and keeps pages readable with less effort. Browser support is strong across modern engines (and you can always double-check the latest versions on **[Can I use: `lh`](https://caniuse.com/mdn-css_types_length_lh)** and **[Can I use: `rlh`](https://caniuse.com/mdn-css_types_length_rlh)**) so you can ship this today with a tiny `@supports` fallback for the long tail.
+
+If you want a few more frontend rabbit holes after this:
+
+- [Style an HTML dialog's backdrop with Tailwind CSS](/dialog-backdrop-styling-tailwind-css)
+- [Tailwind CSS forms plugin: my 2025 guide for v4 and v3](/tailwind-css-forms-plugin)
+- [Style labels on focus the right way in CSS](/label-focus-css)
+

@@ -171,3 +171,10 @@ However, if you are ready to make compromises, you could host static websites (m
 - Render
 - Surge
 - Vercel
+
+If you want a few more PHP rabbit holes after this:
+
+- [The 4 best Laravel cloud hosting providers for 2025 (+ my setup)](/best-laravel-hosting-providers)
+- [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
+- [The best Black Friday and Cyber Monday deals I found](/2025-black-friday-cyber-monday-deals)
+

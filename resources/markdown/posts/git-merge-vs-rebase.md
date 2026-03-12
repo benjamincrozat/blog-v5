@@ -173,3 +173,10 @@ Great for squashing fixups and editing messages before your code is public. It i
 You do not need every Git trick to feel confident about git merge vs rebase. Think of it this way: use rebase to rewrite your own local story before anyone else pulls it, and use merge to bring shared work together in a clear way.
 
 My default workflow is simple: I rebase my feature branches often, then fast-forward merge them into `main` with `--ff-only` unless I need a clear merge commit for a big feature. Start with that, adjust for your team, and you will keep history clean without fear.
+
+If you want a few more Git rabbit holes after this:
+
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [The best web development courses available. Free and paid.](/best-web-development-courses)
+- [The best PHP blogs to read in 2025](/best-php-blogs)
+

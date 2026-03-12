@@ -44,3 +44,10 @@ One of the primary causes of this error is nested transactions (when a transacti
 4. If you're using MySQL, check your MySQL server configuration. Some users have reported that increasing the `max_prepared_stmt_count` value in the MySQL configuration can help resolve this issue.
 
 Remember, the root cause can vary depending on your specific setup and code. If these solutions don't work, it might be worth diving deeper into your database operations or seeking help from the Laravel community.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Understanding database transactions with Laravel](/database-transactions-laravel)
+- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
+- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
+

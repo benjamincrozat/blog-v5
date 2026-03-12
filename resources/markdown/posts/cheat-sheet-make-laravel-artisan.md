@@ -71,3 +71,10 @@ One of the most common tasks is creating a new view for my application. Instead 
 - `-f, --force`: There might be times when you accidentally try to create a view that already exists. Using the `--force` option ensures the view is created even if it already exists. It's like saying, "You know what you're doing, just overwrite it!"
 - `--test`: This is a fantastic option when you're practicing TDD (Test Driven Development). It automatically generates a PHPUnit test alongside your view, saving you a step.
 - `--pest`: Similarly, if you're using Pest for testing, this option generates a corresponding Pest test for the view. It's all about making your testing process smoother.
+
+If you want a few more useful reads after this:
+
+- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [PHP 8.5: 15 new features and changes](/php-85)
+

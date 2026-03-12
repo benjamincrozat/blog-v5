@@ -23,3 +23,10 @@ If one of these sites is compromised, it results in a domino effect of breaches.
 One way to avert this is by blocking compromised or "pwned" passwords through services such as Pwned Passwords. Laravel's password validation rule, uncompromised(), assists with this.
 
 However, it is important to expand beyond merely implementing the rule, by teaching users about securing their passwords, providing resources, developing extra authentication measures, and possibly implementing SMS Multi-Factor Authentication for non-tech savvy users.
+
+If you want a few more security rabbit holes after this:
+
+- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
+- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
+- [The "419 Page Expired" error in Laravel: 5 quick fixes](/419-page-expired-laravel)
+

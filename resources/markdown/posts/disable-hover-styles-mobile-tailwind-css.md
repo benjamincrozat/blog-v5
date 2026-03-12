@@ -64,3 +64,10 @@ module.exports = {
 By setting this flag, you opt into the new behavior, which will become the default in the upcoming Tailwind CSS v4.
 
 It's important to note that this is a breaking change and may affect existing styles, particularly for mobile devices.
+
+If you want a few more frontend rabbit holes after this:
+
+- [5 Tailwind CSS best practices for 2025](/tailwind-css)
+- [Tailwind CSS forms plugin: my 2025 guide for v4 and v3](/tailwind-css-forms-plugin)
+- [Tailwind CSS typography plugin: a step-by-step build guide](/tailwind-css-typography-plugin)
+

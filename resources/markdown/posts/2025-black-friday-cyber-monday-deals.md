@@ -264,3 +264,10 @@ If you want the **highest-leverage** stuff from this list in terms of ROI:
 * SEO & visibility: **Wincher** + **Tweet Hunter / MagicPost** if you’re serious about promoting your projects
 
 Use whatever matches your roadmap for the next 6–12 months. Black Friday is only interesting if it buys you leverage you were going to pay for anyway.
+
+If you want a few more useful reads after this:
+
+- [The 4 best Laravel cloud hosting providers for 2025 (+ my setup)](/best-laravel-hosting-providers)
+- [The 6 best PHP cloud hosting providers for 2024](/best-cloud-hosting-provider-php)
+- [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
+

@@ -109,8 +109,9 @@ In the admin panel, go to **Tools → Site Health → Info → Server**.
 
 Yes! Tools like [Laravel Herd](/laravel-herd), [Laravel Valet](/laravel-valet), [Homebrew](https://brew.sh) (macOS), [Docker](https://www.docker.com), and version managers allow multiple PHP versions on the same system.
 
-If you want a few practical PHP follow-ups after this:
+If you want a few more Laravel rabbit holes after this:
 
-- [Check Laravel's version without guessing](/check-laravel-version)
-- [Install and switch PHP on macOS with Laravel Herd](/laravel-herd)
-- [See what's new in PHP 8.5](/php-85)
+- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
+- [Print an array with PHP (+ Laravel)](/php-laravel-print-array)
+- [Fix "Invalid argument supplied for foreach" in PHP & Laravel](/invalid-argument-supplied-for-foreach)
+

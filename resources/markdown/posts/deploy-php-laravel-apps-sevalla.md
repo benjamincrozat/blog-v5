@@ -121,3 +121,10 @@ If you run into Laravel-specific issues, you can use commands like `php artisan 
 In the past, deploying Laravel required setting up servers, configuring Nginx, tuning PHP settings, and manually managing SSL certificates. With Sevalla, this process has been reduced to a few simple steps. You connect your GitHub repository, set environment variables, and click deploy. Within minutes, your Laravel project is online and production-ready.
 
 Whether you’re testing a small project, launching a SaaS application, or deploying for enterprise use, Sevalla provides the flexibility and reliability you need. Its GitHub-first workflow and built-in scaling tools make it a natural fit for developers who want deployments to be fast, predictable, and hassle-free. And with a $50 free credit to get started, you can try Sevalla risk-free before committing.
+
+If you want a few more hosting rabbit holes after this:
+
+- [The 4 best Laravel cloud hosting providers for 2025 (+ my setup)](/best-laravel-hosting-providers)
+- [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
+- [The 6 best PHP cloud hosting providers for 2024](/best-cloud-hosting-provider-php)
+

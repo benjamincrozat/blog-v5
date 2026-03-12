@@ -109,3 +109,10 @@ Here all the topics covered by Laracasts: Alpine.js, authentication, AWS, billin
 | Free plan | Monthly plan | Yearly plan | Life plan |
 | --------- | ------------ | ----------- | --------- |
 | Yes       | $11          | $99         | $299      |
+
+If you want a few more useful reads after this:
+
+- [Add Vue.js to any Laravel project](/laravel-vue)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [PHP 8.5: 15 new features and changes](/php-85)
+

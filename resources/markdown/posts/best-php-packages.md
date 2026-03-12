@@ -52,3 +52,10 @@ When it comes to testing or seeding databases with dummy data, [Faker](https://g
 ![league/commonmark's official website](https://res.cloudinary.com/benjamincrozat-com/image/fetch/https://github.com/benjamincrozat/content/assets/3613731/2193b39d-ad54-45f9-a054-bf2defd11ab3)
 
 Need to parse Markdown? The [league/commonmark](https://commonmark.thephpleague.com) package is a highly-efficient Markdown parser for PHP. It adheres to the CommonMark specification and is extendable, allowing you to add custom features. It's used by Laravel by default and therefore, the one I use on this blog. league/commonmark's code is well put together, making it hard to understand and extend. But when you finally get it, it's extremely powerful.
+
+If you want a few more useful reads after this:
+
+- [The 6 best PHP cloud hosting providers for 2024](/best-cloud-hosting-provider-php)
+- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
+- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
+

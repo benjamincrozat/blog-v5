@@ -30,3 +30,10 @@ serialize(PostStatus::Published);
 Ashley also covers property visibility, custom logic with `__serialize` and `__unserialize`, and smart error handling in PHP 8.3. The Laravel bits help tie it to real work, like queued jobs.
 
 If you want a fast, practical path to safer data and cleaner tests, this is a great read.
+
+If you want a few more useful reads after this:
+
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [PHP 8.5: 15 new features and changes](/php-85)
+- [GPT‑5: my API quick start guide](/gpt-5-api)
+

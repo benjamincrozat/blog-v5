@@ -137,8 +137,9 @@ public function version()
 }
 ```
 
-If you want a few Laravel rabbit holes after this quick check:
+If you want a few more Laravel rabbit holes after this:
 
-- [Learn what Artisan is actually doing](/laravel-artisan)
-- [See the full history of Laravel's versions](/laravel-versions)
-- [Understand how Laravel works under the hood](/how-laravel-works)
+- [How to install Laravel on macOS](/laravel-installation-macos)
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [6 ways to check your version of PHP](/check-php-version)
+

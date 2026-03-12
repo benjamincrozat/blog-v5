@@ -63,3 +63,10 @@ Senior developers want to work on complex issues that will make your project eas
 **Communication is critical in any relationship.** In a working environment, you need a clear view of the progression to plan what's next.
 
 And you also need to know when things are stuck. Sometimes, problems are tough to solve, and deciding to get someone else involved as soon as possible to help you move forward is crucial.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+- [3 crucial Laravel architecture best practices for 2025](/laravel-architecture-best-practices)
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
+

@@ -146,3 +146,10 @@ Done! Now, go build something amazing with Alpine.js and Laravel!
 Adding Alpine.js to your Laravel project is a straightforward process, whether you choose to use a CDN or bundle it with your assets. This lightweight framework can significantly enhance the interactivity of your Laravel applications without the complexity of larger JavaScript frameworks.
 
 Remember to explore Alpine.js's documentation for more advanced features and best practices as you integrate it into your Laravel projects. Happy coding!
+
+If you want a few more frontend rabbit holes after this:
+
+- [Alpine.js: a lightweight framework for productive developers](/alpine-js)
+- [Add Vue.js to any Laravel project](/laravel-vue)
+- [Use Bun as Your Package Manager in Any Laravel Project](/bun-laravel)
+

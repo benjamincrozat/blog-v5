@@ -16,3 +16,10 @@ image_disk: null
 image_path: null
 sponsored_at: null
 ---
+
+If you want a few more Laravel rabbit holes after this:
+
+- [The best custom cards for Laravel Pulse in 2024](/best-laravel-pulse-custom-cards)
+- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
+- [How to create a custom filesystem adapter in Laravel](/custom-filesystem-adapter-laravel)
+

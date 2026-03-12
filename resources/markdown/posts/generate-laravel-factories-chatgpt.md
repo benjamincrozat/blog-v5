@@ -58,3 +58,10 @@ Instructions:
 
 Review each of my instructions and explain step by step how you will proceed in an existing Laravel installation without using Artisan. Then, show me the result.
 ```
+
+If you want a few more AI rabbit holes after this:
+
+- [Use Laravel to build a ChatGPT plugin](/chatgpt-plugin-laravel)
+- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
+- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
+

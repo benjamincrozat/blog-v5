@@ -35,3 +35,10 @@ services:
 ```
 
 If you want a practical blueprint for Docker, Laravel, Traefik, and FrankenPHP, this piece is a great start. It helps you ship with confidence, without a ton of guesswork.
+
+If you want a few more useful reads after this:
+
+- [Laravel and Traefik dynamic config for easy multi-domain setups](/laravel-and-traefik-dynamic-config-for-easy-multi-domain-setups)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [PHP 8.5: 15 new features and changes](/php-85)
+

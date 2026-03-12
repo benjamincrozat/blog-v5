@@ -65,3 +65,10 @@ DB::transaction(function () {
 ```
 
 Learn more about [transactions in Laravel](https://laravel.com/docs/10.x/database#database-transactions) on the official documentation.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Fix "1305 SAVEPOINT trans2 does not exist" in Laravel](/1305-savepoint-trans2-does-not-exist)
+- [Laravel migrations: a simplified and step by step guide](/laravel-migrations)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+

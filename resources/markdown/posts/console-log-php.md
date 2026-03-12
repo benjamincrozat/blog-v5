@@ -121,3 +121,10 @@ $firephp->log('Greetings from PHP to Firefox!');
 ```
 
 Also, check out the [GitHub repository](https://github.com/firephp/firephp-for-browser-devtools).
+
+If you want a few more PHP rabbit holes after this:
+
+- [Print an array with PHP (+ Laravel)](/php-laravel-print-array)
+- [6 ways to check your version of PHP](/check-php-version)
+- [Convert a PHP array to JSON](/php-array-to-json)
+

@@ -174,3 +174,10 @@ Learn more in [bunfig.toml](https://bun.com/docs/runtime/bunfig).
 Bun is a drop‑in package manager that makes PHP front‑end builds feel fast. It installs quickly on macOS, Linux, and Windows, it writes a readable bun.lock by default, and it speeds up installs and scripts. I recommend trying it on a small Laravel or Symfony project and measuring the difference.
 
 Related reading: [What's the fuss around Bun's package manager abilities?](https://benjamincrozat.com/bun-package-manager)
+
+If you want a few more JavaScript rabbit holes after this:
+
+- [Use Bun as Your Package Manager in Any Laravel Project](/bun-laravel)
+- [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
+- [npm ci vs. npm install: here's the difference](/npm-ci)
+

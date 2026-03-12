@@ -108,3 +108,10 @@ use Illuminate\Support\Facades\Storage;
 
 Storage::disk('my-custom-driver')->put('lorem.txt', 'Lorem ipsum dolor sit amet.');
 ```
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Let's build a custom Laravel Pulse card](/custom-laravel-pulse-card)
+- [Laravel Dropbox Driver package: how to install and use it](/laravel-dropbox-driver)
+- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
+

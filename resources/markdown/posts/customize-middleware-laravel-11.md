@@ -191,3 +191,10 @@ To ensure sessions are authenticated in the "web" middleware group:
 ```
 
 These advanced options provide more flexibility in customizing your application's middleware behavior, allowing you to fine-tune security, performance, and functionality as needed.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+- [How to publish API and broadcasting routes in Laravel 11](/install-route-files-laravel)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+

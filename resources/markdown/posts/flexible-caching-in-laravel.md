@@ -144,3 +144,10 @@ While `Cache::flexible()` is a powerful tool, it's not suitable for all types of
 Laravel 11's `Cache::flexible()` method provides a nuanced approach to caching that can significantly improve application performance in many real-world scenarios. By allowing controlled use of slightly outdated data, it strikes a balance between data freshness and system responsiveness.
 
 When used appropriately, this feature can lead to more responsive applications and a better user experience overall.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [9 ways to clear Laravel's cache](/laravel-clear-cache)
+- [Validation in Laravel made easy](/laravel-validation)
+- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
+

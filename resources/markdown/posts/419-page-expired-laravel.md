@@ -249,3 +249,10 @@ See Laravel’s [CSRF docs](https://laravel.com/docs/csrf) for details.
 ## Conclusion
 
 The Laravel 419 error is almost always a solvable CSRF or session configuration issue. Start with `@csrf`, refresh if idle, confirm the AJAX header, validate session and cookie settings, and only then consider route exclusions. My preferred order is forms → AJAX headers → session and cookie settings → server routing → targeted CSRF excludes. For deeper reference, see Laravel’s official [CSRF protection documentation](https://laravel.com/docs/csrf) and [Sanctum docs](https://laravel.com/docs/sanctum).
+
+If you want a few more Laravel rabbit holes after this:
+
+- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
+- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
+- [Fix "No application encryption key has been specified." in Laravel](/laravel-no-application-key-specified)
+

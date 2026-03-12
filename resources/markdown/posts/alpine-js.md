@@ -209,3 +209,10 @@ By engaging with the Alpine.js community through these channels, you’ll not on
 ## Conclusion
 
 I reach for Alpine.js when I need small, interactive UI pieces without heavy tooling. For quick pages I load it from a CDN and pin versions; for apps I bundle it with Vite and register plugins before `Alpine.start()`. Give the dropdown example a try, then explore the official plugins and install the Alpine.js devtools to speed up your workflow.
+
+If you want a few more frontend rabbit holes after this:
+
+- [Add Alpine.js to any Laravel project](/alpine-js-laravel)
+- [Add Vue.js to any Laravel project](/laravel-vue)
+- [Get started with jQuery in 5 minutes](/jquery)
+
