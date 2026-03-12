@@ -25,6 +25,7 @@ Pair with `post-writing` when creating or revising article copy so internal link
 - Do not use Filament to create, edit, delete, or restore posts.
 - If an edit changes article copy or scope, refresh the post's internal links and related-posts Markdown list before syncing.
 - That related-posts block must use a smooth article-specific lead-in sentence, not a stock phrase, canned curiosity hook, or title echo.
+- Choose related posts because they feel like smart next reads for the current article, not because they happen to share a category.
 - Do not open the public page or Filament just for a routine post edit. Use browser checks only when the post includes tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, a publishing-state change that needs confirmation, or the user explicitly asks for a visual check.
 
 ## Workflow

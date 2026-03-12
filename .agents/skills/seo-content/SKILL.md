@@ -47,7 +47,7 @@ Read these references as needed:
 - The lead-in sentence before the related-posts list must be unique to that article. Do not reuse the same stock phrasing, canned curiosity line, or obvious template across the site.
 - Do not quote, parrot, or lightly rephrase the title in that lead-in. Write a smooth, natural bridge that nudges the reader toward the next useful clicks.
 - The related-posts list should use that custom lead-in line ending with a colon, then a standard Markdown list with entries like `- [Very specific anchor text](/target-slug)`.
-- Add only the number of recommendations the topic can support: usually 3 or more, sometimes more, with a hard cap of 10. Choosing candidates from titles, slugs, categories, and local context is enough; you do not need to fully read every recommended post.
+- Add only the number of recommendations the topic can support: usually 3 or more, sometimes more, with a hard cap of 10. Choose them with editorial judgment based on what a reader would genuinely want next, not by category matching alone. You do not need to fully read every recommended post.
 - Keep visible content consistent with frontmatter and any structured data.
 - For AI visibility, aim to be cite-worthy: direct answers, strong subheads, original details, and useful examples.
 - Do not use fake freshness, fake authorship, fabricated stats, doorway pages, parasite SEO, expired-domain abuse, link schemes, or scaled thin AI filler on this site.

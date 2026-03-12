@@ -57,7 +57,7 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
   - [Highly specific anchor text](/target-slug)
   - [Another highly specific anchor text](/another-target)
 - Add as many recommendations as the topic honestly supports: usually at least 3, sometimes more, with a hard cap of 10. Do not pad the list with weak matches.
-- Pick recommended posts that genuinely extend the topic. Matching from titles, slugs, categories, and local context is enough; you do not need to fully read every recommended post before linking it.
+- Pick recommended posts that genuinely extend the topic because they feel like strong next reads for this exact reader journey. Use editorial judgment, not category matching or obvious heuristics. You do not need to fully read every recommended post before linking it, but you should believe the recommendation makes sense.
 - When creating or revising a post, add or improve natural internal links in the body wherever a reader would want the next step, not only in the closing list.
 - Verify links and commands when feasible. If something cannot be verified, tell the user outside the post copy.
 - When setting frontmatter timestamps, use UTC rather than the machine's local timezone.
