@@ -70,7 +70,8 @@ php artisan app:sync-search-console-sitemap
 What it does:
 - regenerates `public/sitemap.xml`
 - submits that sitemap URL to Google Search Console when the integration is enabled and the app is running in production
-- runs connection checks against the configured Google endpoints outside production instead of submitting anything
+- runs connection checks outside production instead of submitting anything
+- verifies the configured credentials and property access read-only outside production when the integration is enabled
 
 Configuration:
 - Set `SEARCH_CONSOLE_ENABLED=true`.

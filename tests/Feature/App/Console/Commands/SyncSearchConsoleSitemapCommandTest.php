@@ -92,32 +92,53 @@ it('generates the sitemap and submits it with service account credentials', func
 it('checks the configured Google endpoints outside production without submitting', function () {
     config()->set('services.search_console.enabled', true);
     config()->set('services.search_console.property', 'sc-domain:benjamincrozat.com');
+    config()->set('services.search_console.oauth.client_id', 'client-id');
+    config()->set('services.search_console.oauth.client_secret', 'client-secret');
+    config()->set('services.search_console.oauth.refresh_token', 'refresh-token');
 
     Http::fake([
-        'https://oauth2.googleapis.com/token' => Http::response('', 405),
+        'https://oauth2.googleapis.com/token' => Http::sequence()
+            ->push('', 405)
+            ->push(['access_token' => 'token'], 200),
         'https://www.googleapis.com/webmasters/v3/sites/*/sitemaps/*' => Http::response('', 401),
+        'https://www.googleapis.com/webmasters/v3/sites/sc-domain%3Abenjamincrozat.com' => Http::response([
+            'siteUrl' => 'sc-domain:benjamincrozat.com',
+            'permissionLevel' => 'siteOwner',
+        ], 200),
     ]);
 
     artisan(SyncSearchConsoleSitemapCommand::class)
         ->expectsOutputToContain('Sitemap generated successfully')
         ->expectsTable(
-            ['Probe', 'HTTP', 'Meaning', 'URL'],
+            ['Check', 'Result', 'Details', 'Reference'],
             [
                 [
                     'Token endpoint',
-                    '405',
-                    'OAuth endpoint responded; no token exchange was attempted.',
+                    'HTTP 405',
+                    'Google responded on the OAuth endpoint.',
                     'https://oauth2.googleapis.com/token',
                 ],
                 [
                     'Search Console endpoint',
-                    '401',
-                    'Search Console endpoint responded; no sitemap was submitted.',
+                    'HTTP 401',
+                    'Google responded on the Search Console endpoint.',
                     'https://www.googleapis.com/webmasters/v3/sites/sc-domain%3Abenjamincrozat.com/sitemaps/https%3A%2F%2Fblog-v5.test%2Fsitemap.xml',
+                ],
+                [
+                    'Credentials',
+                    'OK',
+                    'OAuth refresh token access token acquired successfully.',
+                    'OAuth refresh token',
+                ],
+                [
+                    'Property access',
+                    'siteOwner',
+                    'Configured property is readable with the verified credentials.',
+                    'sc-domain:benjamincrozat.com',
                 ],
             ],
         )
-        ->expectsOutput('Non-production mode only checks that Google responds on the configured network path.')
+        ->expectsOutput('Non-production mode does not submit sitemaps. It only checks connectivity and validates credentials read-only.')
         ->expectsOutput('Search Console submission skipped outside production.');
 
     Http::assertSent(function (Request $request) {
@@ -129,6 +150,18 @@ it('checks the configured Google endpoints outside production without submitting
         return 'HEAD' === $request->method() &&
             str_contains((string) $request->url(), rawurlencode('sc-domain:benjamincrozat.com')) &&
             str_contains((string) $request->url(), rawurlencode('https://blog-v5.test/sitemap.xml'));
+    });
+
+    Http::assertSent(function (Request $request) {
+        return 'POST' === $request->method() &&
+            'https://oauth2.googleapis.com/token' === (string) $request->url() &&
+            'refresh_token' === $request['grant_type'];
+    });
+
+    Http::assertSent(function (Request $request) {
+        return 'GET' === $request->method() &&
+            'https://www.googleapis.com/webmasters/v3/sites/sc-domain%3Abenjamincrozat.com' === (string) $request->url() &&
+            'Bearer token' === $request->header('Authorization')[0];
     });
 });
 

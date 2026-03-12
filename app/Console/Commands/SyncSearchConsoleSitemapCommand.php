@@ -7,6 +7,7 @@ use App\Actions\Sitemaps\GenerateSitemap;
 use Symfony\Component\Console\Attribute\AsCommand;
 use App\Actions\SearchConsole\CheckSearchConsoleConnection;
 use App\Actions\SearchConsole\SubmitSitemapToSearchConsole;
+use App\Actions\SearchConsole\VerifySearchConsoleCredentials;
 
 /**
  * Regenerates the sitemap and optionally submits it to Google Search Console.
@@ -20,6 +21,7 @@ class SyncSearchConsoleSitemapCommand extends Command
     public function handle(
         GenerateSitemap $generateSitemap,
         CheckSearchConsoleConnection $checkSearchConsoleConnection,
+        VerifySearchConsoleCredentials $verifySearchConsoleCredentials,
         SubmitSitemapToSearchConsole $submitSitemapToSearchConsole,
     ) : int {
         $path = $generateSitemap->handle();
@@ -27,19 +29,22 @@ class SyncSearchConsoleSitemapCommand extends Command
         $this->info("Sitemap generated successfully at {$path}");
 
         if (! app()->isProduction()) {
-            $results = $checkSearchConsoleConnection->handle();
+            $results = [
+                ...$checkSearchConsoleConnection->handle(),
+                ...$verifySearchConsoleCredentials->handle(),
+            ];
 
             $this->table(
-                ['Probe', 'HTTP', 'Meaning', 'URL'],
+                ['Check', 'Result', 'Details', 'Reference'],
                 array_map(fn (array $result) : array => [
-                    $result['label'],
-                    (string) $result['status'],
-                    $this->probeMeaning($result['label']),
-                    $result['url'],
+                    $result['check'],
+                    $result['result'],
+                    $result['details'],
+                    $result['reference'],
                 ], $results),
             );
 
-            $this->info('Non-production mode only checks that Google responds on the configured network path.');
+            $this->info('Non-production mode does not submit sitemaps. It only checks connectivity and validates credentials read-only.');
             $this->info('Search Console submission skipped outside production.');
 
             return self::SUCCESS;
@@ -56,14 +61,5 @@ class SyncSearchConsoleSitemapCommand extends Command
         $this->info('Sitemap submitted to Google Search Console.');
 
         return self::SUCCESS;
-    }
-
-    protected function probeMeaning(string $label) : string
-    {
-        return match ($label) {
-            'Token endpoint' => 'OAuth endpoint responded; no token exchange was attempted.',
-            'Search Console endpoint' => 'Search Console endpoint responded; no sitemap was submitted.',
-            default => 'Google responded on the configured network path.',
-        };
     }
 }

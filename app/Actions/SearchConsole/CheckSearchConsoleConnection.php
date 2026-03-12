@@ -14,7 +14,7 @@ class CheckSearchConsoleConnection
     ) {}
 
     /**
-     * @return array<int, array{label: string, status: int, url: string}>
+     * @return array<int, array{check: string, result: string, details: string, reference: string}>
      */
     public function handle(?string $sitemapUrl = null) : array
     {
@@ -25,7 +25,7 @@ class CheckSearchConsoleConnection
     }
 
     /**
-     * @return array{label: string, status: int, url: string}
+     * @return array{check: string, result: string, details: string, reference: string}
      */
     protected function probe(string $label, string $url) : array
     {
@@ -36,9 +36,14 @@ class CheckSearchConsoleConnection
             ->head($url);
 
         return [
-            'label' => $label,
-            'status' => $response->status(),
-            'url' => $url,
+            'check' => $label,
+            'result' => 'HTTP ' . $response->status(),
+            'details' => match ($label) {
+                'Token endpoint' => 'Google responded on the OAuth endpoint.',
+                'Search Console endpoint' => 'Google responded on the Search Console endpoint.',
+                default => 'Google responded on the configured network path.',
+            },
+            'reference' => $url,
         ];
     }
 
