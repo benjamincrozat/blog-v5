@@ -53,6 +53,35 @@ php artisan blog:sync
 Notes:
 - `blog:export` is for one-time migration or explicit regeneration.
 - `blog:sync` validates every Markdown file before writing anything to the database.
+- `blog:sync` now regenerates `public/sitemap.xml` whenever content changed.
+- If Search Console is enabled, `blog:sync` also submits the sitemap URL automatically after those changes.
 - Unknown authors, unknown categories, duplicate IDs/slugs, and invalid front matter fail loudly.
 - Filament is read-only for posts after the cutover.
-- Deployment should run `php artisan blog:sync` before sitemap generation.
+- Deployment can run `php artisan blog:sync` on its own; it already refreshes the sitemap and can notify Search Console.
+
+## Search Console automation
+
+This app supports automated sitemap submission through the Google Search Console API.
+
+Primary command:
+
+```bash
+php artisan app:sync-search-console-sitemap
+```
+
+What it does:
+- regenerates `public/sitemap.xml`
+- submits that sitemap URL to Google Search Console when the integration is enabled
+
+Configuration:
+- Set `SEARCH_CONSOLE_ENABLED=true`.
+- Set `SEARCH_CONSOLE_PROPERTY` to your Search Console property ID, such as `sc-domain:benjamincrozat.com` or `https://benjamincrozat.com/`.
+- Leave `SEARCH_CONSOLE_SITEMAP_URL` empty to default to `APP_URL/sitemap.xml`, or set it explicitly if needed.
+- Choose one auth method:
+- OAuth refresh token: `SEARCH_CONSOLE_OAUTH_CLIENT_ID`, `SEARCH_CONSOLE_OAUTH_CLIENT_SECRET`, `SEARCH_CONSOLE_OAUTH_REFRESH_TOKEN`
+- Service account: `SEARCH_CONSOLE_SERVICE_ACCOUNT_EMAIL`, `SEARCH_CONSOLE_SERVICE_ACCOUNT_PRIVATE_KEY`
+
+Notes:
+- Google’s general Indexing API is not for normal blog posts; this workflow uses the supported Search Console sitemap submission endpoint instead.
+- If you use a service account, add that service account email to the Search Console property first.
+- `SEARCH_CONSOLE_SUBMIT_ON_SYNC=false` keeps the standalone command available while preventing `blog:sync` from submitting during local or deployment sync runs.
