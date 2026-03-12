@@ -107,10 +107,3 @@ If you're not playing by the GDPR rules, you're looking at a few serious risks. 
 4. **Loss of business:** If you're not GDPR compliant, you may have to stop processing data from the EU until you get your act together. This could mean losing out on a significant market or having to halt operations that are crucial to your business.
 
 5. **Operational disruptions:** Getting caught off guard by GDPR compliance issues can force you to make sudden changes to your operations, leading to disruptions, delays, and the need for quick fixes that may not be in your long-term best interest.
-
-If privacy-friendly analytics is only one piece of how you want to run a healthier site, these next reads branch into SEO, performance, and security:
-
-- [Get the technical SEO basics straight without overcomplicating them](/laravel-seo)
-- [Get a simpler read on what Core Web Vitals really mean](/google-core-web-vitals)
-- [An SEO case study from 4K to 270K monthly visits](/seo-case-study)
-- [Decide whether compromised-password checks belong in your auth flow](/block-compromised-password)

@@ -71,11 +71,3 @@ Overall, what it delivers is clear: a practical approach to taking your Laravel 
 I’d definitely recommend it, especially if you’re the kind of Laravel developer looking to build a reliable playbook, rather than chasing flashy patterns.
 
 [Check Best Practices for Laravel Enterprise Applications →](/recommends/best-practices-laravel-enterprise-apps)
-
-If you are deciding what to study after the bookshelf, these are the hands-on Laravel reads I would pair with it:
-
-- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
-- [Make your Laravel structure hold up better as the app grows](/laravel-architecture-best-practices)
-- [Write validation rules with less guesswork](/laravel-validation)
-- [Validate nested arrays in Laravel without losing your mind](/laravel-array-validation)
-- [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)
