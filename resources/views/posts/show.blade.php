@@ -11,6 +11,10 @@ Displays the posts show view.
     :title="! empty($post->serp_title) ? $post->serp_title : $post->title"
     type="article"
 >
+    @if (! $post->is_commercial)
+        <x-breadcrumbs :items="$breadcrumbs" class="container mb-6 md:mb-8" />
+    @endif
+    
     <div @class([
         'container',
         'grid lg:grid-cols-12 gap-16 lg:gap-12' => ! $post->is_commercial,
@@ -20,8 +24,6 @@ Displays the posts show view.
             'lg:col-span-8 xl:col-span-9' => ! $post->is_commercial,
         ])>
             <article>
-                <x-breadcrumbs :items="$breadcrumbs" class="mb-6 md:mb-8" />
-
                 @if ($post->hasImage())
                     <img
                         fetchpriority="high"
