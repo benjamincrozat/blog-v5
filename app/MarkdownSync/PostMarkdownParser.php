@@ -5,7 +5,6 @@ namespace App\MarkdownSync;
 use Throwable;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Date;
-use App\Markdown\PostContentImageUrls;
 
 /**
  * Parses and validates post markdown files with strict YAML frontmatter.
@@ -97,7 +96,6 @@ class PostMarkdownParser
         }
 
         $content = $matches[2];
-        PostContentImageUrls::ensureCloudflare($content, $path);
 
         $description = $this->optionalString('description', $frontMatter, $errors);
         $serpTitle = $this->optionalString('serp_title', $frontMatter, $errors);

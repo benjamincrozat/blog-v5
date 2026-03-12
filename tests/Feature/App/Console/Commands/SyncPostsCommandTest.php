@@ -162,22 +162,3 @@ MD);
 
     assertDatabaseMissing('posts', ['slug' => 'frontmatter-slug']);
 });
-
-it('fails when rendered post images are not hosted on Cloudflare Images', function () {
-    User::factory()->create(['name' => 'Author Slug']);
-
-    File::put(syncPostsMarkdownDirectory() . '/external-image-post.md', <<<'MD'
----
-title: 'External image post'
-slug: 'external-image-post'
-author: 'author-slug'
-categories: []
----
-![Screenshot](https://example.com/screenshot.png)
-MD);
-
-    artisan(SyncPostsCommand::class, ['--directory' => syncPostsMarkdownDirectory()])
-        ->assertFailed();
-
-    assertDatabaseMissing('posts', ['slug' => 'external-image-post']);
-});
