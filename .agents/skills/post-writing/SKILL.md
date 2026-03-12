@@ -58,7 +58,7 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 - When creating or revising a post, add or improve natural internal links in the body wherever a reader would want the next step, not only in the closing list.
 - Verify links and commands when feasible. If something cannot be verified, tell the user outside the post copy.
 - When setting frontmatter timestamps, use UTC rather than the machine's local timezone.
-- Do not use browser-based validation for post-writing tasks.
+- Skip browser-based validation for routine post-writing tasks. Only use it when the post has tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, or the user explicitly asks for a visual check.
 
 ## Common Shapes
 

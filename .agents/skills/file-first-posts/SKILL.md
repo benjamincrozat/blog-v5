@@ -24,6 +24,7 @@ Pair with `post-writing` when creating or revising article copy so internal link
 - Fail loudly on invalid front matter, unknown authors/categories, or duplicate IDs/slugs.
 - Do not use Filament to create, edit, delete, or restore posts.
 - If an edit changes article copy or scope, refresh the post's internal links and related-posts Markdown list before syncing.
+- Do not open the public page or Filament just for a routine post edit. Use browser checks only when the post includes tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, a publishing-state change that needs confirmation, or the user explicitly asks for a visual check.
 
 ## Workflow
 
@@ -36,6 +37,8 @@ Pair with `post-writing` when creating or revising article copy so internal link
    - inline image: `php artisan blog:upload-image /absolute/path/to/step.png --alt="Describe the screenshot"` and paste the returned URL into the article body
 4. If publishing state changes, update `published_at` in UTC.
 5. Run `php artisan blog:sync`.
-6. Verify the public page and the Filament posts list.
+6. Decide whether a browser check is needed:
+   - skip it for routine Markdown-only edits when `php artisan blog:sync` succeeds
+   - open the public page or Filament only for tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, or publishing changes that need confirmation
 7. Keep deploy notes in mind:
    - deployment should run `php artisan blog:sync` before sitemap generation
