@@ -31,7 +31,7 @@ Displays the posts show view.
                     />
                 @endif
 
-                <x-breadcrumbs :items="$breadcrumbs" class="justify-center mb-6" />
+                <x-breadcrumbs :items="$breadcrumbs" class="mb-6" />
 
                 <x-categories :categories="$post->categories" class="justify-center mt-11 mb-8">
                     @if ($post->isSponsored())

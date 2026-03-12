@@ -20,7 +20,7 @@ class ShowCategoryController extends Controller
         $breadcrumbs = [
             ['label' => 'Home', 'url' => route('home')],
             ['label' => 'Categories', 'url' => route('categories.index')],
-            ['label' => $category->name, 'url' => route('categories.show', $category)],
+            ['label' => $category->name],
         ];
 
         return view('categories.show', compact('category') + [

@@ -8,7 +8,7 @@ namespace App\Actions;
 class BuildBreadcrumbSchema
 {
     /**
-     * @param  array<int, array{label: string, url: string}>  $breadcrumbs
+     * @param  array<int, array{label: string, url?: string|null}>  $breadcrumbs
      * @return array<string, mixed>
      */
     public function handle(array $breadcrumbs) : array
@@ -16,12 +16,17 @@ class BuildBreadcrumbSchema
         $items = [];
 
         foreach ($breadcrumbs as $index => $breadcrumb) {
-            $items[] = [
+            $item = [
                 '@type' => 'ListItem',
                 'position' => $index + 1,
                 'name' => $breadcrumb['label'],
-                'item' => $breadcrumb['url'],
             ];
+
+            if (! empty($breadcrumb['url'])) {
+                $item['item'] = $breadcrumb['url'];
+            }
+
+            $items[] = $item;
         }
 
         return [

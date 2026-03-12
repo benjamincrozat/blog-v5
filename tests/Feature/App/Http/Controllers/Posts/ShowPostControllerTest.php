@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 
 use function Pest\Laravel\get;
 use function Pest\Laravel\actingAs;
@@ -91,4 +92,45 @@ it('hides the sticky carousel for commercial posts', function () {
     get(route('posts.show', $post))
         ->assertOk()
         ->assertDontSee('Black Friday');
+});
+
+it('builds a single blog breadcrumb trail for posts and omits the current page URL from schema', function () {
+    $post = Post::factory()->create([
+        'title' => 'Better breadcrumbs for posts',
+    ]);
+
+    $categories = Category::factory()->count(2)->create();
+
+    $post->categories()->sync($categories->pluck('id'));
+
+    get(route('posts.show', $post))
+        ->assertOk()
+        ->assertViewHas('breadcrumbs', [
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Blog', 'url' => route('posts.index')],
+            ['label' => $post->title],
+        ])
+        ->assertViewHas('breadcrumbSchema', [
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                [
+                    '@type' => 'ListItem',
+                    'position' => 1,
+                    'name' => 'Home',
+                    'item' => route('home'),
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 2,
+                    'name' => 'Blog',
+                    'item' => route('posts.index'),
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 3,
+                    'name' => $post->title,
+                ],
+            ],
+        ]);
 });

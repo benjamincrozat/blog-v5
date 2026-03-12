@@ -7,7 +7,7 @@ Displays the categories show view.
     description="Level up in {{ date('Y') }} as a web developer with this collection of articles I wrote about {{ $category->name }}."
 >
     <article class="container">
-        <x-breadcrumbs :items="$breadcrumbs" class="justify-center mb-6" />
+        <x-breadcrumbs :items="$breadcrumbs" class="mb-6" />
 
         @if ($posts->currentPage() === 1)
             <x-typography.heading>

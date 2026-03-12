@@ -39,22 +39,10 @@ class ShowPostController extends Controller
             }
         }
 
-        $primaryCategory = $post->categories->first();
         $breadcrumbs = [
             ['label' => 'Home', 'url' => route('home')],
             ['label' => 'Blog', 'url' => route('posts.index')],
-        ];
-
-        if ($primaryCategory) {
-            $breadcrumbs[] = [
-                'label' => $primaryCategory->name,
-                'url' => route('categories.show', $primaryCategory),
-            ];
-        }
-
-        $breadcrumbs[] = [
-            'label' => $post->title,
-            'url' => route('posts.show', $post),
+            ['label' => $post->title],
         ];
 
         return view('posts.show', compact('post') + [

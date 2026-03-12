@@ -1,27 +1,38 @@
 {{--
-Displays the components breadcrumbs component and accepts component props, Blade attributes, and slot content.
+Provides a responsive breadcrumb trail that accepts label and URL pairs, treating items without a URL as the current page.
 --}}
 
 @props(['items'])
 
-<nav {{ $attributes->class('text-sm text-gray-500') }} aria-label="Breadcrumb">
-    <ol class="flex flex-wrap items-center gap-2">
+<nav {{ $attributes->class('flex justify-start sm:justify-center') }} aria-label="Breadcrumb">
+    <ol class="flex max-w-full min-w-0 items-center gap-1 overflow-x-auto rounded-full border border-black/[0.06] bg-gray-50 p-1.5 text-sm text-gray-600 shadow-sm shadow-black/5">
         @foreach ($items as $item)
-            <li class="flex items-center gap-2">
+            @php
+                $isCurrentPage = blank($item['url'] ?? null);
+            @endphp
+
+            <li class="flex min-w-0 items-center gap-1">
                 @if (! $loop->first)
-                    <span aria-hidden="true" class="text-gray-300">/</span>
+                    <x-heroicon-o-chevron-right
+                        aria-hidden="true"
+                        class="shrink-0 text-gray-300 size-3.5"
+                    />
                 @endif
 
-                @if (! empty($item['url']) && ! $loop->last)
+                @if (! $isCurrentPage)
                     <a
                         wire:navigate
                         href="{{ $item['url'] }}"
-                        class="underline decoration-gray-300/70 underline-offset-4 hover:text-gray-700"
+                        class="shrink-0 rounded-full px-2.5 py-1.5 font-medium text-gray-500 transition-colors hover:bg-white hover:text-gray-900"
                     >
                         {{ $item['label'] }}
                     </a>
                 @else
-                    <span class="text-gray-600">
+                    <span
+                        aria-current="page"
+                        title="{{ $item['label'] }}"
+                        class="block max-w-[13rem] truncate rounded-full bg-white px-3 py-1.5 font-medium text-gray-950 ring-1 ring-black/[0.06] shadow-sm shadow-black/5 sm:max-w-[30rem] lg:max-w-[40rem]"
+                    >
                         {{ $item['label'] }}
                     </span>
                 @endif
