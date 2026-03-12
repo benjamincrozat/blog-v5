@@ -1,8 +1,8 @@
 ---
 name: post-writing
-description: Draft and revise educational blog posts that are concise, source-backed, and reader-first.
+description: Draft and revise evergreen and timely blog posts that are concise, source-backed, and reader-first.
 metadata:
-  short-description: Write concise, researched, reader-first posts
+  short-description: Write evergreen and timely reader-first posts
 ---
 
 # Post Writing
@@ -10,7 +10,7 @@ metadata:
 ## Scope
 
 Use for drafting or revising publication-ready posts in `resources/markdown/posts`.
-Pair with `seo-content` for search intent, SERP review, titles, snippets, and internal linking.
+Pair with `seo-content` for Search intent, Discover/News judgment, titles, snippets, and internal linking.
 
 ## Frontmatter Contract
 
@@ -46,6 +46,9 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 - When choosing among title options, favor the one with the clearest benefit, strongest specificity, and best query match.
 - Descriptions should read like a useful pitch for the page: one short sentence or two short clauses, with the main benefit near the start.
 - If the topic is time-sensitive, you may use a year or date, but only if the page itself is current enough to support it.
+- If `categories` includes `news`, treat the draft as a news post: lead with the new information, verify claims with primary sources, attribute those sources inline, keep the structure tight, and avoid padding it into an evergreen explainer.
+- For posts intended to target Google News or Discover strongly, the primary article image should be original when feasible, not a logo, and at least 1200 px wide.
+- For evergreen posts meant to compete in Discover, sharpen the opening payoff and framing, but do not force a news structure onto the draft.
 - Avoid clickbait phrasing, vague curiosity hooks, fake urgency, unsupported superlatives, emojis, or decorative all-caps.
 - Open fast: explain the problem, answer, or reason to care in the first few paragraphs.
 - Keep headings descriptive and skimmable. Use the exact primary keyword in only 1-2 headings if it reads naturally.
@@ -77,14 +80,16 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
   state the problem quickly, explain the likely cause, show the fix, and close with edge cases or alternatives.
 - Concept post:
   define the idea in simple words, show why it matters, then teach through examples and gotchas.
+- News post:
+  lead with the update, explain why it matters now, attribute the primary sources inline, add only the context needed to understand the change, and close with 2-4 durable links into relevant evergreen posts.
 
 ## Workflow
 
-1. Define the reader promise and search intent.
+1. Define the reader promise, search intent, and whether this is an evergreen post, a news post, or a broader Discover candidate.
 2. Draft five or more title candidates and choose the strongest one.
 3. Decide whether `serp_title` or `serp_description` need an override; otherwise leave them `null`.
 4. Check that the chosen title and description earn the click with a clear outcome, not a gimmick.
-5. Pick the simplest outline that matches the post shape.
+5. Pick the simplest outline that matches the post shape, and keep it tighter when the post is news.
 6. Draft for clarity, usefulness, and brevity.
 7. Decide whether original screenshots or simple visuals would materially clarify the piece or prove first-hand use; create them when the answer is yes.
 8. Add or refresh contextual internal links and, for non-commercial posts, the related-posts list.

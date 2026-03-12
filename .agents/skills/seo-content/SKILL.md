@@ -1,8 +1,8 @@
 ---
 name: seo-content
-description: Optimize blog posts for Google Search in 2026, including search intent, titles, snippets, internal links, AI-search visibility, and top-3 competitor analysis for supplied keywords. Use alongside post-writing for publication-ready posts.
+description: Optimize evergreen and timely blog posts for Google Search, Discover, and Google News in 2026, including search intent, titles, snippets, internal links, AI-search visibility, and top-3 competitor analysis for supplied keywords. Use alongside post-writing for publication-ready posts.
 metadata:
-  short-description: Search-first SEO guidance for posts and keyword reviews
+  short-description: Search, Discover, and News guidance for posts
 ---
 
 # SEO Content
@@ -13,6 +13,7 @@ Use alongside `post-writing` for new or existing publication-ready posts, or on 
 
 Read these references as needed:
 - `references/google-2026.md` for current Google guidance
+- `references/google-news.md` for Google News and Discover guidance
 - `references/competitive-reality.md` for field evidence and grey-hat risk
 - `references/serp-analysis.md` for the keyword and top-3 competitor workflow
 
@@ -42,10 +43,14 @@ Read these references as needed:
 - Add a year or date only when the topic is genuinely time-sensitive and the page is actually updated to match.
 - Use the primary keyword in the title, intro, slug, and only 1-2 lower headings when natural.
 - Prefer clear, specific titles and snippets over keyword stuffing. Google may rewrite both.
+- When `categories` includes `news`, decide explicitly whether the piece is best treated as a Google News candidate, a Discover candidate, a classic Search page, or some overlap of the three.
+- News posts should prioritize primary-source attribution, visible byline/date transparency, and fast usefulness over exhaustive evergreen coverage.
+- Do not assume every news post is a Discover candidate or every Discover candidate is a news post.
 - On every new or revised post, add or refresh relevant internal links with descriptive anchors. Treat them as navigation and topical context, not filler.
 - If the query or angle is visual by nature, such as interfaces, settings, dashboards, workflows, reviews, or before/after comparisons, assume original screenshots or other first-hand visuals are part of the winning content plan unless the live SERP shows they add no value.
 - Treat original screenshots, photos, diagrams, and comparison visuals as indirect SEO support: they can improve clarity, authenticity, image-search eligibility, and AI cite-worthiness, but they are not a standalone ranking factor.
 - Do not pad conceptual posts with decorative screenshots. Add visuals only when they clarify the step, prove the claim, or strengthen the page's first-hand value.
+- For posts intended to target Discover or Google News strongly, the main image should be original when feasible, not a logo, and at least 1200 px wide.
 - Keep the post's related-posts list current as part of that internal-linking pass on non-commercial posts. Update stale recommendations or anchors when the article's angle changes instead of leaving an outdated list behind.
 - Commercial posts (`is_commercial: true`) must not include a related-posts, read-next, or follow-up reading block. Keep those pages focused on conversion rather than onward reading.
 - On non-commercial posts, the lead-in sentence before the related-posts list must be unique to that article. Do not reuse the same stock phrasing, canned curiosity line, or obvious template across the site.
@@ -69,17 +74,20 @@ Read these references as needed:
 ## Workflow
 
 1. If keywords are provided, run the top-3 competitor brief from `references/serp-analysis.md`.
-2. If revising an existing post, compare its current promise, freshness, and gaps against the live SERP before changing structure.
-3. Summarize dominant intent, recurring subtopics, title and snippet patterns, freshness, weak spots, and whether the SERP shows meaningful visual intent.
-4. Pick the best angle for us to win on clarity, usefulness, originality, or first-hand value, including a simple decision on whether original screenshots or visuals should be part of the draft.
-5. Draft or revise with `post-writing`.
-6. Do a final SEO pass:
+2. Decide whether the piece should primarily target Search, Discover, Google News, or an overlap of them.
+3. If revising an existing post, compare its current promise, freshness, and gaps against the live SERP before changing structure.
+4. Summarize dominant intent, recurring subtopics, title and snippet patterns, freshness, weak spots, whether the angle has broad feed appeal, and whether the SERP shows meaningful visual intent.
+5. Pick the best angle for us to win on clarity, usefulness, originality, or first-hand value, including a simple decision on whether original screenshots or visuals should be part of the draft.
+6. Draft or revise with `post-writing`.
+7. Do a final SEO pass:
    - title, description, and slug align
    - `serp_title` and `serp_description` are either `null` or justified, accurate, and aligned with the visible page
    - title starts strong, uses concrete value, and is not relying on gimmicks for clicks
    - description leads with the main benefit and still works if Google rewrites part of the snippet
    - headings match the SERP without sounding repetitive
    - original visuals were created when the SERP or article angle made them a real advantage, and skipped when they would only add filler
+   - posts aimed at Discover or Google News have a strong lead image that is original when feasible, not a logo, and at least 1200 px wide
+   - news posts are genuinely timely, sourced inline from primary sources, and better suited to a news workflow than an evergreen search page
    - internal links are relevant, descriptive, and updated for the article's current angle
    - non-commercial posts have a related-posts list that is present or refreshed, uses a custom article-specific lead-in that does not echo the title, uses contextual anchor text instead of pasted destination titles, and points to genuinely useful next reads without padding
    - commercial posts do not include a related-posts, read-next, or follow-up reading block

@@ -1,8 +1,8 @@
 ---
 name: file-first-posts
-description: Operate the file-first post authoring workflow for this blog.
+description: Operate the file-first workflow for evergreen and timely Markdown-managed posts on this blog.
 metadata:
-  short-description: Export, edit, publish, and sync Markdown-managed posts
+  short-description: Run the Markdown workflow for evergreen and timely posts
 ---
 
 # File-first Posts
@@ -24,6 +24,8 @@ Pair with `post-writing` when creating or revising article copy so internal link
 - Give screenshot files descriptive names and useful alt text before upload.
 - Use UTC ISO-8601 timestamps for frontmatter dates such as `published_at` and `modified_at`.
 - Publishing is changing `published_at` in the file, then running `php artisan blog:sync`.
+- If `categories` includes `news`, publish promptly, sync immediately after substantive edits, and only set `modified_at` when the article changed in a meaningful reporting way.
+- Only first-party, non-commercial, non-sponsored `news` posts should be treated as news-sitemap candidates.
 - Fail loudly on invalid front matter, unknown authors/categories, or duplicate IDs/slugs.
 - Do not use Filament to create, edit, delete, or restore posts.
 - If an edit changes article copy or scope, refresh the post's internal links and, for non-commercial posts, the related-posts Markdown list before syncing.
@@ -44,9 +46,11 @@ Pair with `post-writing` when creating or revising article copy so internal link
 3. Capture and upload images before syncing:
    - if the article would be clearer or more trustworthy with original screenshots, capture them yourself when feasible instead of leaving a note for later
    - every image referenced by the post should end up on Cloudflare Images, not just the hero image
+   - for posts aiming at Discover or Google News strongly, the main image should be original when feasible, not a logo, and at least 1200 px wide
    - hero image: `php artisan blog:upload-image /absolute/path/to/cover.png --markdown=your-post.md`
    - inline image: `php artisan blog:upload-image /absolute/path/to/step.png --alt="Describe the screenshot"` and paste the returned URL into the article body
 4. If publishing state changes, update `published_at` in UTC.
+   - if this is a news post and you made a substantive reporting update, set `modified_at` in UTC before syncing
 5. Run `php artisan blog:sync`.
 6. Decide whether a browser check is needed:
    - skip it for routine Markdown-only edits when `php artisan blog:sync` succeeds
