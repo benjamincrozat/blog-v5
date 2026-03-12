@@ -1,431 +1,269 @@
 ---
 id: "01KKEW27N4KMTJDA40RXBP5QBD"
-title: "5 Tailwind CSS best practices for 2025"
+title: "10 Tailwind CSS best practices for 2026"
 slug: "tailwind-css"
 author: "benjamincrozat"
-description: "This is the most comprehensive tutorial about Tailwind CSS. Learn how to make front-end development great again."
+description: "Use these Tailwind CSS best practices to keep v4 projects consistent, readable, and easier to scale without fighting the framework."
 categories:
   - "css"
   - "tailwind-css"
-published_at: 2022-12-25T00:00:00+01:00
-modified_at: 2025-07-11T19:20:00+02:00
+published_at: 2022-12-24T23:00:00Z
+modified_at: 2026-03-12T21:47:58Z
 serp_title: null
 serp_description: null
-canonical_url: ""
+canonical_url: null
 is_commercial: false
 image_disk: "cloudflare-images"
 image_path: "images/posts/0ZPhadIzB2KgRMb.png"
 sponsored_at: null
 ---
-## Introduction to Tailwind CSS
+## Introduction
 
-I've been using Tailwind CSS since 2018 in a plethora of projects. Since then, I've only written a few lines of traditional CSS. Once I got the hang of Tailwind CSS, I couldn't go back. Naturally, I have **a lot** to say about it, and I hope you'll find this guide helpful and soon realize how powerful this framework is.
+The biggest Tailwind CSS mistake is not "using too many classes."
 
-**By the way, if this guide isn't enough, I recommend "[Level up with Tailwind CSS](/recommends/level-up-tailwind-css)" by Shruti Balasa, who is far more skilled at Tailwind CSS and CSS in general than I am. You won't regret it.**
+It is treating Tailwind like a random utility grab bag instead of a design system with fast feedback loops.
 
-[![Level up with Tailwind CSS, by Shruti Balasa](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,h_320/https://github.com/user-attachments/assets/e8ba5a1d-b43d-41bf-be75-c4da7c174b86)](/recommends/level-up-tailwind-css)
+That is where the chaos starts:
 
-## What is Tailwind CSS?
+- arbitrary values everywhere
+- unreadable duplication
+- dynamic class names Tailwind cannot detect
+- custom CSS added too early
 
-**[Tailwind CSS](https://tailwindcss.com) is a framework designed around the utility-first philosophy.**
+Used well, Tailwind stays boring in the best possible way. You move quickly, keep styling close to markup, and still end up with a consistent codebase.
 
-Instead of writing classic CSS, it encourages you to combine multiple classes to create the desired appearance.
+These are the Tailwind CSS best practices I would follow in 2026, especially on Tailwind v4 projects.
 
-Tailwind CSS was created back in 2017 by Adam Wathan and Steve Schoger.
+## 1. Start from theme variables, not random values
 
-Here's how we used to style buttons since the beginnings:
+In Tailwind v4, the cleanest place to define your design tokens is CSS with [`@theme`](https://tailwindcss.com/docs/theme#theme-variables).
+
+That means colors, fonts, breakpoints, shadows, and spacing decisions can live in one place and generate real utilities for the whole project.
 
 ```css
-.btn {
-    background-color: blue;
-    color: white;
-    padding: 1rem;
+@import "tailwindcss";
+
+@theme {
+    --color-brand-500: oklch(0.62 0.18 252);
+    --font-display: "Satoshi", sans-serif;
+    --shadow-soft: 0 12px 40px rgb(15 23 42 / 0.14);
+    --breakpoint-3xl: 120rem;
 }
 ```
 
-Here's how Tailwind CSS helps you do it:
+Now you can use utilities like `bg-brand-500`, `font-display`, `shadow-soft`, and `3xl:grid-cols-4` without inventing a second styling system.
+
+If a value shows up more than once, it is usually a token. Promote it to `@theme` instead of repeating bracket syntax forever.
+
+## 2. Think in utility classes first
+
+Tailwind's official docs still frame the core habit correctly: [think in utility classes](https://tailwindcss.com/docs/styling-with-utility-classes#thinking-in-utility-classes).
+
+That sounds obvious, but it matters because many teams reach for custom CSS the moment a class attribute feels "too long."
+
+Usually, you do not need to.
 
 ```html
-<button class="bg-blue-400 p-4 text-white">
-    Click me
-</button>
-```
-
-## Is Tailwind CSS Free?
-
-**Yes, Tailwind CSS is 100% free.**
-
-You can even contribute to it yourself on the [official repository](https://github.com/tailwindlabs/tailwindcss), as it's open source.
-
-You might have heard about commercial products built around the framework. But these are completely optional; you will never need them to use Tailwind CSS effectively.
-
-## Why Tailwind CSS is a Blessing
-
-Tailwind CSS comes with the following benefits:
-- You'll say goodbye to unused styles
-- You'll never end up with 4,394 different `color`, `margin`, or `z-index` values
-- You won't have to bother with best practices that nobody on your team wants to follow
-
-With that, speed of execution will increase, and you'll enjoy crafting user interfaces again.
-
-![Tailwind CSS](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/118/conversions/Screenshot_2022-12-25_at_16.11.53_b6pkht-medium.jpg)
-
-## Tailwind CSS vs Bootstrap 5: Utility Classes vs. Components
-
-In short, [Tailwind CSS](https://tailwindcss.com) is a utility-first CSS framework, and [Bootstrap 5](https://getbootstrap.com) is mainly a collection of UI components.
-
-For instance, with Tailwind CSS, building a call-to-action button can be done this way:
-
-```html
-<button class="bg-blue-600 px-4 py-3 text-white rounded">
-    Get Started
-</button>
-```
-
-The equivalent in Bootstrap would be:
-
-```html
-<button class="btn btn-primary">
-    Get Started
-</button>
-```
-
-Comparing Tailwind CSS to Bootstrap is like comparing apples to cars; it doesn't make sense.
-
-Bootstrap is more than a bunch of utility CSS classes. It provides many excellent UI components that make use of JavaScript. Therefore, it has a larger footprint.
-
-*When used correctly*, Tailwind CSS is extremely small (especially after compression).
-
-Both are highly customizable.
-
-Tailwind CSS will better fit teams that strongly value unique user interfaces.
-
-![The official website of Tailwind CSS.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/user-attachments/assets/c0f0cd52-004b-467a-9cf0-ed41aff47812)
-![The official website of Bootstrap.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/user-attachments/assets/704c9037-091e-4415-9d52-8460316d6a9b)
-
-## Big Names using Tailwind CSS
-
-The list of big companies using Tailwind CSS is quite impressive.
-
-Some of them fully use the framework, while others do a weird blend.
-
-And if you take a look at their code, you can see how they customize Tailwind CSS to their needs.
-
-Here are a few of them:
-
-- GitHub, for their [research website](https://githubnext.com)
-- Google, for their [I/O 2022 conference website](https://io.google/2022/)
-- Laravel, for the [Laracon Online website](https://laracon.net)
-- [Loom](https://www.loom.com)
-- [Mashable](https://mashable.com)
-- [Microsoft .NET](https://dotnet.microsoft.com/en-us/)
-- NASA, for their [Jet Propulsion Laboratory website](https://www.jpl.nasa.gov)
-- Netflix, for their [global top 10 microsite](https://top10.netflix.com)
-- [SavvyCal](https://benjamincrozat.com/recommends/savvycal)
-- [Shopify](https://www.shopify.com)
-- [The Verge](https://www.theverge.com)
-
-See more on [the official website of Tailwind CSS](https://tailwindcss.com/showcase).
-
-## Tailwind Play: Your Browser-Based Playground
-
-[Tailwind Play](https://play.tailwindcss.com) is the best tool to focus on quickly crafting a piece of UI right from your browser.
-
-It's a straightforward web application with the following features:
-- An HTML editor with great autocompletion (including every class from the framework)
-- A CSS editor
-- A config editor
-- A magic button to reformat your code
-- A version switcher to use an experimental or older version of the framework
-- A layout switcher
-- A light and dark mode switcher
-
-That's it, and that's all you need to get started with Tailwind CSS.
-
-You can jump to the last part of this tutorial, where we'll craft a UI element to get the hang of the framework.
-
-![Tailwind Play](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/120/conversions/Screenshot_2022-12-25_at_16.13.19_ssohln-medium.jpg)
-
-## Tailwind Play CDN for Rapid Development
-
-Tailwind Play CDN is not the typical CDN that serves a static file. It parses your HTML and injects the corresponding CSS into a `<style>` tag.
-
-This is a great way to prototype any idea you have quickly.
-
-1. Create an *index.html* file.
-2. Paste this code:
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <h1 class="text-3xl font-bold underline">
-        Hello, world!
-    </h1>
-</body>
-</html>
-```
-
-Et voilà!
-
-I recommend using something other than it in production, as your performance may suffer.
-
-## Set Up Tailwind CSS
-
-Ultimately, Tailwind CSS is just a collection of styles. It can be integrated into *any* project.
-
-For instance, the official website shows [how to use Tailwind CSS with its CLI tool](https://tailwindcss.com/docs/installation).
-
-Or using PostCSS: https://tailwindcss.com/docs/installation/using-postcss
-
-And even apps that use Vite for processing and serving assets: https://tailwindcss.com/docs/guides/vite
-
-You may also be interested in how to integrate Tailwind CSS inside a Laravel project that uses Vite (like this very blog): [Add Tailwind CSS to any Laravel project](https://benjamincrozat.com/tailwind-css-laravel)
-
-Or if you're still using Mix: https://tailwindcss.com/docs/guides/laravel#mix
-
-## Learning Tailwind CSS through video
-
-Videos are a great way to learn a new technology. There are plenty of free courses across the web, just one Google search away from you.
-
-That said, there are some I would recommend to anyone who's not familiar with the framework.
-
-First, Laracasts offers a *free* course called [HTML and CSS workshop](https://laracasts.com/series/html-and-css-workshop) using Tailwind CSS.
-
-Tailwind CSS even has an [official YouTube channel](https://www.youtube.com/@TailwindLabs).
-
-They provide great videos showing off how to build useful UI components like "[Building a command palette with Tailwind CSS, React, and Headless UI](https://www.youtube.com/watch?v=-jix4KyxLuQ)" or what could be your assignment at your job: "[Translating a Custom Design System to Tailwind CSS](https://www.youtube.com/watch?v=cZc4Jn5nK3k)".
-
-## Getting Help by Leveraging the Official Forum
-
-Tailwind CSS has an [official forum](https://github.com/tailwindlabs/tailwindcss/discussions) powered by GitHub Discussions. Feel free to ask about anything you're unable to find in Google, the official [documentation](https://tailwindcss.com/docs), or ChatGPT.
-
-![The official forum of Tailwind CSS.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/user-attachments/assets/271b3258-a86f-42ff-a556-2d82e5a7c998)
-
-## Tailwind CSS Best Practices
-
-### Customization via Configuration File
-
-Tailwind CSS lets you customize many things by simply editing the *tailwind.config.js* file.
-
-For example, if you want to add a new color, you can extend the default theme to add your own set of values:
-
-```js
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-    theme: {
-        extend: {
-            colors: {
-                brand: '#abc123',
-            },
-            fontFamily: {
-                handwriting: ['Some handwriting font'],
-            }
-        }
-    }
-}
-```
-
-By leveraging the configuration file properly, tons of classes and their variants will be automatically generated for you like `bg-brand`, `text-brand`, `border-brand`, `hover:bg-brand`, etc.
-
-[Learn more](https://tailwindcss.com/docs/theme) on the official documentation.
-
-### Visual Studio Code Plugins
-
-#### Tailwind CSS IntelliSense
-
-Tailwind CSS IntelliSense is an official plugin made by Tailwind Labs that helps every developer work more efficiently with the framework by adding features like autocomplete, syntax highlighting, and linting.
-
-A must-have!
-
-[Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) on the Visual Studio Code marketplace.
-
-#### Inline Fold
-
-If you feel overwhelmed by the number of classes in your HTML, you might want to collapse the `class` attribute for improved clarity.
-
-Inline Fold is a plugin for Visual Studio Code that solves this problem really well.
-
-[Inline Fold](https://marketplace.visualstudio.com/items?itemName=moalamri.inline-fold) on the Visual Studio Code marketplace.
-
-### Improving Readability
-
-Let's say you have a button that looks like this:
-
-```html
-<button class="bg-gradient-to-r from-indigo-300 dark:from-indigo-500 to-indigo-400 dark:to-indigo-600 font-semibold px-4 sm:px-6 py-2 rounded shadow-lg text-sm text-white w-full">
-    Click me
-</button>
-```
-
-One easy trick to make it more readable is to break the `class` attribute into multiple lines:
-
-```html
-<button
-    class="bg-gradient-to-r from-indigo-300 dark:from-indigo-500
-    to-indigo-400 dark:to-indigo-600 font-semibold px-4 sm:px-6
-    py-2 rounded shadow-lg text-sm text-white w-full"
->
-    Click me
-</button>
-```
-
-### Component Extraction
-
-Extracting your button to a component (Blade, React, Vue, or whatever you like) will drastically clean up your files.
-
-Here's a Blade template file using a `button` component containing the same code as above:
-
-```blade
-<!DOCTYPE html>
-<html>
-    <head>
-        …
-    </head>
-    <body>
-        …
-
-        <x-button>
-            Book me
-        </x-button>
-
-        …
-    </body>
-</html>
-```
-
-### Avoiding Parent Class Extraction
-
-Extracting a bunch of Tailwind CSS classes to a parent class is tempting.
-
-```css
-.btn {
-    @apply bg-gradient-to-r from-blue-400 to-blue-300 px-4 py-3 rounded
-}
-```
-
-However, this completely defeats the purpose of Tailwind CSS, which is to have a single source of truth and make things easier to manage.
-
-Instead, use your editor's multi-cursor feature and create sub-components thanks to whatever templating engine you use.
-
-Here's an example written using Laravel's Blade templating engine:
-
-```blade
-{{-- Somewhere in your views… --}}
-<x-primary-btn>
-    Click me
-</x-primary-btn>
-
-{{-- primary-btn.blade.php --}}
-<x-btn class="bg-gradient-to-r from-blue-400 to-blue-300 text-white">
-    {{ $slot }}
-</x-btn>
-
-{{-- btn.blade.php --}}
-<button {{ $attributes->merge(['class' => 'bg-gray-200 px-4 py-3 rounded']) }}>
-    {{ $slot }}
-</button>
-```
-
-1. We begin with a base `btn` component with a gray rounded `button` that is enough for most cases.
-2. Then, we have a `primary-btn` component that extends the `btn` component and adds a blue gradient background and white text. This component can be used for call-to-action buttons.
-
-## Official Tailwind CSS Plugins
-
-### The Container Queries Plugin
-
-Instead of using media queries and viewport sizes to change an element's layout, we can rely on the size of its container.
-
-Here's all about container queries on CSS-Tricks: [Say Hello to CSS Container Queries](https://css-tricks.com/say-hello-to-css-container-queries/)
-
-The container queries plugin provides a convenient way to handle them in a Tailwind CSS fashion.
-
-```html
-<div class="@container">
-    <div class="@lg:underline">
-        <!-- This text will be underlined when the container is larger than `32rem` -->
-    </div>
-</div>
-```
-
-[Read the official documentation on GitHub.](https://github.com/tailwindlabs/tailwindcss-container-queries)
-
-### The Forms Plugin
-
-The forms plugin is maintained by the team from Tailwind CSS. It resets forms to a consistent state across all browsers and makes them easily stylable.
-
-Learn more: [Tailwind CSS forms plugin: a step-by-step guide](https://benjamincrozat.com/tailwind-css-forms-plugin)
-
-### The Typography Plugin
-
-The typography plugin contains tons of styles, which you can customize, for written content. It's extremely well done and useful.
-
-```html
-<article class="prose lg:prose-xl">
-    <!-- Parsed Markdown -->
+<article class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+    <h2 class="text-xl font-semibold text-slate-900">Ship faster</h2>
+    <p class="mt-2 text-sm leading-6 text-slate-600">
+        Keep structure, spacing, and color choices visible where the component is used.
+    </p>
 </article>
 ```
 
-Here's a live demo: https://play.tailwindcss.com/rgcRf17zir
+This is often easier to scan than bouncing between HTML and a separate CSS file just to understand a card.
 
-And by the way, you're actually witnessing those styles on this blog post. 😎
+## 3. Use arbitrary values as escape hatches, not as a second design system
 
-I've written in more details about it here: [Tailwind CSS typography plugin: a step-by-step build guide](https://benjamincrozat.com/tailwind-css-typography-plugin)
+Arbitrary values are one of Tailwind's best features.
 
-![The typography plugin in action.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/user-attachments/assets/5e8a4c34-1274-47b5-854e-a1aceb45152d)
+They are also one of the fastest ways to lose consistency when every screen starts shipping with its own `rounded-[19px]`, `w-[37rem]`, and `text-[#213547]`.
 
-## Unofficial plugins
+This is a healthy use:
 
-### fullwindcss
+```html
+<div class="top-[117px]">
+    ...
+</div>
+```
 
-I recently came across a Tailwind CSS plugin called fullwindcss that expands the default color palette. Instead of the standard 11 shades per color, it offers 1001 shades for each. This allows for more nuanced color choices, which can be particularly useful when designing hover states or dark themes.
+This is usually a signal that you need tokens instead:
 
-The plugin uses CIELAB color space for interpolation, aiming to provide visually pleasing gradients. What I found interesting is that it maintains compatibility with the original Tailwind colors, so it can be integrated into existing projects without disrupting the current design. While it's not necessary for every project, it could be a helpful tool for designers who frequently work with complex color schemes or need very specific shades in their designs.
+```html
+<div class="bg-[#0f1729] px-[22px] py-[13px] text-[15px]">
+    ...
+</div>
+```
 
-[Check out fullwindcss](https://fullwindcss.com)
+Tailwind's [utility-first guidance on arbitrary values](https://tailwindcss.com/docs/styling-with-utility-classes#using-arbitrary-values) is best read as permission to break out of the scale when needed, not a reason to stop having one.
 
-![fullwindcss](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/user-attachments/assets/e43263d8-5c1a-4640-aa50-aefff42c07fb)
+## 4. Extract real components, not giant parent classes
 
-## UI Kits
+When duplication appears, the first question is not "where do I put `@apply`?"
 
-Due to its utility-first philosophy, Tailwind CSS allows you to copy and paste fully-designed components into any website.
+The first question is whether you really have a reusable component.
 
-This is one of its strengths and you can experiment with component libraries right now. I've compiled a list of free and paid ones.
+Tailwind explicitly recommends [managing duplication](https://tailwindcss.com/docs/styling-with-utility-classes#managing-duplication) with template partials or components when that is the cleanest fit.
 
-### Free
+For example, this is healthier than hiding everything behind a `.btn-primary` class:
 
-- [daisyUI](https://daisyui.com)
-- [Flowbite](https://flowbite.com/docs/getting-started/introduction/)
-- [tailwindcomponents.com](https://tailwindcomponents.com)
+```blade
+@props(['variant' => 'primary'])
 
-### Paid
+@php
+    $variants = [
+        'primary' => 'bg-slate-900 text-white hover:bg-slate-700',
+        'secondary' => 'bg-white text-slate-900 ring-1 ring-slate-200 hover:bg-slate-50',
+    ];
+@endphp
 
-- [Tailwind Elements](https://tailwind-elements.com)
-- [Tailwind UI](https://tailwindui.com)
-- [Tailwind UI Kit](https://tailwinduikit.com)
+<button {{
+    $attributes->class([
+        'inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition',
+        $variants[$variant] ?? $variants['primary'],
+    ])
+}}>
+    {{ $slot }}
+</button>
+```
 
-## Tailwind CSS Alternatives
+If you are using Laravel, this pairs nicely with my guide on [adding Tailwind CSS to a Laravel project](/tailwind-css-laravel).
 
-As with everything in life, there are alternatives.
+## 5. Keep class lists readable with tooling
 
-Keep in mind we are looking for purely utility-first CSS frameworks. UI frameworks like [Bootstrap actually have utility classes](https://getbootstrap.com/docs/5.3/utilities/background/), and you can use them if you like.
+Long class lists are normal in Tailwind. Unformatted class lists are the actual problem.
 
-These frameworks below can be integrated into any project based on any JavaScript framework (Ember, React, Svelte, Vue.js, etc.):
+Two tools help a lot:
 
-- [Basscss](https://basscss.com/)
-- [Expressive CSS](https://johnpolacek.github.io/expressive-css/)
-- [shed.css](https://tedconf.github.io/shed-css/)
-- [turretcss](https://turretcss.com)
+- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) for autocomplete, hover previews, and linting
+- Tailwind's [Prettier plugin for automatic class sorting](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
 
-If you are building out a Tailwind stack instead of stopping at the basics, these are the next reads I would open:
+That gives your team a predictable class order, cleaner diffs, and fewer debates about style hygiene.
 
-- [Style forms faster with Tailwind's forms plugin](/tailwind-css-forms-plugin)
-- [Make long-form content look better with Tailwind's typography plugin](/tailwind-css-typography-plugin)
-- [Disable hover styles on touch devices without fighting Tailwind](/disable-hover-styles-mobile-tailwind-css)
-- [Add Tailwind to Laravel without setup guesswork](/tailwind-css-laravel)
+You should not have to manually curate the order of twenty utilities every time you touch a component.
+
+## 6. Lean on variants for states, themes, and responsive behavior
+
+A lot of custom CSS disappears once you fully use Tailwind's variants.
+
+The [official docs](https://tailwindcss.com/docs/styling-with-utility-classes#styling-hover-focus-and-other-states) cover the basics, but the habit is simple:
+
+- use `hover:`, `focus:`, and `disabled:` for states
+- use responsive prefixes for layout changes
+- use `dark:` for theme differences
+- use `data-*` and `aria-*` variants when component state already lives in attributes
+
+```html
+<button class="rounded-xl bg-sky-600 px-4 py-2 text-white transition hover:bg-sky-500 focus:outline-2 focus:outline-offset-2 focus:outline-sky-600 disabled:cursor-not-allowed disabled:opacity-60">
+    Save changes
+</button>
+```
+
+If your issue is specifically hover behavior on touch devices, I covered that in [this focused fix for mobile hover styles](/disable-hover-styles-mobile-tailwind-css).
+
+## 7. Keep class names statically detectable
+
+Tailwind only generates classes it can find in your source files, so do not build class names dynamically.
+
+The docs say this very plainly in the [class detection guide](https://tailwindcss.com/docs/detecting-classes-in-source-files#dynamic-class-names): use complete class names that exist in full in your code.
+
+Bad:
+
+```jsx
+<button className={`bg-${color}-600 hover:bg-${color}-500`}>...</button>
+```
+
+Good:
+
+```jsx
+const variants = {
+    success: "bg-emerald-600 hover:bg-emerald-500",
+    danger: "bg-rose-600 hover:bg-rose-500",
+    info: "bg-sky-600 hover:bg-sky-500",
+};
+
+<button className={variants[variant] ?? variants.info}>...</button>
+```
+
+This one habit prevents a lot of "why is this class missing in production?" bugs.
+
+## 8. Write custom CSS only when Tailwind stops being the right tool
+
+Tailwind is not a religion. Sometimes custom CSS is the clean answer.
+
+That is exactly why the framework has an [official guide to adding custom styles](https://tailwindcss.com/docs/adding-custom-styles), including tools like `@utility` and `@layer`.
+
+Good reasons to step outside utilities:
+
+- styling third-party markup you do not control
+- defining a truly reusable custom utility
+- targeting selectors or pseudo-elements that would be awkward inline
+
+```css
+@import "tailwindcss";
+
+@utility content-auto {
+    content-visibility: auto;
+}
+```
+
+The important part is intent. Use custom CSS because it is the clearest tool for the job, not because the first draft of the markup looked busy.
+
+## 9. Understand Preflight before disabling it
+
+[Preflight](https://tailwindcss.com/docs/preflight) is Tailwind's base reset layer, built on top of `modern-normalize`.
+
+If buttons, headings, lists, or borders look different after installing Tailwind, Preflight is usually why.
+
+That is not automatically a problem.
+
+Most of the time, the best move is to understand what Preflight changed and override the specific area you care about. Turning it off globally should be a deliberate compatibility decision, not a reflex.
+
+This matters even more if you are styling rich text with the [Typography plugin](/tailwind-css-typography-plugin) or cleaning up forms with the [Forms plugin](/tailwind-css-forms-plugin).
+
+## 10. Upgrade to v4 deliberately
+
+Tailwind v4 is a great release, but it is not a zero-thinking upgrade.
+
+The [official upgrade guide](https://tailwindcss.com/docs/upgrade-guide) is required reading because v4 changes how customization, installation, and browser support work. Tailwind's own docs also note that v4 targets modern browsers, and if you must support older browsers, staying on v3.4 is the safer call.
+
+In practice, a good v4 upgrade pass includes:
+
+- moving repeated design decisions into `@theme`
+- checking any old `tailwind.config.js` assumptions
+- validating your build tooling and plugins
+- testing pages that relied on older defaults or reset behavior
+
+If you are still on v3 for compatibility reasons, that is fine. Just make it a conscious compatibility choice, not inertia.
+
+## FAQ
+
+### Should I use `@apply` everywhere?
+
+No.
+
+`@apply` is useful in specific cases, especially when you are bridging Tailwind with CSS you cannot express cleanly in markup. It is a poor default for everyday component styling because it hides the utility layer you chose Tailwind for in the first place.
+
+### Are long class lists a smell?
+
+Not by themselves.
+
+A long class list in one well-named component is usually fine. Repeating that same list in six places without extracting a component is the smell.
+
+### Is the Play CDN okay for production?
+
+No. Tailwind's [installation docs](https://tailwindcss.com/docs/installation/play-cdn) position the Play CDN for development and experimentation, not serious production builds.
+
+### Do I still need `tailwind.config.js` in v4?
+
+Not for most theme customization.
+
+In v4, Tailwind recommends CSS theme variables first. The [upgrade guide section on JavaScript config files](https://tailwindcss.com/docs/upgrade-guide#using-a-javascript-config-file) explains the compatibility path when you still need config-based setup.
+
+If you are wiring these habits into a real project instead of a demo, these are the next posts I would open:
+
+- [Set up Tailwind in Laravel without configuration drift](/tailwind-css-laravel)
+- [Make long-form content look right with the Typography plugin](/tailwind-css-typography-plugin)
+- [Style form controls without starting from browser chaos](/tailwind-css-forms-plugin)
+- [Stop touch devices from triggering fake hover states](/disable-hover-styles-mobile-tailwind-css)
