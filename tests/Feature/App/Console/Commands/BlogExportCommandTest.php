@@ -8,17 +8,22 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Artisan;
 use App\Exceptions\PostMarkdownException;
 
+function blogExportMarkdownPath() : string
+{
+    return (string) config('blog.markdown.posts_path');
+}
+
 beforeEach(function () {
-    $this->markdownPath = storage_path('framework/testing/markdown-export-' . Str::uuid());
+    $markdownPath = storage_path('framework/testing/markdown-export-' . Str::uuid());
 
-    File::deleteDirectory($this->markdownPath);
-    File::ensureDirectoryExists($this->markdownPath);
+    File::deleteDirectory($markdownPath);
+    File::ensureDirectoryExists($markdownPath);
 
-    config()->set('blog.markdown.posts_path', $this->markdownPath);
+    config()->set('blog.markdown.posts_path', $markdownPath);
 });
 
 afterEach(function () {
-    File::deleteDirectory($this->markdownPath);
+    File::deleteDirectory(blogExportMarkdownPath());
 });
 
 it('exports canonical markdown files from the local database', function () {
@@ -52,7 +57,7 @@ it('exports canonical markdown files from the local database', function () {
 
     expect(Artisan::output())->toContain('Exported 1 posts');
 
-    $filePath = $this->markdownPath . '/export-me.md';
+    $filePath = blogExportMarkdownPath() . '/export-me.md';
 
     expect(File::exists($filePath))->toBeTrue();
 

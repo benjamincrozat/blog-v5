@@ -7,19 +7,24 @@ use App\Markdown\PostMarkdownDocument;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 
+function blogUploadMarkdownPath() : string
+{
+    return (string) config('blog.markdown.posts_path');
+}
+
 beforeEach(function () {
-    $this->markdownPath = storage_path('framework/testing/markdown-upload-' . Str::uuid());
+    $markdownPath = storage_path('framework/testing/markdown-upload-' . Str::uuid());
 
-    File::deleteDirectory($this->markdownPath);
-    File::ensureDirectoryExists($this->markdownPath);
+    File::deleteDirectory($markdownPath);
+    File::ensureDirectoryExists($markdownPath);
 
-    config()->set('blog.markdown.posts_path', $this->markdownPath);
+    config()->set('blog.markdown.posts_path', $markdownPath);
 
     Storage::fake('cloudflare-images');
 });
 
 afterEach(function () {
-    File::deleteDirectory($this->markdownPath);
+    File::deleteDirectory(blogUploadMarkdownPath());
 });
 
 it('uploads an inline article image to Cloudflare Images', function () {
@@ -43,7 +48,7 @@ it('uploads an inline article image to Cloudflare Images', function () {
 it('updates the Markdown hero image fields after uploading to Cloudflare Images', function () {
     $image = UploadedFile::fake()->image('cover.png', 1200, 630);
 
-    writeMarkdownPostForUpload($this->markdownPath, 'cloudflare-post', [
+    writeMarkdownPostForUpload(blogUploadMarkdownPath(), 'cloudflare-post', [
         'id' => '"01ARZ3NDEKTSV4RRFFQ69G5FAV"',
         'title' => '"Cloudflare post"',
         'slug' => 'cloudflare-post',
@@ -70,7 +75,7 @@ it('updates the Markdown hero image fields after uploading to Cloudflare Images'
     Storage::disk('cloudflare-images')->assertExists('images/posts/cloudflare-post-cover.png');
 
     $document = PostMarkdownDocument::fromMarkdown(
-        File::get($this->markdownPath . '/cloudflare-post.md'),
+        File::get(blogUploadMarkdownPath() . '/cloudflare-post.md'),
         'cloudflare-post.md',
     );
 

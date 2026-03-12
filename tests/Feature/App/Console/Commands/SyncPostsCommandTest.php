@@ -14,20 +14,25 @@ use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertSoftDeleted;
 use function Pest\Laravel\assertDatabaseMissing;
 
-beforeEach(function () {
-    $this->markdownDirectory = storage_path('framework/testing/markdown-posts-' . Str::uuid());
+function syncPostsMarkdownDirectory() : string
+{
+    return (string) config('tests.sync-posts.markdown_directory');
+}
 
-    File::ensureDirectoryExists($this->markdownDirectory);
+beforeEach(function () {
+    config()->set('tests.sync-posts.markdown_directory', storage_path('framework/testing/markdown-posts-' . Str::uuid()));
+
+    File::ensureDirectoryExists(syncPostsMarkdownDirectory());
 });
 
 afterEach(function () {
-    File::deleteDirectory($this->markdownDirectory);
+    File::deleteDirectory(syncPostsMarkdownDirectory());
 });
 
 it('creates a post from markdown and syncs categories by slug', function () {
     $author = User::factory()->create(['name' => 'Author Slug']);
 
-    File::put($this->markdownDirectory . '/my-post.md', <<<'MD'
+    File::put(syncPostsMarkdownDirectory() . '/my-post.md', <<<'MD'
 ---
 title: 'My post'
 slug: 'my-post'
@@ -41,7 +46,7 @@ published_at: '2026-02-01 10:00:00'
 ## Hello
 MD);
 
-    artisan(SyncPostsCommand::class, ['--directory' => $this->markdownDirectory])
+    artisan(SyncPostsCommand::class, ['--directory' => syncPostsMarkdownDirectory()])
         ->assertSuccessful();
 
     assertDatabaseHas('posts', [
@@ -76,7 +81,7 @@ it('updates posts, resets missing optional fields, and preserves sessions_count'
         Category::factory()->create(['slug' => 'old-category'])->getKey(),
     ]);
 
-    File::put($this->markdownDirectory . '/my-post.md', <<<'MD'
+    File::put(syncPostsMarkdownDirectory() . '/my-post.md', <<<'MD'
 ---
 title: 'New title'
 slug: 'my-post'
@@ -87,7 +92,7 @@ categories:
 ## Updated
 MD);
 
-    artisan(SyncPostsCommand::class, ['--directory' => $this->markdownDirectory])
+    artisan(SyncPostsCommand::class, ['--directory' => syncPostsMarkdownDirectory()])
         ->assertSuccessful();
 
     $post->refresh();
@@ -106,7 +111,7 @@ it('soft deletes posts that are missing from markdown files', function () {
     $author = User::factory()->create(['name' => 'Author Slug']);
     $post = Post::factory()->for($author)->create(['slug' => 'remove-me']);
 
-    File::put($this->markdownDirectory . '/keep-me.md', <<<'MD'
+    File::put(syncPostsMarkdownDirectory() . '/keep-me.md', <<<'MD'
 ---
 title: 'Keep me'
 slug: 'keep-me'
@@ -116,14 +121,14 @@ categories: []
 Hello
 MD);
 
-    artisan(SyncPostsCommand::class, ['--directory' => $this->markdownDirectory])
+    artisan(SyncPostsCommand::class, ['--directory' => syncPostsMarkdownDirectory()])
         ->assertSuccessful();
 
     assertSoftDeleted('posts', ['id' => $post->getKey()]);
 });
 
 it('fails with clear errors when the author slug is unknown', function () {
-    File::put($this->markdownDirectory . '/my-post.md', <<<'MD'
+    File::put(syncPostsMarkdownDirectory() . '/my-post.md', <<<'MD'
 ---
 title: 'My post'
 slug: 'my-post'
@@ -133,7 +138,7 @@ categories: []
 Hello
 MD);
 
-    artisan(SyncPostsCommand::class, ['--directory' => $this->markdownDirectory])
+    artisan(SyncPostsCommand::class, ['--directory' => syncPostsMarkdownDirectory()])
         ->assertFailed();
 
     assertDatabaseMissing('posts', ['slug' => 'my-post']);
@@ -142,7 +147,7 @@ MD);
 it('fails with clear errors when filename and slug do not match', function () {
     User::factory()->create(['name' => 'Author Slug']);
 
-    File::put($this->markdownDirectory . '/filename-slug.md', <<<'MD'
+    File::put(syncPostsMarkdownDirectory() . '/filename-slug.md', <<<'MD'
 ---
 title: 'My post'
 slug: 'frontmatter-slug'
@@ -152,7 +157,7 @@ categories: []
 Hello
 MD);
 
-    artisan(SyncPostsCommand::class, ['--directory' => $this->markdownDirectory])
+    artisan(SyncPostsCommand::class, ['--directory' => syncPostsMarkdownDirectory()])
         ->assertFailed();
 
     assertDatabaseMissing('posts', ['slug' => 'frontmatter-slug']);

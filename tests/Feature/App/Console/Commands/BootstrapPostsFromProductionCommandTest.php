@@ -12,6 +12,16 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Schema\Blueprint;
 use App\Console\Commands\BootstrapPostsFromProductionCommand;
 
+function bootstrapPostsMarkdownDirectory() : string
+{
+    return (string) config('tests.bootstrap-posts.markdown_directory');
+}
+
+function bootstrapPostsProductionConnection() : \Illuminate\Database\ConnectionInterface
+{
+    return DB::connection('production');
+}
+
 beforeEach(function () {
     config([
         'database.connections.production' => [
@@ -23,7 +33,6 @@ beforeEach(function () {
     ]);
 
     DB::purge('production');
-    $production = DB::connection('production');
     Schema::connection('production')->create('users', function (Blueprint $table) {
         $table->id();
         $table->string('slug');
@@ -54,21 +63,23 @@ beforeEach(function () {
         $table->unsignedBigInteger('post_id');
     });
 
-    $this->production = $production;
-    $this->markdownDirectory = storage_path('framework/testing/bootstrap-posts-' . Str::uuid());
-    File::ensureDirectoryExists($this->markdownDirectory);
+    config()->set('tests.bootstrap-posts.markdown_directory', storage_path('framework/testing/bootstrap-posts-' . Str::uuid()));
+
+    File::ensureDirectoryExists(bootstrapPostsMarkdownDirectory());
 });
 
 afterEach(function () {
-    File::deleteDirectory($this->markdownDirectory);
+    File::deleteDirectory(bootstrapPostsMarkdownDirectory());
 });
 
 it('exports only active production posts to markdown', function () {
-    $this->production->table('users')->insert([
+    $production = bootstrapPostsProductionConnection();
+
+    $production->table('users')->insert([
         ['id' => 1, 'slug' => 'author-slug'],
     ]);
 
-    $this->production->table('posts')->insert([
+    $production->table('posts')->insert([
         [
             'id' => 1,
             'user_id' => 1,
@@ -89,13 +100,13 @@ it('exports only active production posts to markdown', function () {
         ],
     ]);
 
-    artisan(BootstrapPostsFromProductionCommand::class, ['--directory' => $this->markdownDirectory])
+    artisan(BootstrapPostsFromProductionCommand::class, ['--directory' => bootstrapPostsMarkdownDirectory()])
         ->assertSuccessful();
 
-    expect(File::exists($this->markdownDirectory . '/active-post.md'))->toBeTrue()
-        ->and(File::exists($this->markdownDirectory . '/deleted-post.md'))->toBeFalse();
+    expect(File::exists(bootstrapPostsMarkdownDirectory() . '/active-post.md'))->toBeTrue()
+        ->and(File::exists(bootstrapPostsMarkdownDirectory() . '/deleted-post.md'))->toBeFalse();
 
-    $markdown = File::get($this->markdownDirectory . '/active-post.md');
+    $markdown = File::get(bootstrapPostsMarkdownDirectory() . '/active-post.md');
 
     expect($markdown)
         ->toContain("title: 'Active post'")
@@ -106,11 +117,13 @@ it('exports only active production posts to markdown', function () {
 it('migrates embedded and featured external images during bootstrap', function () {
     Storage::fake('cloudflare-images');
 
-    $this->production->table('users')->insert([
+    $production = bootstrapPostsProductionConnection();
+
+    $production->table('users')->insert([
         ['id' => 1, 'slug' => 'author-slug'],
     ]);
 
-    $this->production->table('posts')->insert([
+    $production->table('posts')->insert([
         [
             'id' => 1,
             'user_id' => 1,
@@ -133,10 +146,10 @@ MARKDOWN,
         ]),
     ]);
 
-    artisan(BootstrapPostsFromProductionCommand::class, ['--directory' => $this->markdownDirectory])
+    artisan(BootstrapPostsFromProductionCommand::class, ['--directory' => bootstrapPostsMarkdownDirectory()])
         ->assertSuccessful();
 
-    $markdown = File::get($this->markdownDirectory . '/image-post.md');
+    $markdown = File::get(bootstrapPostsMarkdownDirectory() . '/image-post.md');
 
     expect($markdown)
         ->not->toContain('https://old-cdn.test/content-image.png')

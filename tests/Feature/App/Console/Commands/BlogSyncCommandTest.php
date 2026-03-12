@@ -14,6 +14,11 @@ use App\Exceptions\PostMarkdownException;
 
 use function Pest\Laravel\assertDatabaseHas;
 
+function blogSyncMarkdownPath() : string
+{
+    return (string) config('blog.markdown.posts_path');
+}
+
 function blogMarkdownFrontMatter(array $attributes) : string
 {
     $lines = [];
@@ -50,16 +55,16 @@ function writeMarkdownPost(string $basePath, string $slug, array $attributes, st
 }
 
 beforeEach(function () {
-    $this->markdownPath = storage_path('framework/testing/markdown-sync-' . Str::uuid());
+    $markdownPath = storage_path('framework/testing/markdown-sync-' . Str::uuid());
 
-    File::deleteDirectory($this->markdownPath);
-    File::ensureDirectoryExists($this->markdownPath);
+    File::deleteDirectory($markdownPath);
+    File::ensureDirectoryExists($markdownPath);
 
-    config()->set('blog.markdown.posts_path', $this->markdownPath);
+    config()->set('blog.markdown.posts_path', $markdownPath);
 });
 
 afterEach(function () {
-    File::deleteDirectory($this->markdownPath);
+    File::deleteDirectory(blogSyncMarkdownPath());
 });
 
 it('creates a post from markdown', function () {
@@ -67,7 +72,7 @@ it('creates a post from markdown', function () {
     Category::factory()->create(['slug' => 'laravel', 'name' => 'Laravel']);
     Category::factory()->create(['slug' => 'testing', 'name' => 'Testing']);
 
-    writeMarkdownPost($this->markdownPath, 'file-first-post', [
+    writeMarkdownPost(blogSyncMarkdownPath(), 'file-first-post', [
         'id' => '01ARZ3NDEKTSV4RRFFQ69G5FAV',
         'title' => '"File first post"',
         'slug' => 'file-first-post',
@@ -116,7 +121,7 @@ it('updates an existing post by source id', function () {
 
     $post->categories()->sync([$oldCategory->id]);
 
-    writeMarkdownPost($this->markdownPath, 'original-post', [
+    writeMarkdownPost(blogSyncMarkdownPath(), 'original-post', [
         'id' => '01ARZ3NDEKTSV4RRFFQ69G5FAV',
         'title' => '"Updated post"',
         'slug' => 'original-post',
@@ -158,7 +163,7 @@ it('assigns a source id through the first cutover slug fallback', function () {
             'description' => 'Cutover summary',
         ]);
 
-    writeMarkdownPost($this->markdownPath, 'cutover-post', [
+    writeMarkdownPost(blogSyncMarkdownPath(), 'cutover-post', [
         'id' => '01ARZ3NDEKTSV4RRFFQ69G5FAW',
         'title' => '"Cutover post"',
         'slug' => 'cutover-post',
@@ -193,7 +198,7 @@ it('creates redirects when a synced slug changes', function () {
             'slug' => 'old-slug',
         ]);
 
-    writeMarkdownPost($this->markdownPath, 'new-slug', [
+    writeMarkdownPost(blogSyncMarkdownPath(), 'new-slug', [
         'id' => '01ARZ3NDEKTSV4RRFFQ69G5FAV',
         'title' => '"Slug update"',
         'slug' => 'new-slug',
@@ -223,7 +228,7 @@ it('soft deletes removed files and restores posts when the file returns', functi
     $author = User::factory()->create(['github_login' => 'benjamincrozat']);
     Category::factory()->create(['slug' => 'laravel']);
 
-    writeMarkdownPost($this->markdownPath, 'restorable-post', [
+    writeMarkdownPost(blogSyncMarkdownPath(), 'restorable-post', [
         'id' => '01ARZ3NDEKTSV4RRFFQ69G5FAX',
         'title' => '"Restorable post"',
         'slug' => 'restorable-post',
@@ -245,7 +250,7 @@ it('soft deletes removed files and restores posts when the file returns', functi
 
     $post = Post::query()->where('source_uuid', '01ARZ3NDEKTSV4RRFFQ69G5FAX')->firstOrFail();
 
-    File::delete($this->markdownPath . '/restorable-post.md');
+    File::delete(blogSyncMarkdownPath() . '/restorable-post.md');
 
     Artisan::call('blog:sync');
 
@@ -254,7 +259,7 @@ it('soft deletes removed files and restores posts when the file returns', functi
     get(route('posts.show', 'restorable-post'))
         ->assertStatus(410);
 
-    writeMarkdownPost($this->markdownPath, 'restorable-post', [
+    writeMarkdownPost(blogSyncMarkdownPath(), 'restorable-post', [
         'id' => '01ARZ3NDEKTSV4RRFFQ69G5FAX',
         'title' => '"Restorable post"',
         'slug' => 'restorable-post',
@@ -281,7 +286,7 @@ it('fails on invalid front matter and unresolved references', function () {
     User::factory()->create(['github_login' => 'benjamincrozat']);
     Category::factory()->create(['slug' => 'laravel']);
 
-    writeMarkdownPost($this->markdownPath, 'invalid-post', [
+    writeMarkdownPost(blogSyncMarkdownPath(), 'invalid-post', [
         'id' => '01ARZ3NDEKTSV4RRFFQ69G5FAY',
         'slug' => 'invalid-post',
         'author' => 'missing-author',
@@ -306,7 +311,7 @@ it('fails on duplicate ids and slugs', function () {
     User::factory()->create(['github_login' => 'benjamincrozat']);
     Category::factory()->create(['slug' => 'laravel']);
 
-    writeMarkdownPost($this->markdownPath, 'duplicate-one', [
+    writeMarkdownPost(blogSyncMarkdownPath(), 'duplicate-one', [
         'id' => '01ARZ3NDEKTSV4RRFFQ69G5FAZ',
         'title' => '"Duplicate one"',
         'slug' => 'duplicate-one',
@@ -324,9 +329,9 @@ it('fails on duplicate ids and slugs', function () {
         'sponsored_at' => 'null',
     ]);
 
-    File::ensureDirectoryExists($this->markdownPath . '/nested');
+    File::ensureDirectoryExists(blogSyncMarkdownPath() . '/nested');
 
-    File::put($this->markdownPath . '/nested/duplicate-one.md', blogMarkdownFrontMatter([
+    File::put(blogSyncMarkdownPath() . '/nested/duplicate-one.md', blogMarkdownFrontMatter([
         'id' => '01ARZ3NDEKTSV4RRFFQ69G5FB0',
         'title' => '"Duplicate two"',
         'slug' => 'duplicate-one',
@@ -354,7 +359,7 @@ it('does not touch the sitemap or search console during blog sync', function () 
 
     File::delete(public_path('sitemap.xml'));
 
-    writeMarkdownPost($this->markdownPath, 'search-console-post', [
+    writeMarkdownPost(blogSyncMarkdownPath(), 'search-console-post', [
         'id' => '01ARZ3NDEKTSV4RRFFQ69G5FB1',
         'title' => '"Search Console post"',
         'slug' => 'search-console-post',
