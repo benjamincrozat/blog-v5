@@ -20,7 +20,7 @@ Provides a responsive breadcrumb trail that accepts label and URL pairs, treatin
         x-ref="scroller"
         class="w-full max-w-full overflow-x-auto overscroll-x-contain"
     >
-        <ol class="inline-flex min-w-max items-center gap-1 text-sm text-gray-600">
+        <ol class="inline-flex min-w-max items-center gap-1 rounded-full border border-black/[0.06] bg-gray-50 p-1.5 text-sm text-gray-600 shadow-sm shadow-black/5">
         @foreach ($items as $item)
             @php
                 $isCurrentPage = blank($item['url'] ?? null);
@@ -38,7 +38,7 @@ Provides a responsive breadcrumb trail that accepts label and URL pairs, treatin
                     <a
                         wire:navigate
                         href="{{ $item['url'] }}"
-                        class="shrink-0 rounded-full border border-black/[0.06] bg-gray-50 px-2.5 py-1.5 font-medium text-gray-500 shadow-sm shadow-black/5 transition-colors hover:bg-white hover:text-gray-900"
+                        class="shrink-0 rounded-full px-2.5 py-1.5 font-medium text-gray-500 transition-colors hover:bg-white hover:text-gray-900"
                     >
                         {{ $item['label'] }}
                     </a>
@@ -48,7 +48,7 @@ Provides a responsive breadcrumb trail that accepts label and URL pairs, treatin
                         title="{{ $item['label'] }}"
                         x-ref="current"
                         @class([
-                            'block max-w-[14rem] truncate rounded-full border border-black/[0.06] bg-white px-3 py-1.5 font-medium text-gray-950 shadow-sm shadow-black/5 sm:max-w-[30rem] lg:max-w-[40rem]',
+                            'block max-w-[14rem] truncate rounded-full bg-white px-3 py-1.5 font-medium text-gray-950 ring-1 ring-black/[0.06] shadow-sm shadow-black/5 sm:max-w-[30rem] lg:max-w-[40rem]',
                             'ml-2.5' => ! $loop->first,
                         ])
                     >
