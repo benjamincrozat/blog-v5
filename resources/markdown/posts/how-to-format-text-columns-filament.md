@@ -86,9 +86,8 @@ While formatting in Filament is powerful, remember that it's applied on the fly.
 
 And there you have it! You're now equipped to turn those plain text columns into formatted masterpieces. Remember, the key is to use `$state`, get creative with your formatting, and always consider the end-user experience.
 
-If "How to Format Text Columns in Filament" was useful, these related posts make strong next steps:
+If you are making a Filament panel feel less raw and more polished, these are the next reads I would open:
 
 - [How to Create a Stats Widget in Filament](/how-to-create-stats-widget-filament)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-- [PHP 8.5: 15 new features and changes](/php-85)
-
+- [Laravel Nova VS. Filament: which one is best?](/laravel-nova-vs-filament)
+- [Laravel Pulse: monitor your apps for free](/laravel-pulse)

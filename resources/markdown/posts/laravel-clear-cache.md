@@ -179,16 +179,10 @@ No. It removes all cached data instantly, potentially causing database spikes.
 **What changed in Laravel 12 regarding cache?**
 No significant cache command changes. The commands listed here fully apply.
 
-These are the posts I would queue up right after "9 ways to clear Laravel's cache":
+If cache maintenance is only one part of the operational cleanup you do in Laravel, these are the next reads I would keep open:
 
 - [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
-- [How to publish API and broadcasting routes in Laravel 11](/install-route-files-laravel)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
 - [Flexible caching in Laravel made super easy](/flexible-caching-in-laravel)
-- [6 ways to check Laravel's version](/check-laravel-version)
-- [How to publish config files in Laravel 11](/publish-config-files-laravel)
-- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
-- [Laravel 13: features, timeline, and upgrade prep](/laravel-13)
 - [The Laravel failover queue driver: stop losing jobs](/laravel-failover-queue-driver)
-- [Fix "No application encryption key has been specified." in Laravel](/laravel-no-application-key-specified)
-
+- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
+- [How to publish config files in Laravel 11](/publish-config-files-laravel)

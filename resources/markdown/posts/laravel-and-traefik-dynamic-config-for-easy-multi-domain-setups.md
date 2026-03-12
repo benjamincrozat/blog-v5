@@ -54,9 +54,9 @@ Why I like it:
 
 If you run Laravel behind Traefik and juggle many domains, this is a clean, low-friction pattern. Daniel’s write-up is short and practical, and it gave me a few ideas for my next deploy.
 
-These are the posts I would queue up right after "Laravel and Traefik dynamic config for easy multi-domain setups":
+If you are still shaping the infrastructure around a multi-domain Laravel deploy, these are the next reads I would keep open:
 
+- [A production-ready Laravel setup with Traefik and FrankenPHP](/a-production-ready-laravel-setup-with-traefik-and-frankenphp)
 - [The 4 best Laravel cloud hosting providers for 2025 (+ my setup)](/best-laravel-hosting-providers)
-- [The 6 best PHP cloud hosting providers for 2024](/best-cloud-hosting-provider-php)
 - [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
-
+- [How to deploy PHP & Laravel apps on Sevalla ($50 free credits)](/deploy-php-laravel-apps-sevalla)

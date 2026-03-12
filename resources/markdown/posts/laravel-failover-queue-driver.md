@@ -235,16 +235,10 @@ Yes. `redis`, `sqs`, `database`, `beanstalkd`, or even `sync`.
 
 I like features that are “set it and forget it.” The Laravel failover queue driver is exactly that. You set `QUEUE_CONNECTION=failover`, list your backups in `config/queue.php`, and your app keeps moving when one service goes down. That’s less stress for you, and a smoother experience for your users.
 
-If "The Laravel failover queue driver: stop losing jobs" was useful, these related posts make strong next steps:
+If queues are turning into a reliability problem instead of a background detail, these are the next Laravel reads I would keep open:
 
 - [Laravel Pulse: monitor your apps for free](/laravel-pulse)
-- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
-- [Laravel firstOrCreate, firstOrNew, createOrFirst and friends](/laravel-firstorcreate-firstornew-createorfirst-updateorcreate-updateorinsert)
-- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
-- [Laravel Dropbox Driver package: how to install and use it](/laravel-dropbox-driver)
-- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
 - [9 ways to clear Laravel's cache](/laravel-clear-cache)
-- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
-
+- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
+- [Flexible caching in Laravel made super easy](/flexible-caching-in-laravel)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)

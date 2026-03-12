@@ -108,16 +108,10 @@ Then, check out my articles on this matter:
 - [Start using GPT-3.5 Turbo's API in 5 minutes](https://benjamincrozat.com/gpt-35-turbo)
 - [Use PHP to leverage OpenAI's API and GPT effortlessly](https://benjamincrozat.com/openai-api-php)
 
-If "How do language-based AIs, such as GPT, work?" solved the immediate problem, these follow-up reads are worth your time:
+If the mental model clicked and you now want to build something concrete with it, these are the next reads I would open:
 
 - [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [How to use GPT-3.5 Turbo's API, step by step](/gpt-35-turbo)
-- [How to access and use GPT-4 Turbo's API, step by step](/gpt-4-turbo)
-- [How to access and use GPT-4o's API, step by step](/gpt-4o)
-- [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)
+- [GPT‑5: my API quick start guide](/gpt-5-api)
 - [How to use GPT-4o mini's API for cheap, step by step](/gpt-4o-mini)
 - [Use Laravel to build a ChatGPT plugin](/chatgpt-plugin-laravel)
-- [Access and use GPT‑4.1's API. 5 minutes, tops.](/gpt-41)
-- [GPT‑5: my API quick start guide](/gpt-5-api)
-- [The best web development courses available. Free and paid.](/best-web-development-courses)
-
+- [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)

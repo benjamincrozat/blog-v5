@@ -242,16 +242,10 @@ As you continue your Laravel journey, I encourage you to keep exploring Artisan.
 
 Remember, Laravel and Artisan are continually evolving. Stay curious, keep learning, and don't hesitate to dive into the Laravel documentation or community resources to discover new features and best practices.
 
-These are the posts I would queue up right after "Demystifying Artisan: Laravel's magical command tool":
+If you want the command line to feel like part of your Laravel workflow instead of a side tool, these are the next reads I would keep nearby:
 
 - [A cheat sheet for Laravel's make Artisan commands](/cheat-sheet-make-laravel-artisan)
-- [6 ways to check Laravel's version](/check-laravel-version)
 - [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
 - [Laravel migrations: a simplified and step by step guide](/laravel-migrations)
-- [Validation in Laravel made easy](/laravel-validation)
 - [9 ways to clear Laravel's cache](/laravel-clear-cache)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [6 ways to check your version of PHP](/check-php-version)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
-
+- [6 ways to check Laravel's version](/check-laravel-version)

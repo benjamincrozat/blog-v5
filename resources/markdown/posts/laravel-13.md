@@ -180,16 +180,10 @@ Laravel 13 still looks like a good example of Laravel's current strategy: keep t
 
 If you are already on Laravel 12 with PHP 8.3+, I would start reading the public [13.x upgrade guide](https://laravel.com/docs/13.x/upgrade) now and wait for the stable release tag before rolling anything important forward. If you are not ready yet, Laravel 12 still has plenty of support runway left.
 
-To build on "Laravel 13: features, timeline, and upgrade prep", start with these related reads:
+If you are planning ahead instead of waiting for upgrade pain to show up, these are the Laravel release reads I would keep nearby:
 
 - [Laravel 12: new starter kits, changes, and upgrade tips](/laravel-12)
 - [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
 - [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
 - [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
-- [How to install Laravel on macOS](/laravel-installation-macos)
-- [Laravel retrospective: what changed since version 5.8?](/laravel-retrospective)
-- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
-
+- [6 ways to check Laravel's version](/check-laravel-version)

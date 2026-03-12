@@ -282,16 +282,10 @@ One important tip to increase your chances of being merged: add something to the
 
 ![Pull requests on the laravel/framework repository.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/128/conversions/Screenshot_2023-01-05_at_18.03.30_qx8sjy-medium.jpg)
 
-Once "Laravel 11 is out! Here are every new big changes and features." clicks, these follow-ups make even more sense:
+If Laravel 11 is the release you are planning around right now, these are the next reads I would keep close:
 
 - [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
 - [How to customize middleware in Laravel 11+](/customize-middleware-laravel-11)
 - [How to publish API and broadcasting routes in Laravel 11](/install-route-files-laravel)
-- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
-- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
 - [Laravel 12: new starter kits, changes, and upgrade tips](/laravel-12)
-- [6 ways to check Laravel's version](/check-laravel-version)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)

@@ -152,16 +152,10 @@ The pricing is straightforward and extremely generous considering how expensive 
 - **$99** per year to run as many Shifts as you want on your project
 - **$5-$29** per Shift
 
-If "Laravel 10: the upgrade guide from version 9" was useful, these related posts make strong next steps:
+If you are moving up the Laravel release ladder instead of stopping at 10, these are the next reads I would keep open:
 
 - [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
 - [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [6 ways to check Laravel's version](/check-laravel-version)
 - [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
-- [How to install Laravel on macOS](/laravel-installation-macos)
-- [Laravel 13: features, timeline, and upgrade prep](/laravel-13)
-- [Laravel retrospective: what changed since version 5.8?](/laravel-retrospective)
 - [Laravel 12: new starter kits, changes, and upgrade tips](/laravel-12)
-
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)

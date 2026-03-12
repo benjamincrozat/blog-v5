@@ -531,16 +531,9 @@ Hopefully, you’ll be able to use this article as your go-to resource for sendi
 
 Good luck!
 
-If "Send emails with Laravel using Mailtrap's SMTP" is part of your current stack puzzle, keep going with these:
+If email delivery is only one part of the app workflow you are tightening, these are the next Laravel reads I would open:
 
 - [Understanding Laravel's fake() helper](/laravel-fake-helper)
-- [Laravel retrospective: what changed since version 5.8?](/laravel-retrospective)
-- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [A cheat sheet for Laravel's make Artisan commands](/cheat-sheet-make-laravel-artisan)
 - [Validation in Laravel made easy](/laravel-validation)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
-- [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)
-- [6 ways to check Laravel's version](/check-laravel-version)
-
+- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
+- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)

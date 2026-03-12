@@ -93,9 +93,8 @@ For real interaction and logic, yes. HTML and CSS can do simple things (like req
 
 HTML defines what’s on the page; programming languages define what the computer should do. Use HTML for structure, CSS for presentation, and JavaScript for behavior.
 
-If "Is HTML a programming language?" is still on your mind, these posts connect nicely:
+If this got you rethinking where HTML stops and the rest of the frontend stack begins, these are the next reads I would open:
 
 - [Is CSS case-sensitive?](/css-property-names-values-case-sensitive)
 - [Style labels on focus the right way in CSS](/label-focus-css)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-
+- [Alpine.js: a lightweight framework for productive developers](/alpine-js)
