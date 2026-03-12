@@ -3,6 +3,7 @@
 Use this whenever the user gives one or more keywords.
 
 Use Google specifically. If ranking order or SERP features matter, inspect Google with the browser MCP instead of relying on a generic search tool.
+Use competitors to spot what they cover better than we do, how they frame the topic, and where the gaps are. Do not treat competitor pages as the factual source for our article. Verify facts with official or primary sources before adding them.
 
 ## What to capture for each keyword
 
@@ -15,6 +16,8 @@ Use Google specifically. If ranking order or SERP features matter, inspect Googl
   what all top results cover, what they skip, and how they frame the query
 - Our opening:
   the angle, promise, and differentiation we should use
+- Source plan:
+  which claims need official docs, release notes, specs, or first-hand verification
 - Internal links to add:
   relevant posts or category pages we should connect
 
@@ -34,5 +37,6 @@ Produce a short brief before drafting:
 2. Top 3 competitor snapshot
 3. Repeated subtopics and gaps
 4. Recommended angle for our post
-5. Title directions
-6. Internal link opportunities
+5. Fact-check plan with primary sources
+6. Title directions
+7. Internal link opportunities

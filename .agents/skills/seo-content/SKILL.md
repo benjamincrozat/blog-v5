@@ -23,6 +23,9 @@ Read these references as needed:
 - If the user gives one or more keywords, inspect the current Google SERP and analyze the top 3 organic results before drafting.
 - Use the browser MCP when Google’s real SERP layout, ranking order, or feature mix matters.
 - When revising an existing post, compare the current page promise against the live Google SERP before changing titles, headings, slug, or angle.
+- Use competitors to understand coverage, framing, freshness, and content gaps, not as the main factual basis for our article.
+- For facts, version details, policies, benchmarks, and product behavior, prefer official documentation, release notes, specifications, direct testing, or other primary sources.
+- If a useful claim appears in competitor content, verify it independently before reusing it.
 - Identify dominant search intent before writing: fix, definition, comparison, tool choice, list, landing page, or mixed intent.
 - Build around intent plus one clear differentiator. Do not copy a competitor's structure unless you are improving it.
 - Keep `title`, `description`, `slug`, intro, and first useful section aligned on the same promise.
@@ -50,5 +53,5 @@ Read these references as needed:
    - title, description, and slug align
    - headings match the SERP without sounding repetitive
    - internal links are relevant and descriptive
-   - claims are source-backed
+   - claims are backed by official or primary sources, not just competitors
    - the page is strong for both classic search and AI search features
