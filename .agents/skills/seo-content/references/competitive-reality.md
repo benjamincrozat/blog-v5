@@ -17,6 +17,11 @@
   Sources:
   [Backlinko ranking study](https://backlinko.com/search-engine-ranking)
 
+- Original screenshots and photos are mostly an indirect lever in the field, not a magic ranking factor. Practitioner and grey-hat chatter tends to treat them as helpful for image search, perceived legitimacy, engagement, and first-hand proof, especially on UI, review, and lower-authority sites. Treat that as anecdotal support for better content, not a substitute for better content or links.
+  Sources:
+  [Does using non unique featured image for blog posts impact rankings?](https://www.blackhatworld.com/seo/does-using-non-unique-featured-image-for-blog-posts-impact-rankings.1611587/)
+  [Do duplicate images count as duplicate content?](https://www.blackhatworld.com/seo/do-duplicate-images-count-as-duplicate-content.1773184/page-2)
+
 - Title tactics are not one-size-fits-all. SearchPilot has public SEO tests where title changes increased organic traffic by 10-25%, but other tests decreased traffic by 12-20%. Use competitor patterns and honest testing logic, not fixed formulas.
   Sources:
   [SearchPilot title test: adding “the best”](https://www.searchpilot.com/resources/case-studies/the-best-title-tag-experiment)
@@ -49,6 +54,11 @@
   Sources:
   [Ahrefs on AI content in top-ranking pages](https://ahrefs.com/blog/ai-overviews-cite-ai-generated-content-more-than-human-writing/)
   [Google Search spam policies](https://developers.google.com/search/docs/essentials/spam-policies)
+
+- Grey-hat advice often overstates “make the image unique” tactics. The more durable takeaway is that surrounding context, relevance, captions, and alt text matter more than pointless image edits done just to look different.
+  Sources:
+  [Do duplicate images count as duplicate content?](https://www.blackhatworld.com/seo/do-duplicate-images-count-as-duplicate-content.1773184/page-2)
+  [Using original image affects ranking positively?](https://www.blackhatworld.com/seo/using-original-image-affects-ranking-positively.1440797/)
 
 ## Grey-hat tactics to recognize and avoid on this site
 

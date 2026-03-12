@@ -8,6 +8,15 @@
   Sources:
   [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)
 
+- Google’s people-first questions still lean toward original value. It explicitly asks whether the page provides original information, research, analysis, or substantial additional value compared to other pages in search results.
+  Sources:
+  [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)
+
+- Original visuals are useful when they add evidence or clarity, not as filler. Google’s reviews guidance explicitly recommends providing evidence such as visuals of your own experience, and its AI features guidance recommends supporting text with high-quality images and videos when applicable.
+  Sources:
+  [Write high quality reviews](https://developers.google.com/search/docs/specialty/ecommerce/write-high-quality-reviews)
+  [AI features and your website](https://developers.google.com/search/docs/appearance/ai-overviews)
+
 - There is no fully separate Google-only title you can control by hand. Google generates title links automatically from sources like the HTML `<title>`, the main visual title, headings, and other references on the web. Write unique, descriptive titles, avoid boilerplate, and keep the HTML title closely aligned with the visible page title.
   Sources:
   [Influencing title links in Google Search](https://developers.google.com/search/docs/advanced/appearance/title-link)
@@ -33,6 +42,10 @@
 - Internal links should be crawlable and use good anchor text. This helps people navigate and helps Google understand page relationships.
   Sources:
   [SEO link best practices for Google](https://developers.google.com/search/docs/crawling-indexing/links-crawlable)
+
+- Image SEO still depends heavily on context and quality. Google says high-quality photos can increase the likelihood of traffic from thumbnails, the surrounding page content can strongly influence where an image appears, and images should use descriptive filenames, helpful alt text, and placement near relevant text.
+  Sources:
+  [Image SEO best practices](https://developers.google.com/search/docs/appearance/google-images)
 
 - For AI Overviews and AI Mode, Google says the same fundamentals carry across: unique value, good page experience, technical accessibility, preview controls, visible structured-data alignment, and support for multimodal assets where relevant.
   Sources:

@@ -19,6 +19,9 @@ Pair with `post-writing` when creating or revising article copy so internal link
 - Use `php artisan blog:sync` after every Markdown edit.
 - Upload every image used in a post to Cloudflare Images, including featured images, inline screenshots, badges, logos, and comparison cards.
 - Use `php artisan blog:upload-image` for post images instead of local paths or third-party hotlinks.
+- When a post explains an interface, setup flow, settings page, terminal output, or before/after result, prefer creating original screenshots instead of leaving the visual outcome implied.
+- Skip screenshots only when they add no proof or clarity.
+- Give screenshot files descriptive names and useful alt text before upload.
 - Use UTC ISO-8601 timestamps for frontmatter dates such as `published_at` and `modified_at`.
 - Publishing is changing `published_at` in the file, then running `php artisan blog:sync`.
 - Fail loudly on invalid front matter, unknown authors/categories, or duplicate IDs/slugs.
@@ -30,7 +33,7 @@ Pair with `post-writing` when creating or revising article copy so internal link
 - Rewrite the related-post anchor text contextually instead of pasting destination post titles into the list.
 - Make those anchors sound like the reader's next useful click from this page, not like a shelf label copied from somewhere else.
 - Keep them plain and clear enough that the reader immediately gets why the next post is worth opening.
-- Do not open the public page or Filament just for a routine post edit. Use browser checks only when the post includes tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, a publishing-state change that needs confirmation, or the user explicitly asks for a visual check.
+- Do not open the public page or Filament just for a routine post edit. Use browser checks only when the post includes tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, a publishing-state change that needs confirmation, the article needs purposeful screenshots that materially help the reader, or the user explicitly asks for a visual check.
 
 ## Workflow
 
@@ -38,7 +41,8 @@ Pair with `post-writing` when creating or revising article copy so internal link
    - run `php artisan blog:export`
 2. Edit the target file in `resources/markdown/posts`.
    - if article copy changed, make sure internal links were updated and, for non-commercial posts, the related-posts Markdown list was added or refreshed with a natural lead-in that does not quote or rephrase the title
-3. Upload images before syncing:
+3. Capture and upload images before syncing:
+   - if the article would be clearer or more trustworthy with original screenshots, capture them yourself when feasible instead of leaving a note for later
    - every image referenced by the post should end up on Cloudflare Images, not just the hero image
    - hero image: `php artisan blog:upload-image /absolute/path/to/cover.png --markdown=your-post.md`
    - inline image: `php artisan blog:upload-image /absolute/path/to/step.png --alt="Describe the screenshot"` and paste the returned URL into the article body

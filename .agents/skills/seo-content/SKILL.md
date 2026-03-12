@@ -43,6 +43,9 @@ Read these references as needed:
 - Use the primary keyword in the title, intro, slug, and only 1-2 lower headings when natural.
 - Prefer clear, specific titles and snippets over keyword stuffing. Google may rewrite both.
 - On every new or revised post, add or refresh relevant internal links with descriptive anchors. Treat them as navigation and topical context, not filler.
+- If the query or angle is visual by nature, such as interfaces, settings, dashboards, workflows, reviews, or before/after comparisons, assume original screenshots or other first-hand visuals are part of the winning content plan unless the live SERP shows they add no value.
+- Treat original screenshots, photos, diagrams, and comparison visuals as indirect SEO support: they can improve clarity, authenticity, image-search eligibility, and AI cite-worthiness, but they are not a standalone ranking factor.
+- Do not pad conceptual posts with decorative screenshots. Add visuals only when they clarify the step, prove the claim, or strengthen the page's first-hand value.
 - Keep the post's related-posts list current as part of that internal-linking pass on non-commercial posts. Update stale recommendations or anchors when the article's angle changes instead of leaving an outdated list behind.
 - Commercial posts (`is_commercial: true`) must not include a related-posts, read-next, or follow-up reading block. Keep those pages focused on conversion rather than onward reading.
 - On non-commercial posts, the lead-in sentence before the related-posts list must be unique to that article. Do not reuse the same stock phrasing, canned curiosity line, or obvious template across the site.
@@ -67,8 +70,8 @@ Read these references as needed:
 
 1. If keywords are provided, run the top-3 competitor brief from `references/serp-analysis.md`.
 2. If revising an existing post, compare its current promise, freshness, and gaps against the live SERP before changing structure.
-3. Summarize dominant intent, recurring subtopics, title and snippet patterns, freshness, and weak spots.
-4. Pick the best angle for us to win on clarity, usefulness, originality, or first-hand value.
+3. Summarize dominant intent, recurring subtopics, title and snippet patterns, freshness, weak spots, and whether the SERP shows meaningful visual intent.
+4. Pick the best angle for us to win on clarity, usefulness, originality, or first-hand value, including a simple decision on whether original screenshots or visuals should be part of the draft.
 5. Draft or revise with `post-writing`.
 6. Do a final SEO pass:
    - title, description, and slug align
@@ -76,6 +79,7 @@ Read these references as needed:
    - title starts strong, uses concrete value, and is not relying on gimmicks for clicks
    - description leads with the main benefit and still works if Google rewrites part of the snippet
    - headings match the SERP without sounding repetitive
+   - original visuals were created when the SERP or article angle made them a real advantage, and skipped when they would only add filler
    - internal links are relevant, descriptive, and updated for the article's current angle
    - non-commercial posts have a related-posts list that is present or refreshed, uses a custom article-specific lead-in that does not echo the title, uses contextual anchor text instead of pasted destination titles, and points to genuinely useful next reads without padding
    - commercial posts do not include a related-posts, read-next, or follow-up reading block

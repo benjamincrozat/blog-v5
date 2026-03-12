@@ -30,6 +30,10 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 - Explain unavoidable technical terms in simple words the first time they appear.
 - Upload every image used in the post to Cloudflare Images with `php artisan blog:upload-image`, including featured images, inline screenshots, badges, logos, and comparison cards.
 - Do not leave local file paths or third-party hotlinked images in post Markdown.
+- For walkthroughs, dashboards, UI-heavy how-tos, comparisons, and reviews, actively look for places where an original screenshot, crop, or simple visual would make the article clearer or more credible.
+- Create those visuals yourself when feasible instead of leaving a TODO or only describing the interface in prose.
+- Use visuals as proof and clarification, not decoration. Skip them when the topic is conceptual, code-first, or the image would only repeat the nearby text.
+- Give every kept visual a descriptive filename, place it near the relevant text, and write useful alt text before uploading it to Cloudflare Images.
 - Keep the promise tight across frontmatter: `title`, `description`, `slug`, and any `serp_*` overrides should point to the same outcome.
 - Do not add an in-body H1 or a manual table of contents.
 - Draft at least five title options, then pick the clearest one.
@@ -65,7 +69,7 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 - When creating or revising a post, add or improve natural internal links in the body wherever a reader would want the next step, not only in the closing list.
 - Verify links and commands when feasible. If something cannot be verified, tell the user outside the post copy.
 - When setting frontmatter timestamps, use UTC rather than the machine's local timezone.
-- Skip browser-based validation for routine post-writing tasks. Only use it when the post has tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, or the user explicitly asks for a visual check.
+- Skip browser-based validation for routine post-writing tasks. Only use it when the post has tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, the article needs first-hand screenshots that materially help the reader, or the user explicitly asks for a visual check.
 
 ## Common Shapes
 
@@ -82,12 +86,14 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 4. Check that the chosen title and description earn the click with a clear outcome, not a gimmick.
 5. Pick the simplest outline that matches the post shape.
 6. Draft for clarity, usefulness, and brevity.
-7. Add or refresh contextual internal links and, for non-commercial posts, the related-posts list.
-8. Validate version-sensitive claims, inline links, and code examples.
-9. Do a final publishing pass:
+7. Decide whether original screenshots or simple visuals would materially clarify the piece or prove first-hand use; create them when the answer is yes.
+8. Add or refresh contextual internal links and, for non-commercial posts, the related-posts list.
+9. Validate version-sensitive claims, inline links, and code examples.
+10. Do a final publishing pass:
    - required frontmatter is present and valid
    - existing post IDs stayed unchanged
    - every image used in the post, including featured images and inline assets, uses Cloudflare Images URLs or paths
+   - screenshots or simple visuals were added when they materially improved clarity, credibility, or first-hand evidence, and skipped when they would have been filler
    - frontmatter promise is aligned
    - `serp_title` and `serp_description` are either `null` or clearly justified and aligned with the visible page copy
    - title and description make a strong, accurate click promise

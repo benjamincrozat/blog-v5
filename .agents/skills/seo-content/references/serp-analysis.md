@@ -14,12 +14,14 @@ Use competitors to spot what they cover better than we do, how they frame the to
   URL, title, page type, freshness signal, angle, strengths, weaknesses
 - Shared patterns:
   what all top results cover, what they skip, and how they frame the query
+- Visual intent:
+  whether the SERP shows an image pack, screenshot-heavy results, product/review proof, or clear opportunities where original visuals would make our page more competitive
 - Click patterns:
   what makes the visible titles and snippets feel worth clicking, and which angles look overused or weak
 - Our opening:
   the angle, promise, and differentiation we should use
 - Source plan:
-  which claims need official docs, release notes, specs, or first-hand verification
+  which claims need official docs, release notes, specs, or first-hand verification, and which sections deserve screenshots or other original visuals
 - Internal links to add:
   relevant posts or category pages we should connect
 
@@ -44,3 +46,4 @@ Produce a short brief before drafting:
 6. Title and snippet directions
 7. CTR levers worth testing
 8. Internal link opportunities
+9. Visual asset plan
