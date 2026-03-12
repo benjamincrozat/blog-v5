@@ -28,7 +28,7 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 
 - Write for competent beginners first: plain language, short sentences, clear payoff.
 - Explain unavoidable technical terms in simple words the first time they appear.
-- Upload every featured image and inline article image to Cloudflare Images with `php artisan blog:upload-image`.
+- Upload every image used in the post to Cloudflare Images with `php artisan blog:upload-image`, including featured images, inline screenshots, badges, logos, and comparison cards.
 - Do not leave local file paths or third-party hotlinked images in post Markdown.
 - Keep the promise tight across frontmatter: `title`, `description`, `slug`, and any `serp_*` overrides should point to the same outcome.
 - Do not add an in-body H1 or a manual table of contents.
@@ -87,7 +87,7 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 9. Do a final publishing pass:
    - required frontmatter is present and valid
    - existing post IDs stayed unchanged
-   - featured image and inline images use Cloudflare Images URLs or paths
+   - every image used in the post, including featured images and inline assets, uses Cloudflare Images URLs or paths
    - frontmatter promise is aligned
    - `serp_title` and `serp_description` are either `null` or clearly justified and aligned with the visible page copy
    - title and description make a strong, accurate click promise

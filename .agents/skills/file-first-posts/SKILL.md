@@ -17,7 +17,7 @@ Pair with `post-writing` when creating or revising article copy so internal link
 - Treat Markdown files as the only write source for post content and SEO fields.
 - Use `php artisan blog:export` only for initial export or explicit regeneration.
 - Use `php artisan blog:sync` after every Markdown edit.
-- Upload every featured image and inline article image to Cloudflare Images.
+- Upload every image used in a post to Cloudflare Images, including featured images, inline screenshots, badges, logos, and comparison cards.
 - Use `php artisan blog:upload-image` for post images instead of local paths or third-party hotlinks.
 - Use UTC ISO-8601 timestamps for frontmatter dates such as `published_at` and `modified_at`.
 - Publishing is changing `published_at` in the file, then running `php artisan blog:sync`.
@@ -39,6 +39,7 @@ Pair with `post-writing` when creating or revising article copy so internal link
 2. Edit the target file in `resources/markdown/posts`.
    - if article copy changed, make sure internal links were updated and, for non-commercial posts, the related-posts Markdown list was added or refreshed with a natural lead-in that does not quote or rephrase the title
 3. Upload images before syncing:
+   - every image referenced by the post should end up on Cloudflare Images, not just the hero image
    - hero image: `php artisan blog:upload-image /absolute/path/to/cover.png --markdown=your-post.md`
    - inline image: `php artisan blog:upload-image /absolute/path/to/step.png --alt="Describe the screenshot"` and paste the returned URL into the article body
 4. If publishing state changes, update `published_at` in UTC.

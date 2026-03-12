@@ -53,6 +53,7 @@ Read these references as needed:
 - Keep the wording plain enough that the reader instantly understands why that link matters. Curiosity is useful, but not at the cost of clarity.
 - Add only the number of recommendations the topic can support on non-commercial posts: usually 3 or more, sometimes more, with a hard cap of 10. Choose them with editorial judgment based on what a reader would genuinely want next, not by category matching alone. You do not need to fully read every recommended post.
 - Keep visible content consistent with frontmatter and any structured data.
+- Any image used in the post should be hosted on Cloudflare Images rather than hotlinked from third parties.
 - For AI visibility, aim to be cite-worthy: direct answers, strong subheads, original details, and useful examples.
 - Do not use fake freshness, fake authorship, fabricated stats, doorway pages, parasite SEO, expired-domain abuse, link schemes, or scaled thin AI filler on this site.
 
