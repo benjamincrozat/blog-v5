@@ -100,8 +100,23 @@ it('checks the configured Google endpoints outside production without submitting
 
     artisan(SyncSearchConsoleSitemapCommand::class)
         ->expectsOutputToContain('Sitemap generated successfully')
-        ->expectsOutputToContain('Token endpoint responded with HTTP 405')
-        ->expectsOutputToContain('Search Console endpoint responded with HTTP 401')
+        ->expectsTable(
+            ['Probe', 'HTTP', 'Meaning', 'URL'],
+            [
+                [
+                    'Token endpoint',
+                    '405',
+                    'OAuth endpoint responded; no token exchange was attempted.',
+                    'https://oauth2.googleapis.com/token',
+                ],
+                [
+                    'Search Console endpoint',
+                    '401',
+                    'Search Console endpoint responded; no sitemap was submitted.',
+                    'https://www.googleapis.com/webmasters/v3/sites/sc-domain%3Abenjamincrozat.com/sitemaps/https%3A%2F%2Fblog-v5.test%2Fsitemap.xml',
+                ],
+            ],
+        )
         ->expectsOutput('Non-production mode only checks that Google responds on the configured network path.')
         ->expectsOutput('Search Console submission skipped outside production.');
 
