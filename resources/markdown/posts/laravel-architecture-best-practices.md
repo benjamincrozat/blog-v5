@@ -1,101 +1,234 @@
 ---
 id: "01KKEW27BKPQW9R4K0SGGYRJB8"
-title: "3 crucial Laravel architecture best practices for 2025"
+title: "5 Laravel architecture best practices for 2026"
 slug: "laravel-architecture-best-practices"
 author: "benjamincrozat"
-description: "Explore Laravel's default architecture to simplify collaboration, compatibility, and onboarding."
+description: "Structure Laravel apps with fewer regrets: keep the defaults, organize by domain, and add abstractions only when the codebase earns them."
 categories:
   - "laravel"
-published_at: 2023-09-01T00:00:00+02:00
-modified_at: 2025-06-29T23:00:00+02:00
+published_at: 2023-08-31T22:00:00Z
+modified_at: 2026-03-12T21:24:19Z
 serp_title: null
 serp_description: null
-canonical_url: ""
+canonical_url: null
 is_commercial: false
 image_disk: "cloudflare-images"
 image_path: "images/posts/RzyvYZckjr85tMa.jpg"
 sponsored_at: null
 ---
-## Introduction to architecturing Laravel projects
+## Introduction
 
-How should you organize your Laravel app to best serve your needs? **Well, the good news is that you don't have to worry about this since you are using a framework! Stick to the defaults unless you have good and objective reasons to do otherwise.**
+If you are wondering how to structure a Laravel app, the short answer is simpler than most architecture debates suggest: **start with Laravel's defaults, organize by business domain inside them, and only add extra layers when the codebase has clearly earned them.**
 
-And yet, people can't stop overthinking the architecture of their projects.
+That advice is not just "beginner friendly." Laravel's own [directory structure documentation](https://laravel.com/docs/12.x/structure) says the default application structure is meant to be a great starting point for both small and large applications. The docs also describe the `app/Http` and `app/Console` directories as interfaces into your application, which is a useful reminder that business logic does not belong everywhere.
 
-To me, it seems that the urge to deviate from the standard project structure often reveals a deeper issue - a fundamental inability to maintain organization. Whether you adhere to the Laravel architecture or significantly modify it, the outcome is likely to be disorganized.
+So instead of chasing a fashionable folder layout, focus on architecture choices that make your project easier to onboard, easier to upgrade, and easier to extend without surprises.
 
-Therefore, to address this problem, we will put ourselves in shoes that would fit almost any enterprise project.
+If your team is already feeling the pain in day-to-day code, this companion guide on [Laravel best practices](/laravel-best-practices) covers the conventions that usually break first.
 
-Before we begin, though, let's define what an "enterprise project" is in our context. Essentially, it's a public facing project with lots of users that generates revenue, making it vital to continuously evolve by adapting to new technologies, business requirements, and market trends.
+## What good Laravel architecture should optimize for
 
-Here's what is expected from the team of such projects:
-1. **Easy collaboration.**
-2. **Maximize compatibility with third-party solutions** that will help maintain the cost of development down.
-3. **Keep the cost of onboarding low.** To achieve this, new hires need to easily find their way around the codebase, which can make them somewhat productive even when they lack domain knowledge.
+Before you move folders around or introduce a new pattern, ask what problem you are actually solving.
 
-With these goals in mind, let's dive into what I, and most of the experts from the community, think are the best architecture practices.
+Good Laravel architecture usually improves at least one of these:
 
-**Oh and before you continue, if you think you really need to go beyond what Laravel offers because you are working on big projects, let me introduce you to alternative ways of structuring applications taught by Martin Joe in his books "[Microservices with
-Laravel](/recommends/microservices-laravel)" and "[Domain-Driven Design with Laravel](/recommends/domain-driven-laravel)."**
+- New developers can find code quickly.
+- Framework upgrades and package integrations stay predictable.
+- Business rules have obvious homes.
+- Refactors are safer because the boundaries are easier to test.
 
-## Laravel architecture best practices
+If a structural change does not improve one of those outcomes, it is probably architecture theater.
 
-### Keep the default folder structure
+## 1. Keep Laravel's default structure until you can name the pain
 
-**Using Laravel is meant to make your life easier, not harder.**
+Laravel already gives you clear places for controllers, requests, models, policies, jobs, mailables, notifications, events, and more. That matters because every teammate, package author, and future maintainer can work from the same map.
 
-1. First, following conventions helps ensure that new hires can quickly find everything they need and start being productive as soon as possible. Laravel is a popular framework, and most developers will already be familiar with its default folder structure. By sticking to this, you help minimize the learning curve for new team members.
-2. Also, a profitable project is supposed to last for many years. People come and go. You will likely move on to something else. Why wouldn't you make it easy for the ones who will take over?
-3. Additionally, by following the framework's defaults, you ensure compatibility with many first and third-party packages. This can be crucial for maintaining development costs down and maximizing the use of available resources.
+The default structure is especially helpful when you need to:
 
-### Organize by domain without breaking the folder structure
+- onboard a new hire fast
+- install or evaluate a package
+- plan a Laravel upgrade
+- search for a bug under pressure
 
-While it's essential to keep the default folder structure, it's also necessary to organize your code in a way that makes sense for your project.  One way to do this is by organizing it by domain, without breaking the default folder structure.
+This does not mean you should never evolve the structure. It means the burden of proof is on the change.
 
-This means that, for example, inside your *Models* folder, you could create a *Blog* folder. This way, when using the `php artisan make:model Blog/Category` command, the new file will be created at the right place.
+Good reasons to move beyond the default shape:
 
-This approach can also be used for controllers, middlewares, policies, and so on. Organizing your code the intended way will help you maintain a compatible, clean and intuitive codebase.
+- a domain is large enough that related classes are hard to find
+- the same workflow is duplicated across multiple controllers or jobs
+- a boundary with an external system needs a dedicated abstraction
 
-### Don't reach out for a package when Laravel already has a solution
+Weak reasons:
 
-Developers love discovering new ways of doing things, and it's always tempting to experiment with new packages or approaches. This is fine for personal projects or when you are working alone, but it may not be ideal in a team setting.
+- you saw a "clean architecture" repo on social media
+- every project at your company must use the same custom skeleton
+- adding more folders simply feels more serious
 
-When you hire Laravel developers, you are hiring them to expand and maintain your product using Laravel. It's essential to remember this and stick to the built-in features of Laravel whenever possible.
+## 2. Organize by domain inside Laravel's folders
 
-For example, don't use Data Transfer Objects (DTOs) instead of custom form requests unless there are good and objective reasons to do so. Using the built-in features of Laravel ensures that all developers on your team are working with the same set of tools and reduces the learning curve for new hires.
+One of the easiest ways to scale a Laravel app without fighting the framework is to group classes by domain *inside* the default folders.
 
-## Don't take my word for it, listen to the other experts
+For example, a billing area can look like this:
 
-Matt Stauffer, who has a lot of experience building apps for enterprise as the CEO of Tighten, talks about how keeping things simple benefits big projects.
+```text
+app/
+  Http/
+    Controllers/
+      Billing/
+        InvoiceController.php
+    Requests/
+      Billing/
+        StoreInvoiceRequest.php
+  Jobs/
+    Billing/
+      SyncInvoiceToErp.php
+  Models/
+    Billing/
+      Invoice.php
+  Policies/
+    Billing/
+      InvoicePolicy.php
+```
 
-<iframe src="https://www.youtube.com/embed/KBigS5vLwZk?si=M4tVBih9-T7YRb7N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+This gives you two benefits at once:
 
-James Brooks is a core Laravel team member. He knows what working with a big team and a big codebase are. He also asked me to include it in this article, so there he is!
+- you keep Laravel's conventions and package compatibility
+- you still make the business domain obvious
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Want to know my #1 Laravel tip?<br><br>Follow the standards laid out by the skeleton and framework 👏<br><br>You&#39;ll find:<br><br>- Updates easier<br>- More packages will &quot;just work&quot;™<br>- New developers will grok your project quicker<br>- Life is just more enjoyable 🏄</p>&mdash; James Brooks (@jbrooksuk) <a href="https://twitter.com/jbrooksuk/status/1697182125663945015?ref_src=twsrc%5Etfw">August 31, 2023</a></blockquote>
+It is usually a better long-term tradeoff than dumping half the application into vague top-level folders like `Services`, `Helpers`, `Traits`, or `Utilities`.
 
-Sebastian Schlein is the co-founder of BeyondCo, a company deeply involved with Laravel, and he also thinks that you should stick to the framework's defaults. This is a tweet from 2019 by the way.
+When you need a next step after the controller layer, my article on [Laravel RESTful API best practices](/laravel-restful-api-best-practices) goes deeper on keeping HTTP boundaries predictable.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">⚡️Why you should stick to the default <a href="https://twitter.com/laravelphp?ref_src=twsrc%5Etfw">@laravelphp</a> architecture <a href="https://t.co/wfQ1Xl9eh4">https://t.co/wfQ1Xl9eh4</a></p>&mdash; Sebastian Schlein (@seb_sebsn) <a href="https://twitter.com/seb_sebsn/status/1186228940555345921?ref_src=twsrc%5Etfw">October 21, 2019</a></blockquote>
+## 3. Keep the HTTP layer thin by using Laravel's built-in boundaries
 
-Jason McCreary, from Laravel Shift, also showcases his favorite way of organizing Laravel projects. Looks familiar, don't you think?
+A lot of Laravel architecture problems are really "too much logic in the wrong place" problems.
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">My ideal Laravel folder structure. Effortlessly elegant. 👀 <a href="https://t.co/h0UYrnc6Xy">pic.twitter.com/h0UYrnc6Xy</a></p>&mdash; Jason McCreary (@gonedark) <a href="https://twitter.com/gonedark/status/1333474208123412488?ref_src=twsrc%5Etfw">November 30, 2020</a></blockquote>
+Laravel already gives you strong boundaries for common responsibilities:
 
-All that being said, at the end, results matter the most. Here's a tweet from Taylor Otwell himself about keeping an open mind:
+- [form requests](https://laravel.com/docs/12.x/validation#form-request-validation) for validation and input normalization
+- [policies](https://laravel.com/docs/12.x/authorization#creating-policies) for authorization
+- [API resources](https://laravel.com/docs/12.x/eloquent-resources) for JSON output
+- [jobs](https://laravel.com/docs/12.x/queues) for slow or asynchronous work
+- events and listeners for side effects that should stay decoupled
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I try not to express very strong opinions on how people structure or build their Laravel applications.<br><br>I want to keep a strong culture of exploration and experimentation in the ecosystem. 👩‍🔬</p>&mdash; Taylor Otwell ☁️ (@taylorotwell) <a href="https://twitter.com/taylorotwell/status/1668580181504606208?ref_src=twsrc%5Etfw">June 13, 2023</a></blockquote>
+That means your controllers can stay focused on orchestration instead of becoming a storage unit for every rule in the system.
 
-If this article on "3 crucial Laravel architecture best practices for 2025" hit the mark, keep the momentum going here:
+```php
+use App\Actions\Billing\CreateInvoice;
+use App\Http\Requests\Billing\StoreInvoiceRequest;
+use App\Http\Resources\Billing\InvoiceResource;
 
-- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
-- [Plan a safer upgrade from Laravel 9 to 10](/laravel-10-upgrade-guide)
-- [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
-- [See what to clean up before moving to Laravel 9](/laravel-9-upgrade-guide)
-- [See which Laravel developers I'd actually trust to hire](/best-laravel-developers)
-- [Pick the Laravel books most worth your reading time](/best-laravel-books)
-- [See where this fits in Laravel's release history](/laravel-versions)
-- [See the Laravel 10 changes that matter in real projects](/laravel-10)
-- [See the biggest Laravel 11 changes in one pass](/laravel-11)
-- [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)
+final class StoreInvoiceController
+{
+    public function __invoke(
+        StoreInvoiceRequest $request,
+        CreateInvoice $createInvoice,
+    ): InvoiceResource {
+        $invoice = $createInvoice->handle($request->validated());
 
+        return new InvoiceResource($invoice);
+    }
+}
+```
+
+The point is not "you must have action classes." The point is that controllers should not validate input, check permissions, persist records, call third-party APIs, format JSON, and dispatch side effects all inline.
+
+If you want the testing angle for these boundaries, the dedicated guide on [Laravel testing best practices](/laravel-testing-best-practices) is the next read.
+
+## 4. Introduce abstractions only when the behavior actually varies
+
+Laravel's [service container](https://laravel.com/docs/12.x/container) already resolves many concrete classes automatically, so you do not need to wrap everything in an interface on day one.
+
+That is why I would not default to repositories, DTO layers, or service abstractions just because they sound architectural.
+
+Reach for an abstraction when you have a real reason, for example:
+
+- one workflow must support multiple providers
+- an external API deserves its own boundary and retry strategy
+- a complex use case is reused in several entry points
+- you need a clean seam for testing unstable infrastructure
+
+That often leads to code like this:
+
+```php
+use App\Contracts\Billing\InvoiceExporter;
+use App\Services\Billing\S3InvoiceExporter;
+
+public function register(): void
+{
+    $this->app->bind(InvoiceExporter::class, S3InvoiceExporter::class);
+}
+```
+
+This is valuable when the implementation may change.
+
+It is not valuable when the "abstraction" is a one-method wrapper around `Invoice::query()`.
+
+As a rule of thumb, prefer Laravel's native primitives first, then add your own layer only when it removes real duplication, real coupling, or real risk.
+
+## 5. Protect the structure with tests before you refactor it
+
+Architecture gets expensive when the team agrees on a structure in theory but nothing enforces it in practice.
+
+That is why the best architectural changes are small, test-backed, and reversible.
+
+At minimum, keep strong feature tests around important user flows. If you also want to lock in structural rules, architecture tests are a practical fit. Pest supports [architecture testing](https://pestphp.com/docs/arch-testing), which can help you catch boundary leaks early.
+
+```php
+arch()
+    ->expect('App\Models')
+    ->toExtend('Illuminate\\Database\\Eloquent\\Model');
+```
+
+You can add rules that match your project, such as:
+
+- controllers should stay inside `App\Http\Controllers`
+- models should extend Eloquent's base model
+- requests should live in `App\Http\Requests`
+- support code should not depend on the HTTP layer
+
+This matters most when the app grows. Without tests, a "small" folder reorganization can quietly break routes, imports, policies, and assumptions across the team.
+
+## When should you move beyond Laravel's defaults?
+
+Some projects really do need more than the stock application layout.
+
+That is more likely when:
+
+- several teams work on distinct bounded contexts
+- deployment units are intentionally separate
+- the domain is complex enough that explicit modules reduce confusion
+- external integrations dominate the architecture
+
+Even then, do not throw away Laravel's conventions casually. Keep the move incremental, document the why, and make sure the new structure is easier to understand than the one it replaced.
+
+## FAQ
+
+### Should every Laravel app have a service layer?
+
+No. Many Laravel apps are easier to maintain when they use the framework's own boundaries first. Add a service or action class when it clarifies orchestration or removes duplication, not because every controller must call one.
+
+### Should I use repositories in Laravel?
+
+Only when they hide real variation, such as multiple data sources or a boundary you genuinely need to swap. A repository that just forwards calls to Eloquent usually adds indirection without adding value.
+
+### How do I organize a large Laravel app without inventing a custom architecture?
+
+Group code by business domain inside the default Laravel folders, keep HTTP concerns thin, and enforce the boundaries with tests. That scales surprisingly far before you need heavier patterns.
+
+### When is DDD or modular Laravel worth it?
+
+When the domain is complex enough that the default structure no longer makes related concepts easy to find or reason about. If the team cannot explain the benefit clearly, it is probably too early.
+
+## Conclusion
+
+Most Laravel architecture wins come from restraint, not cleverness.
+
+Start with the framework's defaults, group code by domain inside them, keep responsibilities in the right Laravel primitives, and add custom abstractions only when the codebase gives you a concrete reason. That path is usually the fastest way to a codebase that survives both growth and handoffs.
+
+If you're trying to keep a growing codebase from turning into a maze, these next reads cover the boundaries that usually crack first:
+
+- [See which everyday Laravel habits pay off across the whole app](/laravel-best-practices)
+- [Tighten the API layer before endpoints start leaking business rules](/laravel-restful-api-best-practices)
+- [Use tests to lock in structure before a refactor gets risky](/laravel-testing-best-practices)
+- [Close the security gaps that architecture alone will not save you from](/laravel-security-best-practices)
