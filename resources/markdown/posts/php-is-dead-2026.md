@@ -6,7 +6,7 @@ author: "benjamincrozat"
 description: "Is PHP dead? Let’s look at the March 2026 PHP usage statistics and see what the data really says about its future."
 categories:
   - "php"
-published_at: 2026-03-12T17:49:51+01:00
+published_at: 2026-03-12T15:49:51+01:00
 modified_at: null
 serp_title: null
 serp_description: null
