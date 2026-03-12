@@ -44,7 +44,9 @@ Read these references as needed:
 - Prefer clear, specific titles and snippets over keyword stuffing. Google may rewrite both.
 - On every new or revised post, add or refresh relevant internal links with descriptive anchors. Treat them as navigation and topical context, not filler.
 - Keep the post's related-posts list current as part of that internal-linking pass. Update stale recommendations or anchors when the article's angle changes instead of leaving an outdated list behind.
-- The related-posts list should use a curiosity-led line ending with a colon, then a standard Markdown list with entries like `- [Very specific anchor text](/target-slug)`. Choosing candidates from titles, slugs, categories, and local context is enough; you do not need to fully read every recommended post.
+- The lead-in sentence before the related-posts list must be unique to that article. Do not reuse the same stock phrasing across the site.
+- The related-posts list should use that custom lead-in line ending with a colon, then a standard Markdown list with entries like `- [Very specific anchor text](/target-slug)`.
+- Add only the number of recommendations the topic can support: usually 3 or more, sometimes more, with a hard cap of 10. Choosing candidates from titles, slugs, categories, and local context is enough; you do not need to fully read every recommended post.
 - Keep visible content consistent with frontmatter and any structured data.
 - For AI visibility, aim to be cite-worthy: direct answers, strong subheads, original details, and useful examples.
 - Do not use fake freshness, fake authorship, fabricated stats, doorway pages, parasite SEO, expired-domain abuse, link schemes, or scaled thin AI filler on this site.
@@ -69,6 +71,6 @@ Read these references as needed:
    - description leads with the main benefit and still works if Google rewrites part of the snippet
    - headings match the SERP without sounding repetitive
    - internal links are relevant, descriptive, and updated for the article's current angle
-   - the related-posts list is present or refreshed, uses the required Markdown list format `- [anchor](link)`, and points to genuinely useful next reads
+   - the related-posts list is present or refreshed, uses a custom article-specific lead-in plus the required Markdown list format `- [anchor](link)`, and points to genuinely useful next reads without padding
    - claims are backed by official or primary sources, not just competitors
    - the page is strong for both classic search and AI search features
