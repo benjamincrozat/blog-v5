@@ -192,16 +192,11 @@ To ensure sessions are authenticated in the "web" middleware group:
 
 These advanced options provide more flexibility in customizing your application's middleware behavior, allowing you to fine-tune security, performance, and functionality as needed.
 
-If "How to customize middleware in Laravel 11+" was useful, these related posts make strong next steps:
+If you are still shaping request flow and app bootstrapping in Laravel 11, these next reads stay close to that work:
 
-- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
 - [How to publish API and broadcasting routes in Laravel 11](/install-route-files-laravel)
 - [How to publish config files in Laravel 11](/publish-config-files-laravel)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-- [Validation in Laravel made easy](/laravel-validation)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
 - [19 Laravel security best practices for 2025](/laravel-security-best-practices)
 - [The "419 Page Expired" error in Laravel: 5 quick fixes](/419-page-expired-laravel)
-- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
 - [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
-
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)

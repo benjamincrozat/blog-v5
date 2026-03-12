@@ -122,16 +122,10 @@ $firephp->log('Greetings from PHP to Firefox!');
 
 Also, check out the [GitHub repository](https://github.com/firephp/firephp-for-browser-devtools).
 
-If "console.log() in PHP" was useful, these related posts make strong next steps:
+If you are still trying to make PHP debugging less blind, these are the next reads I would keep nearby:
 
 - [Print an array with PHP (+ Laravel)](/php-laravel-print-array)
+- [PHP: Show all errors (E_ALL) safely](/php-show-all-errors)
 - [6 ways to check your version of PHP](/check-php-version)
 - [Convert a PHP array to JSON](/php-array-to-json)
-- [PHP 8.4: new features and release date](/php-84)
-- [Bring order back to your PHP arrays using array_values()](/php-array-values)
-- [PHP: Show all errors (E_ALL) safely](/php-show-all-errors)
 - [What’s new in Pest 4 and how to upgrade](/pest-4)
-- [PHP's str_replace() made simple](/php-str-replace)
-- [Is PHP dead? Usage statistics and market share for 2023.](/php-is-dead-2023)
-- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
-

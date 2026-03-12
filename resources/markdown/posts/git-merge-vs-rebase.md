@@ -174,10 +174,8 @@ You do not need every Git trick to feel confident about git merge vs rebase. Thi
 
 My default workflow is simple: I rebase my feature branches often, then fast-forward merge them into `main` with `--ff-only` unless I need a clear merge commit for a big feature. Start with that, adjust for your team, and you will keep history clean without fear.
 
-Once "Git merge vs rebase: the only mental model you need" clicks, these follow-ups make even more sense:
+If this was really about calmer day-to-day team workflow, these next reads widen the lens beyond Git itself:
 
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
 - [The best web development courses available. Free and paid.](/best-web-development-courses)
 - [The best PHP blogs to read in 2025](/best-php-blogs)
-- [PHP 8.5: 15 new features and changes](/php-85)
-
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)

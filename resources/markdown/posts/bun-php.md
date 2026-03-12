@@ -175,16 +175,10 @@ Bun is a drop‑in package manager that makes PHP front‑end builds feel fast. 
 
 Related reading: [What's the fuss around Bun's package manager abilities?](https://benjamincrozat.com/bun-package-manager)
 
-To build on "Use Bun as your package manager in any PHP project", start with these related reads:
+If you are trying to make PHP-side frontend tooling feel less slow and annoying, these next reads make the trade-offs clearer:
 
 - [Use Bun as Your Package Manager in Any Laravel Project](/bun-laravel)
 - [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
 - [npm ci vs. npm install: here's the difference](/npm-ci)
-- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
-- [6 ways to check your version of PHP](/check-php-version)
 - [Disable "packages are looking for funding" (npm fund message)](/npm-fund)
-- [Alpine.js: a lightweight framework for productive developers](/alpine-js)
-- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [Add Alpine.js to any Laravel project](/alpine-js-laravel)
-- [Get the current URL path in PHP](/php-current-url-path)
-
+- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)

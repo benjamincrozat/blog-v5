@@ -93,16 +93,10 @@ return Http::post('https://api.example.com/posts', [
 
 And there you have it, folks! With Laravel's HTTP client, handling exceptions has never been easier.
 
-If you are still thinking about "Mastering error handling in Laravel's HTTP client", open these next:
+If you are building anything that talks to outside services, these are the next Laravel reads I would keep within reach:
 
-- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
 - [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
 - [Validation in Laravel made easy](/laravel-validation)
-- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
 - [Easy data integrity with array validation in Laravel](/laravel-array-validation)
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
-- [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
-- [The best Laravel developers to hire in 2024](/best-laravel-developers)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
-
+- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)

@@ -59,16 +59,10 @@ Instructions:
 Review each of my instructions and explain step by step how you will proceed in an existing Laravel installation without using Artisan. Then, show me the result.
 ```
 
-To build on "How to generate Laravel Factories using ChatGPT", start with these related reads:
+If you are exploring where AI actually saves time in a Laravel codebase, these are the next reads I would open:
 
 - [Use Laravel to build a ChatGPT plugin](/chatgpt-plugin-laravel)
-- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
 - [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [How to use GPT-3.5 Turbo's API, step by step](/gpt-35-turbo)
-- [How to access and use GPT-4 Turbo's API, step by step](/gpt-4-turbo)
-- [How to access and use GPT-4o's API, step by step](/gpt-4o)
+- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
 - [GPT‑5: my API quick start guide](/gpt-5-api)
-- [How to use GPT-4o mini's API for cheap, step by step](/gpt-4o-mini)
-- [Access and use GPT‑4.1's API. 5 minutes, tops.](/gpt-41)
 - [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
-

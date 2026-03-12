@@ -109,16 +109,10 @@ In the admin panel, go to **Tools → Site Health → Info → Server**.
 
 Yes! Tools like [Laravel Herd](/laravel-herd), [Laravel Valet](/laravel-valet), [Homebrew](https://brew.sh) (macOS), [Docker](https://www.docker.com), and version managers allow multiple PHP versions on the same system.
 
-These are the posts I would queue up right after "6 ways to check your version of PHP":
+Once you know which PHP version you are really on, these next reads help with local setup, config, and the Laravel side around it:
 
 - [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
-- [Print an array with PHP (+ Laravel)](/php-laravel-print-array)
-- [Fix "Invalid argument supplied for foreach" in PHP & Laravel](/invalid-argument-supplied-for-foreach)
-- [6 ways to check Laravel's version](/check-laravel-version)
-- [This is the location of your php.ini](/php-ini-location)
-- [How to install Laravel on macOS](/laravel-installation-macos)
-- [Is PHP dead? Usage statistics and market share for 2023.](/php-is-dead-2023)
-- [Is PHP dead? Usage and market share for September 2024](/php-is-dead-2024)
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
 - [Laravel Herd: the simplest way to install PHP on macOS and Windows](/laravel-herd)
-
+- [This is the location of your php.ini](/php-ini-location)
+- [6 ways to check Laravel's version](/check-laravel-version)
+- [How to install Laravel on macOS](/laravel-installation-macos)

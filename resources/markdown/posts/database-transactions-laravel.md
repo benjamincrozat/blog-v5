@@ -66,16 +66,10 @@ DB::transaction(function () {
 
 Learn more about [transactions in Laravel](https://laravel.com/docs/10.x/database#database-transactions) on the official documentation.
 
-If this article on "Understanding database transactions with Laravel" hit the mark, keep the momentum going here:
+If you are staying in the part of Laravel where data consistency matters most, these follow-up reads are the ones I would keep nearby:
 
 - [Fix "1305 SAVEPOINT trans2 does not exist" in Laravel](/1305-savepoint-trans2-does-not-exist)
 - [Laravel migrations: a simplified and step by step guide](/laravel-migrations)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
-- [Validation in Laravel made easy](/laravel-validation)
+- [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
 - [Efficient data filtering with whereIn() in Laravel](/laravel-query-builder-wherein)
-- [Mastering error handling in Laravel's HTTP client](/error-handling-laravel-http-client)
-- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
-
+- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)

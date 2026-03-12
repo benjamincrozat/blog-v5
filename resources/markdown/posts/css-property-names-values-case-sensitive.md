@@ -34,12 +34,10 @@ Similarly, class and ID selectors are case-sensitive in all document types. So, 
 	
 In summary, it's best practice to always use lowercase for HTML elements, attributes, and CSS properties and values (except for font names and URLs) to ensure consistency and avoid any potential issues.
 
-If you are still thinking about "Is CSS case-sensitive?", open these next:
+If you are cleaning up the small CSS rules that save you from silly bugs later, these are solid next reads:
 
 - [5 Tailwind CSS best practices for 2025](/tailwind-css)
-- [Tailwind CSS typography plugin: a step-by-step build guide](/tailwind-css-typography-plugin)
 - [Style labels on focus the right way in CSS](/label-focus-css)
 - [Style an HTML dialog's backdrop with Tailwind CSS](/dialog-backdrop-styling-tailwind-css)
 - [The lh and rlh CSS units: simple spacing that follows your text](/css-lh-rlh)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-
+- [Tailwind CSS typography plugin: a step-by-step build guide](/tailwind-css-typography-plugin)

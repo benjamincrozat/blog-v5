@@ -145,16 +145,10 @@ Laravel 11's `Cache::flexible()` method provides a nuanced approach to caching t
 
 When used appropriately, this feature can lead to more responsive applications and a better user experience overall.
 
-If "Flexible caching in Laravel made super easy" is part of your current stack puzzle, keep going with these:
+If performance work is creeping into the rest of the app now, these are the Laravel reads I would line up next:
 
 - [9 ways to clear Laravel's cache](/laravel-clear-cache)
-- [Validation in Laravel made easy](/laravel-validation)
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
-- [The best custom cards for Laravel Pulse in 2024](/best-laravel-pulse-custom-cards)
-- [Easy data integrity with array validation in Laravel](/laravel-array-validation)
 - [Laravel Pulse: monitor your apps for free](/laravel-pulse)
-- [Understanding Laravel's fake() helper](/laravel-fake-helper)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
-- [6 ways to check Laravel's version](/check-laravel-version)
-
+- [The best custom cards for Laravel Pulse in 2024](/best-laravel-pulse-custom-cards)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
