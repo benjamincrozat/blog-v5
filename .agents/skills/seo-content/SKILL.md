@@ -42,7 +42,9 @@ Read these references as needed:
 - Add a year or date only when the topic is genuinely time-sensitive and the page is actually updated to match.
 - Use the primary keyword in the title, intro, slug, and only 1-2 lower headings when natural.
 - Prefer clear, specific titles and snippets over keyword stuffing. Google may rewrite both.
-- Add relevant internal links with descriptive anchors. Treat them as navigation and topical context, not filler.
+- On every new or revised post, add or refresh relevant internal links with descriptive anchors. Treat them as navigation and topical context, not filler.
+- Keep the post's related-posts list current as part of that internal-linking pass. Update stale recommendations or anchors when the article's angle changes instead of leaving an outdated list behind.
+- The related-posts list should use a curiosity-led line ending with a colon, then `→ [Very specific anchor text](/target-slug)` entries. Choosing candidates from titles, slugs, categories, and local context is enough; you do not need to fully read every recommended post.
 - Keep visible content consistent with frontmatter and any structured data.
 - For AI visibility, aim to be cite-worthy: direct answers, strong subheads, original details, and useful examples.
 - Do not use fake freshness, fake authorship, fabricated stats, doorway pages, parasite SEO, expired-domain abuse, link schemes, or scaled thin AI filler on this site.
@@ -66,6 +68,7 @@ Read these references as needed:
    - title starts strong, uses concrete value, and is not relying on gimmicks for clicks
    - description leads with the main benefit and still works if Google rewrites part of the snippet
    - headings match the SERP without sounding repetitive
-   - internal links are relevant and descriptive
+   - internal links are relevant, descriptive, and updated for the article's current angle
+   - the related-posts list is present or refreshed, uses the required `→ [anchor](link)` format, and points to genuinely useful next reads
    - claims are backed by official or primary sources, not just competitors
    - the page is strong for both classic search and AI search features

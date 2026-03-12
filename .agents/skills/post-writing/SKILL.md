@@ -48,6 +48,13 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 - Prefer practical examples and code when they help, but never leave a section as code-only.
 - Add context before snippets and explain what they do, why they matter, and what result to expect.
 - Use current primary sources for version-sensitive claims. Link inline at the claim, and prefer relevant internal links before equivalent external links.
+- Every created or revised post must include a short list of interesting posts to read next. If the post already has one, refresh it instead of duplicating it.
+- Format that list as a curiosity-led sentence ending with a colon, followed by one link per line in this exact style:
+  Curious lead-in text:
+  → [Highly specific anchor text](/target-slug)
+  → [Another highly specific anchor text](/another-target)
+- Pick recommended posts that genuinely extend the topic. Matching from titles, slugs, categories, and local context is enough; you do not need to fully read every recommended post before linking it.
+- When creating or revising a post, add or improve natural internal links in the body wherever a reader would want the next step, not only in the closing list.
 - Verify links and commands when feasible. If something cannot be verified, tell the user outside the post copy.
 - When setting frontmatter timestamps, use UTC rather than the machine's local timezone.
 - Do not use browser-based validation for post-writing tasks.
@@ -67,8 +74,9 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 4. Check that the chosen title and description earn the click with a clear outcome, not a gimmick.
 5. Pick the simplest outline that matches the post shape.
 6. Draft for clarity, usefulness, and brevity.
-7. Validate version-sensitive claims, inline links, and code examples.
-8. Do a final publishing pass:
+7. Add or refresh contextual internal links and the related-posts list.
+8. Validate version-sensitive claims, inline links, and code examples.
+9. Do a final publishing pass:
    - required frontmatter is present and valid
    - existing post IDs stayed unchanged
    - featured image and inline images use Cloudflare Images URLs or paths
@@ -76,4 +84,6 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
    - `serp_title` and `serp_description` are either `null` or clearly justified and aligned with the visible page copy
    - title and description make a strong, accurate click promise
    - headings read naturally in the generated table of contents
+   - contextual internal links were added or improved where helpful
+   - the post has one up-to-date curiosity-led related-posts list in the required `→ [anchor](link)` format
    - code and links support the nearby claim
