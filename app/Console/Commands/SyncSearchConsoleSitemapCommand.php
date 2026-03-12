@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Throwable;
 use Illuminate\Console\Command;
 use App\Actions\Sitemaps\GenerateSitemap;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -24,49 +25,55 @@ class SyncSearchConsoleSitemapCommand extends Command
         VerifySearchConsoleCredentials $verifySearchConsoleCredentials,
         SubmitSitemapToSearchConsole $submitSitemapToSearchConsole,
     ) : int {
-        $path = $generateSitemap->handle();
+        try {
+            $path = $generateSitemap->handle();
 
-        $this->info("Sitemap generated successfully at {$path}");
+            $this->info("Sitemap generated successfully at {$path}");
 
-        if (! app()->isProduction()) {
-            $results = [
-                ...$checkSearchConsoleConnection->handle(),
-                ...$verifySearchConsoleCredentials->handle(),
-            ];
+            if (! app()->isProduction()) {
+                $results = [
+                    ...$checkSearchConsoleConnection->handle(),
+                    ...$verifySearchConsoleCredentials->handle(),
+                ];
 
-            $this->table(
-                ['Check', 'Result', 'Details', 'Reference'],
-                array_map(fn (array $result) : array => [
-                    $result['check'],
-                    $result['result'],
-                    $result['details'],
-                    $result['reference'],
-                ], $results),
-            );
+                $this->table(
+                    ['Check', 'Result', 'Details', 'Reference'],
+                    array_map(fn (array $result) : array => [
+                        $result['check'],
+                        $result['result'],
+                        $result['details'],
+                        $result['reference'],
+                    ], $results),
+                );
 
-            $this->line($this->nonProductionSummary($results));
+                $this->line($this->nonProductionSummary($results));
 
-            foreach ($this->nonProductionFixes($results) as $fix) {
-                $this->warn($fix);
+                foreach ($this->nonProductionFixes($results) as $fix) {
+                    $this->warn($fix);
+                }
+
+                $this->info('Non-production mode does not submit sitemaps. It only checks connectivity and validates credentials read-only.');
+                $this->info('Search Console submission skipped outside production.');
+
+                return self::SUCCESS;
             }
 
-            $this->info('Non-production mode does not submit sitemaps. It only checks connectivity and validates credentials read-only.');
-            $this->info('Search Console submission skipped outside production.');
+            if (! $submitSitemapToSearchConsole->configured()) {
+                $this->info('Search Console submission skipped because credentials or property are not configured.');
+
+                return self::SUCCESS;
+            }
+
+            $submitSitemapToSearchConsole->handle();
+
+            $this->info('Sitemap submitted to Google Search Console.');
 
             return self::SUCCESS;
+        } catch (Throwable $throwable) {
+            $this->error($throwable->getMessage());
+
+            return self::FAILURE;
         }
-
-        if (! $submitSitemapToSearchConsole->configured()) {
-            $this->info('Search Console submission skipped because credentials or property are not configured.');
-
-            return self::SUCCESS;
-        }
-
-        $submitSitemapToSearchConsole->handle();
-
-        $this->info('Sitemap submitted to Google Search Console.');
-
-        return self::SUCCESS;
     }
 
     /**

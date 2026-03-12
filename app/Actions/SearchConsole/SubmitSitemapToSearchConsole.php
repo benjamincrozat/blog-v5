@@ -34,10 +34,20 @@ class SubmitSitemapToSearchConsole
         $property = $this->property();
         $sitemapUrl ??= $this->sitemapUrl();
 
-        $this->http
+        $response = $this->http
             ->withToken($this->fetchSearchConsoleAccessToken->handle()->accessToken)
-            ->put($this->submissionUrl($property, $sitemapUrl))
-            ->throw();
+            ->send('PUT', $this->submissionUrl($property, $sitemapUrl));
+
+        if ($response->failed()) {
+            $message = "Google Search Console sitemap submission failed with HTTP {$response->status()}.";
+            $body = trim($response->body());
+
+            if ('' !== $body) {
+                $message .= PHP_EOL . $body;
+            }
+
+            throw new RuntimeException($message);
+        }
     }
 
     protected function property() : string

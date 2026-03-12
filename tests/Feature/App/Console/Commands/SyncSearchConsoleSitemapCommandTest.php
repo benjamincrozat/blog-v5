@@ -7,6 +7,7 @@ use function Pest\Laravel\artisan;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Artisan;
 use App\Console\Commands\SyncSearchConsoleSitemapCommand;
 
 beforeEach(function () {
@@ -53,6 +54,7 @@ it('generates the sitemap and submits it with an oauth refresh token', function 
         return 'PUT' === $request->method() &&
             str_contains((string) $request->url(), rawurlencode('sc-domain:benjamincrozat.com')) &&
             str_contains((string) $request->url(), rawurlencode('https://benjamincrozat.com/sitemap.xml')) &&
+            '' === $request->body() &&
             'Bearer token' === $request->header('Authorization')[0];
     });
 });
@@ -94,8 +96,35 @@ it('generates the sitemap and submits it with service account credentials', func
         return 'PUT' === $request->method() &&
             str_contains((string) $request->url(), rawurlencode('https://benjamincrozat.com/')) &&
             str_contains((string) $request->url(), rawurlencode('https://benjamincrozat.com/sitemap.xml')) &&
+            '' === $request->body() &&
             'Bearer service-account-token' === $request->header('Authorization')[0];
     });
+});
+
+it('prints the full Google error body when sitemap submission fails in production', function () {
+    Post::factory()->create();
+
+    app()['env'] = 'production';
+    config()->set('app.url', 'https://benjamincrozat.com');
+    config()->set('services.search_console.property', 'sc-domain:benjamincrozat.com');
+    config()->set('services.search_console.oauth.client_id', 'client-id');
+    config()->set('services.search_console.oauth.client_secret', 'client-secret');
+    config()->set('services.search_console.oauth.refresh_token', 'refresh-token');
+
+    Http::fake([
+        'https://oauth2.googleapis.com/token' => Http::response(['access_token' => 'token'], 200),
+        'https://www.googleapis.com/webmasters/v3/sites/*/sitemaps/*' => Http::response([
+            'error' => [
+                'code' => 400,
+                'message' => 'Invalid JSON payload received. Unknown name "". Root element must be a message.',
+            ],
+        ], 400),
+    ]);
+
+    expect(Artisan::call(SyncSearchConsoleSitemapCommand::class))->toBe(1);
+    expect(Artisan::output())
+        ->toContain('Google Search Console sitemap submission failed with HTTP 400.')
+        ->toContain('Invalid JSON payload received.');
 });
 
 it('checks the configured Google endpoints outside production without submitting', function () {
