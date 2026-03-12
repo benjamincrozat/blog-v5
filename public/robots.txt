@@ -1,3 +1,4 @@
 User-agent: *
 Disallow:
 Sitemap: https://benjamincrozat.com/sitemap.xml
+Sitemap: https://benjamincrozat.com/news-sitemap.xml

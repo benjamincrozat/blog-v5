@@ -38,7 +38,7 @@ Displays the components compact post component and accepts component props, Blad
         </p>
 
         <div class="flex flex-wrap items-center gap-x-3 mt-1">
-            <a wire:navigate href="{{ route('authors.show', $post->user) }}" class="hover:text-blue-600 transition-colors">
+            <a wire:navigate href="{{ route('authors.show', $post->user->slug) }}" class="hover:text-blue-600 transition-colors">
                 <p class="flex items-center gap-2">
                     <x-heroicon-o-user class="size-[.65lh] opacity-75" />
                     {{ $post->user->name }}

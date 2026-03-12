@@ -18,6 +18,7 @@ Displays the components app component and accepts component props, Blade attribu
 
         <title>{{ $title }}</title>
 
+        <meta name="robots" content="max-image-preview:large" />
         <meta name="title" content="{{ $title }}" />
         <meta name="description" content="{{ $description }}" />
 
@@ -67,10 +68,27 @@ Displays the components app component and accepts component props, Blade attribu
         <script type="application/ld+json">
             {!! json_encode([
                 '@context' => 'https://schema.org',
-                '@type' => 'Organization',
-                'name' => config('app.name'),
-                'url' => url('/'),
-                'logo' => Vite::asset('resources/img/apple-touch-icon.png'),
+                '@graph' => [
+                    [
+                        '@type' => 'Organization',
+                        '@id' => url('/') . '#organization',
+                        'name' => config('app.name'),
+                        'url' => url('/'),
+                        'logo' => [
+                            '@type' => 'ImageObject',
+                            'url' => Vite::asset('resources/img/apple-touch-icon.png'),
+                        ],
+                    ],
+                    [
+                        '@type' => 'WebSite',
+                        '@id' => url('/') . '#website',
+                        'name' => config('app.name'),
+                        'url' => url('/'),
+                        'publisher' => [
+                            '@id' => url('/') . '#organization',
+                        ],
+                    ],
+                ],
             ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
         </script>
     </head>

@@ -25,6 +25,49 @@ it('shows a post', function () {
         ->assertDontSee('Did you like this article? Then, keep learning:');
 });
 
+it('renders NewsArticle schema and visible UTC timestamps for eligible news posts', function () {
+    $news = Category::factory()->create([
+        'name' => 'News',
+        'slug' => Post::NEWS_CATEGORY_SLUG,
+    ]);
+
+    $post = Post::factory()->create([
+        'published_at' => now()->subHours(2),
+        'modified_at' => now()->subHour(),
+        'is_commercial' => false,
+        'sponsored_at' => null,
+    ]);
+
+    $post->categories()->sync([$news->id]);
+
+    get(route('posts.show', $post))
+        ->assertOk()
+        ->assertSee('"@type": "NewsArticle"', escape: false)
+        ->assertSee('"mainEntityOfPage"', escape: false)
+        ->assertSee('"publisher"', escape: false)
+        ->assertSee(route('authors.show', $post->user->slug), escape: false)
+        ->assertSee('UTC');
+});
+
+it('keeps standard article schema for non-news posts', function () {
+    $category = Category::factory()->create([
+        'slug' => 'laravel',
+    ]);
+
+    $post = Post::factory()->create([
+        'published_at' => now()->subDay(),
+        'is_commercial' => false,
+        'sponsored_at' => null,
+    ]);
+
+    $post->categories()->sync([$category->id]);
+
+    get(route('posts.show', $post))
+        ->assertOk()
+        ->assertSee('"@type": "Article"', escape: false)
+        ->assertDontSee('"@type": "NewsArticle"', escape: false);
+});
+
 it('without a SERP title, the title is used', function () {
     $post = Post::factory()->create(['serp_title' => null]);
 

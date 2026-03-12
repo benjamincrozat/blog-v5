@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Link;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use App\Models\Redirect;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Storage;
@@ -187,6 +189,63 @@ it('scopes unpublished posts', function () {
     $unpublishedCount = Post::query()->unpublished()->count();
 
     expect($unpublishedCount)->toBe(1);
+});
+
+it('detects whether a post belongs to the news category', function () {
+    $news = Category::factory()->create([
+        'name' => 'News',
+        'slug' => Post::NEWS_CATEGORY_SLUG,
+    ]);
+
+    $post = Post::factory()->create();
+    $post->categories()->sync([$news->id]);
+
+    expect($post->fresh()->isNews())->toBeTrue();
+});
+
+it('scopes Google News eligible posts', function () {
+    $news = Category::factory()->create([
+        'name' => 'News',
+        'slug' => Post::NEWS_CATEGORY_SLUG,
+    ]);
+
+    $eligible = Post::factory()->create([
+        'published_at' => now()->subHour(),
+        'is_commercial' => false,
+        'sponsored_at' => null,
+    ]);
+    $eligible->categories()->sync([$news->id]);
+
+    $commercial = Post::factory()->create([
+        'published_at' => now()->subHour(),
+        'is_commercial' => true,
+        'sponsored_at' => null,
+    ]);
+    $commercial->categories()->sync([$news->id]);
+
+    $sponsored = Post::factory()->create([
+        'published_at' => now()->subHour(),
+        'is_commercial' => false,
+        'sponsored_at' => now()->subHour(),
+    ]);
+    $sponsored->categories()->sync([$news->id]);
+
+    $withLink = Post::factory()->create([
+        'published_at' => now()->subHour(),
+        'is_commercial' => false,
+        'sponsored_at' => null,
+    ]);
+    $withLink->categories()->sync([$news->id]);
+    Link::factory()->create(['post_id' => $withLink->id]);
+
+    $newsEligibleIds = Post::query()
+        ->newsEligible()
+        ->pluck('id');
+
+    expect($newsEligibleIds)->toContain($eligible->id)
+        ->not->toContain($commercial->id)
+        ->not->toContain($sponsored->id)
+        ->not->toContain($withLink->id);
 });
 
 it('belongs to a user', function () {

@@ -23,7 +23,7 @@ it('has the expected subject, content, and action', function () {
     expect($message->introLines)->toHaveCount(1);
     expect($message->introLines[0])->toContain('Taylor Otwell');
     expect($message->actionText)->toBe('Check Profile');
-    expect($message->actionUrl)->toBe(route('authors.show', $user));
+    expect($message->actionUrl)->toBe(route('authors.show', $user->slug));
 });
 
 it('sends via the mail channel and is queueable', function () {

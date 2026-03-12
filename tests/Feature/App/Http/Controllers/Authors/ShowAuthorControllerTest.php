@@ -15,6 +15,7 @@ it('shows an author only when they have published posts', function () {
         ->assertOk()
         ->assertViewIs('authors.show')
         ->assertViewHas('author', $user)
+        ->assertSee('"@type": "ProfilePage"', escape: false)
         ->assertViewHas('posts', function (LengthAwarePaginator $posts) {
             expect($posts->count())->toBe(2);
 

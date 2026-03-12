@@ -25,6 +25,10 @@ Displays the authors show view.
                     {{ $author->company }}
                 </p>
             @endif
+
+            <p class="mx-auto mt-4 max-w-prose text-center text-sm leading-relaxed text-gray-500">
+                This profile lists {{ $author->name }}'s published articles and approved links on {{ config('app.name') }}, a site covering web development news, techniques, and tools. Sponsored articles are labeled clearly on the article page.
+            </p>
         </header>
 
         @if ($author->biography)
@@ -64,17 +68,36 @@ Displays the authors show view.
         @endif
     </x-section>
 
+    @php
+        $profileSchema = [
+            '@context' => 'https://schema.org',
+            '@type' => 'ProfilePage',
+            'url' => url()->current(),
+            'mainEntity' => array_filter([
+                '@type' => 'Person',
+                'name' => $author->name,
+                'image' => $author->avatar,
+                'url' => url()->current(),
+                'description' => $description,
+                'sameAs' => array_values(array_filter([
+                    data_get($author->github_data, 'user.html_url'),
+                    $author->blog_url,
+                ])),
+                'worksFor' => filled($author->company) ? [
+                    '@type' => 'Organization',
+                    'name' => $author->company,
+                ] : null,
+            ], function (mixed $value) {
+                if (is_array($value)) {
+                    return [] !== $value;
+                }
+
+                return ! is_null($value) && '' !== $value;
+            }),
+        ];
+    @endphp
+
     <script type="application/ld+json">
-        {
-            "@@context": "https://schema.org",
-            "@type": "Person",
-            "name": "{{ $author->name }}",
-            "image": "{{ $author->avatar }}",
-            "url": "{{ url()->current() }}",
-            "description": "{{ $description }}",
-            "sameAs": [
-                "{{ $author->github_data['user']['html_url'] ?? '' }}"
-            ]
-        }
+        {!! json_encode($profileSchema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
     </script>
 </x-app>

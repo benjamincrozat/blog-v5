@@ -99,6 +99,40 @@ it('orders posts by boosting recent sponsorship then by published_at desc', func
     });
 });
 
+it('treats the news category as a current archive without sponsored boosting', function () {
+    $news = Category::factory()->create([
+        'name' => 'News',
+        'slug' => Post::NEWS_CATEGORY_SLUG,
+    ]);
+
+    $latestUnsponsored = Post::factory()
+        ->hasAttached($news, [], 'categories')
+        ->create([
+            'published_at' => now()->subHour(),
+            'is_commercial' => false,
+            'sponsored_at' => null,
+        ]);
+
+    $olderSponsored = Post::factory()
+        ->hasAttached($news, [], 'categories')
+        ->create([
+            'published_at' => now()->subDay(),
+            'is_commercial' => false,
+            'sponsored_at' => now()->subHour(),
+        ]);
+
+    get(route('categories.show', $news))
+        ->assertOk()
+        ->assertSee('Latest web development news')
+        ->assertSee('Follow current web development news, releases, and notable updates', escape: false)
+        ->assertViewHas('isNewsCategory', true)
+        ->assertViewHas('posts', function (LengthAwarePaginator $paginator) use ($latestUnsponsored, $olderSponsored) {
+            $ids = collect($paginator->items())->pluck('id')->values();
+
+            return [$latestUnsponsored->id, $olderSponsored->id] === $ids->all();
+        });
+});
+
 it('paginates 24 posts per page and hides intro after page 1', function () {
     $category = Category::factory()->create();
 

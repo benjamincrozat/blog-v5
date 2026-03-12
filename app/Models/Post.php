@@ -30,6 +30,8 @@ class Post extends Model implements Feedable
     /** @use HasFactory<PostFactory> */
     use HasFactory, PostFeedable, PostHasTableOfContents, PostSearchable, PostSlugable, PostTransformable, SoftDeletes;
 
+    public const NEWS_CATEGORY_SLUG = 'news';
+
     protected $withCount = ['comments'];
 
     protected function casts() : array
@@ -66,6 +68,23 @@ class Post extends Model implements Feedable
             ->orderByRaw('(sponsored_at IS NOT NULL AND sponsored_at >= ?) DESC', [now()->subWeek()])
             // Within boosted group, order by most recently sponsored.
             ->orderByRaw('CASE WHEN sponsored_at >= ? THEN sponsored_at ELSE NULL END DESC', [now()->subWeek()]);
+    }
+
+    #[Scope]
+    protected function news(Builder $query) : void
+    {
+        $query->whereHas('categories', fn (Builder $categories) => $categories->where('slug', static::NEWS_CATEGORY_SLUG));
+    }
+
+    #[Scope]
+    protected function newsEligible(Builder $query) : void
+    {
+        $query
+            ->published()
+            ->news()
+            ->where('is_commercial', false)
+            ->whereNull('sponsored_at')
+            ->whereDoesntHave('link');
     }
 
     public function user() : BelongsTo
@@ -122,6 +141,28 @@ class Post extends Model implements Feedable
     public function isSponsored() : bool
     {
         return ! is_null($this->sponsored_at);
+    }
+
+    public function isNews() : bool
+    {
+        if ($this->relationLoaded('categories')) {
+            return $this->categories->contains(fn (Category $category) => static::NEWS_CATEGORY_SLUG === $category->slug);
+        }
+
+        return $this->categories()->where('slug', static::NEWS_CATEGORY_SLUG)->exists();
+    }
+
+    public function isNewsEligible() : bool
+    {
+        if (! $this->isPublished() || $this->is_commercial || $this->isSponsored() || ! $this->isNews()) {
+            return false;
+        }
+
+        if ($this->relationLoaded('link')) {
+            return is_null($this->link);
+        }
+
+        return ! $this->link()->exists();
     }
 
     public function getRouteKeyName() : string

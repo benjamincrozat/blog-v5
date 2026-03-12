@@ -11,6 +11,10 @@ Displays the posts show view.
     :title="! empty($post->serp_title) ? $post->serp_title : $post->title"
     type="article"
 >
+    @php
+        $isNewsPost = $post->isNewsEligible();
+    @endphp
+
     @if (! $post->is_commercial)
         <x-breadcrumbs :items="$breadcrumbs" class="container mb-6 md:mb-8" />
     @endif
@@ -24,7 +28,7 @@ Displays the posts show view.
             'lg:col-span-8 xl:col-span-9' => ! $post->is_commercial,
         ])>
             <article>
-                @if ($post->hasImage())
+                @if ($post->hasImage() && ! $isNewsPost)
                     <img
                         fetchpriority="high"
                         src="{{ $post->image_url }}"
@@ -70,6 +74,8 @@ Displays the posts show view.
 
                         @if ($post->link)
                             Shared
+                        @elseif ($isNewsPost)
+                            Published
                         @elseif ($post->modified_at)
                             Modified
                         @elseif ($post->published_at)
@@ -80,12 +86,22 @@ Displays the posts show view.
 
                         <br />
 
-                        {{ ($post->modified_at ?? $post->published_at ?? $post->created_at)->isoFormat('ll') }}
+                        @if ($isNewsPost)
+                            {{ $post->published_at->utc()->format('M j, Y \a\t H:i \U\T\C') }}
+
+                            @if ($post->modified_at)
+                                <span class="block mt-1 text-xs leading-relaxed text-gray-500">
+                                    Updated {{ $post->modified_at->utc()->format('M j, Y \a\t H:i \U\T\C') }}
+                                </span>
+                            @endif
+                        @else
+                            {{ ($post->modified_at ?? $post->published_at ?? $post->created_at)->isoFormat('ll') }}
+                        @endif
                     </div>
 
                     <a
                         wire:navigate
-                        href="{{ route('authors.show', $post->user) }}"
+                        href="{{ route('authors.show', $post->user->slug) }}"
                         data-pirsch-event="Clicked post author"
                         data-pirsch-meta-name="{{ $post->user->name }}"
                     >
@@ -179,6 +195,17 @@ Displays the posts show view.
                         </x-slot>
                     </x-dropdown>
                 </div>
+
+                @if ($post->hasImage() && $isNewsPost)
+                    <img
+                        fetchpriority="high"
+                        src="{{ $post->image_url }}"
+                        alt="{{ $post->title }}"
+                        width="1280"
+                        height="720"
+                        class="object-cover mt-12 w-full rounded-xl ring-1 shadow-xl ring-black/5 aspect-video md:mt-16"
+                    />
+                @endif
 
                 {{ $post->toTableOfContents() }}
 
@@ -401,21 +428,39 @@ Displays the posts show view.
     Includes Article schema only for published posts.
     --}}
     @if ($post->published_at)
+        @php
+            $articleSchema = array_filter([
+                '@context' => 'https://schema.org',
+                '@type' => $isNewsPost ? 'NewsArticle' : 'Article',
+                'mainEntityOfPage' => [
+                    '@type' => 'WebPage',
+                    '@id' => route('posts.show', $post),
+                ],
+                'url' => route('posts.show', $post),
+                'author' => [
+                    '@type' => 'Person',
+                    'name' => $post->user->name,
+                    'url' => route('authors.show', $post->user->slug),
+                ],
+                'publisher' => [
+                    '@type' => 'Organization',
+                    '@id' => url('/') . '#organization',
+                    'name' => config('app.name'),
+                    'logo' => [
+                        '@type' => 'ImageObject',
+                        'url' => Vite::asset('resources/img/apple-touch-icon.png'),
+                    ],
+                ],
+                'headline' => $post->title,
+                'description' => $post->description,
+                'image' => $post->hasImage() ? [$post->image_url] : null,
+                'datePublished' => $post->published_at->toIso8601String(),
+                'dateModified' => $post->modified_at?->toIso8601String() ?? $post->published_at->toIso8601String(),
+            ], fn (mixed $value) => ! is_null($value));
+        @endphp
+
         <script type="application/ld+json">
-            {
-                "@@context": "https://schema.org",
-                "@type": "Article",
-                "author": {
-                    "@type": "Person",
-                    "name": "{{ $post->user->name }}",
-                    "url": "{{ route('home') }}#about"
-                },
-                "headline": "{{ $post->title }}",
-                "description": "{{ $post->description }}",
-                "image": "{{ $post->image_url }}",
-                "datePublished": "{{ $post->published_at->toIso8601String() }}",
-                "dateModified": "{{ $post->modified_at?->toIso8601String() ?? $post->published_at->toIso8601String() }}"
-            }
+            {!! json_encode($articleSchema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
         </script>
     @endif
 
