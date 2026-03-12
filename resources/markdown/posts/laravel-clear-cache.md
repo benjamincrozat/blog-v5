@@ -178,3 +178,14 @@ No. It removes all cached data instantly, potentially causing database spikes.
 
 **What changed in Laravel 12 regarding cache?**
 No significant cache command changes. The commands listed here fully apply.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
+- [How to publish API and broadcasting routes in Laravel 11](/install-route-files-laravel)
+- [Flexible caching in Laravel made super easy](/flexible-caching-in-laravel)
+
+
+
+
+

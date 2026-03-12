@@ -206,3 +206,14 @@ As you saw in the pricing table, GPT-4.1 is available in three flavors: **full**
 * **Mega‑scale RAG pipelines:** Chunk millions of tokens from your company wiki and ask real‑time questions without an external vector DB.
 
 So, which one will you build? Please share it in the comments below!
+
+If you want a few more AI rabbit holes after this:
+
+- [GPT‑5: my API quick start guide](/gpt-5-api)
+- [How to access and use GPT-4o's API, step by step](/gpt-4o)
+- [How to use GPT-4o mini's API for cheap, step by step](/gpt-4o-mini)
+
+
+
+
+

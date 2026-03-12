@@ -18,3 +18,14 @@ sponsored_at: null
 Here's how Facades work in Laravel:
 
 ## How real-time Facades work in Laravel?
+
+If you want a few more Laravel rabbit holes after this:
+
+- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
+- [Inside the Laravel service container](/inside-the-laravel-service-container)
+- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
+
+
+
+
+

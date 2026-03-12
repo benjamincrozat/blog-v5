@@ -85,3 +85,14 @@ Jason McCreary, from Laravel Shift, also showcases his favorite way of organizin
 All that being said, at the end, results matter the most. Here's a tweet from Taylor Otwell himself about keeping an open mind:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">I try not to express very strong opinions on how people structure or build their Laravel applications.<br><br>I want to keep a strong culture of exploration and experimentation in the ecosystem. 👩‍🔬</p>&mdash; Taylor Otwell ☁️ (@taylorotwell) <a href="https://twitter.com/taylorotwell/status/1668580181504606208?ref_src=twsrc%5Etfw">June 13, 2023</a></blockquote>
+
+If you want a few more Laravel rabbit holes after this:
+
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+
+
+
+
+

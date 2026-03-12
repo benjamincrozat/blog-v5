@@ -110,3 +110,14 @@ Each profile includes a name, a unique email, a phone number, and an address. Th
 The `fake()` helper in Laravel is a powerful tool for generating fake data. Whether it's for testing, seeding databases, or prototyping, Laravel's `fake()` helper simplifies the process, making development faster and more efficient.
 
 Remember, while `fake()` is a convenient feature, it's crucial to use it only locally as the Faker package won't be included if you deploy your application to production using Composer's `--no-dev` option.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [The ultimate guide to Laravel's new Number helper](/laravel-number-helper)
+- [6 ways to check Laravel's version](/check-laravel-version)
+- [Validation in Laravel made easy](/laravel-validation)
+
+
+
+
+

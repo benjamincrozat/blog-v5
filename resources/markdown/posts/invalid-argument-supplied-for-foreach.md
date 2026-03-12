@@ -79,3 +79,14 @@ $items->each(function ($item) {
     //
 });
 ```
+
+If you want a few more Laravel rabbit holes after this:
+
+- [6 ways to check your version of PHP](/check-php-version)
+- [Print an array with PHP (+ Laravel)](/php-laravel-print-array)
+- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
+
+
+
+
+

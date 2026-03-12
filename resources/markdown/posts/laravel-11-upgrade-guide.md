@@ -136,3 +136,14 @@ Here are some of the [available Shifts](https://laravelshift.com/shifts?utm_camp
 The pricing is straightforward and extremely generous considering how expensive paying developers is:
 - **$99** per year to run as many Shifts as you want on your project
 - **$5-$29** per Shift
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
+- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
+- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+
+
+
+
+

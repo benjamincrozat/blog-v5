@@ -241,3 +241,14 @@ The power of Artisan lies not just in its built-in functionality, but in its ext
 As you continue your Laravel journey, I encourage you to keep exploring Artisan. Experiment with different commands, create your own, and find ways to incorporate Artisan into your development workflow. The more you use it, the more you'll appreciate its capabilities and the efficiency it brings to your development process.
 
 Remember, Laravel and Artisan are continually evolving. Stay curious, keep learning, and don't hesitate to dive into the Laravel documentation or community resources to discover new features and best practices.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [A cheat sheet for Laravel's make Artisan commands](/cheat-sheet-make-laravel-artisan)
+- [6 ways to check Laravel's version](/check-laravel-version)
+- [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
+
+
+
+
+

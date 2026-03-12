@@ -69,3 +69,14 @@ https://www.dropbox.com/developers/apps/create
 ## License
 
 Take this package and do whatever the f you want with it. That's basically what the [WTFPL](http://www.wtfpl.net/about/) license says.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
+- [The laravel/ui package: my 2025 guide](/laravel-ui)
+- [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
+
+
+
+
+

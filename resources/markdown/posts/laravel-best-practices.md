@@ -632,3 +632,14 @@ Use `dispatchAfterResponse` for very short, one‑off tasks that can run right a
 - Build a test suite with factories and database refresh or transactions, and prevent stray HTTP requests.
 - Enable Eloquent strictness and use eager loading to avoid N+1 problems.
 - Defer slow work with `dispatchAfterResponse` and move heavy tasks to queues and Horizon.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [3 crucial Laravel architecture best practices for 2025](/laravel-architecture-best-practices)
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+- [Validation in Laravel made easy](/laravel-validation)
+
+
+
+
+

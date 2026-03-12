@@ -81,3 +81,14 @@ public function store(Request $request)
 ```
 
 By using Laravel's validation, we can make sure our users receive feedback that's not only informative but also doesn't pull them out of their workflow.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Validation in Laravel made easy](/laravel-validation)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+
+
+
+
+

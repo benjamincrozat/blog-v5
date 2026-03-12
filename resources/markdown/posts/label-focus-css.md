@@ -252,3 +252,14 @@ Yes for mainstream targets. Check the MDN table for versions on [`:has()`](https
 ### Should I ever add `tabindex="0"` to a label?
 
 Almost never. It adds a useless stop in the tab order. Keep focus on the control and reflect that state on the label. See [`tabindex`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex).
+
+If you want a few more frontend rabbit holes after this:
+
+- [Tailwind CSS forms plugin: my 2025 guide for v4 and v3](/tailwind-css-forms-plugin)
+- [Style an HTML dialog's backdrop with Tailwind CSS](/dialog-backdrop-styling-tailwind-css)
+- [5 Tailwind CSS best practices for 2025](/tailwind-css)
+
+
+
+
+

@@ -530,3 +530,14 @@ I’ve shown you how I send emails in Laravel with [Mailtrap SMTP](https://l.rw.
 Hopefully, you’ll be able to use this article as your go-to resource for sending emails in Laravel.
 
 Good luck!
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Understanding Laravel's fake() helper](/laravel-fake-helper)
+- [Laravel retrospective: what changed since version 5.8?](/laravel-retrospective)
+- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+
+
+
+
+

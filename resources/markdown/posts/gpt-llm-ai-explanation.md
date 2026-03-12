@@ -107,3 +107,14 @@ Then, check out my articles on this matter:
 - [Start using GPT-4 Turbo's API in 5 minutes](https://benjamincrozat.com/gpt-4-turbo)
 - [Start using GPT-3.5 Turbo's API in 5 minutes](https://benjamincrozat.com/gpt-35-turbo)
 - [Use PHP to leverage OpenAI's API and GPT effortlessly](https://benjamincrozat.com/openai-api-php)
+
+If you want a few more AI rabbit holes after this:
+
+- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
+- [How to use GPT-3.5 Turbo's API, step by step](/gpt-35-turbo)
+- [How to access and use GPT-4 Turbo's API, step by step](/gpt-4-turbo)
+
+
+
+
+

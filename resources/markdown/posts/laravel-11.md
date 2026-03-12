@@ -281,3 +281,14 @@ Did you know you can fix the bugs you have encountered or create the next big fe
 One important tip to increase your chances of being merged: add something to the framework that's a win for developers but not a pain to maintain for Taylor and his team in the long run.
 
 ![Pull requests on the laravel/framework repository.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/128/conversions/Screenshot_2023-01-05_at_18.03.30_qx8sjy-medium.jpg)
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+
+
+
+
+

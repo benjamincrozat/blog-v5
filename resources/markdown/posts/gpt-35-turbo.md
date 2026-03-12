@@ -167,3 +167,14 @@ Here are a bunch of ideas to experiment with:
 - Spam filters
 
 You can even [add voices to your projects](/openai-tts-api) thanks to another endpoint!
+
+If you want a few more AI rabbit holes after this:
+
+- [How to access and use GPT-4 Turbo's API, step by step](/gpt-4-turbo)
+- [How to access and use GPT-4o's API, step by step](/gpt-4o)
+- [How to use GPT-4o mini's API for cheap, step by step](/gpt-4o-mini)
+
+
+
+
+

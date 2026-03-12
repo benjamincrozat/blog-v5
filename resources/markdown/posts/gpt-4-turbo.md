@@ -177,3 +177,14 @@ Here are a bunch of ideas to experiment with:
 - Spam filters
 
 And did you know OpenAI offers developers an API to [add realistic voices to their projects](/openai-tts-api)?
+
+If you want a few more AI rabbit holes after this:
+
+- [How to use GPT-3.5 Turbo's API, step by step](/gpt-35-turbo)
+- [How to access and use GPT-4o's API, step by step](/gpt-4o)
+- [How to use GPT-4o mini's API for cheap, step by step](/gpt-4o-mini)
+
+
+
+
+

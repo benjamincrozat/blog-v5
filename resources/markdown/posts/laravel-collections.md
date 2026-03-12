@@ -332,3 +332,14 @@ $collection->pluralize();
 - Remember gotchas: `filter()` preserves keys; `merge()` overwrites string keys and appends numeric keys.
 
 Next steps: explore [Eloquent collections](https://laravel.com/docs/eloquent-collections) and [lazy collections](https://laravel.com/docs/collections#lazy-collections) to work efficiently with large datasets.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Fix "Invalid argument supplied for foreach" in PHP & Laravel](/invalid-argument-supplied-for-foreach)
+- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
+- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+
+
+
+
+

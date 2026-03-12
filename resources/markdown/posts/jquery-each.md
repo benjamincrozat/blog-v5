@@ -78,3 +78,14 @@ Here, `querySelectorAll` returns a `NodeList` of all `<details>` tags, which we 
 ## Conclusion
 
 While jQuery's `.each()` method offers a simple and effective way to iterate over elements, modern JavaScript provides equally powerful alternatives. As developers, staying updated with these advancements allows us to write cleaner, more efficient code. Whether you're a jQuery enthusiast or a vanilla JavaScript advocate, understanding both approaches enhances your toolkit for web development challenges.
+
+If you want a few more JavaScript rabbit holes after this:
+
+- [How and when to use jQuery's $(document).ready() method](/jquery-document-ready)
+- [Handle clicks from your users using jQuery](/jquery-on-click)
+- [Get started with jQuery in 5 minutes](/jquery)
+
+
+
+
+

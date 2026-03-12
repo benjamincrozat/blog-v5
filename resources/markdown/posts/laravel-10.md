@@ -311,3 +311,14 @@ More details on the official Laravel blog: [Laravel 10 Bug Hunt](https://laravel
 Laravel 10 brings a lot of quality-of-life updates: Pennant for feature flags, the new Process facade, invokable validation rules, native type declarations, and clear Composer/PHP requirements (Composer 2.2+, PHP 8.1+). Keep an eye on support timelines (Laravel 9 bug fixes until August 8, 2023; security fixes until February 6, 2024).
 
 Ready to move forward? Start with my [upgrade to Laravel 10 guide](https://benjamincrozat.com/laravel-10-upgrade-guide).
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
+- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+
+
+
+
+

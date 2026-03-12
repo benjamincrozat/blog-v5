@@ -71,3 +71,14 @@ By striking a balance between optimizing core web vitals and enhancing your site
 For those eager to learn more from trusted sources, here's an episode of the Google Search Central's podcast discussing about which aspect of your site you should focus on:
 
 https://www.youtube.com/watch?v=ULX4GHcQd9U
+
+If you want a few more SEO rabbit holes after this:
+
+- [SEO case study (2022-2023): +10K clicks in 6 months](/seo-case-study)
+- [Stop overthinking! Here's technical SEO in a nutshell.](/laravel-seo)
+- [The best GDPR-compliant Google Analytics alternatives (2024)](/best-gdpr-compliant-google-analytics-alternatives)
+
+
+
+
+

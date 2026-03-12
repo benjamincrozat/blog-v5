@@ -179,3 +179,14 @@ I would start with request forgery protection, cache serialization rules, cache 
 Laravel 13 still looks like a good example of Laravel's current strategy: keep the upgrade small, then add meaningful new platform features on top. The AI SDK, JSON:API resources, semantic search support, queue routing, and stronger request forgery defaults are the highlights in the public 13.x docs.
 
 If you are already on Laravel 12 with PHP 8.3+, I would start reading the public [13.x upgrade guide](https://laravel.com/docs/13.x/upgrade) now and wait for the stable release tag before rolling anything important forward. If you are not ready yet, Laravel 12 still has plenty of support runway left.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel 12: new starter kits, changes, and upgrade tips](/laravel-12)
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
+
+
+
+
+

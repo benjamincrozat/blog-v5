@@ -35,3 +35,14 @@ php artisan install:broadcasting
 ```
 
 After running the command, Artisan will also ask you if you want to install [Laravel Reverb](https://reverb.laravel.com).
+
+If you want a few more Laravel rabbit holes after this:
+
+- [How to publish config files in Laravel 11](/publish-config-files-laravel)
+- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
+
+
+
+
+

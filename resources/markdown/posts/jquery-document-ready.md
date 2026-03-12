@@ -50,3 +50,14 @@ This approach is native to JavaScript, meaning it doesn't require any libraries 
 Both jQuery's `$(document).ready()` and the vanilla JavaScript `DOMContentLoaded` event offer ways to ensure your JavaScript code runs after the DOM is fully loaded. jQuery provides a simple, cross-browser way to accomplish this, making it a great choice for many projects, especially those already using jQuery for other purposes. On the other hand, the native JavaScript approach with `DOMContentLoaded` is lightweight and doesn't require an external library, making it an attractive option for projects looking to minimize dependencies.
 
 Ultimately, the choice between jQuery and modern vanilla JavaScript depends on the specific needs and constraints of your project. Both methods are valid and useful tools in a web developer's toolkit. Understanding both allows you to make informed decisions about how to best achieve your project's goals.
+
+If you want a few more JavaScript rabbit holes after this:
+
+- [Understanding jQuery's .each() method](/jquery-each)
+- [Get started with jQuery in 5 minutes](/jquery)
+- [Handle clicks from your users using jQuery](/jquery-on-click)
+
+
+
+
+

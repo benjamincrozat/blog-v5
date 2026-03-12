@@ -151,3 +151,14 @@ If you want to help, here is the short version I follow:
 ## Conclusion
 
 I upgraded a small Laravel 11 app to 12 in one sitting, and it was straightforward. If you are on PHP 8.2 or newer and do not rely on Carbon 2 or custom UUIDv4 semantics, I recommend upgrading soon to take advantage of the new starter kits and to stay within the current support window. New projects should start on 12.x by default.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [Laravel 13: features, timeline, and upgrade prep](/laravel-13)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+
+
+
+
+

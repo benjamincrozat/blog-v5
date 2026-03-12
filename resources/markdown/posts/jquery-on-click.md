@@ -52,3 +52,14 @@ document.querySelector('button').addEventListener('click', function () {
 ```
 
 People can criticize jQuery all day long, but its syntax is unbeatable. Look how lengthy this code is!
+
+If you want a few more JavaScript rabbit holes after this:
+
+- [Understanding jQuery's .each() method](/jquery-each)
+- [Get started with jQuery in 5 minutes](/jquery)
+- [How and when to use jQuery's $(document).ready() method](/jquery-document-ready)
+
+
+
+
+

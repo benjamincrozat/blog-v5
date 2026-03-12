@@ -201,3 +201,14 @@ There is also `gpt-5-chat-latest` if you want a non-reasoning chat flavor.
 ## Conclusion
 
 Pick GPT-5 when you want the highest quality and long context. Use mini when cost matters and answers can be shorter. Use nano for the lowest latency. Remember the limits: 272,000 input tokens plus up to 128,000 output tokens, for 400,000 tokens total. Next steps: review [models and pricing](https://openai.com/api/pricing/), skim [GPT-5 for developers](https://openai.com/index/introducing-gpt-5-for-developers/), and try the curl quickstarts above using the [Responses API overview](https://help.openai.com/en/articles/7232945-how-can-i-use-the-chatgpt-api).
+
+If you want a few more AI rabbit holes after this:
+
+- [Access and use GPT‑4.1's API. 5 minutes, tops.](/gpt-41)
+- [How to use GPT-4o mini's API for cheap, step by step](/gpt-4o-mini)
+- [How to access and use GPT-4o's API, step by step](/gpt-4o)
+
+
+
+
+

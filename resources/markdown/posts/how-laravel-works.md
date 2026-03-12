@@ -77,3 +77,14 @@ Laravel is like that hardware store but for web developers. And even better: it'
 So, in a nutshell, Laravel is a feature-packed PHP framework that makes web development faster, easier, and more fun. Whether you're a newbie just starting out or an experienced developer looking for something robust, Laravel probably is the answer.
 
 I hope you will create something amazing!
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
+- [Validation in Laravel made easy](/laravel-validation)
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
+
+
+
+
+

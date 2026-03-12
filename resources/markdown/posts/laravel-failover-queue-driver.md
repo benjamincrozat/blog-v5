@@ -234,3 +234,14 @@ Yes. `redis`, `sqs`, `database`, `beanstalkd`, or even `sync`.
 ## Final thought
 
 I like features that are “set it and forget it.” The Laravel failover queue driver is exactly that. You set `QUEUE_CONNECTION=failover`, list your backups in `config/queue.php`, and your app keeps moving when one service goes down. That’s less stress for you, and a smoother experience for your users.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
+- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+
+
+
+
+

@@ -87,3 +87,14 @@ Therefore, you might want to learn more about Laravel. Great! **You are on the r
 - [laraveldaily.com](https://laraveldaily.com)
 
 If you want to prepare for your future job interview and be able to negociate a higher salary, head on my article "[Laravel interview questions and answers](https://benjamincrozat.com/laravel-interview-questions)." **You will learn a lot.**
+
+If you want a few more Laravel rabbit holes after this:
+
+- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+
+
+
+
+
