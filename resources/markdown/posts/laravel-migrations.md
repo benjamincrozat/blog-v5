@@ -232,9 +232,10 @@ return new class extends Migration {
 
 You now have all the skills to keep leveling up with migrations. Why don't you learn in the official documentation about all the [available methods from the Blueprint class](https://laravel.com/docs/migrations#available-column-types)?
 
-If you want a few more Laravel rabbit holes after this:
+If you are still working through how schema changes ripple through the app, these are the next Laravel reads I would keep nearby:
 
+- [Understanding database transactions with Laravel](/database-transactions-laravel)
 - [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
 - [A cheat sheet for Laravel's make Artisan commands](/cheat-sheet-make-laravel-artisan)
+- [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
 - [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-

@@ -316,9 +316,10 @@ As you can imagine, doing security audits isn't free. It might only be worth it 
 
 Want to look professional and make life easier for white-hats? Add a `/.well-known/security.txt` file pointing to a security contact or bug bounty policy. It’s a tiny effort that can prevent a lot of headaches.
 
-If you want a few more Laravel rabbit holes after this:
+If you are turning this checklist into actual hardening work, these are the next posts I would keep nearby:
 
 - [The "419 Page Expired" error in Laravel: 5 quick fixes](/419-page-expired-laravel)
 - [Fix "No application encryption key has been specified." in Laravel](/laravel-no-application-key-specified)
 - [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
-
+- [Should you block compromised passwords?](/block-compromised-password)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)

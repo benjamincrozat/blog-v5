@@ -159,9 +159,10 @@ The following packages have been added since Laravel 5.8:
 - [Sanctum](https://laravel.com/docs/sanctum)
 - [Valet](https://laravel.com/docs/valet)
 
-If you want a few more Laravel rabbit holes after this:
+If this made you want a clearer mental map of how Laravel got here, these are the version and upgrade reads I would keep nearby:
 
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
 - [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
-
+- [Laravel 12: new starter kits, changes, and upgrade tips](/laravel-12)
+- [Laravel 13: features, timeline, and upgrade prep](/laravel-13)
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)

@@ -146,9 +146,10 @@ Basically, we are instructing Laravel to match the route only if it isn't `pulse
 
 If your Laravel Pulse dashboard is empty, chances are that there's a problem with Livewire. If you open your developer tools and check for errors, you will most likely see a 404 not found error on */livewire/livewire.js*. Luckily, I wrote about this recurring issue caused by how Livewire serves its JavaScript by default: [Fix the /livewire/livewire.js 404 not found error](https://benjamincrozat.com/livewire-js-404-not-found)
 
-If you want a few more Laravel rabbit holes after this:
+If you want Pulse to become part of how you actually run the app, these are the next reads I would open:
 
 - [The best custom cards for Laravel Pulse in 2024](/best-laravel-pulse-custom-cards)
-- [The laravel/ui package: my 2025 guide](/laravel-ui)
+- [Let's build a custom Laravel Pulse card](/custom-laravel-pulse-card)
+- [Fix the "/livewire/livewire.js" 404 not found error](/livewire-js-404-not-found)
 - [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
-
+- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)

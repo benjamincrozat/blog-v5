@@ -220,9 +220,10 @@ Herd is available on macOS and Windows. A Linux version is not planned currently
 
 If you need to install PHP on macOS or Windows fast, Herd is the easiest way. I suggest starting with the free Basic edition, then adding Pro if you want built‑in services and debugging tools. Next steps: [download Herd](https://herd.laravel.com/download), read the [Windows install docs](https://herd.laravel.com/docs/windows), and check the [PHP versions](https://herd.laravel.com/docs/1/technology/php-versions) and [extensions](https://herd.laravel.com/docs/1/technology/php-extensions) pages.
 
-If you want a few more Laravel rabbit holes after this:
+If you are piecing together your local PHP and Laravel setup, these next reads help with the rest of that environment:
 
 - [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
 - [How to install Laravel on macOS](/laravel-installation-macos)
+- [6 ways to check your version of PHP](/check-php-version)
+- [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
 - [The 4 best Laravel cloud hosting providers for 2025 (+ my setup)](/best-laravel-hosting-providers)
-

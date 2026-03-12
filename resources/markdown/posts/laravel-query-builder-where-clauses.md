@@ -114,9 +114,10 @@ Laravel's query builder's where capabilities don't just stop at the basics. It o
 
 [Learn more about additional where clauses.](https://laravel.com/docs/10.x/queries#additional-where-clauses)
 
-If you want a few more Laravel rabbit holes after this:
+If you are still shaping complex Eloquent queries, these are the follow-up reads I would keep open:
 
 - [Efficient data filtering with whereIn() in Laravel](/laravel-query-builder-wherein)
 - [Laravel Eloquent: sort query results using orderBy()](/laravel-order-by)
 - [Validation in Laravel made easy](/laravel-validation)
-
+- [Easy data integrity with array validation in Laravel](/laravel-array-validation)
+- [Understanding database transactions with Laravel](/database-transactions-laravel)

@@ -125,9 +125,10 @@ As you can see, to avoid people sumbling upon various errors while the code chan
 
 Now, since I'm using [Ploi](/recommends/ploi) to handle my deployments with zero downtime, this trick isn't needed anymore. But for those running in legacy environments, I think you'll find it handy.
 
-If you want a few more Laravel rabbit holes after this:
+If you are thinking about safer deploys instead of just flipping maintenance mode on and off, these next reads are worth keeping open:
 
 - [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
-- [Create a SPA in seconds using wire:navigate in Livewire v3](/livewire-spa-wire-navigate)
-
+- [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
+- [How to deploy PHP & Laravel apps on Sevalla ($50 free credits)](/deploy-php-laravel-apps-sevalla)
+- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)

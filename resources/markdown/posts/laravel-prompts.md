@@ -159,9 +159,10 @@ Now that you got the gist of Laravel Prompts, you can refer to the [super easy t
 
 If you ever encounter a bug or feel like Laravel Prompts needs one more feature, you might want to send your pull requests directly to the official repository: https://github.com/laravel/prompts
 
-If you want a few more Laravel rabbit holes after this:
+If you want your command-line tools to feel as polished as the rest of the app, these are the Laravel reads I would keep nearby:
 
+- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
+- [A cheat sheet for Laravel's make Artisan commands](/cheat-sheet-make-laravel-artisan)
 - [Laravel Pulse: monitor your apps for free](/laravel-pulse)
-- [The laravel/ui package: my 2025 guide](/laravel-ui)
-- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
-
+- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
+- [Make your Eloquent models IDE-friendly using Laravel Lift](/laravel-lift)

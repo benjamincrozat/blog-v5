@@ -110,9 +110,10 @@ Options:
       --phpunit                    Installs the PHPUnit testing framework
 ```
 
-If you want a few more Laravel rabbit holes after this:
+Once Laravel is installed, these are the setup reads I would keep nearby on a Mac:
 
 - [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
 - [Laravel Herd: the simplest way to install PHP on macOS and Windows](/laravel-herd)
-- [The 4 best Laravel cloud hosting providers for 2025 (+ my setup)](/best-laravel-hosting-providers)
-
+- [6 ways to check Laravel's version](/check-laravel-version)
+- [6 ways to check your version of PHP](/check-php-version)
+- [The laravel/ui package: my 2025 guide](/laravel-ui)

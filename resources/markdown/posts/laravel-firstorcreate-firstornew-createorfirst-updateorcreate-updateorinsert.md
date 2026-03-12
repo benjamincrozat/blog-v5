@@ -416,9 +416,10 @@ Use:
   * Unsaved: `firstOrNew`, `findOrNew`.
   * Immediate: `firstOrCreate`, `createOrFirst`, `updateOrCreate`.
 
-If you want a few more Laravel rabbit holes after this:
+If you are still deciding which Eloquent helper matches the write you actually want, these are the next reads I would keep close:
 
 - [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
-- [Laravel retrospective: what changed since version 5.8?](/laravel-retrospective)
-- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
-
+- [Efficient data filtering with whereIn() in Laravel](/laravel-query-builder-wherein)
+- [Laravel Eloquent: sort query results using orderBy()](/laravel-order-by)
+- [Validation in Laravel made easy](/laravel-validation)
+- [Make your Eloquent models IDE-friendly using Laravel Lift](/laravel-lift)

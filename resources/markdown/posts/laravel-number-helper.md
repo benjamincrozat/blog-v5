@@ -158,9 +158,9 @@ Each method is designed to handle different nuances associated with number repre
 
 It's time to explore these methods and put them to work in your Laravel applications! 💪
 
-If you want a few more Laravel rabbit holes after this:
+If you like the newer helper-style parts of Laravel, these are the follow-up reads I would keep open:
 
 - [Understanding Laravel's fake() helper](/laravel-fake-helper)
 - [Validation in Laravel made easy](/laravel-validation)
-- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-
+- [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
+- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)

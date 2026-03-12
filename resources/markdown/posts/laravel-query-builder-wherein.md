@@ -59,9 +59,10 @@ If you have a massive array of items you're filtering by, this can slow down you
 
 Instead, I would try to find the common denominator between all those items and use that to run my queries faster.
 
-If you want a few more Laravel rabbit holes after this:
+If filtering data is where the query starts getting messy, these are the next Laravel reads I would open:
 
 - [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
 - [Laravel Eloquent: sort query results using orderBy()](/laravel-order-by)
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
-
+- [Easy data integrity with array validation in Laravel](/laravel-array-validation)
+- [Validation in Laravel made easy](/laravel-validation)
+- [Understanding database transactions with Laravel](/database-transactions-laravel)

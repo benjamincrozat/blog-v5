@@ -100,9 +100,10 @@ Securing your REST API with Laravel Sanctum is an effective way to manage authen
 
 There's a lot more to Laravel Sanctum and I encourage you to go read the [official documentation](https://laravel.com/docs/sanctum).
 
-If you want a few more Laravel rabbit holes after this:
+If you are hardening an API instead of just getting auth to work once, these are the Laravel reads I would open:
 
 - [19 Laravel security best practices for 2025](/laravel-security-best-practices)
-- [The laravel/ui package: my 2025 guide](/laravel-ui)
-- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
-
+- [The "419 Page Expired" error in Laravel: 5 quick fixes](/419-page-expired-laravel)
+- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
+- [Fix "No application encryption key has been specified." in Laravel](/laravel-no-application-key-specified)
+- [Validation in Laravel made easy](/laravel-validation)

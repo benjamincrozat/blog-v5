@@ -225,9 +225,10 @@ Also:
 - Show your **eagerness to learn**.
 - **Have a good attitude.**
 
-If you want a few more Laravel rabbit holes after this:
+If you are preparing for a Laravel interview and want the technical side to feel less fuzzy, these are the posts I would revise with:
 
 - [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
-- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
-- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
-
+- [Inside the Laravel service container](/inside-the-laravel-service-container)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [6 ways to check Laravel's version](/check-laravel-version)
+- [The best Laravel developers to hire in 2024](/best-laravel-developers)

@@ -25,9 +25,10 @@ The package intelligently uses PHP 8's attributes, and gives you complete freedo
  
 With a focus on simplicity, Lift depends on Eloquent events to work. This means the package fits easily into your project, without needing any major changes (unless you've turned off event triggering).
 
-If you want a few more Laravel rabbit holes after this:
+If you like packages that make Laravel code nicer to live in, these are the next reads I would open:
 
-- [The laravel/ui package: my 2025 guide](/laravel-ui)
-- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
+- [Validation in Laravel made easy](/laravel-validation)
+- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
 - [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
-
+- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
+- [How to create a custom filesystem adapter in Laravel](/custom-filesystem-adapter-laravel)
