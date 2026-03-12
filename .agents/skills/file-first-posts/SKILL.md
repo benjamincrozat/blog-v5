@@ -25,7 +25,6 @@ Use this skill when posts are managed from `resources/markdown/posts`.
 ## Workflow
 
 1. Bootstrap files when needed:
-   - run `php artisan migrate`
    - run `php artisan blog:export`
 2. Edit the target file in `resources/markdown/posts`.
 3. Upload images before syncing:
