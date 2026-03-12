@@ -138,6 +138,8 @@ it('checks the configured Google endpoints outside production without submitting
                 ],
             ],
         )
+        ->expectsOutput('Your credentials work, this property is accessible, and this environment is only skipping the final sitemap submission because it is not production.')
+        ->expectsOutput('Next step: run this command in production when you want to submit the sitemap for real.')
         ->expectsOutput('Non-production mode does not submit sitemaps. It only checks connectivity and validates credentials read-only.')
         ->expectsOutput('Search Console submission skipped outside production.');
 
@@ -163,6 +165,51 @@ it('checks the configured Google endpoints outside production without submitting
             'https://www.googleapis.com/webmasters/v3/sites/sc-domain%3Abenjamincrozat.com' === (string) $request->url() &&
             'Bearer token' === $request->header('Authorization')[0];
     });
+});
+
+it('explains how to enable local credential verification when the integration is disabled', function () {
+    config()->set('services.search_console.property', 'sc-domain:benjamincrozat.com');
+
+    Http::fake([
+        'https://oauth2.googleapis.com/token' => Http::response('', 404),
+        'https://www.googleapis.com/webmasters/v3/sites/*/sitemaps/*' => Http::response('', 404),
+    ]);
+
+    artisan(SyncSearchConsoleSitemapCommand::class)
+        ->expectsOutputToContain('Sitemap generated successfully')
+        ->expectsTable(
+            ['Check', 'Result', 'Details', 'Reference'],
+            [
+                [
+                    'Token endpoint',
+                    'HTTP 404',
+                    'Google responded on the OAuth endpoint.',
+                    'https://oauth2.googleapis.com/token',
+                ],
+                [
+                    'Search Console endpoint',
+                    'HTTP 404',
+                    'Google responded on the Search Console endpoint.',
+                    'https://www.googleapis.com/webmasters/v3/sites/sc-domain%3Abenjamincrozat.com/sitemaps/https%3A%2F%2Fblog-v5.test%2Fsitemap.xml',
+                ],
+                [
+                    'Credentials',
+                    'Skipped',
+                    'Set SEARCH_CONSOLE_ENABLED=true to verify credentials locally.',
+                    'SEARCH_CONSOLE_ENABLED',
+                ],
+                [
+                    'Property access',
+                    'Skipped',
+                    'Property access was not checked because the integration is disabled.',
+                    'sc-domain:benjamincrozat.com',
+                ],
+            ],
+        )
+        ->expectsOutput('Google is reachable, but this command could not verify your credentials yet.')
+        ->expectsOutput('Fix: set SEARCH_CONSOLE_ENABLED=true in .env to let this command verify your credentials locally.')
+        ->expectsOutput('Non-production mode does not submit sitemaps. It only checks connectivity and validates credentials read-only.')
+        ->expectsOutput('Search Console submission skipped outside production.');
 });
 
 it('skips the Search Console submission when it is disabled in production', function () {
