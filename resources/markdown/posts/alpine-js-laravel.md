@@ -149,8 +149,8 @@ Remember to explore Alpine.js's documentation for more advanced features and bes
 
 If you are shaping the frontend layer of a Laravel app right now, these next reads cover the companion tools and alternatives worth looking at:
 
-- [Alpine.js: a lightweight framework for productive developers](/alpine-js)
+- [See when Alpine.js is enough for the interactivity you need](/alpine-js)
 - [Add Vue to Laravel without overbuilding the frontend](/laravel-vue)
-- [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)
+- [Add Tailwind to Laravel without setup guesswork](/tailwind-css-laravel)
 - [Swap npm out for Bun in Laravel without friction](/bun-laravel)
 - [See when laravel/ui is still the right starter choice](/laravel-ui)

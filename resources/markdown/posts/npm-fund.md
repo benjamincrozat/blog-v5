@@ -92,7 +92,7 @@ You’ve now got multiple ways to disable npm’s “packages are looking for fu
 
 If you are cleaning up noisy Node tooling while keeping the workflow sane, these are the next reads I would open:
 
-- [npm ci vs. npm install: here's the difference](/npm-ci)
-- [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
-- [Use Bun as your package manager in any PHP project](/bun-php)
+- [Use npm ci when you need repeatable installs, not surprises](/npm-ci)
+- [See where Bun fits compared with npm, Yarn, and pnpm](/bun-package-manager)
+- [Use Bun in plain PHP projects too, not just Laravel](/bun-php)
 - [Swap npm out for Bun in Laravel without friction](/bun-laravel)

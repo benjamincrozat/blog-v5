@@ -163,4 +163,4 @@ If you like the newer helper-style parts of Laravel, these are the follow-up rea
 - [Use Laravel's fake() helper when seed data needs to be believable](/laravel-fake-helper)
 - [Write validation rules with less guesswork](/laravel-validation)
 - [Build better Artisan prompts without extra ceremony](/laravel-prompts)
-- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
+- [See when Laravel Volt is the simpler Livewire option](/laravel-volt)

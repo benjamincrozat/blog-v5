@@ -76,7 +76,7 @@ If you are still thinking about "Laravel Dropbox Driver package: how to install 
 - [See when laravel/ui is still the right starter choice](/laravel-ui)
 - [Protect your API with Laravel Sanctum before it gets exposed](/laravel-sanctum-api-tokens-authentication)
 - [Build better Artisan prompts without extra ceremony](/laravel-prompts)
-- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
+- [See when Laravel Volt is the simpler Livewire option](/laravel-volt)
 - [Make Eloquent models easier for your IDE to understand](/laravel-lift)
 - [Steal ideas for Laravel Pulse cards worth building](/best-laravel-pulse-custom-cards)
 - [See the Laravel 10 changes that matter in real projects](/laravel-10)

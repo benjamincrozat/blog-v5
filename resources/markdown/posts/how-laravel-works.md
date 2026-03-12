@@ -84,4 +84,4 @@ If this gave you the broad picture and you want the next layer down, these are t
 - [Use the Artisan commands you run every day with more confidence](/laravel-artisan)
 - [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
 - [Write validation rules with less guesswork](/laravel-validation)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [See where this fits in Laravel's release history](/laravel-versions)

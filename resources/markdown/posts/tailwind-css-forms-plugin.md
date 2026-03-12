@@ -247,6 +247,6 @@ The Tailwind CSS forms plugin gives you consistent, easy-to-style controls out o
 
 If you are still smoothing out form UI after this plugin pass, these are the next Tailwind reads I would keep open:
 
-- [5 Tailwind CSS best practices for 2025](/tailwind-css)
-- [Tailwind CSS typography plugin: a step-by-step build guide](/tailwind-css-typography-plugin)
-- [Disable hover styles on mobile with Tailwind CSS](/disable-hover-styles-mobile-tailwind-css)
+- [Tighten your Tailwind habits before the CSS gets messy](/tailwind-css)
+- [Make long-form content look better with Tailwind's typography plugin](/tailwind-css-typography-plugin)
+- [Disable hover styles on touch devices without fighting Tailwind](/disable-hover-styles-mobile-tailwind-css)

@@ -191,6 +191,6 @@ set_exception_handler(ExceptionHandler::handle(...));
 
 If you are trying to make failure paths in PHP feel less chaotic, these are the next reads I would keep nearby:
 
-- [PHP: Show all errors (E_ALL) safely](/php-show-all-errors)
-- [Convert a PHP array to JSON](/php-array-to-json)
-- [console.log() in PHP](/console-log-php)
+- [Show every PHP error when debugging gets vague](/php-show-all-errors)
+- [Turn a PHP array into valid JSON without surprises](/php-array-to-json)
+- [Log to the browser console from PHP when you just need a quick check](/console-log-php)

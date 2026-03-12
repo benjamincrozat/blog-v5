@@ -97,9 +97,9 @@ If you want a faster way to inspect data before encoding it, my [`console.log()`
 
 If you are still moving PHP data across boundaries after this, these are the next reads I would keep close:
 
-- [Print an array with PHP (+ Laravel)](/php-laravel-print-array)
-- [Validate JSON in PHP with json_validate](/validate-json-in-php-with-json-validate)
-- [PHP try & catch: what are exceptions and how to handle them?](/php-exceptions)
+- [Inspect arrays without wrecking your output](/php-laravel-print-array)
+- [Check JSON safely before you trust the payload](/validate-json-in-php-with-json-validate)
+- [Understand exceptions before your next try/catch block](/php-exceptions)
 
 
 ## References

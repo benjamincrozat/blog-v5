@@ -500,7 +500,7 @@ Learn more: [PHP RFC: Define proper semantics for range() function](https://wiki
 
 If you are tracking PHP releases and what they mean for real code, these are the next reads I would open:
 
-- [PHP 8.4: new features and release date](/php-84)
-- [PHP 8.5: 15 new features and changes](/php-85)
-- [PHP 8.6: release date and confirmed features](/php-86)
-- [PHP 8.3's Override attribute in a nutshell](/php-83-override-attribute)
+- [Catch the PHP 8.4 changes that could affect your code](/php-84)
+- [See what PHP 8.5 changes before you upgrade](/php-85)
+- [See what's already confirmed for PHP 8.6](/php-86)
+- [Use Override when you want inheritance mistakes to fail loudly](/php-83-override-attribute)

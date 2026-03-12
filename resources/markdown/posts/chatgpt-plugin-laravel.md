@@ -235,8 +235,8 @@ It's possible to check your submission status under "Help" > "Messages".
 
 If you are thinking less about plugins and more about what to build with OpenAI from Laravel now, these are the next reads I would open:
 
-- [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)
-- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
-- [GPT‑5: my API quick start guide](/gpt-5-api)
+- [Speed up factory writing with AI when the data shape is obvious](/generate-laravel-factories-chatgpt)
+- [Call the OpenAI API from PHP with less boilerplate](/openai-php-client)
+- [Get a plain-English explanation of how GPT-style models work](/gpt-llm-ai-explanation)
+- [Get your first GPT-5 API call working in PHP](/gpt-5-api)
 - [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)

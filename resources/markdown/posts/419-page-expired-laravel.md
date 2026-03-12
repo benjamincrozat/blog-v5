@@ -254,6 +254,6 @@ If you are still tightening forms, sessions, and API requests after the 419 fix,
 
 - [Close the Laravel security gaps that are easy to miss](/laravel-security-best-practices)
 - [Protect your API with Laravel Sanctum before it gets exposed](/laravel-sanctum-api-tokens-authentication)
-- [Fix "No application encryption key has been specified." in Laravel](/laravel-no-application-key-specified)
+- [Fix the missing app key error before anything else breaks](/laravel-no-application-key-specified)
 - [Adjust Laravel 11 middleware without hunting through the framework](/customize-middleware-laravel-11)
 - [Write validation rules with less guesswork](/laravel-validation)

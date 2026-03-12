@@ -33,8 +33,8 @@ If you want a fast, practical path to safer data and cleaner tests, this is a gr
 
 If this finally made PHP data feel less magical, these follow-up reads keep that same practical momentum going:
 
-- [A friendly intro to the state machine pattern in PHP](/a-friendly-intro-to-the-state-machine-pattern-in-php)
-- [Convert a PHP array to JSON](/php-array-to-json)
-- [PHP exceptions: all you need to know](/php-exceptions)
-- [PHP enums: a full guide for better code](/php-enums)
-- [A quick look at the PHP match expression](/a-quick-look-at-the-php-match-expression)
+- [See where the state machine pattern helps in PHP](/a-friendly-intro-to-the-state-machine-pattern-in-php)
+- [Turn a PHP array into valid JSON without surprises](/php-array-to-json)
+- [Understand exceptions before your next try/catch block](/php-exceptions)
+- [Use enums when strings and constants start getting brittle](/php-enums)
+- [Use match when switch starts feeling clumsy](/a-quick-look-at-the-php-match-expression)

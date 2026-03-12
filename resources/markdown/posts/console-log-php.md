@@ -124,8 +124,8 @@ Also, check out the [GitHub repository](https://github.com/firephp/firephp-for-b
 
 If you are still trying to make PHP debugging less blind, these are the next reads I would keep nearby:
 
-- [Print an array with PHP (+ Laravel)](/php-laravel-print-array)
-- [PHP: Show all errors (E_ALL) safely](/php-show-all-errors)
-- [6 ways to check your version of PHP](/check-php-version)
-- [Convert a PHP array to JSON](/php-array-to-json)
-- [What’s new in Pest 4 and how to upgrade](/pest-4)
+- [Inspect arrays without wrecking your output](/php-laravel-print-array)
+- [Show every PHP error when debugging gets vague](/php-show-all-errors)
+- [Check whether your PHP version is part of the problem](/check-php-version)
+- [Turn a PHP array into valid JSON without surprises](/php-array-to-json)
+- [See what changes if you're moving your tests to Pest 4](/pest-4)

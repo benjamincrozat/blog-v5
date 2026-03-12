@@ -110,8 +110,8 @@ Then, check out my articles on this matter:
 
 If the mental model clicked and you now want to build something concrete with it, these are the next reads I would open:
 
-- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [GPT‑5: my API quick start guide](/gpt-5-api)
-- [How to use GPT-4o mini's API for cheap, step by step](/gpt-4o-mini)
+- [Call the OpenAI API from PHP with less boilerplate](/openai-php-client)
+- [Get your first GPT-5 API call working in PHP](/gpt-5-api)
+- [Start with a cheaper OpenAI model before you scale usage](/gpt-4o-mini)
 - [See how a Laravel app can expose its own ChatGPT integration](/chatgpt-plugin-laravel)
-- [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)
+- [Speed up factory writing with AI when the data shape is obvious](/generate-laravel-factories-chatgpt)

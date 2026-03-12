@@ -204,8 +204,8 @@ Pick GPT-5 when you want the highest quality and long context. Use mini when cos
 
 If you are deciding what to build on top of GPT-5 instead of stopping at the quickstart, these are the next reads I would keep open:
 
-- [Access and use GPT‑4.1's API. 5 minutes, tops.](/gpt-41)
-- [How to use GPT-4o mini's API for cheap, step by step](/gpt-4o-mini)
-- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [Master OpenAI's new Text-to-speech API](/openai-tts-api)
-- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
+- [Use GPT-4.1 when you want a clearer step up from older models](/gpt-41)
+- [Start with a cheaper OpenAI model before you scale usage](/gpt-4o-mini)
+- [Call the OpenAI API from PHP with less boilerplate](/openai-php-client)
+- [Turn text into speech with the OpenAI API from PHP](/openai-tts-api)
+- [Get a plain-English explanation of how GPT-style models work](/gpt-llm-ai-explanation)

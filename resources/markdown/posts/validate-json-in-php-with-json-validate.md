@@ -35,6 +35,6 @@ Good refresher for anyone handling large payloads, APIs, or user input in PHP.
 
 If you are working with JSON-heavy PHP code and want the surrounding edges to stay clean, these are the next reads I would open:
 
-- [Convert a PHP array to JSON](/php-array-to-json)
-- [PHP exceptions: all you need to know](/php-exceptions)
-- [PHP 8.5: 15 new features and changes](/php-85)
+- [Turn a PHP array into valid JSON without surprises](/php-array-to-json)
+- [Understand exceptions before your next try/catch block](/php-exceptions)
+- [See what PHP 8.5 changes before you upgrade](/php-85)

@@ -372,7 +372,7 @@ The pipe operator (|>) steals the spotlight in PHP 8.5, making code cleaner and 
 
 If you are using PHP 8.5 to figure out the bigger direction of the language, these are the next release reads I would keep nearby:
 
-- [PHP 8.6: release date and confirmed features](/php-86)
-- [PHP 8.4: new features and release date](/php-84)
-- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
-- [PHP 9 release date and what to fix now](/php-90)
+- [See what's already confirmed for PHP 8.6](/php-86)
+- [Catch the PHP 8.4 changes that could affect your code](/php-84)
+- [See what PHP 8.3 changed before you rely on it](/php-83)
+- [Start fixing the things PHP 9 will stop forgiving](/php-90)

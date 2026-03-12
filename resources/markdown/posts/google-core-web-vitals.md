@@ -74,6 +74,6 @@ https://www.youtube.com/watch?v=ULX4GHcQd9U
 
 If you want the SEO side of the site to stay grounded in what actually moves the needle, these are the next reads I would keep open:
 
-- [SEO case study (2022-2023): +10K clicks in 6 months](/seo-case-study)
+- [See a real SEO growth story instead of generic advice](/seo-case-study)
 - [Get the technical SEO basics straight without overcomplicating them](/laravel-seo)
-- [The best GDPR-compliant Google Analytics alternatives (2024)](/best-gdpr-compliant-google-analytics-alternatives)
+- [Compare analytics tools that respect GDPR constraints](/best-gdpr-compliant-google-analytics-alternatives)

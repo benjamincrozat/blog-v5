@@ -113,6 +113,6 @@ Once you know which PHP version you are really on, these next reads help with lo
 
 - [Run PHP and Laravel more smoothly on macOS](/laravel-valet)
 - [Set up PHP on macOS or Windows with less friction](/laravel-herd)
-- [This is the location of your php.ini](/php-ini-location)
+- [Find the php.ini file that's actually affecting your setup](/php-ini-location)
 - [Double-check which Laravel version is actually running](/check-laravel-version)
 - [Set up Laravel on macOS without a messy local stack](/laravel-installation-macos)

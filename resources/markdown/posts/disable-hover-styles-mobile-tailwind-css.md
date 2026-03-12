@@ -67,8 +67,8 @@ It's important to note that this is a breaking change and may affect existing st
 
 If you are smoothing out the Tailwind bits that feel fine on desktop but weird on touch devices, these are the next reads I would keep open:
 
-- [5 Tailwind CSS best practices for 2025](/tailwind-css)
-- [Style an HTML dialog's backdrop with Tailwind CSS](/dialog-backdrop-styling-tailwind-css)
-- [Style labels on focus the right way in CSS](/label-focus-css)
-- [The lh and rlh CSS units: simple spacing that follows your text](/css-lh-rlh)
-- [Tailwind CSS forms plugin: my 2025 guide for v4 and v3](/tailwind-css-forms-plugin)
+- [Tighten your Tailwind habits before the CSS gets messy](/tailwind-css)
+- [Style dialog backdrops cleanly with Tailwind utilities](/dialog-backdrop-styling-tailwind-css)
+- [Make labels react cleanly when fields get focus](/label-focus-css)
+- [Use lh and rlh when spacing should follow your text](/css-lh-rlh)
+- [Style forms faster with Tailwind's forms plugin](/tailwind-css-forms-plugin)

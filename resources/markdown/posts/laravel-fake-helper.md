@@ -117,4 +117,4 @@ If you are touching factories, seeders, and fake data more often now, these are 
 - [Write validation rules with less guesswork](/laravel-validation)
 - [Validate nested arrays in Laravel without losing your mind](/laravel-array-validation)
 - [Make your Laravel tests more useful before the suite grows](/laravel-testing-best-practices)
-- [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)
+- [Speed up factory writing with AI when the data shape is obvious](/generate-laravel-factories-chatgpt)

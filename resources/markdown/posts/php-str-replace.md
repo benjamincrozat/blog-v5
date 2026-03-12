@@ -131,6 +131,6 @@ While versatile, [`str_replace()`](https://www.php.net/str_replace) has its limi
 
 If you are still cleaning up string handling in everyday PHP code, these are the next reads I would keep nearby:
 
-- [PHP explode(): How you can split strings into arrays](/php-explode)
-- [Get the current URL path in PHP](/php-current-url-path)
-- [PHP 8.4: new features and release date](/php-84)
+- [Split strings into arrays cleanly with explode](/php-explode)
+- [Read the current URL path without framework helpers](/php-current-url-path)
+- [Catch the PHP 8.4 changes that could affect your code](/php-84)

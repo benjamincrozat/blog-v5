@@ -242,6 +242,6 @@ Use `E_ALL` and enable display locally to fix issues fast, then deploy with disp
 
 If you are in the middle of troubleshooting and want the rest of the basics close at hand, these are the next reads I would open:
 
-- [This is the location of your php.ini](/php-ini-location)
-- [6 ways to check your version of PHP](/check-php-version)
-- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
+- [Find the php.ini file that's actually affecting your setup](/php-ini-location)
+- [Check whether your PHP version is part of the problem](/check-php-version)
+- [See what PHP 8.3 changed before you rely on it](/php-83)

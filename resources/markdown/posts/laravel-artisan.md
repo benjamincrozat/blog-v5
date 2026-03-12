@@ -244,7 +244,7 @@ Remember, Laravel and Artisan are continually evolving. Stay curious, keep learn
 
 If you want the command line to feel like part of your Laravel workflow instead of a side tool, these are the next reads I would keep nearby:
 
-- [A cheat sheet for Laravel's make Artisan commands](/cheat-sheet-make-laravel-artisan)
+- [Keep the make commands you forget most within reach](/cheat-sheet-make-laravel-artisan)
 - [Build better Artisan prompts without extra ceremony](/laravel-prompts)
 - [Work with Laravel migrations without second-guessing the basics](/laravel-migrations)
 - [Clear the right Laravel cache before you lose time chasing ghosts](/laravel-clear-cache)

@@ -170,8 +170,8 @@ If you want more background and examples from the platform teams, check the **[C
 
 If you want that same text-driven sizing logic to spill into the rest of your UI, these are good next reads:
 
-- [Style labels on focus the right way in CSS](/label-focus-css)
-- [Style an HTML dialog's backdrop with Tailwind CSS](/dialog-backdrop-styling-tailwind-css)
-- [Tailwind CSS typography plugin: a step-by-step build guide](/tailwind-css-typography-plugin)
-- [Tailwind CSS forms plugin: my 2025 guide for v4 and v3](/tailwind-css-forms-plugin)
-- [5 Tailwind CSS best practices for 2025](/tailwind-css)
+- [Make labels react cleanly when fields get focus](/label-focus-css)
+- [Style dialog backdrops cleanly with Tailwind utilities](/dialog-backdrop-styling-tailwind-css)
+- [Make long-form content look better with Tailwind's typography plugin](/tailwind-css-typography-plugin)
+- [Style forms faster with Tailwind's forms plugin](/tailwind-css-forms-plugin)
+- [Tighten your Tailwind habits before the CSS gets messy](/tailwind-css)

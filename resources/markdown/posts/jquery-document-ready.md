@@ -53,7 +53,7 @@ Ultimately, the choice between jQuery and modern vanilla JavaScript depends on t
 
 If you are still working through the small set of jQuery patterns that matter most, these are the next reads I would keep open:
 
-- [Understanding jQuery's .each() method](/jquery-each)
-- [Handle clicks from your users using jQuery](/jquery-on-click)
-- [Get started with jQuery in 5 minutes](/jquery)
-- [Alpine.js: a lightweight framework for productive developers](/alpine-js)
+- [Loop through jQuery collections without guesswork](/jquery-each)
+- [Handle jQuery click events without clunky inline handlers](/jquery-on-click)
+- [Get the quickest possible start with jQuery](/jquery)
+- [See when Alpine.js is enough for the interactivity you need](/alpine-js)

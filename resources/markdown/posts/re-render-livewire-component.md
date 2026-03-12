@@ -82,6 +82,6 @@ You can also call it form Alpine.js using `$wire.$render`.
 
 If you are fine-tuning when Livewire should and should not repaint the page, these are the next reads I would keep close:
 
-- [Prevent a Livewire component from re-rendering](/prevent-render-livewire)
-- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
-- [Create a SPA in seconds using wire:navigate in Livewire v3](/livewire-spa-wire-navigate)
+- [Stop a Livewire component from re-rendering when it shouldn't](/prevent-render-livewire)
+- [See when Laravel Volt is the simpler Livewire option](/laravel-volt)
+- [See how far wire:navigate can take a Livewire app](/livewire-spa-wire-navigate)

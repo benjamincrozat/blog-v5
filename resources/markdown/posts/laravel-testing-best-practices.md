@@ -333,8 +333,8 @@ I won’t disclose everything inside it, but the website provides a pretty good 
 
 If you are trying to make Laravel changes safer instead of just adding more tests, these are the next reads I would keep open:
 
-- [What's new in Pest 3 and how to upgrade](/pest-3)
-- [What’s new in Pest 4 and how to upgrade](/pest-4)
-- [A Guide to architecture testing presets in Pest 3](/pest-3-architecture-testing-presets)
+- [See what changed in Pest 3 before you upgrade again](/pest-3)
+- [See what changes if you're moving your tests to Pest 4](/pest-4)
+- [Use Pest architecture presets without setting them up from scratch](/pest-3-architecture-testing-presets)
 - [Handle failed HTTP calls in Laravel without messy conditionals](/error-handling-laravel-http-client)
 - [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)

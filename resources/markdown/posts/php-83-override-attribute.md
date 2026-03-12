@@ -90,6 +90,6 @@ Currently, `Override` is limited to methods. Properties, another key part of cla
 
 If you are cleaning up the language features that make PHP safer to refactor, these are the next reads I would keep nearby:
 
-- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
-- [Methods with the same name as their class will not be constructors in a future version of PHP](/methods-same-name-class-constructors-future-version-php)
-- [PHP enums: a full guide for better code](/php-enums)
+- [See what PHP 8.3 changed before you rely on it](/php-83)
+- [Fix old-style constructors before PHP breaks them](/methods-same-name-class-constructors-future-version-php)
+- [Use enums when strings and constants start getting brittle](/php-enums)

@@ -169,7 +169,7 @@ For now, the best way to get ready is to follow the RFCs, watch the public PHP 9
 
 If you are treating PHP 9 as a cleanup project instead of a date on a calendar, these are the next reads I would keep nearby:
 
-- [PHP 8.6: release date and confirmed features](/php-86)
-- [PHP 8.5: 15 new features and changes](/php-85)
-- [Methods with the same name as their class will not be constructors in a future version of PHP](/methods-same-name-class-constructors-future-version-php)
-- [6 ways to check your version of PHP](/check-php-version)
+- [See what's already confirmed for PHP 8.6](/php-86)
+- [See what PHP 8.5 changes before you upgrade](/php-85)
+- [Fix old-style constructors before PHP breaks them](/methods-same-name-class-constructors-future-version-php)
+- [Check whether your PHP version is part of the problem](/check-php-version)

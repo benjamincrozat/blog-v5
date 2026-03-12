@@ -38,7 +38,7 @@ I found the enum example especially useful for turning stored values into friend
 
 If cleaner control flow is the thing you want more of in PHP, these next reads take that idea into a few other useful language features:
 
-- [PHP enums: a full guide for better code](/php-enums)
-- [PHP 8.5: 15 new features and changes](/php-85)
-- [A friendly guide to PHP serialization that finally clicked](/a-friendly-guide-to-php-serialization-that-finally-clicked)
-- [PHP exceptions: all you need to know](/php-exceptions)
+- [Use enums when strings and constants start getting brittle](/php-enums)
+- [See what PHP 8.5 changes before you upgrade](/php-85)
+- [Make PHP serialization finally click without the usual confusion](/a-friendly-guide-to-php-serialization-that-finally-clicked)
+- [Understand exceptions before your next try/catch block](/php-exceptions)

@@ -427,6 +427,6 @@ This is why the addition of native Enumerations in PHP 8.1 was such an important
 
 If you are exploring the newer PHP building blocks that make domain code cleaner, these are the next reads I would open:
 
-- [A friendly guide to PHP serialization that finally clicked](/a-friendly-guide-to-php-serialization-that-finally-clicked)
-- [A quick look at the PHP match expression](/a-quick-look-at-the-php-match-expression)
-- [A friendly intro to the state machine pattern in PHP](/a-friendly-intro-to-the-state-machine-pattern-in-php)
+- [Make PHP serialization finally click without the usual confusion](/a-friendly-guide-to-php-serialization-that-finally-clicked)
+- [Use match when switch starts feeling clumsy](/a-quick-look-at-the-php-match-expression)
+- [See where the state machine pattern helps in PHP](/a-friendly-intro-to-the-state-machine-pattern-in-php)

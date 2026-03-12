@@ -105,5 +105,5 @@ If you are hardening an API instead of just getting auth to work once, these are
 - [Close the Laravel security gaps that are easy to miss](/laravel-security-best-practices)
 - [Fix the 419 error before it keeps breaking forms](/419-page-expired-laravel)
 - [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)
-- [Fix "No application encryption key has been specified." in Laravel](/laravel-no-application-key-specified)
+- [Fix the missing app key error before anything else breaks](/laravel-no-application-key-specified)
 - [Write validation rules with less guesswork](/laravel-validation)

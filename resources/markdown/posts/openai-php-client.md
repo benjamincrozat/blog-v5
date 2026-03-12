@@ -350,8 +350,8 @@ Talking about unique products, did you know OpenAI provides an [API endpoint to 
 
 If you are turning one OpenAI request into something more ambitious in PHP, these are the next reads I would keep nearby:
 
-- [Master OpenAI's new Text-to-speech API](/openai-tts-api)
-- [GPT‑5: my API quick start guide](/gpt-5-api)
-- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
+- [Turn text into speech with the OpenAI API from PHP](/openai-tts-api)
+- [Get your first GPT-5 API call working in PHP](/gpt-5-api)
+- [Get a plain-English explanation of how GPT-style models work](/gpt-llm-ai-explanation)
 - [See how a Laravel app can expose its own ChatGPT integration](/chatgpt-plugin-laravel)
-- [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)
+- [Speed up factory writing with AI when the data shape is obvious](/generate-laravel-factories-chatgpt)

@@ -176,6 +176,6 @@ My default workflow is simple: I rebase my feature branches often, then fast-for
 
 If this was really about calmer day-to-day team workflow, these next reads widen the lens beyond Git itself:
 
-- [The best web development courses available. Free and paid.](/best-web-development-courses)
-- [The best PHP blogs to read in 2025](/best-php-blogs)
+- [Pick web development courses that are actually worth your time](/best-web-development-courses)
+- [Find a few PHP blogs worth keeping in your reading rotation](/best-php-blogs)
 - [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)

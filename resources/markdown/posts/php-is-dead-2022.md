@@ -146,6 +146,6 @@ This alone probably drives people to update to the latest major version and, the
 
 If you want to see how the "PHP is dead" story kept aging after this snapshot, these later check-ins are the next reads I would open:
 
-- [Is PHP dead? Usage statistics and market share for 2023.](/php-is-dead-2023)
-- [Is PHP dead? Usage and market share for September 2024](/php-is-dead-2024)
-- [Is PHP dead? Usage statistics and market share (2026)](/php-is-dead-2026)
+- [See what the 2023 PHP usage numbers looked like](/php-is-dead-2023)
+- [Compare the 2024 PHP usage snapshot with newer numbers](/php-is-dead-2024)
+- [See what the latest PHP usage numbers actually say](/php-is-dead-2026)

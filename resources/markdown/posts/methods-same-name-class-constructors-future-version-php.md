@@ -45,8 +45,8 @@ You can also see the PHP RFC that led to this: [PHP RFC: Remove PHP 4 Constructo
 
 If you are cleaning up old PHP before the next upgrade forces the issue, these are the follow-up reads I would keep nearby:
 
-- [PHP 8.6: release date and confirmed features](/php-86)
-- [PHP 9 release date and what to fix now](/php-90)
-- [PHP 8.3's Override attribute in a nutshell](/php-83-override-attribute)
-- [6 ways to check your version of PHP](/check-php-version)
-- [Fix "using $this when not in object context" now](/using-this-when-not-in-object-context)
+- [See what's already confirmed for PHP 8.6](/php-86)
+- [Start fixing the things PHP 9 will stop forgiving](/php-90)
+- [Use Override when you want inheritance mistakes to fail loudly](/php-83-override-attribute)
+- [Check whether your PHP version is part of the problem](/check-php-version)
+- [Fix the "$this" error when PHP says you're outside an object](/using-this-when-not-in-object-context)

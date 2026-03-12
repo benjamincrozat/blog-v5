@@ -19,7 +19,7 @@ Wendell Adriel lays out a clear, real‑world guide to the state machine pattern
 
 If you want to turn this into stronger domain code instead of a one-off pattern, these are the PHP building blocks I would read next:
 
-- [PHP enums: a full guide for better code](/php-enums)
-- [A quick look at the PHP match expression](/a-quick-look-at-the-php-match-expression)
-- [A friendly guide to PHP serialization that finally clicked](/a-friendly-guide-to-php-serialization-that-finally-clicked)
-- [PHP exceptions: all you need to know](/php-exceptions)
+- [Use enums when strings and constants start getting brittle](/php-enums)
+- [Use match when switch starts feeling clumsy](/a-quick-look-at-the-php-match-expression)
+- [Make PHP serialization finally click without the usual confusion](/a-friendly-guide-to-php-serialization-that-finally-clicked)
+- [Understand exceptions before your next try/catch block](/php-exceptions)

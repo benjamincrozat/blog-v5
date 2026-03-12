@@ -63,6 +63,6 @@ class Show extends Component
 
 If you are tuning how Livewire updates the page instead of merely making it work, these are the next reads I would open:
 
-- [How to force re-render a Livewire v3 component](/re-render-livewire-component)
-- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
-- [Create a SPA in seconds using wire:navigate in Livewire v3](/livewire-spa-wire-navigate)
+- [Force a Livewire refresh when state gets stuck](/re-render-livewire-component)
+- [See when Laravel Volt is the simpler Livewire option](/laravel-volt)
+- [See how far wire:navigate can take a Livewire app](/livewire-spa-wire-navigate)

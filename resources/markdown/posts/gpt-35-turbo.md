@@ -170,14 +170,14 @@ You can even [add voices to your projects](/openai-tts-api) thanks to another en
 
 If you are still thinking about "How to use GPT-3.5 Turbo's API, step by step", open these next:
 
-- [How to access and use GPT-4 Turbo's API, step by step](/gpt-4-turbo)
-- [How to access and use GPT-4o's API, step by step](/gpt-4o)
-- [How to use GPT-4o mini's API for cheap, step by step](/gpt-4o-mini)
-- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [Access and use GPT‑4.1's API. 5 minutes, tops.](/gpt-41)
-- [GPT‑5: my API quick start guide](/gpt-5-api)
-- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
+- [See how the GPT-4 Turbo API flow compares with newer options](/gpt-4-turbo)
+- [Start with GPT-4o when you want a stronger general model](/gpt-4o)
+- [Start with a cheaper OpenAI model before you scale usage](/gpt-4o-mini)
+- [Call the OpenAI API from PHP with less boilerplate](/openai-php-client)
+- [Use GPT-4.1 when you want a clearer step up from older models](/gpt-41)
+- [Get your first GPT-5 API call working in PHP](/gpt-5-api)
+- [Get a plain-English explanation of how GPT-style models work](/gpt-llm-ai-explanation)
 - [See how a Laravel app can expose its own ChatGPT integration](/chatgpt-plugin-laravel)
-- [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)
-- [Master OpenAI's new Text-to-speech API](/openai-tts-api)
+- [Speed up factory writing with AI when the data shape is obvious](/generate-laravel-factories-chatgpt)
+- [Turn text into speech with the OpenAI API from PHP](/openai-tts-api)
 

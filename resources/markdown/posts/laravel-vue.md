@@ -157,7 +157,7 @@ You've successfully added Vue.js to your Laravel project and you can now start h
 If you are still weighing how Vue fits into a Laravel frontend, these are the next reads I would compare with it:
 
 - [Add Alpine to Laravel when you just need lightweight interactivity](/alpine-js-laravel)
-- [Alpine.js: a lightweight framework for productive developers](/alpine-js)
+- [See when Alpine.js is enough for the interactivity you need](/alpine-js)
 - [Swap npm out for Bun in Laravel without friction](/bun-laravel)
-- [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)
+- [Add Tailwind to Laravel without setup guesswork](/tailwind-css-laravel)
 - [See when laravel/ui is still the right starter choice](/laravel-ui)

@@ -94,6 +94,6 @@ Use the PHP null coalescing operator (??) to read values with safe defaults, and
 
 If you are tidying the everyday operators that make PHP code easier to read, these are the next reads I would keep open:
 
-- [Fix "Invalid argument supplied for foreach" in PHP & Laravel](/invalid-argument-supplied-for-foreach)
-- [PHP 8.5: 15 new features and changes](/php-85)
-- [Check if your PHP array is empty](/php-array-empty)
+- [Stop foreach from blowing up on the wrong input](/invalid-argument-supplied-for-foreach)
+- [See what PHP 8.5 changes before you upgrade](/php-85)
+- [Check arrays the right way before you branch on them](/php-array-empty)

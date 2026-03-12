@@ -25,5 +25,5 @@ If you are thinking about privacy work as part of everyday Laravel maintenance n
 
 - [Close the Laravel security gaps that are easy to miss](/laravel-security-best-practices)
 - [Use soft deletes without getting tripped up later](/laravel-soft-deletes)
-- [Should you block compromised passwords?](/block-compromised-password)
+- [Decide whether compromised-password checks belong in your auth flow](/block-compromised-password)
 - [Protect your API with Laravel Sanctum before it gets exposed](/laravel-sanctum-api-tokens-authentication)

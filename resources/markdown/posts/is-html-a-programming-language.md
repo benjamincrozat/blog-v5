@@ -95,6 +95,6 @@ HTML defines what’s on the page; programming languages define what the compute
 
 If this got you rethinking where HTML stops and the rest of the frontend stack begins, these are the next reads I would open:
 
-- [Is CSS case-sensitive?](/css-property-names-values-case-sensitive)
-- [Style labels on focus the right way in CSS](/label-focus-css)
-- [Alpine.js: a lightweight framework for productive developers](/alpine-js)
+- [Avoid case-sensitivity mistakes that CSS quietly ignores](/css-property-names-values-case-sensitive)
+- [Make labels react cleanly when fields get focus](/label-focus-css)
+- [See when Alpine.js is enough for the interactivity you need](/alpine-js)

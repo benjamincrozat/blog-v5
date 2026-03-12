@@ -158,4 +158,4 @@ If you are moving up the Laravel release ladder instead of stopping at 10, these
 - [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
 - [See the biggest Laravel 11 changes in one pass](/laravel-11)
 - [See what Laravel 12 changed before you adopt it](/laravel-12)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [See where this fits in Laravel's release history](/laravel-versions)

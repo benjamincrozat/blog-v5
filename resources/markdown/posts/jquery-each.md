@@ -81,7 +81,7 @@ While jQuery's `.each()` method offers a simple and effective way to iterate ove
 
 If you are still working through the core jQuery patterns instead of treating `.each()` in isolation, these are the next reads I would keep open:
 
-- [How and when to use jQuery's $(document).ready() method](/jquery-document-ready)
-- [Handle clicks from your users using jQuery](/jquery-on-click)
-- [Get started with jQuery in 5 minutes](/jquery)
-- [Alpine.js: a lightweight framework for productive developers](/alpine-js)
+- [Know when $(document).ready() still matters](/jquery-document-ready)
+- [Handle jQuery click events without clunky inline handlers](/jquery-on-click)
+- [Get the quickest possible start with jQuery](/jquery)
+- [See when Alpine.js is enough for the interactivity you need](/alpine-js)

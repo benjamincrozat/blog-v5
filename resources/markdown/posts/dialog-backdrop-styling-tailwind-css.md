@@ -47,9 +47,9 @@ At the time I'm writing these lines, the `dialog` element is supported by:
 
 If you are in the middle of polishing the awkward edges of a UI, these next reads fit naturally with that work:
 
-- [5 Tailwind CSS best practices for 2025](/tailwind-css)
-- [Tailwind CSS typography plugin: a step-by-step build guide](/tailwind-css-typography-plugin)
-- [Tailwind CSS forms plugin: my 2025 guide for v4 and v3](/tailwind-css-forms-plugin)
-- [Disable hover styles on mobile with Tailwind CSS](/disable-hover-styles-mobile-tailwind-css)
-- [Style labels on focus the right way in CSS](/label-focus-css)
-- [The lh and rlh CSS units: simple spacing that follows your text](/css-lh-rlh)
+- [Tighten your Tailwind habits before the CSS gets messy](/tailwind-css)
+- [Make long-form content look better with Tailwind's typography plugin](/tailwind-css-typography-plugin)
+- [Style forms faster with Tailwind's forms plugin](/tailwind-css-forms-plugin)
+- [Disable hover styles on touch devices without fighting Tailwind](/disable-hover-styles-mobile-tailwind-css)
+- [Make labels react cleanly when fields get focus](/label-focus-css)
+- [Use lh and rlh when spacing should follow your text](/css-lh-rlh)

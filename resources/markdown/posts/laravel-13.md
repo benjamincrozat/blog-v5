@@ -183,7 +183,7 @@ If you are already on Laravel 12 with PHP 8.3+, I would start reading the public
 If you are planning ahead instead of waiting for upgrade pain to show up, these are the Laravel release reads I would keep nearby:
 
 - [See what Laravel 12 changed before you adopt it](/laravel-12)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [See where this fits in Laravel's release history](/laravel-versions)
 - [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
 - [See the biggest Laravel 11 changes in one pass](/laravel-11)
 - [Double-check which Laravel version is actually running](/check-laravel-version)

@@ -222,6 +222,6 @@ These statistics paint a clear picture: PHP is very much alive and thriving. Jum
 
 If you want to see where the "PHP is dead" argument went after this checkpoint, these are the next snapshots I would open:
 
-- [Is PHP dead? Usage statistics and market share for 2023.](/php-is-dead-2023)
-- [Is PHP dead? Usage statistics and market share for 2022.](/php-is-dead-2022)
-- [Is PHP dead? Usage statistics and market share (2026)](/php-is-dead-2026)
+- [See what the 2023 PHP usage numbers looked like](/php-is-dead-2023)
+- [See how the PHP adoption story looked a couple of years ago](/php-is-dead-2022)
+- [See what the latest PHP usage numbers actually say](/php-is-dead-2026)

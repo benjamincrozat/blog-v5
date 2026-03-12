@@ -124,5 +124,5 @@ If you are deciding how much frontend scaffolding you want Laravel to do for you
 - [Add Vue to Laravel without overbuilding the frontend](/laravel-vue)
 - [Add Alpine to Laravel when you just need lightweight interactivity](/alpine-js-laravel)
 - [Swap npm out for Bun in Laravel without friction](/bun-laravel)
-- [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)
-- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
+- [Add Tailwind to Laravel without setup guesswork](/tailwind-css-laravel)
+- [See when Laravel Volt is the simpler Livewire option](/laravel-volt)

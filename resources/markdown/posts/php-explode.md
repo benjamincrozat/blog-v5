@@ -219,6 +219,6 @@ Use [str_split()](https://www.php.net/preg_split) to break a string into individ
 
 If you are still doing a lot of string-to-array cleanup in PHP, these are the next reads I would keep open:
 
-- [PHP's str_replace() made simple](/php-str-replace)
-- [Making sense of PHP's array_map() function](/php-array-map)
-- [Understanding array_filter() in PHP](/php-array-filter)
+- [Clean up strings with str_replace without weird edge cases](/php-str-replace)
+- [Map arrays in PHP without overcomplicating the callback](/php-array-map)
+- [Filter PHP arrays cleanly without awkward loops](/php-array-filter)

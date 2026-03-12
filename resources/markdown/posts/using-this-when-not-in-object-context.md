@@ -131,6 +131,6 @@ Happy coding!
 
 If you are cleaning up classic PHP object mistakes and want the rest of that mental model tighter, these are the next reads I would keep nearby:
 
-- [Methods with the same name as their class will not be constructors in a future version of PHP](/methods-same-name-class-constructors-future-version-php)
-- [PHP exceptions: all you need to know](/php-exceptions)
-- [PHP 8.3's Override attribute in a nutshell](/php-83-override-attribute)
+- [Fix old-style constructors before PHP breaks them](/methods-same-name-class-constructors-future-version-php)
+- [Understand exceptions before your next try/catch block](/php-exceptions)
+- [Use Override when you want inheritance mistakes to fail loudly](/php-83-override-attribute)

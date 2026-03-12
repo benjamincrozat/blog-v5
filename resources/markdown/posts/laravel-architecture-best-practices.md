@@ -94,7 +94,7 @@ If this article on "3 crucial Laravel architecture best practices for 2025" hit 
 - [See what to clean up before moving to Laravel 9](/laravel-9-upgrade-guide)
 - [See which Laravel developers I'd actually trust to hire](/best-laravel-developers)
 - [Pick the Laravel books most worth your reading time](/best-laravel-books)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [See where this fits in Laravel's release history](/laravel-versions)
 - [See the Laravel 10 changes that matter in real projects](/laravel-10)
 - [See the biggest Laravel 11 changes in one pass](/laravel-11)
 - [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)

@@ -93,7 +93,7 @@ If you are still thinking about "The average salary of a Laravel developer in 20
 - [See what to clean up before moving to Laravel 9](/laravel-9-upgrade-guide)
 - [Plan a safer upgrade from Laravel 9 to 10](/laravel-10-upgrade-guide)
 - [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [See where this fits in Laravel's release history](/laravel-versions)
 - [See the Laravel 10 changes that matter in real projects](/laravel-10)
 - [See the biggest Laravel 11 changes in one pass](/laravel-11)
 - [Get a clearer mental model of how Laravel fits together](/how-laravel-works)

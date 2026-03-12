@@ -178,7 +178,7 @@ Related reading: [What's the fuss around Bun's package manager abilities?](https
 If you are trying to make PHP-side frontend tooling feel less slow and annoying, these next reads make the trade-offs clearer:
 
 - [Swap npm out for Bun in Laravel without friction](/bun-laravel)
-- [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
-- [npm ci vs. npm install: here's the difference](/npm-ci)
-- [Disable "packages are looking for funding" (npm fund message)](/npm-fund)
+- [See where Bun fits compared with npm, Yarn, and pnpm](/bun-package-manager)
+- [Use npm ci when you need repeatable installs, not surprises](/npm-ci)
+- [Hide the npm funding message when you just want clean installs](/npm-fund)
 - [Run PHP and Laravel more smoothly on macOS](/laravel-valet)

@@ -143,6 +143,6 @@ In this block of code, we build a unique multidimensional array out of two dinst
 
 If transforming data is the part of PHP you keep coming back to, these are the next reads I would open next:
 
-- [Partial Function Application in PHP 8.6, made easy](/partial-function-application-php-86)
-- [Understanding array_filter() in PHP](/php-array-filter)
-- [Bring order back to your PHP arrays using array_values()](/php-array-values)
+- [See what partial function application looks like in PHP 8.6](/partial-function-application-php-86)
+- [Filter PHP arrays cleanly without awkward loops](/php-array-filter)
+- [Reset array keys cleanly when the indexes get weird](/php-array-values)

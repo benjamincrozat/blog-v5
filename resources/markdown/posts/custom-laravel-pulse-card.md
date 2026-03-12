@@ -22,5 +22,5 @@ If you want to turn Pulse from a nice dashboard into something tailored to your 
 - [Steal ideas for Laravel Pulse cards worth building](/best-laravel-pulse-custom-cards)
 - [See what Laravel Pulse can surface before users do](/laravel-pulse)
 - [Build better Artisan prompts without extra ceremony](/laravel-prompts)
-- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
+- [See when Laravel Volt is the simpler Livewire option](/laravel-volt)
 - [Make Eloquent models easier for your IDE to understand](/laravel-lift)

@@ -169,6 +169,6 @@ The web runs on boring, reliable technology more often than people like to admit
 
 If you want to compare this snapshot with the earlier years that led here, these are the next reads I would open:
 
-- [Is PHP dead? Usage statistics and market share (2025)](/php-is-dead-2025)
-- [Is PHP dead? Usage statistics and market share for 2022.](/php-is-dead-2022)
-- [Is PHP dead? Usage and market share for September 2024](/php-is-dead-2024)
+- [See what the 2025 PHP usage numbers say](/php-is-dead-2025)
+- [See how the PHP adoption story looked a couple of years ago](/php-is-dead-2022)
+- [Compare the 2024 PHP usage snapshot with newer numbers](/php-is-dead-2024)

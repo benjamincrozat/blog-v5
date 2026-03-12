@@ -22,6 +22,6 @@ I found the tips on practical bindings and avoiding common mistakes especially h
 If the container finally clicked and you want the rest of Laravel's internals to line up with it, these are the next reads I would keep nearby:
 
 - [Get a clearer mental model of how Laravel fits together](/how-laravel-works)
-- [How Facades work in Laravel: a simple explanation](/how-facades-work-laravel)
+- [Understand what Facades are doing when the magic gets fuzzy](/how-facades-work-laravel)
 - [Use the Artisan commands you run every day with more confidence](/laravel-artisan)
 - [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)

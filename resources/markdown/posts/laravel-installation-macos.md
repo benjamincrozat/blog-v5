@@ -115,5 +115,5 @@ Once Laravel is installed, these are the setup reads I would keep nearby on a Ma
 - [Run PHP and Laravel more smoothly on macOS](/laravel-valet)
 - [Set up PHP on macOS or Windows with less friction](/laravel-herd)
 - [Double-check which Laravel version is actually running](/check-laravel-version)
-- [6 ways to check your version of PHP](/check-php-version)
+- [Check whether your PHP version is part of the problem](/check-php-version)
 - [See when laravel/ui is still the right starter choice](/laravel-ui)

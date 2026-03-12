@@ -82,7 +82,7 @@ $items->each(function ($item) {
 
 If you are still cleaning up the kinds of PHP inputs that turn simple loops into bugs, these are the next reads I would keep nearby:
 
-- [Print an array with PHP (+ Laravel)](/php-laravel-print-array)
-- [PHP's double question mark, or the null coalescing operator](/php-double-question-mark-null-coalescing-operator)
-- [Fix "using $this when not in object context" now](/using-this-when-not-in-object-context)
-- [Bring order back to your PHP arrays using array_values()](/php-array-values)
+- [Inspect arrays without wrecking your output](/php-laravel-print-array)
+- [Use null coalescing when nested checks start piling up](/php-double-question-mark-null-coalescing-operator)
+- [Fix the "$this" error when PHP says you're outside an object](/using-this-when-not-in-object-context)
+- [Reset array keys cleanly when the indexes get weird](/php-array-values)

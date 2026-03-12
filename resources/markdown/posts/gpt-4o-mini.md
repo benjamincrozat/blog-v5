@@ -174,8 +174,8 @@ And did you know OpenAI offers developers an API to [add realistic voices to the
 
 If cost is the main reason you are comparing models right now, these are the next reads I would keep open:
 
-- [Access and use GPT‑4.1's API. 5 minutes, tops.](/gpt-41)
-- [GPT‑5: my API quick start guide](/gpt-5-api)
-- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [Master OpenAI's new Text-to-speech API](/openai-tts-api)
-- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
+- [Use GPT-4.1 when you want a clearer step up from older models](/gpt-41)
+- [Get your first GPT-5 API call working in PHP](/gpt-5-api)
+- [Call the OpenAI API from PHP with less boilerplate](/openai-php-client)
+- [Turn text into speech with the OpenAI API from PHP](/openai-tts-api)
+- [Get a plain-English explanation of how GPT-style models work](/gpt-llm-ai-explanation)

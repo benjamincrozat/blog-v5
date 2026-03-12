@@ -409,8 +409,8 @@ It’s boring in the best way possible:
 
 If the PHP 8.6 changes are what pulled you in here, these are the language-level reads I would keep open:
 
-- [PHP 8.6: release date and confirmed features](/php-86)
-- [PHP 8.5: 15 new features and changes](/php-85)
-- [PHP 8.4: new features and release date](/php-84)
-- [Making sense of PHP's array_map() function](/php-array-map)
-- [Understanding array_filter() in PHP](/php-array-filter)
+- [See what's already confirmed for PHP 8.6](/php-86)
+- [See what PHP 8.5 changes before you upgrade](/php-85)
+- [Catch the PHP 8.4 changes that could affect your code](/php-84)
+- [Map arrays in PHP without overcomplicating the callback](/php-array-map)
+- [Filter PHP arrays cleanly without awkward loops](/php-array-filter)

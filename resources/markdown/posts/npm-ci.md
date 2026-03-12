@@ -72,7 +72,7 @@ Usually, yes—but npm ci is plenty fast for most scenarios.
 
 If you are trying to make installs predictable instead of merely fast, these are the next reads I would compare with it:
 
-- [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
-- [Disable "packages are looking for funding" (npm fund message)](/npm-fund)
-- [Use Bun as your package manager in any PHP project](/bun-php)
+- [See where Bun fits compared with npm, Yarn, and pnpm](/bun-package-manager)
+- [Hide the npm funding message when you just want clean installs](/npm-fund)
+- [Use Bun in plain PHP projects too, not just Laravel](/bun-php)
 - [Swap npm out for Bun in Laravel without friction](/bun-laravel)

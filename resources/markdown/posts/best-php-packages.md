@@ -55,8 +55,8 @@ Need to parse Markdown? The [league/commonmark](https://commonmark.thephpleague.
 
 If this list sent you looking for what to build with those packages, these are the next PHP reads I would keep open:
 
-- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [PHP 8.5: 15 new features and changes](/php-85)
-- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
-- [The best PHP blogs to read in 2025](/best-php-blogs)
-- [6 ways to check your version of PHP](/check-php-version)
+- [Call the OpenAI API from PHP with less boilerplate](/openai-php-client)
+- [See what PHP 8.5 changes before you upgrade](/php-85)
+- [See what PHP 8.3 changed before you rely on it](/php-83)
+- [Find a few PHP blogs worth keeping in your reading rotation](/best-php-blogs)
+- [Check whether your PHP version is part of the problem](/check-php-version)

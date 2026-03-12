@@ -62,7 +62,7 @@ Review each of my instructions and explain step by step how you will proceed in 
 If you are exploring where AI actually saves time in a Laravel codebase, these are the next reads I would open:
 
 - [See how a Laravel app can expose its own ChatGPT integration](/chatgpt-plugin-laravel)
-- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
-- [GPT‑5: my API quick start guide](/gpt-5-api)
+- [Call the OpenAI API from PHP with less boilerplate](/openai-php-client)
+- [Get a plain-English explanation of how GPT-style models work](/gpt-llm-ai-explanation)
+- [Get your first GPT-5 API call working in PHP](/gpt-5-api)
 - [Build better Artisan prompts without extra ceremony](/laravel-prompts)

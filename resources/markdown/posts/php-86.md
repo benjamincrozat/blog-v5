@@ -182,7 +182,7 @@ Everything else is still a proposal until the RFC status changes.
 
 If you are following the next wave of PHP changes before they land, these are the release reads I would keep open:
 
-- [PHP 8.5: 15 new features and changes](/php-85)
-- [PHP 8.4: new features and release date](/php-84)
-- [PHP 9 release date and what to fix now](/php-90)
-- [Partial Function Application in PHP 8.6, made easy](/partial-function-application-php-86)
+- [See what PHP 8.5 changes before you upgrade](/php-85)
+- [Catch the PHP 8.4 changes that could affect your code](/php-84)
+- [Start fixing the things PHP 9 will stop forgiving](/php-90)
+- [See what partial function application looks like in PHP 8.6](/partial-function-application-php-86)

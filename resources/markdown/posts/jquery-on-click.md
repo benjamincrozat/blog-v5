@@ -55,11 +55,10 @@ People can criticize jQuery all day long, but its syntax is unbeatable. Look how
 
 If you are still thinking about "Handle clicks from your users using jQuery", open these next:
 
-- [Understanding jQuery's .each() method](/jquery-each)
-- [Get started with jQuery in 5 minutes](/jquery)
-- [How and when to use jQuery's $(document).ready() method](/jquery-document-ready)
-- [Alpine.js: a lightweight framework for productive developers](/alpine-js)
-- [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
+- [Loop through jQuery collections without guesswork](/jquery-each)
+- [Get the quickest possible start with jQuery](/jquery)
+- [Know when $(document).ready() still matters](/jquery-document-ready)
+- [See when Alpine.js is enough for the interactivity you need](/alpine-js)
+- [See where Bun fits compared with npm, Yarn, and pnpm](/bun-package-manager)
 - [Add Vue to Laravel without overbuilding the frontend](/laravel-vue)
 - [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
-

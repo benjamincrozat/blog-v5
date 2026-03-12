@@ -143,5 +143,5 @@ If you are treating this as one step on a longer upgrade staircase, these are th
 - [Plan a safer upgrade from Laravel 9 to 10](/laravel-10-upgrade-guide)
 - [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
 - [See the Laravel 10 changes that matter in real projects](/laravel-10)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [See where this fits in Laravel's release history](/laravel-versions)
 - [See what Laravel 12 changed before you adopt it](/laravel-12)

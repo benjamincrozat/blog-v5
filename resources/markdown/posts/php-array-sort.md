@@ -118,6 +118,6 @@ Of course, in that case, using `sort()` would be better. I just wanted to let yo
 
 If sorting data is only one piece of the array cleanup work you do all the time, these are the next reads I would keep nearby:
 
-- [Bring order back to your PHP arrays using array_values()](/php-array-values)
-- [Understanding array_filter() in PHP](/php-array-filter)
-- [Making sense of PHP's array_map() function](/php-array-map)
+- [Reset array keys cleanly when the indexes get weird](/php-array-values)
+- [Filter PHP arrays cleanly without awkward loops](/php-array-filter)
+- [Map arrays in PHP without overcomplicating the callback](/php-array-map)

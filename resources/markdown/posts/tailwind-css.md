@@ -425,7 +425,7 @@ These frameworks below can be integrated into any project based on any JavaScrip
 
 If you are building out a Tailwind stack instead of stopping at the basics, these are the next reads I would open:
 
-- [Tailwind CSS forms plugin: my 2025 guide for v4 and v3](/tailwind-css-forms-plugin)
-- [Tailwind CSS typography plugin: a step-by-step build guide](/tailwind-css-typography-plugin)
-- [Disable hover styles on mobile with Tailwind CSS](/disable-hover-styles-mobile-tailwind-css)
-- [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)
+- [Style forms faster with Tailwind's forms plugin](/tailwind-css-forms-plugin)
+- [Make long-form content look better with Tailwind's typography plugin](/tailwind-css-typography-plugin)
+- [Disable hover styles on touch devices without fighting Tailwind](/disable-hover-styles-mobile-tailwind-css)
+- [Add Tailwind to Laravel without setup guesswork](/tailwind-css-laravel)

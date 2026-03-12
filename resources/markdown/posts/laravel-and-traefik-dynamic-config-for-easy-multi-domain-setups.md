@@ -56,7 +56,7 @@ If you run Laravel behind Traefik and juggle many domains, this is a clean, low-
 
 If you are still shaping the infrastructure around a multi-domain Laravel deploy, these are the next reads I would keep open:
 
-- [A production-ready Laravel setup with Traefik and FrankenPHP](/a-production-ready-laravel-setup-with-traefik-and-frankenphp)
+- [See a production-ready Traefik and FrankenPHP setup for Laravel](/a-production-ready-laravel-setup-with-traefik-and-frankenphp)
 - [Compare hosting options before you deploy another Laravel app](/best-laravel-hosting-providers)
 - [See whether Laravel Forge still fits the way you deploy](/laravel-forge)
 - [See how to deploy a PHP or Laravel app on Sevalla step by step](/deploy-php-laravel-apps-sevalla)

@@ -90,8 +90,8 @@ Tim is a core Laravel team member. At the time I'm writing these lines, he is tr
 
 If you are putting together a better PHP reading diet, these follow-up posts keep you close to what the ecosystem is actually doing:
 
-- [The best PHP packages to use in 2025](/best-php-packages)
-- [PHP 8.5: 15 new features and changes](/php-85)
-- [6 ways to check your version of PHP](/check-php-version)
-- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [Is PHP dead? Usage statistics and market share (2026)](/php-is-dead-2026)
+- [Browse PHP packages that are actually worth adding](/best-php-packages)
+- [See what PHP 8.5 changes before you upgrade](/php-85)
+- [Check whether your PHP version is part of the problem](/check-php-version)
+- [Call the OpenAI API from PHP with less boilerplate](/openai-php-client)
+- [See what the latest PHP usage numbers actually say](/php-is-dead-2026)

@@ -236,6 +236,6 @@ If you are still working through how schema changes ripple through the app, thes
 
 - [Use database transactions when partial writes would hurt](/database-transactions-laravel)
 - [Use the Artisan commands you run every day with more confidence](/laravel-artisan)
-- [A cheat sheet for Laravel's make Artisan commands](/cheat-sheet-make-laravel-artisan)
+- [Keep the make commands you forget most within reach](/cheat-sheet-make-laravel-artisan)
 - [Write where clauses with fewer query-builder surprises](/laravel-query-builder-where-clauses)
 - [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)

@@ -137,7 +137,7 @@ Happy testing, and may your builds always be green!
 
 If you are trying to make code-quality checks feel lighter to maintain, these are the next Pest and PHP reads I would keep nearby:
 
-- [What's new in Pest 3 and how to upgrade](/pest-3)
-- [What’s new in Pest 4 and how to upgrade](/pest-4)
+- [See what changed in Pest 3 before you upgrade again](/pest-3)
+- [See what changes if you're moving your tests to Pest 4](/pest-4)
 - [Make your Laravel tests more useful before the suite grows](/laravel-testing-best-practices)
-- [PHP 8.5: 15 new features and changes](/php-85)
+- [See what PHP 8.5 changes before you upgrade](/php-85)

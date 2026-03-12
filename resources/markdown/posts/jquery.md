@@ -93,7 +93,7 @@ That's it! You've now seen how jQuery can make JavaScript programming easier and
 
 If you are learning jQuery as a small practical toolkit instead of a whole philosophy, these are the next reads I would open:
 
-- [How and when to use jQuery's $(document).ready() method](/jquery-document-ready)
-- [Handle clicks from your users using jQuery](/jquery-on-click)
-- [Understanding jQuery's .each() method](/jquery-each)
-- [Alpine.js: a lightweight framework for productive developers](/alpine-js)
+- [Know when $(document).ready() still matters](/jquery-document-ready)
+- [Handle jQuery click events without clunky inline handlers](/jquery-on-click)
+- [Loop through jQuery collections without guesswork](/jquery-each)
+- [See when Alpine.js is enough for the interactivity you need](/alpine-js)

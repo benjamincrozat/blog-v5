@@ -217,6 +217,6 @@ Learn more: [PHP RFC: Multibyte for trim function mb_trim, mb_ltrim and mb_rtrim
 
 If you are following the release train to see where PHP is heading next, these are the next reads I would keep open:
 
-- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
-- [PHP 8.5: 15 new features and changes](/php-85)
-- [PHP 8.6: release date and confirmed features](/php-86)
+- [See what PHP 8.3 changed before you rely on it](/php-83)
+- [See what PHP 8.5 changes before you upgrade](/php-85)
+- [See what's already confirmed for PHP 8.6](/php-86)

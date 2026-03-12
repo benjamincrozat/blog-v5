@@ -173,6 +173,6 @@ Pest 4 is a serious upgrade: **Playwright-powered browser tests**, **smoke & vis
 
 If you are rethinking the whole testing stack after Pest 4, these are the next reads I would keep open:
 
-- [What's new in Pest 3 and how to upgrade](/pest-3)
-- [A Guide to architecture testing presets in Pest 3](/pest-3-architecture-testing-presets)
+- [See what changed in Pest 3 before you upgrade again](/pest-3)
+- [Use Pest architecture presets without setting them up from scratch](/pest-3-architecture-testing-presets)
 - [Make your Laravel tests more useful before the suite grows](/laravel-testing-best-practices)

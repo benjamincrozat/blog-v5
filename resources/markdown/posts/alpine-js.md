@@ -214,7 +214,7 @@ If this made you want smaller, snappier UI interactions without dragging in a hu
 
 - [Add Alpine to Laravel when you just need lightweight interactivity](/alpine-js-laravel)
 - [Add Vue to Laravel without overbuilding the frontend](/laravel-vue)
-- [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)
-- [5 Tailwind CSS best practices for 2025](/tailwind-css)
-- [Get started with jQuery in 5 minutes](/jquery)
-- [How and when to use jQuery's $(document).ready() method](/jquery-document-ready)
+- [Add Tailwind to Laravel without setup guesswork](/tailwind-css-laravel)
+- [Tighten your Tailwind habits before the CSS gets messy](/tailwind-css)
+- [Get the quickest possible start with jQuery](/jquery)
+- [Know when $(document).ready() still matters](/jquery-document-ready)

@@ -152,4 +152,4 @@ If you want Pulse to become part of how you actually run the app, these are the 
 - [Build your own Laravel Pulse card once the built-ins are not enough](/custom-laravel-pulse-card)
 - [Fix the Livewire JS 404 before it blocks the whole page](/livewire-js-404-not-found)
 - [Build better Artisan prompts without extra ceremony](/laravel-prompts)
-- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
+- [See when Laravel Volt is the simpler Livewire option](/laravel-volt)

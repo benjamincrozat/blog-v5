@@ -288,4 +288,4 @@ If Laravel 11 is the release you are planning around right now, these are the ne
 - [Adjust Laravel 11 middleware without hunting through the framework](/customize-middleware-laravel-11)
 - [Restore Laravel 11 route files when you actually need them](/install-route-files-laravel)
 - [See what Laravel 12 changed before you adopt it](/laravel-12)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [See where this fits in Laravel's release history](/laravel-versions)

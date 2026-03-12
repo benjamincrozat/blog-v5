@@ -319,7 +319,7 @@ Want to look professional and make life easier for white-hats? Add a `/.well-kno
 If you are turning this checklist into actual hardening work, these are the next posts I would keep nearby:
 
 - [Fix the 419 error before it keeps breaking forms](/419-page-expired-laravel)
-- [Fix "No application encryption key has been specified." in Laravel](/laravel-no-application-key-specified)
+- [Fix the missing app key error before anything else breaks](/laravel-no-application-key-specified)
 - [Protect your API with Laravel Sanctum before it gets exposed](/laravel-sanctum-api-tokens-authentication)
-- [Should you block compromised passwords?](/block-compromised-password)
+- [Decide whether compromised-password checks belong in your auth flow](/block-compromised-password)
 - [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)

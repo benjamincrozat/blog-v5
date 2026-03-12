@@ -28,7 +28,7 @@ With a focus on simplicity, Lift depends on Eloquent events to work. This means 
 If you like packages that make Laravel code nicer to live in, these are the next reads I would open:
 
 - [Write validation rules with less guesswork](/laravel-validation)
-- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
+- [See when Laravel Volt is the simpler Livewire option](/laravel-volt)
 - [Build better Artisan prompts without extra ceremony](/laravel-prompts)
 - [See what Laravel Pulse can surface before users do](/laravel-pulse)
 - [Build a custom Laravel filesystem driver when the defaults fall short](/custom-filesystem-adapter-laravel)

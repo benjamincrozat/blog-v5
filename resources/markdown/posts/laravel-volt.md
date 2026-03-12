@@ -225,8 +225,8 @@ Oh, before I leave, I wanted to share with you the video from Laracon US where T
 
 If you are leaning further into Livewire after trying Volt, these are the posts I would open next:
 
-- [How to force re-render a Livewire v3 component](/re-render-livewire-component)
-- [Prevent a Livewire component from re-rendering](/prevent-render-livewire)
-- [Create a SPA in seconds using wire:navigate in Livewire v3](/livewire-spa-wire-navigate)
+- [Force a Livewire refresh when state gets stuck](/re-render-livewire-component)
+- [Stop a Livewire component from re-rendering when it shouldn't](/prevent-render-livewire)
+- [See how far wire:navigate can take a Livewire app](/livewire-spa-wire-navigate)
 - [Fix the Livewire JS 404 before it blocks the whole page](/livewire-js-404-not-found)
 - [See what Laravel Pulse can surface before users do](/laravel-pulse)

@@ -134,7 +134,7 @@ The `/livewire/livewire.js` issue typically boils down to server config confusio
 
 If you are still smoothing out the rough edges of a Livewire install after fixing the asset path, these are the next reads I would open:
 
-- [Create a SPA in seconds using wire:navigate in Livewire v3](/livewire-spa-wire-navigate)
-- [How to force re-render a Livewire v3 component](/re-render-livewire-component)
-- [Prevent a Livewire component from re-rendering](/prevent-render-livewire)
-- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
+- [See how far wire:navigate can take a Livewire app](/livewire-spa-wire-navigate)
+- [Force a Livewire refresh when state gets stuck](/re-render-livewire-component)
+- [Stop a Livewire component from re-rendering when it shouldn't](/prevent-render-livewire)
+- [See when Laravel Volt is the simpler Livewire option](/laravel-volt)

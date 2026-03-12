@@ -134,7 +134,7 @@ Here's an old-fashioned table:
 
 If audio is only the first OpenAI feature you want to wire into a PHP app, these are the next reads I would open:
 
-- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [GPT‑5: my API quick start guide](/gpt-5-api)
-- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
+- [Call the OpenAI API from PHP with less boilerplate](/openai-php-client)
+- [Get your first GPT-5 API call working in PHP](/gpt-5-api)
+- [Get a plain-English explanation of how GPT-style models work](/gpt-llm-ai-explanation)
 - [See how a Laravel app can expose its own ChatGPT integration](/chatgpt-plugin-laravel)

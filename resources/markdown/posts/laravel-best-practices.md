@@ -643,6 +643,6 @@ If you are still thinking about "25 Laravel best practices, tips, and tricks", o
 - [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)
 - [See the biggest Laravel 11 changes in one pass](/laravel-11)
 - [Close the Laravel security gaps that are easy to miss](/laravel-security-best-practices)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [See where this fits in Laravel's release history](/laravel-versions)
 - [Pick the Laravel books most worth your reading time](/best-laravel-books)
 

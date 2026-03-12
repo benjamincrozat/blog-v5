@@ -110,7 +110,7 @@ If you're not playing by the GDPR rules, you're looking at a few serious risks. 
 
 If privacy-friendly analytics is only one piece of how you want to run a healthier site, these next reads branch into SEO, performance, and security:
 
-- [Laravel SEO made simple](/laravel-seo)
-- [Google Core Web Vitals explained simply](/google-core-web-vitals)
+- [Get the technical SEO basics straight without overcomplicating them](/laravel-seo)
+- [Get a simpler read on what Core Web Vitals really mean](/google-core-web-vitals)
 - [An SEO case study from 4K to 270K monthly visits](/seo-case-study)
-- [Should you block compromised passwords?](/block-compromised-password)
+- [Decide whether compromised-password checks belong in your auth flow](/block-compromised-password)

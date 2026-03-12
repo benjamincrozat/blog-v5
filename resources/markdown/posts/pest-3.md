@@ -176,8 +176,8 @@ Pest 3 brings five big wins: architecture testing presets, Mutation Testing, Tea
 
 If you are turning a Pest upgrade into a better testing workflow overall, these are the next reads I would open:
 
-- [What’s new in Pest 4 and how to upgrade](/pest-4)
-- [A Guide to architecture testing presets in Pest 3](/pest-3-architecture-testing-presets)
+- [See what changes if you're moving your tests to Pest 4](/pest-4)
+- [Use Pest architecture presets without setting them up from scratch](/pest-3-architecture-testing-presets)
 - [Make your Laravel tests more useful before the suite grows](/laravel-testing-best-practices)
-- [PHP: Show all errors (E_ALL) safely](/php-show-all-errors)
-- [PHP 8.5: 15 new features and changes](/php-85)
+- [Show every PHP error when debugging gets vague](/php-show-all-errors)
+- [See what PHP 8.5 changes before you upgrade](/php-85)

@@ -209,8 +209,8 @@ So, which one will you build? Please share it in the comments below!
 
 If you are comparing where GPT-4.1 fits before you commit to a model, these are the next reads I would keep open:
 
-- [GPT‑5: my API quick start guide](/gpt-5-api)
-- [How to use GPT-4o mini's API for cheap, step by step](/gpt-4o-mini)
-- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
-- [Master OpenAI's new Text-to-speech API](/openai-tts-api)
+- [Get your first GPT-5 API call working in PHP](/gpt-5-api)
+- [Start with a cheaper OpenAI model before you scale usage](/gpt-4o-mini)
+- [Call the OpenAI API from PHP with less boilerplate](/openai-php-client)
+- [Get a plain-English explanation of how GPT-style models work](/gpt-llm-ai-explanation)
+- [Turn text into speech with the OpenAI API from PHP](/openai-tts-api)

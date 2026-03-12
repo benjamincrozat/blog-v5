@@ -116,8 +116,8 @@ Fast, seamless browsing is no longer reserved for JavaScript-heavies. With Livew
 
 If `wire:navigate` opened the door to doing more with Livewire, these are the next posts I would keep close:
 
-- [How to force re-render a Livewire v3 component](/re-render-livewire-component)
-- [Prevent a Livewire component from re-rendering](/prevent-render-livewire)
-- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
+- [Force a Livewire refresh when state gets stuck](/re-render-livewire-component)
+- [Stop a Livewire component from re-rendering when it shouldn't](/prevent-render-livewire)
+- [See when Laravel Volt is the simpler Livewire option](/laravel-volt)
 - [Fix the Livewire JS 404 before it blocks the whole page](/livewire-js-404-not-found)
 - [Make your Laravel tests more useful before the suite grows](/laravel-testing-best-practices)

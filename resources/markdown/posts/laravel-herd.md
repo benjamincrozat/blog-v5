@@ -224,6 +224,6 @@ If you are piecing together your local PHP and Laravel setup, these next reads h
 
 - [Run PHP and Laravel more smoothly on macOS](/laravel-valet)
 - [Set up Laravel on macOS without a messy local stack](/laravel-installation-macos)
-- [6 ways to check your version of PHP](/check-php-version)
+- [Check whether your PHP version is part of the problem](/check-php-version)
 - [See whether Laravel Forge still fits the way you deploy](/laravel-forge)
 - [Compare hosting options before you deploy another Laravel app](/best-laravel-hosting-providers)

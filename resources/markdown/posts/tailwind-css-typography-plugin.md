@@ -243,6 +243,6 @@ It's important to note that, at the moment, you cannot nest new `prose` instance
 
 If you are polishing the reading experience of a Tailwind UI, these are the next posts I would keep nearby:
 
-- [Tailwind CSS forms plugin: my 2025 guide for v4 and v3](/tailwind-css-forms-plugin)
-- [5 Tailwind CSS best practices for 2025](/tailwind-css)
-- [Style an HTML dialog's backdrop with Tailwind CSS](/dialog-backdrop-styling-tailwind-css)
+- [Style forms faster with Tailwind's forms plugin](/tailwind-css-forms-plugin)
+- [Tighten your Tailwind habits before the CSS gets messy](/tailwind-css)
+- [Style dialog backdrops cleanly with Tailwind utilities](/dialog-backdrop-styling-tailwind-css)

@@ -121,9 +121,9 @@ For additional information and options, please refer to the [official documentat
 
 If you are modernizing the frontend tooling around a Laravel app, these next reads cover the trade-offs and companion setup choices:
 
-- [Use Bun as your package manager in any PHP project](/bun-php)
-- [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
-- [npm ci vs. npm install: here's the difference](/npm-ci)
+- [Use Bun in plain PHP projects too, not just Laravel](/bun-php)
+- [See where Bun fits compared with npm, Yarn, and pnpm](/bun-package-manager)
+- [Use npm ci when you need repeatable installs, not surprises](/npm-ci)
 - [Add Alpine to Laravel when you just need lightweight interactivity](/alpine-js-laravel)
 - [Add Vue to Laravel without overbuilding the frontend](/laravel-vue)
-- [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)
+- [Add Tailwind to Laravel without setup guesswork](/tailwind-css-laravel)

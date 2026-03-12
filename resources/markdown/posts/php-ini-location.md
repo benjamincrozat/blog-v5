@@ -104,6 +104,6 @@ Now you know exactly how and where to find your _php.ini_ file, tweak it safely,
 
 If you are tuning PHP locally and want the rest of that troubleshooting picture nearby, these are the next reads I would open:
 
-- [PHP: Show all errors (E_ALL) safely](/php-show-all-errors)
-- [6 ways to check your version of PHP](/check-php-version)
+- [Show every PHP error when debugging gets vague](/php-show-all-errors)
+- [Check whether your PHP version is part of the problem](/check-php-version)
 - [Run PHP and Laravel more smoothly on macOS](/laravel-valet)

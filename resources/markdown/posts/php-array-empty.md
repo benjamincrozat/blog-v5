@@ -162,6 +162,6 @@ With these guidelines, you should be able to write solid code.
 
 If you are still straightening out the small array habits that make PHP code easier to trust, these are the next reads I would open:
 
-- [Understanding array_filter() in PHP](/php-array-filter)
-- [Making sense of PHP's array_map() function](/php-array-map)
-- [Bring order back to your PHP arrays using array_values()](/php-array-values)
+- [Filter PHP arrays cleanly without awkward loops](/php-array-filter)
+- [Map arrays in PHP without overcomplicating the callback](/php-array-map)
+- [Reset array keys cleanly when the indexes get weird](/php-array-values)

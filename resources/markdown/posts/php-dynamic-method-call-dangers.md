@@ -51,6 +51,6 @@ If you ever map routes or commands in PHP, this is a quick read that can save a 
 
 If you are cleaning up risky dynamic PHP patterns before they bite you, these are the next reads I would keep nearby:
 
-- [Methods with the same name as their class will not be constructors in a future version of PHP](/methods-same-name-class-constructors-future-version-php)
-- [Fix "using $this when not in object context" now](/using-this-when-not-in-object-context)
-- [PHP exceptions: all you need to know](/php-exceptions)
+- [Fix old-style constructors before PHP breaks them](/methods-same-name-class-constructors-future-version-php)
+- [Fix the "$this" error when PHP says you're outside an object](/using-this-when-not-in-object-context)
+- [Understand exceptions before your next try/catch block](/php-exceptions)

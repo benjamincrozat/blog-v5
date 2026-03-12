@@ -282,6 +282,6 @@ If you are still shaping the local Mac setup around your PHP work, these are the
 
 - [Set up Laravel on macOS without a messy local stack](/laravel-installation-macos)
 - [Set up PHP on macOS or Windows with less friction](/laravel-herd)
-- [6 ways to check your version of PHP](/check-php-version)
+- [Check whether your PHP version is part of the problem](/check-php-version)
 - [Double-check which Laravel version is actually running](/check-laravel-version)
 - [See whether Laravel Forge still fits the way you deploy](/laravel-forge)
