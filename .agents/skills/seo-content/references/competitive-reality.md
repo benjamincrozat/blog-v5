@@ -23,6 +23,28 @@
   [SearchPilot winning tests PDF](https://www.searchpilot.com/hubfs/7%20winning%20SEO%20A_B%20tests.pdf)
   [SearchPilot losing tests PDF](https://www.searchpilot.com/hubfs/8%20Losing%20SEO%20A_B%20tests.pdf)
 
+- Length is a heuristic, not a law, but there is useful field evidence for CTR. Backlinko found titles around 40-60 characters and 6-9 words correlated with the best organic CTR. Treat that as a default starting range, not a hard ceiling.
+  Sources:
+  [Backlinko CTR study](https://backlinko.com/google-ctr-stats)
+
+- Cleaner, more focused titles can outperform longer or more cluttered ones. SearchPilot saw a positive result after removing “Compare” from title tags, and Backlinko cites Etsy test results suggesting shorter titles performed better than longer ones.
+  Sources:
+  [Removing “Compare” from title tags](https://www.searchpilot.com/resources/case-studies/removing-compare-from-title-tags)
+  [Backlinko CTR study](https://backlinko.com/google-ctr-stats)
+
+- Positive, specific wording can help, but gimmicks are risky. Backlinko found positive-sentiment titles correlated with higher CTR, while SearchPilot found emoji in meta descriptions hurt organic traffic in at least one real test.
+  Sources:
+  [Backlinko CTR study](https://backlinko.com/google-ctr-stats)
+  [What's the SEO impact of emoji in meta descriptions?](https://www.searchpilot.com/resources/case-studies/seo-split-test-lessons-emoji-meta-descriptions)
+
+- For meta descriptions, write for the click but remember Google may replace your text. SearchPilot has tests where removing weak or overlong meta descriptions helped, suggesting that Google-generated snippets can sometimes match queries better. Use custom descriptions when you can write a clearly better summary than the page would yield on its own.
+  Sources:
+  [Does removing meta descriptions improve click-through rates?](https://www.searchpilot.com/resources/case-studies/removing-meta-descriptions)
+
+- Questions are not a guaranteed CTR trick. Backlinko found titles with and without questions performed similarly overall, so use a question only when the query is literally question-shaped.
+  Sources:
+  [Backlinko CTR study](https://backlinko.com/google-ctr-stats)
+
 - AI-generated content is already common and often cited, but that does not make thin or generic pages safe. Ahrefs found AI-generated content is widespread even on top-ranking pages, while Google still targets scaled low-value content. Use AI to speed up drafting, not to mass-produce filler.
   Sources:
   [Ahrefs on AI content in top-ranking pages](https://ahrefs.com/blog/ai-overviews-cite-ai-generated-content-more-than-human-writing/)

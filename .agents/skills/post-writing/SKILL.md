@@ -31,12 +31,16 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 - Keep the promise tight across frontmatter: `title`, `description`, `slug`, and any `serp_*` overrides should point to the same outcome.
 - Do not add an in-body H1 or a manual table of contents.
 - Draft at least five title options, then pick the clearest one.
-- Use sentence case for titles by default. Aim for 60 characters or fewer when possible.
+- Use sentence case for titles by default. For search-facing titles, roughly 40-60 characters or 6-9 words is a useful soft target, not a hard rule.
 - Prefer titles with a plain-language outcome over clever phrasing or vague filler.
 - Treat `title` as the visible article title and `description` as the default summary used across the site.
 - Default `serp_title` and `serp_description` to `null`. Set them only when a tighter search/browser variant is clearly better than the default.
 - If `serp_title` is set, keep it very close to the visible `title` in meaning. It can be shorter or slightly more descriptive, but it must not target a different angle, query, or claim.
 - If `serp_description` is set, make it a concise, accurate summary of the same page. Do not use keyword lists or add claims that the page does not support.
+- When choosing among title options, favor the one with the clearest benefit, strongest specificity, and best query match.
+- Descriptions should read like a useful pitch for the page: one short sentence or two short clauses, with the main benefit near the start.
+- If the topic is time-sensitive, you may use a year or date, but only if the page itself is current enough to support it.
+- Avoid clickbait phrasing, vague curiosity hooks, fake urgency, unsupported superlatives, emojis, or decorative all-caps.
 - Open fast: explain the problem, answer, or reason to care in the first few paragraphs.
 - Keep headings descriptive and skimmable. Use the exact primary keyword in only 1-2 headings if it reads naturally.
 - Prefer practical examples and code when they help, but never leave a section as code-only.
@@ -57,13 +61,15 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 1. Define the reader promise and search intent.
 2. Draft five or more title candidates and choose the strongest one.
 3. Decide whether `serp_title` or `serp_description` need an override; otherwise leave them `null`.
-4. Pick the simplest outline that matches the post shape.
-5. Draft for clarity, usefulness, and brevity.
-6. Validate version-sensitive claims, inline links, and code examples.
-7. Do a final publishing pass:
+4. Check that the chosen title and description earn the click with a clear outcome, not a gimmick.
+5. Pick the simplest outline that matches the post shape.
+6. Draft for clarity, usefulness, and brevity.
+7. Validate version-sensitive claims, inline links, and code examples.
+8. Do a final publishing pass:
    - required frontmatter is present and valid
    - existing post IDs stayed unchanged
    - frontmatter promise is aligned
    - `serp_title` and `serp_description` are either `null` or clearly justified and aligned with the visible page copy
+   - title and description make a strong, accurate click promise
    - headings read naturally in the generated table of contents
    - code and links support the nearby claim

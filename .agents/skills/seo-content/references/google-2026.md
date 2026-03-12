@@ -12,9 +12,23 @@
   Sources:
   [Influencing title links in Google Search](https://developers.google.com/search/docs/advanced/appearance/title-link)
 
+- Google does not publish a hard title length limit. It says there is no limit on how long a `<title>` element can be, but title links are truncated as needed, typically to fit device width. Treat title length as a display heuristic, not a ranking rule.
+  Sources:
+  [Influencing title links in Google Search](https://developers.google.com/search/docs/advanced/appearance/title-link)
+
 - There is no fully separate Google-only description you can guarantee either. Google primarily creates snippets from page content and may use the meta description when it gives a better summary. Write unique, descriptive summaries for each page, and use a custom meta description only when it improves that summary without changing the page promise.
   Sources:
   [How to write meta descriptions](https://developers.google.com/search/docs/appearance/snippet)
+
+- Google does not publish a hard meta description length limit either. It says there is no limit on how long a meta description can be, but snippets are truncated as needed, typically to fit device width. Keep the most useful information early.
+  Sources:
+  [How to write meta descriptions](https://developers.google.com/search/docs/appearance/snippet)
+
+- Search Console is the place to measure CTR changes after title or description edits. Use the Search performance report for clicks, impressions, CTR, queries, and pages, and annotate major metadata changes so later analysis is easier.
+  Sources:
+  [Get started with Search Console](https://developers.google.com/search/docs/monitor-debug/search-console-start)
+  [Using Search Console and Google Analytics data for SEO](https://developers.google.com/search/docs/monitor-debug/google-analytics-search-console)
+  [Adding context to your Search Console data with custom annotations](https://developers.google.com/search/blog/2025/11/custom-chart-annotations)
 
 - Internal links should be crawlable and use good anchor text. This helps people navigate and helps Google understand page relationships.
   Sources:

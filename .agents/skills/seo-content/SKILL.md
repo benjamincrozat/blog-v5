@@ -32,6 +32,14 @@ Read these references as needed:
 - Default to the same core promise for visible page copy and search-facing metadata. Use `serp_title` and `serp_description` only for intentional overrides, not as a second editorial angle.
 - `serp_title` is an HTML `<title>` override, not a guaranteed Google-only title. Keep it close to the visible title so Google sees one clear main title.
 - `serp_description` is a meta description override. Use it only when it improves on `description` as a page summary; Google may ignore or rewrite it by query.
+- There is no hard Google character limit for titles or meta descriptions. Both are truncated to fit device width, so use length as a heuristic, not a rule.
+- For CTR, prefer a concrete outcome, strong query match, and a clear differentiator over clever phrasing.
+- As a soft title heuristic, aim for roughly 40-60 characters or 6-9 words when possible. Break that range when extra specificity meaningfully improves relevance or trust.
+- Front-load the primary query match and main payoff early in the title, because the start of the title is the most consistently visible part.
+- For custom descriptions, put the main benefit and query match in the first ~120 characters. A one-sentence summary often lands around 140-160 characters, but clarity matters more than hitting a count.
+- Questions are not an automatic CTR win. Positive, specific wording can help, but only when it stays natural and accurate.
+- Avoid cheap CTR bait: fake urgency, fake freshness, unsupported numbers, emoji gimmicks, or all-caps unless the query and vertical clearly support them.
+- Add a year or date only when the topic is genuinely time-sensitive and the page is actually updated to match.
 - Use the primary keyword in the title, intro, slug, and only 1-2 lower headings when natural.
 - Prefer clear, specific titles and snippets over keyword stuffing. Google may rewrite both.
 - Add relevant internal links with descriptive anchors. Treat them as navigation and topical context, not filler.
@@ -55,6 +63,8 @@ Read these references as needed:
 6. Do a final SEO pass:
    - title, description, and slug align
    - `serp_title` and `serp_description` are either `null` or justified, accurate, and aligned with the visible page
+   - title starts strong, uses concrete value, and is not relying on gimmicks for clicks
+   - description leads with the main benefit and still works if Google rewrites part of the snippet
    - headings match the SERP without sounding repetitive
    - internal links are relevant and descriptive
    - claims are backed by official or primary sources, not just competitors

@@ -14,6 +14,8 @@ Use competitors to spot what they cover better than we do, how they frame the to
   URL, title, page type, freshness signal, angle, strengths, weaknesses
 - Shared patterns:
   what all top results cover, what they skip, and how they frame the query
+- Click patterns:
+  what makes the visible titles and snippets feel worth clicking, and which angles look overused or weak
 - Our opening:
   the angle, promise, and differentiation we should use
 - Source plan:
@@ -26,6 +28,7 @@ Use competitors to spot what they cover better than we do, how they frame the to
 - Is the query informational, commercial, navigational, or mixed?
 - Does Google reward a quick answer, a deep guide, a list, a comparison, or a landing page?
 - Are the winning titles plain, urgent, opinionated, broad, or highly specific?
+- Which titles look most clickable without sounding spammy, and why?
 - Are the top results fresh because the topic changes fast, or just because those pages were updated recently?
 - What value can we add that the top 3 do not?
 
@@ -38,5 +41,6 @@ Produce a short brief before drafting:
 3. Repeated subtopics and gaps
 4. Recommended angle for our post
 5. Fact-check plan with primary sources
-6. Title directions
-7. Internal link opportunities
+6. Title and snippet directions
+7. CTR levers worth testing
+8. Internal link opportunities
