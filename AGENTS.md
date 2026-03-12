@@ -45,3 +45,4 @@ This repo is my personal blog about web developent.
 ## Local skills
 
 - `file-first-posts`: Use when the task is about exporting, editing, publishing, or syncing Markdown-managed posts. File: `.agents/skills/file-first-posts/SKILL.md`
+- `post-writing`: Use when the task is about drafting or revising publication-ready Markdown posts for the blog. File: `.agents/skills/post-writing/SKILL.md`

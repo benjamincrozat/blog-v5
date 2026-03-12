@@ -1,0 +1,4 @@
+interface:
+  display_name: "Post Writing"
+  short_description: "Draft concise, source-backed blog posts"
+  default_prompt: "Use $post-writing to draft or revise publication-ready posts in resources/markdown/posts, keep the writing reader-first and concise, preserve valid frontmatter and stable post IDs, align title/description/slug around one clear promise, prefer practical examples and inline primary-source links, and avoid browser-based validation."
