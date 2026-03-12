@@ -29,6 +29,9 @@ Read these references as needed:
 - Identify dominant search intent before writing: fix, definition, comparison, tool choice, list, landing page, or mixed intent.
 - Build around intent plus one clear differentiator. Do not copy a competitor's structure unless you are improving it.
 - Keep `title`, `description`, `slug`, intro, and first useful section aligned on the same promise.
+- Default to the same core promise for visible page copy and search-facing metadata. Use `serp_title` and `serp_description` only for intentional overrides, not as a second editorial angle.
+- `serp_title` is an HTML `<title>` override, not a guaranteed Google-only title. Keep it close to the visible title so Google sees one clear main title.
+- `serp_description` is a meta description override. Use it only when it improves on `description` as a page summary; Google may ignore or rewrite it by query.
 - Use the primary keyword in the title, intro, slug, and only 1-2 lower headings when natural.
 - Prefer clear, specific titles and snippets over keyword stuffing. Google may rewrite both.
 - Add relevant internal links with descriptive anchors. Treat them as navigation and topical context, not filler.
@@ -51,6 +54,7 @@ Read these references as needed:
 5. Draft or revise with `post-writing`.
 6. Do a final SEO pass:
    - title, description, and slug align
+   - `serp_title` and `serp_description` are either `null` or justified, accurate, and aligned with the visible page
    - headings match the SERP without sounding repetitive
    - internal links are relevant and descriptive
    - claims are backed by official or primary sources, not just competitors

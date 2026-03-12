@@ -8,11 +8,11 @@
   Sources:
   [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)
 
-- Google generates title links automatically and may use on-page headings or other references from the web. Write unique, descriptive titles and avoid boilerplate or stuffing.
+- There is no fully separate Google-only title you can control by hand. Google generates title links automatically from sources like the HTML `<title>`, the main visual title, headings, and other references on the web. Write unique, descriptive titles, avoid boilerplate, and keep the HTML title closely aligned with the visible page title.
   Sources:
   [Influencing title links in Google Search](https://developers.google.com/search/docs/advanced/appearance/title-link)
 
-- Meta descriptions help, but Google may rewrite snippets by query. Write descriptions as useful summaries, not rank-magic.
+- There is no fully separate Google-only description you can guarantee either. Google primarily creates snippets from page content and may use the meta description when it gives a better summary. Write unique, descriptive summaries for each page, and use a custom meta description only when it improves that summary without changing the page promise.
   Sources:
   [How to write meta descriptions](https://developers.google.com/search/docs/appearance/snippet)
 
