@@ -29,7 +29,7 @@ it('loads data for editing', function () {
         ]);
 });
 
-it('saves editable changes without changing slug', function () {
+it('updates the slug when it still matches the original title', function () {
     $post = Post::factory()->create([
         'title' => 'Existing title',
         'slug' => 'existing-title',
@@ -46,5 +46,25 @@ it('saves editable changes without changing slug', function () {
 
     expect($post->refresh()->title)->toBe('Updated title')
         ->and($post->description)->toBe('Updated description')
-        ->and($post->slug)->toBe('existing-title');
+        ->and($post->slug)->toBe('updated-title');
+});
+
+it('preserves a customized slug when editing the title', function () {
+    $post = Post::factory()->create([
+        'title' => 'Existing title',
+        'slug' => 'custom-slug',
+        'description' => 'Old description',
+    ]);
+
+    livewire(EditPost::class, ['record' => $post->slug])
+        ->fillForm([
+            'title' => 'Updated title',
+            'description' => 'Updated description',
+        ])
+        ->call('save')
+        ->assertHasNoFormErrors();
+
+    expect($post->refresh()->title)->toBe('Updated title')
+        ->and($post->description)->toBe('Updated description')
+        ->and($post->slug)->toBe('custom-slug');
 });
