@@ -31,9 +31,9 @@ Ashley also covers property visibility, custom logic with `__serialize` and `__u
 
 If you want a fast, practical path to safer data and cleaner tests, this is a great read.
 
-If you want a few more useful reads after this:
+To build on "A friendly guide to PHP serialization that finally clicked", start with these related reads:
 
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
 - [PHP 8.5: 15 new features and changes](/php-85)
-- [GPT‑5: my API quick start guide](/gpt-5-api)
+- [console.log() in PHP](/console-log-php)
+- [Convert a PHP array to JSON](/php-array-to-json)
 

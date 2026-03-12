@@ -175,9 +175,16 @@ Choose a managed platform ([Kinsta](/recommends/kinsta) or [Cloudways](/recommen
 
 My setup today: [DigitalOcean](/recommends/digitalocean) + [Laravel Forge](/laravel-forge). It’s reliable, fast, and easy to maintain.
 
-If you want a few more Laravel rabbit holes after this:
+These are the posts I would queue up right after "The 4 best Laravel cloud hosting providers for 2025 (+ my setup)":
 
 - [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
 - [The 6 best PHP cloud hosting providers for 2024](/best-cloud-hosting-provider-php)
 - [The best Black Friday and Cyber Monday deals I found](/2025-black-friday-cyber-monday-deals)
+- [How to install Laravel on macOS](/laravel-installation-macos)
+- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
+- [Laravel Herd: the simplest way to install PHP on macOS and Windows](/laravel-herd)
+- [How to deploy PHP & Laravel apps on Sevalla ($50 free credits)](/deploy-php-laravel-apps-sevalla)
+- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
 

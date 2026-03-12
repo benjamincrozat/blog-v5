@@ -147,9 +147,16 @@ Adding Alpine.js to your Laravel project is a straightforward process, whether y
 
 Remember to explore Alpine.js's documentation for more advanced features and best practices as you integrate it into your Laravel projects. Happy coding!
 
-If you want a few more frontend rabbit holes after this:
+If "Add Alpine.js to any Laravel project" is still on your mind, these posts connect nicely:
 
 - [Alpine.js: a lightweight framework for productive developers](/alpine-js)
 - [Add Vue.js to any Laravel project](/laravel-vue)
 - [Use Bun as Your Package Manager in Any Laravel Project](/bun-laravel)
+- [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)
+- [The laravel/ui package: my 2025 guide](/laravel-ui)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
+- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
 

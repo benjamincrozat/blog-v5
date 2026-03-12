@@ -109,9 +109,16 @@ use Illuminate\Support\Facades\Storage;
 Storage::disk('my-custom-driver')->put('lorem.txt', 'Lorem ipsum dolor sit amet.');
 ```
 
-If you want a few more Laravel rabbit holes after this:
+If "How to create a custom filesystem adapter in Laravel" was useful, these related posts make strong next steps:
 
 - [Let's build a custom Laravel Pulse card](/custom-laravel-pulse-card)
 - [Laravel Dropbox Driver package: how to install and use it](/laravel-dropbox-driver)
+- [Validation in Laravel made easy](/laravel-validation)
+- [How to install Laravel on macOS](/laravel-installation-macos)
 - [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [6 ways to check Laravel's version](/check-laravel-version)
+- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
+- [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)
 

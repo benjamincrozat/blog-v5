@@ -265,9 +265,14 @@ If you want the **highest-leverage** stuff from this list in terms of ROI:
 
 Use whatever matches your roadmap for the next 6–12 months. Black Friday is only interesting if it buys you leverage you were going to pay for anyway.
 
-If you want a few more useful reads after this:
+Once "The best Black Friday and Cyber Monday deals I found" clicks, these follow-ups make even more sense:
 
 - [The 4 best Laravel cloud hosting providers for 2025 (+ my setup)](/best-laravel-hosting-providers)
 - [The 6 best PHP cloud hosting providers for 2024](/best-cloud-hosting-provider-php)
 - [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
+- [The best web development courses available. Free and paid.](/best-web-development-courses)
+- [The best PHP blogs to read in 2025](/best-php-blogs)
+- [The best PHP packages to use in 2025](/best-php-packages)
+- [How to deploy PHP & Laravel apps on Sevalla ($50 free credits)](/deploy-php-laravel-apps-sevalla)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
 

@@ -45,9 +45,14 @@ At the time I'm writing these lines, the `dialog` element is supported by:
 
 [Check out the support chart on Can I use](https://caniuse.com/dialog).
 
-If you want a few more frontend rabbit holes after this:
+If this article on "Style an HTML dialog's backdrop with Tailwind CSS" hit the mark, keep the momentum going here:
 
 - [5 Tailwind CSS best practices for 2025](/tailwind-css)
 - [Tailwind CSS typography plugin: a step-by-step build guide](/tailwind-css-typography-plugin)
 - [Tailwind CSS forms plugin: my 2025 guide for v4 and v3](/tailwind-css-forms-plugin)
+- [Disable hover styles on mobile with Tailwind CSS](/disable-hover-styles-mobile-tailwind-css)
+- [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)
+- [The lh and rlh CSS units: simple spacing that follows your text](/css-lh-rlh)
+- [Style labels on focus the right way in CSS](/label-focus-css)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
 

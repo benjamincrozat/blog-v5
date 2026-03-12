@@ -65,9 +65,14 @@ By setting this flag, you opt into the new behavior, which will become the defau
 
 It's important to note that this is a breaking change and may affect existing styles, particularly for mobile devices.
 
-If you want a few more frontend rabbit holes after this:
+The next reads that pair well with "Disable hover styles on mobile with Tailwind CSS" are below:
 
 - [5 Tailwind CSS best practices for 2025](/tailwind-css)
 - [Tailwind CSS forms plugin: my 2025 guide for v4 and v3](/tailwind-css-forms-plugin)
 - [Tailwind CSS typography plugin: a step-by-step build guide](/tailwind-css-typography-plugin)
+- [Style an HTML dialog's backdrop with Tailwind CSS](/dialog-backdrop-styling-tailwind-css)
+- [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)
+- [Style labels on focus the right way in CSS](/label-focus-css)
+- [The lh and rlh CSS units: simple spacing that follows your text](/css-lh-rlh)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
 

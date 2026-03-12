@@ -24,9 +24,9 @@ One way to avert this is by blocking compromised or "pwned" passwords through se
 
 However, it is important to expand beyond merely implementing the rule, by teaching users about securing their passwords, providing resources, developing extra authentication measures, and possibly implementing SMS Multi-Factor Authentication for non-tech savvy users.
 
-If you want a few more security rabbit holes after this:
+These are the posts I would queue up right after "Should you block compromised passwords?":
 
 - [19 Laravel security best practices for 2025](/laravel-security-best-practices)
-- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
-- [The "419 Page Expired" error in Laravel: 5 quick fixes](/419-page-expired-laravel)
+- [The best GDPR-compliant Google Analytics alternatives (2024)](/best-gdpr-compliant-google-analytics-alternatives)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
 

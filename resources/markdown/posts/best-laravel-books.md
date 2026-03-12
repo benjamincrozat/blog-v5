@@ -72,9 +72,16 @@ I’d definitely recommend it, especially if you’re the kind of Laravel develo
 
 [Check Best Practices for Laravel Enterprise Applications →](/recommends/best-practices-laravel-enterprise-apps)
 
-If you want a few more Laravel rabbit holes after this:
+If "The best Laravel 12-ready books you should read in 2025" was useful, these related posts make strong next steps:
 
 - [Validation in Laravel made easy](/laravel-validation)
 - [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
 - [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+- [Easy data integrity with array validation in Laravel](/laravel-array-validation)
+- [3 crucial Laravel architecture best practices for 2025](/laravel-architecture-best-practices)
+- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
 

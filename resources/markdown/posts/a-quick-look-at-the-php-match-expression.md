@@ -36,9 +36,9 @@ return match ($driver) {
 
 I found the enum example especially useful for turning stored values into friendly labels. If you are on PHP 8.0 or higher, this is an easy win for tidy code.
 
-If you want a few more useful reads after this:
+If you are still thinking about "A quick look at the PHP match expression", open these next:
 
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
 - [PHP 8.5: 15 new features and changes](/php-85)
-- [GPT‑5: my API quick start guide](/gpt-5-api)
+- [A friendly guide to PHP serialization that finally clicked](/a-friendly-guide-to-php-serialization-that-finally-clicked)
+- [console.log() in PHP](/console-log-php)
 

@@ -72,9 +72,9 @@ One of the most common tasks is creating a new view for my application. Instead 
 - `--test`: This is a fantastic option when you're practicing TDD (Test Driven Development). It automatically generates a PHPUnit test alongside your view, saving you a step.
 - `--pest`: Similarly, if you're using Pest for testing, this option generates a corresponding Pest test for the view. It's all about making your testing process smoother.
 
-If you want a few more useful reads after this:
+If "A cheat sheet for Laravel's make Artisan commands" was useful, these related posts make strong next steps:
 
+- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
+- [Inside the Laravel service container](/inside-the-laravel-service-container)
 - [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-- [PHP 8.5: 15 new features and changes](/php-85)
 

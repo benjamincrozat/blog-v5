@@ -233,9 +233,16 @@ It's possible to check your submission status under "Help" > "Messages".
 
 ![The ChatGPT plugin submission bot.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/139/conversions/CleanShot_2023-06-19_at_22.14.48_2x_qtsdx8-medium.jpg)
 
-If you want a few more AI rabbit holes after this:
+If "Use Laravel to build a ChatGPT plugin" was useful, these related posts make strong next steps:
 
 - [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)
 - [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
 - [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
+- [How to use GPT-3.5 Turbo's API, step by step](/gpt-35-turbo)
+- [How to access and use GPT-4 Turbo's API, step by step](/gpt-4-turbo)
+- [How to access and use GPT-4o's API, step by step](/gpt-4o)
+- [How to use GPT-4o mini's API for cheap, step by step](/gpt-4o-mini)
+- [Access and use GPT‑4.1's API. 5 minutes, tops.](/gpt-41)
+- [GPT‑5: my API quick start guide](/gpt-5-api)
+- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
 

@@ -45,9 +45,16 @@ One of the primary causes of this error is nested transactions (when a transacti
 
 Remember, the root cause can vary depending on your specific setup and code. If these solutions don't work, it might be worth diving deeper into your database operations or seeking help from the Laravel community.
 
-If you want a few more Laravel rabbit holes after this:
+The next reads that pair well with "Fix '1305 SAVEPOINT trans2 does not exist' in Laravel" are below:
 
 - [Understanding database transactions with Laravel](/database-transactions-laravel)
-- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
 - [Laravel Pulse: monitor your apps for free](/laravel-pulse)
+- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
+- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
+- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+- [6 ways to check Laravel's version](/check-laravel-version)
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
 
