@@ -18,6 +18,7 @@ Use this skill when posts are managed from `resources/markdown/posts`.
 - Use `php artisan blog:sync` after every Markdown edit.
 - Upload every featured image and inline article image to Cloudflare Images.
 - Use `php artisan blog:upload-image` for post images instead of local paths or third-party hotlinks.
+- Use UTC ISO-8601 timestamps for frontmatter dates such as `published_at` and `modified_at`.
 - Publishing is changing `published_at` in the file, then running `php artisan blog:sync`.
 - Fail loudly on invalid front matter, unknown authors/categories, or duplicate IDs/slugs.
 - Do not use Filament to create, edit, delete, or restore posts.
@@ -30,7 +31,7 @@ Use this skill when posts are managed from `resources/markdown/posts`.
 3. Upload images before syncing:
    - hero image: `php artisan blog:upload-image /absolute/path/to/cover.png --markdown=your-post.md`
    - inline image: `php artisan blog:upload-image /absolute/path/to/step.png --alt="Describe the screenshot"` and paste the returned URL into the article body
-4. If publishing state changes, update `published_at`.
+4. If publishing state changes, update `published_at` in UTC.
 5. Run `php artisan blog:sync`.
 6. Verify the public page and the Filament posts list.
 7. Keep deploy notes in mind:

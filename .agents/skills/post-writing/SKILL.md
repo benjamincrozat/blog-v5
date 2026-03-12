@@ -18,7 +18,7 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 - Keep `id` stable when revising an existing post.
 - `author` must use the author's `github_login`.
 - `categories` must use category slugs.
-- `published_at`, `modified_at`, and `sponsored_at` use ISO-8601 datetimes or `null`.
+- `published_at`, `modified_at`, and `sponsored_at` use UTC ISO-8601 datetimes with a `Z` suffix or `null`.
 - `serp_title`, `serp_description`, `canonical_url`, `image_disk`, and `image_path` are nullable strings.
 - `serp_title` overrides the HTML `<title>` tag and `serp_description` overrides the meta description tag.
 - `is_commercial` must be `true` or `false`.
@@ -49,6 +49,7 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 - Add context before snippets and explain what they do, why they matter, and what result to expect.
 - Use current primary sources for version-sensitive claims. Link inline at the claim, and prefer relevant internal links before equivalent external links.
 - Verify links and commands when feasible. If something cannot be verified, tell the user outside the post copy.
+- When setting frontmatter timestamps, use UTC rather than the machine's local timezone.
 - Do not use browser-based validation for post-writing tasks.
 
 ## Common Shapes
