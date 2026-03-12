@@ -3,11 +3,11 @@ id: "01KKEW27M7JJ73EHZJ55ZV1MXT"
 title: "Is PHP dead? Usage statistics and market share (2025)"
 slug: "php-is-dead-2025"
 author: "benjamincrozat"
-description: "Is PHP dead? Let’s look at the October 2025 PHP usage statistics and see what the data really says about its future."
+description: "Is PHP dead? Let’s look at the December 2025 PHP usage statistics and see what the data really says about its future."
 categories:
   - "php"
 published_at: 2025-10-06T16:50:00+02:00
-modified_at: null
+modified_at: 2026-03-12T17:49:51+01:00
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -18,69 +18,72 @@ sponsored_at: null
 ---
 ## Introduction
 
-Every year someone declares PHP dead. Yet here we are in 2025 and the language is still running most of the web.
+**Numbers for 2026 are here. Check out the newest edition here: [Is PHP dead? Usage statistics and market share (2026)](/php-is-dead-2026)**
 
-AI has changed how we build and deploy software, but the truth is that stable, mature ecosystems like PHP are the backbone of the modern internet. They quietly do the work while other technologies fight over frameworks, build tools, and hype cycles.
+Every year someone declares PHP dead. Yet the December 2025 snapshot still showed PHP running most of the web.
 
-So let’s look at the latest PHP usage statistics for October 2025 and see whether the "PHP is dead" argument still holds up.
+This refresh uses December 2025 W3Techs snapshots where available, plus the "same period 2025" rows that IT Jobs Watch still exposes in its current rolling reports.
+
+So let’s look at the latest 2025 numbers and see whether the "PHP is dead" argument still holds up.
 
 ## PHP usage statistics in 2025
 
-According to W3Techs, PHP still powers **73.3%** of websites with a known server-side language.
+According to W3Techs, PHP still powered **72.9%** of websites with a known server-side language in the December 2025 snapshot.
 Here’s the breakdown:
 
-| Language     | Usage (Oct 2025) |
+| Language     | Usage (Dec 2025) |
 | ------------ | ---------------- |
-| PHP          | 73.3%            |
+| PHP          | 72.9%            |
 | Ruby         | 6.4%             |
 | Java         | 5.4%             |
-| JavaScript   | 5.0%             |
-| ASP.NET      | 4.8%             |
-| Scala        | 4.7%             |
-| Static files | 1.7%             |
+| JavaScript   | 5.3%             |
+| Scala        | 4.8%             |
+| ASP.NET      | 4.7%             |
+| Static files | 1.8%             |
 | Python       | 1.2%             |
 | ColdFusion   | 0.2%             |
 | Perl         | 0.1%             |
-| Others       | <0.1%            |
 
-Source: [W3Techs](https://w3techs.com/technologies/overview/programming_language)
+Source: [W3Techs](https://w3techs.com/technologies/history_overview/programming_language)
 
-So no, PHP isn’t dead. In fact, it’s still the foundation for most of the web you use every day.
+So no, PHP isn’t dead. In fact, it is still the foundation for most of the web you use every day.
 
-By the way, before you keep reading, here's **how W3Techs counts usage:**
+Before you keep reading, here’s **how W3Techs counts usage:**
 
-- The percentages are among **sites where a server-side language is detectable**, so not all sites on the internet. Their surveys update **daily**.
-- A site can use **more than one** server-side language, and W3Techs reports usage for the subset of sites with a known language.
+- The percentages are among **sites where a server-side language is detectable**, so not all sites on the internet.
+- A site can use **more than one** server-side language, and W3Techs updates these surveys **daily**.
 
 Learn more about [the methodology of W3Techs](https://w3techs.com/technologies).
 
 ## Which PHP versions are most used
 
-The big shift this year is that **PHP 8 finally overtook PHP 7** on the public web. Here’s what that looks like:
+By December 2025, **PHP 8 had clearly overtaken PHP 7** on the public web.
 
-| PHP Version | Usage (Oct 2025) |
+| PHP Version | Usage (Dec 2025) |
 | ----------- | ---------------- |
-| 8           | 51.5%            |
-| 7           | 38.6%            |
-| 5           | 9.9%             |
+| 8           | 53.9%            |
+| 7           | 36.6%            |
+| 5           | 9.5%             |
 | 4           | 0.1%             |
 
-Source: [W3Techs](https://w3techs.com/technologies/details/pl-php)
+Source: [W3Techs](https://w3techs.com/technologies/history_details/pl-php)
 
-PHP 8 is now clearly dominant, and adoption will likely grow even faster as hosts update and WordPress continues to nudge users forward.
-By the way, WordPress now recommends PHP 8.3 or higher. It still works on 7.2.24+, but that’s legacy territory.
+PHP 8 was no longer "the future" by the end of 2025. It was the default.
+That matters because WordPress recommends [PHP 8.3 or greater](https://wordpress.org/about/requirements/), even if its minimum version is still much older.
 
 ## The PHP job market in 2025
 
-Job data is messy, but the UK gives a decent snapshot. Here’s what IT Jobs Watch shows:
+Job data is always messy, so I prefer a rolling benchmark over pretending there’s a clean global count. Here’s what the **same-period 2025** rows on IT Jobs Watch looked like:
 
-* **PHP Developer**: median £42,500, rank 580 (down slightly from last year)
-* **Senior PHP Developer**: median £60,000, rank 652 (stable)
-* **PHP Laravel Developer**: median £40,000, rank 653 (a bit higher than last year)
+| Role                  | Median salary | Rank |
+| --------------------- | ------------- | ---- |
+| PHP Developer         | £55,000       | 429  |
+| Senior PHP Developer  | £60,000       | 677  |
+| PHP Laravel Developer | £47,500       | 426  |
 
-Source: [IT Jobs Watch](https://www.itjobswatch.co.uk/jobs/uk/php%20developer.do)
+Sources: [PHP Developer](https://www.itjobswatch.co.uk/jobs/uk/php%20developer.do), [Senior PHP Developer](https://www.itjobswatch.co.uk/jobs/uk/senior%20php%20developer.do), [PHP Laravel Developer](https://www.itjobswatch.co.uk/jobs/uk/php%20laravel%20developer.do)
 
-So while generalist roles softened a bit, senior and Laravel-focused positions are holding up well. The demand is still there if you know where to look.
+That is not a dead-language salary profile. If anything, it shows a mature market: broad demand, decent pay, and room for specialization.
 
 ## CMS market share: WordPress still rules
 
@@ -88,63 +91,57 @@ WordPress keeps PHP alive and well. It remains the most popular CMS on the plane
 
 | CMS         | Share of all sites | Share among known CMS |
 | ----------- | ------------------ | --------------------- |
-| WordPress   | 43.3%              | 60.7%                 |
-| Shopify     | 4.8%               | 6.8%                  |
-| Wix         | 4.1%               | 5.7%                  |
+| WordPress   | 43.2%              | 60.4%                 |
+| Shopify     | 4.9%               | 6.8%                  |
+| Wix         | 4.1%               | 5.8%                  |
 | Squarespace | 2.4%               | 3.4%                  |
-| Joomla      | 1.4%               | 2.0%                  |
+| Joomla      | 1.4%               | 1.9%                  |
 | Webflow     | 0.9%               | 1.2%                  |
 | Drupal      | 0.8%               | 1.1%                  |
 
-(“No CMS” or custom builds account for 28.6% of all sites.)
+("No CMS" or custom builds account for 28.6% of all sites.)
 
-Source: [W3Techs](https://w3techs.com/technologies/overview/content_management/)
+Sources: [W3Techs usage history](https://w3techs.com/technologies/history_overview/content_management/all), [W3Techs market share history](https://w3techs.com/technologies/history_overview/content_management)
 
 ## WordPress versions and plugins
 
-Most WordPress sites have now moved to version 6.
+By December 2025, most WordPress sites had moved to version 6.
 
-| Version | Usage (Oct 2025) |
+| Version | Usage (Dec 2025) |
 | ------- | ---------------- |
-| 6       | 90.1%            |
-| 5       | 7.1%             |
-| 4       | 2.6%             |
+| 6       | 90.7%            |
+| 5       | 6.6%             |
+| 4       | 2.5%             |
 | 3       | 0.2%             |
 
-And these are the most used plugins:
+And these were the most used plugins:
 
 | Plugin      | Share |
 | ----------- | ----- |
-| Elementor   | 29.8% |
+| Elementor   | 30.3% |
 | WooCommerce | 20.4% |
-| WPBakery    | 8.7%  |
+| WPBakery    | 8.4%  |
 
-Source: [W3Techs](https://w3techs.com/technologies/details/cm-wordpress)
+Sources: [W3Techs WordPress version history](https://w3techs.com/technologies/history_details/cm-wordpress/ver), [W3Techs WordPress subtechnologies history](https://w3techs.com/technologies/history_details/cm-wordpress)
 
-I’m not surprised to see Elementor and WooCommerce leading the pack. They’re basically ecosystems of their own at this point.
+I’m not surprised to see Elementor and WooCommerce leading the pack. They are basically ecosystems of their own at this point.
 
-## PHP frameworks market share
+## PHP frameworks in late 2025
 
-Download counts on Packagist are tricky. Laravel ships as a single framework package, while **Symfony usage is spread across dozens of components**. Comparing `laravel/framework` to `symfony/symfony` undercounts Symfony by design. If you want a single number, Symfony publishes [aggregate component downloads](https://symfony.com/stats/downloads): **~33.25 billion** as of right now (and it goes up quickly). That is the real scale of Symfony on Packagist.
+The framework picture did not suddenly flip in late 2025 either.
 
-And here’s how they look on GitHub right now, which is a better way to jauge popularity:
+Laravel was still the framework most newcomers talked about first, while **Symfony remained harder to measure with a single Packagist package** because its usage is spread across many components.
+That’s why `laravel/framework` versus `symfony/symfony` is not a fair one-line comparison.
 
-| Framework        | Stars     |
-| ---------------- | --------- |
-| **Laravel**      | **82.3k** |
-| Symfony          | 30.7k     |
-| CodeIgniter (v3) | 18.2k     |
-| CakePHP          | 8.8k      |
-
-As you can see, Laravel wins easily.
+If you want a better read on Symfony’s footprint, use [Symfony’s aggregate download stats](https://symfony.com/stats/downloads) instead of just the monorepo package page.
 
 ## PHP releases in 2025
 
-Here’s where we stand:
+Here’s where 2025 ended:
 
-* PHP 8.3 is supported until **December 31, 2025**
-* PHP 8.4 is supported until **December 31, 2026**
-* PHP 8.5 is scheduled for **November 20, 2025**
+* PHP 8.3 active support ended on **December 31, 2025**
+* PHP 8.4 stays in active support until **December 31, 2026**
+* PHP 8.5 shipped on **November 20, 2025**
 
 If you’re still on PHP 7, it’s time to upgrade. Performance gains and type safety alone make it worth it.
 
@@ -153,9 +150,9 @@ Sources: [php.net](https://www.php.net/supported-versions.php), [PHP.Watch](http
 ## So, is PHP dead?
 
 Not even close.
-PHP still powers almost three quarters of the web, WordPress continues to grow, Laravel dominates frameworks, and the language itself evolves every year.
+PHP still powered almost three quarters of the web at the end of 2025, WordPress continued to dominate CMS usage, and the language itself kept moving forward.
 
 It’s not flashy, it’s not trendy, and that’s exactly why it works.
 The web runs on things that are predictable, maintainable, and well supported. PHP happens to be all three.
 
-If anything, the 2025 PHP usage statistics prove that the language is more alive than ever.
+If anything, the December 2025 numbers prove that PHP remained one of the most entrenched technologies on the public web.
