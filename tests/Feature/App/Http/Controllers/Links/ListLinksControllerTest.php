@@ -117,3 +117,29 @@ it('paginates the links collection', function () {
         ->assertOk()
         ->assertViewHas('links', fn (LengthAwarePaginator $links) => 12 === $links->count());
 });
+
+it('builds breadcrumbs for the links index', function () {
+    get(route('links.index'))
+        ->assertOk()
+        ->assertViewHas('breadcrumbs', [
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Links'],
+        ])
+        ->assertViewHas('breadcrumbSchema', [
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                [
+                    '@type' => 'ListItem',
+                    'position' => 1,
+                    'name' => 'Home',
+                    'item' => route('home'),
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 2,
+                    'name' => 'Links',
+                ],
+            ],
+        ]);
+});

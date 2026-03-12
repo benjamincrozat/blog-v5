@@ -1,29 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Categories;
+namespace App\Http\Controllers\Tools;
 
-use App\Models\Category;
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Actions\BuildBreadcrumbSchema;
 
 /**
- * Handles list categories controller requests.
+ * Handles list tools controller requests.
  */
-class ListCategoriesController extends Controller
+class ListToolsController extends Controller
 {
     public function __invoke() : View
     {
         $breadcrumbs = [
             ['label' => 'Home', 'url' => route('home')],
-            ['label' => 'Categories'],
+            ['label' => 'Tools'],
         ];
 
-        return view('categories.index', [
-            'categories' => Category::query()
-                ->withCount('posts')
-                ->orderBy('name')
-                ->get(),
+        return view('tools.index', [
             'breadcrumbs' => $breadcrumbs,
             'breadcrumbSchema' => app(BuildBreadcrumbSchema::class)->handle($breadcrumbs),
         ]);

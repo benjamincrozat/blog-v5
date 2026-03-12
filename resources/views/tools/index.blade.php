@@ -7,6 +7,10 @@ Displays the tools index view.
     title="Unlock the best tools for developers"
     description="Browse the great tools I gathered from across the web. Services and apps of all kinds to help you do your job more efficiently."
 >
+    <div class="container">
+        <x-breadcrumbs :items="$breadcrumbs" class="mb-8 md:mb-10" />
+    </div>
+
     <x-typography.headline>
         Discover the best tools<br class="hidden md:inline" />
         for developers
@@ -41,4 +45,8 @@ Displays the tools index view.
             <x-tools.digitalocean />
         </div>
     </x-section>
+
+    <script type="application/ld+json">
+        {!! json_encode($breadcrumbSchema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
 </x-app>

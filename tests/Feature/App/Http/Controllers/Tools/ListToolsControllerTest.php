@@ -2,16 +2,13 @@
 
 use function Pest\Laravel\get;
 
-use Illuminate\Support\Collection;
-
-it('lists posts', function () {
-    get(route('categories.index'))
+it('shows the tools index with breadcrumbs', function () {
+    get(route('tools.index'))
         ->assertOk()
-        ->assertViewIs('categories.index')
-        ->assertViewHas('categories', fn (Collection $categories) => true)
+        ->assertViewIs('tools.index')
         ->assertViewHas('breadcrumbs', [
             ['label' => 'Home', 'url' => route('home')],
-            ['label' => 'Categories'],
+            ['label' => 'Tools'],
         ])
         ->assertViewHas('breadcrumbSchema', [
             '@context' => 'https://schema.org',
@@ -26,7 +23,7 @@ it('lists posts', function () {
                 [
                     '@type' => 'ListItem',
                     'position' => 2,
-                    'name' => 'Categories',
+                    'name' => 'Tools',
                 ],
             ],
         ]);

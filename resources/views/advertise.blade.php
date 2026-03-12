@@ -9,6 +9,8 @@ Displays the advertise view.
     :hide-sticky-carousel="true"
 >
     <div class="container md:text-xl xl:max-w-(--breakpoint-lg)">
+        <x-breadcrumbs :items="$breadcrumbs" class="mb-8 md:mb-10" />
+
         <x-typography.headline>
             Show off your business to <span class="text-blue-600">{{ Number::format($visitors) }}</span>&nbsp;developers
         </x-typography.headline>
@@ -329,4 +331,8 @@ Displays the advertise view.
     </x-section>
 
     <x-ads.bottom />
+
+    <script type="application/ld+json">
+        {!! json_encode($breadcrumbSchema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
 </x-app>

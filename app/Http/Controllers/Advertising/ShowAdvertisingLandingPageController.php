@@ -6,6 +6,7 @@ use App\Models\Metric;
 use Illuminate\View\View;
 use Illuminate\Support\Number;
 use App\Http\Controllers\Controller;
+use App\Actions\BuildBreadcrumbSchema;
 
 /**
  * Handles show advertising landing page controller requests.
@@ -14,6 +15,11 @@ class ShowAdvertisingLandingPageController extends Controller
 {
     public function __invoke() : View
     {
+        $breadcrumbs = [
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Advertise'],
+        ];
+
         $stickyCarouselExampleAds = [
             [
                 'icon' => '<div class="size-8 bg-red-600"></div>',
@@ -42,6 +48,8 @@ class ShowAdvertisingLandingPageController extends Controller
                 Metric::query()->where('key', 'platform_desktop')->value('value') ?? 0, 0
             ),
             'stickyCarouselExampleAds' => $stickyCarouselExampleAds,
+            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbSchema' => app(BuildBreadcrumbSchema::class)->handle($breadcrumbs),
         ]);
     }
 }

@@ -6,6 +6,10 @@ Displays the categories index view.
     title="Categories"
     description="Level up as a web developer in {{ date('Y') }} with this collection of articles I wrote sorted by category."
 >
+    <div class="container xl:max-w-(--breakpoint-lg)">
+        <x-breadcrumbs :items="$breadcrumbs" class="mb-8 md:mb-10" />
+    </div>
+
     <x-section
         title="Categories"
         heading-tag="h1"
@@ -34,4 +38,8 @@ Displays the categories index view.
             </div>
         @endif
     </x-section>
+
+    <script type="application/ld+json">
+        {!! json_encode($breadcrumbSchema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
 </x-app>

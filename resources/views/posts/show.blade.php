@@ -20,6 +20,8 @@ Displays the posts show view.
             'lg:col-span-8 xl:col-span-9' => ! $post->is_commercial,
         ])>
             <article>
+                <x-breadcrumbs :items="$breadcrumbs" class="mb-6 md:mb-8" />
+
                 @if ($post->hasImage())
                     <img
                         fetchpriority="high"
@@ -30,8 +32,6 @@ Displays the posts show view.
                         class="object-cover mb-11 w-full rounded-xl ring-1 shadow-xl ring-black/5 aspect-video"
                     />
                 @endif
-
-                <x-breadcrumbs :items="$breadcrumbs" class="mb-6" />
 
                 <x-categories :categories="$post->categories" class="justify-center mt-11 mb-8">
                     @if ($post->isSponsored())

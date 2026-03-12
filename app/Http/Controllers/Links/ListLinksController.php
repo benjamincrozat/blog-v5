@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Links;
 use App\Models\Link;
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
+use App\Actions\BuildBreadcrumbSchema;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
@@ -14,6 +15,11 @@ class ListLinksController extends Controller
 {
     public function __invoke() : View
     {
+        $breadcrumbs = [
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Links'],
+        ];
+
         $distinctUsersQuery = Link::query()
             ->select('user_id')
             ->distinct('user_id')
@@ -34,6 +40,8 @@ class ListLinksController extends Controller
                 ->latest('is_approved')
                 ->approved()
                 ->paginate(12),
+            'breadcrumbs' => $breadcrumbs,
+            'breadcrumbSchema' => app(BuildBreadcrumbSchema::class)->handle($breadcrumbs),
         ]);
     }
 }

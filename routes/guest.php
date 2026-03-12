@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Posts\ShowPostController;
 use App\Http\Controllers\Links\ListLinksController;
 use App\Http\Controllers\Posts\ListPostsController;
+use App\Http\Controllers\Tools\ListToolsController;
 use App\Http\Controllers\Authors\ShowAuthorController;
 use App\Http\Controllers\Checkout\StartCheckoutController;
 use App\Http\Controllers\Merchants\ShowMerchantController;
@@ -41,7 +42,7 @@ Route::get('/jobs', fn () => abort(410));
 Route::get('/jobs/{any}', fn () => abort(410))
     ->where('any', '.*');
 
-Route::view('/tools', 'tools.index')
+Route::get('/tools', ListToolsController::class)
     ->name('tools.index');
 
 Route::get('/newsletter', fn () => abort(410));

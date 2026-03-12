@@ -6,6 +6,10 @@ Displays the links index view.
     title="The latest community-written articles about web development in {{ date('Y') }}"
     description="A collection of content created and shared by other web developers."
 >
+    <div class="container">
+        <x-breadcrumbs :items="$breadcrumbs" class="mb-8 md:mb-10" />
+    </div>
+
     @if ($links->currentPage() === 1)
         <div class="container text-center">
             <x-typography.headline>
@@ -56,4 +60,8 @@ Displays the links index view.
             class="mt-16"
         />
     </x-section>
+
+    <script type="application/ld+json">
+        {!! json_encode($breadcrumbSchema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
 </x-app>

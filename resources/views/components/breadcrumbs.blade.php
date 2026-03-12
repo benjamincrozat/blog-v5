@@ -4,14 +4,17 @@ Provides a responsive breadcrumb trail that accepts label and URL pairs, treatin
 
 @props(['items'])
 
-<nav {{ $attributes->class('flex justify-start sm:justify-center') }} aria-label="Breadcrumb">
-    <ol class="flex max-w-full min-w-0 items-center gap-1 overflow-x-auto rounded-full border border-black/[0.06] bg-gray-50 p-1.5 text-sm text-gray-600 shadow-sm shadow-black/5">
+<nav {{ $attributes->class('flex w-full justify-start sm:justify-center') }} aria-label="Breadcrumb">
+    <ol class="flex w-full min-w-0 items-center gap-1 overflow-x-auto rounded-full border border-black/[0.06] bg-gray-50 p-1.5 text-sm text-gray-600 shadow-sm shadow-black/5 sm:w-auto">
         @foreach ($items as $item)
             @php
                 $isCurrentPage = blank($item['url'] ?? null);
             @endphp
 
-            <li class="flex min-w-0 items-center gap-1">
+            <li @class([
+                'flex min-w-0 items-center gap-1',
+                'flex-1 sm:flex-none' => $isCurrentPage,
+            ])>
                 @if (! $loop->first)
                     <x-heroicon-o-chevron-right
                         aria-hidden="true"
@@ -31,7 +34,10 @@ Provides a responsive breadcrumb trail that accepts label and URL pairs, treatin
                     <span
                         aria-current="page"
                         title="{{ $item['label'] }}"
-                        class="block max-w-[13rem] truncate rounded-full bg-white px-3 py-1.5 font-medium text-gray-950 ring-1 ring-black/[0.06] shadow-sm shadow-black/5 sm:max-w-[30rem] lg:max-w-[40rem]"
+                        @class([
+                            'block w-full min-w-0 truncate rounded-full bg-white px-3 py-1.5 font-medium text-gray-950 ring-1 ring-black/[0.06] shadow-sm shadow-black/5 sm:w-auto sm:max-w-[30rem] lg:max-w-[40rem]',
+                            'ml-1' => ! $loop->first,
+                        ])
                     >
                         {{ $item['label'] }}
                     </span>
