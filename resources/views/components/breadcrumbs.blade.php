@@ -4,7 +4,7 @@ Provides a responsive breadcrumb trail that accepts label and URL pairs, treatin
 
 @props(['items'])
 
-<nav {{ $attributes->class('flex w-full justify-start sm:justify-center') }} aria-label="Breadcrumb">
+<nav {{ $attributes->class('flex w-full justify-start') }} aria-label="Breadcrumb">
     <ol class="flex w-full min-w-0 items-center gap-1 overflow-x-auto rounded-full border border-black/[0.06] bg-gray-50 p-1.5 text-sm text-gray-600 shadow-sm shadow-black/5 sm:w-auto">
         @foreach ($items as $item)
             @php
@@ -36,7 +36,7 @@ Provides a responsive breadcrumb trail that accepts label and URL pairs, treatin
                         title="{{ $item['label'] }}"
                         @class([
                             'block w-full min-w-0 truncate rounded-full bg-white px-3 py-1.5 font-medium text-gray-950 ring-1 ring-black/[0.06] shadow-sm shadow-black/5 sm:w-auto sm:max-w-[30rem] lg:max-w-[40rem]',
-                            'ml-1' => ! $loop->first,
+                            'ml-2.5' => ! $loop->first,
                         ])
                     >
                         {{ $item['label'] }}
