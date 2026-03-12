@@ -64,16 +64,9 @@ Senior developers want to work on complex issues that will make your project eas
 
 And you also need to know when things are stuck. Sometimes, problems are tough to solve, and deciding to get someone else involved as soon as possible to help you move forward is crucial.
 
-The next reads that pair well with "The best Laravel developers to hire in 2024" are below:
+If you are still thinking about what strong Laravel talent actually looks like, these posts add useful context from the technical side:
 
-- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
-- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
-- [3 crucial Laravel architecture best practices for 2025](/laravel-architecture-best-practices)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
 - [Laravel interview questions and answers for 2025](/laravel-interview-questions)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
-- [Validation in Laravel made easy](/laravel-validation)
-- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
-
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [3 crucial Laravel architecture best practices for 2025](/laravel-architecture-best-practices)
+- [The best Laravel 12-ready books you should read in 2025](/best-laravel-books)

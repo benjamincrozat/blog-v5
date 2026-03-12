@@ -110,9 +110,9 @@ Here all the topics covered by Laracasts: Alpine.js, authentication, AWS, billin
 | --------- | ------------ | ----------- | --------- |
 | Yes       | $11          | $99         | $299      |
 
-These are the posts I would queue up right after "The best web development courses available. Free and paid.":
+If you are sketching out a learning path instead of buying courses at random, these next reads help round it out:
 
-- [GPT‑5: my API quick start guide](/gpt-5-api)
-- [Access and use GPT‑4.1's API. 5 minutes, tops.](/gpt-41)
-- [How to access and use GPT-4o's API, step by step](/gpt-4o)
-
+- [The best Laravel 12-ready books you should read in 2025](/best-laravel-books)
+- [The best PHP blogs to read in 2025](/best-php-blogs)
+- [The best PHP packages to use in 2025](/best-php-packages)
+- [Git merge vs rebase: the only mental model you need](/git-merge-vs-rebase)

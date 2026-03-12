@@ -88,16 +88,10 @@ Definitely a good add to my "PHP blogs" folder in my feeds aggregator. 👍
 
 Tim is a core Laravel team member. At the time I'm writing these lines, he is trying to redesign PHP's official website. His blog is interesting and should teach a thing or two even to the best of us.
 
-If "The best PHP blogs to read in 2025" is part of your current stack puzzle, keep going with these:
+If you are putting together a better PHP reading diet, these follow-up posts keep you close to what the ecosystem is actually doing:
 
-- [Is PHP dead? Usage statistics and market share (2026)](/php-is-dead-2026)
-- [Is PHP dead? Usage statistics and market share for 2023.](/php-is-dead-2023)
-- [Is PHP dead? Usage statistics and market share (2025)](/php-is-dead-2025)
-- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [Is PHP dead? Usage and market share for September 2024](/php-is-dead-2024)
-- [The 6 best PHP cloud hosting providers for 2024](/best-cloud-hosting-provider-php)
-- [6 ways to check your version of PHP](/check-php-version)
 - [The best PHP packages to use in 2025](/best-php-packages)
-- [console.log() in PHP](/console-log-php)
-- [Is PHP dead? Usage statistics and market share for 2022.](/php-is-dead-2022)
-
+- [PHP 8.5: 15 new features and changes](/php-85)
+- [6 ways to check your version of PHP](/check-php-version)
+- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
+- [Is PHP dead? Usage statistics and market share (2026)](/php-is-dead-2026)

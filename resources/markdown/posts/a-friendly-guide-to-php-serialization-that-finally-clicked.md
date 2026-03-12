@@ -31,9 +31,10 @@ Ashley also covers property visibility, custom logic with `__serialize` and `__u
 
 If you want a fast, practical path to safer data and cleaner tests, this is a great read.
 
-To build on "A friendly guide to PHP serialization that finally clicked", start with these related reads:
+If this finally made PHP data feel less magical, these follow-up reads keep that same practical momentum going:
 
-- [PHP 8.5: 15 new features and changes](/php-85)
-- [console.log() in PHP](/console-log-php)
+- [A friendly intro to the state machine pattern in PHP](/a-friendly-intro-to-the-state-machine-pattern-in-php)
 - [Convert a PHP array to JSON](/php-array-to-json)
-
+- [PHP exceptions: all you need to know](/php-exceptions)
+- [PHP enums: a full guide for better code](/php-enums)
+- [A quick look at the PHP match expression](/a-quick-look-at-the-php-match-expression)

@@ -17,9 +17,9 @@ sponsored_at: null
 ---
 Wendell Adriel lays out a clear, real‑world guide to the state machine pattern in PHP. He shows how to tame messy if/else chains by modeling states, events, guards, and actions, then builds a simple order workflow with enums. I liked how he keeps side effects at the edges and later swaps them for domain events with an outbox for safer, testable code. If you’ve wrestled with business rules or want predictable flows, this is a solid, practical read.
 
-Once "A friendly intro to the state machine pattern in PHP" clicks, these follow-ups make even more sense:
+If you want to turn this into stronger domain code instead of a one-off pattern, these are the PHP building blocks I would read next:
 
-- [PHP 8.5: 15 new features and changes](/php-85)
+- [PHP enums: a full guide for better code](/php-enums)
+- [A quick look at the PHP match expression](/a-quick-look-at-the-php-match-expression)
 - [A friendly guide to PHP serialization that finally clicked](/a-friendly-guide-to-php-serialization-that-finally-clicked)
-- [console.log() in PHP](/console-log-php)
-
+- [PHP exceptions: all you need to know](/php-exceptions)

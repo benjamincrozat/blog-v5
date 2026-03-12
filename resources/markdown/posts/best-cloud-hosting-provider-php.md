@@ -172,16 +172,10 @@ However, if you are ready to make compromises, you could host static websites (m
 - Surge
 - Vercel
 
-These are the posts I would queue up right after "The 6 best PHP cloud hosting providers for 2024":
+If you are narrowing down where a PHP app should actually live, these follow-up reads help with hosting, deployment, and the setup around it:
 
 - [The 4 best Laravel cloud hosting providers for 2025 (+ my setup)](/best-laravel-hosting-providers)
 - [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
-- [The best Black Friday and Cyber Monday deals I found](/2025-black-friday-cyber-monday-deals)
-- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
 - [How to deploy PHP & Laravel apps on Sevalla ($50 free credits)](/deploy-php-laravel-apps-sevalla)
-- [The best PHP packages to use in 2025](/best-php-packages)
-- [The best PHP blogs to read in 2025](/best-php-blogs)
-- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [The best GDPR-compliant Google Analytics alternatives (2024)](/best-gdpr-compliant-google-analytics-alternatives)
-- [Is PHP dead? Usage statistics and market share for 2023.](/php-is-dead-2023)
-
+- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
+- [Laravel Herd: the simplest way to install PHP on macOS and Windows](/laravel-herd)

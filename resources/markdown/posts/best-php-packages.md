@@ -53,16 +53,10 @@ When it comes to testing or seeding databases with dummy data, [Faker](https://g
 
 Need to parse Markdown? The [league/commonmark](https://commonmark.thephpleague.com) package is a highly-efficient Markdown parser for PHP. It adheres to the CommonMark specification and is extendable, allowing you to add custom features. It's used by Laravel by default and therefore, the one I use on this blog. league/commonmark's code is well put together, making it hard to understand and extend. But when you finally get it, it's extremely powerful.
 
-If this article on "The best PHP packages to use in 2025" hit the mark, keep the momentum going here:
+If this list sent you looking for what to build with those packages, these are the next PHP reads I would keep open:
 
-- [The 6 best PHP cloud hosting providers for 2024](/best-cloud-hosting-provider-php)
 - [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
+- [PHP 8.5: 15 new features and changes](/php-85)
 - [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
-- [6 ways to check your version of PHP](/check-php-version)
 - [The best PHP blogs to read in 2025](/best-php-blogs)
-- [PHP 8.4: new features and release date](/php-84)
-- [Is PHP dead? Usage statistics and market share for 2023.](/php-is-dead-2023)
-- [PHP 9 release date and what to fix now](/php-90)
-- [console.log() in PHP](/console-log-php)
-- [PHP 8.3's Override attribute in a nutshell](/php-83-override-attribute)
-
+- [6 ways to check your version of PHP](/check-php-version)

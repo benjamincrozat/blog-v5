@@ -36,9 +36,9 @@ services:
 
 If you want a practical blueprint for Docker, Laravel, Traefik, and FrankenPHP, this piece is a great start. It helps you ship with confidence, without a ton of guesswork.
 
-If you are still thinking about "A production-ready Laravel setup with Traefik and FrankenPHP", open these next:
+If you are moving from local confidence to something you can run in production without flinching, these next reads help with hosting and deployment decisions:
 
 - [The 4 best Laravel cloud hosting providers for 2025 (+ my setup)](/best-laravel-hosting-providers)
-- [The 6 best PHP cloud hosting providers for 2024](/best-cloud-hosting-provider-php)
+- [How to deploy PHP & Laravel apps on Sevalla ($50 free credits)](/deploy-php-laravel-apps-sevalla)
 - [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
-
+- [The 6 best PHP cloud hosting providers for 2024](/best-cloud-hosting-provider-php)

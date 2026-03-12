@@ -53,16 +53,10 @@ Laravel Pulse also allows developers to create what's called a "custom card," wh
 
 [geowrgetudor/404-monitor](https://github.com/geowrgetudor/404-monitor), made by George Tudor, is a card that will track dead links on your website. It's a great way to make sure your users don't repeatedly end up on non-existing page ever again.
 
-To build on "The best custom cards for Laravel Pulse in 2024", start with these related reads:
+If Pulse is turning into something you actually want to extend, these are the next Laravel tooling reads I would keep nearby:
 
 - [Laravel Pulse: monitor your apps for free](/laravel-pulse)
 - [Let's build a custom Laravel Pulse card](/custom-laravel-pulse-card)
-- [The laravel/ui package: my 2025 guide](/laravel-ui)
-- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
 - [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
-- [Laravel Dropbox Driver package: how to install and use it](/laravel-dropbox-driver)
 - [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
 - [Make your Eloquent models IDE-friendly using Laravel Lift](/laravel-lift)
-- [6 ways to check Laravel's version](/check-laravel-version)
-- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
-

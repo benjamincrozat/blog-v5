@@ -119,16 +119,11 @@ bun run dev
 
 For additional information and options, please refer to the [official documentation of the `bun run` command](https://bun.sh/docs/cli/run).
 
-If "Use Bun as Your Package Manager in Any Laravel Project" is part of your current stack puzzle, keep going with these:
+If you are modernizing the frontend tooling around a Laravel app, these next reads cover the trade-offs and companion setup choices:
 
 - [Use Bun as your package manager in any PHP project](/bun-php)
-- [Add Alpine.js to any Laravel project](/alpine-js-laravel)
 - [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
+- [npm ci vs. npm install: here's the difference](/npm-ci)
+- [Add Alpine.js to any Laravel project](/alpine-js-laravel)
 - [Add Vue.js to any Laravel project](/laravel-vue)
 - [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)
-- [How to install Laravel on macOS](/laravel-installation-macos)
-- [The laravel/ui package: my 2025 guide](/laravel-ui)
-- [6 ways to check Laravel's version](/check-laravel-version)
-- [npm ci vs. npm install: here's the difference](/npm-ci)
-- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
-

@@ -250,16 +250,10 @@ See Laravel’s [CSRF docs](https://laravel.com/docs/csrf) for details.
 
 The Laravel 419 error is almost always a solvable CSRF or session configuration issue. Start with `@csrf`, refresh if idle, confirm the AJAX header, validate session and cookie settings, and only then consider route exclusions. My preferred order is forms → AJAX headers → session and cookie settings → server routing → targeted CSRF excludes. For deeper reference, see Laravel’s official [CSRF protection documentation](https://laravel.com/docs/csrf) and [Sanctum docs](https://laravel.com/docs/sanctum).
 
-These are the posts I would queue up right after "The '419 Page Expired' error in Laravel: 5 quick fixes":
+If you are still tightening forms, sessions, and API requests after the 419 fix, these are the next posts I would open:
 
 - [19 Laravel security best practices for 2025](/laravel-security-best-practices)
 - [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
 - [Fix "No application encryption key has been specified." in Laravel](/laravel-no-application-key-specified)
-- [Laravel 13: features, timeline, and upgrade prep](/laravel-13)
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
-- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
-- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
-
+- [How to customize middleware in Laravel 11+](/customize-middleware-laravel-11)
+- [Validation in Laravel made easy](/laravel-validation)
