@@ -19,15 +19,6 @@ Displays the advertise view.
 
         <div class="flex flex-wrap md:flex-nowrap md:text-left gap-4 justify-center">
             <x-btn
-                size="md"
-                href="https://benjamincrozat.pirsch.io/?domain=benjamincrozat.com&interval=30d&scale=day"
-                target="_blank"
-                class="mt-8 lg:mt-12"
-            >
-                My analytics dashboard
-            </x-btn>
-
-            <x-btn
                 primary
                 size="md"
                 href="#products"

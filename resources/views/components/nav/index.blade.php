@@ -190,15 +190,6 @@ Displays the components nav index component and accepts component props, Blade a
                     Fork the source code
                 </x-dropdown.item>
 
-                <x-dropdown.item
-                    icon="heroicon-o-chart-bar"
-                    description="See how the platform is doing by directly checking the numbers because, why not?"
-                    href="https://benjamincrozat.pirsch.io/?domain=benjamincrozat.com&interval=30d&scale=day"
-                    target="_blank"
-                >
-                    My analytics dashboard
-                </x-dropdown.item>
-
                 <x-dropdown.divider>
                     Follow me
                 </x-dropdown.divider>
