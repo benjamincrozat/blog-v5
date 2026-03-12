@@ -60,7 +60,7 @@ Run this command and it will automatically be installed on your Mac. Just follow
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-![The official website for Homebrew.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/141/conversions/CleanShot_2023-06-27_at_12.55.42_2x_tbjj8v-medium.jpg)
+![The official website for Homebrew.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-valet-bf6b64b43ccf52173140.jpg/public)
 
 ## Install the latest version of PHP
 
@@ -80,7 +80,7 @@ Instead of using the [official way to install Composer](https://getcomposer.org/
 brew install composer
 ```
 
-![The official website of Composer.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/142/conversions/CleanShot_2023-06-27_at_12.59.00_2x_cgxb8m-medium.jpg)
+![The official website of Composer.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-valet-403bf1a8a1f8ea54cfbe.jpg/public)
 
 ## Add Composer's global bin to PATH
 
@@ -163,7 +163,7 @@ valet park
 
 Tip: run `valet paths` anytime to see which folders are parked. You can also change the TLD (for example, from `.test` to `.dev`) with `valet tld dev`.
 
-![A terminal showing how to add a folder to Laravel Valet with the command `valet park`.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/143/conversions/CleanShot_2023-06-27_at_13.02.42_2x_gcnqpz-medium.jpg)
+![A terminal showing how to add a folder to Laravel Valet with the command `valet park`.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-valet-a7fb1906319580180ef5.jpg/public)
 
 ## Link a single project
 
@@ -263,7 +263,7 @@ Alternatively, you can use [DBngin](https://dbngin.com), a free database managem
 
 It can even manage the software that you installed via Homebrew. 👌
 
-![DBngin](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/144/conversions/CleanShot_2023-09-03_at_17.27.44_2x_nwqszy-medium.jpg)
+![DBngin](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-valet-c1dd8944914a5fa8b35b.jpg/public)
 
 So now, what about installing Laravel itself? Here's my guide: [How to install Laravel on macOS](/laravel-installation-macos)
 

@@ -55,7 +55,7 @@ At first glance, some options look cheap because you manage the server yourself.
 
 ### Cloudways
 
-![Cloudways’ landing page for Laravel developers.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/3613731/3bbf17b9-38e8-4581-9310-40229abb7fb8)
+![Cloudways’ landing page for Laravel developers.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-laravel-hosting-providers-91850fb79cc136cdd295.webp/public)
 
 [Cloudways](/recommends/cloudways) is a fully managed platform for Laravel. It’s a solid alternative to running your own stack with Laravel Forge.
 
@@ -70,7 +70,7 @@ Cloudways lets you choose the underlying provider for each server: AWS, Google C
 
 ### DigitalOcean
 
-![DigitalOcean](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/106/conversions/www.digitalocean.com__sctfdo-medium.jpg)
+![DigitalOcean](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-cloud-hosting-provider-php-0192f3dca1c0fe407c3f.jpg/public)
 
 [DigitalOcean](/recommends/digitalocean) Droplets are fast, simple Linux VMs that spin up in seconds. I pair DigitalOcean with [Laravel Forge](/laravel-forge), and this is my current setup for this site.
 
@@ -83,7 +83,7 @@ Cloudways lets you choose the underlying provider for each server: AWS, Google C
 
 ### Vultr
 
-![Vultr](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/107/conversions/www.vultr.com__akl39r-medium.jpg)
+![Vultr](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-cloud-hosting-provider-php-df93542e09f35ca9f73d.jpg/public)
 
 [Vultr](/recommends/vultr) offers competitive performance and pricing for Laravel apps. It’s easy to use with Laravel Forge and gives you lots of location options.
 

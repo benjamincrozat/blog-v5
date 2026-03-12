@@ -46,7 +46,7 @@ So much that Laravel offers you to fix it with just a single click!
 
 Did you notice the button? Try it, it's so convenient! 👍
 
-![No application encryption key has been specified.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/140/conversions/CleanShot_2023-06-25_at_11.37.56_2x_qo61rw-medium.jpg)
+![No application encryption key has been specified.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-no-application-key-specified-f778d09f58c0bcff538b.jpg/public)
 
 If you are still tightening the parts of Laravel where config and security collide, these are the next posts I would open:
 

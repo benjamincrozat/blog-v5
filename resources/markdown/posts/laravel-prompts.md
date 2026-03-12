@@ -104,7 +104,7 @@ Easy, right?
 
 Here's a screenshot of the command in action.
 
-![Our make:pokemon command in action thanks to Laravel Prompts](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/166/conversions/CleanShot_2023-08-01_at_18.57.46_2x_dsvzpj-medium.jpg)
+![Our make:pokemon command in action thanks to Laravel Prompts](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-prompts-67eddc8c505af37d4fee.jpg/public)
 
 ## Add a multi-select
 
@@ -134,7 +134,7 @@ $types = multiselect(
 
 Here's how the refreshed Artisan command using Laravel Prompts looks:
 
-![make:pokemon with multiselect and validation.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/167/conversions/CleanShot_2023-08-01_at_19.20.09_2x_dlwdhj-medium.jpg)
+![make:pokemon with multiselect and validation.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-prompts-89c4f7157054c7e59fac.jpg/public)
 
 Laravel Prompts is so easy to use!
 

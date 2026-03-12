@@ -62,7 +62,7 @@ php artisan ui react --auth
 
 Now, you have a basic user interface for user registration and authentication and you can customize it to your liking.
 
-![Laravel UI in action.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/251/conversions/01HF2W1C4VPWG75KMVAJT14QC7-medium.jpg)
+![Laravel UI in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-ui-8f4bd4d6406f1689fb50.jpg/public)
 
 Before refreshing your browser, make sure to install and compile your front-end dependencies:
 

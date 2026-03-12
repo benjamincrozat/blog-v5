@@ -34,7 +34,7 @@ phpinfo();
 
 Look under “Loaded Configuration File” for the exact location.
 
-![phpinfo showing php.ini location](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/216/conversions/JAyCkwTofAYGl4PX3byMXdOJ8DUTcQ-metaQ2xlYW5TaG90IDIwMjMtMTEtMDIgYXQgMTcuMDQuNTBAMngucG5n--medium.jpg)
+![phpinfo showing php.ini location](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/php-ini-location-4f1fce8314bd74f7d44b.jpg/public)
 
 ## Locate php.ini using the command line
 
@@ -46,7 +46,7 @@ php --ini
 
 The terminal output clearly shows the active _php.ini_ path.
 
-![Terminal command to find php.ini](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/218/conversions/IdaI8uqocUu45gmvwzENy2KOGSiec2-metaQ2xlYW5TaG90IDIwMjMtMTEtMDIgYXQgMTcuMTIuNTRAMngucG5n--medium.jpg)
+![Terminal command to find php.ini](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/php-ini-location-0a2e20d55030ea90d1a3.jpg/public)
 
 Alternatively, use:
 

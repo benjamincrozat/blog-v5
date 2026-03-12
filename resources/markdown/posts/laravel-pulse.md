@@ -25,7 +25,7 @@ Taylor Otwell, the creator of Laravel, [said](https://twitter.com/taylorotwell/s
 
 I still can't believe such a tool can be free, but there we are!
 
-![Laravel Pulse's dashboard in action.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/255/conversions/01HFEMTCB9RCHDFGV1EZYRGVV5-medium.jpg)
+![Laravel Pulse's dashboard in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-pulse-e87805b3b21317bee441.webp/public)
 
 ## Laravel Pulse release date
 
@@ -74,7 +74,7 @@ php artisan migrate
 
 Once this is done, open your browser and hit the route `/pulse`. It was that simple.
 
-![Laravel Pulse right after it has been installed.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/3613731/16b61b08-db6d-47ee-8439-ae8c34ba371f)
+![Laravel Pulse right after it has been installed.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-pulse-8c9ee7a064375fb17457.webp/public)
 
 ## Let Laravel Pulse monitor your server
 
@@ -90,7 +90,7 @@ php artisan pulse:check
 
 This command runs continuously to provide Pulse with the needed data for its . This is a daemon you have to run in the background, and I recommend you to use [Supervisor](http://supervisord.org) to do so.
 
-![Laravel Pulse's php artisan pulse:check command in action.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/3613731/6ce523e5-1294-41d9-94ee-dfffec241bdc)
+![Laravel Pulse's php artisan pulse:check command in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-pulse-bf75437dd76cff38c2dd.webp/public)
 
 ## Make Laravel Pulse secure
 
@@ -123,7 +123,7 @@ The Laravel community is already working on custom cards to make it even more us
 
 Laravel Pulse's is free, open source, and is available through a GitHub repository at [laravel/pulse](https://github.com/laravel/pulse). You can send as many Pull Requests as you want for bug fixes and enhancements.
 
-![Laravel Pulse's GitHub repository.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/3613731/64cc4a49-c450-48c1-a1f3-32a7473725ee)
+![Laravel Pulse's GitHub repository.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-pulse-b189909fa59cbde54f4d.webp/public)
 
 ## Laravel Pulse troubleshooting
 

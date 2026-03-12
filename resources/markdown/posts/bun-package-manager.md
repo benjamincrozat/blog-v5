@@ -95,7 +95,7 @@ Helpful flags for installs:
 - `--filter`: target specific workspace packages in a monorepo.
 See the [bun install docs](https://bun.com/docs/cli/install).
 
-![Terminal screenshot of bun install with successful dependency install.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/69/conversions/ybYunPr2RMZPLO3vFaMImsaecxEEnz-metaQ2xlYW5TaG90IDIwMjMtMDktMTEgYXQgMDkuMDAuMDJAMnguanBn--medium.jpg)
+![Terminal screenshot of bun install with successful dependency install.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/bun-laravel-5b693360c03cdefebee1.jpg/public)
 
 Add dependencies:
 
@@ -109,7 +109,7 @@ bun add --exact react
 
 See the [bun add docs](https://bun.sh/docs/cli/add).
 
-![Terminal screenshot of bun add installing tailwindcss, autoprefixer, and postcss.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/70/UndzC78D9Uclf8eMBlPr0yN2wbhXRy-metaQ2xlYW5TaG90IDIwMjMtMDktMTEgYXQgMDkuMDIuMTFAMnguanBn-.jpg)
+![Terminal screenshot of bun add installing tailwindcss, autoprefixer, and postcss.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/bun-laravel-c58deeed47edc94b9356.jpg/public)
 
 Remove a dependency:
 

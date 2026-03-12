@@ -39,7 +39,7 @@ Do not upgrade to Laravel 9 (even if Laravel 8 is obsolete) if:
 - The project didn't have any new code written for it recently.
 - The project doesn't have users and does not generate revenues.
 
-![Laravel Upgrade guide](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/133/conversions/Screenshot_2023-02-03_at_11.00.57_sruzij-medium.jpg)
+![Laravel Upgrade guide](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-9-upgrade-guide-067247e4a82d4fde0efe.jpg/public)
 
 ## How to upgrade from Laravel 8 to Laravel 9?
 
@@ -73,7 +73,7 @@ Let's take [spatie/laravel-permissions](https://packagist.org/packages/spatie/la
 
 In the screenshot below, we can see it supports Laravel 7, 8, 9, and 10.
 
-![spatie/laravel-permission](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/134/conversions/Screenshot_2023-02-04_at_18.16.02_nvvzfb-medium.jpg)
+![spatie/laravel-permission](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-9-upgrade-guide-2703b6403c52691af2c5.jpg/public)
 
 If you cannot see any indication that your packages have been updated for Laravel, consider waiting a bit before upgrading your project.
 
@@ -117,7 +117,7 @@ Upgrading can be easy on clean and tested projects, but it can also be a nightma
 
 This is why a fellow Laravel developer, Jason McCreary, invented [Laravel Shift](https://laravelshift.com?utm_campaign=laravel-10-upgrade-guide&utm_source=benjamincrozat.com&utm_medium=blogpost&utm_content=textlink)
 
-![Laravel Shift](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/135/conversions/Screenshot_2023-02-03_at_10.55.36_ccqoia-medium.jpg)
+![Laravel Shift](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-9-upgrade-guide-9693117605fcc6d9ae91.jpg/public)
 
 It's effortless:
 1. **Sign in** with GitHub, BitBucket, or GitLab

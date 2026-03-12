@@ -54,7 +54,7 @@ Knowing the latest PHP version before applying for a PHP job is mandatory.
 
 You wouldn't hire a developer who doesn't have such basic knowledge. This would be a testimony to a cruel lack of curiosity. 😬
 
-![PHP 8.2](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/111/conversions/www.php.net_releases_8.2_en.php_jqtup2-medium.jpg){: width="1280" height="720"}
+![PHP 8.2](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-interview-questions-ccd033a735f7035b58eb.jpg/public){: width="1280" height="720"}
 
 ### What is Composer?
 
@@ -64,7 +64,7 @@ This is the way to go if you need to use third-party code.
 
 Composer wasn't always there. It appeared in 2012 and completely changed how we develop apps in PHP.
 
-![Interview Question: What is Composer?](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/112/conversions/getcomposer.org__x2zaqt-medium.jpg){: width="1280" height="720"}
+![Interview Question: What is Composer?](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-interview-questions-8193ee0c0f43ce34bebb.jpg/public){: width="1280" height="720"}
 
 ### What is the latest version of Laravel?
 
@@ -194,7 +194,7 @@ Open-source projects host and share their code on it for free, and many companie
 
 Take a look at the "[Git Me Some Version Control](https://laracasts.com/series/git-me-some-version-control)" course on Laracasts.
 
-![GitHub](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/113/conversions/github.com__xgy4hi-medium.jpg){: width="1280" height="720"}
+![GitHub](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-interview-questions-6d34806a9725107ebf97.jpg/public){: width="1280" height="720"}
 
 ### Set up a LinkedIn profile and use it as a resume to be sent before your interviews
 

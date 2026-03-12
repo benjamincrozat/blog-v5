@@ -307,6 +307,65 @@ it('fails on invalid front matter and unresolved references', function () {
         ->toThrow(PostMarkdownException::class, 'invalid-post.md');
 });
 
+it('fails when post content images are not hosted on Cloudflare Images', function () {
+    User::factory()->create(['github_login' => 'benjamincrozat']);
+    Category::factory()->create(['slug' => 'laravel']);
+
+    writeMarkdownPost(blogSyncMarkdownPath(), 'external-image-post', [
+        'id' => '01ARZ3NDEKTSV4RRFFQ69G5FB9',
+        'title' => '"External image post"',
+        'slug' => 'external-image-post',
+        'author' => 'benjamincrozat',
+        'description' => '"Summary"',
+        'categories' => ['laravel'],
+        'published_at' => 'null',
+        'modified_at' => 'null',
+        'serp_title' => 'null',
+        'serp_description' => 'null',
+        'canonical_url' => 'null',
+        'is_commercial' => false,
+        'image_disk' => 'null',
+        'image_path' => 'null',
+        'sponsored_at' => 'null',
+    ], '![Screenshot](https://example.com/screenshot.png)');
+
+    expect(fn () => Artisan::call('blog:sync'))
+        ->toThrow(PostMarkdownException::class, 'Cloudflare Images URLs');
+});
+
+it('allows image URLs inside code examples because they are not rendered as post images', function () {
+    User::factory()->create(['github_login' => 'benjamincrozat']);
+    Category::factory()->create(['slug' => 'laravel']);
+
+    writeMarkdownPost(blogSyncMarkdownPath(), 'code-sample-post', [
+        'id' => '01ARZ3NDEKTSV4RRFFQ69G5FC0',
+        'title' => '"Code sample post"',
+        'slug' => 'code-sample-post',
+        'author' => 'benjamincrozat',
+        'description' => '"Summary"',
+        'categories' => ['laravel'],
+        'published_at' => 'null',
+        'modified_at' => 'null',
+        'serp_title' => 'null',
+        'serp_description' => 'null',
+        'canonical_url' => 'null',
+        'is_commercial' => false,
+        'image_disk' => 'null',
+        'image_path' => 'null',
+        'sponsored_at' => 'null',
+    ], <<<'MD'
+```json
+{
+  "image_url": "https://cdn.example.com/example.png"
+}
+```
+MD);
+
+    Artisan::call('blog:sync');
+
+    expect(Artisan::output())->toContain('created=1');
+});
+
 it('fails on duplicate ids and slugs', function () {
     User::factory()->create(['github_login' => 'benjamincrozat']);
     Category::factory()->create(['slug' => 'laravel']);

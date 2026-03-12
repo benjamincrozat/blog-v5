@@ -221,7 +221,7 @@ MagicPost is an AI-assisted LinkedIn posting and analytics tool.
 
 ### Battle Ready Laravel (30% off)
 
-[![Battle Ready Laravel](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale%2Cf_webp%2Cq_auto%2Cw_1200/https%3A//github.com/benjamincrozat/content/assets/3613731/7b6f4c49-cf20-49a7-bdd2-3f01f414df29)](/recommends/battle-ready-laravel)
+[![Battle Ready Laravel](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/2025-black-friday-cyber-monday-deals-eab322955d93eac2567e.webp/public)](/recommends/battle-ready-laravel)
 
 **Deal at a glance**
 
@@ -233,7 +233,7 @@ MagicPost is an AI-assisted LinkedIn posting and analytics tool.
 
 ### Consuming APIs with Laravel (30% off)
 
-[![Consuming APIs in Laravel](https://github.com/benjamincrozat/content/assets/3613731/5f5e61b5-1ce1-4a31-9ca3-c7ef0cf59636)](/recommends/consuming-apis-laravel)
+[![Consuming APIs in Laravel](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/2025-black-friday-cyber-monday-deals-089459d9969526439d92.png/public)](/recommends/consuming-apis-laravel)
 
 **Deal at a glance**
 

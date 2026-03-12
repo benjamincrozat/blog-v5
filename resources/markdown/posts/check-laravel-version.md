@@ -39,7 +39,7 @@ PHP Version ............................................................. 8.3.3
 Composer Version ........................................................ 2.7.1
 ```
 
-![The php artisan about command in Laravel.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/73/conversions/CleanShot_2023-04-21_at_12.03.38_2x_ydqmbj-medium.jpg)
+![The php artisan about command in Laravel.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/check-laravel-version-fea4f5066c54954018e6.jpg/public)
 
 If you also want to confirm the runtime shown in that output, here are [6 ways to check your version of PHP](/check-php-version).
 
@@ -85,7 +85,7 @@ dist     : [zip] https://api.github.com/repos/laravel/framework/zipball/0379a7cc
 …
 ```
 
-![The command `composer show` in action to check the version of Laravel.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/191/conversions/hLcwhyE2sPfLN94vR633i9MKlI8865-metaQ2xlYW5TaG90IDIwMjMtMTAtMDkgYXQgMTYuNDAuMzBAMngucG5n--medium.jpg)
+![The command `composer show` in action to check the version of Laravel.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/check-laravel-version-6b3d388a32e6e4a7e68f.jpg/public)
 
 ## In the composer.json and composer.lock files
 

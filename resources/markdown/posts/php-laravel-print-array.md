@@ -121,7 +121,7 @@ Output:
 
 ### Print a PHP array using Laravel's dump() function
 
-![Screenshot of dump() in action.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/86/conversions/Screen_Shot_2023-01-16_at_07.54.59_ichkqp-medium.jpg){: width="400"}
+![Screenshot of dump() in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/php-laravel-print-array-00a6a84cb1df0664dd56.jpg/public){: width="400"}
 
 The `dump()` function prints in detail arrays containing any value.
 

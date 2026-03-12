@@ -69,7 +69,7 @@ It was founded in December 2015, with the goal of promoting and developing frien
 
 It has since transitioned to a capped-profit model and has made significant strides in AI research and development, notably creating advanced AI language models like GPT-3 and GPT-4, and engaging in various AI-related partnerships and applications. (The most notable being [Microsoft that integrated GPT into Bing](https://chat.bing.com).)
 
-![OpenAI's official website](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/225/conversions/ppHhj8QqH1z8HQYyqE443Q1OuHvXcU-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMTYuNDUuMDFAMngucG5n--medium.jpg)
+![OpenAI's official website](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-llm-ai-explanation-391e078c1b4467c52a62.jpg/public)
 
 ## Can I download ChatGPT and try it for free?
 
@@ -79,7 +79,7 @@ You can also use [ChatGPT on any platform via its website](https://chat.openai.c
 
 And by the way, I created [a free tool that generates YouTube video transcripts](/nobinge) and helps you summarize them using ChatGPT. If you needed inspiration, that's a good starting point to leverage GPT's power!
 
-![ChatGPT in the browser.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/224/conversions/nRxwWxKl8qb8yIGyEqPdIqeoxRFfAd-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMTYuNDQuMTRAMngucG5n--medium.jpg)
+![ChatGPT in the browser.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-llm-ai-explanation-a2f5df56160817c1ca20.jpg/public)
 
 ## Could GPT dominate humanity at some point?
 

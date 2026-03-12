@@ -44,7 +44,7 @@ That being said, you will still need to subscribe to a cloud hosting provider (a
 
 ## Laravel Forge pricing
 
-![Laravel Forge pricing](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/104/conversions/Screenshot_2023-01-26_at_01.21.16_m9yt2j-medium.jpg)
+![Laravel Forge pricing](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-forge-f4102f0e8cfc45a8925e.jpg/public)
 
 ### Monthly pricing
 
@@ -110,7 +110,7 @@ The annual plans let you save 17%, which is a no brainer for people running crit
 4. Deploy your application ([the documentation](https://forge.laravel.com/docs/1.0/introduction.html) will help you get started).
 5. If you’re still lost and prefer video tutorials, Laracasts also has a [free course for Laravel Forge](https://laracasts.com/series/learn-laravel-forge-2022-edition).
 
-![How to get started with Laravel Forge](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/105/conversions/Screenshot_2023-01-26_at_01.23.35_m6c3hc-medium.jpg)
+![How to get started with Laravel Forge](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-forge-ec5a03039c53e5ea130c.jpg/public)
 
 ## Cloud hosting providers for Laravel Forge by price
 
@@ -142,7 +142,7 @@ Discover **my top picks of cloud providers fit to be used along with Laravel For
 
 ### DigitalOcean
 
-![DigitalOcean](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/106/conversions/www.digitalocean.com__sctfdo-medium.jpg)
+![DigitalOcean](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-cloud-hosting-provider-php-0192f3dca1c0fe407c3f.jpg/public)
 
 To me, [DigitalOcean](/recommends/digitalocean) has been a fantastic companion for Laravel Forge over the last ten years.
 
@@ -162,7 +162,7 @@ Overall, combining Laravel Forge with [DigitalOcean](/recommends/digitalocean) h
 
 ### Vultr
 
-![Vultr](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/107/conversions/www.vultr.com__akl39r-medium.jpg)
+![Vultr](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-cloud-hosting-provider-php-df93542e09f35ca9f73d.jpg/public)
 
 [Vultr](/recommends/vultr) is especially handy for developers as it allows instant deployment worldwide, offering a vast array of OS combinations and no long-term contracts.
 
@@ -194,7 +194,7 @@ It’s a reliable solution for developers.
 
 ### Cloudways
 
-[![Cloudways](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/109/conversions/Screenshot_2022-11-01_at_21.03.04_yaljg2-medium.jpg)](/recommends/cloudways)
+[![Cloudways](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-forge-fdc0dc41107f3e1eba1f.jpg/public)](/recommends/cloudways)
 
 [Cloudways](/recommends/cloudways) is an excellent alternative to Laravel Forge for several reasons.
 
@@ -218,7 +218,7 @@ All these features, combined with the transparent and affordable pricing plans, 
 
 ### Ploi
 
-[![Ploi](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/193/conversions/DUqP0CeRV2vPCh3xT5F6oO9CwFpMO3-metaQ2xlYW5TaG90IDIwMjMtMTAtMTIgYXQgMDUuMDkuNDlAMngucG5n--medium.jpg)](/recommends/ploi)
+[![Ploi](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-cloud-hosting-provider-php-cc885df02e547207d637.jpg/public)](/recommends/ploi)
 
 [Ploi](/recommends/ploi) is an alternative to Laravel Forge that drastically cut cost for the average person and small businesses. Let’s face it: it started as a clone. But using it, you quickly realize it’s more than that. It’s easy to use and in some areas, it even does better than Forge.
 

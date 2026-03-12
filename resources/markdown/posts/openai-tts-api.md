@@ -30,18 +30,18 @@ Whether you're looking to boost accessibility or add auditory flair to your prod
 
 1. [Create an account](https://chat.openai.com/auth/login).
 
-![Creating an account on OpenAI](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/229/conversions/Dt2ElwOQoKtwjEhuw2eu1uGceEDJnF-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMTkuNTQuMjZAMngucG5n--medium.jpg)
+![Creating an account on OpenAI](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-846047ea8d4bc781aaa6.jpg/public)
 
 3. Confirm your email address.
 4. [Log in](https://chat.openai.com/auth/login).
 5. Check for your free $5 of credits on [this page](https://platform.openai.com/account/billing/overview).
 
-![The free $5 of credit given to all new developers.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/228/conversions/V2xA6LlqgeEAd87BpKshqkY19sV9rp-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMTkuNTUuMDdAMngucG5n--medium.jpg)
+![The free $5 of credit given to all new developers.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-403fe06e5749406ea8a4.jpg/public)
 
 7. [Generate your first API key](https://platform.openai.com/api-keys). Be careful, it will only be displayed once. Copy and paste it into a password manager so it's stored securely.
 8. Start using the Text-to-speech API! (Continue reading to learn how.)
 
-![API key generation on OpenAI](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/227/conversions/yZF7oBp7WI9jbq8gFcNWDWtmQDWWXb-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMjAuMDIuMjhAMngucG5n--medium.jpg)
+![API key generation on OpenAI](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-3329720cb9a472ebadbe.jpg/public)
 
 ## Choose the voice for your speech
 
@@ -96,7 +96,7 @@ Remember to replace `YOUR_API_KEY` with your actual API key. This little snippet
 
 Tweak, play, and have fun with it—programming is all about exploration, after all.
 
-![The Text-to-speech API from OpenAI in action.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/243/conversions/uIHvav58f1yA18pPedbbCrS832AMAZ-metaQ2xlYW5TaG90IDIwMjMtMTEtMDcgYXQgMTIuNTkuMTVAMngucG5n--medium.jpg)
+![The Text-to-speech API from OpenAI in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/openai-tts-api-73593056f0e82f17c9ad.jpg/public)
 
 ## Generate higher quality audio with the tts-1-hd model
 

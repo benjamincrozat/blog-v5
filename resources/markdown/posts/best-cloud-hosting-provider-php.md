@@ -56,7 +56,7 @@ So my recommendation is to think for the long run before choosing.
 
 ### Cloudways
 
-[![Cloudways' landing page for PHP developers.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/3613731/ea2b165b-9574-4901-bf6c-08697374723b)](/recommends/cloudways-php)
+[![Cloudways' landing page for PHP developers.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-cloud-hosting-provider-php-dfc923802ff0419b35e3.webp/public)](/recommends/cloudways-php)
 
 [Cloudways](/recommends/cloudways-php) is a very good alternative to [Ploi](/recommends/ploi). I really like this one. Unlike others, it's a fully managed solution. This means you don't have to worry about creating an account with a cloud provider.
 
@@ -72,7 +72,7 @@ Oh, by the way, I managed to negociate a promo code for you. **Use "CROZAT" and 
 
 ### DigitalOcean
 
-![DigitalOcean](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/106/conversions/www.digitalocean.com__sctfdo-medium.jpg)
+![DigitalOcean](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-cloud-hosting-provider-php-0192f3dca1c0fe407c3f.jpg/public)
 
 [DigitalOcean](/recommends/digitalocean) has been a fantastic companion for me when combined with [Ploi](/recommends/ploi).
 
@@ -92,7 +92,7 @@ There's not much to add about DigitalOcean. I've been a happy customer for aroun
 
 ### Ploi
 
-[![Ploi](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/193/conversions/DUqP0CeRV2vPCh3xT5F6oO9CwFpMO3-metaQ2xlYW5TaG90IDIwMjMtMTAtMTIgYXQgMDUuMDkuNDlAMngucG5n--medium.jpg)](/recommends/ploi)
+[![Ploi](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-cloud-hosting-provider-php-cc885df02e547207d637.jpg/public)](/recommends/ploi)
 
 [Ploi](/recommends/ploi) is a server manager that drastically cut cost for the average person and small businesses. It's easy to use and in some areas, it even does better than Laravel Forge, which is a similar product. They provide every feature any serious PHP app needs: one-click server creation and provisionning, push to deploy, load balancing, free SSL certificates, etc. And all of this behind a very easy to use user interface. That's one big advantage over Cloudways for instance.
 
@@ -102,7 +102,7 @@ Currently, Ploi is the service I use to manage the [DigitalOcean](/recommends/di
 
 ### Vultr
 
-![Vultr](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/107/conversions/www.vultr.com__akl39r-medium.jpg)
+![Vultr](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-cloud-hosting-provider-php-df93542e09f35ca9f73d.jpg/public)
 
 From what I can see at the time I'm writing this, [Vultr](/recommends/vultr) offers slightly more resources for a lesser price compared to DigitalOcean. And it's not because they're using cheaper hardware. Nope, they also offer premium AMD and Intel CPUs and NVMe SSDs for storage.
 
@@ -114,7 +114,7 @@ Although I'm not using [Vultr](/recommends/vultr) anymore, I also appreciated it
 
 ### HostGator
 
-![HostGator](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/108/conversions/CleanShot_2023-05-09_at_13.45.53_2x_hivzzy-medium.jpg)
+![HostGator](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-cloud-hosting-provider-php-c8789df5c80e727aabb9.jpg/public)
 
 The VPS hosting plans of [HostGator](/recommends/hostgator) are incredibly flexible and come with a full suite of features that developers, like myself, find very useful. Also, by default, they offer VPS hosting with way more resources than DigitalOcean and Vultr.
 

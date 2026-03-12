@@ -62,7 +62,7 @@ If you ever asked yourself when was Laravel version 1.0 came to existence, it wa
 
 According to [Wikipedia](https://en.wikipedia.org/wiki/Laravel), Laravel 1 included built-in support for authentication, localisation, models, views, sessions, routing and other mechanisms. But it lacked support for controllers, which prevented it from being a true MVC framework.
 
-![Laravel's official website in 2011.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/180/e64VXzjPj90dIkxikqTk35wXFTSw7Q-metaQ2xlYW5TaG90IDIwMjMtMDktMjAgYXQgMTMuMTUuMDdAMnguanBn-.jpg)
+![Laravel's official website in 2011.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-versions-25b51811b8e3d07567a9.jpg/public)
 
 ### Laravel version 2.0
 
@@ -80,7 +80,7 @@ Notably, this version brought Artisan to the forefront. Additionally, it expande
 
 You can learn more in this great blog post I found: [History of Laravel PHP framework, Eloquence emerging](https://maxoffsky.com/code-blog/history-of-laravel-php-framework-eloquence-emerging/).
 
-![Laravel's official website in September 2012](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/182/2m9KNjCRMxrSW9PUDdbLRMaWvH5Ztd-metaQ2xlYW5TaG90IDIwMjMtMDktMjAgYXQgMTMuMjAuNDhAMnguanBlZw%3D%3D-.jpg)
+![Laravel's official website in September 2012](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-versions-ee796b3cce0c2f22f782.jpg/public)
 
 ### Laravel version 3.1
 
@@ -153,7 +153,7 @@ You can learn more in this great blog post I found: [History of Laravel PHP fram
 
 ### Laravel version 4.2
 
-![Laravel's official website in October 2014.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/185/Hd8LnR3jnu6IZsr7Hj4eEPaHefA2Mw-metaQ2xlYW5TaG90IDIwMjMtMDktMjAgYXQgMTMuMzEuNTNAMnguanBn-.jpg)
+![Laravel's official website in October 2014.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-versions-8bd33d81da5ca1a7e286.jpg/public)
 
 **Laravel version 4.2, codenamed Illuminate, was released in June 1, 2014.** Some of its new features include:
 
@@ -185,7 +185,7 @@ You can learn more in this great blog post I found: [History of Laravel PHP fram
 
 ### Laravel version 5.0
 
-![Laravel's official website in February 2015](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/181/kDqrJE6HsusDCXyIozuq6dB8GkLyDp-metaQ2xlYW5TaG90IDIwMjMtMDktMjAgYXQgMTMuMjMuMDhAMnguanBlZw%3D%3D-.jpg)
+![Laravel's official website in February 2015](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-versions-7d259389d6c3bd49243c.jpg/public)
 
 **Laravel version 5.0 was released in February 2015.** Some of its new features include:
 
@@ -462,7 +462,7 @@ You can learn more in this great blog post I found: [History of Laravel PHP fram
 
 ### Laravel version 5.5 LTS
 
-![Laravel's official website in August 2017](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/183/conversions/92WuvFkMw4kpci3ZZhUZNC72W9CBRy-metaQ2xlYW5TaG90IDIwMjMtMDktMjAgYXQgMTMuMjUuNDlAMnguanBlZw%3D%3D--medium.jpg)
+![Laravel's official website in August 2017](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-versions-2ca2d80e39a4fc655150.jpg/public)
 
 **Laravel version 5.5 LTS was released on August 30, 2017.** Some of its new features include:
 
@@ -666,7 +666,7 @@ You can learn more in this great blog post I found: [History of Laravel PHP fram
 
 ### Laravel version 6.0 LTS
 
-![Laravel's official website in September 2019.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/184/conversions/xbyiQDQD0yQT3CsedXiyfgVe3h71V5-metaQ2xlYW5TaG90IDIwMjMtMDktMjAgYXQgMTMuMjguMDBAMnguanBlZw%3D%3D--medium.jpg)
+![Laravel's official website in September 2019.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-versions-e45cba4e44ef49028747.jpg/public)
 
 **Laravel version 6.0 LTS was released on September 3, 2019.** Some of its new features include:
 

@@ -100,7 +100,7 @@ Run mutation tests:
 
 Tip: add `--parallel` to speed things up on larger suites.
 
-![Pest's mutation tests in action.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/user-attachments/assets/fe303b15-3a35-4f8b-8a6b-f066e566576c)
+![Pest's mutation tests in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/pest-3-f2947b0e3c18847a19f0.webp/public)
 
 As you can see, this is a disaster. But in my defense, it is a new project and a work in progress!
 

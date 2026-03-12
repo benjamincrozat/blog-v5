@@ -35,11 +35,11 @@ Ready to roll? Let’s build your first GPT‑4.1 request.
 3. [Log in](https://platform.openai.com/login?launch).
 4. Open the [Billing overview](https://platform.openai.com/account/billing/overview) page and add credit or a payment method so your keys work right away. (The free‑credit program ended mid‑2024.)
 
-![Adding credit so the key works right away](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/228/conversions/V2xA6LlqgeEAd87BpKshqkY19sV9rp-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMTkuNTUuMDdAMngucG5n--medium.jpg)
+![Adding credit so the key works right away](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-403fe06e5749406ea8a4.jpg/public)
 
 5. [Generate your first API key for GPT‑4.1](https://platform.openai.com/api-keys). Keys are shown once; paste it into a password manager immediately.
 
-![API key generation on OpenAI](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/227/conversions/yZF7oBp7WI9jbq8gFcNWDWtmQDWWXb-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMjAuMDIuMjhAMngucG5n--medium.jpg)
+![API key generation on OpenAI](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-3329720cb9a472ebadbe.jpg/public)
 
 Got your key? Great. Time to hit the API.
 

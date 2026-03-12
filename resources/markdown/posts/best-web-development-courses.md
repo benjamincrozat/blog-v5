@@ -41,7 +41,7 @@ Learning online only has benefits for me. Here are some of them:
 
 ### [Codecademy](https://benjamincrozat.com/recommends/codecademy)
 
-![Codecademy](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/115/conversions/www.codecademy.com__dhb6d1-medium.jpg)
+![Codecademy](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-web-development-courses-44c996afacb6882c32d7.jpg/public)
 
 [Codecademy](https://benjamincrozat.com/recommends/codecademy) proposes interactive courses to learn coding in the most efficient way possible. I really like this platform.
 
@@ -64,7 +64,7 @@ And all the subjects: AI, cloud computing, code foundations, computer science, c
 
 ### [Vue School](https://vueschool.io)
 
-![Vue School](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/116/conversions/vueschool.io__kkb82y-medium.jpg)
+![Vue School](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-web-development-courses-82bdb7d1699ca4d8f9f0.jpg/public)
 
 [Vue School](https://vueschool.io) started in 2016 and is one of the best learning platforms for Vue.js.
 
@@ -88,7 +88,7 @@ They cover topics like: ES6, Firebase Authentication, Firebase Realtime Database
 
 ### [Laracasts](https://laracasts.com)
 
-![Laracasts](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/117/conversions/laracasts.com__uaexby-medium.jpg)
+![Laracasts](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-web-development-courses-3690b07e958440b25a80.jpg/public)
 
 [Laracasts](https://laracasts.com) is the best place to start learning about Laravel, but also anything related to it (like JavaScript frameworks).
 

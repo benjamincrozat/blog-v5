@@ -257,7 +257,7 @@ Those projects need to slowly but surely move forward by doing extensive testing
 
 See the pull request on GitHub: [[11.x] Drop PHP 8.1 support](https://github.com/laravel/framework/pull/45526)
 
-![PHP 8.2](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/127/conversions/www.php.net_releases_8.2_en.php_jqtup2-medium.jpg)
+![PHP 8.2](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-11-5245d6555cd11a8430ca.jpg/public)
 
 ### Laravel 11 release preparation pull requests
 
@@ -280,7 +280,7 @@ Did you know you can fix the bugs you have encountered or create the next big fe
 
 One important tip to increase your chances of being merged: add something to the framework that's a win for developers but not a pain to maintain for Taylor and his team in the long run.
 
-![Pull requests on the laravel/framework repository.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/128/conversions/Screenshot_2023-01-05_at_18.03.30_qx8sjy-medium.jpg)
+![Pull requests on the laravel/framework repository.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-11-e9bd7892b52acc41bdd3.jpg/public)
 
 If Laravel 11 is the release you are planning around right now, these are the next reads I would keep close:
 

@@ -61,6 +61,8 @@ class PostMarkdownDocument
             throw PostMarkdownException::forPath($relativePath, "Filename must match slug [{$slug}].");
         }
 
+        PostContentImageUrls::ensureCloudflare($matches['body'], $relativePath);
+
         return new self(
             id: static::expectString($frontMatter, 'id', $relativePath),
             title: static::expectString($frontMatter, 'title', $relativePath),

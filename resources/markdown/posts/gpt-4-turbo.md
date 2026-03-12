@@ -35,18 +35,18 @@ Now, let's dive into this step-by-step tutorial that will help you make your fir
 
 1. [Create an account](https://chat.openai.com/auth/login).
 
-![Creating an account on OpenAI](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/229/conversions/Dt2ElwOQoKtwjEhuw2eu1uGceEDJnF-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMTkuNTQuMjZAMngucG5n--medium.jpg)
+![Creating an account on OpenAI](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-846047ea8d4bc781aaa6.jpg/public)
 
 3. Confirm your email address.
 4. [Log in](https://platform.openai.com/login?launch).
 5. Check for your free $5 of credits on [this page](https://platform.openai.com/account/billing/overview). Be careful, once you used them, the API keys you will generate won't work until you pay.
 
-![The free $5 of credit given to all new developers.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/228/conversions/V2xA6LlqgeEAd87BpKshqkY19sV9rp-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMTkuNTUuMDdAMngucG5n--medium.jpg)
+![The free $5 of credit given to all new developers.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-403fe06e5749406ea8a4.jpg/public)
 
 7. [Generate your first API key for GPT-4 Turbo](https://platform.openai.com/api-keys). Be careful, it will only be displayed once. Copy and paste it into a password manager so it's stored securely.
 8. Start using your API key with GPT-4 Turbo's API! (Continue reading to learn how.)
 
-![API key generation on OpenAI](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/227/conversions/yZF7oBp7WI9jbq8gFcNWDWtmQDWWXb-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMjAuMDIuMjhAMngucG5n--medium.jpg)
+![API key generation on OpenAI](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-3329720cb9a472ebadbe.jpg/public)
 
 ## How to make your first request to GPT-4 Turbo
 
@@ -90,7 +90,7 @@ Learn more on [the official API reference for Chat Completions](https://platform
 
 **Pro tip**: One API call can accept up to 128,000 tokens with GPT-4 Turbo (gpt-4-turbo-preview). A token is a numerical representation of your text. All your messages as well as the output from the model cannot exceed this limit. And for those who don't know, 1,000 tokens roughly equals 750 English words.
 
-![An example response of GPT-4 Turbo through its API.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/232/conversions/0LKIoKIsnuo72KHWk8MgD3vmSXG3Ir-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMjEuNDYuMTFAMngucG5n--medium.jpg)
+![An example response of GPT-4 Turbo through its API.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-4-turbo-6cbe3697d1d9f3b9654b.jpg/public)
 
 ## How to enable the JSON mode with the GPT-4 Turbo API
 
@@ -146,7 +146,7 @@ curl -X POST \
 
 3. But be careful! While the model will now always output JSON, you will never be able to get 100% accuracy in its structure.
 
-![GPT-4 Turbo's JSON mode in action.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/233/conversions/5880RDCZwZoP0fW6kFSXF8j866Rq43-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMjEuNTAuNDhAMngucG5n--medium.jpg)
+![GPT-4 Turbo's JSON mode in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-4-turbo-cc20a9c1afff2722395b.jpg/public)
 
 ## GPT-4 Turbo's pricing (it's cheaper than ever!)
 

@@ -46,18 +46,18 @@ I wrote more for those who want to go deeper: "[How do language-based AIs, such 
 
 1. [Create an account](https://platform.openai.com/login?launch).
 
-![Creating an account on OpenAI](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/229/conversions/Dt2ElwOQoKtwjEhuw2eu1uGceEDJnF-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMTkuNTQuMjZAMngucG5n--medium.jpg)
+![Creating an account on OpenAI](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-846047ea8d4bc781aaa6.jpg/public)
 
 3. Confirm your email address.
 4. [Log in](https://chat.openai.com/auth/login).
 5. Check for your free $5 of credits on [this page](https://platform.openai.com/account/billing/overview). Be careful, once you used them, the API keys you will generate won't work.
 
-![The free $5 of credit given to all new developers.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/228/conversions/V2xA6LlqgeEAd87BpKshqkY19sV9rp-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMTkuNTUuMDdAMngucG5n--medium.jpg)
+![The free $5 of credit given to all new developers.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-403fe06e5749406ea8a4.jpg/public)
 
 7. [Generate your first API key](https://platform.openai.com/api-keys). Be careful, it will only be displayed once. Copy and paste it into a password manager so it's stored securely.
 8. Start using GPT-4 Turbo's API! (Continue reading to learn how.)
 
-![API key generation on OpenAI](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/227/conversions/yZF7oBp7WI9jbq8gFcNWDWtmQDWWXb-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMjAuMDIuMjhAMngucG5n--medium.jpg)
+![API key generation on OpenAI](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-3329720cb9a472ebadbe.jpg/public)
 
 
 ## GPT models pricing

@@ -79,7 +79,7 @@ If you encounter any issues and want to disable the cache, use `bun install --no
 
 For additional information and options, please refer to the [official documentation of the `bun install` command](https://bun.sh/docs/cli/install).
 
-![bun install in action.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/69/conversions/ybYunPr2RMZPLO3vFaMImsaecxEEnz-metaQ2xlYW5TaG90IDIwMjMtMDktMTEgYXQgMDkuMDAuMDJAMnguanBn--medium.jpg)
+![bun install in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/bun-laravel-5b693360c03cdefebee1.jpg/public)
 
 ## Add packages at warp speed with Bun
 
@@ -93,7 +93,7 @@ bun add tailwindcss autoprefixer postcss
 
 For additional information and options, please refer to the [official documentation of the `bun add` command](https://bun.sh/docs/cli/install#bun-add).
 
-![bun add in action.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/70/UndzC78D9Uclf8eMBlPr0yN2wbhXRy-metaQ2xlYW5TaG90IDIwMjMtMDktMTEgYXQgMDkuMDIuMTFAMnguanBn-.jpg)
+![bun add in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/bun-laravel-c58deeed47edc94b9356.jpg/public)
 
 ## Effortlessly remove packages with Bun
 

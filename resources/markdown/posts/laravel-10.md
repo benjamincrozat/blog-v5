@@ -67,7 +67,7 @@ Check out [my guide to upgrading to Laravel 10](https://benjamincrozat.com/larav
 
 ### [Feature flags with Laravel Pennant](https://laravel.com/docs/10.x/pennant)
 
-<img src="https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/74/conversions/FonDXMhXgAAY16E_nr7fzx-medium.jpg" alt="Laravel Pennant feature flags diagram" loading="lazy" />
+<img src="https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-10-4c54d1dd099e874c1eb2.jpg/public" alt="Laravel Pennant feature flags diagram" loading="lazy" />
 
 **[Laravel Pennant](https://laravel.com/docs/10.x/pennant) is a first-party package that adds feature flags to any Laravel 10 project.**
 
@@ -143,7 +143,7 @@ The Artisan command `php artisan test` can receive a `--profile` option that sho
 
 If your project upgrades to PHPUnit 10, make sure you are on `nunomaduro/collision` ^7.0.
 
-<img src="https://user-images.githubusercontent.com/5457236/217328439-d8d983ec-d0fc-4cde-93d9-ae5bccf5df14.png" alt="Screenshot of Laravel test profiling --profile output" loading="lazy" />
+<img src="https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-10-c49c7d6792163dbde2ae.png/public" alt="Screenshot of Laravel test profiling --profile output" loading="lazy" />
 
 ### [Validation rules are invokable by default](https://laravel.com/docs/10.x/validation#custom-validation-rules)
 
@@ -254,7 +254,7 @@ To ensure solid foundations for every new Laravel 10 project, the framework requ
 
 Laravel 10 drops support for PHP 8.0 and requires PHP 8.1 at minimum. If you want to upgrade, move to PHP 8.1 or 8.2. Don’t rush—plan and test carefully.
 
-<img src="https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/75/conversions/Screenshot_2022-12-16_at_17.32.08_fcrhvi-medium.jpg" alt="Laravel 10 PHP 8.1 requirement screenshot" loading="lazy" />
+<img src="https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-10-2e92a4a16559cc6263cc.jpg/public" alt="Laravel 10 PHP 8.1 requirement screenshot" loading="lazy" />
 
 ### [Predis v1 removal](https://laravel.com/docs/10.x/redis)
 
@@ -288,11 +288,11 @@ Did you know you could create the next big feature for Laravel 10?
 
 One important tip to increase your chances of being merged: add something to the framework that’s a win for developers, but not a pain to maintain for Taylor and his team in the long run.
 
-<img src="https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/76/conversions/Screenshot_2022-12-16_at_17.41.05_emctz5-medium.jpg" alt="Screenshot of pull requests on the laravel/framework repository" loading="lazy" />
+<img src="https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-10-72afa7d6d9cdc7196c78.jpg/public" alt="Screenshot of pull requests on the laravel/framework repository" loading="lazy" />
 
 ## Laravel v10 bug hunt: win $1K for fixing bugs
 
-<img src="https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/77/conversions/fUKAbwEdvBvch2YmrOx2j8izeE2avyECiR4o69gF_kuoazm-medium.jpg" alt="Laravel 10 Bug Hunt banner" loading="lazy" />
+<img src="https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-10-0ee5accc31ae6828f8be.jpg/public" alt="Laravel 10 Bug Hunt banner" loading="lazy" />
 
 [Taylor Otwell announced the Laravel 10 Bug Hunt](https://laravel.com/blog/laravel-v10-bug-hunt). Fix bugs, and you could be one of the random winners who receive $1K.
 

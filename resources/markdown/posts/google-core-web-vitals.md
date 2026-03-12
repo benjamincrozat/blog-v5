@@ -36,7 +36,7 @@ There's a common misconception that excelling in these metrics guarantees a top 
 
 **As you can see, my score isn't the best in the world** (this varies depending on the page), **but my blog gets 30,000 clicks per month from Google** at the time I'm writing these lines.
 
-![My core web vitals.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/268/conversions/01HFYBBG7V0JBVZQ1XT6TH7KN1-medium.jpg)
+![My core web vitals.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/google-core-web-vitals-0756f57ee01eefea5331.jpg/public)
 
 ## The real game changer: your website's crawlability for Google
 

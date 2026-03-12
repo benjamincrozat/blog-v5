@@ -38,7 +38,7 @@ Needless to say, this will be a waste of time and money for most of us. So let m
 
 ### Fathom Analytics
 
-[![Fathom Analytics' dashboard in action.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/3613731/977cba88-70b8-47dd-bc22-e7d8139edda6)](/recommends/fathom-analytics)
+[![Fathom Analytics' dashboard in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-gdpr-compliant-google-analytics-alternatives-b71af7faa3822643002d.webp/public)](/recommends/fathom-analytics)
 
 [Fathom Analytics](/recommends/fathom-analytics) is one of the best GDPR compliant analytics platform. It serves a ton of serious businesses (GitHub, IBM, McLaren, and more) and can handle huge spikes of traffic due to its _reliable architecture_. **If you are an enterprise customer, this is the one I recommend.**
 
@@ -52,7 +52,7 @@ Besides its dashboard, here are features Fathom offers that you might like:
 
 ### Simple Analytics
 
-[![Simple Analytics' dashboard in action.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/3613731/234673ca-c7ca-4db8-820d-0977d560772b)](/recommends/simple-analytics)
+[![Simple Analytics' dashboard in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-gdpr-compliant-google-analytics-alternatives-bcd600a544bba73af8c9.webp/public)](/recommends/simple-analytics)
 
 [Simple Analytics](/recommends/simple-analytics) is as good as Fathom Analytics. It's GDPR compliant (**it's hosted and operates in the EU**), its dashboard is a joy to use both on desktop and mobile, and it also serves big customers such as governements, Michelin, Hyundai, and more.
 
@@ -66,7 +66,7 @@ Besides its dashboard, here are features Fathom offers that you might like:
 
 ### Pirsch Analytics
 
-[![Pirsch Analytics' dashboard in action.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/3613731/a6fe0fe7-d448-4135-9288-a538f58b3f0d)](/recommends/pirsch-analytics)
+[![Pirsch Analytics' dashboard in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-gdpr-compliant-google-analytics-alternatives-5c12c27f4b7c25341b89.webp/public)](/recommends/pirsch-analytics)
 
 [Pirsch Analytics](/recommends/pirsch-analytics) is still a relatively new actor on this market and **operating in Germany**. **This is the one I use for this blog.** It still has to prove itself in terms of reliability. But it's by far the most beautiful and feature-complete tool.
 

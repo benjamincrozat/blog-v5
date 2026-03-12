@@ -35,7 +35,7 @@ This outputs "PHP 8.3.1 (cli) (built: Feb 10 2025 12:00:00)"
 
 ## Use the `phpversion()` function
 
-![Checking PHP version using phpversion().](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/170/conversions/CleanShot_2023-09-02_at_16.49.10_2x_z0shyv-medium.jpg)
+![Checking PHP version using phpversion().](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/check-php-version-068c21630df8ec212ffd.jpg/public)
 
 Simply create a PHP script containing:
 
@@ -46,7 +46,7 @@ Simply create a PHP script containing:
 
 ## Use the `phpinfo()` function
 
-![Checking PHP version using phpinfo().](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/171/conversions/CleanShot_2023-09-02_at_16.17.14_2x_gkxt9j-medium.jpg)
+![Checking PHP version using phpinfo().](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/check-php-version-b4f57c73364e57eadefb.jpg/public)
 
 Create a PHP file with:
 
@@ -66,13 +66,13 @@ composer --version
 
 ## Check PHP version using Laravel's welcome page
 
-![Laravel welcome page showing PHP version.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/173/conversions/CleanShot_2023-09-02_at_16.13.39_2x_nz0b7t-medium.jpg)
+![Laravel welcome page showing PHP version.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/check-php-version-061c7222686bd6a5e33c.jpg/public)
 
 Laravel conveniently shows your PHP version in the bottom-right corner of the default welcome page.
 
 ## Check PHP version with Laravel Artisan
 
-![Checking PHP version using Laravel Artisan.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/174/conversions/CleanShot_2023-09-02_at_16.14.00_2x_klstth-medium.jpg)
+![Checking PHP version using Laravel Artisan.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/check-php-version-c2831ffe38082032d779.jpg/public)
 
 From your Laravel project's root, run:
 

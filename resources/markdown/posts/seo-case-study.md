@@ -22,7 +22,7 @@ Since I started in September 2022, **clicks on Google went from 0 to more than 1
 
 In this SEO case study, I'll show you **everything** I did to get there.
 
-![Growth in the Google Search Console](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/87/conversions/Screenshot_2023-02-03_at_00.01.15_aozg4a-medium.jpg)
+![Growth in the Google Search Console](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/seo-case-study-3d064fba109f8a0889c3.jpg/public)
 
 ## SEO helps you reach people
 
@@ -61,7 +61,7 @@ In the search field at the top of the console, enter any new or updated URL, and
 
 [This practice is well documented by Google](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl).
 
-![URL inspection in the Google Search Console.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/88/conversions/Screenshot_2022-10-26_at_20.38.01_rbchgc-medium.jpg){: width="1280" height="720"}
+![URL inspection in the Google Search Console.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/seo-case-study-fa3350dbbefaafad97d6.jpg/public){: width="1280" height="720"}
 
 ### Don't discourage visitors; make your website load fast
 
@@ -75,7 +75,7 @@ If you're using something like WordPress, I recommend being careful when choosin
 
 Learn more about [page experience signals from Google](https://developers.google.com/search/docs/appearance/page-experience) and use [PageSpeed Insights](https://pagespeed.web.dev) to check your Core Web Vitals according to Google. And, as a bonus, check out this article I wrote about them: [Core web vitals aren't that important for Google](https://benjamincrozat.com/google-core-web-vitals).
 
-![Pagespeed Insights results for this article.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/89/conversions/Screenshot_2022-10-26_at_20.42.36_hi0jgo-medium.jpg){: width="1280" height="720"}
+![Pagespeed Insights results for this article.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/seo-case-study-b91416294ede682d12aa.jpg/public){: width="1280" height="720"}
 
 One other thing before I forget:
 - Articles should only use one `<h1>` heading;
@@ -129,7 +129,7 @@ It always works for me, given enough time to rank.
 
 Unfortunately, [the official documentation for snippets](https://developers.google.com/search/docs/appearance/page-experience#signals) is vague. I had to study how competitors get theirs first.
 
-![Google snippet for "Laravel 10 new features"](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/90/conversions/Screenshot_2022-12-09_at_09.50.38_sn4fp7-medium.jpg){: width="1280" height="720"}
+![Google snippet for "Laravel 10 new features"](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/seo-case-study-47fadd9328e152170acb.jpg/public){: width="1280" height="720"}
 
 #### Wait for it to rank and keep tweaking the article
 
@@ -168,7 +168,7 @@ Successful SEO can be achieved **by just analyzing Google's SERPs, the search co
 
 ### [Semrush](https://benjamincrozat.com/recommends/semrush)
 
-![Semrush](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/91/conversions/www.semrush.com__dtbyl3-medium.jpg){: width="1280" height="720"}
+![Semrush](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/seo-case-study-c0ffb5e0bd4d5c40db41.jpg/public){: width="1280" height="720"}
 
 [Semrush](https://benjamincrozat.com/recommends/semrush) is an all-in-one tool in the belt of SEO-driven people. I can't live without it. Here's what it can do:
 - Track your rankings and your competitors on Google
@@ -179,7 +179,7 @@ Successful SEO can be achieved **by just analyzing Google's SERPs, the search co
 
 ### [Wincher](https://benjamincrozat.com/recommends/wincher)
 
-![Wincher](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/92/conversions/www.wincher.com__1_uqazly-medium.jpg){: width="1280" height="720"}
+![Wincher](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/seo-case-study-064ae89e622d6ab5bd2e.jpg/public){: width="1280" height="720"}
 
 People who are serious about SEO do at least these things:
 - Track their rankings
@@ -201,7 +201,7 @@ What would be a SEO case study without actual numbers for the very blog you're r
 
 ### February 2023
 
-![Google Search Console report for February 2023](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/93/conversions/CleanShot_2023-03-04_at_08.36.43_2_2x_wtzlu0-medium.jpg)
+![Google Search Console report for February 2023](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/seo-case-study-12ec8a417919d6ce0e21.jpg/public)
 
 The numbers:
 - Clicks: **13.6K (94+%)**
@@ -217,7 +217,7 @@ However, I'm now getting ~500 visitors per business day from Google, which is an
 
 ### January 2023
 
-![Google Search Console report for January 2023](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/94/conversions/Screenshot_2023-02-03_at_00.05.02_hwp4m8-medium.jpg)
+![Google Search Console report for January 2023](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/seo-case-study-03bbdcac1814a271d222.jpg/public)
 
 The numbers:
 - Clicks: **7.02K (+68%)**
@@ -233,7 +233,7 @@ I keep naturally acquiring backlinks, but they were very low quality this month.
 
 ### December 2022
 
-![Google Search Console report for December 2022](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/95/conversions/Screenshot_2023-01-02_at_09.10.50_rssp3i-medium.jpg)
+![Google Search Console report for December 2022](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/seo-case-study-b401d90f1a984f2bd223.jpg/public)
 
 The numbers:
 - Clicks: **4.18K (+74%)**
@@ -247,7 +247,7 @@ I naturally acquired backlinks and even if it doesn't really matter, my Ahrefs D
 
 ### November 2022
 
-![Google Search Console report for November 2022.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/96/conversions/Screenshot_2022-12-02_at_11.46.04_dpweop-medium.jpg){: width="1280" height="720"}
+![Google Search Console report for November 2022.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/seo-case-study-b18f8169af9a548fb8b2.jpg/public){: width="1280" height="720"}
 
 The numbers:
 
@@ -264,7 +264,7 @@ As always, we're never sure about anything that's not officially documented by G
 
 ### October 2022
 
-![Google Search Console report for October 2022.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/97/conversions/Screenshot_2022-11-02_at_15.16.44_hf4yhc-medium.jpg){: width="1280" height="720"}
+![Google Search Console report for October 2022.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/seo-case-study-3461d82bbccde4bb5fe4.jpg/public){: width="1280" height="720"}
 
 The numbers:
 
@@ -281,7 +281,7 @@ What I did:
 
 #### The Google Discover effect
 
-![Google Discover numbers.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/98/conversions/Screenshot_2022-11-02_at_20.34.04_w3xyhz-medium.jpg){: width="1280" height="720"}
+![Google Discover numbers.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/seo-case-study-4569897ae7ae9fdfad78.jpg/public){: width="1280" height="720"}
 
 I recently got picked up by Google Discover.
 
@@ -300,7 +300,7 @@ The traffic from Google Discover dropped the next day substantially. I guess it'
 
 ### September 2022
 
-![Google Search Console report for September 2022.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/99/conversions/Screenshot_2022-10-25_at_12.46.24_ofbwjb-medium.jpg){: width="1280" height="720"}
+![Google Search Console report for September 2022.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/seo-case-study-ace10af92da4edb480a0.jpg/public){: width="1280" height="720"}
 
 The numbers:
 

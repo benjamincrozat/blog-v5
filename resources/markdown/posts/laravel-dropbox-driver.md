@@ -17,7 +17,7 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/Gn6ORVDJ1GvrYie.png"
 sponsored_at: null
 ---
-<img src="https://github.com/benjamincrozat/laravel-dropbox-driver/actions/workflows/run-tests.yml/badge.svg" class="inline" style="margin: 0" /> <img src="https://poser.pugx.org/benjamincrozat/laravel-dropbox-driver/v/stable" class="inline" style="margin: 0" /> <img src="https://poser.pugx.org/benjamincrozat/laravel-dropbox-driver/license" class="inline" style="margin: 0" /> <img src="https://poser.pugx.org/benjamincrozat/laravel-dropbox-driver/downloads" class="inline" style="margin: 0" />
+<img src="https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-dropbox-driver-49dbc9e1c9b2ea179c34.svg/public" class="inline" style="margin: 0" /> <img src="https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-dropbox-driver-c328658047ce292887ad.svg/public" class="inline" style="margin: 0" /> <img src="https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-dropbox-driver-b04b20e6e45f1cbdf921.svg/public" class="inline" style="margin: 0" /> <img src="https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-dropbox-driver-907a797d7e7d33b46d41.svg/public" class="inline" style="margin: 0" />
 
 Adding a new disk in the storage is easy. The only things I did was:
 - Copy and paste code from the documentation and made it a package (https://laravel.com/docs/filesystem#custom-filesystems)
@@ -64,7 +64,7 @@ Log in to your Dropbox account and create a new application to generate your acc
 
 https://www.dropbox.com/developers/apps/create
 
-![Apps creation on Dropbox.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/114/conversions/Screenshot_2022-12-03_at_12.40.15_rynwtk-medium.jpg)
+![Apps creation on Dropbox.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-dropbox-driver-45c417c0d4737e871343.jpg/public)
 
 ## License
 

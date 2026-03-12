@@ -45,7 +45,7 @@ Learn more:
 - Read the [announcement blog post from OpenAI](https://openai.com/blog/chatgpt-plugins) to get a good overview of what ChatGPT plugins are.
 - Read the [documentation of ChatGPT plugins](https://platform.openai.com/docs/plugins/).
 
-![ChatGPT plugins store.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/137/conversions/CleanShot_2023-06-19_at_22.12.13_2x_d4rjkg-medium.jpg)
+![ChatGPT plugins store.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/chatgpt-plugin-laravel-96c0961d7f6ed357835a.jpg/public)
 
 ## Let ChatGPT interact with your Laravel app through a REST API
 
@@ -212,7 +212,7 @@ Once your API and manifest are ready, it's essential to test the plugin thorough
 
 By following these steps, you can add your fresh new plugin into ChatGPT's environment for testing.
 
-![Install an unverified ChatGPT plugin.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/138/conversions/CleanShot_2023-06-19_at_22.13.47_2x_p3yxmu-medium.jpg)
+![Install an unverified ChatGPT plugin.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/chatgpt-plugin-laravel-ca7190bf0543a6fb8764.jpg/public)
 
 ### Limitations of the testing environment
 
@@ -231,7 +231,7 @@ Submitting your plugin for approval is extremely simple:
 
 It's possible to check your submission status under "Help" > "Messages".
 
-![The ChatGPT plugin submission bot.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/139/conversions/CleanShot_2023-06-19_at_22.14.48_2x_qtsdx8-medium.jpg)
+![The ChatGPT plugin submission bot.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/chatgpt-plugin-laravel-77ec3489c09cb02b92a4.jpg/public)
 
 If you are thinking less about plugins and more about what to build with OpenAI from Laravel now, these are the next reads I would open:
 

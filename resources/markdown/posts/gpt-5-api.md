@@ -36,7 +36,7 @@ Ready? Let’s ship your first GPT-5 request.
 4. Open the [Billing overview](https://platform.openai.com/account/billing/overview) page and add credit or a payment method so your keys work right away (see [prepaid billing](https://help.openai.com/en/articles/8264778-what-is-prepaid-billing)).
 5. [Generate your first API key for GPT-5](https://platform.openai.com/api-keys). Keys are shown once, paste it into a password manager right away.
 
-![API key generation on OpenAI](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/227/conversions/yZF7oBp7WI9jbq8gFcNWDWtmQDWWXb-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMjAuMDIuMjhAMngucG5n--medium.jpg)
+![API key generation on OpenAI](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-3329720cb9a472ebadbe.jpg/public)
 
 Got your key? Great. Time to hit the API.
 

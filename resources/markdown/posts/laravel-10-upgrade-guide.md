@@ -51,7 +51,7 @@ If you consider upgrading it after reading this, go for it! It's probably the ri
 
 But if you're taking the cautious approach, take the two years of support the team offers for Laravel 9 to fix your project first.
 
-![Laravel Upgrade guide](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/130/conversions/Screenshot_2023-02-03_at_11.00.57_sruzij-medium.jpg)
+![Laravel Upgrade guide](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-10-upgrade-guide-ecd2b45f921393f2a163.jpg/public)
 
 ## How to upgrade from Laravel 9 to Laravel 10?
 
@@ -87,7 +87,7 @@ Let's take [spatie/laravel-permissions](https://packagist.org/packages/spatie/la
 
 In the screenshot below, we can see it supports Laravel 7, 8, 9, and 10.
 
-![spatie/laravel-permission](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/131/conversions/Screenshot_2023-02-04_at_18.16.02_nvvzfb-medium.jpg)
+![spatie/laravel-permission](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-10-upgrade-guide-719e9cae3bac848c32cd.jpg/public)
 
 If you cannot see any indication that your packages have been upgraded, consider waiting a bit before upgrading your project.
 
@@ -131,7 +131,7 @@ Upgrading can be easy on clean and tested projects, but it can also be a nightma
 
 This is why a fellow Laravel developer, Jason McCreary, invented [Laravel Shift](https://laravelshift.com?utm_campaign=laravel-10-upgrade-guide&utm_source=benjamincrozat.com&utm_medium=blogpost&utm_content=textlink)
 
-![Laravel Shift](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/132/conversions/Screenshot_2023-02-03_at_10.55.36_ccqoia-medium.jpg)
+![Laravel Shift](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-10-upgrade-guide-f4ce654740479bf69345.jpg/public)
 
 It's effortless:
 1. **Sign in** with GitHub, BitBucket, or GitLab.

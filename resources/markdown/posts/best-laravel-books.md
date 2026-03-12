@@ -22,7 +22,7 @@ The books here are pure gold. Each one I recommend is related to Laravel, talks 
 
 ## Battle Ready Laravel by Ash Allen
 
-[![Battle Ready Laravel by Ash Allen](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/3613731/7b6f4c49-cf20-49a7-bdd2-3f01f414df29)](/recommends/battle-ready-laravel)
+[![Battle Ready Laravel by Ash Allen](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-laravel-books-2092efac8b8516488f5b.webp/public)](/recommends/battle-ready-laravel)
 
 Ash Allen is an inspiring figure in the Laravel community. I first talked to him back in 2022 on X (formerly Twitter) and he always was kind and helpful. If there’s a person from whom you can take guidance, it’s Ash.
 
@@ -34,7 +34,7 @@ I won’t disclose everything inside it, but the website provides a pretty good 
 
 ## Consuming APIs with Laravel by Ash Allen
 
-[![The Consuming APIs with Laravel book by Ash Allen.](https://github.com/benjamincrozat/content/assets/3613731/5f5e61b5-1ce1-4a31-9ca3-c7ef0cf59636)](/recommends/consuming-apis-laravel)
+[![The Consuming APIs with Laravel book by Ash Allen.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/2025-black-friday-cyber-monday-deals-089459d9969526439d92.png/public)](/recommends/consuming-apis-laravel)
 
 Ash Allen is proficient writer and you might be interested in checking out his incredible book titled “[Consuming APIs with Laravel](/recommends/consuming-apis-laravel).”
 
@@ -46,7 +46,7 @@ What I really love is how Ash dives deep into testing strategies and best practi
 
 ## Mastering Laravel Validation Rules by Aaron Saray and Joel Clermont
 
-[![Mastering Laravel Validation Rules by Aaron Saray and Joel Clermont](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/3613731/49cfa0c3-237d-4967-b7b7-0a93dca71d1a)](/recommends/mastering-laravel-validation-rules)
+[![Mastering Laravel Validation Rules by Aaron Saray and Joel Clermont](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-laravel-books-ad06f8b6afb0eba301f6.webp/public)](/recommends/mastering-laravel-validation-rules)
 
 Let me tell you: [Mastering Laravel Validation Rules](/recommends/mastering-laravel-validation-rules) is a game-changer. Beginner or knee-deep in Laravel development, this book has something for everyone. I’ve been using Laravel for more than 8 years, and I still learned a ton.
 

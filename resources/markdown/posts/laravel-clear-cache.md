@@ -20,7 +20,7 @@ sponsored_at: null
 
 Run `php artisan optimize:clear` during development, but prefer targeted commands in production.
 
-![The terminal after running "php artisan optimize" to clear Laravel's cache.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/247/conversions/fUYsLdG7jk25WIM9Y9RZWNawuPaX6q-metaQ2xlYW5TaG90IDIwMjMtMTEtMDkgYXQgMTQuNDAuNDhAMngucG5n--medium.jpg)
+![The terminal after running "php artisan optimize" to clear Laravel's cache.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-clear-cache-718bf1cf4dfab9897025.jpg/public)
 
 ## Quick reference commands
 

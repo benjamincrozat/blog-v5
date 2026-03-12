@@ -129,7 +129,7 @@ If you want to help, here is the short version I follow:
 - Bug fixes can target the `12.x` branch, while new features should target `master` for the next release. Review the [laravel/framework pull requests](https://github.com/laravel/framework/pulls).
 - Read the [Contribution Guide](https://laravel.com/docs/12.x/upgrade) for branch targeting, tests, and review expectations.
 
-![Screenshot of the Laravel 12 release notes highlighting starter kits and UUIDv7.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/3613731/44dfb5ba-e11a-45a2-be93-bd689bfe891e)
+![Screenshot of the Laravel 12 release notes highlighting starter kits and UUIDv7.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-12-85022b83a00bbc25894c.webp/public)
 
 ## FAQ
 

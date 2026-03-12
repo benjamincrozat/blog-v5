@@ -130,7 +130,7 @@ If you’re a visual learner, Mailtrap has an [easy-to-follow video](https://www
 
 Once you’ve verified your domain, Mailtrap will take you to the page from where you can copy the SMTP credentials and easily paste them into your project, app, or email-sending service. 
 
-![SMTP credentials on Mailtrap.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/156003281/54869b60-0bf2-4151-b0d8-0776893c1950)
+![SMTP credentials on Mailtrap.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-emails-mailtrap-smtp-6df8ece8df58f4dda7ce.webp/public)
 
 And here’s what your credentials should look like once you integrate them into your Laravel code:
 
@@ -157,7 +157,7 @@ Here’s what you should receive as a response if your test email was sent succe
 
 Then, simply click on the “Verify Setup,” which will start the verification process.
 
-![The "Verify Setup" button on Mailtrap.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/156003281/852163e9-aa15-4d9d-a622-b1397edfddea)
+![The "Verify Setup" button on Mailtrap.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-emails-mailtrap-smtp-95baa5cb42452a77053e.webp/public)
 
 ### Enable Mailtrap tracking settings (optional)
 
@@ -165,15 +165,15 @@ Now, this step is optional, but I highly recommend it as it allows me to monitor
 
 Namely, Mailtrap provides you with in-depth analytics through which you can keep an eye out on your opens, clicks, bounces, and more.
 
-![Tracking settings on Mailtrap.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/156003281/e046943a-f070-40e4-afbd-1a7f6136e803)
+![Tracking settings on Mailtrap.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-emails-mailtrap-smtp-44ed8a199a52b6e3686a.webp/public)
 
 Here’s what I see when I open my stats:
 
-![Email logs on Mailtrap.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/156003281/953b7698-dcaf-46ed-9a5d-09ca75529e30)
+![Email logs on Mailtrap.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-emails-mailtrap-smtp-639a56258622cb5ed96a.webp/public)
 
 And here’s the stats overview:
 
-![Stats overview on Mailtrap.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/156003281/8e8f1718-dad9-4909-9941-2cc44620de4a)
+![Stats overview on Mailtrap.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-emails-mailtrap-smtp-6627215a4f449fc0ac6a.webp/public)
 
 ### Create mailable classes
 
@@ -185,7 +185,7 @@ php artisan make:mail MyTestEmail
 
 After running this command, you should see the **MyTestEmail** class under “**app/mailMyTestEmail.php**”.
 
-![](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/156003281/6deb4707-573b-4315-ae9f-6f2f727d8132)
+![](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-emails-mailtrap-smtp-28170ede716d6271a69a.webp/public)
 
 Here’s the class code for your convenience:
 
@@ -253,7 +253,7 @@ See anything interesting? That’s right, the **content()** method returns a vie
 
 Ready to finally write some text? You can do so in the blade.php file, likewise:
 
-![](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/156003281/f10590da-e921-47a5-993e-1356aa293e6f)
+![](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-emails-mailtrap-smtp-367f848af3bb9048083b.webp/public)
 
 Now, let’s return to the **content()** method and replace the name of the view it returned with the name of our newly created one.
 
@@ -339,7 +339,7 @@ Route::get('/testroute', function() {
 
 Here’s how the file should look then:
 
-![](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/156003281/8da5aa28-4080-4eed-9b74-5d31ccb1cd8c)
+![](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-emails-mailtrap-smtp-20ed716a73fcdf42c351.webp/public)
 
 And, the moment of truth has come. I tested things out by running **php artisan serve** command and going to my browser, where I pasted the route I created. In my case, it was localhost:8000/testroute.
 
@@ -498,7 +498,7 @@ Besides allowing you to send emails, Mailtrap also comes with other benefits tha
 
 Namely, Mailtrap Email Testing gives you a sandbox where you can catch testing emails and then preview them, check their spam score, analyze their HTML/CSS, and more before you send them out.
 
-![The HTML check feature in the test inbox on Mailtrap.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/156003281/408e5f24-5351-404c-9519-c425fef7c27b)
+![The HTML check feature in the test inbox on Mailtrap.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-emails-mailtrap-smtp-1940c40b5d65737968ce.webp/public)
 
 Compared to testing emails with your personal inbox, Mailtrap Email Testing keeps things neatly organized by allowing you to create multiple inboxes for different projects and their stages.
 
@@ -510,7 +510,7 @@ And what I like the most about Email Testing is that it will only take you a few
 * Navigate to Email Testing → Inboxes → SMTP Settings
 * Select the desired Laravel version from the list of integrations
 
-![SMTP settings on Mailtrap.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/156003281/781adcba-29cc-43d4-a43a-1b38214156c6)
+![SMTP settings on Mailtrap.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-emails-mailtrap-smtp-6f953f6800df408e5a0b.webp/public)
 
 * Copy the code snippet generated by Mailtrap and paste it into your email-sending script
 * Run the script 

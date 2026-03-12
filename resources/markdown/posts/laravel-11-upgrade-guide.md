@@ -116,7 +116,7 @@ Upgrading can be easy on clean and tested projects, but it can also be a nightma
 
 This is why a fellow Laravel developer, Jason McCreary, invented [Laravel Shift](https://laravelshift.com?utm_campaign=laravel-10-upgrade-guide&utm_source=benjamincrozat.com&utm_medium=blogpost&utm_content=textlink)
 
-![Laravel Shift](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/132/conversions/Screenshot_2023-02-03_at_10.55.36_ccqoia-medium.jpg)
+![Laravel Shift](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-10-upgrade-guide-f4ce654740479bf69345.jpg/public)
 
 It's effortless:
 1. **Sign in** with GitHub, BitBucket, or GitLab.

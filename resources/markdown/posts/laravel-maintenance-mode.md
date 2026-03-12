@@ -34,7 +34,7 @@ php artisan down --refresh=15
  
 This will tell the user's browser to reload the page after 15 seconds.
 
-![Laravel's maintenance mode in action.](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/3613731/ecb02026-0087-4201-89ca-c747c45702e9)
+![Laravel's maintenance mode in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-maintenance-mode-f0246133c24c421b46f5.webp/public)
 
 ## Sneaking past maintenance mode
 

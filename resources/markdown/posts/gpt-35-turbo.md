@@ -33,18 +33,18 @@ Now, let's dive into this step-by-step tutorial that will help you make your fir
 
 1. [Create an account](https://chat.openai.com/auth/login).
 
-![Creating an account on OpenAI](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/229/conversions/Dt2ElwOQoKtwjEhuw2eu1uGceEDJnF-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMTkuNTQuMjZAMngucG5n--medium.jpg)
+![Creating an account on OpenAI](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-846047ea8d4bc781aaa6.jpg/public)
 
 3. Confirm your email address.
 4. [Log in](https://platform.openai.com/login?launch).
 5. Check for your free $5 of credits on [this page](https://platform.openai.com/account/billing/overview).
 
-![The free $5 of credit given to all new developers.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/228/conversions/V2xA6LlqgeEAd87BpKshqkY19sV9rp-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMTkuNTUuMDdAMngucG5n--medium.jpg)
+![The free $5 of credit given to all new developers.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-403fe06e5749406ea8a4.jpg/public)
 
 7. [Generate your first API key](https://platform.openai.com/api-keys). Be careful, it will only be displayed once. Copy and paste it into a password manager so it's stored securely.
 8. Start using GPT-3.5 Turbo's API! (Continue reading to learn how.)
 
-![API key generation on OpenAI](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/227/conversions/yZF7oBp7WI9jbq8gFcNWDWtmQDWWXb-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMjAuMDIuMjhAMngucG5n--medium.jpg)
+![API key generation on OpenAI](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-3329720cb9a472ebadbe.jpg/public)
 
 ## Make your first request to GPT-3.5 Turbo
 
@@ -88,7 +88,7 @@ Learn more on [the official API reference for Chat Completions](https://platform
 
 **Pro tip**: One API call can accept up to 128,000 tokens with gpt-4-1106-preview. A token is a numerical representation of your text. All your messages as well as the output from the model cannot exceed this limit. And for those who don't know, 1,000 tokens roughly equals 750 English words.
 
-![An example response of GPT-3.5 Turbo through its API.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/237/conversions/QP7qPDP033gzTsgOlUG5YOJ6QPZb0X-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMjIuMzcuMzZAMngucG5n--medium.jpg)
+![An example response of GPT-3.5 Turbo through its API.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-d51c248e83407694dc74.jpg/public)
 
 ## Enable the JSON mode with GPT-3.5 Turbo
 
@@ -144,7 +144,7 @@ curl -X POST \
 
 3. But be careful! While the model will now always output JSON, you will never be able to get 100% accuracy in its structure.
 
-![GPT-3.5 Turbo's JSON mode in action.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/239/conversions/QZRfvuQzN5NYwctfq3FklZsbljiP9j-metaQ2xlYW5TaG90IDIwMjMtMTEtMDYgYXQgMjIuMzguMDhAMngucG5n--medium.jpg)
+![GPT-3.5 Turbo's JSON mode in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-a340cfef794e095b1225.jpg/public)
 
 ## GPT-3.5 Turbo's pricing (it's cheaper than ever!)
 

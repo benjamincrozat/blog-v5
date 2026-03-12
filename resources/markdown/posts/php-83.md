@@ -49,7 +49,7 @@ Oh and by the way, I already started writing about [PHP 8.4's release date, new 
 
 If you are using Laravel Herd, this only takes one click!
 
-![Upgrading PHP to version 8.3 using Laravel Herd.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/267/conversions/01HFY6KJBWK2WVFG5YAEYFTN27-medium.jpg)
+![Upgrading PHP to version 8.3 using Laravel Herd.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/php-83-50a332b5b7469fe50fe8.jpg/public)
 
 If you are using Laravel Valet, here's how to proceed:
 

@@ -122,7 +122,7 @@ bun install --no-cache
 
 For details and flags, see the [bun install command](https://bun.com/docs/cli/install).
 
-![Terminal showing bun install creating bun.lock on macOS.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/69/conversions/ybYunPr2RMZPLO3vFaMImsaecxEEnz-metaQ2xlYW5TaG90IDIwMjMtMDktMTEgYXQgMDkuMDAuMDJAMnguanBn--medium.jpg)
+![Terminal showing bun install creating bun.lock on macOS.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/bun-laravel-5b693360c03cdefebee1.jpg/public)
 
 Add packages with bun add. Here is an example with three packages:
 
@@ -132,7 +132,7 @@ bun add tailwindcss autoprefixer postcss
 
 See [bun add](https://bun.com/docs/cli/add) for options like --dev and --exact.
 
-![Terminal showing bun add installing tailwindcss, autoprefixer, and postcss.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/70/UndzC78D9Uclf8eMBlPr0yN2wbhXRy-metaQ2xlYW5TaG90IDIwMjMtMDktMTEgYXQgMDkuMDIuMTFAMnguanBn-.jpg)
+![Terminal showing bun add installing tailwindcss, autoprefixer, and postcss.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/bun-laravel-c58deeed47edc94b9356.jpg/public)
 
 Remove a package with bun remove:
 
