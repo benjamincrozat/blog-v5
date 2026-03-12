@@ -239,4 +239,4 @@ If you are thinking less about plugins and more about what to build with OpenAI 
 - [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
 - [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
 - [GPT‑5: my API quick start guide](/gpt-5-api)
-- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
+- [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)

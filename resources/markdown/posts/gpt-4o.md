@@ -184,7 +184,7 @@ If this article on "How to access and use GPT-4o's API, step by step" hit the ma
 - [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
 - [GPT‑5: my API quick start guide](/gpt-5-api)
 - [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
-- [Use Laravel to build a ChatGPT plugin](/chatgpt-plugin-laravel)
+- [See how a Laravel app can expose its own ChatGPT integration](/chatgpt-plugin-laravel)
 - [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)
 - [Master OpenAI's new Text-to-speech API](/openai-tts-api)
 

@@ -84,7 +84,7 @@ By using Laravel's validation, we can make sure our users receive feedback that'
 
 If you are validating nested data and want the rest of that workflow to stay clean, these are the next Laravel reads I would open:
 
-- [Validation in Laravel made easy](/laravel-validation)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
+- [Write validation rules with less guesswork](/laravel-validation)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
+- [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)
+- [Get a clearer mental model of how Laravel fits together](/how-laravel-works)

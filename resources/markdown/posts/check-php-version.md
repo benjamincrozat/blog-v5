@@ -111,8 +111,8 @@ Yes! Tools like [Laravel Herd](/laravel-herd), [Laravel Valet](/laravel-valet), 
 
 Once you know which PHP version you are really on, these next reads help with local setup, config, and the Laravel side around it:
 
-- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
-- [Laravel Herd: the simplest way to install PHP on macOS and Windows](/laravel-herd)
+- [Run PHP and Laravel more smoothly on macOS](/laravel-valet)
+- [Set up PHP on macOS or Windows with less friction](/laravel-herd)
 - [This is the location of your php.ini](/php-ini-location)
-- [6 ways to check Laravel's version](/check-laravel-version)
-- [How to install Laravel on macOS](/laravel-installation-macos)
+- [Double-check which Laravel version is actually running](/check-laravel-version)
+- [Set up Laravel on macOS without a messy local stack](/laravel-installation-macos)

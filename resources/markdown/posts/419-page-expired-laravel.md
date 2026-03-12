@@ -252,8 +252,8 @@ The Laravel 419 error is almost always a solvable CSRF or session configuration 
 
 If you are still tightening forms, sessions, and API requests after the 419 fix, these are the next posts I would open:
 
-- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
-- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
+- [Close the Laravel security gaps that are easy to miss](/laravel-security-best-practices)
+- [Protect your API with Laravel Sanctum before it gets exposed](/laravel-sanctum-api-tokens-authentication)
 - [Fix "No application encryption key has been specified." in Laravel](/laravel-no-application-key-specified)
-- [How to customize middleware in Laravel 11+](/customize-middleware-laravel-11)
-- [Validation in Laravel made easy](/laravel-validation)
+- [Adjust Laravel 11 middleware without hunting through the framework](/customize-middleware-laravel-11)
+- [Write validation rules with less guesswork](/laravel-validation)

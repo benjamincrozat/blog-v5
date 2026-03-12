@@ -113,8 +113,8 @@ Remember, while `fake()` is a convenient feature, it's crucial to use it only lo
 
 If you are touching factories, seeders, and fake data more often now, these are the next Laravel reads I would keep nearby:
 
-- [The ultimate guide to Laravel's new Number helper](/laravel-number-helper)
-- [Validation in Laravel made easy](/laravel-validation)
-- [Easy data integrity with array validation in Laravel](/laravel-array-validation)
-- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
+- [Use Laravel's Number helper when formatting starts piling up](/laravel-number-helper)
+- [Write validation rules with less guesswork](/laravel-validation)
+- [Validate nested arrays in Laravel without losing your mind](/laravel-array-validation)
+- [Make your Laravel tests more useful before the suite grows](/laravel-testing-best-practices)
 - [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)

@@ -121,8 +121,8 @@ export default defineConfig({
 
 If you are deciding how much frontend scaffolding you want Laravel to do for you, these are the next reads I would compare with it:
 
-- [Add Vue.js to any Laravel project](/laravel-vue)
-- [Add Alpine.js to any Laravel project](/alpine-js-laravel)
-- [Use Bun as Your Package Manager in Any Laravel Project](/bun-laravel)
+- [Add Vue to Laravel without overbuilding the frontend](/laravel-vue)
+- [Add Alpine to Laravel when you just need lightweight interactivity](/alpine-js-laravel)
+- [Swap npm out for Bun in Laravel without friction](/bun-laravel)
 - [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)
 - [Laravel Volt: simplify how you write Livewire components](/laravel-volt)

@@ -80,8 +80,8 @@ I hope you will create something amazing!
 
 If this gave you the broad picture and you want the next layer down, these are the Laravel reads I would open next:
 
-- [Inside the Laravel service container](/inside-the-laravel-service-container)
-- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-- [Validation in Laravel made easy](/laravel-validation)
+- [Understand what the service container is doing behind the scenes](/inside-the-laravel-service-container)
+- [Use the Artisan commands you run every day with more confidence](/laravel-artisan)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
+- [Write validation rules with less guesswork](/laravel-validation)
 - [The history of Laravel's versions (2011-2025)](/laravel-versions)

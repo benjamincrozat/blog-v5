@@ -54,7 +54,7 @@ And both also have free third-party plugins that should cover almost all of your
 
 If you are still weighing admin-panel trade-offs after the comparison, these are the Laravel reads I would open next:
 
-- [How to Create a Stats Widget in Filament](/how-to-create-stats-widget-filament)
-- [How to Format Text Columns in Filament](/how-to-format-text-columns-filament)
-- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
-- [The best Laravel 12-ready books you should read in 2025](/best-laravel-books)
+- [Build a Filament stats widget when the dashboard needs real numbers](/how-to-create-stats-widget-filament)
+- [Make Filament text columns easier to read at a glance](/how-to-format-text-columns-filament)
+- [See what Laravel Pulse can surface before users do](/laravel-pulse)
+- [Pick the Laravel books most worth your reading time](/best-laravel-books)

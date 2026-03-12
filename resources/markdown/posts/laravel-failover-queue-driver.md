@@ -237,8 +237,8 @@ I like features that are “set it and forget it.” The Laravel failover queue 
 
 If queues are turning into a reliability problem instead of a background detail, these are the next Laravel reads I would keep open:
 
-- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
-- [9 ways to clear Laravel's cache](/laravel-clear-cache)
-- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
-- [Flexible caching in Laravel made super easy](/flexible-caching-in-laravel)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [See what Laravel Pulse can surface before users do](/laravel-pulse)
+- [Clear the right Laravel cache before you lose time chasing ghosts](/laravel-clear-cache)
+- [Make your Laravel tests more useful before the suite grows](/laravel-testing-best-practices)
+- [Use flexible caching when freshness matters as much as speed](/flexible-caching-in-laravel)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)

@@ -66,7 +66,7 @@ And you also need to know when things are stuck. Sometimes, problems are tough t
 
 If you are still thinking about what strong Laravel talent actually looks like, these posts add useful context from the technical side:
 
-- [Laravel interview questions and answers for 2025](/laravel-interview-questions)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-- [3 crucial Laravel architecture best practices for 2025](/laravel-architecture-best-practices)
-- [The best Laravel 12-ready books you should read in 2025](/best-laravel-books)
+- [See the Laravel interview questions I would prepare for](/laravel-interview-questions)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
+- [Make your Laravel structure hold up better as the app grows](/laravel-architecture-best-practices)
+- [Pick the Laravel books most worth your reading time](/best-laravel-books)

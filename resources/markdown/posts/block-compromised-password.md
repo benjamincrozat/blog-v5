@@ -26,7 +26,7 @@ However, it is important to expand beyond merely implementing the rule, by teach
 
 If you are thinking beyond one validation rule and toward a safer auth flow overall, these are the next posts I would open:
 
-- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
-- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
-- [Validation in Laravel made easy](/laravel-validation)
-- [The "419 Page Expired" error in Laravel: 5 quick fixes](/419-page-expired-laravel)
+- [Close the Laravel security gaps that are easy to miss](/laravel-security-best-practices)
+- [Protect your API with Laravel Sanctum before it gets exposed](/laravel-sanctum-api-tokens-authentication)
+- [Write validation rules with less guesswork](/laravel-validation)
+- [Fix the 419 error before it keeps breaking forms](/419-page-expired-laravel)

@@ -234,8 +234,8 @@ You now have all the skills to keep leveling up with migrations. Why don't you l
 
 If you are still working through how schema changes ripple through the app, these are the next Laravel reads I would keep nearby:
 
-- [Understanding database transactions with Laravel](/database-transactions-laravel)
-- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
+- [Use database transactions when partial writes would hurt](/database-transactions-laravel)
+- [Use the Artisan commands you run every day with more confidence](/laravel-artisan)
 - [A cheat sheet for Laravel's make Artisan commands](/cheat-sheet-make-laravel-artisan)
-- [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [Write where clauses with fewer query-builder surprises](/laravel-query-builder-where-clauses)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)

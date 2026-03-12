@@ -314,8 +314,8 @@ Ready to move forward? Start with my [upgrade to Laravel 10 guide](https://benja
 
 If Laravel 10 is only one stop in a longer upgrade path for you, these are the release reads I would keep open:
 
-- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
-- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
-- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-- [Laravel 12: new starter kits, changes, and upgrade tips](/laravel-12)
+- [Plan a safer upgrade from Laravel 9 to 10](/laravel-10-upgrade-guide)
+- [See the biggest Laravel 11 changes in one pass](/laravel-11)
+- [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
+- [See what Laravel 12 changed before you adopt it](/laravel-12)
 - [The history of Laravel's versions (2011-2025)](/laravel-versions)

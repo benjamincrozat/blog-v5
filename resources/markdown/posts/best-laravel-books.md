@@ -74,8 +74,8 @@ I’d definitely recommend it, especially if you’re the kind of Laravel develo
 
 If you are deciding what to study after the bookshelf, these are the hands-on Laravel reads I would pair with it:
 
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-- [3 crucial Laravel architecture best practices for 2025](/laravel-architecture-best-practices)
-- [Validation in Laravel made easy](/laravel-validation)
-- [Easy data integrity with array validation in Laravel](/laravel-array-validation)
-- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
+- [Make your Laravel structure hold up better as the app grows](/laravel-architecture-best-practices)
+- [Write validation rules with less guesswork](/laravel-validation)
+- [Validate nested arrays in Laravel without losing your mind](/laravel-array-validation)
+- [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)

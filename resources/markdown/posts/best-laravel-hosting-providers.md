@@ -177,9 +177,9 @@ My setup today: [DigitalOcean](/recommends/digitalocean) + [Laravel Forge](/lara
 
 If you are close to picking the stack that will run your app, these next reads help with hosting, deployment, and the setup around it:
 
-- [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
+- [See whether Laravel Forge still fits the way you deploy](/laravel-forge)
 - [The 6 best PHP cloud hosting providers for 2024](/best-cloud-hosting-provider-php)
-- [How to deploy PHP & Laravel apps on Sevalla ($50 free credits)](/deploy-php-laravel-apps-sevalla)
-- [Laravel Herd: the simplest way to install PHP on macOS and Windows](/laravel-herd)
-- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
-- [How to install Laravel on macOS](/laravel-installation-macos)
+- [See how to deploy a PHP or Laravel app on Sevalla step by step](/deploy-php-laravel-apps-sevalla)
+- [Set up PHP on macOS or Windows with less friction](/laravel-herd)
+- [Run PHP and Laravel more smoothly on macOS](/laravel-valet)
+- [Set up Laravel on macOS without a messy local stack](/laravel-installation-macos)

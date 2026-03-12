@@ -72,14 +72,14 @@ Take this package and do whatever the f you want with it. That's basically what 
 
 If you are still thinking about "Laravel Dropbox Driver package: how to install and use it", open these next:
 
-- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
-- [The laravel/ui package: my 2025 guide](/laravel-ui)
-- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
-- [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
+- [See what Laravel Pulse can surface before users do](/laravel-pulse)
+- [See when laravel/ui is still the right starter choice](/laravel-ui)
+- [Protect your API with Laravel Sanctum before it gets exposed](/laravel-sanctum-api-tokens-authentication)
+- [Build better Artisan prompts without extra ceremony](/laravel-prompts)
 - [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
-- [Make your Eloquent models IDE-friendly using Laravel Lift](/laravel-lift)
-- [The best custom cards for Laravel Pulse in 2024](/best-laravel-pulse-custom-cards)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
-- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
-- [How to create a custom filesystem adapter in Laravel](/custom-filesystem-adapter-laravel)
+- [Make Eloquent models easier for your IDE to understand](/laravel-lift)
+- [Steal ideas for Laravel Pulse cards worth building](/best-laravel-pulse-custom-cards)
+- [See the Laravel 10 changes that matter in real projects](/laravel-10)
+- [See what to clean up before moving to Laravel 9](/laravel-9-upgrade-guide)
+- [Build a custom Laravel filesystem driver when the defaults fall short](/custom-filesystem-adapter-laravel)
 

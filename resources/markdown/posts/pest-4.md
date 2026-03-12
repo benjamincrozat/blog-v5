@@ -175,4 +175,4 @@ If you are rethinking the whole testing stack after Pest 4, these are the next r
 
 - [What's new in Pest 3 and how to upgrade](/pest-3)
 - [A Guide to architecture testing presets in Pest 3](/pest-3-architecture-testing-presets)
-- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
+- [Make your Laravel tests more useful before the suite grows](/laravel-testing-best-practices)

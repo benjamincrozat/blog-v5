@@ -113,5 +113,5 @@ If the mental model clicked and you now want to build something concrete with it
 - [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
 - [GPT‑5: my API quick start guide](/gpt-5-api)
 - [How to use GPT-4o mini's API for cheap, step by step](/gpt-4o-mini)
-- [Use Laravel to build a ChatGPT plugin](/chatgpt-plugin-laravel)
+- [See how a Laravel app can expose its own ChatGPT integration](/chatgpt-plugin-laravel)
 - [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)

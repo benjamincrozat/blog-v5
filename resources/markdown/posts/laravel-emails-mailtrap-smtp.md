@@ -533,7 +533,7 @@ Good luck!
 
 If email delivery is only one part of the app workflow you are tightening, these are the next Laravel reads I would open:
 
-- [Understanding Laravel's fake() helper](/laravel-fake-helper)
-- [Validation in Laravel made easy](/laravel-validation)
-- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
+- [Use Laravel's fake() helper when seed data needs to be believable](/laravel-fake-helper)
+- [Write validation rules with less guesswork](/laravel-validation)
+- [Close the Laravel security gaps that are easy to miss](/laravel-security-best-practices)
+- [Get a clearer mental model of how Laravel fits together](/how-laravel-works)

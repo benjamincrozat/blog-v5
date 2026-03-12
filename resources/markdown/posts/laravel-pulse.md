@@ -148,8 +148,8 @@ If your Laravel Pulse dashboard is empty, chances are that there's a problem wit
 
 If you want Pulse to become part of how you actually run the app, these are the next reads I would open:
 
-- [The best custom cards for Laravel Pulse in 2024](/best-laravel-pulse-custom-cards)
-- [Let's build a custom Laravel Pulse card](/custom-laravel-pulse-card)
-- [Fix the "/livewire/livewire.js" 404 not found error](/livewire-js-404-not-found)
-- [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
+- [Steal ideas for Laravel Pulse cards worth building](/best-laravel-pulse-custom-cards)
+- [Build your own Laravel Pulse card once the built-ins are not enough](/custom-laravel-pulse-card)
+- [Fix the Livewire JS 404 before it blocks the whole page](/livewire-js-404-not-found)
+- [Build better Artisan prompts without extra ceremony](/laravel-prompts)
 - [Laravel Volt: simplify how you write Livewire components](/laravel-volt)

@@ -418,8 +418,8 @@ Use:
 
 If you are still deciding which Eloquent helper matches the write you actually want, these are the next reads I would keep close:
 
-- [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
-- [Efficient data filtering with whereIn() in Laravel](/laravel-query-builder-wherein)
-- [Laravel Eloquent: sort query results using orderBy()](/laravel-order-by)
-- [Validation in Laravel made easy](/laravel-validation)
-- [Make your Eloquent models IDE-friendly using Laravel Lift](/laravel-lift)
+- [Write where clauses with fewer query-builder surprises](/laravel-query-builder-where-clauses)
+- [Filter results with whereIn() without tripping over the basics](/laravel-query-builder-wherein)
+- [Sort Eloquent results cleanly with orderBy](/laravel-order-by)
+- [Write validation rules with less guesswork](/laravel-validation)
+- [Make Eloquent models easier for your IDE to understand](/laravel-lift)

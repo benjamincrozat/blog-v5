@@ -19,7 +19,7 @@ If you lean on Storage a lot, this unofficial guide to Laravel’s File facade i
 
 If this made you want to reach for Laravel's lower-level building blocks more often, these are the next reads I would keep nearby:
 
-- [How to create a custom filesystem adapter in Laravel](/custom-filesystem-adapter-laravel)
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
-- [Inside the Laravel service container](/inside-the-laravel-service-container)
-- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
+- [Build a custom Laravel filesystem driver when the defaults fall short](/custom-filesystem-adapter-laravel)
+- [Get a clearer mental model of how Laravel fits together](/how-laravel-works)
+- [Understand what the service container is doing behind the scenes](/inside-the-laravel-service-container)
+- [Use the Artisan commands you run every day with more confidence](/laravel-artisan)

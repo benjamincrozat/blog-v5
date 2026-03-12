@@ -23,7 +23,7 @@ I like tools that make privacy chores simple. If you need GDPR friendly cleanup 
 
 If you are thinking about privacy work as part of everyday Laravel maintenance now, these are the next reads I would open:
 
-- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
-- [Soft deletes in Laravel: the 2025 guide](/laravel-soft-deletes)
+- [Close the Laravel security gaps that are easy to miss](/laravel-security-best-practices)
+- [Use soft deletes without getting tripped up later](/laravel-soft-deletes)
 - [Should you block compromised passwords?](/block-compromised-password)
-- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
+- [Protect your API with Laravel Sanctum before it gets exposed](/laravel-sanctum-api-tokens-authentication)

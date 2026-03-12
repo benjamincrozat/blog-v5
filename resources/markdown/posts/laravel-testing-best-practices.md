@@ -336,5 +336,5 @@ If you are trying to make Laravel changes safer instead of just adding more test
 - [What's new in Pest 3 and how to upgrade](/pest-3)
 - [What’s new in Pest 4 and how to upgrade](/pest-4)
 - [A Guide to architecture testing presets in Pest 3](/pest-3-architecture-testing-presets)
-- [Mastering error handling in Laravel's HTTP client](/error-handling-laravel-http-client)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [Handle failed HTTP calls in Laravel without messy conditionals](/error-handling-laravel-http-client)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)

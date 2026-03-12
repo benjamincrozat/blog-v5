@@ -251,8 +251,8 @@ However, if you are ready to make compromises, you could host static websites (m
 
 If you are comparing Forge against the rest of your hosting stack, these are the next reads I would line up:
 
-- [The 4 best Laravel cloud hosting providers for 2025 (+ my setup)](/best-laravel-hosting-providers)
+- [Compare hosting options before you deploy another Laravel app](/best-laravel-hosting-providers)
 - [The 6 best PHP cloud hosting providers for 2024](/best-cloud-hosting-provider-php)
-- [How to deploy PHP & Laravel apps on Sevalla ($50 free credits)](/deploy-php-laravel-apps-sevalla)
-- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
-- [Laravel Herd: the simplest way to install PHP on macOS and Windows](/laravel-herd)
+- [See how to deploy a PHP or Laravel app on Sevalla step by step](/deploy-php-laravel-apps-sevalla)
+- [Run PHP and Laravel more smoothly on macOS](/laravel-valet)
+- [Set up PHP on macOS or Windows with less friction](/laravel-herd)

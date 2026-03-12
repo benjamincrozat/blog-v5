@@ -212,8 +212,8 @@ I reach for Alpine.js when I need small, interactive UI pieces without heavy too
 
 If this made you want smaller, snappier UI interactions without dragging in a huge stack, these are the next reads I would keep open:
 
-- [Add Alpine.js to any Laravel project](/alpine-js-laravel)
-- [Add Vue.js to any Laravel project](/laravel-vue)
+- [Add Alpine to Laravel when you just need lightweight interactivity](/alpine-js-laravel)
+- [Add Vue to Laravel without overbuilding the frontend](/laravel-vue)
 - [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)
 - [5 Tailwind CSS best practices for 2025](/tailwind-css)
 - [Get started with jQuery in 5 minutes](/jquery)

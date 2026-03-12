@@ -139,8 +139,8 @@ The pricing is straightforward and extremely generous considering how expensive 
 
 If you are treating this as one stop on a longer upgrade path, these are the Laravel reads I would line up next:
 
-- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
-- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
-- [Laravel 12: new starter kits, changes, and upgrade tips](/laravel-12)
-- [Laravel 13: features, timeline, and upgrade prep](/laravel-13)
+- [Plan a safer upgrade from Laravel 9 to 10](/laravel-10-upgrade-guide)
+- [See the biggest Laravel 11 changes in one pass](/laravel-11)
+- [See what Laravel 12 changed before you adopt it](/laravel-12)
+- [See what Laravel 13 is shaping up to change](/laravel-13)
 - [The history of Laravel's versions (2011-2025)](/laravel-versions)

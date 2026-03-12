@@ -162,7 +162,7 @@ The following packages have been added since Laravel 5.8:
 If this made you want a clearer mental map of how Laravel got here, these are the version and upgrade reads I would keep nearby:
 
 - [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [Laravel 12: new starter kits, changes, and upgrade tips](/laravel-12)
-- [Laravel 13: features, timeline, and upgrade prep](/laravel-13)
-- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
+- [See what Laravel 12 changed before you adopt it](/laravel-12)
+- [See what Laravel 13 is shaping up to change](/laravel-13)
+- [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
+- [Plan a safer upgrade from Laravel 9 to 10](/laravel-10-upgrade-guide)

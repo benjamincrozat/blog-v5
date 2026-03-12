@@ -95,8 +95,8 @@ And there you have it, folks! With Laravel's HTTP client, handling exceptions ha
 
 If you are building anything that talks to outside services, these are the next Laravel reads I would keep within reach:
 
-- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
-- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
-- [Validation in Laravel made easy](/laravel-validation)
-- [Easy data integrity with array validation in Laravel](/laravel-array-validation)
-- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
+- [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)
+- [Make your Laravel tests more useful before the suite grows](/laravel-testing-best-practices)
+- [Write validation rules with less guesswork](/laravel-validation)
+- [Validate nested arrays in Laravel without losing your mind](/laravel-array-validation)
+- [Protect your API with Laravel Sanctum before it gets exposed](/laravel-sanctum-api-tokens-authentication)

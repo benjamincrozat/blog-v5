@@ -111,7 +111,7 @@ Storage::disk('my-custom-driver')->put('lorem.txt', 'Lorem ipsum dolor sit amet.
 
 If this got you thinking about extending Laravel instead of working around it, these are the follow-up reads I would keep close:
 
-- [Laravel Dropbox Driver package: how to install and use it](/laravel-dropbox-driver)
-- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
-- [Inside the Laravel service container](/inside-the-laravel-service-container)
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
+- [Wire Dropbox into Laravel when you need it in the filesystem layer](/laravel-dropbox-driver)
+- [Use the Artisan commands you run every day with more confidence](/laravel-artisan)
+- [Understand what the service container is doing behind the scenes](/inside-the-laravel-service-container)
+- [Get a clearer mental model of how Laravel fits together](/how-laravel-works)

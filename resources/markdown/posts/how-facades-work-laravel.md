@@ -21,6 +21,6 @@ Here's how Facades work in Laravel:
 
 If facades finally make more sense and you want the rest of Laravel's internals to line up with that, these are the next reads I would open:
 
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
-- [Inside the Laravel service container](/inside-the-laravel-service-container)
-- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
+- [Get a clearer mental model of how Laravel fits together](/how-laravel-works)
+- [Understand what the service container is doing behind the scenes](/inside-the-laravel-service-container)
+- [Use the Artisan commands you run every day with more confidence](/laravel-artisan)

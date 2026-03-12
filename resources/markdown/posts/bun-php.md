@@ -177,8 +177,8 @@ Related reading: [What's the fuss around Bun's package manager abilities?](https
 
 If you are trying to make PHP-side frontend tooling feel less slow and annoying, these next reads make the trade-offs clearer:
 
-- [Use Bun as Your Package Manager in Any Laravel Project](/bun-laravel)
+- [Swap npm out for Bun in Laravel without friction](/bun-laravel)
 - [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
 - [npm ci vs. npm install: here's the difference](/npm-ci)
 - [Disable "packages are looking for funding" (npm fund message)](/npm-fund)
-- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
+- [Run PHP and Laravel more smoothly on macOS](/laravel-valet)

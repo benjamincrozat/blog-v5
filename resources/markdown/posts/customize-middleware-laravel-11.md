@@ -194,9 +194,9 @@ These advanced options provide more flexibility in customizing your application'
 
 If you are still shaping request flow and app bootstrapping in Laravel 11, these next reads stay close to that work:
 
-- [How to publish API and broadcasting routes in Laravel 11](/install-route-files-laravel)
-- [How to publish config files in Laravel 11](/publish-config-files-laravel)
-- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
-- [The "419 Page Expired" error in Laravel: 5 quick fixes](/419-page-expired-laravel)
-- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [Restore Laravel 11 route files when you actually need them](/install-route-files-laravel)
+- [Pull Laravel 11 config files into your app only when you need them](/publish-config-files-laravel)
+- [Close the Laravel security gaps that are easy to miss](/laravel-security-best-practices)
+- [Fix the 419 error before it keeps breaking forms](/419-page-expired-laravel)
+- [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)

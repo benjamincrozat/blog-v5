@@ -318,8 +318,8 @@ Want to look professional and make life easier for white-hats? Add a `/.well-kno
 
 If you are turning this checklist into actual hardening work, these are the next posts I would keep nearby:
 
-- [The "419 Page Expired" error in Laravel: 5 quick fixes](/419-page-expired-laravel)
+- [Fix the 419 error before it keeps breaking forms](/419-page-expired-laravel)
 - [Fix "No application encryption key has been specified." in Laravel](/laravel-no-application-key-specified)
-- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
+- [Protect your API with Laravel Sanctum before it gets exposed](/laravel-sanctum-api-tokens-authentication)
 - [Should you block compromised passwords?](/block-compromised-password)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)

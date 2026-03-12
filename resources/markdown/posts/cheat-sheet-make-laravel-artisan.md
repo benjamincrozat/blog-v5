@@ -74,7 +74,7 @@ One of the most common tasks is creating a new view for my application. Instead 
 
 If this sent you back into the command line with a few more ideas, these next reads help explain the machinery behind those commands:
 
-- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
-- [Inside the Laravel service container](/inside-the-laravel-service-container)
-- [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
+- [Use the Artisan commands you run every day with more confidence](/laravel-artisan)
+- [Get a clearer mental model of how Laravel fits together](/how-laravel-works)
+- [Understand what the service container is doing behind the scenes](/inside-the-laravel-service-container)
+- [Build better Artisan prompts without extra ceremony](/laravel-prompts)

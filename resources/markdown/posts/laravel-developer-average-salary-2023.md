@@ -90,14 +90,14 @@ If you want to prepare for your future job interview and be able to negociate a 
 
 If you are still thinking about "The average salary of a Laravel developer in 2023", open these next:
 
-- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
-- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
-- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+- [See what to clean up before moving to Laravel 9](/laravel-9-upgrade-guide)
+- [Plan a safer upgrade from Laravel 9 to 10](/laravel-10-upgrade-guide)
+- [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
 - [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
-- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
-- [How to install Laravel on macOS](/laravel-installation-macos)
-- [6 ways to check Laravel's version](/check-laravel-version)
-- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
+- [See the Laravel 10 changes that matter in real projects](/laravel-10)
+- [See the biggest Laravel 11 changes in one pass](/laravel-11)
+- [Get a clearer mental model of how Laravel fits together](/how-laravel-works)
+- [Set up Laravel on macOS without a messy local stack](/laravel-installation-macos)
+- [Double-check which Laravel version is actually running](/check-laravel-version)
+- [See what Laravel Pulse can surface before users do](/laravel-pulse)
 

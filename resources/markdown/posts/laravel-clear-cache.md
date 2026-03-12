@@ -181,8 +181,8 @@ No significant cache command changes. The commands listed here fully apply.
 
 If cache maintenance is only one part of the operational cleanup you do in Laravel, these are the next reads I would keep open:
 
-- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
-- [Flexible caching in Laravel made super easy](/flexible-caching-in-laravel)
-- [The Laravel failover queue driver: stop losing jobs](/laravel-failover-queue-driver)
-- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
-- [How to publish config files in Laravel 11](/publish-config-files-laravel)
+- [Use the Artisan commands you run every day with more confidence](/laravel-artisan)
+- [Use flexible caching when freshness matters as much as speed](/flexible-caching-in-laravel)
+- [See how the failover queue driver keeps jobs from disappearing](/laravel-failover-queue-driver)
+- [See what Laravel Pulse can surface before users do](/laravel-pulse)
+- [Pull Laravel 11 config files into your app only when you need them](/publish-config-files-laravel)

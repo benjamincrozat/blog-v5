@@ -208,6 +208,6 @@ In 2025, Bun’s package manager is a good fit when fast installs, simple CI, an
 If you are deciding whether Bun should replace your current package-manager habit, these are the next reads I would compare alongside it:
 
 - [Use Bun as your package manager in any PHP project](/bun-php)
-- [Use Bun as Your Package Manager in Any Laravel Project](/bun-laravel)
+- [Swap npm out for Bun in Laravel without friction](/bun-laravel)
 - [npm ci vs. npm install: here's the difference](/npm-ci)
 - [Disable "packages are looking for funding" (npm fund message)](/npm-fund)

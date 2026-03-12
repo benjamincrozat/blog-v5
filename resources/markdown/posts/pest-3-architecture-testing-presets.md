@@ -139,5 +139,5 @@ If you are trying to make code-quality checks feel lighter to maintain, these ar
 
 - [What's new in Pest 3 and how to upgrade](/pest-3)
 - [What’s new in Pest 4 and how to upgrade](/pest-4)
-- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
+- [Make your Laravel tests more useful before the suite grows](/laravel-testing-best-practices)
 - [PHP 8.5: 15 new features and changes](/php-85)

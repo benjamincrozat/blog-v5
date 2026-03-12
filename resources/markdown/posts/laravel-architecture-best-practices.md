@@ -88,14 +88,14 @@ All that being said, at the end, results matter the most. Here's a tweet from Ta
 
 If this article on "3 crucial Laravel architecture best practices for 2025" hit the mark, keep the momentum going here:
 
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
-- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
-- [The best Laravel developers to hire in 2024](/best-laravel-developers)
-- [The best Laravel 12-ready books you should read in 2025](/best-laravel-books)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
+- [Plan a safer upgrade from Laravel 9 to 10](/laravel-10-upgrade-guide)
+- [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
+- [See what to clean up before moving to Laravel 9](/laravel-9-upgrade-guide)
+- [See which Laravel developers I'd actually trust to hire](/best-laravel-developers)
+- [Pick the Laravel books most worth your reading time](/best-laravel-books)
 - [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
-- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
-- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
+- [See the Laravel 10 changes that matter in real projects](/laravel-10)
+- [See the biggest Laravel 11 changes in one pass](/laravel-11)
+- [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)
 

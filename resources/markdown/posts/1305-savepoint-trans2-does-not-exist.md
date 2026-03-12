@@ -47,7 +47,7 @@ Remember, the root cause can vary depending on your specific setup and code. If 
 
 If you are still untangling what happened in the database layer, these next reads help with transactions, migrations, and safer debugging:
 
-- [Understanding database transactions with Laravel](/database-transactions-laravel)
-- [Laravel migrations: a simplified and step by step guide](/laravel-migrations)
-- [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
-- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
+- [Use database transactions when partial writes would hurt](/database-transactions-laravel)
+- [Work with Laravel migrations without second-guessing the basics](/laravel-migrations)
+- [Write where clauses with fewer query-builder surprises](/laravel-query-builder-where-clauses)
+- [Make your Laravel tests more useful before the suite grows](/laravel-testing-best-practices)

@@ -50,7 +50,7 @@ Did you notice the button? Try it, it's so convenient! 👍
 
 If you are still tightening the parts of Laravel where config and security collide, these are the next posts I would open:
 
-- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
-- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
-- [The "419 Page Expired" error in Laravel: 5 quick fixes](/419-page-expired-laravel)
-- [How to customize middleware in Laravel 11+](/customize-middleware-laravel-11)
+- [Close the Laravel security gaps that are easy to miss](/laravel-security-best-practices)
+- [Protect your API with Laravel Sanctum before it gets exposed](/laravel-sanctum-api-tokens-authentication)
+- [Fix the 419 error before it keeps breaking forms](/419-page-expired-laravel)
+- [Adjust Laravel 11 middleware without hunting through the framework](/customize-middleware-laravel-11)

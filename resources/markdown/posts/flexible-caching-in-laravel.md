@@ -147,8 +147,8 @@ When used appropriately, this feature can lead to more responsive applications a
 
 If performance work is creeping into the rest of the app now, these are the Laravel reads I would line up next:
 
-- [9 ways to clear Laravel's cache](/laravel-clear-cache)
-- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
-- [The best custom cards for Laravel Pulse in 2024](/best-laravel-pulse-custom-cards)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
+- [Clear the right Laravel cache before you lose time chasing ghosts](/laravel-clear-cache)
+- [See what Laravel Pulse can surface before users do](/laravel-pulse)
+- [Steal ideas for Laravel Pulse cards worth building](/best-laravel-pulse-custom-cards)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
+- [Get a clearer mental model of how Laravel fits together](/how-laravel-works)

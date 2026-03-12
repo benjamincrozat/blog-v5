@@ -60,6 +60,6 @@ If you are still thinking about "Handle clicks from your users using jQuery", op
 - [How and when to use jQuery's $(document).ready() method](/jquery-document-ready)
 - [Alpine.js: a lightweight framework for productive developers](/alpine-js)
 - [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
-- [Add Vue.js to any Laravel project](/laravel-vue)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [Add Vue to Laravel without overbuilding the frontend](/laravel-vue)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
 

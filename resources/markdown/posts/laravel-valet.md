@@ -280,8 +280,8 @@ You now have PHP, Composer, and Valet installed on macOS. You can park a folder 
 
 If you are still shaping the local Mac setup around your PHP work, these are the next reads I would keep handy:
 
-- [How to install Laravel on macOS](/laravel-installation-macos)
-- [Laravel Herd: the simplest way to install PHP on macOS and Windows](/laravel-herd)
+- [Set up Laravel on macOS without a messy local stack](/laravel-installation-macos)
+- [Set up PHP on macOS or Windows with less friction](/laravel-herd)
 - [6 ways to check your version of PHP](/check-php-version)
-- [6 ways to check Laravel's version](/check-laravel-version)
-- [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
+- [Double-check which Laravel version is actually running](/check-laravel-version)
+- [See whether Laravel Forge still fits the way you deploy](/laravel-forge)

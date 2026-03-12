@@ -61,8 +61,8 @@ Instead, I would try to find the common denominator between all those items and 
 
 If filtering data is where the query starts getting messy, these are the next Laravel reads I would open:
 
-- [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
-- [Laravel Eloquent: sort query results using orderBy()](/laravel-order-by)
-- [Easy data integrity with array validation in Laravel](/laravel-array-validation)
-- [Validation in Laravel made easy](/laravel-validation)
-- [Understanding database transactions with Laravel](/database-transactions-laravel)
+- [Write where clauses with fewer query-builder surprises](/laravel-query-builder-where-clauses)
+- [Sort Eloquent results cleanly with orderBy](/laravel-order-by)
+- [Validate nested arrays in Laravel without losing your mind](/laravel-array-validation)
+- [Write validation rules with less guesswork](/laravel-validation)
+- [Use database transactions when partial writes would hurt](/database-transactions-laravel)

@@ -106,4 +106,4 @@ If you are tuning PHP locally and want the rest of that troubleshooting picture 
 
 - [PHP: Show all errors (E_ALL) safely](/php-show-all-errors)
 - [6 ways to check your version of PHP](/check-php-version)
-- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
+- [Run PHP and Laravel more smoothly on macOS](/laravel-valet)

@@ -246,8 +246,8 @@ You can do this!
 
 If validation is becoming the backbone of how you keep data clean, these are the Laravel reads I would open next:
 
-- [Easy data integrity with array validation in Laravel](/laravel-array-validation)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
-- [Understanding database transactions with Laravel](/database-transactions-laravel)
-- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
+- [Validate nested arrays in Laravel without losing your mind](/laravel-array-validation)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
+- [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)
+- [Use database transactions when partial writes would hurt](/database-transactions-laravel)
+- [Protect your API with Laravel Sanctum before it gets exposed](/laravel-sanctum-api-tokens-authentication)

@@ -111,7 +111,7 @@ I'll never get bored of Laravel's convenience!
 
 If you are cleaning up query logic and want the rest of that toolbox to feel just as clear, these are the next reads I would open:
 
-- [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
-- [Efficient data filtering with whereIn() in Laravel](/laravel-query-builder-wherein)
-- [Understanding database transactions with Laravel](/database-transactions-laravel)
-- [Validation in Laravel made easy](/laravel-validation)
+- [Write where clauses with fewer query-builder surprises](/laravel-query-builder-where-clauses)
+- [Filter results with whereIn() without tripping over the basics](/laravel-query-builder-wherein)
+- [Use database transactions when partial writes would hurt](/database-transactions-laravel)
+- [Write validation rules with less guesswork](/laravel-validation)

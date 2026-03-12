@@ -161,8 +161,8 @@ If you ever encounter a bug or feel like Laravel Prompts needs one more feature,
 
 If you want your command-line tools to feel as polished as the rest of the app, these are the Laravel reads I would keep nearby:
 
-- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
+- [Use the Artisan commands you run every day with more confidence](/laravel-artisan)
 - [A cheat sheet for Laravel's make Artisan commands](/cheat-sheet-make-laravel-artisan)
-- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
+- [See what Laravel Pulse can surface before users do](/laravel-pulse)
 - [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
-- [Make your Eloquent models IDE-friendly using Laravel Lift](/laravel-lift)
+- [Make Eloquent models easier for your IDE to understand](/laravel-lift)

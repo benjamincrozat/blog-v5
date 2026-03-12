@@ -284,8 +284,8 @@ One important tip to increase your chances of being merged: add something to the
 
 If Laravel 11 is the release you are planning around right now, these are the next reads I would keep close:
 
-- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-- [How to customize middleware in Laravel 11+](/customize-middleware-laravel-11)
-- [How to publish API and broadcasting routes in Laravel 11](/install-route-files-laravel)
-- [Laravel 12: new starter kits, changes, and upgrade tips](/laravel-12)
+- [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
+- [Adjust Laravel 11 middleware without hunting through the framework](/customize-middleware-laravel-11)
+- [Restore Laravel 11 route files when you actually need them](/install-route-files-laravel)
+- [See what Laravel 12 changed before you adopt it](/laravel-12)
 - [The history of Laravel's versions (2011-2025)](/laravel-versions)

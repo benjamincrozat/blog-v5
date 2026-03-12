@@ -353,5 +353,5 @@ If you are turning one OpenAI request into something more ambitious in PHP, thes
 - [Master OpenAI's new Text-to-speech API](/openai-tts-api)
 - [GPT‑5: my API quick start guide](/gpt-5-api)
 - [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
-- [Use Laravel to build a ChatGPT plugin](/chatgpt-plugin-laravel)
+- [See how a Laravel app can expose its own ChatGPT integration](/chatgpt-plugin-laravel)
 - [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)

@@ -102,8 +102,8 @@ There's a lot more to Laravel Sanctum and I encourage you to go read the [offici
 
 If you are hardening an API instead of just getting auth to work once, these are the Laravel reads I would open:
 
-- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
-- [The "419 Page Expired" error in Laravel: 5 quick fixes](/419-page-expired-laravel)
-- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
+- [Close the Laravel security gaps that are easy to miss](/laravel-security-best-practices)
+- [Fix the 419 error before it keeps breaking forms](/419-page-expired-laravel)
+- [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)
 - [Fix "No application encryption key has been specified." in Laravel](/laravel-no-application-key-specified)
-- [Validation in Laravel made easy](/laravel-validation)
+- [Write validation rules with less guesswork](/laravel-validation)

@@ -38,8 +38,8 @@ After running the command, Artisan will also ask you if you want to install [Lar
 
 If you are still adapting the Laravel 11 skeleton to your app's shape, these are the next reads I would keep nearby:
 
-- [How to publish config files in Laravel 11](/publish-config-files-laravel)
-- [How to customize middleware in Laravel 11+](/customize-middleware-laravel-11)
-- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
-- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
-- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+- [Pull Laravel 11 config files into your app only when you need them](/publish-config-files-laravel)
+- [Adjust Laravel 11 middleware without hunting through the framework](/customize-middleware-laravel-11)
+- [Protect your API with Laravel Sanctum before it gets exposed](/laravel-sanctum-api-tokens-authentication)
+- [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)
+- [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)

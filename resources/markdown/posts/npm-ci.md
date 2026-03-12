@@ -75,4 +75,4 @@ If you are trying to make installs predictable instead of merely fast, these are
 - [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
 - [Disable "packages are looking for funding" (npm fund message)](/npm-fund)
 - [Use Bun as your package manager in any PHP project](/bun-php)
-- [Use Bun as Your Package Manager in Any Laravel Project](/bun-laravel)
+- [Swap npm out for Bun in Laravel without friction](/bun-laravel)

@@ -112,8 +112,8 @@ Options:
 
 Once Laravel is installed, these are the setup reads I would keep nearby on a Mac:
 
-- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
-- [Laravel Herd: the simplest way to install PHP on macOS and Windows](/laravel-herd)
-- [6 ways to check Laravel's version](/check-laravel-version)
+- [Run PHP and Laravel more smoothly on macOS](/laravel-valet)
+- [Set up PHP on macOS or Windows with less friction](/laravel-herd)
+- [Double-check which Laravel version is actually running](/check-laravel-version)
 - [6 ways to check your version of PHP](/check-php-version)
-- [The laravel/ui package: my 2025 guide](/laravel-ui)
+- [See when laravel/ui is still the right starter choice](/laravel-ui)

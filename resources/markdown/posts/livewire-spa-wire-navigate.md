@@ -119,5 +119,5 @@ If `wire:navigate` opened the door to doing more with Livewire, these are the ne
 - [How to force re-render a Livewire v3 component](/re-render-livewire-component)
 - [Prevent a Livewire component from re-rendering](/prevent-render-livewire)
 - [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
-- [Fix the /livewire/livewire.js 404 not found error](/livewire-js-404-not-found)
-- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
+- [Fix the Livewire JS 404 before it blocks the whole page](/livewire-js-404-not-found)
+- [Make your Laravel tests more useful before the suite grows](/laravel-testing-best-practices)

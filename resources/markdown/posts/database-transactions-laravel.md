@@ -69,7 +69,7 @@ Learn more about [transactions in Laravel](https://laravel.com/docs/10.x/databas
 If you are staying in the part of Laravel where data consistency matters most, these follow-up reads are the ones I would keep nearby:
 
 - [Fix "1305 SAVEPOINT trans2 does not exist" in Laravel](/1305-savepoint-trans2-does-not-exist)
-- [Laravel migrations: a simplified and step by step guide](/laravel-migrations)
-- [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
-- [Efficient data filtering with whereIn() in Laravel](/laravel-query-builder-wherein)
-- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
+- [Work with Laravel migrations without second-guessing the basics](/laravel-migrations)
+- [Write where clauses with fewer query-builder surprises](/laravel-query-builder-where-clauses)
+- [Filter results with whereIn() without tripping over the basics](/laravel-query-builder-wherein)
+- [Make your Laravel tests more useful before the suite grows](/laravel-testing-best-practices)

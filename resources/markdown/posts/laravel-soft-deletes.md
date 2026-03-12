@@ -166,8 +166,8 @@ protected function schedule(Schedule $schedule)
 
 If you are still thinking about what deleted should really mean in your data model, these are the Laravel reads I would open:
 
-- [Unlock the power of Laravel's query builder where clauses](/laravel-query-builder-where-clauses)
-- [Laravel Eloquent: sort query results using orderBy()](/laravel-order-by)
-- [Efficient data filtering with whereIn() in Laravel](/laravel-query-builder-wherein)
-- [Laravel migrations: a simplified and step by step guide](/laravel-migrations)
-- [Make your Eloquent models IDE-friendly using Laravel Lift](/laravel-lift)
+- [Write where clauses with fewer query-builder surprises](/laravel-query-builder-where-clauses)
+- [Sort Eloquent results cleanly with orderBy](/laravel-order-by)
+- [Filter results with whereIn() without tripping over the basics](/laravel-query-builder-wherein)
+- [Work with Laravel migrations without second-guessing the basics](/laravel-migrations)
+- [Make Eloquent models easier for your IDE to understand](/laravel-lift)

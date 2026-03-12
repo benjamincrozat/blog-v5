@@ -178,6 +178,6 @@ If you are turning a Pest upgrade into a better testing workflow overall, these 
 
 - [What’s new in Pest 4 and how to upgrade](/pest-4)
 - [A Guide to architecture testing presets in Pest 3](/pest-3-architecture-testing-presets)
-- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
+- [Make your Laravel tests more useful before the suite grows](/laravel-testing-best-practices)
 - [PHP: Show all errors (E_ALL) safely](/php-show-all-errors)
 - [PHP 8.5: 15 new features and changes](/php-85)

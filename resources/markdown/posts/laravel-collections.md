@@ -336,13 +336,13 @@ Next steps: explore [Eloquent collections](https://laravel.com/docs/eloquent-col
 If you are still thinking about "15 Laravel Collections tips to refactor your codebase", open these next:
 
 - [Fix "Invalid argument supplied for foreach" in PHP & Laravel](/invalid-argument-supplied-for-foreach)
-- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
-- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
-- [Easy data integrity with array validation in Laravel](/laravel-array-validation)
-- [Laravel Eloquent: sort query results using orderBy()](/laravel-order-by)
-- [Laravel retrospective: what changed since version 5.8?](/laravel-retrospective)
+- [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)
+- [See the biggest Laravel 11 changes in one pass](/laravel-11)
+- [Validate nested arrays in Laravel without losing your mind](/laravel-array-validation)
+- [Sort Eloquent results cleanly with orderBy](/laravel-order-by)
+- [Look back at how Laravel changed after 5.8](/laravel-retrospective)
 - [Print an array with PHP (+ Laravel)](/php-laravel-print-array)
-- [Laravel 12: new starter kits, changes, and upgrade tips](/laravel-12)
-- [Laravel firstOrCreate, firstOrNew, createOrFirst and friends](/laravel-firstorcreate-firstornew-createorfirst-updateorcreate-updateorinsert)
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+- [See what Laravel 12 changed before you adopt it](/laravel-12)
+- [Pick the right Eloquent create helper before duplicates sneak in](/laravel-firstorcreate-firstornew-createorfirst-updateorcreate-updateorinsert)
+- [See the Laravel 10 changes that matter in real projects](/laravel-10)
 

@@ -635,14 +635,14 @@ Use `dispatchAfterResponse` for very short, one‑off tasks that can run right a
 
 If you are still thinking about "25 Laravel best practices, tips, and tricks", open these next:
 
-- [3 crucial Laravel architecture best practices for 2025](/laravel-architecture-best-practices)
-- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-- [Validation in Laravel made easy](/laravel-validation)
-- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
-- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
-- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
-- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
-- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
+- [Make your Laravel structure hold up better as the app grows](/laravel-architecture-best-practices)
+- [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
+- [Write validation rules with less guesswork](/laravel-validation)
+- [Plan a safer upgrade from Laravel 9 to 10](/laravel-10-upgrade-guide)
+- [See what to clean up before moving to Laravel 9](/laravel-9-upgrade-guide)
+- [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)
+- [See the biggest Laravel 11 changes in one pass](/laravel-11)
+- [Close the Laravel security gaps that are easy to miss](/laravel-security-best-practices)
 - [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [The best Laravel 12-ready books you should read in 2025](/best-laravel-books)
+- [Pick the Laravel books most worth your reading time](/best-laravel-books)
 

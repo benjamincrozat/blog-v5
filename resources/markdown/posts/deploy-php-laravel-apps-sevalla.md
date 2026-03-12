@@ -124,7 +124,7 @@ Whether you’re testing a small project, launching a SaaS application, or deplo
 
 If you are comparing where and how to ship the app after this walkthrough, these are the follow-up reads I would stack next:
 
-- [The 4 best Laravel cloud hosting providers for 2025 (+ my setup)](/best-laravel-hosting-providers)
-- [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
+- [Compare hosting options before you deploy another Laravel app](/best-laravel-hosting-providers)
+- [See whether Laravel Forge still fits the way you deploy](/laravel-forge)
 - [The 6 best PHP cloud hosting providers for 2024](/best-cloud-hosting-provider-php)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)

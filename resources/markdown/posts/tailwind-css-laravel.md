@@ -192,6 +192,6 @@ That's it, you're now done with the boring work. Go build something great!
 If you are still assembling the frontend toolchain around a Laravel app, these are the next reads I would compare with it:
 
 - [5 Tailwind CSS best practices for 2025](/tailwind-css)
-- [Use Bun as Your Package Manager in Any Laravel Project](/bun-laravel)
+- [Swap npm out for Bun in Laravel without friction](/bun-laravel)
 - [Tailwind CSS forms plugin: my 2025 guide for v4 and v3](/tailwind-css-forms-plugin)
-- [Add Alpine.js to any Laravel project](/alpine-js-laravel)
+- [Add Alpine to Laravel when you just need lightweight interactivity](/alpine-js-laravel)

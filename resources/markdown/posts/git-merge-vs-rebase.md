@@ -178,4 +178,4 @@ If this was really about calmer day-to-day team workflow, these next reads widen
 
 - [The best web development courses available. Free and paid.](/best-web-development-courses)
 - [The best PHP blogs to read in 2025](/best-php-blogs)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)

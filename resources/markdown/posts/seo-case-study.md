@@ -319,6 +319,6 @@ What I did:
 
 If you want to connect the traffic graph to the technical work behind it, these are the next SEO reads I would keep open:
 
-- [Stop overthinking! Here's technical SEO in a nutshell.](/laravel-seo)
+- [Get the technical SEO basics straight without overcomplicating them](/laravel-seo)
 - [Core web vitals aren't that important for Google](/google-core-web-vitals)
 - [The best GDPR-compliant Google Analytics alternatives (2024)](/best-gdpr-compliant-google-analytics-alternatives)

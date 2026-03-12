@@ -187,7 +187,7 @@ If this article on "How to access and use GPT-4 Turbo's API, step by step" hit t
 - [Access and use GPT‑4.1's API. 5 minutes, tops.](/gpt-41)
 - [GPT‑5: my API quick start guide](/gpt-5-api)
 - [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
-- [Use Laravel to build a ChatGPT plugin](/chatgpt-plugin-laravel)
+- [See how a Laravel app can expose its own ChatGPT integration](/chatgpt-plugin-laravel)
 - [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)
 - [Master OpenAI's new Text-to-speech API](/openai-tts-api)
 

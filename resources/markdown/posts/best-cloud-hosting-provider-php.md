@@ -174,8 +174,8 @@ However, if you are ready to make compromises, you could host static websites (m
 
 If you are narrowing down where a PHP app should actually live, these follow-up reads help with hosting, deployment, and the setup around it:
 
-- [The 4 best Laravel cloud hosting providers for 2025 (+ my setup)](/best-laravel-hosting-providers)
-- [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
-- [How to deploy PHP & Laravel apps on Sevalla ($50 free credits)](/deploy-php-laravel-apps-sevalla)
-- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
-- [Laravel Herd: the simplest way to install PHP on macOS and Windows](/laravel-herd)
+- [Compare hosting options before you deploy another Laravel app](/best-laravel-hosting-providers)
+- [See whether Laravel Forge still fits the way you deploy](/laravel-forge)
+- [See how to deploy a PHP or Laravel app on Sevalla step by step](/deploy-php-laravel-apps-sevalla)
+- [Run PHP and Laravel more smoothly on macOS](/laravel-valet)
+- [Set up PHP on macOS or Windows with less friction](/laravel-herd)

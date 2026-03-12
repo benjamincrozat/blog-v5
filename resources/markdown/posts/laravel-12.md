@@ -155,7 +155,7 @@ I upgraded a small Laravel 11 app to 12 in one sitting, and it was straightforwa
 If you are planning the next upgrade after landing on Laravel 12, these are the release reads I would keep open:
 
 - [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [Laravel 13: features, timeline, and upgrade prep](/laravel-13)
-- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
-- [6 ways to check Laravel's version](/check-laravel-version)
+- [See what Laravel 13 is shaping up to change](/laravel-13)
+- [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
+- [See the biggest Laravel 11 changes in one pass](/laravel-11)
+- [Double-check which Laravel version is actually running](/check-laravel-version)

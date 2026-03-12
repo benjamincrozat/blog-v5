@@ -918,10 +918,10 @@ You can learn more in this great blog post I found: [History of Laravel PHP fram
 
 If you are using the version history to plan what comes next, these are the release and upgrade reads I would keep open:
 
-- [Laravel 12: new starter kits, changes, and upgrade tips](/laravel-12)
-- [Laravel 13: features, timeline, and upgrade prep](/laravel-13)
-- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
-- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
-- [6 ways to check Laravel's version](/check-laravel-version)
-- [Laravel retrospective: what changed since version 5.8?](/laravel-retrospective)
+- [See what Laravel 12 changed before you adopt it](/laravel-12)
+- [See what Laravel 13 is shaping up to change](/laravel-13)
+- [See the biggest Laravel 11 changes in one pass](/laravel-11)
+- [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
+- [Plan a safer upgrade from Laravel 9 to 10](/laravel-10-upgrade-guide)
+- [Double-check which Laravel version is actually running](/check-laravel-version)
+- [Look back at how Laravel changed after 5.8](/laravel-retrospective)

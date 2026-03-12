@@ -95,4 +95,4 @@ If you are cleaning up noisy Node tooling while keeping the workflow sane, these
 - [npm ci vs. npm install: here's the difference](/npm-ci)
 - [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
 - [Use Bun as your package manager in any PHP project](/bun-php)
-- [Use Bun as Your Package Manager in Any Laravel Project](/bun-laravel)
+- [Swap npm out for Bun in Laravel without friction](/bun-laravel)

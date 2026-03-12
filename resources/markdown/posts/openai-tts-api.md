@@ -137,4 +137,4 @@ If audio is only the first OpenAI feature you want to wire into a PHP app, these
 - [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
 - [GPT‑5: my API quick start guide](/gpt-5-api)
 - [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
-- [Use Laravel to build a ChatGPT plugin](/chatgpt-plugin-laravel)
+- [See how a Laravel app can expose its own ChatGPT integration](/chatgpt-plugin-laravel)

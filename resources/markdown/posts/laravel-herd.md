@@ -222,8 +222,8 @@ If you need to install PHP on macOS or Windows fast, Herd is the easiest way. I 
 
 If you are piecing together your local PHP and Laravel setup, these next reads help with the rest of that environment:
 
-- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
-- [How to install Laravel on macOS](/laravel-installation-macos)
+- [Run PHP and Laravel more smoothly on macOS](/laravel-valet)
+- [Set up Laravel on macOS without a messy local stack](/laravel-installation-macos)
 - [6 ways to check your version of PHP](/check-php-version)
-- [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
-- [The 4 best Laravel cloud hosting providers for 2025 (+ my setup)](/best-laravel-hosting-providers)
+- [See whether Laravel Forge still fits the way you deploy](/laravel-forge)
+- [Compare hosting options before you deploy another Laravel app](/best-laravel-hosting-providers)

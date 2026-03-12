@@ -160,7 +160,7 @@ It's time to explore these methods and put them to work in your Laravel applicat
 
 If you like the newer helper-style parts of Laravel, these are the follow-up reads I would keep open:
 
-- [Understanding Laravel's fake() helper](/laravel-fake-helper)
-- [Validation in Laravel made easy](/laravel-validation)
-- [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
+- [Use Laravel's fake() helper when seed data needs to be believable](/laravel-fake-helper)
+- [Write validation rules with less guesswork](/laravel-validation)
+- [Build better Artisan prompts without extra ceremony](/laravel-prompts)
 - [Laravel Volt: simplify how you write Livewire components](/laravel-volt)

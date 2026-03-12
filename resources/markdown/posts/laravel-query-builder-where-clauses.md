@@ -116,8 +116,8 @@ Laravel's query builder's where capabilities don't just stop at the basics. It o
 
 If you are still shaping complex Eloquent queries, these are the follow-up reads I would keep open:
 
-- [Efficient data filtering with whereIn() in Laravel](/laravel-query-builder-wherein)
-- [Laravel Eloquent: sort query results using orderBy()](/laravel-order-by)
-- [Validation in Laravel made easy](/laravel-validation)
-- [Easy data integrity with array validation in Laravel](/laravel-array-validation)
-- [Understanding database transactions with Laravel](/database-transactions-laravel)
+- [Filter results with whereIn() without tripping over the basics](/laravel-query-builder-wherein)
+- [Sort Eloquent results cleanly with orderBy](/laravel-order-by)
+- [Write validation rules with less guesswork](/laravel-validation)
+- [Validate nested arrays in Laravel without losing your mind](/laravel-array-validation)
+- [Use database transactions when partial writes would hurt](/database-transactions-laravel)

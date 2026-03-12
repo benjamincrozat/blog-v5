@@ -227,8 +227,8 @@ Also:
 
 If you are preparing for a Laravel interview and want the technical side to feel less fuzzy, these are the posts I would revise with:
 
-- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
-- [Inside the Laravel service container](/inside-the-laravel-service-container)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-- [6 ways to check Laravel's version](/check-laravel-version)
-- [The best Laravel developers to hire in 2024](/best-laravel-developers)
+- [Make your Laravel tests more useful before the suite grows](/laravel-testing-best-practices)
+- [Understand what the service container is doing behind the scenes](/inside-the-laravel-service-container)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
+- [Double-check which Laravel version is actually running](/check-laravel-version)
+- [See which Laravel developers I'd actually trust to hire](/best-laravel-developers)

@@ -37,6 +37,6 @@ Why is this necessary now? Because starting from [Laravel 11](https://laravel.co
 
 If you are still adapting to the slimmer Laravel 11 skeleton after this, these are the next reads I would keep nearby:
 
-- [How to publish API and broadcasting routes in Laravel 11](/install-route-files-laravel)
-- [How to customize middleware in Laravel 11+](/customize-middleware-laravel-11)
-- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+- [Restore Laravel 11 route files when you actually need them](/install-route-files-laravel)
+- [Adjust Laravel 11 middleware without hunting through the framework](/customize-middleware-laravel-11)
+- [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)

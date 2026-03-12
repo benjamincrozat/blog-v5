@@ -290,8 +290,8 @@ What I really love is how Ash dives deep into testing strategies and best practi
 
 If you are building an API and want the surrounding Laravel pieces to stay just as solid, these are the next reads I would open:
 
-- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
-- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
-- [Mastering error handling in Laravel's HTTP client](/error-handling-laravel-http-client)
-- [Validation in Laravel made easy](/laravel-validation)
-- [How to publish API and broadcasting routes in Laravel 11](/install-route-files-laravel)
+- [Protect your API with Laravel Sanctum before it gets exposed](/laravel-sanctum-api-tokens-authentication)
+- [Close the Laravel security gaps that are easy to miss](/laravel-security-best-practices)
+- [Handle failed HTTP calls in Laravel without messy conditionals](/error-handling-laravel-http-client)
+- [Write validation rules with less guesswork](/laravel-validation)
+- [Restore Laravel 11 route files when you actually need them](/install-route-files-laravel)

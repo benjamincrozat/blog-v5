@@ -127,8 +127,8 @@ Now, since I'm using [Ploi](/recommends/ploi) to handle my deployments with zero
 
 If you are thinking about safer deploys instead of just flipping maintenance mode on and off, these next reads are worth keeping open:
 
-- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
-- [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)
-- [How to deploy PHP & Laravel apps on Sevalla ($50 free credits)](/deploy-php-laravel-apps-sevalla)
-- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
-- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [Use the Artisan commands you run every day with more confidence](/laravel-artisan)
+- [See whether Laravel Forge still fits the way you deploy](/laravel-forge)
+- [See how to deploy a PHP or Laravel app on Sevalla step by step](/deploy-php-laravel-apps-sevalla)
+- [See what Laravel Pulse can surface before users do](/laravel-pulse)
+- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
