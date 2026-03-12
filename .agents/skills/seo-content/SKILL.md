@@ -43,14 +43,15 @@ Read these references as needed:
 - Use the primary keyword in the title, intro, slug, and only 1-2 lower headings when natural.
 - Prefer clear, specific titles and snippets over keyword stuffing. Google may rewrite both.
 - On every new or revised post, add or refresh relevant internal links with descriptive anchors. Treat them as navigation and topical context, not filler.
-- Keep the post's related-posts list current as part of that internal-linking pass. Update stale recommendations or anchors when the article's angle changes instead of leaving an outdated list behind.
-- The lead-in sentence before the related-posts list must be unique to that article. Do not reuse the same stock phrasing, canned curiosity line, or obvious template across the site.
+- Keep the post's related-posts list current as part of that internal-linking pass on non-commercial posts. Update stale recommendations or anchors when the article's angle changes instead of leaving an outdated list behind.
+- Commercial posts (`is_commercial: true`) must not include a related-posts, read-next, or follow-up reading block. Keep those pages focused on conversion rather than onward reading.
+- On non-commercial posts, the lead-in sentence before the related-posts list must be unique to that article. Do not reuse the same stock phrasing, canned curiosity line, or obvious template across the site.
 - Do not quote, parrot, or lightly rephrase the title in that lead-in. Write a smooth, natural bridge that nudges the reader toward the next useful clicks.
 - The related-posts list should use that custom lead-in line ending with a colon, then a standard Markdown list with entries like `- [Very specific anchor text](/target-slug)`.
 - Do not default to the destination post's exact title as the anchor text. Rewrite anchors so they fit the current article's context, stay accurate, and make the next click feel earned.
 - Treat each anchor like the reader's next sensible click from this page. It should surface the next tension, decision, or payoff, not read like a pasted catalog title.
 - Keep the wording plain enough that the reader instantly understands why that link matters. Curiosity is useful, but not at the cost of clarity.
-- Add only the number of recommendations the topic can support: usually 3 or more, sometimes more, with a hard cap of 10. Choose them with editorial judgment based on what a reader would genuinely want next, not by category matching alone. You do not need to fully read every recommended post.
+- Add only the number of recommendations the topic can support on non-commercial posts: usually 3 or more, sometimes more, with a hard cap of 10. Choose them with editorial judgment based on what a reader would genuinely want next, not by category matching alone. You do not need to fully read every recommended post.
 - Keep visible content consistent with frontmatter and any structured data.
 - For AI visibility, aim to be cite-worthy: direct answers, strong subheads, original details, and useful examples.
 - Do not use fake freshness, fake authorship, fabricated stats, doorway pages, parasite SEO, expired-domain abuse, link schemes, or scaled thin AI filler on this site.
@@ -75,6 +76,7 @@ Read these references as needed:
    - description leads with the main benefit and still works if Google rewrites part of the snippet
    - headings match the SERP without sounding repetitive
    - internal links are relevant, descriptive, and updated for the article's current angle
-   - the related-posts list is present or refreshed, uses a custom article-specific lead-in that does not echo the title, uses contextual anchor text instead of pasted destination titles, and points to genuinely useful next reads without padding
+   - non-commercial posts have a related-posts list that is present or refreshed, uses a custom article-specific lead-in that does not echo the title, uses contextual anchor text instead of pasted destination titles, and points to genuinely useful next reads without padding
+   - commercial posts do not include a related-posts, read-next, or follow-up reading block
    - claims are backed by official or primary sources, not just competitors
    - the page is strong for both classic search and AI search features

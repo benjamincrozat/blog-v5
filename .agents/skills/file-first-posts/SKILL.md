@@ -10,7 +10,7 @@ metadata:
 ## Scope
 
 Use this skill when posts are managed from `resources/markdown/posts`.
-Pair with `post-writing` when creating or revising article copy so internal links and the related-posts Markdown list stay current.
+Pair with `post-writing` when creating or revising article copy so internal links and, for non-commercial posts, the related-posts Markdown list stay current.
 
 ## Required Rules
 
@@ -23,8 +23,9 @@ Pair with `post-writing` when creating or revising article copy so internal link
 - Publishing is changing `published_at` in the file, then running `php artisan blog:sync`.
 - Fail loudly on invalid front matter, unknown authors/categories, or duplicate IDs/slugs.
 - Do not use Filament to create, edit, delete, or restore posts.
-- If an edit changes article copy or scope, refresh the post's internal links and related-posts Markdown list before syncing.
-- That related-posts block must use a smooth article-specific lead-in sentence, not a stock phrase, canned curiosity hook, or title echo.
+- If an edit changes article copy or scope, refresh the post's internal links and, for non-commercial posts, the related-posts Markdown list before syncing.
+- Commercial posts (`is_commercial: true`) must not add or keep a related-posts or read-next block. Keep those pages focused on the conversion path already in the article.
+- On non-commercial posts, that related-posts block must use a smooth article-specific lead-in sentence, not a stock phrase, canned curiosity hook, or title echo.
 - Choose related posts because they feel like smart next reads for the current article, not because they happen to share a category.
 - Rewrite the related-post anchor text contextually instead of pasting destination post titles into the list.
 - Make those anchors sound like the reader's next useful click from this page, not like a shelf label copied from somewhere else.
@@ -36,7 +37,7 @@ Pair with `post-writing` when creating or revising article copy so internal link
 1. Bootstrap files when needed:
    - run `php artisan blog:export`
 2. Edit the target file in `resources/markdown/posts`.
-   - if article copy changed, make sure internal links and the related-posts Markdown list were added or refreshed with a natural lead-in that does not quote or rephrase the title
+   - if article copy changed, make sure internal links were updated and, for non-commercial posts, the related-posts Markdown list was added or refreshed with a natural lead-in that does not quote or rephrase the title
 3. Upload images before syncing:
    - hero image: `php artisan blog:upload-image /absolute/path/to/cover.png --markdown=your-post.md`
    - inline image: `php artisan blog:upload-image /absolute/path/to/step.png --alt="Describe the screenshot"` and paste the returned URL into the article body

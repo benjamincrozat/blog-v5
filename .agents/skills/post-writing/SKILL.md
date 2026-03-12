@@ -48,10 +48,11 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 - Prefer practical examples and code when they help, but never leave a section as code-only.
 - Add context before snippets and explain what they do, why they matter, and what result to expect.
 - Use current primary sources for version-sensitive claims. Link inline at the claim, and prefer relevant internal links before equivalent external links.
-- Every created or revised post must include a short list of interesting posts to read next. If the post already has one, refresh it instead of duplicating it.
-- The sentence before that list must be custom to the article. Do not reuse stock lead-ins, canned curiosity hooks, or repeatable templates across posts. Tie it to the page's specific topic, promise, friction point, or next step.
+- Every created or revised non-commercial post must include a short list of interesting posts to read next. If the post already has one, refresh it instead of duplicating it.
+- Commercial posts (`is_commercial: true`) must not include a related-posts, read-next, or follow-up reading block. Keep the ending focused on the conversion path already present in the article.
+- On non-commercial posts, the sentence before that list must be custom to the article. Do not reuse stock lead-ins, canned curiosity hooks, or repeatable templates across posts. Tie it to the page's specific topic, promise, friction point, or next step.
 - Do not quote, paraphrase, or simply restate the article title in that lead-in. It should feel like a smooth, natural transition that makes the reader want to keep going.
-- Format the block as a custom lead-in sentence ending with a colon, then a standard Markdown list with one linked item per bullet, like this:
+- Format the non-commercial block as a custom lead-in sentence ending with a colon, then a standard Markdown list with one linked item per bullet, like this:
   Custom lead-in text for this specific article:
 
   - [Highly specific anchor text](/target-slug)
@@ -59,7 +60,7 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 - Do not copy and paste the destination post title as the anchor text by default. Rewrite the anchor so it fits the current article's context, stays accurate to the destination, and sparks enough curiosity to earn the click.
 - Write each anchor as the reader's most likely next question, tension, or payoff from this specific article. It should explain why that next post matters now, not just name the destination.
 - Favor clarity over cleverness. If the anchor sounds vague, ambiguous, or too cute, rewrite it in plainer language while keeping the curiosity.
-- Add as many recommendations as the topic honestly supports: usually at least 3, sometimes more, with a hard cap of 10. Do not pad the list with weak matches.
+- Add as many recommendations as the topic honestly supports on non-commercial posts: usually at least 3, sometimes more, with a hard cap of 10. Do not pad the list with weak matches.
 - Pick recommended posts that genuinely extend the topic because they feel like strong next reads for this exact reader journey. Use editorial judgment, not category matching or obvious heuristics. You do not need to fully read every recommended post before linking it, but you should believe the recommendation makes sense.
 - When creating or revising a post, add or improve natural internal links in the body wherever a reader would want the next step, not only in the closing list.
 - Verify links and commands when feasible. If something cannot be verified, tell the user outside the post copy.
@@ -81,7 +82,7 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 4. Check that the chosen title and description earn the click with a clear outcome, not a gimmick.
 5. Pick the simplest outline that matches the post shape.
 6. Draft for clarity, usefulness, and brevity.
-7. Add or refresh contextual internal links and the related-posts list.
+7. Add or refresh contextual internal links and, for non-commercial posts, the related-posts list.
 8. Validate version-sensitive claims, inline links, and code examples.
 9. Do a final publishing pass:
    - required frontmatter is present and valid
@@ -92,5 +93,6 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
    - title and description make a strong, accurate click promise
    - headings read naturally in the generated table of contents
    - contextual internal links were added or improved where helpful
-   - the post has one up-to-date related-posts list with a custom, natural lead-in that does not echo the title and anchor text that is contextual rather than a pasted destination title
+   - non-commercial posts have one up-to-date related-posts list with a custom, natural lead-in that does not echo the title and anchor text that is contextual rather than a pasted destination title
+   - commercial posts do not include a related-posts, read-next, or follow-up reading block
    - code and links support the nearby claim
