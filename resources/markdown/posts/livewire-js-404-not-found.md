@@ -132,9 +132,9 @@ Still seeing 404s? Run these quick checks:
 
 The `/livewire/livewire.js` issue typically boils down to server config confusion. But armed with these tweaks, you're set for smooth sailing.
 
-If you want a few more useful reads after this:
+If you are still smoothing out the rough edges of a Livewire install after fixing the asset path, these are the next reads I would open:
 
-- [Prevent a Livewire component from re-rendering](/prevent-render-livewire)
 - [Create a SPA in seconds using wire:navigate in Livewire v3](/livewire-spa-wire-navigate)
 - [How to force re-render a Livewire v3 component](/re-render-livewire-component)
-
+- [Prevent a Livewire component from re-rendering](/prevent-render-livewire)
+- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)

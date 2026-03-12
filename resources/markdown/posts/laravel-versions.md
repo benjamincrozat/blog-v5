@@ -916,9 +916,12 @@ You can learn more in this great blog post I found: [History of Laravel PHP fram
 - **Breeze & Jetstream Sunset**:
   - With the arrival of the new starter kits, Breeze and Jetstream enter maintenance-only status and will no longer receive feature updates.
 
-If you want a few more Laravel rabbit holes after this:
+If you are using the version history to plan what comes next, these are the release and upgrade reads I would keep open:
 
-- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
 - [Laravel 12: new starter kits, changes, and upgrade tips](/laravel-12)
-- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
-
+- [Laravel 13: features, timeline, and upgrade prep](/laravel-13)
+- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
+- [6 ways to check Laravel's version](/check-laravel-version)
+- [Laravel retrospective: what changed since version 5.8?](/laravel-retrospective)

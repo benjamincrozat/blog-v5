@@ -407,9 +407,10 @@ It’s boring in the best way possible:
 * Cleaner configuration helpers (VAT, DB connections, loggers, responses).
 * Easy “run this exact call later” closures using trailing `...`.
 
-If you want a few more PHP rabbit holes after this:
+If the PHP 8.6 changes are what pulled you in here, these are the language-level reads I would keep open:
 
-- [Making sense of PHP's array_map() function](/php-array-map)
 - [PHP 8.6: release date and confirmed features](/php-86)
+- [PHP 8.5: 15 new features and changes](/php-85)
+- [PHP 8.4: new features and release date](/php-84)
+- [Making sense of PHP's array_map() function](/php-array-map)
 - [Understanding array_filter() in PHP](/php-array-filter)
-

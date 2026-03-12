@@ -132,9 +132,9 @@ Here's an old-fashioned table:
 | TTS | $0.015 / 1K characters |
 | TTS-HD | $0.030 / 1K characters |
 
-If you want a few more AI rabbit holes after this:
+If audio is only the first OpenAI feature you want to wire into a PHP app, these are the next reads I would open:
 
 - [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
-- [How to access and use GPT-4o's API, step by step](/gpt-4o)
-- [How to access and use GPT-4 Turbo's API, step by step](/gpt-4-turbo)
-
+- [GPT‑5: my API quick start guide](/gpt-5-api)
+- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
+- [Use Laravel to build a ChatGPT plugin](/chatgpt-plugin-laravel)

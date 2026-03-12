@@ -348,9 +348,10 @@ GPT is the basis for a variety of great products nowadays and only the imaginati
 
 Talking about unique products, did you know OpenAI provides an [API endpoint to generate true to life voices](https://benjamincrozat.com/openai-tts-api)?
 
-If you want a few more AI rabbit holes after this:
+If you are turning one OpenAI request into something more ambitious in PHP, these are the next reads I would keep nearby:
 
-- [How to access and use GPT-4 Turbo's API, step by step](/gpt-4-turbo)
-- [How to use GPT-3.5 Turbo's API, step by step](/gpt-35-turbo)
-- [How to access and use GPT-4o's API, step by step](/gpt-4o)
-
+- [Master OpenAI's new Text-to-speech API](/openai-tts-api)
+- [GPT‑5: my API quick start guide](/gpt-5-api)
+- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
+- [Use Laravel to build a ChatGPT plugin](/chatgpt-plugin-laravel)
+- [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)

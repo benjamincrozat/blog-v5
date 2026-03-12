@@ -135,9 +135,9 @@ So, give these presets a try in your next Pest 3 project. Your future self (and 
 
 Happy testing, and may your builds always be green!
 
-If you want a few more PHP rabbit holes after this:
+If you are trying to make code-quality checks feel lighter to maintain, these are the next Pest and PHP reads I would keep nearby:
 
 - [What's new in Pest 3 and how to upgrade](/pest-3)
 - [What’s new in Pest 4 and how to upgrade](/pest-4)
 - [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
-
+- [PHP 8.5: 15 new features and changes](/php-85)

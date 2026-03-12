@@ -174,9 +174,10 @@ There is a new, fluent configuration API in `tests/Pest.php` so you can define p
 
 Pest 3 brings five big wins: architecture testing presets, Mutation Testing, Team Management, nested describes, and a new configuration API. Upgrading is straightforward: require `pestphp/pest:^3.0`, ensure PHP 8.2+, update plugins to ^3.0, and run `composer update`. Because Pest 3 is built on PHPUnit 11, review the official [Upgrade Guide](https://pestphp.com/docs/upgrade-guide/) and refer to the docs for [Team Management](https://pestphp.com/docs/team-management), [Mutation Testing](https://pestphp.com/docs/mutation-testing), and the [Pest 3 announcement](https://pestphp.com/docs/pest3-now-available). Now run `./vendor/bin/pest` and enjoy faster, clearer Laravel testing with Pest PHP 3.
 
-If you want a few more PHP rabbit holes after this:
+If you are turning a Pest upgrade into a better testing workflow overall, these are the next reads I would open:
 
 - [What’s new in Pest 4 and how to upgrade](/pest-4)
 - [A Guide to architecture testing presets in Pest 3](/pest-3-architecture-testing-presets)
 - [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
-
+- [PHP: Show all errors (E_ALL) safely](/php-show-all-errors)
+- [PHP 8.5: 15 new features and changes](/php-85)

@@ -114,9 +114,10 @@ Remember, it's not about turning your application into an SPA - it's about borro
 
 Fast, seamless browsing is no longer reserved for JavaScript-heavies. With Livewire and `wire:navigate`, we have all the power we need! 🔥
 
-If you want a few more Laravel rabbit holes after this:
+If `wire:navigate` opened the door to doing more with Livewire, these are the next posts I would keep close:
 
 - [How to force re-render a Livewire v3 component](/re-render-livewire-component)
 - [Prevent a Livewire component from re-rendering](/prevent-render-livewire)
 - [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
-
+- [Fix the /livewire/livewire.js 404 not found error](/livewire-js-404-not-found)
+- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)

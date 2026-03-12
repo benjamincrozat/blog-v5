@@ -43,9 +43,10 @@ For posterity, you can read more about it on the official PHP documentation: [PH
 
 You can also see the PHP RFC that led to this: [PHP RFC: Remove PHP 4 Constructors](https://wiki.php.net/rfc/remove_php4_constructors)
 
-If you want a few more PHP rabbit holes after this:
+If you are cleaning up old PHP before the next upgrade forces the issue, these are the follow-up reads I would keep nearby:
 
-- [PHP 8.3's Override attribute in a nutshell](/php-83-override-attribute)
-- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
+- [PHP 8.6: release date and confirmed features](/php-86)
 - [PHP 9 release date and what to fix now](/php-90)
-
+- [PHP 8.3's Override attribute in a nutshell](/php-83-override-attribute)
+- [6 ways to check your version of PHP](/check-php-version)
+- [Fix "using $this when not in object context" now](/using-this-when-not-in-object-context)

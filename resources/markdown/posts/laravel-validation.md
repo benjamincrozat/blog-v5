@@ -244,9 +244,10 @@ The key to mastering Laravel validation is practice:
 
 You can do this!
 
-If you want a few more Laravel rabbit holes after this:
+If validation is becoming the backbone of how you keep data clean, these are the Laravel reads I would open next:
 
 - [Easy data integrity with array validation in Laravel](/laravel-array-validation)
-- [The best Laravel 12-ready books you should read in 2025](/best-laravel-books)
 - [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-
+- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
+- [Understanding database transactions with Laravel](/database-transactions-laravel)
+- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)

@@ -278,9 +278,10 @@ So now, what about installing Laravel itself? Here's my guide: [How to install L
 
 You now have PHP, Composer, and Valet installed on macOS. You can park a folder to serve many projects or link a single project anywhere. You can secure sites with HTTPS, switch PHP versions, and even isolate a project to a specific PHP version. When you're ready, continue with my next step: [install Laravel on macOS](/laravel-installation-macos).
 
-If you want a few more Laravel rabbit holes after this:
+If you are still shaping the local Mac setup around your PHP work, these are the next reads I would keep handy:
 
 - [How to install Laravel on macOS](/laravel-installation-macos)
 - [Laravel Herd: the simplest way to install PHP on macOS and Windows](/laravel-herd)
 - [6 ways to check your version of PHP](/check-php-version)
-
+- [6 ways to check Laravel's version](/check-laravel-version)
+- [Laravel Forge: price, review and alternatives (2025)](/laravel-forge)

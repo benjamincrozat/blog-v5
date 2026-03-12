@@ -119,9 +119,10 @@ export default defineConfig({
 });
 ```
 
-If you want a few more Laravel rabbit holes after this:
+If you are deciding how much frontend scaffolding you want Laravel to do for you, these are the next reads I would compare with it:
 
-- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
-- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
-- [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
-
+- [Add Vue.js to any Laravel project](/laravel-vue)
+- [Add Alpine.js to any Laravel project](/alpine-js-laravel)
+- [Use Bun as Your Package Manager in Any Laravel Project](/bun-laravel)
+- [Add Tailwind CSS to any Laravel project](/tailwind-css-laravel)
+- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)

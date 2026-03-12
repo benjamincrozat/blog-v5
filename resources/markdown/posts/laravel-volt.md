@@ -223,9 +223,10 @@ Oh, before I leave, I wanted to share with you the video from Laracon US where T
 
 <iframe src="https://www.youtube.com/embed/1P3wLy49t2c?si=-DCMEybpyBuUbJed&start=2432" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-If you want a few more Laravel rabbit holes after this:
+If you are leaning further into Livewire after trying Volt, these are the posts I would open next:
 
 - [How to force re-render a Livewire v3 component](/re-render-livewire-component)
 - [Prevent a Livewire component from re-rendering](/prevent-render-livewire)
 - [Create a SPA in seconds using wire:navigate in Livewire v3](/livewire-spa-wire-navigate)
-
+- [Fix the "/livewire/livewire.js" 404 not found error](/livewire-js-404-not-found)
+- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
