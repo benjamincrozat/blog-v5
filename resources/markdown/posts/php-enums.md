@@ -424,3 +424,10 @@ class House extends Enum
 Despite these workarounds, none of them could provide the full set of features that true Enumerations can offer, such as type safety and functionality like getting all possible values.
 
 This is why the addition of native Enumerations in PHP 8.1 was such an important upgrade for the language.
+
+If you want a few more PHP rabbit holes after this:
+
+- [A friendly guide to PHP serialization that finally clicked](/a-friendly-guide-to-php-serialization-that-finally-clicked)
+- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
+- [A quick look at the PHP match expression](/a-quick-look-at-the-php-match-expression)
+

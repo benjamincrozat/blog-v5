@@ -128,3 +128,10 @@ While versatile, [`str_replace()`](https://www.php.net/str_replace) has its limi
 - **No direct support for regular expressions:** As mentioned, [`str_replace()`](https://www.php.net/str_replace) does not support regex. For this, you'll need to use [`preg_replace()`](https://www.php.net/preg_replace).
 - **It's unable to replace multi-byte unicode characters:** The [`str_replace()`](https://www.php.net/str_replace) function is not safe for multi-byte characters like those found in UTF-8 strings.
 - **There are problems with case sensitivity:** As noted before, [`str_replace()`](https://www.php.net/str_replace) is case-sensitive. If you need to ignore case, use [`str_ireplace()`](https://www.php.net/str_ireplace).
+
+If you want a few more PHP rabbit holes after this:
+
+- [Bring order back to your PHP arrays using array_values()](/php-array-values)
+- [PHP explode(): How you can split strings into arrays](/php-explode)
+- [PHP 8.4: new features and release date](/php-84)
+

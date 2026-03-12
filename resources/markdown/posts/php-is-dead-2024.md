@@ -219,3 +219,10 @@ It's surprising to watch Laravel's steady growth over the years and other framew
 So, is PHP dead? Obviously not. The popularity of this language is hardly debatable, as shown by the numerous statistics presented in this article. Its ecosystem is flourishing thanks to WordPress and frameworks like Laravel and Symfony. Also, a new major version is released every year, keeping the language fresh and relevant.
 
 These statistics paint a clear picture: PHP is very much alive and thriving. Jump on the PHP hype train!
+
+If you want a few more PHP rabbit holes after this:
+
+- [Is PHP dead? Usage statistics and market share for 2023.](/php-is-dead-2023)
+- [Is PHP dead? Usage statistics and market share for 2022.](/php-is-dead-2022)
+- [Is PHP dead? Usage statistics and market share (2026)](/php-is-dead-2026)
+

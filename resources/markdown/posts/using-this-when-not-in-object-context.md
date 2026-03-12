@@ -128,3 +128,10 @@ You now know exactly why and how "Using $this when not in object context" happen
 For further reading, check the official [PHP manual on static methods](https://www.php.net/manual/en/language.oop5.static.php).
 
 Happy coding!
+
+If you want a few more PHP rabbit holes after this:
+
+- [Fix "Invalid argument supplied for foreach" in PHP & Laravel](/invalid-argument-supplied-for-foreach)
+- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
+- [Check if your PHP array is empty](/php-array-empty)
+

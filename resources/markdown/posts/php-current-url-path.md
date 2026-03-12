@@ -151,3 +151,10 @@ echo current_path(true); // Path + query string.
 * **Logging:** Know exactly which URL triggered that weird bug in production.
 
 If you’re using a full-blown framework (Laravel, Symfony, Slim, etc.), their routers probably give you cleaner ways to access the path. But for vanilla PHP or legacy codebases, this is what you want.
+
+If you want a few more PHP rabbit holes after this:
+
+- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
+- [6 ways to check your version of PHP](/check-php-version)
+- [PHP: Show all errors (E_ALL) safely](/php-show-all-errors)
+

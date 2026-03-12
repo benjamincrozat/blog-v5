@@ -60,3 +60,10 @@ class Show extends Component
     }
 }
 ```
+
+If you want a few more Laravel rabbit holes after this:
+
+- [How to force re-render a Livewire v3 component](/re-render-livewire-component)
+- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
+- [Create a SPA in seconds using wire:navigate in Livewire v3](/livewire-spa-wire-navigate)
+

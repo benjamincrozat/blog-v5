@@ -87,3 +87,10 @@ You might wonder why the people working on PHP used the `Override` attribute ins
 ## Limitations of Override and its future
 
 Currently, `Override` is limited to methods. Properties, another key part of classes, don't yet have a similar feature. However, the future might bring more enhancements, like class-level attributes or directives to enforce the use of `Override`.
+
+If you want a few more PHP rabbit holes after this:
+
+- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
+- [Methods with the same name as their class will not be constructors in a future version of PHP](/methods-same-name-class-constructors-future-version-php)
+- [console.log() in PHP](/console-log-php)
+

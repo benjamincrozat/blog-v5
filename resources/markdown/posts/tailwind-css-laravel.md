@@ -188,3 +188,10 @@ Laravel exposes a new Blade directive called `@vite`. It lets you automatically 
 ```
 
 That's it, you're now done with the boring work. Go build something great!
+
+If you want a few more Laravel rabbit holes after this:
+
+- [5 Tailwind CSS best practices for 2025](/tailwind-css)
+- [Use Bun as Your Package Manager in Any Laravel Project](/bun-laravel)
+- [Tailwind CSS forms plugin: my 2025 guide for v4 and v3](/tailwind-css-forms-plugin)
+

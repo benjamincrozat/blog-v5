@@ -20,3 +20,10 @@ If you handle user data in Laravel, Ashley Allen just shipped Redactable Models 
 It plugs into Eloquent with simple interfaces, and you can set rules like “redact users older than 30 days.” v1.0 also updates support to Laravel 12, PHP 8.4, and PHPUnit 12.
 
 I like tools that make privacy chores simple. If you need GDPR friendly cleanup without dropping rows, this is worth a look.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
+- [Inside the Laravel service container](/inside-the-laravel-service-container)
+- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
+

@@ -95,11 +95,12 @@ If you want a faster way to inspect data before encoding it, my [`console.log()`
 * For readable output, use `JSON_PRETTY_PRINT`.
 * Don’t pass garbage (resources, closures) to `json_encode`.
 
-If you want a few more PHP rabbit holes after `json_encode()`:
+If you want a few more PHP rabbit holes after this:
 
-- [Understand when PHP serialization is the better fit](/a-friendly-guide-to-php-serialization-that-finally-clicked)
-- [Debug PHP output without losing your mind](/console-log-php)
-- [Use PHP's match expression to clean up encoding branches](/a-quick-look-at-the-php-match-expression)
+- [Print an array with PHP (+ Laravel)](/php-laravel-print-array)
+- [Validate JSON in PHP with json_validate](/validate-json-in-php-with-json-validate)
+- [PHP try & catch: what are exceptions and how to handle them?](/php-exceptions)
+
 
 ## References
 

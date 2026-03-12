@@ -159,3 +159,10 @@ Thus, `empty()` is your fastest, most straightforward option for checking empty 
 In most scenarios, use the `empty()` function to determine if your PHP array is empty. It's also good to know how the alternative methods (`count()`, `sizeof()`, `!`) behave, especially given PHP's evolving type handling.
 
 With these guidelines, you should be able to write solid code.
+
+If you want a few more PHP rabbit holes after this:
+
+- [Understanding array_filter() in PHP](/php-array-filter)
+- [Making sense of PHP's array_map() function](/php-array-map)
+- [Bring order back to your PHP arrays using array_values()](/php-array-values)
+

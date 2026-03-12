@@ -166,3 +166,10 @@ If you want a better upgrade path, start with [PHP 8.5](/php-85) and keep an eye
 Not as a real release with a published schedule.
 
 For now, the best way to get ready is to follow the RFCs, watch the public PHP 9 milestone, and keep your code clean on current PHP 8.x releases. That will save you the most time when PHP 9 finally gets a date.
+
+If you want a few more PHP rabbit holes after this:
+
+- [PHP 8.6: release date and confirmed features](/php-86)
+- [Is PHP dead? Usage statistics and market share (2025)](/php-is-dead-2025)
+- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
+

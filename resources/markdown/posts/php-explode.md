@@ -216,3 +216,10 @@ Use [str_split()](https://www.php.net/preg_split) to break a string into individ
 ## Conclusion
 
 `explode()` splits strings by a separator and returns an array. Remember the key rules: limit > 0 returns up to that many parts (with the remainder in the last part), limit = 0 acts like 1, and limit < 0 drops parts from the end. For regex or many delimiters, prefer `preg_split()`; for true CSV data, prefer `str_getcsv()`. If you need the reverse, join arrays with [implode()](https://www.php.net/implode). I hope this helped you use explode() with confidence. For full details, see the [explode() manual](https://www.php.net/explode).
+
+If you want a few more PHP rabbit holes after this:
+
+- [Check if your PHP array is empty](/php-array-empty)
+- [PHP's str_replace() made simple](/php-str-replace)
+- [PHP 8.4: new features and release date](/php-84)
+

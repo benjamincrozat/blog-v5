@@ -48,3 +48,10 @@ $controller->{$map[$action]}();
 He also reminds us to use allowlists, check `is_callable`, and avoid magic catch‑alls like `__call` for user input paths.
 
 If you ever map routes or commands in PHP, this is a quick read that can save a long night of bugs and security headaches.
+
+If you want a few more PHP rabbit holes after this:
+
+- [PHP 8.5: 15 new features and changes](/php-85)
+- [A friendly guide to PHP serialization that finally clicked](/a-friendly-guide-to-php-serialization-that-finally-clicked)
+- [console.log() in PHP](/console-log-php)
+

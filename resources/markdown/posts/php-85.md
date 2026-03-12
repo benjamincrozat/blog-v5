@@ -369,3 +369,10 @@ Yes. OPcache is always compiled in starting with PHP 8.5.
 ## Conclusion
 
 The pipe operator (|>) steals the spotlight in PHP 8.5, making code cleaner and more readable. The new URI extension gives PHP a modern, standards-based URL/URI API, and `clone` with v2 improves immutable workflows. For more, see the [official PHP 8.5 release page](https://www.php.net/releases/8.5/en.php) and the [What’s new in 8.5 guide](https://www.php.net/manual/en/migration85.new-features.php).
+
+If you want a few more PHP rabbit holes after this:
+
+- [PHP 8.6: release date and confirmed features](/php-86)
+- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
+- [PHP 8.4: new features and release date](/php-84)
+

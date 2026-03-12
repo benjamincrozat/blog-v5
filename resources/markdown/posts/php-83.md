@@ -497,3 +497,10 @@ The proposed changes include:
 6. Existing calls to `range()` that return arrays of floats when the step can be an integer will now return an array of integers.
 
 Learn more: [PHP RFC: Define proper semantics for range() function](https://wiki.php.net/rfc/proper-range-semantics)
+
+If you want a few more PHP rabbit holes after this:
+
+- [PHP 8.4: new features and release date](/php-84)
+- [PHP 8.3's Override attribute in a nutshell](/php-83-override-attribute)
+- [PHP 8.6: release date and confirmed features](/php-86)
+

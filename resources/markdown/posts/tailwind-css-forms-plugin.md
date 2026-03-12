@@ -244,3 +244,10 @@ You can keep using `text-{color}` with the plugin, or use modern `accent-{color}
 ## Conclusion
 
 The Tailwind CSS forms plugin gives you consistent, easy-to-style controls out of the box. Use `base` when you want global resets across your app; use `class` when you want opt-in control with utilities like the `form-input` class. Try the [official live demo](https://tailwindcss-forms.vercel.app/) and experiment with my [Tailwind Play example](https://play.tailwindcss.com/qZ5rc9oEMd).
+
+If you want a few more frontend rabbit holes after this:
+
+- [5 Tailwind CSS best practices for 2025](/tailwind-css)
+- [Tailwind CSS typography plugin: a step-by-step build guide](/tailwind-css-typography-plugin)
+- [Disable hover styles on mobile with Tailwind CSS](/disable-hover-styles-mobile-tailwind-css)
+

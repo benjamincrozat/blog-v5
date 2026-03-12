@@ -214,3 +214,10 @@ Here are the functions in PHP 8.4 and their default behaviors:
 By default, `$characters` includes a variety of whitespace characters, but not all possible Unicode characters due to storage and compatibility concerns.
 
 Learn more: [PHP RFC: Multibyte for trim function mb_trim, mb_ltrim and mb_rtrim](https://wiki.php.net/rfc/mb_trim)
+
+If you want a few more PHP rabbit holes after this:
+
+- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
+- [PHP 8.6: release date and confirmed features](/php-86)
+- [PHP 8.5: 15 new features and changes](/php-85)
+

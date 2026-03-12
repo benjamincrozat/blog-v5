@@ -188,3 +188,10 @@ class ExceptionHandler {
 
 set_exception_handler(ExceptionHandler::handle(...));
 ```
+
+If you want a few more PHP rabbit holes after this:
+
+- [PHP 8.3 is out, now! Here's what's new and changed.](/php-83)
+- [Convert a PHP array to JSON](/php-array-to-json)
+- [PHP: Show all errors (E_ALL) safely](/php-show-all-errors)
+

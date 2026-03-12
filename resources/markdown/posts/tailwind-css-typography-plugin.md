@@ -240,3 +240,10 @@ Here's an example:
 In the example above, we exclude our from the prose styles by applying a `not-prose` class.
 
 It's important to note that, at the moment, you cannot nest new `prose` instances within a `not-prose` block. If you need to apply different typography styles within a not-prose block, you'll need to handle that with separate custom styling or utility classes.
+
+If you want a few more frontend rabbit holes after this:
+
+- [Tailwind CSS forms plugin: my 2025 guide for v4 and v3](/tailwind-css-forms-plugin)
+- [5 Tailwind CSS best practices for 2025](/tailwind-css)
+- [Style an HTML dialog's backdrop with Tailwind CSS](/dialog-backdrop-styling-tailwind-css)
+

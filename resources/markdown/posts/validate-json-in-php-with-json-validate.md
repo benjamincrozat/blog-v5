@@ -32,3 +32,10 @@ if (! json_validate($json)) {
 Ashley also compares `json_validate` to [json_decode](https://www.php.net/json_decode) and reminds us not to parse twice. If you plan to use the data right away, json_decode is enough. If you only need to validate now and process later, json_validate is the better pick.
 
 Good refresher for anyone handling large payloads, APIs, or user input in PHP.
+
+If you want a few more PHP rabbit holes after this:
+
+- [PHP 8.5: 15 new features and changes](/php-85)
+- [A friendly guide to PHP serialization that finally clicked](/a-friendly-guide-to-php-serialization-that-finally-clicked)
+- [console.log() in PHP](/console-log-php)
+

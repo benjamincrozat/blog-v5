@@ -115,3 +115,10 @@ With the custom function, `$numbers` will be sorted as:
 ```
 
 Of course, in that case, using `sort()` would be better. I just wanted to let you know that custom sorting logic is possible! 🙂
+
+If you want a few more PHP rabbit holes after this:
+
+- [Bring order back to your PHP arrays using array_values()](/php-array-values)
+- [Understanding array_filter() in PHP](/php-array-filter)
+- [Making sense of PHP's array_map() function](/php-array-map)
+

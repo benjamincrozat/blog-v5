@@ -152,3 +152,10 @@ It also accepts an infinite number of arguments:
 ```php
 dd($a, $b, $c, $d, $e, …);
 ```
+
+If you want a few more Laravel rabbit holes after this:
+
+- [6 ways to check your version of PHP](/check-php-version)
+- [Fix "Invalid argument supplied for foreach" in PHP & Laravel](/invalid-argument-supplied-for-foreach)
+- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
+

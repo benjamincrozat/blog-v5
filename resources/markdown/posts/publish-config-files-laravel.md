@@ -34,3 +34,10 @@ Why is this necessary now? Because starting from [Laravel 11](https://laravel.co
 - Cleaning up the configuration files (some values were actually [removed](https://github.com/laravel/laravel/commit/f437205a5e11e6fd5ea64e4adc30ab155131c79f)).
 - Updating the _.env.example_ file with more environment variables to make the framework more configurable in one place.
 - Reducing the amount of published files, which can be overwhelming for new developers. For instance, the _cors.php_, _hashing.php_, and _view.php_ files are missing.
+
+If you want a few more Laravel rabbit holes after this:
+
+- [How to publish API and broadcasting routes in Laravel 11](/install-route-files-laravel)
+- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+

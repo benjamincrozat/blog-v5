@@ -422,3 +422,10 @@ These frameworks below can be integrated into any project based on any JavaScrip
 - [Expressive CSS](https://johnpolacek.github.io/expressive-css/)
 - [shed.css](https://tedconf.github.io/shed-css/)
 - [turretcss](https://turretcss.com)
+
+If you want a few more frontend rabbit holes after this:
+
+- [Tailwind CSS forms plugin: my 2025 guide for v4 and v3](/tailwind-css-forms-plugin)
+- [Tailwind CSS typography plugin: a step-by-step build guide](/tailwind-css-typography-plugin)
+- [Disable hover styles on mobile with Tailwind CSS](/disable-hover-styles-mobile-tailwind-css)
+
