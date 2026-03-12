@@ -13,7 +13,7 @@ serp_description: null
 canonical_url: null
 is_commercial: false
 image_disk: "cloudflare-images"
-image_path: "images/posts/01K6X5NWXMGQTBXD9BHJ82QYGP.png"
+image_path: "images/posts/01KKHHHSYWCAB9NZB42H29GGQC.png"
 sponsored_at: null
 ---
 ## Introduction
