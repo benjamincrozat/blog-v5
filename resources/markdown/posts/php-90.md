@@ -7,9 +7,9 @@ description: "PHP 9 has no release date yet. Here is what the official roadmap, 
 categories:
   - "php"
 published_at: 2023-11-03T00:00:00+01:00
-modified_at: 2026-03-12T11:13:18+01:00
-serp_title: "PHP 9 release date and breaking changes in 2026"
-serp_description: "PHP 9 has no release date yet. Here is what is confirmed so far, what changed since 2025, and how to prepare your code."
+modified_at: 2026-03-12T11:29:53+01:00
+serp_title: null
+serp_description: null
 canonical_url: null
 is_commercial: false
 image_disk: "cloudflare-images"
