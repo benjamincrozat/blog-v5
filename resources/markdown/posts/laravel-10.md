@@ -312,13 +312,16 @@ Laravel 10 brings a lot of quality-of-life updates: Pennant for feature flags, t
 
 Ready to move forward? Start with my [upgrade to Laravel 10 guide](https://benjamincrozat.com/laravel-10-upgrade-guide).
 
-If you want a few more Laravel rabbit holes after this:
+If "Laravel 10 is out! Here are every new features and changes." was useful, these related posts make strong next steps:
 
 - [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
 - [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
 - [The history of Laravel's versions (2011-2025)](/laravel-versions)
-
-
-
-
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+- [Laravel 12: new starter kits, changes, and upgrade tips](/laravel-12)
+- [6 ways to check Laravel's version](/check-laravel-version)
+- [Laravel retrospective: what changed since version 5.8?](/laravel-retrospective)
+- [Laravel 13: features, timeline, and upgrade prep](/laravel-13)
+- [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
 

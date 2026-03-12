@@ -72,13 +72,10 @@ For those eager to learn more from trusted sources, here's an episode of the Goo
 
 https://www.youtube.com/watch?v=ULX4GHcQd9U
 
-If you want a few more SEO rabbit holes after this:
+The next reads that pair well with "Core web vitals aren't that important for Google" are below:
 
 - [SEO case study (2022-2023): +10K clicks in 6 months](/seo-case-study)
 - [Stop overthinking! Here's technical SEO in a nutshell.](/laravel-seo)
 - [The best GDPR-compliant Google Analytics alternatives (2024)](/best-gdpr-compliant-google-analytics-alternatives)
-
-
-
-
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
 

@@ -168,13 +168,16 @@ Here are a bunch of ideas to experiment with:
 
 You can even [add voices to your projects](/openai-tts-api) thanks to another endpoint!
 
-If you want a few more AI rabbit holes after this:
+If you are still thinking about "How to use GPT-3.5 Turbo's API, step by step", open these next:
 
 - [How to access and use GPT-4 Turbo's API, step by step](/gpt-4-turbo)
 - [How to access and use GPT-4o's API, step by step](/gpt-4o)
 - [How to use GPT-4o mini's API for cheap, step by step](/gpt-4o-mini)
-
-
-
-
+- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
+- [Access and use GPT‑4.1's API. 5 minutes, tops.](/gpt-41)
+- [GPT‑5: my API quick start guide](/gpt-5-api)
+- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
+- [Use Laravel to build a ChatGPT plugin](/chatgpt-plugin-laravel)
+- [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)
+- [Master OpenAI's new Text-to-speech API](/openai-tts-api)
 

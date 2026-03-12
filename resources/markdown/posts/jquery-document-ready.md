@@ -51,13 +51,14 @@ Both jQuery's `$(document).ready()` and the vanilla JavaScript `DOMContentLoaded
 
 Ultimately, the choice between jQuery and modern vanilla JavaScript depends on the specific needs and constraints of your project. Both methods are valid and useful tools in a web developer's toolkit. Understanding both allows you to make informed decisions about how to best achieve your project's goals.
 
-If you want a few more JavaScript rabbit holes after this:
+To build on "How and when to use jQuery's $(document).ready() method", start with these related reads:
 
 - [Understanding jQuery's .each() method](/jquery-each)
 - [Get started with jQuery in 5 minutes](/jquery)
 - [Handle clicks from your users using jQuery](/jquery-on-click)
-
-
-
-
+- [Alpine.js: a lightweight framework for productive developers](/alpine-js)
+- [Add Alpine.js to any Laravel project](/alpine-js-laravel)
+- [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
+- [Add Vue.js to any Laravel project](/laravel-vue)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
 

@@ -80,13 +80,16 @@ $items->each(function ($item) {
 });
 ```
 
-If you want a few more Laravel rabbit holes after this:
+If "Fix 'Invalid argument supplied for foreach' in PHP & Laravel" was useful, these related posts make strong next steps:
 
-- [6 ways to check your version of PHP](/check-php-version)
 - [Print an array with PHP (+ Laravel)](/php-laravel-print-array)
+- [6 ways to check your version of PHP](/check-php-version)
 - [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
-
-
-
-
+- [PHP's double question mark, or the null coalescing operator](/php-double-question-mark-null-coalescing-operator)
+- [15 Laravel Collections tips to refactor your codebase](/laravel-collections)
+- [Fix "using $this when not in object context" now](/using-this-when-not-in-object-context)
+- [PHP 8.5: 15 new features and changes](/php-85)
+- [Easy data integrity with array validation in Laravel](/laravel-array-validation)
+- [Bring order back to your PHP arrays using array_values()](/php-array-values)
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
 

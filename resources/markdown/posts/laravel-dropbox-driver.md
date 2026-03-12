@@ -70,13 +70,16 @@ https://www.dropbox.com/developers/apps/create
 
 Take this package and do whatever the f you want with it. That's basically what the [WTFPL](http://www.wtfpl.net/about/) license says.
 
-If you want a few more Laravel rabbit holes after this:
+If you are still thinking about "Laravel Dropbox Driver package: how to install and use it", open these next:
 
 - [Laravel Pulse: monitor your apps for free](/laravel-pulse)
 - [The laravel/ui package: my 2025 guide](/laravel-ui)
+- [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
 - [Laravel Prompts: build delightful Artisan commands](/laravel-prompts)
-
-
-
-
+- [Laravel Volt: simplify how you write Livewire components](/laravel-volt)
+- [Make your Eloquent models IDE-friendly using Laravel Lift](/laravel-lift)
+- [The best custom cards for Laravel Pulse in 2024](/best-laravel-pulse-custom-cards)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
+- [How to create a custom filesystem adapter in Laravel](/custom-filesystem-adapter-laravel)
 

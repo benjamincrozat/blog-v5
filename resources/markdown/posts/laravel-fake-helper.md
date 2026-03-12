@@ -111,13 +111,16 @@ The `fake()` helper in Laravel is a powerful tool for generating fake data. Whet
 
 Remember, while `fake()` is a convenient feature, it's crucial to use it only locally as the Faker package won't be included if you deploy your application to production using Composer's `--no-dev` option.
 
-If you want a few more Laravel rabbit holes after this:
+If "Understanding Laravel's fake() helper" solved the immediate problem, these follow-up reads are worth your time:
 
 - [The ultimate guide to Laravel's new Number helper](/laravel-number-helper)
 - [6 ways to check Laravel's version](/check-laravel-version)
 - [Validation in Laravel made easy](/laravel-validation)
-
-
-
-
+- [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)
+- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
+- [9 testing best practices for Laravel in 2025](/laravel-testing-best-practices)
+- [Easy data integrity with array validation in Laravel](/laravel-array-validation)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+- [Send emails with Laravel using Mailtrap's SMTP](/laravel-emails-mailtrap-smtp)
+- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
 

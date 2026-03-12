@@ -19,13 +19,9 @@ Here's how Facades work in Laravel:
 
 ## How real-time Facades work in Laravel?
 
-If you want a few more Laravel rabbit holes after this:
+The next reads that pair well with "How Facades work in Laravel: a simple explanation" are below:
 
 - [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
 - [Inside the Laravel service container](/inside-the-laravel-service-container)
 - [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
-
-
-
-
 

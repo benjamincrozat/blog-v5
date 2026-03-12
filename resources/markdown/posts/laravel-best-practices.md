@@ -633,13 +633,16 @@ Use `dispatchAfterResponse` for very short, one‑off tasks that can run right a
 - Enable Eloquent strictness and use eager loading to avoid N+1 problems.
 - Defer slow work with `dispatchAfterResponse` and move heavy tasks to queues and Horizon.
 
-If you want a few more Laravel rabbit holes after this:
+If you are still thinking about "25 Laravel best practices, tips, and tricks", open these next:
 
 - [3 crucial Laravel architecture best practices for 2025](/laravel-architecture-best-practices)
 - [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
 - [Validation in Laravel made easy](/laravel-validation)
-
-
-
-
+- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
+- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
+- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
+- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+- [19 Laravel security best practices for 2025](/laravel-security-best-practices)
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [The best Laravel 12-ready books you should read in 2025](/best-laravel-books)
 

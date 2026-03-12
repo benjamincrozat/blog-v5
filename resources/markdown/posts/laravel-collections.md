@@ -333,13 +333,16 @@ $collection->pluralize();
 
 Next steps: explore [Eloquent collections](https://laravel.com/docs/eloquent-collections) and [lazy collections](https://laravel.com/docs/collections#lazy-collections) to work efficiently with large datasets.
 
-If you want a few more Laravel rabbit holes after this:
+If you are still thinking about "15 Laravel Collections tips to refactor your codebase", open these next:
 
 - [Fix "Invalid argument supplied for foreach" in PHP & Laravel](/invalid-argument-supplied-for-foreach)
 - [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
 - [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
-
-
-
-
+- [Easy data integrity with array validation in Laravel](/laravel-array-validation)
+- [Laravel Eloquent: sort query results using orderBy()](/laravel-order-by)
+- [Laravel retrospective: what changed since version 5.8?](/laravel-retrospective)
+- [Print an array with PHP (+ Laravel)](/php-laravel-print-array)
+- [Laravel 12: new starter kits, changes, and upgrade tips](/laravel-12)
+- [Laravel firstOrCreate, firstOrNew, createOrFirst and friends](/laravel-firstorcreate-firstornew-createorfirst-updateorcreate-updateorinsert)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
 

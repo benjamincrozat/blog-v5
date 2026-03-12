@@ -88,13 +88,16 @@ Therefore, you might want to learn more about Laravel. Great! **You are on the r
 
 If you want to prepare for your future job interview and be able to negociate a higher salary, head on my article "[Laravel interview questions and answers](https://benjamincrozat.com/laravel-interview-questions)." **You will learn a lot.**
 
-If you want a few more Laravel rabbit holes after this:
+If you are still thinking about "The average salary of a Laravel developer in 2023", open these next:
 
 - [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
 - [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
 - [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-
-
-
-
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+- [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
+- [How to install Laravel on macOS](/laravel-installation-macos)
+- [6 ways to check Laravel's version](/check-laravel-version)
+- [Laravel Pulse: monitor your apps for free](/laravel-pulse)
 

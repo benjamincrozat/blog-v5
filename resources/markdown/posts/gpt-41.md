@@ -207,13 +207,16 @@ As you saw in the pricing table, GPT-4.1 is available in three flavors: **full**
 
 So, which one will you build? Please share it in the comments below!
 
-If you want a few more AI rabbit holes after this:
+If "Access and use GPT‑4.1's API. 5 minutes, tops." is still on your mind, these posts connect nicely:
 
 - [GPT‑5: my API quick start guide](/gpt-5-api)
 - [How to access and use GPT-4o's API, step by step](/gpt-4o)
 - [How to use GPT-4o mini's API for cheap, step by step](/gpt-4o-mini)
-
-
-
-
+- [How to access and use GPT-4 Turbo's API, step by step](/gpt-4-turbo)
+- [How to use GPT-3.5 Turbo's API, step by step](/gpt-35-turbo)
+- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
+- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
+- [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)
+- [Use Laravel to build a ChatGPT plugin](/chatgpt-plugin-laravel)
+- [Master OpenAI's new Text-to-speech API](/openai-tts-api)
 

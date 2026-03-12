@@ -78,13 +78,16 @@ So, in a nutshell, Laravel is a feature-packed PHP framework that makes web deve
 
 I hope you will create something amazing!
 
-If you want a few more Laravel rabbit holes after this:
+If "What's Laravel and how it works: a crystal clear explanation" is part of your current stack puzzle, keep going with these:
 
 - [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
 - [Validation in Laravel made easy](/laravel-validation)
 - [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
-
-
-
-
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
+- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
+- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+- [6 ways to check your version of PHP](/check-php-version)
 

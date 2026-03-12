@@ -86,13 +86,16 @@ All that being said, at the end, results matter the most. Here's a tweet from Ta
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">I try not to express very strong opinions on how people structure or build their Laravel applications.<br><br>I want to keep a strong culture of exploration and experimentation in the ecosystem. 👩‍🔬</p>&mdash; Taylor Otwell ☁️ (@taylorotwell) <a href="https://twitter.com/taylorotwell/status/1668580181504606208?ref_src=twsrc%5Etfw">June 13, 2023</a></blockquote>
 
-If you want a few more Laravel rabbit holes after this:
+If this article on "3 crucial Laravel architecture best practices for 2025" hit the mark, keep the momentum going here:
 
 - [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
 - [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
 - [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-
-
-
-
+- [Laravel 9: the mindful upgrade guide](/laravel-9-upgrade-guide)
+- [The best Laravel developers to hire in 2024](/best-laravel-developers)
+- [The best Laravel 12-ready books you should read in 2025](/best-laravel-books)
+- [The history of Laravel's versions (2011-2025)](/laravel-versions)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+- [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
+- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
 

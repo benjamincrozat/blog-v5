@@ -91,13 +91,14 @@ The dollar sign ($) that you have to use in jQuery is simply a JavaScript variab
 
 That's it! You've now seen how jQuery can make JavaScript programming easier and more intuitive, especially for tasks like manipulating HTML elements and handling events. Start experimenting with more components and explore the vast possibilities jQuery offers.
 
-If you want a few more JavaScript rabbit holes after this:
+These are the posts I would queue up right after "Get started with jQuery in 5 minutes":
 
 - [How and when to use jQuery's $(document).ready() method](/jquery-document-ready)
 - [Handle clicks from your users using jQuery](/jquery-on-click)
 - [Understanding jQuery's .each() method](/jquery-each)
-
-
-
-
+- [Alpine.js: a lightweight framework for productive developers](/alpine-js)
+- [Add Alpine.js to any Laravel project](/alpine-js-laravel)
+- [Add Vue.js to any Laravel project](/laravel-vue)
+- [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
 

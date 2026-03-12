@@ -36,13 +36,16 @@ php artisan install:broadcasting
 
 After running the command, Artisan will also ask you if you want to install [Laravel Reverb](https://reverb.laravel.com).
 
-If you want a few more Laravel rabbit holes after this:
+If "How to publish API and broadcasting routes in Laravel 11" is still on your mind, these posts connect nicely:
 
 - [How to publish config files in Laravel 11](/publish-config-files-laravel)
 - [Laravel 11 is out! Here are every new big changes and features.](/laravel-11)
 - [Secure your REST API in 5 minutes with Laravel Sanctum](/laravel-sanctum-api-tokens-authentication)
-
-
-
-
+- [8 Laravel RESTful APIs best practices for 2025](/laravel-restful-api-best-practices)
+- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
+- [How to customize middleware in Laravel 11+](/customize-middleware-laravel-11)
+- [6 ways to check Laravel's version](/check-laravel-version)
+- [9 ways to clear Laravel's cache](/laravel-clear-cache)
+- [Laravel 10 is out! Here are every new features and changes.](/laravel-10)
+- [How to install Laravel on macOS](/laravel-installation-macos)
 

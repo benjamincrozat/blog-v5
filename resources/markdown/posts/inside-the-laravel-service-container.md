@@ -19,13 +19,9 @@ If you work with Laravel, you’ll like this clear tour of the service container
 
 I found the tips on practical bindings and avoiding common mistakes especially helpful. If you’ve ever wondered why your controllers just work without new, this guide connects the dots. It’s a solid read if you want a deeper grasp of the Laravel service container and how to use it with confidence.
 
-If you want a few more Laravel rabbit holes after this:
+Once "Inside the Laravel service container" clicks, these follow-ups make even more sense:
 
 - [What's Laravel and how it works: a crystal clear explanation](/how-laravel-works)
 - [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
 - [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
-
-
-
-
 

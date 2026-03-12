@@ -114,13 +114,9 @@ And that's it! You've now equipped your Filament admin panel with a custom stats
 
 You can also learn more about [stats widgets](https://filamentphp.com/docs/3.x/widgets/stats-overview) on the official documentation.
 
-If you want a few more useful reads after this:
+If "How to Create a Stats Widget in Filament" was useful, these related posts make strong next steps:
 
 - [How to Format Text Columns in Filament](/how-to-format-text-columns-filament)
 - [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
 - [PHP 8.5: 15 new features and changes](/php-85)
-
-
-
-
 

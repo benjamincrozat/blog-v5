@@ -53,13 +53,13 @@ document.querySelector('button').addEventListener('click', function () {
 
 People can criticize jQuery all day long, but its syntax is unbeatable. Look how lengthy this code is!
 
-If you want a few more JavaScript rabbit holes after this:
+If you are still thinking about "Handle clicks from your users using jQuery", open these next:
 
 - [Understanding jQuery's .each() method](/jquery-each)
 - [Get started with jQuery in 5 minutes](/jquery)
 - [How and when to use jQuery's $(document).ready() method](/jquery-document-ready)
-
-
-
-
+- [Alpine.js: a lightweight framework for productive developers](/alpine-js)
+- [Bun package manager vs npm, Yarn, and pnpm in 2025](/bun-package-manager)
+- [Add Vue.js to any Laravel project](/laravel-vue)
+- [25 Laravel best practices, tips, and tricks](/laravel-best-practices)
 

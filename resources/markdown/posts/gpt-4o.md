@@ -175,13 +175,16 @@ Here are a bunch of ideas to experiment with:
 
 And did you know OpenAI offers developers an API to [add realistic voices to their projects](/openai-tts-api)?
 
-If you want a few more AI rabbit holes after this:
+If this article on "How to access and use GPT-4o's API, step by step" hit the mark, keep the momentum going here:
 
 - [How to use GPT-4o mini's API for cheap, step by step](/gpt-4o-mini)
 - [How to access and use GPT-4 Turbo's API, step by step](/gpt-4-turbo)
 - [How to use GPT-3.5 Turbo's API, step by step](/gpt-35-turbo)
-
-
-
-
+- [Access and use GPT‑4.1's API. 5 minutes, tops.](/gpt-41)
+- [openai-php/client: leverage OpenAI's API, effortlessly](/openai-php-client)
+- [GPT‑5: my API quick start guide](/gpt-5-api)
+- [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
+- [Use Laravel to build a ChatGPT plugin](/chatgpt-plugin-laravel)
+- [How to generate Laravel Factories using ChatGPT](/generate-laravel-factories-chatgpt)
+- [Master OpenAI's new Text-to-speech API](/openai-tts-api)
 
