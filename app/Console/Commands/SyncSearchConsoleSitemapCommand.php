@@ -28,9 +28,10 @@ class SyncSearchConsoleSitemapCommand extends Command
 
         if (! app()->isProduction()) {
             foreach ($checkSearchConsoleConnection->handle() as $result) {
-                $this->info("{$result['label']} reachable ({$result['status']}) at {$result['url']}");
+                $this->info("{$result['label']} responded with HTTP {$result['status']} at {$result['url']}");
             }
 
+            $this->info('Non-production mode only checks that Google responds on the configured network path.');
             $this->info('Search Console submission skipped outside production.');
 
             return self::SUCCESS;

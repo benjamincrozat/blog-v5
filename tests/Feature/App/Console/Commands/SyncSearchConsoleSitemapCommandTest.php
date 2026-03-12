@@ -100,8 +100,9 @@ it('checks the configured Google endpoints outside production without submitting
 
     artisan(SyncSearchConsoleSitemapCommand::class)
         ->expectsOutputToContain('Sitemap generated successfully')
-        ->expectsOutputToContain('Token endpoint reachable (405)')
-        ->expectsOutputToContain('Search Console endpoint reachable (401)')
+        ->expectsOutputToContain('Token endpoint responded with HTTP 405')
+        ->expectsOutputToContain('Search Console endpoint responded with HTTP 401')
+        ->expectsOutput('Non-production mode only checks that Google responds on the configured network path.')
         ->expectsOutput('Search Console submission skipped outside production.');
 
     Http::assertSent(function (Request $request) {
