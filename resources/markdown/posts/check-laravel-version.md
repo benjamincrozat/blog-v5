@@ -137,11 +137,11 @@ public function version()
 }
 ```
 
-Once you know which Laravel version is actually running, these next reads help with upgrades, release history, and the rest of your setup:
+If you are checking the version because an upgrade, package install, or local mismatch is coming next, these are the tabs worth opening after this one:
 
-- [The history of Laravel's versions (2011-2025)](/laravel-versions)
-- [Laravel 11: an easy and step by step upgrade guide](/laravel-11-upgrade-guide)
-- [Laravel 10: the upgrade guide from version 9](/laravel-10-upgrade-guide)
-- [6 ways to check your version of PHP](/check-php-version)
-- [Demystifying Artisan: Laravel's magical command tool](/laravel-artisan)
-- [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
+- [See how Laravel's release story got here](/laravel-versions)
+- [Size up what really changes when moving to Laravel 11](/laravel-11-upgrade-guide)
+- [Plan the jump from Laravel 9 to 10 before it gets messy](/laravel-10-upgrade-guide)
+- [Rule out PHP as the mismatch hiding underneath](/check-php-version)
+- [Get more out of the Artisan command you just used](/laravel-artisan)
+- [Switch PHP versions on macOS without breaking your flow](/laravel-valet)

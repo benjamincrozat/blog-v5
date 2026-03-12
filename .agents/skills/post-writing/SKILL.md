@@ -56,6 +56,8 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
 
   - [Highly specific anchor text](/target-slug)
   - [Another highly specific anchor text](/another-target)
+- Do not copy and paste the destination post title as the anchor text by default. Rewrite the anchor so it fits the current article's context, stays accurate to the destination, and sparks enough curiosity to earn the click.
+- Write each anchor as the reader's most likely next question, tension, or payoff from this specific article. It should explain why that next post matters now, not just name the destination.
 - Add as many recommendations as the topic honestly supports: usually at least 3, sometimes more, with a hard cap of 10. Do not pad the list with weak matches.
 - Pick recommended posts that genuinely extend the topic because they feel like strong next reads for this exact reader journey. Use editorial judgment, not category matching or obvious heuristics. You do not need to fully read every recommended post before linking it, but you should believe the recommendation makes sense.
 - When creating or revising a post, add or improve natural internal links in the body wherever a reader would want the next step, not only in the closing list.
@@ -89,5 +91,5 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
    - title and description make a strong, accurate click promise
    - headings read naturally in the generated table of contents
    - contextual internal links were added or improved where helpful
-  - the post has one up-to-date related-posts list with a custom, natural lead-in that does not echo the title and the required Markdown list format: `- [anchor](link)`
+   - the post has one up-to-date related-posts list with a custom, natural lead-in that does not echo the title and anchor text that is contextual rather than a pasted destination title
    - code and links support the nearby claim
