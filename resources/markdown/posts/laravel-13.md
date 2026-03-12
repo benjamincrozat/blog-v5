@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27BBGFKC1KETMVEMKHM5"
-title: "Laravel 13: new features and upgrade guide"
+title: "Laravel 13: features, timeline, and upgrade prep"
 slug: "laravel-13"
 author: "benjamincrozat"
-description: "Laravel 13 brings the AI SDK, JSON:API resources, vector search, queue routing, and stronger security defaults. Here is what changed and how to upgrade from Laravel 12."
+description: "Laravel 13 is not released yet, but the public 13.x docs already show its planned features, PHP requirements, and upgrade notes."
 categories:
   - "laravel"
 published_at: 2025-07-06T21:26:00+02:00
-modified_at: 2026-03-12T15:01:28+01:00
+modified_at: 2026-03-12T16:43:26+01:00
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -18,15 +18,15 @@ sponsored_at: null
 ---
 ## Introduction
 
-I first published this article as an early tracker. As of March 12, 2026, Laravel's official [13.x release notes](https://laravel.com/docs/13.x/releases) and [13.x upgrade guide](https://laravel.com/docs/13.x/upgrade) are live, so I have refreshed this page around what the framework now documents publicly.
+I first published this article as an early tracker, and that is still the right frame for it. As of March 12, 2026, Laravel's official [13.x release notes](https://laravel.com/docs/13.x/releases) and [13.x upgrade guide](https://laravel.com/docs/13.x/upgrade) are public, but Laravel 13 still has not been tagged as a stable release.
 
-One detail is still a little unusual: the official [support policy](https://laravel.com/docs/13.x/releases#support-policy) still lists Laravel 13's release window as Q1 2026 instead of showing a precise calendar date. So this guide focuses on the supported PHP versions, the headline features, and the practical upgrade path from [Laravel 12](/laravel-12).
+The clearest public signals are that the official [support policy](https://laravel.com/docs/13.x/releases#support-policy) still lists Laravel 13 as Q1 2026, [Packagist](https://packagist.org/packages/laravel/framework) still shows `v12.54.1` as the latest stable `laravel/framework` release, and GitHub's [releases](https://github.com/laravel/framework/releases) and [tags](https://github.com/laravel/framework/tags) pages still do not show a stable `v13` tag. So this page is best read as a preview of what Laravel has documented for 13.x so far, plus how to prepare for the eventual upgrade from [Laravel 12](/laravel-12).
 
 ## Release date and support timeline
 
 Laravel still follows its yearly major release cadence. The official [support policy](https://laravel.com/docs/13.x/releases#support-policy) says non-LTS releases receive 18 months of bug fixes and 2 years of security fixes.
 
-Laravel 12 remains in a comfortable support window, so there is no need to panic-upgrade. If you want the broader history behind Laravel's release cadence, I also maintain a simple [Laravel versions](/laravel-versions) reference.
+Laravel 12 remains in a comfortable support window, so there is no need to panic-upgrade. As of March 12, 2026, the latest stable framework release is still [`v12.54.1` on Packagist](https://packagist.org/packages/laravel/framework), which is another good reminder that Laravel 13 is not GA yet. If you want the broader history behind Laravel's release cadence, I also maintain a simple [Laravel versions](/laravel-versions) reference.
 
 | Version | PHP | Release | Bug fixes until | Security fixes until |
 | ------- | --- | ------- | --------------- | -------------------- |
@@ -37,11 +37,11 @@ Laravel 12 remains in a comfortable support window, so there is no need to panic
 
 Laravel 13 requires PHP 8.3 or newer, and the official support table currently shows support through PHP 8.5. If you are still on PHP 8.2, stay on Laravel 12 until your runtime is ready.
 
-The official `13.x` application skeleton already reflects that target. Its [`composer.json`](https://github.com/laravel/laravel/blob/13.x/composer.json) requires PHP `^8.3` and `laravel/framework:^13.0`, which lines up with the release notes and upgrade guide.
+The official `13.x` application skeleton already reflects that target. Its [`composer.json`](https://github.com/laravel/laravel/blob/13.x/composer.json) requires PHP `^8.3` and `laravel/framework:^13.0`, which lines up with the public 13.x docs. Until a stable `v13` tag exists, though, treat that as prerelease guidance rather than proof that Laravel 13 has shipped.
 
-## What's new in Laravel 13
+## What's documented for Laravel 13 so far
 
-Laravel describes 13 as a fairly small upgrade in breaking-change terms, but a meaningful release in capabilities. These are the additions I think most teams will care about.
+Laravel's public 13.x docs describe 13 as a fairly small upgrade in breaking-change terms, but a meaningful release in capabilities. These are the additions I think most teams will care about if they land as documented.
 
 ### Laravel AI SDK
 
@@ -96,9 +96,9 @@ $documents = DB::table('documents')
 
 This part of the release pairs naturally with the AI SDK because you can generate embeddings from strings and query them with first-party APIs.
 
-## Upgrading from Laravel 12 to 13
+## Preparing to upgrade from Laravel 12 to 13
 
-The official [upgrade guide](https://laravel.com/docs/13.x/upgrade) estimates about 10 minutes for many applications, which matches Laravel's "minimal breaking changes" message for this cycle.
+The public [13.x upgrade guide](https://laravel.com/docs/13.x/upgrade) already estimates about 10 minutes for many applications, which matches Laravel's "minimal breaking changes" message for this cycle.
 
 ### Start with dependencies
 
@@ -127,26 +127,32 @@ These are the upgrade guide sections I would check even on a small app:
 - [MySQL `DELETE` queries with `JOIN`, `ORDER BY`, and `LIMIT`](https://laravel.com/docs/13.x/upgrade#mysql-delete-queries-with-join-order-by-and-limit) because queries that were previously compiled loosely may now throw database errors on unsupported engines.
 - [Polymorphic pivot table naming](https://laravel.com/docs/13.x/upgrade#polymorphic-pivot-table-name-generation) if you use custom morph pivot models and relied on inferred table names.
 
-For most teams, the message is simple: Laravel 13 looks like an easy framework upgrade, but a few infrastructure-level defaults around cache, request forgery protection, and database SQL generation deserve a careful read.
+For most teams, the message is simple: Laravel 13 looks like it should be an easy framework upgrade, but a few infrastructure-level defaults around cache, request forgery protection, and database SQL generation deserve a careful read before release day.
 
-## Installing Laravel 13
+## How to prepare before Laravel 13 ships
 
-For a new application, the current installation docs still recommend the Laravel installer:
+Because Laravel 13 is still unreleased as of March 12, 2026, I would not treat a plain `laravel new` command as proof that you are on stable 13.x yet.
+
+Instead, the practical prep work is:
+
+- make sure your local environment runs PHP 8.3 or newer
+- update the Laravel installer with `composer global update laravel/installer` or update Herd
+- read the public [13.x release notes](https://laravel.com/docs/13.x/releases) and [upgrade guide](https://laravel.com/docs/13.x/upgrade)
+- keep any 13.x experimentation on a disposable branch until the stable release tag appears
+
+If you want to create a throwaway app or inspect the skeleton, the public `13.x` branch of [`laravel/laravel`](https://github.com/laravel/laravel/tree/13.x) already targets Laravel 13:
 
 ```bash
-laravel new example-app
-cd example-app
-npm install && npm run build
-composer run dev
+git clone --branch 13.x https://github.com/laravel/laravel.git example-app
 ```
 
-Before doing that, make sure your local environment runs PHP 8.3 or newer and that your Laravel installer or Herd installation is up to date for 13.x compatibility.
+Use that for research or experimentation, not for a production rollout.
 
 ## FAQ
 
 ### When is Laravel 13 coming out?
 
-As of March 12, 2026, the official [support policy](https://laravel.com/docs/13.x/releases#support-policy) still says Q1 2026 instead of showing an exact release date. The official 13.x release notes and upgrade guide are already public, which is why this article now focuses on the documented feature set and upgrade path.
+As of March 12, 2026, Laravel 13 is still not released. The official [support policy](https://laravel.com/docs/13.x/releases#support-policy) still says Q1 2026 instead of showing an exact date, while [Packagist](https://packagist.org/packages/laravel/framework) and GitHub's [releases](https://github.com/laravel/framework/releases) and [tags](https://github.com/laravel/framework/tags) do not yet show a stable `v13` framework release.
 
 ### What PHP version does Laravel 13 require?
 
@@ -158,7 +164,11 @@ Laravel 12 receives bug fixes until August 13, 2026 and security fixes until Feb
 
 ### Is Laravel 13 a big upgrade?
 
-Probably not for most apps. Laravel's [release notes](https://laravel.com/docs/13.x/releases) call out minimal breaking changes, and the official [upgrade guide](https://laravel.com/docs/13.x/upgrade) estimates about 10 minutes for many Laravel 12 applications.
+Probably not for most apps once it ships. Laravel's public [13.x release notes](https://laravel.com/docs/13.x/releases) call out minimal breaking changes, and the public [upgrade guide](https://laravel.com/docs/13.x/upgrade) estimates about 10 minutes for many Laravel 12 applications.
+
+### Has Laravel 13 been released yet?
+
+No. As of March 12, 2026, the public 13.x docs and skeleton exist, but the latest stable `laravel/framework` release is still [`v12.54.1`](https://packagist.org/packages/laravel/framework), and GitHub does not yet show a stable `v13` tag.
 
 ### What should I check first before upgrading?
 
@@ -166,6 +176,6 @@ I would start with request forgery protection, cache serialization rules, cache 
 
 ## Conclusion
 
-Laravel 13 looks like a good example of Laravel's current strategy: keep the upgrade small, then add meaningful new platform features on top. The AI SDK, JSON:API resources, semantic search support, queue routing, and stronger request forgery defaults are the highlights.
+Laravel 13 still looks like a good example of Laravel's current strategy: keep the upgrade small, then add meaningful new platform features on top. The AI SDK, JSON:API resources, semantic search support, queue routing, and stronger request forgery defaults are the highlights in the public 13.x docs.
 
-If you are already on Laravel 12 with PHP 8.3+, I would start reading the official [upgrade guide](https://laravel.com/docs/13.x/upgrade) now. If you are not ready yet, Laravel 12 still has plenty of support runway left.
+If you are already on Laravel 12 with PHP 8.3+, I would start reading the public [13.x upgrade guide](https://laravel.com/docs/13.x/upgrade) now and wait for the stable release tag before rolling anything important forward. If you are not ready yet, Laravel 12 still has plenty of support runway left.
