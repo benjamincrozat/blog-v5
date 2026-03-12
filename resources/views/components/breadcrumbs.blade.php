@@ -8,21 +8,25 @@ Provides a responsive breadcrumb trail that accepts label and URL pairs, treatin
     {{ $attributes->class('flex w-full max-w-full justify-start overflow-hidden') }}
     aria-label="Breadcrumb"
     x-data
-    x-init="$nextTick(() => $refs.current?.scrollIntoView({ block: 'nearest', inline: 'end' }))"
+    x-init="$nextTick(() => {
+        const scroller = $refs.scroller;
+
+        if (scroller && scroller.scrollWidth > scroller.clientWidth) {
+            $refs.current?.scrollIntoView({ block: 'nearest', inline: 'end' });
+        }
+    })"
 >
-    <ol
-        x-ref="rail"
-        class="flex w-full max-w-full min-w-0 items-center gap-1 overflow-x-auto overscroll-x-contain rounded-full border border-black/[0.06] bg-gray-50 p-1.5 text-sm text-gray-600 shadow-sm shadow-black/5 sm:w-auto"
+    <div
+        x-ref="scroller"
+        class="w-full max-w-full overflow-x-auto overscroll-x-contain"
     >
+        <ol class="inline-flex min-w-max items-center gap-1 rounded-full border border-black/[0.06] bg-gray-50 p-1.5 text-sm text-gray-600 shadow-sm shadow-black/5">
         @foreach ($items as $item)
             @php
                 $isCurrentPage = blank($item['url'] ?? null);
             @endphp
 
-            <li @class([
-                'flex min-w-0 items-center gap-1',
-                'flex-1 sm:flex-none' => $isCurrentPage,
-            ])>
+            <li class="flex min-w-0 items-center gap-1">
                 @if (! $loop->first)
                     <x-heroicon-o-chevron-right
                         aria-hidden="true"
@@ -44,7 +48,7 @@ Provides a responsive breadcrumb trail that accepts label and URL pairs, treatin
                         title="{{ $item['label'] }}"
                         x-ref="current"
                         @class([
-                            'block w-full min-w-0 truncate rounded-full bg-white px-3 py-1.5 font-medium text-gray-950 ring-1 ring-black/[0.06] shadow-sm shadow-black/5 sm:w-auto sm:max-w-[30rem] lg:max-w-[40rem]',
+                            'block max-w-[14rem] truncate rounded-full bg-white px-3 py-1.5 font-medium text-gray-950 ring-1 ring-black/[0.06] shadow-sm shadow-black/5 sm:max-w-[30rem] lg:max-w-[40rem]',
                             'ml-2.5' => ! $loop->first,
                         ])
                     >
@@ -53,5 +57,6 @@ Provides a responsive breadcrumb trail that accepts label and URL pairs, treatin
                 @endif
             </li>
         @endforeach
-    </ol>
+        </ol>
+    </div>
 </nav>
