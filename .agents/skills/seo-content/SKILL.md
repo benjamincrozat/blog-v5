@@ -49,6 +49,7 @@ Read these references as needed:
 - The related-posts list should use that custom lead-in line ending with a colon, then a standard Markdown list with entries like `- [Very specific anchor text](/target-slug)`.
 - Do not default to the destination post's exact title as the anchor text. Rewrite anchors so they fit the current article's context, stay accurate, and make the next click feel earned.
 - Treat each anchor like the reader's next sensible click from this page. It should surface the next tension, decision, or payoff, not read like a pasted catalog title.
+- Keep the wording plain enough that the reader instantly understands why that link matters. Curiosity is useful, but not at the cost of clarity.
 - Add only the number of recommendations the topic can support: usually 3 or more, sometimes more, with a hard cap of 10. Choose them with editorial judgment based on what a reader would genuinely want next, not by category matching alone. You do not need to fully read every recommended post.
 - Keep visible content consistent with frontmatter and any structured data.
 - For AI visibility, aim to be cite-worthy: direct answers, strong subheads, original details, and useful examples.

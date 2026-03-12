@@ -28,6 +28,7 @@ Pair with `post-writing` when creating or revising article copy so internal link
 - Choose related posts because they feel like smart next reads for the current article, not because they happen to share a category.
 - Rewrite the related-post anchor text contextually instead of pasting destination post titles into the list.
 - Make those anchors sound like the reader's next useful click from this page, not like a shelf label copied from somewhere else.
+- Keep them plain and clear enough that the reader immediately gets why the next post is worth opening.
 - Do not open the public page or Filament just for a routine post edit. Use browser checks only when the post includes tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, a publishing-state change that needs confirmation, or the user explicitly asks for a visual check.
 
 ## Workflow

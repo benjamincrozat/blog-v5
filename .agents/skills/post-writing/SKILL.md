@@ -58,6 +58,7 @@ Pair with `seo-content` for search intent, SERP review, titles, snippets, and in
   - [Another highly specific anchor text](/another-target)
 - Do not copy and paste the destination post title as the anchor text by default. Rewrite the anchor so it fits the current article's context, stays accurate to the destination, and sparks enough curiosity to earn the click.
 - Write each anchor as the reader's most likely next question, tension, or payoff from this specific article. It should explain why that next post matters now, not just name the destination.
+- Favor clarity over cleverness. If the anchor sounds vague, ambiguous, or too cute, rewrite it in plainer language while keeping the curiosity.
 - Add as many recommendations as the topic honestly supports: usually at least 3, sometimes more, with a hard cap of 10. Do not pad the list with weak matches.
 - Pick recommended posts that genuinely extend the topic because they feel like strong next reads for this exact reader journey. Use editorial judgment, not category matching or obvious heuristics. You do not need to fully read every recommended post before linking it, but you should believe the recommendation makes sense.
 - When creating or revising a post, add or improve natural internal links in the body wherever a reader would want the next step, not only in the closing list.

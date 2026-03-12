@@ -139,9 +139,9 @@ public function version()
 
 If you are checking the version because an upgrade, package install, or local mismatch is coming next, these are the tabs worth opening after this one:
 
-- [See how Laravel's release story got here](/laravel-versions)
-- [Size up what really changes when moving to Laravel 11](/laravel-11-upgrade-guide)
-- [Plan the jump from Laravel 9 to 10 before it gets messy](/laravel-10-upgrade-guide)
-- [Rule out PHP as the mismatch hiding underneath](/check-php-version)
-- [Get more out of the Artisan command you just used](/laravel-artisan)
+- [See where your version fits in Laravel's release history](/laravel-versions)
+- [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
+- [Plan a safer upgrade from Laravel 9 to 10](/laravel-10-upgrade-guide)
+- [Check whether your PHP version is part of the problem](/check-php-version)
+- [Use the Artisan command you just ran with more confidence](/laravel-artisan)
 - [Switch PHP versions on macOS without breaking your flow](/laravel-valet)
