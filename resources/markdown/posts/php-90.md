@@ -1,16 +1,16 @@
 ---
 id: "01KKEW27JRB4E9XDVB5DNAZXM6"
-title: "PHP 9.0: what we know about it"
+title: "PHP 9 release date and breaking changes"
 slug: "php-90"
 author: "benjamincrozat"
-description: "PHP 9.0 is still far in the future. We don't know a lot, but we have a few breaking changes planned for it."
+description: "PHP 9 has no release date yet. Here is what the official roadmap, RFCs, and PHP 8.6 schedule tell us about the breaking changes to prepare for."
 categories:
   - "php"
 published_at: 2023-11-03T00:00:00+01:00
-modified_at: 2025-07-04T16:26:00+02:00
-serp_title: "PHP 9.0: what we know about it in 2025"
-serp_description: null
-canonical_url: ""
+modified_at: 2026-03-12T11:13:18+01:00
+serp_title: "PHP 9 release date and breaking changes in 2026"
+serp_description: "PHP 9 has no release date yet. Here is what is confirmed so far, what changed since 2025, and how to prepare your code."
+canonical_url: null
 is_commercial: false
 image_disk: "cloudflare-images"
 image_path: "images/posts/uZ3tbALpiLH7S8H.png"
@@ -18,203 +18,151 @@ sponsored_at: null
 ---
 ## Introduction
 
-PHP is an open-source project. Knowing what new features and changes are planned for the next version only takes a minute of research. For instance, this page lists all the [accepted RFCs for different versions of PHP](https://wiki.php.net/rfc).
+PHP 9 is real, but it is not the next PHP release.
 
-That being said, despite PHP 9.0 being planned, no work has been started yet and we have to dig deeper.
+There is still no official release date for PHP 9. What we do have is better than guesswork: the [PHP RFC index](https://wiki.php.net/rfc), the public [PHP 9 milestone in php-src](https://github.com/php/php-src/milestone/6), the [PHP 8.5 release page](https://www.php.net/releases/8.5/en.php), and the [PHP 8.6 preparation tasks list](https://wiki.php.net/todo/php86).
 
-## When will PHP 9.0 be released?
+So the useful question in 2026 is not “when can I install PHP 9?” It is: which breaking changes are already pointing to PHP 9, and what should you fix now?
 
-**For now, the release date of PHP 9.0 hasn't been announced yet.** This version is still far in the future. We could get PHP 8.5 and 8.6 before 9.0 is even considered. Who knows?
+## PHP 9 release date and status
 
-## How to install and test PHP 9.0?
+There is no announced PHP 9 release date today.
 
-To this day, no work has been started on PHP 9.0, so you won't even be able to pull the latest code and compile it yourself.
+Here is the current picture:
 
-## New features and changes planned for PHP 9.0
+- PHP 8.5 shipped on November 20, 2025 according to the [official release page](https://www.php.net/releases/8.5/en.php).
+- PHP 8.6 already has an official [release schedule](https://wiki.php.net/todo/php86) and its current GA date is November 19, 2026.
+- PHP 9 appears as a future target on the [RFC index](https://wiki.php.net/rfc) and in the public [php-src milestone](https://github.com/php/php-src/milestone/6), but that milestone still has no due date.
 
-### Better increment and decrement behavior
+That means PHP 9 is not the next train. PHP 8.6 is.
 
-PHP 9 is cleaning up how the `++` and `--` operators work. Here's what's changing:
+## What changed since the last update
 
-1. No more weird string increments:
-   ```php
-   // PHP 8 and earlier
-   $foo = 'a9';
-   $foo++;
-   echo $foo;  // Outputs: 'b0'
+The old version of this post was still talking about PHP 9 as a distant idea. Since then, two things changed:
 
-   // PHP 9
-   $foo = 'a9';
-   $foo++;  // Throws a TypeError
-   ```
+1. [PHP 8.5 is out](/php-85), so we now have one more release worth of deprecations and cleanup work behind us.
+2. [PHP 8.6 is taking shape](/php-86), and the official schedule makes it clear that 8.6 comes before any PHP 9 release.
 
-2. Booleans and null will be treated as numbers:
-   ```php
-   // PHP 8 and earlier
-   $bar = true;
-   $bar++;
-   var_dump($bar);  // Outputs: bool(true)
+That changes the angle of the post. The main value is no longer speculation about a date. It is understanding which removals and error promotions are already visible, so you can fix your code early.
 
-   // PHP 9
-   $bar = true;
-   $bar++;
-   var_dump($bar);  // Outputs: int(2)
-   ```
+## Breaking changes already pointing to PHP 9
 
-3. Empty strings won't magically become numbers:
-   ```php
-   // PHP 8 and earlier
-   $baz = '';
-   $baz--;
-   var_dump($baz);  // Outputs: int(-1)
+These are the clearest PHP 9 candidates you should care about today because they already have RFCs or are explicitly tracked for PHP 9.
 
-   // PHP 9
-   $baz = '';
-   $baz--;  // Throws a TypeError
-   ```
+### Undefined variables should become errors
 
-These changes make PHP more predictable.
+The [undefined variable error promotion RFC](https://wiki.php.net/rfc/undefined_variable_error_promotion) says the change moved to PHP 9. In plain English, code that currently limps along with a warning should fail fast instead.
 
-If you still need the old string increment behavior, you can use the new `str_increment()` function.
-
-[PHP RFC: Path to Saner Increment/Decrement operators](https://wiki.php.net/rfc/saner-inc-dec-operators)
-
-### PHP 9.0 throws an exception on unserialization errors
-
-This RFC, [Improve unserialize() error handling](https://wiki.php.net/rfc/improve_unserialize_error_handling), which has been partially implemented in PHP 8.3, upgrades unserialization errors from `E_NOTICE` to `E_WARNING`.
-
-**In PHP 9.0, these will be upgraded to an `UnserializationFailedException`.**
-
-This will allow developers to stop using a custom error handler and get a behavior more consistent with other parts of the language.
+For example, this kind of typo should stop immediately:
 
 ```php
-// PHP 8.3: "Warning: unserialize(): Error at offset 0 of 3 bytes"
-// PHP 9.0: "Uncaught UnserializationFailedException: unserialize(): Error at offset 0 of 3 bytes"
-unserialize("foo");
+echo $userName;
 ```
 
-### Simplified function signatures
+That is a good change. A warning is easy to miss. A hard failure is much easier to find in development and CI.
 
-PHP 9 is will make functions easier to understand and use. How? By simplifying their signatures. Let's break it down with two examples.
+### Undefined property reads should become errors
 
-First, take a look at `array_keys()`:
+The same idea applies to properties. The [undefined property error promotion RFC](https://wiki.php.net/rfc/undefined_property_error_promotion) aims to turn reads from missing properties into `Error` exceptions in PHP 9.
+
+This kind of code is the classic example:
 
 ```php
-// Current PHP:
-$allKeys = array_keys($myArray);
-$specificKeys = array_keys($myArray, 'searchValue', true);
+$user = new stdClass();
 
-// PHP 9:
-$allKeys = array_keys($myArray);
-$specificKeys = array_keys_filter($myArray, 'searchValue', true);
+echo $user->email;
 ```
 
-See the difference? Instead of one function doing two jobs, we'll have two separate, more focused functions.
+If your code relies on loose, dynamic shapes, now is a good time to move to explicit properties, typed DTOs, or `property_exists()` checks where they make sense.
 
-Here's another example with `DatePeriod::__construct()`:
+### `${}` string interpolation is going away
+
+The [dollar-brace interpolation RFC](https://wiki.php.net/rfc/deprecate_dollar_brace_string_interpolation) already mapped the end state: `${foo}` and `${expr}` should become compile errors in PHP 9.
+
+So replace this old form:
 
 ```php
-// Current PHP:
-$period1 = new DatePeriod($start, $interval, $end);
-$period2 = new DatePeriod('R4/2012-07-01T00:00:00Z/P7D');
+$name = 'Benjamin';
 
-// PHP 9:
-$period1 = new DatePeriod($start, $interval, $end);
-$period2 = DatePeriod::createFromISO8601String('R4/2012-07-01T00:00:00Z/P7D');
+echo "Hello ${name}";
 ```
 
-Again, we're moving from one multi-purpose constructor to a constructor and a separate creation method.
-
-Why these changes? They make PHP more predictable. When a function or method does just one thing, it's easier to understand and use correctly.
-
-Here's the plan:
-1. PHP 8.3 introduces the new functions.
-2. PHP 8.4 warns you about using the old ways.
-3. PHP 9 (or 10, it's still not decided) will complete the transition.
-
-[PHP RFC: Deprecate functions with overloaded signatures](https://wiki.php.net/rfc/deprecate_functions_with_overloaded_signatures)
-
-This RFC proposes to deprecate and eventually remove autovivification (automatic creation of arrays) from false values in PHP. Here's a simplified explanation for the blog post:
-
-### No more arrays out of false values
-
-PHP 9 is getting stricter about how arrays are created, particularly when it comes to false values. Let's break this down:
-
-Currently in PHP, you can do something like this:
+With one of these instead:
 
 ```php
-$arr = false;
-$arr[] = 2; // This creates an array [2]
+echo "Hello $name";
+echo "Hello {$name}";
 ```
 
-This feature, called "autovivification", automatically converts false to an array. While convenient, it can lead to unexpected behavior and bugs.
+This is usually a quick search-and-replace win.
 
-In PHP 9, this won't be allowed anymore. Instead, you'll see an error:
+### Arrays will not auto-create from `false`
+
+The [autovivification on false RFC](https://wiki.php.net/rfc/autovivification_false) says that writing to `false` as if it were an array should throw an `Error` in PHP 9.
+
+Today, some code still does this:
 
 ```php
-$arr = false;
-$arr[] = 2; // Error: Cannot use a scalar value as an array
+$items = false;
+$items[] = 'php';
 ```
 
-You already can't do this with other values like true or 0, so why should `false` be special?
-
-[PHP RFC: Deprecate autovivification on false](https://wiki.php.net/rfc/autovivification_false)
-
-This RFC proposes to deprecate and eventually remove certain forms of string interpolation in PHP. Here's a simplified explanation for the blog post:
-
-### Simplified string interpolation
-
-PHP 9 is simplifying how you can embed variables in strings. Let's break it down:
-
-Currently, PHP allows several ways to put variables inside strings:
-
-1. Direct: `"$foo"`
-2. Braces outside: `"{$foo}"`
-3. Braces after dollar: `"${foo}"`
-4. Variable variables: `"${expr}"`
-
-PHP 9 will keep options 1 and 2, but remove options 3 and 4. Why? Because they're confusing and less useful.
-
-For example, this won't work in PHP 9:
+That is fragile because `false` is not an array. The safe fix is to initialize the variable correctly from the start:
 
 ```php
-$foo = 'world';
-echo "Hello ${foo}";  // This will cause an error
+$items = [];
+$items[] = 'php';
 ```
 
-Instead, you'll need to use one of these:
+### `Serializable` is being phased out
+
+The [phase out `Serializable` RFC](https://wiki.php.net/rfc/phase_out_serializable) says support for the `Serializable` interface should be dropped in PHP 9.
+
+If you still have code like this:
 
 ```php
-echo "Hello $foo";     // Option 1
-echo "Hello {$foo}";   // Option 2
+class Payload implements Serializable
+{
+    // ...
+}
 ```
 
-[PHP RFC: Deprecate ${} string interpolation](https://wiki.php.net/rfc/deprecate_dollar_brace_string_interpolation)
+Plan a move to `__serialize()` and `__unserialize()`. That work is much easier to do now than during a future major-version scramble.
 
-### Some warnings will become errors in PHP 9.0
+### GET and POST session IDs are on the way out
 
-In order to make PHP more reliable, warnings for undefined variables and properties will now become errors.
+The [Deprecate GET/POST sessions RFC](https://wiki.php.net/rfc/deprecate-get-post-sessions) takes aim at transparent session IDs in URLs and form data. Its stated goal is to remove that support entirely in PHP 9.
 
-For instance, the following code will not run anymore in PHP 9.0:
+Most modern apps already use cookies only, so this is mainly a cleanup item for legacy systems. Still, it is worth checking older code, custom session settings, or inherited apps.
 
-```php
-// PHP 8.x: "Warning: Undefined variable $foo"
-// PHP 9.0: "Fatal error: Uncaught Error: Undefined variable '$foo'"
-echo $foo;
-```
+## Other PHP 9 cleanup work to watch
 
-Also, from what I understand, these changes with variables and properties will make the maintainers' lives easier, which is good for everyone!
+Not everything is fully locked yet, but the [RFC index](https://wiki.php.net/rfc) also lists a few more PHP 9-oriented cleanup topics.
 
-I let you check out the RFCs for more details:
-- [PHP RFC: Undefined Variable Error Promotion](https://wiki.php.net/rfc/undefined_variable_error_promotion)
-- [PHP RFC: Undefined Property Error Promotion](https://wiki.php.net/rfc/undefined_property_error_promotion)
+Two practical ones stand out:
 
-### Deprecated features from earlier PHP versions will be removed
+- The [implicitly nullable types RFC](https://wiki.php.net/rfc/deprecate-implicitly-nullable-types) says this older syntax could be removed in PHP 9. This was already deprecated in [PHP 8.4](/php-84), so `function foo(string $name = null)` should become `function foo(?string $name = null)`.
+- The RFC index also still tracks follow-up cleanup around overloaded signatures, resource-to-object migration, and saner increment and decrement behavior.
 
-**Features that have been deprecated in PHP 8.1, 8.2, 8.3, and 8.4 ([learn more about PHP 8.4](/php-84)) will finally be removed in PHP 9.0.** This will translate to breaking changes for developers who ignored the warnings. 😅
+I would treat these as “watch closely” items rather than promises. They matter, but they are not as concrete as the error-promotion and removal work above.
 
-Here's a list of RFCs containing all the deprecated features:
-- [PHP RFC: Deprecations for PHP 8.1](https://wiki.php.net/rfc/deprecations_php_8_1)
-- [PHP RFC: Deprecations for PHP 8.2](https://wiki.php.net/rfc/deprecations_php_8_2)
-- [PHP RFC: Deprecations for PHP 8.3](https://wiki.php.net/rfc/deprecations_php_8_3)
-- [PHP RFC: Deprecations for PHP 8.4](https://wiki.php.net/rfc/deprecations_php_8_4)
+## What to fix now before PHP 9
+
+You do not need a PHP 9 binary to start preparing.
+
+This is the boring but effective plan:
+
+1. Run your app and test suite on the newest PHP 8.x version you support.
+2. Turn warnings and deprecations into work items instead of letting them pile up.
+3. Replace `${}` interpolation with `$var` or `{$var}`.
+4. Stop relying on undefined variables and undefined property reads.
+5. Replace `Serializable` with `__serialize()` and `__unserialize()`.
+6. Initialize arrays explicitly instead of depending on `false`.
+
+If you want a better upgrade path, start with [PHP 8.5](/php-85) and keep an eye on [PHP 8.6](/php-86). That is where the cleanup work becomes visible first.
+
+## Can you test PHP 9 today?
+
+Not as a real release with a published schedule.
+
+For now, the best way to get ready is to follow the RFCs, watch the public PHP 9 milestone, and keep your code clean on current PHP 8.x releases. That will save you the most time when PHP 9 finally gets a date.
