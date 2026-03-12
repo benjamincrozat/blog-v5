@@ -46,9 +46,25 @@ php artisan blog:sync
 ```
 
 1. Edit the Markdown file for the post.
-2. Update `published_at` to publish, unpublish, or schedule it.
-3. Run `php artisan blog:sync`.
-4. Refresh the site or Filament list to confirm the synced result.
+2. Upload the hero image and any inline article images to Cloudflare Images.
+3. Update `published_at` to publish, unpublish, or schedule it.
+4. Run `php artisan blog:sync`.
+5. Refresh the site or Filament list to confirm the synced result.
+
+Image upload workflow:
+
+```bash
+# Hero image: uploads the file and updates image_disk/image_path in the post
+php artisan blog:upload-image /absolute/path/to/cover.png --markdown=your-post.md
+
+# Inline image: uploads the file and prints a Markdown snippet you can paste
+php artisan blog:upload-image /absolute/path/to/step.png --alt="Describe the screenshot"
+```
+
+Notes:
+- `blog:upload-image` always uploads to the `cloudflare-images` disk.
+- Use the returned URL for inline article images.
+- When `--markdown` is passed, the command updates `image_disk` and `image_path` in the Markdown file. Run `php artisan blog:sync` afterward.
 
 Notes:
 - `blog:export` is for one-time migration or explicit regeneration.

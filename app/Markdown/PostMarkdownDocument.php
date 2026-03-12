@@ -145,6 +145,29 @@ class PostMarkdownDocument
         return "---\n" . implode("\n", $lines) . "\n---\n{$this->body}";
     }
 
+    public function withImage(?string $imageDisk, ?string $imagePath) : self
+    {
+        return new self(
+            id: $this->id,
+            title: $this->title,
+            slug: $this->slug,
+            author: $this->author,
+            description: $this->description,
+            categories: $this->categories,
+            publishedAt: $this->publishedAt,
+            modifiedAt: $this->modifiedAt,
+            serpTitle: $this->serpTitle,
+            serpDescription: $this->serpDescription,
+            canonicalUrl: $this->canonicalUrl,
+            isCommercial: $this->isCommercial,
+            imageDisk: $imageDisk,
+            imagePath: $imagePath,
+            sponsoredAt: $this->sponsoredAt,
+            body: $this->body,
+            relativePath: $this->relativePath,
+        );
+    }
+
     public function hash() : string
     {
         return hash('sha256', static::normalizeLineEndings($this->toMarkdown()));
