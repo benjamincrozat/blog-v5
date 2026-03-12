@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27JRB4E9XDVB5DNAZXM6"
-title: "PHP 9 release date and breaking changes"
+title: "PHP 9 release date and what to fix now"
 slug: "php-90"
 author: "benjamincrozat"
-description: "PHP 9 has no release date yet. Here is what the official roadmap, RFCs, and PHP 8.6 schedule tell us about the breaking changes to prepare for."
+description: "PHP 9 has no release date yet. See the breaking changes already targeting it and what to fix now before PHP 9 lands."
 categories:
   - "php"
 published_at: 2023-11-03T00:00:00+01:00
-modified_at: 2026-03-12T11:29:53+01:00
+modified_at: 2026-03-12T11:39:11+01:00
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -18,11 +18,11 @@ sponsored_at: null
 ---
 ## Introduction
 
-PHP 9 is real, but it is not the next PHP release.
+PHP 9 has no release date yet, and PHP 8.6 is next.
 
 There is still no official release date for PHP 9. What we do have is better than guesswork: the [PHP RFC index](https://wiki.php.net/rfc), the public [PHP 9 milestone in php-src](https://github.com/php/php-src/milestone/6), the [PHP 8.5 release page](https://www.php.net/releases/8.5/en.php), and the [PHP 8.6 preparation tasks list](https://wiki.php.net/todo/php86).
 
-So the useful question in 2026 is not “when can I install PHP 9?” It is: which breaking changes are already pointing to PHP 9, and what should you fix now?
+Here is the short version: PHP 9 is still ahead of us, several breaking changes are already pointing to it, and you can start fixing the risky parts now.
 
 ## PHP 9 release date and status
 
