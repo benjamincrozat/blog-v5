@@ -6,7 +6,7 @@ This repo is my personal blog about web developent.
 
 - Use your web browser to ensure what's been prompted: visuals and behavior.
 - **Format**: `php vendor/bin/pint --parallel`
-- **Static analysis**: `composer analyse`
+- **Static analysis**: `php vendor/bin/phpstan analyse`
 - **Test**: `php vendor/bin/pest --parallel` (you can use `--filter` to run specific tests)
 
 ## Development workflow
@@ -40,7 +40,7 @@ This repo is my personal blog about web developent.
     - Take a screenshot and critique it to make sure it's visually correct according to the specs and your taste as a designer
 - If you need credentials to log in, use what's in ./database/seeders/UserSeeder.php. The password is always `password`.
 - **Format**: `php vendor/bin/pint --parallel`
-- **Static analysis**: `composer analyse`
+- **Static analysis**: `php vendor/bin/phpstan analyse`
 - **Test**: `php vendor/bin/pest --parallel` (you can use `--filter` to run specific tests)
   - **Check coverage**: `php vendor/bin/pest --coverage --parallel` (you can also use `--filter` if necessary too)
 

@@ -75,8 +75,7 @@
         "dev": [
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan horizon\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=horizon,logs,vite"
-        ],
-        "analyse": "phpstan analyse --memory-limit=2G"
+        ]
     },
     "extra": {
         "laravel": {
