@@ -1,340 +1,297 @@
 ---
 id: "01KKEW27E0BT000MHAZA3QWTQ2"
-title: "9 testing best practices for Laravel in 2025"
+title: "10 Laravel testing best practices for 2026"
 slug: "laravel-testing-best-practices"
 author: "benjamincrozat"
-description: "Are you familiar with testing? Good. Here are a bunch of best practices to help you level up even more!"
+description: "Write Laravel tests that catch real regressions: use Pest, favor feature tests, isolate data, fake externals, and run real infrastructure where it matters."
 categories:
   - "laravel"
   - "testing"
-published_at: 2023-10-27T00:00:00+02:00
-modified_at: 2025-06-29T23:00:00+02:00
+published_at: 2023-10-26T22:00:00Z
+modified_at: 2026-03-12T21:34:19Z
 serp_title: null
 serp_description: null
-canonical_url: ""
+canonical_url: null
 is_commercial: false
 image_disk: "cloudflare-images"
 image_path: "images/posts/XFUxcY7SQzhmvZI.jpg"
 sponsored_at: null
 ---
-## Introduction to testing in Laravel
+## Introduction
 
-**Writing tests to guarantee a level of stability for the projects you work on will skyrocket your career through the roof.** And that's not an overstatement.
+Laravel ships with testing in mind, and the official [testing documentation](https://laravel.com/docs/12.x/testing) now treats Pest and PHPUnit as first-class options out of the box.
 
-Writing tests also improve your quality of life by freeing you from doing the same things over and over in your web browser or HTTP client. **Your computer will be able to run the tests you wrote a hundred times per hour if necessary.** Unless you are some kind of futuristic cyborg, you cannot reach this level of productivity.
+That does not automatically give you a useful test suite, though.
 
-If you are not familiar at all with tests, I wrote an article on Laracasts on how to quickly get started: [Start testing your Laravel code in less than 5 minutes](https://blog.laracasts.com/posts/start-testing-your-laravel-code-in-less-than-5-minutes)
+A useful Laravel test suite catches regressions without turning every refactor into a fight. It stays fast enough to run often, clear enough that teammates trust it, and realistic enough that it does not miss bugs your production stack would have caught.
 
-So yeah, writing automated tests can be time-consuming at the start when you are not familiar with the process. But it changes over time. That's the value of investments!
+If you want the short version, this is what matters most:
 
-Here's an overview of the value tests bring to the table:
-- Write some tests to ensure your code's stability. It takes an additional hour at most when you are familiar with them.
-- Deploy to production, discover new bugs, write a failing test, fix the code, make the test pass, and move on with your life. Because there's little chance that the bug you fixed will come back.
+- use Pest unless your team already has a strong reason not to
+- write more feature tests than unit tests in most app code
+- keep test data isolated and minimal
+- fake external boundaries, not your entire application
+- run important suites against the real database or infrastructure when differences matter
 
-Now, here's a common disaster scenario that happens when you don't write tests:
-- You write some code and you constantly switch to your browser or HTTP client to test whatever you do and waste a lot of time in the process.
-- You deploy to production, there are a lot of bugs, you fix them live, but some of them come back for some reasons you don't understand (we also call that a regression), and you are eventually stuck in an infinite loop of problems.
-- Your employer or client is mad at you and the relationship degrades.
+If your goal is not just "more tests" but safer changes across the whole app, pair this with my broader [Laravel best practices](/laravel-best-practices) article.
 
-Let's take action to avoid this!
+## 1. Use Pest unless your team is already deeply invested in PHPUnit
 
-![Testing in action.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/203/conversions/8DkDSf9Dql6iBCkx8g4NM2QUoZ7gVL-metaQ2xlYW5TaG90IDIwMjMtMTAtMjcgYXQgMTQuNTkuMDdAMngucG5n--medium.jpg)
+[Pest](https://pestphp.com) sits on top of PHPUnit, so you still get the same ecosystem while writing tests with less boilerplate.
 
-## Testing best practices for Laravel developers
-
-### Break the ice with testing using Pest
-
-Pest is based on PHPUnit but adds tons of convenience and can even do things that PHPUnit cannot.
-
-**This great testing framework will declutter your test suite because it requires less boilerplate code to function.**
-
-For instance, take this test written for PHPUnit:
+That makes it a great default for new Laravel projects and for teams that want tests to feel lighter to write and review.
 
 ```php
-<?php
-    
-namespace App\Tests\Feature;
-
-use Tests\TestCase;
-
-class SomeFeatureTest extends TestCase
-{
-    public function test_some_feature_works()
-    {
-        $this
-            ->get(route('some-route'))
-            ->assertOk()
-            ->assertViewIs('some-view');
-    }
-}
+it('shows the login screen', function () {
+    $this->get('/login')
+        ->assertOk();
+});
 ```
 
-And now, see the difference with Pest:
+You do not have to rewrite an existing PHPUnit-heavy codebase overnight just to be fashionable. But if you are starting fresh, Pest is usually the better on-ramp.
+
+The main benefit is not syntax for syntax's sake. It is that a lower-friction testing experience makes it more likely the team will keep adding useful tests.
+
+## 2. Put most of your effort into feature tests
+
+For most Laravel applications, feature tests are where the real value is.
+
+They exercise routes, middleware, validation, policies, controllers, views or JSON responses, and the database together. That makes them much better at catching the kind of regressions users actually feel.
+
+Unit tests still matter, especially for pure domain logic or complicated transformations, but most web apps get more safety from a strong feature suite than from dozens of tiny tests around framework glue.
 
 ```php
-<?php
-    
-test('some feature works')
-    ->assertOk()
-    ->assertViewIs('some-view');
+it('publishes a post', function () {
+    $author = User::factory()->create();
+
+    $this->actingAs($author)
+        ->post('/posts', [
+            'title' => 'Testing pays off',
+            'body' => 'A short post body.',
+        ])
+        ->assertRedirect();
+
+    expect(Post::query())->toHaveCount(1);
+});
 ```
 
-Pest has a plethora of features. Here are some examples shamelessly copied and pasted from the documentation:
-- Built-in parallel features for faster test runs
-- Beautiful documentation that's easy to navigate
-- Native profiling tools to optimize slow-running tests
-- Out-of-the-box Architectural Testing to test application rules
-- Coverage report directly on the terminal to track code coverage
-- Dozens of optional plugins, such as Watch Mode and Snapshot testing, to customize Pest to fit your needs.
+That is also why my [Laravel REST API best practices](/laravel-restful-api-best-practices) guide leans so heavily on endpoint tests: the contract matters more than your private implementation details.
 
-I suggest you take a look at the [fantastic official documentation](https://pestphp.com) for Pest, but also this great course on Laracasts: [Pest From Scratch](https://laracasts.com/series/pest-from-scratch)
+## 3. Keep each HTTP test focused on one request
 
-Of course, whether you write your test with Pest or PHPUnit, the result will mostly be the same. This recommendation is targeted at people who are just getting started and want as less friction as possible.
+Laravel's [HTTP testing documentation](https://laravel.com/docs/12.x/http-tests) explicitly warns that each test should only make one request to the application.
 
-![Pest's official documentation.](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/201/conversions/Ta5aeMcaPYRaFAW6eibcqhkZevsdxt-metaQ2xlYW5TaG90IDIwMjMtMTAtMjcgYXQgMTQuNTEuMDFAMngucG5n--medium.jpg)
+That is easy to ignore when you are in a hurry, but it is good advice.
 
-### Make testing more reliable by using the production stack
+A focused HTTP test is easier to reason about and easier to debug. It also makes failures more obvious because one test covers one behavior.
 
-Let's take a typical Laravel project; they usually run on the latest version of PHP, MySQL, and Redis.
+So prefer this:
 
-But you are probably running your tests using SQLite and the array cache driver, right? Well, this is wrong, and let me explain why.
-
-Have you ever run into an issue with MySQL that SQLite doesn't have? Or vice-versa? That's because your tests didn't catch the bug due to the testing environment not mimicking what's in production.
-
-In general, people substitute dependencies to make their tests run faster. But to me, **a reliable test suite beats a quick one anytime**. In the end, you want to offer the best user experience possible to your users.
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<phpunit …>
-    …
-    <php>
-        …
-        <env name="CACHE_DRIVER" value="redis" /> <!-- [tl! ++] -->
-        <env name="DB_CONNECTION" value="mysql" /> <!-- [tl! ++] -->
-    </php>
-</phpunit>
+```php
+it('redirects guests to login when they try to create a post', function () {
+    $this->post('/posts', [
+        'title' => 'Blocked',
+        'body' => 'Guests should not create posts.',
+    ])->assertRedirect('/login');
+});
 ```
 
-### Testing web apps require more feature tests than unit tests
+Over one giant test that tries to create a record, follow redirects, load another page, submit a form again, and assert six different outcomes.
 
-**Feature Tests in Laravel are invaluable for ensuring the overall stability of a web application.**
+## 4. Reset state with `RefreshDatabase` and factories
 
-They simulate a user's journey, interacting with both front-end and back-end components as well as the database, providing a holistic assessment of your app.
+The fastest way to make a test suite flaky is to let tests leak state into each other.
 
-While they're slower to run than Unit Tests, this comprehensive coverage often catches unintended issues in areas you weren't even targeting.
+Laravel's [database testing tools](https://laravel.com/docs/12.x/database-testing) and [Eloquent factories](https://laravel.com/docs/12.x/eloquent-factories) are the simplest way to keep test setup predictable.
 
-The extra time spent running Feature Tests is a worthy trade-off for the high level of reliability they offer compared to Unit Tests.
+```php
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-By catching problems across your entire codebase, they give you the confidence that your application will function as expected in the real world.
+uses(RefreshDatabase::class);
 
-Of course, nothing is perfect, and other kinds of tests should be run like end-to-end testing (which in our context, consists of running tests in a headless web browser), but also manual reviews performed by human beings.
+it('shows only published posts', function () {
+    Post::factory()->published()->create(['title' => 'Visible']);
+    Post::factory()->draft()->create(['title' => 'Hidden']);
 
-### Make testing faster and cheaper by faking remote services
+    $this->get('/posts')
+        ->assertOk()
+        ->assertSee('Visible')
+        ->assertDontSee('Hidden');
+});
+```
 
-Writing tests for remote services like a third-party API is a challenge. There often are rate limits that you can't afford to reach.
+I strongly prefer creating the minimum records a test needs instead of seeding a giant shared database state.
 
-So unless there's a test environment like Stripe's API, you will have no other choice than to fake the calls to the service's API.
+That keeps tests:
 
-Laravel provides a lot of fakes to help us simulate some parts of the framework. In our case, we will simulate the [HTTP client](https://laravel.com/docs/http-client).
+- easier to read
+- less brittle
+- less coupled to global fixtures
 
-In parts of my code, I leverage OpenAI's API to add a touch of AI to my project. Here's a simplified example:
+When a test needs five different seeders before it can start, it is usually hiding too much setup.
+
+## 5. Fake external boundaries and block stray requests
+
+Third-party APIs, mail providers, queues, storage backends, and webhooks should not be exercised live in most automated tests.
+
+Laravel gives you fakes for exactly this reason, and the [HTTP client testing tools](https://laravel.com/docs/12.x/http-client#testing) are especially useful for API-heavy apps.
 
 ```php
 use Illuminate\Support\Facades\Http;
 
-Http::withToken(config('services.openai.api_key'))
-	->post('https://api.openai.com/v1/chat/completions', [
-		'model' => 'gpt-4',
-		'messages' => [
-			[
-				'role' => 'user',
-				'content' => 'Some prompt',
-			],
-		],
-	])
-	->throw()
-	->json('choices.0.message.content');
-```
+Http::preventStrayRequests();
 
-Now, here's how I use Laravel's HTTP client fake to save precious credits and speed up my tests:
-
-```php
 Http::fake([
-    'api.openai.com/v1/chat/completions' => Http::response([
-        'choices' => [[
-            'message' => ['content' => 'Lorem ipsum dolor sit amet.'],
-        ]],
+    'api.example.com/posts' => Http::response([
+        'data' => [
+            ['id' => 1, 'title' => 'Hello'],
+        ],
     ]),
 ]);
 ```
 
-Whenever I'm running this test, **the HTTP client will be swapped by a fake one that will just pretend to request the API and receive a response I completely made up**.
+This is better than hitting the real API because your tests become:
 
-How do I know what the faked response should be? Just request whatever API you are trying to fake and you'll see it for yourself. 🙂
+- faster
+- cheaper
+- deterministic
 
-You can learn more on the official documentation about [Laravel's fake HTTP client](https://laravel.com/docs/http-client#testing).
+The key nuance is that you should fake *boundaries*, not every meaningful piece of your own application.
 
-### Make testing more useful with Continuous Integration
+If your test fakes half your internals, it may stop proving anything important.
 
-**The best way to unlock the full potential of tests is to let another computer run them.** This also is called **continuous integration**.
+## 6. Use the real database where differences actually matter
 
-This computer will pull the latest changes in your codebase, run the tests you wrote, and let you know if one of them fails.
+I would not tell every team to run every test against the full production stack locally all the time.
 
-This computer can also be a virtual machine, and this virtual machine can also be provided by a free third-party service like [GitHub Actions](https://github.com/features/actions).
+I *would* say this: if production runs MySQL or PostgreSQL and your test suite only ever runs on SQLite, you should expect blind spots.
 
-Here's how the configuration file for a GitHub Action workflow looks like. If you are working on a Laravel project, you can adapt the following workflow to it. Create a file in *.github/workflows/tests.yml* and paste this code, which is pretty much the same as I use for this blog:
+Database engines differ on things like:
 
-```yaml
-name: Tests
+- JSON behavior
+- foreign key enforcement
+- transaction behavior
+- sorting quirks
+- strict SQL modes
+- full-text search or generated columns
 
-on:
-  push:
-  pull_request:
+So the pragmatic move is:
 
-jobs:
-  tests:
-    runs-on: ubuntu-latest
+- keep fast local feedback loops when you need them
+- run critical suites against the same database engine as production in CI
+- use the real cache or queue backend where the behavior can diverge materially
 
-    services:
-      mysql:
-        image: mysql:latest
-        env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-        ports:
-          - 3306
-        options: >-
-          --health-cmd="mysqladmin ping"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
+Blanket speed is not the goal. Trustworthy feedback is.
 
-    steps:
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          coverage: none
-          php-version: 8.2
+## 7. Turn every bug fix into a regression test
 
-      - name: Setup the MySQL database
-        run: mysql -u root -h 127.0.0.1 -P ${{ job.services.mysql.ports[3306] }} -e "CREATE DATABASE laravel"
+When a bug reaches production, you have just been handed a perfect testing opportunity.
 
-      - name: Setup Redis
-        uses: zhulik/redis-action@1.1.0
-
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Create .env file
-        run: cp .env.example .env
-
-      - name: Install back-end dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-
-      - name: Generate encryption key
-        run: php artisan key:generate
-
-      - name: Install and build front-end dependencies
-        run: yarn && yarn build
-
-      - name: Run tests
-        run: php artisan test
-```
-
-The official documentation for Laravel provides [an example GitHub Actions workflow](https://laravel.com/docs/dusk#running-tests-on-github-actions) to help you run Dusk, which you can take inspiration from.
-
-But before going on GitHub to learn everything about Actions, there's still one practice you can combine with continuous integration to go beyond the God developer level.
-
-![GitHub Actions… in action!](https://life-long-bunny.fra1.digitaloceanspaces.com/media-library/production/202/conversions/WWGFzVSyhYLMf2xkVQnC1Vb7GpCKQ9-metaQ2xlYW5TaG90IDIwMjMtMTAtMjcgYXQgMTQuNTUuMTVAMngucG5n--medium.jpg)
-
-### Make testing more pragmatic with Continuous Delivery
-
-Using GitHub Actions, we saw how to run tests automatically thanks to another computer, and for free.
-
-But **what if we were able to trigger a deployment to our production environment whenever the tests on our *main* branch pass**?
-
-Add the following step:
-
-```yaml
-- name: Deploy on production
-  run: curl -X POST ${{ secrets.DEPLOYMENT_URL }}
-  if: github.ref == 'refs/heads/main' && success()
-```
-
-1. We run a command that makes a POST request to a secret URL (in my case, I'm using [Ploi](/recommends/ploi) to manage my server and they offer a hook that you can call for that).
-2. This command runs only when the workflow is a success. We also make sure it happens on the main branch only. (With this configuration, the workflow runs on all branches. You can customize that if you want.)
-
-[Learn how to add secrets values in your GitHub Actions](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) so you don't leak confidential credentials to contributors.
-
-### Confirm bug fixes by writing tests
-
-One rock-solid strategy for testing, especially when coupled with CI and CD (continuous integration and continuous deployment, is to **write a test to confirm a bug has been fixed**.
-
-Imagine the following catastrophe scenario:
-1. You noticed that your contact form is not checking for a valid sender email.
-2. You fix the bug by using Laravel's validator.
-3. Some day, you noticed that the bug came back because you unintentionally changed something that affected the contact form. And the worst of this? You have no idea when it happened.
-
-What an embarassement!
-
-Luckily, there's an easy way to make sure this doesn't happen again: **write a test that ensures your contact form only accepts a valid sender email address**.
+Before or while fixing it, add a test that proves the bug exists. Then make the fix and keep that test forever.
 
 ```php
 it('requires a valid email address', function () {
-	$this
-		->post('/contact', [
-			'email' => 'some-invalid-email-address',
-			'message' => fake()->paragraph(),
-		])
-		->assertInvalid(['email']);
+    $this->post('/contact', [
+        'email' => 'not-an-email',
+        'message' => fake()->paragraph(),
+    ])->assertInvalid(['email']);
 });
 ```
 
-Now, each time you push code to your Git repository, your CI environment will run the tests and prevent deployments in case the data coming from your contact form isn't validated as expected.
+This practice compounds over time. Your suite stops being theoretical coverage and starts becoming a library of production lessons your codebase has already paid for.
 
-### Make testing more joyful by not overthinking it
+It also pairs nicely with good validation and HTTP error handling, so [the validation guide](/laravel-validation) and [this HTTP client error-handling article](/error-handling-laravel-http-client) are worth reading alongside it.
 
-When you get comfortable with testing, you will be tempted to anticipate every edge case.
+## 8. Run tests in parallel and in CI
 
-In my experience, **the real problems are almost impossible to anticipate**. Let your users discover them (that's inevitable), and fix them once and for all by writing tests for them just like we discussed earlier.
+A test suite nobody runs is not protection. It is decoration.
 
-**My strategy is to write tests for the happy paths** (e.g. "test the contact form works as expected") **and the obvious non-happy paths** (e.g. "test the contact form needs a valid email address"). That's it. After that, let your users uncovered the trickier bugs.
-
-That being said, most of the time, your users won't tell you what's wrong with your applications and they'll just leave. Therefore, **you must use the appropriate tooling if you want to passively collect valuable feedback**.
-
-Error monitoring tools like [Flare](/recommends/flare) or Sentry can notify you whenever an error has been encountered by your users. They provide tons of technical information to help you pinpoint which part of your code is at fault, you can mark issues as resolved and get a notification in case of a regression, and more!
-
-That being said, if you apply the strategy I gave you in the previous section, you shouldn't get any regression. Every one of your bug fixes will stick like perpetual glue. 😎
-
-### Provide input and test the output
-
-Tests are about providing an input and testing that you get the expected output.
-
-**The way your code is implemented is irrelevant.** Good tests don't need to change if the specifications of the feature don't change.
-
-Imagine: you have a feature that generates an image dynamically depending on some input. You may have used GD until now, but it's time to switch to Imagick because it supports a feature GD doesn't have or has fewer bugs.
-
-You shouldn't have to change your test to ensure the feature works. In that case, I'd just constrain the project to the latest major version of the extension:
+Laravel supports [parallel testing](https://laravel.com/docs/12.x/testing#running-tests-in-parallel), and you should use it when the suite is large enough to feel slow.
 
 ```bash
-composer require ext-imagick:^3.7
+php artisan test --parallel
 ```
 
-## But wait, there's more than that
+Then run the suite in CI on every pull request or push to a protected branch.
 
-If you want to keep leveling up in testing, you may be interested in checking out [Battle Ready Laravel](/recommends/battle-ready-laravel) by Ash Allen.
+The goal is not a baroque pipeline. The goal is simple:
 
-This book has been a compelling read so far. I’m not the kind of person who finishes books in one go, but I can tell you it’s packed with tons of actionable tips and expert advice to help you ensure your Laravel apps are not just built, but wait for it… battle-ready! And testing is a big (really big) part of this. If you're looking to enhance your application's robustness, this book is a must.
+- fast local feedback for everyday work
+- automated checks before merge or deploy
+- no relying on memory to decide whether the app still works
 
-I won’t disclose everything inside it, but the website provides a pretty good overview and even a free sample.
+If you do deploy automatically, gate that deployment on passing tests instead of optimism.
 
-[Check out Battle Ready Laravel](/recommends/battle-ready-laravel)
+## 9. Use architecture tests for rules the team keeps forgetting
 
-[![Battle Ready Laravel by Ash Allen](https://res.cloudinary.com/benjamincrozat-com/image/fetch/c_scale,f_webp,q_auto,w_1200/https://github.com/benjamincrozat/content/assets/3613731/7b6f4c49-cf20-49a7-bdd2-3f01f414df29)](/recommends/battle-ready-laravel)
+Some testing rules are not about user flows. They are about keeping the codebase organized.
 
-If you are trying to make Laravel changes safer instead of just adding more tests, these are the next reads I would keep open:
+That is where Pest's [architecture testing](https://pestphp.com/docs/arch-testing) becomes useful.
 
-- [See what changed in Pest 3 before you upgrade again](/pest-3)
-- [See what changes if you're moving your tests to Pest 4](/pest-4)
-- [Use Pest architecture presets without setting them up from scratch](/pest-3-architecture-testing-presets)
-- [Handle failed HTTP calls in Laravel without messy conditionals](/error-handling-laravel-http-client)
-- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
+```php
+arch()
+    ->expect('App\Models')
+    ->toExtend('Illuminate\\Database\\Eloquent\\Model');
+```
+
+You can use this style of test to enforce rules such as:
+
+- controllers stay in the HTTP layer
+- models extend the right base class
+- support code does not depend on controllers
+- specific namespaces do not import forbidden dependencies
+
+If you want a shortcut into this area, my post on [Pest architecture testing presets](/pest-3-architecture-testing-presets) gives you a practical starting point.
+
+## 10. Optimize for readable tests, not clever tests
+
+The best tests are boring to read in the best possible way.
+
+You should be able to scan a test and answer these questions immediately:
+
+- what behavior is being exercised?
+- what input was provided?
+- what output or side effect is expected?
+
+That is why I prefer tests that are:
+
+- named after behavior, not implementation details
+- short enough to understand in one pass
+- explicit about the important setup
+- specific in their assertions
+
+In other words, provide input and assert output.
+
+Do not over-couple tests to private method names, internal helpers, or irrelevant implementation details if the public behavior has not changed. Refactors should be able to move code around without forcing a rewrite of every good test.
+
+## FAQ
+
+### Should I use Pest or PHPUnit for Laravel?
+
+Use Pest by default for new Laravel work unless your team already has strong PHPUnit conventions and no desire to change. Pest gives you the same ecosystem with less friction.
+
+### Feature tests or unit tests first?
+
+In most Laravel applications, feature tests first. They cover more real behavior and catch more expensive regressions. Add unit tests for pure logic or tricky transformations where they genuinely help.
+
+### Is SQLite okay for Laravel tests?
+
+Sometimes, yes. But if production uses MySQL or PostgreSQL, do not assume SQLite is a perfect substitute. Keep at least some CI coverage against the real database engine for risky behavior.
+
+### How many requests should one HTTP test make?
+
+One. That is Laravel's guidance, and it keeps tests easier to understand and debug.
+
+## Conclusion
+
+Strong Laravel testing is less about chasing a percentage and more about building a feedback system you trust.
+
+Use Pest, lean on feature tests, isolate your data, fake the slow outer world, run real infrastructure where differences matter, and turn every bug into a permanent lesson. Do that consistently, and your suite will save you from the regressions that actually hurt.
+
+Once your suite starts saving you from real regressions, these next reads help tighten the boundaries around what you are testing:
+
+- [See what changed if you're moving your suite to Pest 4](/pest-4)
+- [Use Pest architecture presets without wiring everything from scratch](/pest-3-architecture-testing-presets)
+- [Tighten your API contract so tests guard something stable](/laravel-restful-api-best-practices)
+- [Handle HTTP integration failures without a maze of conditionals](/error-handling-laravel-http-client)
+- [Pick up the Laravel habits that make tests easier to maintain](/laravel-best-practices)
