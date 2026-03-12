@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Schedule;
 use App\Console\Commands\SyncVisitorsCommand;
-use App\Console\Commands\GenerateSitemapCommand;
 use App\Console\Commands\RefreshUserDataCommand;
+use App\Console\Commands\SyncSearchConsoleSitemapCommand;
 
-Schedule::command(GenerateSitemapCommand::class)
+Schedule::command(SyncSearchConsoleSitemapCommand::class)
     ->daily()
     ->thenPing(config('services.forge.heatbeats.generate-sitemap'));
 

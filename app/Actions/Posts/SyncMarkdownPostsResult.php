@@ -13,4 +13,12 @@ class SyncMarkdownPostsResult
         public readonly int $restoredCount,
         public readonly int $deletedCount,
     ) {}
+
+    public function hasChanges() : bool
+    {
+        return $this->createdCount > 0 ||
+            $this->updatedCount > 0 ||
+            $this->restoredCount > 0 ||
+            $this->deletedCount > 0;
+    }
 }

@@ -67,4 +67,21 @@ return [
         ],
     ],
 
+    'search_console' => [
+        'enabled' => env('SEARCH_CONSOLE_ENABLED', false),
+        'property' => env('SEARCH_CONSOLE_PROPERTY'),
+        'sitemap_url' => env('SEARCH_CONSOLE_SITEMAP_URL'),
+        'token_uri' => env('SEARCH_CONSOLE_TOKEN_URI', 'https://oauth2.googleapis.com/token'),
+        'submit_on_sync' => env('SEARCH_CONSOLE_SUBMIT_ON_SYNC', true),
+        'oauth' => [
+            'client_id' => env('SEARCH_CONSOLE_OAUTH_CLIENT_ID'),
+            'client_secret' => env('SEARCH_CONSOLE_OAUTH_CLIENT_SECRET'),
+            'refresh_token' => env('SEARCH_CONSOLE_OAUTH_REFRESH_TOKEN'),
+        ],
+        'service_account' => [
+            'client_email' => env('SEARCH_CONSOLE_SERVICE_ACCOUNT_EMAIL'),
+            'private_key' => env('SEARCH_CONSOLE_SERVICE_ACCOUNT_PRIVATE_KEY'),
+        ],
+    ],
+
 ];
