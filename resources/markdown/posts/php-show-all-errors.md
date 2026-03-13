@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27MFE4P3CS7MMWKGPEHX"
-title: "PHP: Show all errors (E_ALL) safely"
+title: "How to show all errors in PHP safely"
 slug: "php-show-all-errors"
 author: "benjamincrozat"
-description: "Enable PHP error display safely in 2025: quick E_ALL snippet, php.ini and .htaccess/.user.ini steps, CLI flags, and production-safe logging for PHP 8.1–8.4."
+description: "Show all PHP errors with E_ALL, php.ini, .user.ini, .htaccess, or CLI flags, then switch back to production-safe logging."
 categories:
   - "php"
 published_at: 2023-10-07T00:00:00+02:00
-modified_at: 2025-09-27T01:05:00+02:00
-serp_title: "PHP: Show all errors (E_ALL) safely (2025)"
+modified_at: 2026-03-13T11:30:00Z
+serp_title: null
 serp_description: null
 canonical_url: null
 is_commercial: false
@@ -18,7 +18,7 @@ sponsored_at: null
 ---
 ## Introduction
 
-If you are trying to debug a PHP issue and need everything visible, this guide shows how to enable and control error display safely in 2025. It covers PHP 8.1–8.4 and the major SAPIs (Apache mod_php, PHP-FPM, and CLI). When I debug locally, I enable `E_ALL` and display errors; before I deploy, I switch to logging only.
+Need to show all errors in PHP while you debug? This guide shows the fastest safe setup with `E_ALL`, plus the right php.ini, `.user.ini`, `.htaccess`, and CLI flags for PHP 8.1-8.4. When I debug locally, I enable display errors; before I deploy, I switch back to logging only.
 
 By the way: PHP 8.4 was released on November 21, 2024. See the official news archive on [php.net](https://www.php.net/archive/2024.php). In PHP 8.4, the `E_STRICT` level was removed and the `E_STRICT` constant was deprecated. Referencing it can emit a deprecation notice. See the 8.4 notes in [migration 8.4 incompatible changes](https://www.php.net/manual/en/migration84.incompatible.php). Also, the numeric value of `E_ALL` changed in PHP 8.4 from `32767` to `30719`. If you use numeric masks (for example in Apache config), update them. See the summary at [php.watch on E_STRICT/8.4](https://php.watch/versions/8.4/E_STRICT-deprecated).
 

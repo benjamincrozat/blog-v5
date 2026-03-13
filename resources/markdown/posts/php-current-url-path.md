@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27KB8NBE20H59WB406Y1"
-title: "Get the current URL path in PHP"
+title: "How to get the current URL path in PHP"
 slug: "php-current-url-path"
 author: "benjamincrozat"
-description: "Discover how to fetch the current URL path in PHP thanks to an useful superglobal variable."
+description: "Use `$_SERVER['REQUEST_URI']` and `parse_url()` to get the current URL path in PHP, with query-string handling and safe output."
 categories:
   - "php"
 published_at: 2023-09-03T00:00:00+02:00
-modified_at: 2025-07-06T09:27:00+02:00
-serp_title: "Get the current URL path in PHP (2025)"
+modified_at: 2026-03-13T11:30:00Z
+serp_title: null
 serp_description: null
 canonical_url: ""
 is_commercial: false
@@ -16,18 +16,30 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/pQGjDTu26ZnnLEj.jpg"
 sponsored_at: null
 ---
-## TD;DR
+## TL;DR
 
-To grab the current URL path in PHP, Here’s a dead-simple way:
+Need the current URL path in PHP? Start with `$_SERVER['REQUEST_URI']`, then strip the query string with `parse_url()` when you only want the path:
 
 ```php
-echo $_SERVER['REQUEST_URI'];
+$uri = $_SERVER['REQUEST_URI'] ?? '/';
+$path = parse_url($uri, PHP_URL_PATH);
+
+echo $path;
 ```
 
-Done. That’ll spit out the path plus any query string. For example, if your URL is
-`https://www.example.com/foo?bar=baz`, you’ll get `/foo?bar=baz`.
+If you want the raw request URI instead, `$_SERVER['REQUEST_URI']` gives you the path plus any query string. For example, if your URL is `https://www.example.com/foo?bar=baz`, you’ll get `/foo?bar=baz`.
 
-But let’s not stop at the basics. Here’s what you need to know to *really* work with URL paths in PHP.
+If you also need the full current URL, combine the scheme, host, and request URI:
+
+```php
+$uri = $_SERVER['REQUEST_URI'] ?? '/';
+$scheme = (! empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+
+$fullUrl = sprintf('%s://%s%s', $scheme, $host, $uri);
+```
+
+Here’s what else you need to know to work with URL paths safely in PHP.
 
 ## Strip the query string
 

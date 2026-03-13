@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27KVZP920YG58MHGQPEA"
-title: "This is the location of your php.ini"
+title: "How to find your php.ini location"
 slug: "php-ini-location"
 author: "benjamincrozat"
-description: "Discover the location of your php.ini file using two simple methods: the phpinfo() function or the command line."
+description: "Find the active php.ini file with `php --ini` or `phpinfo()`, and avoid editing the wrong PHP configuration."
 categories:
   - "php"
 published_at: 2023-11-02T00:00:00+01:00
-modified_at: 2025-07-27T07:20:00+02:00
+modified_at: 2026-03-13T11:30:00Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -16,6 +16,10 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/01K29KD5WZQ4SNNJG02F14A8QR.png"
 sponsored_at: null
 ---
+## Introduction
+
+Need to find your `php.ini` file? The fastest options are `php --ini` in the terminal or `phpinfo()` in the browser. This guide shows both, plus the common locations developers usually expect on Linux, macOS, and Windows.
+
 ## What is php.ini and why does it matter?
 
 The _php.ini_ file is a PHP configuration file used to control your PHP environment’s behavior. You might tweak it to increase memory limits, adjust error reporting, or handle file uploads. [Official PHP docs](https://www.php.net/manual/en/ini.core.php) cover all directives in depth.
@@ -26,9 +30,11 @@ The fastest method PHP developers usually discover first is through `phpinfo()`:
 
 *   Create a new PHP file, _index.php_, and add:
 
+```php
 <?php
 phpinfo();
 ?>
+```
 
 *   Open the file in your web browser.
 
@@ -42,7 +48,9 @@ For command-line enthusiasts, PHP provides simple commands:
 
 *   Open your terminal and run:
 
+```bash
 php --ini
+```
 
 The terminal output clearly shows the active _php.ini_ path.
 
@@ -50,7 +58,9 @@ The terminal output clearly shows the active _php.ini_ path.
 
 Alternatively, use:
 
+```bash
 php -i | grep "Loaded Configuration File"
+```
 
 ## Common php.ini locations (by OS)
 
@@ -70,11 +80,15 @@ php -i | grep "Loaded Configuration File"
 
 **Apache:**
 
+```bash
 sudo systemctl restart apache2
+```
 
 **PHP-FPM:**
 
+```bash
 sudo systemctl restart php<version>-fpm
+```
 
 ## Troubleshooting FAQ
 
