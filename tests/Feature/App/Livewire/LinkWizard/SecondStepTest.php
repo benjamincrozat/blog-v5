@@ -9,36 +9,12 @@ use function Pest\Laravel\actingAs;
 use function Pest\Livewire\livewire;
 
 use App\Livewire\LinkWizard\SecondStep;
+use Tests\Feature\App\Livewire\LinkWizard\TestableSecondStep;
 
 use function Pest\Laravel\assertDatabaseHas;
 
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\LinkWaitingForValidation;
-
-/**
- * Defines the TestableSecondStep implementation.
- */
-class TestableSecondStep extends SecondStep
-{
-    public bool $wentBack = false;
-
-    public bool $dispatched = false;
-
-    public function previousStep() : void
-    {
-        $this->wentBack = true;
-    }
-
-    public function dispatch($event, ...$parameters)
-    {
-        $this->dispatched = true;
-
-        return new class
-        {
-            public function self() : void {}
-        };
-    }
-}
 
 it('submits the link and notifies the admin', function () {
     Notification::fake();

@@ -1,6 +1,6 @@
 <?php
 
-use App\Console\Commands\DbPullCommand;
+use Tests\Feature\App\Console\Commands\TestableDbPullCommand;
 
 $originalPath = null;
 
@@ -14,50 +14,6 @@ afterEach(function () use (&$originalPath) {
         $_SERVER['PATH'] = $originalPath;
     }
 });
-
-/**
- * Defines the TestableDbPullCommand implementation.
- */
-class TestableDbPullCommand extends DbPullCommand
-{
-    public bool $darwin = true;
-
-    public string $versionOutput = '';
-
-    public array $existingPaths = [];
-
-    public array $messages = [];
-
-    public function runEnsureCompatibleMysqlClient() : void
-    {
-        $this->ensureCompatibleMysqlClient();
-    }
-
-    public function info($string, $verbosity = null) : void
-    {
-        $this->messages[] = $string;
-    }
-
-    public function warn($string, $verbosity = null) : void
-    {
-        $this->messages[] = $string;
-    }
-
-    protected function isDarwin() : bool
-    {
-        return $this->darwin;
-    }
-
-    protected function mysqldumpVersionOutput() : string
-    {
-        return $this->versionOutput;
-    }
-
-    protected function mysqldumpExistsAt(string $binPath) : bool
-    {
-        return in_array($binPath, $this->existingPaths, true);
-    }
-}
 
 it('prepends a compatible mysql-client path when mysqldump is v9', function () {
     $command = new TestableDbPullCommand;

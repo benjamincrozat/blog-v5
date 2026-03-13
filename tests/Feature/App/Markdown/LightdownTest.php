@@ -5,17 +5,7 @@ use League\CommonMark\Node\Node;
 use League\CommonMark\Node\Inline\Text;
 use League\CommonMark\Node\Block\Paragraph;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Emphasis;
-
-/**
- * Defines the TestableLightdown implementation.
- */
-class TestableLightdown extends Lightdown
-{
-    public static function textFromChildren(Node $node) : string
-    {
-        return parent::childrenToText($node);
-    }
-}
+use Tests\Feature\App\Markdown\TestableLightdown;
 
 it('parses markdown, strips disallowed tags, and opens external links in new tabs', function () {
     config(['app.url' => 'https://benjamincrozat.com']);

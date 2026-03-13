@@ -9,6 +9,7 @@ use League\Flysystem\UnableToCreateDirectory;
 use League\Flysystem\UnableToDeleteDirectory;
 use League\Flysystem\UnableToRetrieveMetadata;
 use League\Flysystem\InvalidVisibilityProvided;
+use Tests\Feature\App\Filesystem\FaultyTempFileAdapter;
 
 it('checks file existence using Cloudflare API', function () {
     $adapter = new CloudflareImagesAdapter('test-token', 'acct_123', 'hash_abc', 'public');
@@ -204,17 +205,6 @@ it('returns null last modified timestamp when head request fails', function () {
 
     expect(adapter()->lastModified('missing.jpg')->lastModified())->toBeNull();
 });
-
-/**
- * Defines the FaultyTempFileAdapter implementation.
- */
-class FaultyTempFileAdapter extends CloudflareImagesAdapter
-{
-    protected function createTempFile()
-    {
-        return false;
-    }
-}
 
 it('throws when a temporary file cannot be created during write', function () {
     expect(fn () => (new FaultyTempFileAdapter('token', 'acct', 'hash', 'public'))
