@@ -32,8 +32,8 @@ it('renders NewsArticle schema for eligible news posts while keeping the simple 
     ]);
 
     $post = Post::factory()->create([
-        'published_at' => now()->subHours(2),
-        'modified_at' => now()->subHour(),
+        'published_at' => now()->startOfDay()->setTime(9, 17),
+        'modified_at' => now()->startOfDay()->setTime(14, 37),
         'is_commercial' => false,
         'sponsored_at' => null,
     ]);
@@ -41,8 +41,9 @@ it('renders NewsArticle schema for eligible news posts while keeping the simple 
     $post->categories()->sync([$news->id]);
 
     $expectedDate = ($post->modified_at ?? $post->published_at ?? $post->created_at)->isoFormat('ll');
+    $response = get(route('posts.show', $post));
 
-    get(route('posts.show', $post))
+    $response
         ->assertOk()
         ->assertSee('"@type": "NewsArticle"', escape: false)
         ->assertSee('"mainEntityOfPage"', escape: false)
@@ -50,6 +51,9 @@ it('renders NewsArticle schema for eligible news posts while keeping the simple 
         ->assertSee(route('authors.show', $post->user->slug), escape: false)
         ->assertSee($expectedDate)
         ->assertDontSee('UTC');
+
+    expect($response->getContent())
+        ->toMatch('/Published\s*<br \/>\s*' . preg_quote($expectedDate, '/') . '\s*<\/div>/s');
 });
 
 it('keeps standard article schema for non-news posts', function () {
