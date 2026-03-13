@@ -86,17 +86,7 @@ Displays the posts show view.
 
                         <br />
 
-                        @if ($isNewsPost)
-                            {{ $post->published_at->utc()->format('M j, Y \a\t H:i \U\T\C') }}
-
-                            @if ($post->modified_at)
-                                <span class="block mt-1 text-xs leading-relaxed text-gray-500">
-                                    Updated {{ $post->modified_at->utc()->format('M j, Y \a\t H:i \U\T\C') }}
-                                </span>
-                            @endif
-                        @else
-                            {{ ($post->modified_at ?? $post->published_at ?? $post->created_at)->isoFormat('ll') }}
-                        @endif
+                        {{ ($post->modified_at ?? $post->published_at ?? $post->created_at)->isoFormat('ll') }}
                     </div>
 
                     <a

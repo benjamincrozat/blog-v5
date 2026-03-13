@@ -25,7 +25,7 @@ it('shows a post', function () {
         ->assertDontSee('Did you like this article? Then, keep learning:');
 });
 
-it('renders NewsArticle schema and visible UTC timestamps for eligible news posts', function () {
+it('renders NewsArticle schema for eligible news posts while keeping the simple visible date', function () {
     $news = Category::factory()->create([
         'name' => 'News',
         'slug' => Post::NEWS_CATEGORY_SLUG,
@@ -40,13 +40,16 @@ it('renders NewsArticle schema and visible UTC timestamps for eligible news post
 
     $post->categories()->sync([$news->id]);
 
+    $expectedDate = ($post->modified_at ?? $post->published_at ?? $post->created_at)->isoFormat('ll');
+
     get(route('posts.show', $post))
         ->assertOk()
         ->assertSee('"@type": "NewsArticle"', escape: false)
         ->assertSee('"mainEntityOfPage"', escape: false)
         ->assertSee('"publisher"', escape: false)
         ->assertSee(route('authors.show', $post->user->slug), escape: false)
-        ->assertSee('UTC');
+        ->assertSee($expectedDate)
+        ->assertDontSee('UTC');
 });
 
 it('keeps standard article schema for non-news posts', function () {
