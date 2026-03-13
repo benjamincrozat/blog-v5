@@ -89,10 +89,6 @@ Displays the home view.
 
                 {!! \App\Markdown\MarkdownRenderer::parse($aboutUser->biography) !!}
             </x-prose>
-
-            <p class="mt-6 text-sm leading-relaxed text-gray-500">
-                {{ config('app.name') }} publishes independent web development news, practical guides, and tool recommendations. Sponsored articles are labeled clearly on the article page.
-            </p>
         </x-section>
     @endif
 </x-app>
