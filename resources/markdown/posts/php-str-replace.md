@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27MJ9HYRQFW9G3BG0KXY"
-title: "PHP's str_replace() made simple"
+title: "PHP str_replace() explained with examples"
 slug: "php-str-replace"
 author: "benjamincrozat"
-description: "Manipulate strings in PHP using the extremely useful str_replace() function."
+description: "Learn how PHP's `str_replace()` works, with syntax, multiple replacements, arrays, and practical examples."
 categories:
   - "php"
 published_at: 2023-07-10T00:00:00+02:00
-modified_at: 2025-07-05T07:24:00+02:00
-serp_title: "PHP's str_replace() made simple (2025 edition)"
+modified_at: 2026-03-13T12:05:00Z
+serp_title: null
 serp_description: null
 canonical_url: ""
 is_commercial: false
@@ -18,9 +18,9 @@ sponsored_at: null
 ---
 ## Introduction
 
-PHP provides a plethora of built-in functions, with [`str_replace()`](https://www.php.net/str_replace) being one of my favorites.
+**PHP's [`str_replace()`](https://www.php.net/str_replace) function replaces part of a string with something else.**
 
-This function is fundamental to handling and manipulating strings, playing an essential role in many PHP applications.
+You can use it to replace one value, multiple values, or even values inside an array. Here's how it works, with clear examples.
 
 ## The basics of the str_replace() function in PHP
 

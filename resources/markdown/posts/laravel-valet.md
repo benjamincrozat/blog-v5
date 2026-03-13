@@ -1,15 +1,15 @@
 ---
 id: "01KKEW27E5J81QZXT2KP8KNGMY"
-title: "PHP for Mac: get started fast using Laravel Valet"
+title: "How to install Laravel Valet on macOS"
 slug: "laravel-valet"
 author: "benjamincrozat"
-description: "Learn how to install and use Laravel Valet on macOS with Homebrew, PHP, and Composer to create a fast local PHP environment without Docker."
+description: "Learn how to install and use Laravel Valet on macOS with Homebrew, PHP, and Composer for a fast local PHP environment."
 categories:
   - "laravel"
   - "php"
   - "tools"
 published_at: 2023-06-27T00:00:00+02:00
-modified_at: 2025-09-28T06:06:00+02:00
+modified_at: 2026-03-13T12:05:00Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -20,11 +20,9 @@ sponsored_at: null
 ---
 ## Introduction
 
-**Before we start, why don't you [take a look at Laravel Herd](https://benjamincrozat.com/laravel-herd) instead? It's an even simpler solution for people who have better things to do than messing with Homebrew and troubleshooting weird bugs. If you prefer a one-click setup, see the [Herd documentation](https://herdphp.com/docs/1/getting-started/installation) too.**
+**[Laravel Valet](https://laravel.com/docs/valet) is a lightweight local development environment for macOS.**
 
-[Laravel Valet](https://laravel.com/docs/valet) is a minimalist's dream development environment for macOS.
-
-It's a lightweight solution that's fast and has very low overhead compared to VMor container-based stacks like Docker.
+It's fast and has very low overhead compared to VM or container-based stacks like Docker.
 
 Unlike Docker, Laravel Valet is pragmatic and has minimal impact on your Mac's resources.
 
@@ -33,6 +31,8 @@ With Laravel Valet, you don't have to manage the state of your containers, and y
 Valet ships with drivers for many popular frameworks and CMSs. You can also [extend Valet with your own custom drivers.](https://laravel.com/docs/10.x/valet#custom-valet-drivers)
 
 It works on Intel and Apple Silicon (M1/M2/M3) Macs and uses Nginx and dnsmasq under the hood.
+
+If you want a simpler one-click setup, [Laravel Herd](https://benjamincrozat.com/laravel-herd) is also worth a look, but this guide is for Valet itself.
 
 ## Install the Xcode Command Line Tools
 

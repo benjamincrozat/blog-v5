@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27D7086V9HV2YSPF4CY7"
-title: "Laravel Eloquent: sort query results using orderBy()"
+title: "Laravel orderBy(): sort query results clearly"
 slug: "laravel-order-by"
 author: "benjamincrozat"
-description: "Master Laravel's Eloquent `orderBy()`. Explore multiple columns sorting, the advanced `orderByRaw()`, and `reorder()`."
+description: "Learn Laravel's `orderBy()` and `orderByDesc()` with clear Eloquent examples, multiple-column sorting, `orderByRaw()`, and `reorder()`."
 categories:
   - "laravel"
 published_at: 2023-09-09T00:00:00+02:00
-modified_at: 2025-07-10T15:09:00+02:00
-serp_title: "Laravel Eloquent: sort query results using orderBy() (2025)"
+modified_at: 2026-03-13T12:05:00Z
+serp_title: null
 serp_description: null
 canonical_url: ""
 is_commercial: false
@@ -18,7 +18,9 @@ sponsored_at: null
 ---
 ## Laravel orderBy() basics
 
-When you need to sort data in Laravel, the **Laravel order by** methods give you everything you need—no raw SQL, no drama. Here’s the foundation of the `orderBy()` method:
+**Use Laravel's `orderBy()` method to sort query results by a column in ascending or descending order.**
+
+If you need `orderByDesc()`, multiple-column sorting, or a quick way to replace an existing order, this guide covers those too. Here's the foundation of `orderBy()`:
 
 ```php
 $users = User::query()
@@ -26,7 +28,7 @@ $users = User::query()
     ->get();
 ```
 
-In this snippet, we're using Laravel Eloquent to fetch users from their table and ordering them in descending order by their names thanks to the `orderBy()` method.
+In this snippet, Eloquent fetches users and sorts them by `name` in descending order.
 
 Its parameters are:
 
