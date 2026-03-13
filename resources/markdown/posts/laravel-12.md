@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27B9KMJCRAM3TKA1J9DN"
-title: "Laravel 12: new starter kits, changes, and upgrade tips"
+title: "Laravel 12: starter kits, support status, and upgrade advice"
 slug: "laravel-12"
 author: "benjamincrozat"
-description: "Laravel 12 arrived on February 24, 2025. I cover the new starter kits and other changes in addition to how to upgrade in minutes."
+description: "Laravel 12 shipped on February 24, 2025. Here is what changed, what late upgraders should check, and why it is the Laravel version to target now."
 categories:
   - "laravel"
-published_at: 2024-03-11T00:00:00+01:00
-modified_at: 2025-09-15T21:51:00+02:00
+published_at: 2024-03-10T23:00:00Z
+modified_at: 2026-03-13T15:29:49Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -18,144 +18,116 @@ sponsored_at: null
 ---
 ## Introduction
 
-I first published this piece to track what might land in Laravel 12. Now that Laravel 12 shipped on February 24, 2025, I have refreshed the post to cover what actually changed, how long it is supported, and a quick path to upgrade. If you maintain a Laravel 11 application or you are starting a new project, this guide is for you. See the official [Laravel 12 Release Notes](https://laravel.com/docs/12.x/releases) for the canonical summary.
+Laravel 12 was released on February 24, 2025. Unlike Laravel 10 and Laravel 11, it is still inside its support window on March 13, 2026, which is why this is the version most teams should be targeting now for production upgrades and new work.
 
-## Release date and support policy
+The official [release notes](https://laravel.com/docs/12.x/releases) describe Laravel 12 as another low-drama major release, and that is mostly true. The two headline changes are the new starter-kit lineup and a few upgrade details that matter a lot if your app touches UUIDs, Carbon, or SVG uploads.
 
-Laravel 12 was released on February 24, 2025. Laravel 11 supports PHP 8.2–8.4 and receives bug fixes until September 3, 2025, and security fixes until March 12, 2026. Laravel 12 supports PHP 8.2–8.4 and receives bug fixes until August 13, 2026, and security fixes until February 24, 2027. Modern, non‑LTS releases receive 18 months of bug fixes and two years of security fixes.
+## Support status: why Laravel 12 is the version to target now
 
-| Version | PHP | Release | Bug Fixes Until | Security Fixes Until |
-| ------- | --- | ------- | --------------- | -------------------- |
-| 11 | 8.2–8.4 | March 12, 2024 | September 3, 2025 | March 12, 2026 |
-| 12 | 8.2–8.4 | February 24, 2025 | August 13, 2026 | February 24, 2027 |
+Laravel's current support windows make the upgrade decision much clearer than they did when 12 first shipped:
 
-Note: The last LTS release was Laravel 6. LTS policy details remain documented on the Laravel 6 page.
+| Version | Release date | Bug fixes until | Security fixes until | Status on March 13, 2026 |
+| ------- | ------------ | --------------- | -------------------- | ------------------------ |
+| 11 | March 12, 2024 | September 3, 2025 | March 12, 2026 | End of life |
+| 12 | February 24, 2025 | August 13, 2026 | February 24, 2027 | Supported |
 
-## What’s new in Laravel 12
+That means:
 
-Laravel 12 focuses on quality of life, clear defaults, and a modern application start. Here are the headline features I think most teams will care about.
+- New projects should start on Laravel 12.
+- Laravel 11 projects should move to 12 as soon as they can do it safely.
+- Laravel 10 projects should treat 11 and 12 as the real finish line, not stop early.
 
-### New starter kits, plus an AuthKit variant
+If you want the full history, my [Laravel versions guide](/laravel-versions) puts the whole release ladder in one place.
 
-Laravel 12 introduces official starter kits for React, Vue, and Livewire. The React and Vue kits use Inertia 2, TypeScript, Tailwind, and shadcn UI. The Livewire kit uses Flux UI and Laravel Volt. Each kit can also be generated in a WorkOS AuthKit variant that includes social login, passkeys, and SSO. Breeze and Jetstream are no longer receiving additional updates. For guidance and options, see the [Starter Kits documentation](https://laravel.com/docs/12.x/starter-kits).
+## How to install Laravel 12 today
 
-What to do: choose the kit that matches your team’s stack. Pick React or Vue if you want an SPA‑style experience through Inertia, or Livewire if you prefer Blade‑first development.
-
-### UUIDv7 by default in HasUuids
-
-Models that use the `HasUuids` trait now generate ordered UUIDv7 identifiers by default. If you need to keep UUIDv4, import and alias the provided trait to preserve your existing signatures:
-
-```php
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Concerns\HasVersion4Uuids as HasUuids;
-```
-
-See the [Laravel 12 Upgrade Guide](https://laravel.com/docs/12.x/upgrade#models-and-uuidv7) for details.
-
-### Carbon 3 requirement
-
-Laravel 12 requires Carbon 3, which replaces Carbon 2 in the framework’s dependencies. Most apps will not need code changes, but verify any direct Carbon APIs your app uses. See the [Upgrade Guide](https://laravel.com/docs/12.x/upgrade#carbon-3).
-
-### PHP 8.4 support
-
-Laravel 12 supports PHP 8.2 through 8.4 and aims for minimal breaking changes. If you are on PHP 8.2 or 8.3 today, upgrade your runtime when convenient. Reference the [Support Policy table](https://laravel.com/docs/12.x/releases#support-policy).
-
-### xxHash replaces md5 in internal paths
-
-Key internal hashing paths have moved from md5 to xxHash for better performance. This is an internal framework improvement and should not require changes in application code. See the [12.x changelog](https://github.com/laravel/framework/blob/12.x/CHANGELOG.md).
-
-### Other noteworthy changes
-
-- MariaDB schema dump now uses MariaDB‑native CLI tools (`mariadb-dump` and `mariadb`) for better compatibility, and the unsupported `--column-statistics` flag is not used when dumping for MariaDB.
-- Chunked queries now honor user‑defined limits and offsets, which fixes edge cases in pagination or batched processing.
-- `$request->mergeIfMissing()` supports nested data via dot notation.
-- The `image` validation rule excludes SVGs by default. Opt in with `image:allow_svg` or `File::image(allowSvg: true)`.
-- `ResponseFactory` now formally includes `streamJson`, and the responses docs cover streaming usage. See [HTTP Responses](https://laravel.com/docs/12.x/responses#streamed-json-responses).
-- Validator preserves numeric rule keys.
-- `Str::is()` matches multiline strings consistently.
-
-## Upgrading from 11 to 12
-
-Estimated time: a few minutes for most apps. Start with the official [Upgrade Guide](https://laravel.com/docs/12.x/upgrade).
-
-**Before you upgrade:**
-- Run your test suite and back up your database.
-- Search your codebase for HasUuids, custom `ResponseFactory` implementations, and SVG image validation rules.
-
-**Checklist:**
-
-1. Update dependencies using `composer require laravel/framework:^12.0 -W` Also, update your test runner versions as noted in the guide.
-
-2. Ensure Carbon 3 is installed and remove any Carbon 2 constraints.
-
-3. Decide on UUID behavior. If you need UUIDv4, alias `HasVersion4Uuids` as shown above and review any ordering assumptions around IDs.
-
-4. Review validation for images. If you rely on SVG uploads, explicitly allow them with `image:allow_svg` or `File::image(allowSvg: true)`.
-
-5. If you use chunked queries, re‑run your tests around pagination or batched imports to confirm limits and offsets behave as expected.
-
-6. If you run `schema:dump` on MariaDB, make sure `mariadb` and `mariadb-dump` are available on your PATH.
-
-7. If you implement `Illuminate\Contracts\Routing\ResponseFactory`, add the `streamJson` method.
-
-## Install Laravel 12 today
-
-The installer is the recommended path. It prompts you for your testing framework, database, and starter kit.
+If you want the nicest setup flow, use the Laravel installer:
 
 ```bash
-laravel new example-app
+laravel new my-app
 ```
 
-After creation, install frontend dependencies and start the dev servers:
+That is where you pick your starter kit, authentication flavor, database, and testing stack. The current [starter-kit documentation](https://laravel.com/docs/12.x/starter-kits) also makes it clear that `laravel new` is where the WorkOS AuthKit variants are offered.
 
-```bash
-cd example-app
-npm install && npm run build
-composer run dev
-```
-
-See the [Installation guide](https://laravel.com/docs/12.x/installation) for details. If you prefer Composer, constrain to the current major:
+If you want to pin Laravel 12 explicitly, Composer is still the safest evergreen command:
 
 ```bash
 composer create-project laravel/laravel:^12.0 my-app
 ```
 
-The official docs emphasize the installer and its prompts.
+I verified that command still creates a fresh Laravel 12 app today. The current 12.x skeleton requires PHP 8.2+ and keeps the lean Laravel 11 structure, so you get the modern `bootstrap/app.php` flow rather than the older multi-file skeleton.
 
-## Contribute to Laravel
+## What Laravel 12 changed that still matters
 
-If you want to help, here is the short version I follow:
+### The starter kits are the real headline
 
-- Bug fixes can target the `12.x` branch, while new features should target `master` for the next release. Review the [laravel/framework pull requests](https://github.com/laravel/framework/pulls).
-- Read the [Contribution Guide](https://laravel.com/docs/12.x/upgrade) for branch targeting, tests, and review expectations.
+Laravel 12 introduced new official starter kits for [React, Svelte, Vue, and Livewire](https://laravel.com/docs/12.x/starter-kits). The React, Svelte, and Vue kits use Inertia 2, TypeScript, and shadcn-style component systems, while the Livewire kit uses Flux UI and Laravel Volt.
 
-![Screenshot of the Laravel 12 release notes highlighting starter kits and UUIDv7.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-12-85022b83a00bbc25894c.webp/public)
+That matters because Laravel 12 is the point where the framework's recommended starting experience became much clearer:
 
-## FAQ
+- Pick React, Svelte, or Vue if you want a richer front end with Inertia.
+- Pick Livewire if you want to stay closer to Blade and server-driven UI.
+- Pick a WorkOS AuthKit variant if social login, passkeys, or SSO matter from day one.
 
-- Is Laravel 12 an LTS release?
-  No. The last LTS was Laravel 6. Current releases receive 18 months of bug fixes and two years of security fixes. See the [Support Policy](https://laravel.com/docs/12.x/releases#support-policy) and the [Laravel 6 LTS page](https://laravel.com/docs/6.x/releases).
+The release notes also say that Breeze and Jetstream will not receive further updates, so Laravel 12 effectively resets the "official default starter" conversation around this newer lineup.
 
-- Which PHP versions does Laravel 12 support?
-  PHP 8.2 through 8.4, as listed in the Release Notes.
+### UUIDv7 became the default for `HasUuids`
 
-- What changed about UUIDs, and how do I keep v4?
-  HasUuids now emits UUIDv7. To keep v4, alias `HasVersion4Uuids` as `HasUuids` in your models. See the [Upgrade Guide](https://laravel.com/docs/12.x/upgrade#models-and-uuidv7).
+The official [upgrade guide](https://laravel.com/docs/12.x/upgrade#models-and-uuidv7) notes that models using `HasUuids` now generate ordered UUIDv7 values by default.
 
-- How do I choose a starter kit?
-  Use React or Vue if you want an Inertia‑powered SPA experience with TypeScript and shadcn UI. Choose Livewire if you prefer Blade‑first development with Volt (optional) and Flux. The [Starter Kits docs](https://laravel.com/docs/12.x/starter-kits) have examples.
+That is good for index locality and sorting, but it can matter if your app or database assumptions are tied to UUIDv4 semantics. If you need to keep the old behavior, alias the alternative trait:
 
-- How long will Laravel 12 receive security updates?
-  Through February 24, 2027. See the [Release Notes](https://laravel.com/docs/12.x/releases).
+```php
+use Illuminate\Database\Eloquent\Concerns\HasVersion4Uuids as HasUuids;
+```
 
-## Conclusion
+For many apps this is a non-event. For apps with ID parsing, ordering assumptions, or external integrations, it deserves a deliberate check.
 
-I upgraded a small Laravel 11 app to 12 in one sitting, and it was straightforward. If you are on PHP 8.2 or newer and do not rely on Carbon 2 or custom UUIDv4 semantics, I recommend upgrading soon to take advantage of the new starter kits and to stay within the current support window. New projects should start on 12.x by default.
+### Carbon 3 is now mandatory
 
-If you are planning the next upgrade after landing on Laravel 12, these are the release reads I would keep open:
+Laravel 11 could support Carbon 2 or Carbon 3. Laravel 12 does not. The official [upgrade guide](https://laravel.com/docs/12.x/upgrade#carbon-3) says Carbon 2 support is removed, so all Laravel 12 apps now require Carbon 3.
 
-- [See where this fits in Laravel's release history](/laravel-versions)
-- [See what Laravel 13 is shaping up to change](/laravel-13)
-- [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
-- [See the biggest Laravel 11 changes in one pass](/laravel-11)
-- [Double-check which Laravel version is actually running](/check-laravel-version)
+This is not usually a huge rewrite, but it is one of the highest-signal checks in the upgrade because date logic has a habit of hiding in old helpers, package code, and tests.
+
+### SVG uploads got stricter by default
+
+Laravel 12 changed the `image` validation rule so it [no longer accepts SVGs by default](https://laravel.com/docs/12.x/upgrade#image-validation). If your admin UI, CMS, or user uploads rely on SVGs, you now need to opt in explicitly with `image:allow_svg` or `File::image(allowSvg: true)`.
+
+This is the kind of subtle change that can easily look like a random regression if you do not know it is coming.
+
+### The upgrade kept its "small major release" feel
+
+The official guide estimates about five minutes for the upgrade itself, which is aggressive, but the spirit is right: Laravel 12 is much closer to a careful dependency and behavior audit than to a framework rewrite.
+
+That is why I would describe Laravel 12 as a practical major release, not a flashy one.
+
+## What I would check first before upgrading to Laravel 12
+
+If you are moving to Laravel 12 now, this is the checklist I would start with:
+
+1. Upgrade one major at a time. If you are on Laravel 10, go through 11 before 12.
+2. Make sure the runtime is on PHP 8.2 or newer.
+3. Update framework and test dependencies as shown in the official [upgrade guide](https://laravel.com/docs/12.x/upgrade#updating-dependencies).
+4. Search for models using `HasUuids` and decide whether UUIDv7 is acceptable.
+5. Audit any direct Carbon usage, especially date math and older tests.
+6. Search for SVG upload flows and make the validation rule explicit where needed.
+7. If you implement `Illuminate\Contracts\Routing\ResponseFactory`, add the `streamJson` method mentioned in the upgrade guide.
+8. If you use MariaDB schema dumps, make sure `mariadb` and `mariadb-dump` are available on the machine that runs `schema:dump`.
+
+If you are currently on Laravel 11, this is one of the easier upgrades in recent Laravel history. If you are still on Laravel 10 or older, the work is less about Laravel 12 itself and more about the versions you have skipped on the way here.
+
+## Should you move to Laravel 12 now?
+
+Usually, yes.
+
+Laravel 12 is the current supported destination in this generation of the framework. It gives you the newer starter-kit ecosystem, keeps the leaner application structure from Laravel 11, and does not ask for a dramatic rewrite in return.
+
+The main reason to delay would be your own application, not Laravel 12. If package compatibility, test gaps, or business timing make the upgrade risky this week, fix that first. But from a framework perspective, Laravel 12 is the version worth aiming for.
+
+If you want a few good next steps after this article, I would keep these pages nearby:
+
+- [See the Laravel 11 release in current context before you leave it behind](/laravel-11)
+- [Follow the practical path from Laravel 10 to 11](/laravel-11-upgrade-guide)
+- [Double-check the whole release timeline before you plan upgrades](/laravel-versions)
+- [Verify which Laravel version is actually running in your app](/check-laravel-version)
+- [See what is shaping the next Laravel major](/laravel-13)
