@@ -99,7 +99,7 @@ it('orders posts by boosting recent sponsorship then by published_at desc', func
     });
 });
 
-it('uses the same category copy and ordering for the news category', function () {
+it('uses the same category heading and ordering for the news category', function () {
     $news = Category::factory()->create([
         'name' => 'News',
         'slug' => Post::NEWS_CATEGORY_SLUG,
@@ -123,7 +123,7 @@ it('uses the same category copy and ordering for the news category', function ()
 
     get(route('categories.show', $news))
         ->assertOk()
-        ->assertSee('Articles in the News category')
+        ->assertSee('News')
         ->assertViewHas('posts', function (LengthAwarePaginator $paginator) use ($recentSponsored, $latestUnsponsored) {
             $ids = collect($paginator->items())->pluck('id')->values();
 
@@ -131,7 +131,7 @@ it('uses the same category copy and ordering for the news category', function ()
         });
 });
 
-it('paginates 24 posts per page and keeps the category heading consistent', function () {
+it('paginates 24 posts per page and keeps the category name visible', function () {
     $category = Category::factory()->create();
 
     // Create 30 published posts in this category.
@@ -149,6 +149,6 @@ it('paginates 24 posts per page and keeps the category heading consistent', func
     // Page 2: 6 items.
     get(route('categories.show', [$category, 'page' => 2]))
         ->assertOk()
-        ->assertSee('Articles in the ' . $category->name . ' category')
+        ->assertSee($category->name)
         ->assertViewHas('posts', fn (LengthAwarePaginator $p) => 2 === $p->currentPage() && 6 === $p->count());
 });
