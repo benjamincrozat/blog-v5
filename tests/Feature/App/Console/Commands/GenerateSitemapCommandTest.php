@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Link;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
@@ -84,7 +85,7 @@ it('generates a news sitemap with only eligible recent news posts', function () 
         'sponsored_at' => null,
     ]);
     $withLink->categories()->sync([$news->id]);
-    \App\Models\Link::factory()->create(['post_id' => $withLink->id]);
+    Link::factory()->create(['post_id' => $withLink->id]);
 
     $evergreen = Post::factory()->create([
         'published_at' => now()->subHour(),

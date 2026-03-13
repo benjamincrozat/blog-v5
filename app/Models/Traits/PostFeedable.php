@@ -2,12 +2,13 @@
 
 namespace App\Models\Traits;
 
+use App\Models\Post;
 use Spatie\Feed\FeedItem;
 use App\Markdown\MarkdownRenderer;
 use Illuminate\Support\Collection;
 
 /**
- * @mixin \App\Models\Post
+ * @mixin Post
  */
 trait PostFeedable
 {

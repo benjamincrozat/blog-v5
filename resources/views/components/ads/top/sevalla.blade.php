@@ -11,10 +11,7 @@ Displays the components ads top sevalla component and accepts component props, B
                     'slug' => 'sevalla',
                     'utm_medium' => 'top',
                 ]),
-                'target' => '_blank',
-                'x-intersect.once' => $user?->isAdmin() ? null : "pirsch(`Ad shown`, {
-                    meta: { name: `Sevalla` }
-                })",
+                'target' => '_blank'
             ])
     }}
 >

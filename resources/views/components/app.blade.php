@@ -39,16 +39,6 @@ Displays the components app component and accepts component props, Blade attribu
 
         @vite('resources/css/app.css')
 
-        @if (config('services.pirsch.enabled'))
-            <script
-                defer
-                src="https://api.pirsch.io/pa.js"
-                id="pianjs"
-                data-code="{{ 'production' === config('app.env') ? '5N2hIsUQsCVX1LQtvPdJ3AGwQZHGxtt5' : '2kktajcETdWwbGKEyt3Zi4SnhwxOVSY6' }}"
-                data-disable-page-views
-            ></script>
-        @endif
-
         <link
             rel="preload"
             as="style"

@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Notifications\Welcome;
 use Illuminate\Support\HtmlString;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 it('renders as an email', function () {
     $result = new Welcome()->toMail(User::factory()->create())->render();
@@ -37,5 +38,5 @@ it('sends via the mail channel and is queueable', function () {
     $notification = new Welcome;
 
     expect($notification->via($user))->toBe(['mail']);
-    expect($notification)->toBeInstanceOf(\Illuminate\Contracts\Queue\ShouldQueue::class);
+    expect($notification)->toBeInstanceOf(ShouldQueue::class);
 });

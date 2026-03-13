@@ -4,9 +4,10 @@ namespace App\Models\Traits;
 
 use App\Markdown\TableOfContents;
 use Illuminate\Support\HtmlString;
+use Illuminate\Database\Eloquent\Model;
 
 /**
- * @mixin \Illuminate\Database\Eloquent\Model
+ * @mixin Model
  */
 trait PostHasTableOfContents
 {

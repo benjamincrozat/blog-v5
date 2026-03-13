@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
 /**
- * @mixin \App\Models\Post
+ * @mixin Post
  */
 trait PostSlugable
 {

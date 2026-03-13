@@ -73,7 +73,6 @@ return [
         'mailcoach' => 'https://mailcoach.app/?via=benjamincrozat',
         'namecheap' => 'https://namecheap.pxf.io/c/3801334/1712998/5618',
         'oh-dear' => 'https://ohdear.app/?via=benjamincrozat',
-        'pirsch-analytics' => 'https://pirsch.io/ref/Z0E1Nqogb5',
         'ploi' => 'https://ploi.io/register?referrer=eJAat2H4YE45BjmIwzBl',
         'rosehosting' => 'https://secure.rosehosting.com/clientarea/?affid=2695&campaign=dedicated-hosting',
         'savvycal' => 'https://savvycal.com/?via=benjamincrozat',

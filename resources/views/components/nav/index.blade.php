@@ -6,7 +6,6 @@ Displays the components nav index component and accepts component props, Blade a
     <a
         wire:navigate
         href="{{ route('home') }}"
-        data-pirsch-event="Clicked the logo"
         class="flex gap-3 items-center text-black transition-colors hover:text-blue-600"
     >
         <div class="relative">

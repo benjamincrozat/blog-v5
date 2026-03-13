@@ -4,6 +4,7 @@ use App\Models\Link;
 use App\Models\User;
 use Illuminate\Support\HtmlString;
 use App\Notifications\LinkDeclined;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 it('renders as an email', function () {
     $link = Link::factory()->create();
@@ -33,5 +34,5 @@ it('sends via the mail channel and is queueable', function () {
     $notification = new LinkDeclined($link, 'Duplicate content.');
 
     expect($notification->via(User::factory()->create()))->toBe(['mail']);
-    expect($notification)->toBeInstanceOf(\Illuminate\Contracts\Queue\ShouldQueue::class);
+    expect($notification)->toBeInstanceOf(ShouldQueue::class);
 });

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Advertising;
 
-use App\Jobs\TrackEvent;
 use Illuminate\Support\Uri;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,23 +16,6 @@ class RedirectToAdvertiserController extends Controller
     {
         if (! $adUrl = config("advertisers.$slug")) {
             abort(404);
-        }
-
-        if (! empty($request->fullUrl()) &&
-            ($ip = $request->ip()) &&
-            ($userAgent = $request->userAgent())) {
-            TrackEvent::dispatchAfterResponse(
-                'Clicked on ad',
-                [
-                    'slug' => $slug,
-                    'url' => $adUrl,
-                ],
-                $request->fullUrl(),
-                $ip,
-                $userAgent,
-                $request->header('Accept-Language', ''),
-                $request->header('Referer', ''),
-            );
         }
 
         return redirect(

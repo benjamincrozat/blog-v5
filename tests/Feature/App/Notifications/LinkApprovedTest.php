@@ -4,6 +4,7 @@ use App\Models\Link;
 use App\Models\User;
 use Illuminate\Support\HtmlString;
 use App\Notifications\LinkApproved;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 it('renders as an email', function () {
     $link = Link::factory()->create();
@@ -62,5 +63,5 @@ it('sends via the mail channel', function () {
 it('queues the notification for asynchronous delivery', function () {
     $link = Link::factory()->create();
 
-    expect(new LinkApproved($link))->toBeInstanceOf(\Illuminate\Contracts\Queue\ShouldQueue::class);
+    expect(new LinkApproved($link))->toBeInstanceOf(ShouldQueue::class);
 });

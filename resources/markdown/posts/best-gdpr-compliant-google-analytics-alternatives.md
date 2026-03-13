@@ -31,7 +31,6 @@ Needless to say, this will be a waste of time and money for most of us. So let m
 | Name | Price for 100K data points | Free trial |
 | ------------------------------------------------ | --- | ------ |
 | [Simple Analytics](/recommends/simple-analytics) | $9  | 14 day |
-| [Pirsch Analytics](/recommends/pirsch-analytics) | $12 | 30 day |
 | [Fathom Analytics](/recommends/fathom-analytics) | $15 | 30 day |
 
 ## The best GDPR-compliant Google Analytics alternatives
@@ -63,19 +62,6 @@ Besides its dashboard, here are features Fathom offers that you might like:
 5. **Goals-tracker and events explorer**: These features allow users to track important events and conversion funnels on their websites.
 
 [Try Simple Analytics for 14 days](/recommends/simple-analytics)
-
-### Pirsch Analytics
-
-[![Pirsch Analytics' dashboard in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-gdpr-compliant-google-analytics-alternatives-5c12c27f4b7c25341b89.webp/public)](/recommends/pirsch-analytics)
-
-[Pirsch Analytics](/recommends/pirsch-analytics) is still a relatively new actor on this market and **operating in Germany**. **This is the one I use for this blog.** It still has to prove itself in terms of reliability. But it's by far the most beautiful and feature-complete tool.
-
-- **Personal support**: The platform provides professional and competent support from IT specialists, ensuring that users receive help with integration details, networking, or programming when needed.
-- **Server-side integration**: This is very useful to bypass ad blockers just like I do on this blog.
-- **Extensive plugin support**: The platform can be easily integrated into websites using available plugins for various systems like WordPress and Laravel. It also offers a demo repository with sample applications and more, maintained by a community of developers.
-- **Access rights restriction**: Give a role to each of your employees and control what they can see.
-
-[Try Pirsch Analytics for 30 days](/recommends/pirsch-analytics)
 
 ## What about the free and self-hosted alternatives?
 

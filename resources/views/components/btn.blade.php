@@ -26,8 +26,6 @@ Displays the components btn component and accepts component props, Blade attribu
                     && $attributes->missing('target')
                     && $attributes->missing('wire:navigate')
                     && \App\Support\InternalNavigation::shouldUseWireNavigate((string) $attributes->get('href')),
-                'data-pirsch-event' => 'Clicked button',
-                'data-pirsch-meta-value' => strip_tags($slot),
             ])
     }}
 >

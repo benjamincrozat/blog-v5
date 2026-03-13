@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\ConnectionInterface;
 use App\Console\Commands\BootstrapPostsFromProductionCommand;
 
 function bootstrapPostsMarkdownDirectory() : string
@@ -17,7 +18,7 @@ function bootstrapPostsMarkdownDirectory() : string
     return (string) config('tests.bootstrap-posts.markdown_directory');
 }
 
-function bootstrapPostsProductionConnection() : \Illuminate\Database\ConnectionInterface
+function bootstrapPostsProductionConnection() : ConnectionInterface
 {
     return DB::connection('production');
 }

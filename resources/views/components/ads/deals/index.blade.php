@@ -17,11 +17,6 @@ Displays the components ads deals index component and accepts component props, B
     {{
         $attributes
             ->class('flex rounded-xl overflow-hidden transition-opacity hover:opacity-50')
-            ->merge([
-                'x-intersect.once' => $user?->isAdmin() ? null : "pirsch(`Deal shown`, {
-                    meta: { name: `$name` }
-                })"
-            ])
     }}
 >
     <div class="flex flex-col flex-1 p-4 md:p-6">

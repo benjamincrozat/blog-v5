@@ -223,8 +223,6 @@ Displays the advertise view.
                                 primary
                                 href="{{ route('checkout.start', 'sticky_carousel') }}"
                                 no-wire-navigate
-                                data-pirsch-event="Clicked sticky carousel checkout"
-                                data-pirsch-meta-product="Sticky carousel"
                             >
                                 Get started
                             </x-btn>

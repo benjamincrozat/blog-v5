@@ -1,5 +1,6 @@
 <?php
 
+use App\Markdown\Lightdown;
 use Illuminate\Support\Facades\Facade;
 
 return [
@@ -128,7 +129,7 @@ return [
     ],
 
     'aliases' => Facade::defaultAliases()->merge([
-        'Lightdown' => App\Markdown\Lightdown::class,
+        'Lightdown' => Lightdown::class,
     ])->toArray(),
 
 ];

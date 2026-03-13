@@ -31,7 +31,6 @@ Displays the vendor pagination tailwind view.
                     href="{{ $paginator->previousPageUrl() }}"
                     rel="prev"
                     aria-label="{{ __('pagination.previous') }}"
-                    data-pirsch-event="Clicked pagination previous"
                     class="grid place-items-center bg-gray-50 rounded-lg transition-colors hover:bg-gray-100 size-8"
                 >
                     ←
@@ -57,8 +56,6 @@ Displays the vendor pagination tailwind view.
                                 wire:navigate
                                 href="{{ $url }}"
                                 aria-label="{{ __('Go to page :page', compact('page')) }}"
-                                data-pirsch-event="Clicked pagination page"
-                                data-pirsch-meta-page="{{ $page }}"
                                 class="grid place-items-center bg-gray-50 rounded-lg transition-colors hover:bg-gray-100 size-8"
                             >
                                 {{ $page }}
@@ -74,7 +71,6 @@ Displays the vendor pagination tailwind view.
                     href="{{ $paginator->nextPageUrl() }}"
                     rel="next"
                     aria-label="{{ __('pagination.next') }}"
-                    data-pirsch-event="Clicked pagination next"
                     class="grid place-items-center bg-gray-50 rounded-lg transition-colors hover:bg-gray-100 size-8"
                 >
                     →

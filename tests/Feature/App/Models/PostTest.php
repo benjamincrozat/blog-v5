@@ -5,6 +5,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Redirect;
+use Spatie\Feed\FeedItem;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Storage;
 
@@ -330,7 +331,7 @@ it('getFeedItems only returns the 50 most recent published posts without links',
 
     // One published post with a link – should be excluded.
     $withLink = Post::factory()->create(['published_at' => now()]);
-    \App\Models\Link::factory()->create(['post_id' => $withLink->id]);
+    Link::factory()->create(['post_id' => $withLink->id]);
 
     // One unpublished post – should be excluded.
     Post::factory()->create(['published_at' => null]);
@@ -358,7 +359,7 @@ it('converts a post to a valid FeedItem via toFeedItem()', function () {
 
     $feedItem = $post->toFeedItem();
 
-    expect($feedItem)->toBeInstanceOf(\Spatie\Feed\FeedItem::class)
+    expect($feedItem)->toBeInstanceOf(FeedItem::class)
         ->and($feedItem->id)->toBe('foo')
         ->and($feedItem->title)->toBe('Foo')
         ->and($feedItem->link)->toBe(route('posts.show', $post))
@@ -384,9 +385,9 @@ it('has many comments and counts them automatically', function () {
 
 it('has one link', function () {
     $post = Post::factory()->create();
-    $link = \App\Models\Link::factory()->create(['post_id' => $post->id]);
+    $link = Link::factory()->create(['post_id' => $post->id]);
 
-    expect($post->link)->toBeInstanceOf(\App\Models\Link::class)
+    expect($post->link)->toBeInstanceOf(Link::class)
         ->and($post->link->is($link))->toBeTrue();
 });
 

@@ -37,8 +37,6 @@ Displays the components post component and accepts component props, Blade attrib
             wire:navigate
             href="{{ route('posts.show', $post->slug) }}"
             class="font-bold transition-colors text-xl/tight hover:text-blue-600"
-            data-pirsch-event="Clicked post title"
-            data-pirsch-meta-title="{{ $post->title }}"
         >
             {{ $post->title }}
         </a>
@@ -47,8 +45,6 @@ Displays the components post component and accepts component props, Blade attrib
             wire:navigate
             href="{{ route('authors.show', $post->user->slug) }}"
             class="flex-none"
-            data-pirsch-event="Clicked post author"
-            data-pirsch-meta-name="{{ $post->user->name }}"
         >
             <img
                 src="{{ $post->user->avatar }}"
@@ -73,8 +69,6 @@ Displays the components post component and accepts component props, Blade attrib
                 wire:navigate
                 href="{{ route('posts.show', $post->slug) }}#comments"
                 class="group"
-                data-pirsch-event="Clicked comments"
-                data-pirsch-meta-post="{{ $post->title }}"
             >
                 <div class="flex-1 p-3 text-center bg-gray-50 rounded-lg transition-colors hover:bg-blue-50 group-hover:text-blue-900">
                     <x-heroicon-o-chat-bubble-oval-left-ellipsis class="mx-auto mb-1 opacity-75 size-5" />

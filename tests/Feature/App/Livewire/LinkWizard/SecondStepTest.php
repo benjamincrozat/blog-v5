@@ -1,5 +1,6 @@
 <?php
 
+use Embed\Embed;
 use App\Models\Link;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -9,12 +10,12 @@ use function Pest\Laravel\actingAs;
 use function Pest\Livewire\livewire;
 
 use App\Livewire\LinkWizard\SecondStep;
-use Tests\Feature\App\Livewire\LinkWizard\TestableSecondStep;
 
 use function Pest\Laravel\assertDatabaseHas;
 
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\LinkWaitingForValidation;
+use Tests\Feature\App\Livewire\LinkWizard\TestableSecondStep;
 
 it('submits the link and notifies the admin', function () {
     Notification::fake();
@@ -90,7 +91,7 @@ it('fetches metadata when cache is empty', function () {
         }
     };
 
-    app()->instance(\Embed\Embed::class, $embed);
+    app()->instance(Embed::class, $embed);
 
     livewire(SecondStep::class, ['url' => 'https://fetch.me'])
         ->call('fetch')

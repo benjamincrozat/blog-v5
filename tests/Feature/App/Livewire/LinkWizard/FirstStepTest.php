@@ -7,6 +7,7 @@ use function Pest\Livewire\livewire;
 
 use Illuminate\Support\Facades\Http;
 use App\Livewire\LinkWizard\FirstStep;
+use Illuminate\Http\Client\ConnectionException;
 
 it('submits the link', function () {
     Http::fake();
@@ -51,7 +52,7 @@ it('automatically advances when mounting with a pre-filled url', function () {
 });
 
 it('surfaces a validation error when the URL cannot be reached', function () {
-    Http::fake(fn () => throw new \Illuminate\Http\Client\ConnectionException);
+    Http::fake(fn () => throw new ConnectionException);
 
     livewire(FirstStep::class)
         ->set('url', 'https://example.com')

@@ -6,7 +6,7 @@ use App\Models\ShortUrl;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ShortUrl>
+ * @extends Factory<ShortUrl>
  */
 class ShortUrlFactory extends Factory
 {

@@ -2,10 +2,11 @@
 
 namespace App\Models\Traits;
 
+use App\Models\Link;
 use Laravel\Scout\Searchable;
 
 /**
- * @mixin \App\Models\Link
+ * @mixin Link
  */
 trait LinkSearchable
 {

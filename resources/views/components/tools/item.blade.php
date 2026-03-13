@@ -17,12 +17,7 @@ Displays the components tools item component and accepts component props, Blade 
         $attributes
             ->class('bg-gray-100/75 flex rounded-xl overflow-hidden transition-opacity hover:opacity-50')
             ->merge([
-                'target' => '_blank',
-                'data-pirsch-event' => "Clicked on deal",
-                'data-pirsch-meta-merchant' => $name,
-                'x-intersect.once' => $user?->isAdmin() ? null : "pirsch(`Deal shown`, {
-                    meta: { name: `$name` }
-                })"
+                'target' => '_blank'
             ])
     }}
 >

@@ -9,8 +9,6 @@ Displays the components dropdown index component and accepts component props, Bl
 >
     <button {{ $btn->attributes->merge([
         '@click' => 'open = !open',
-        'data-pirsch-event' => 'Clicked dropdown button',
-        'data-pirsch-meta-value' => strip_tags($btn),
     ]) }}>
         {{ $btn }}
     </button>

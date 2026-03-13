@@ -2,10 +2,11 @@
 
 namespace App\Models\Traits;
 
+use App\Models\Post;
 use App\Markdown\PostMarkdownDocument;
 
 /**
- * @mixin \App\Models\Post
+ * @mixin Post
  */
 trait PostTransformable
 {

@@ -55,7 +55,6 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                         wire:loading.attr="disabled"
                         dusk="previousPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.after"
                         aria-label="{{ __('pagination.previous') }}"
-                        data-pirsch-event="Clicked pagination previous"
                         class="grid place-items-center bg-gray-50 rounded-lg transition-colors hover:bg-gray-100 size-8"
                     >
                         ←
@@ -92,8 +91,6 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                                         x-on:click="{{ $scrollIntoViewJsSnippet }}"
                                         wire:loading.attr="disabled"
                                         aria-label="Go to page {{ $page }}"
-                                        data-pirsch-event="Clicked pagination page"
-                                        data-pirsch-meta-page="{{ $page }}"
                                         class="grid place-items-center bg-gray-50 rounded-lg transition-colors hover:bg-gray-100 size-8"
                                     >
                                         {{ $page }}
@@ -113,7 +110,6 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                         wire:loading.attr="disabled"
                         dusk="nextPage{{ $paginator->getPageName() == 'page' ? '' : '.' . $paginator->getPageName() }}.after"
                         aria-label="{{ __('pagination.next') }}"
-                        data-pirsch-event="Clicked pagination next"
                         class="grid place-items-center bg-gray-50 rounded-lg transition-colors hover:bg-gray-100 size-8"
                     >
                         →

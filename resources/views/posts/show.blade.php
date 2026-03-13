@@ -92,8 +92,6 @@ Displays the posts show view.
                     <a
                         wire:navigate
                         href="{{ route('authors.show', $post->user->slug) }}"
-                        data-pirsch-event="Clicked post author"
-                        data-pirsch-meta-name="{{ $post->user->name }}"
                     >
                         <div class="p-3 text-center bg-gray-50 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-900">
                             <img
@@ -111,8 +109,6 @@ Displays the posts show view.
                     @if (! $post->is_commercial)
                         <a
                             href="#comments"
-                            data-pirsch-event="Clicked comments"
-                            data-pirsch-meta-post="{{ $post->title }}"
                         >
                             <div @class([
                                 'flex-1 p-3 text-center bg-gray-50 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-900',
@@ -225,7 +221,6 @@ Displays the posts show view.
                                 <a
                                     href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('posts.show', $post)) }}"
                                     target="_blank"
-                                    data-pirsch-event='Clicked on "Facebook"'
                                     class="grid place-items-center size-12 text-white bg-[#0766FF] rounded-md"
                                 >
                                     <x-iconoir-facebook class="size-6" />
@@ -237,7 +232,6 @@ Displays the posts show view.
                                 <a
                                     href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(route('posts.show', $post)) }}&title={{ urlencode($post->title) }}"
                                     target="_blank"
-                                    data-pirsch-event='Clicked on "LinkedIn"'
                                     class="grid place-items-center size-12 text-white bg-[#0B66C2] rounded-md"
                                 >
                                     <x-iconoir-linkedin class="size-6" />
@@ -249,7 +243,6 @@ Displays the posts show view.
                                 <a
                                     href="https://x.com/intent/tweet?url={{ urlencode(route('posts.show', $post)) }}&text={{ urlencode($post->title) }}"
                                     target="_blank"
-                                    data-pirsch-event='Clicked on "X"'
                                     class="grid place-items-center text-white bg-gray-900 rounded-md size-12"
                                 >
                                     <x-iconoir-x class="size-6" />
@@ -292,7 +285,6 @@ Displays the posts show view.
                     wire:navigate
                     href="{{ route('tools.index') }}"
                     class="hidden lg:block"
-                    data-pirsch-event="Clicked on tools in sidebar"
                 >
                     <p class="p-4 mt-4 leading-tight rounded-xl text-balance bg-gray-100/75">
                         <strong class="font-medium">I have even more tools for developers.</strong> Services, apps, and all kinds of tools at a discount. <span class="font-medium underline">Check available tools →</span>
@@ -319,8 +311,6 @@ Displays the posts show view.
                                         href="{{ $latestComment->user->github_data['user']['html_url'] }}"
                                         target="_blank"
                                         class="font-medium"
-                                        data-pirsch-event="Clicked on latest comment's username"
-                                        data-pirsch-meta-name="{{ $latestComment->user->name }}"
                                     >
                                         {{ $latestComment->user->name }}
                                     </a>
@@ -338,7 +328,6 @@ Displays the posts show view.
                                     <a
                                         href="#comments"
                                         class="font-medium underline"
-                                        data-pirsch-event='Clicked "check comments"'
                                     >
                                         Check comments →
                                     </a>
@@ -357,7 +346,6 @@ Displays the posts show view.
                         <li>
                             <a
                                 href="{{ route('feeds.main') }}"
-                                data-pirsch-event="Clicked on Atom feed"
                                 class="group"
                             >
                                 <div class="flex gap-3 items-center px-4 py-3 text-white bg-orange-400 rounded-md">
@@ -371,7 +359,6 @@ Displays the posts show view.
                             <a
                                 href="https://www.linkedin.com/in/benjamincrozat/"
                                 target="_blank"
-                                data-pirsch-event="Clicked on LinkedIn"
                                 class="group"
                             >
                                 <div class="flex gap-3 items-center px-4 py-3 text-white bg-[#0B66C2] rounded-md">
@@ -385,7 +372,6 @@ Displays the posts show view.
                             <a
                                 href="https://github.com/benjamincrozat"
                                 target="_blank"
-                                data-pirsch-event="Clicked on GitHub"
                                 class="group"
                             >
                                 <div class="flex gap-3 items-center px-4 py-3 bg-white rounded-md ring-1 ring-black/10">
@@ -399,7 +385,6 @@ Displays the posts show view.
                             <a
                                 href="https://x.com/benjamincrozat"
                                 target="_blank"
-                                data-pirsch-event="Clicked on X"
                                 class="group"
                             >
                                 <div class="flex gap-3 items-center px-4 py-3 text-white bg-black rounded-md">

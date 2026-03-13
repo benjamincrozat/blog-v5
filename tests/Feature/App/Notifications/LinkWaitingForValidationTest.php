@@ -3,6 +3,7 @@
 use App\Models\Link;
 use App\Models\User;
 use Illuminate\Support\HtmlString;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Notifications\LinkWaitingForValidation;
 
 it('renders as an email', function () {
@@ -37,5 +38,5 @@ it('sends via the mail channel and is queueable', function () {
     $notification = new LinkWaitingForValidation($link);
 
     expect($notification->via($user))->toBe(['mail']);
-    expect($notification)->toBeInstanceOf(\Illuminate\Contracts\Queue\ShouldQueue::class);
+    expect($notification)->toBeInstanceOf(ShouldQueue::class);
 });

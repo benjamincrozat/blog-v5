@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\ShortUrls;
 
-use App\Jobs\TrackEvent;
 use App\Models\ShortUrl;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
@@ -17,18 +16,6 @@ class ShowShortUrlController extends Controller
 {
     public function __invoke(ShortUrl $shortUrl) : RedirectResponse
     {
-        if (request()->ip() && request()->userAgent()) {
-            TrackEvent::dispatchAfterResponse(
-                'Clicked on short URL',
-                ['url' => $shortUrl->url],
-                request()->fullUrl(),
-                request()->ip(),
-                request()->userAgent(),
-                request()->header('Accept-Language', ''),
-                request()->header('Referer', ''),
-            );
-        }
-
         return redirect()->away($shortUrl->url);
     }
 }

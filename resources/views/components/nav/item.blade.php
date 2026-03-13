@@ -13,8 +13,6 @@ Displays the components nav item component and accepts component props, Blade at
         'text-blue-600' => request()->fullUrlIs($attributes->get('href')),
     ])->merge([
         'wire:navigate' => ! $attributes->has('no-wire-navigate') && $attributes->has('href'),
-        'data-pirsch-event' => "Clicked navigation item",
-        'data-pirsch-meta-value' => strip_tags($slot),
     ]) }}
 >
     @if (! empty($activeIcon) && request()->fullUrlIs($attributes->get('href')))

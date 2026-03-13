@@ -3,6 +3,7 @@
 namespace App\MarkdownSync;
 
 use Throwable;
+use Carbon\CarbonImmutable;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Date;
 
@@ -318,7 +319,7 @@ class PostMarkdownParser
      * @param  array<string, mixed>  $frontMatter
      * @param  array<int, string>  $errors
      */
-    protected function optionalDate(string $key, array $frontMatter, array &$errors) : ?\Carbon\CarbonImmutable
+    protected function optionalDate(string $key, array $frontMatter, array &$errors) : ?CarbonImmutable
     {
         if (! array_key_exists($key, $frontMatter) || null === $frontMatter[$key]) {
             return null;

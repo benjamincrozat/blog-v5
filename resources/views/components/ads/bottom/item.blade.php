@@ -14,8 +14,6 @@ $domain = preg_replace('/https?:\/\//', '', config('app.url'));
                 'x-bind:href' => 'ad.url',
                 'x-bind:target' => "ad.url.includes('$domain') ? null : '_blank'",
                 'x-bind:data-ad-index' => 'index',
-                'x-on:click' => 'trackAdClick(ad)',
-                'x-intersect.once' => 'trackAdView(ad, index)',
             ])
     }}
 >

@@ -8,8 +8,6 @@ Displays the components link component and accepts component props, Blade attrib
     <a
         href="{{ $link->url }}"
         target="_blank"
-        data-pirsch-event="Clicked link image"
-        data-pirsch-meta-title="{{ $link->title }}"
     >
         @if ($link->image_url)
             <img
@@ -44,8 +42,6 @@ Displays the components link component and accepts component props, Blade attrib
             href="{{ $link->user->github_data['user']['html_url'] }}"
             target="_blank"
             class="flex items-center"
-            data-pirsch-event="Clicked link author"
-            data-pirsch-meta-name="{{ $link->user->name }}"
         >
             <span class="mr-2 text-xs opacity-50">
                 /
@@ -62,8 +58,6 @@ Displays the components link component and accepts component props, Blade attrib
             href="{{ $link->url }}"
             target="_blank"
             class="font-bold transition-colors text-xl/tight hover:text-blue-600"
-            data-pirsch-event="Clicked link title"
-            data-pirsch-meta-title="{{ $link->title }}"
         >
             {{ $link->title }}
         </a>

@@ -4,6 +4,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Filesystem\FilesystemAdapter;
 
 beforeEach(function () {
     if (! shouldRunCloudflareLiveTests()) {
@@ -14,7 +15,7 @@ beforeEach(function () {
 });
 
 it('uploads an image, returns a public URL, and deletes it using the Cloudflare Images adapter', function () {
-    /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
+    /** @var FilesystemAdapter $disk */
     $disk = Storage::disk('cloudflare-images');
 
     $id = Str::random(20);
@@ -26,7 +27,7 @@ it('uploads an image, returns a public URL, and deletes it using the Cloudflare 
 });
 
 it('reads an uploaded image both as a string and as a stream using the Cloudflare Images adapter', function () {
-    /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
+    /** @var FilesystemAdapter $disk */
     $disk = Storage::disk('cloudflare-images');
 
     $id = Str::random(20);

@@ -1,10 +1,15 @@
 <?php
 
 use League\Flysystem\Config;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
+use League\Flysystem\UnableToCopyFile;
+use League\Flysystem\UnableToMoveFile;
+use League\Flysystem\UnableToReadFile;
 use League\Flysystem\UnableToWriteFile;
 use League\Flysystem\UnableToDeleteFile;
 use App\Filesystem\CloudflareImagesAdapter;
+use Illuminate\Filesystem\FilesystemAdapter;
 use League\Flysystem\UnableToCreateDirectory;
 use League\Flysystem\UnableToDeleteDirectory;
 use League\Flysystem\UnableToRetrieveMetadata;
@@ -31,7 +36,7 @@ it('uploads content via write and writeStream', function () {
 
     $adapter->write('folder/image.jpg', 'file-contents', new Config);
 
-    Http::assertSent(function (Illuminate\Http\Client\Request $request) {
+    Http::assertSent(function (Request $request) {
         return 'POST' === $request->method()
             && str_contains($request->url(), '/images/v1');
     });
@@ -147,25 +152,25 @@ it('formats Cloudflare URLs with the configured variant', function () {
 });
 
 it('does not allow moving files', function () {
-    /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
+    /** @var FilesystemAdapter $disk */
     $disk = Storage::disk('cloudflare-images');
 
-    /** @var \App\Filesystem\CloudflareImagesAdapter $adapter */
+    /** @var CloudflareImagesAdapter $adapter */
     $adapter = $disk->getAdapter();
 
-    expect(fn () => $adapter->move('source', 'destination', new \League\Flysystem\Config))
-        ->toThrow(\League\Flysystem\UnableToMoveFile::class);
+    expect(fn () => $adapter->move('source', 'destination', new Config))
+        ->toThrow(UnableToMoveFile::class);
 });
 
 it('does not allow copying files', function () {
-    /** @var \Illuminate\Filesystem\FilesystemAdapter $disk */
+    /** @var FilesystemAdapter $disk */
     $disk = Storage::disk('cloudflare-images');
 
-    /** @var \App\Filesystem\CloudflareImagesAdapter $adapter */
+    /** @var CloudflareImagesAdapter $adapter */
     $adapter = $disk->getAdapter();
 
-    expect(fn () => $adapter->copy('source', 'destination', new \League\Flysystem\Config))
-        ->toThrow(\League\Flysystem\UnableToCopyFile::class);
+    expect(fn () => $adapter->copy('source', 'destination', new Config))
+        ->toThrow(UnableToCopyFile::class);
 });
 
 it('throws when reading content fails', function () {
@@ -176,7 +181,7 @@ it('throws when reading content fails', function () {
     ]);
 
     expect(fn () => $adapter->read('missing.jpg'))
-        ->toThrow(\League\Flysystem\UnableToReadFile::class);
+        ->toThrow(UnableToReadFile::class);
 });
 
 it('throws when streaming content fails', function () {
@@ -187,7 +192,7 @@ it('throws when streaming content fails', function () {
     ]);
 
     expect(fn () => $adapter->readStream('missing.jpg'))
-        ->toThrow(\League\Flysystem\UnableToReadFile::class);
+        ->toThrow(UnableToReadFile::class);
 });
 
 it('returns null mime type when head request fails', function () {
@@ -209,7 +214,7 @@ it('returns null last modified timestamp when head request fails', function () {
 it('throws when a temporary file cannot be created during write', function () {
     expect(fn () => (new FaultyTempFileAdapter('token', 'acct', 'hash', 'public'))
         ->write('foo.jpg', 'contents', new Config)
-    )->toThrow(\League\Flysystem\UnableToWriteFile::class);
+    )->toThrow(UnableToWriteFile::class);
 });
 
 function adapter() : CloudflareImagesAdapter

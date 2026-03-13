@@ -11,10 +11,7 @@ Displays the components ads sidebar sevalla component and accepts component prop
                     'slug' => 'sevalla',
                     'utm_medium' => 'sidebar',
                 ]),
-                'target' => '_blank',
-                'x-intersect.once' => $user?->isAdmin() ? null : "pirsch(`Ad shown`, {
-                    meta: { name: `Sevalla` }
-                })",
+                'target' => '_blank'
             ])
     }}
 >

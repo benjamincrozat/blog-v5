@@ -10,7 +10,6 @@ Displays the components help btn component and accepts component props, Blade at
 ]) }}>
     <button
         @click="open = !open"
-        data-pirsch-event="Clicked help button"
     >
         <x-heroicon-o-question-mark-circle class="size-[1em] translate-y-[.125rem] opacity-75" />
         <span class="sr-only">What is this?</span>

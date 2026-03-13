@@ -63,13 +63,7 @@ Displays the components status component and accepts component props, Blade attr
     >
         <button
             class="absolute top-2 right-2 opacity-75 p-1 bg-black/4 transition-colors hover:bg-black/7.5 rounded-md"
-            @click="() => {
-                hide()
-    
-                if (typeof pirsch === 'function') {
-                    pirsch('Dismissed the status message.')
-                }
-            }"
+            @click="hide()"
         >
             <x-heroicon-o-x-mark class="size-4" />
             <span class="sr-only">Close</span>

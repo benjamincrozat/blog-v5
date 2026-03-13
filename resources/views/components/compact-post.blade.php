@@ -30,8 +30,6 @@ Displays the components compact post component and accepts component props, Blad
                 wire:navigate
                 href="{{ route('posts.show', $post->slug) }}"
                 class="font-bold transition-colors hover:text-blue-600"
-                data-pirsch-event="Clicked post title"
-                data-pirsch-meta-title="{{ $post->title }}"
             >
                 {{ $post->title }}
             </a>

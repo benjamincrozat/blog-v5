@@ -25,8 +25,6 @@ Displays the components dropdown item component and accepts component props, Bla
             && $attributes->missing('target')
             && $attributes->missing('wire:navigate')
             && \App\Support\InternalNavigation::shouldUseWireNavigate((string) $attributes->get('href')),
-        'data-pirsch-event' => "Clicked dropdown item",
-        'data-pirsch-meta-value' => strip_tags($slot),
     ]) }}
 >
     @if (! empty($icon))

@@ -1,11 +1,10 @@
 <?php
 
 use App\Markdown\Lightdown;
-use League\CommonMark\Node\Node;
 use League\CommonMark\Node\Inline\Text;
 use League\CommonMark\Node\Block\Paragraph;
-use League\CommonMark\Extension\CommonMark\Node\Inline\Emphasis;
 use Tests\Feature\App\Markdown\TestableLightdown;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Emphasis;
 
 it('parses markdown, strips disallowed tags, and opens external links in new tabs', function () {
     config(['app.url' => 'https://benjamincrozat.com']);

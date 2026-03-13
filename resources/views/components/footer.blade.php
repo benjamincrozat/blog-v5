@@ -15,7 +15,7 @@ Displays the components footer component and accepts component props, Blade attr
         </nav>
 
         <p class="mt-8 text-center text-balance">
-            This platform is hosted on <a href="{{ route('merchants.show', 'digitalocean') }}" target="_blank">DigitalOcean</a>. Analytics provided by <a href="{{ route('merchants.show', 'pirsch-analytics') }}" target="_blank">Pirsch</a>.
+            This platform is hosted on <a href="{{ route('merchants.show', 'digitalocean') }}" target="_blank">DigitalOcean</a>.
         </p>
 
         <p class="mt-8 text-center text-gray-400">Please don't steal my content. © {{ date('Y') }} blah blah blah.</p>

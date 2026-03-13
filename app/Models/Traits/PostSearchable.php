@@ -2,10 +2,11 @@
 
 namespace App\Models\Traits;
 
+use App\Models\Post;
 use Laravel\Scout\Searchable;
 
 /**
- * @mixin \App\Models\Post
+ * @mixin Post
  */
 trait PostSearchable
 {

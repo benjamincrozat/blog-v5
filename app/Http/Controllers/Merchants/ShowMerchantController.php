@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Merchants;
 
-use App\Jobs\TrackEvent;
 use Illuminate\Support\Uri;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,23 +24,6 @@ class ShowMerchantController extends Controller
                 ->get($slug),
             404
         );
-
-        if (! empty($request->fullUrl()) &&
-            ($ip = $request->ip()) &&
-            ($userAgent = $request->userAgent())) {
-            TrackEvent::dispatchAfterResponse(
-                'Clicked on merchant',
-                [
-                    'slug' => $slug,
-                    'url' => $merchantLink,
-                ],
-                $request->fullUrl(),
-                $ip,
-                $userAgent,
-                $request->header('Accept-Language', ''),
-                $request->header('Referer', ''),
-            );
-        }
 
         return redirect()->away(
             Uri::of($merchantLink)

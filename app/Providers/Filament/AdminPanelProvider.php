@@ -8,7 +8,6 @@ use Filament\Pages\Dashboard;
 use Filament\Support\Colors\Color;
 use Filament\Widgets\AccountWidget;
 use App\Filament\Widgets\PostsStats;
-use App\Filament\Widgets\VisitorStats;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Forms\Components\DateTimePicker;
 use Illuminate\Session\Middleware\StartSession;
@@ -51,7 +50,6 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->widgets([
                 AccountWidget::class,
-                VisitorStats::class,
                 PostsStats::class,
             ])
             ->middleware([
