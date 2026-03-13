@@ -137,5 +137,7 @@ Displays the components app component and accepts component props, Blade attribu
         @livewireScriptConfig
 
         @vite('resources/js/app.js')
+
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="629ef822-187d-4a1f-bfe3-494a35f1e1b9"></script>
     </body>
 </html>
