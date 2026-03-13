@@ -10,7 +10,7 @@ Displays the categories show view.
         <x-breadcrumbs :items="$breadcrumbs" class="mb-6" />
 
         <x-typography.heading>
-            {{ 'Articles in the ' . $category->name . ' category' }}
+            {{ $category->name }}
         </x-typography.heading>
 
         <x-posts-grid :$posts class="mt-10" />
