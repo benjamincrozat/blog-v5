@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27K0GTJXCM6NM1PQKQGA"
-title: "Making sense of PHP's array_map() function"
+title: "PHP array_map() explained with examples"
 slug: "php-array-map"
 author: "benjamincrozat"
-description: "PHP's array_map() is an extremely useful function that will help you write better code. Let me demystify it for you."
+description: "Learn how to use `array_map()` in PHP, map one or more arrays, preserve keys, and zip arrays with a `null` callback."
 categories:
   - "php"
 published_at: 2023-11-04T00:00:00+01:00
-modified_at: null
+modified_at: 2026-03-13T15:40:00Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -16,130 +16,118 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/4kTmON58dztZanh.jpg"
 sponsored_at: null
 ---
-## About array_map()
+## Introduction
 
-The [`array_map()`](https://www.php.net/array_map) function in PHP is extremely useful to write leaner code when transforming arrays and avoid lengthier loops with temporary variables and an additional indentation level.
+**Use [`array_map()`](https://www.php.net/array_map) when you want to transform every item in an array and return a new array.**
 
-When I was inexperienced with PHP, I had a hard time understanding the `array_map()` function. Now, things have changed, so let me desmystify this super handy function for you!
+It is a clean alternative to building a second array manually in a `foreach` loop, and it becomes even more useful when you need to map multiple arrays at once.
 
 ## How to use array_map() in PHP
 
-The `array_map()` takes a callable as its first parameter, and the array we want to transform as its second parameter. It then returns the a fresh array that has freshly been transformed.
-
-Now, imagine we have an array of prices that we want to apply a discount to.
-
-Before `array_map()`, we would use a code that looks like this:
+`array_map()` takes a callback first, then one or more arrays:
 
 ```php
-function discount($price)
-{
-	return $price * (1 - 0.2);
-}
-
-$prices = [
-	10, 20, 30, 40, 50,
-];
-
-$discounted_prices = [];
-
-foreach ($prices as $price)
-{
-	$discounted_prices[] = discount($price);
-}
+array_map(?callable $callback, array $array, array ...$arrays): array
 ```
 
-This is good, but we can do better thanks to `array_map()`:
+The callback receives the current value from each array position and returns the transformed value.
+
+Here is a simple example:
 
 ```php
-function discount($price)
+function discount(float $price): float
 {
-	return $price * (1 - 0.2);
+    return $price * 0.8;
 }
 
-$prices = [
-	10, 20, 30, 40, 50,
-];
+$prices = [10, 20, 30, 40, 50];
 
-$discounted_prices = array_map(discount(...), $prices);
+$discountedPrices = array_map('discount', $prices);
 ```
 
-`$discounted_prices` now contains:
+`$discountedPrices` contains:
 
 ```php
 [
-	8,
-	16,
-	24,
-	32,
-	40,
-];
+    8.0,
+    16.0,
+    24.0,
+    32.0,
+    40.0,
+]
 ```
 
-Also, did you know that `array_map()` can also accept a closure (or anonymous function)?
+Closures and arrow functions work just as well:
 
 ```php
-$prices = [
-	10, 20, 30, 40, 50,
-];
-
-$discounted_prices = array_map(function ($price) {
-	return $price * (1 - 0.2);
-}, $prices);
-```
-
-But wait, did you really think this is it? Why not use the arrow syntax on our closure?
-
-```php
-$prices = [
-	10, 20, 30, 40, 50,
-];
-
-$discounted_prices = array_map(
-	fn ($price) => $price * (1 - 0.2),
-	$prices
+$discountedPrices = array_map(
+    fn (float $price): float => $price * 0.8,
+    $prices,
 );
 ```
 
-There you have it! Using `array_map()` can drastically help improving your code. Now, you can take a look at other similar functions such as [`array_filter()`](https://www.php.net/array_filter) or [`array_reduce()`](https://www.php.net/array_reduce).
+## Mapping multiple arrays at once
 
-## One more thing about array_map()
-
-Ha! You thought that was really it, right? No! `array_map()` is such a useful function to use in PHP!
-
-So, what you probably didn't know is that it can accept an infinite amount of arrays to loop through. Here's an example:
+`array_map()` can map more than one array in parallel:
 
 ```php
-$products = [
-	'Apple Watch',
-	'iMac',
-	'iPhone',
-	'Mac Studio',
-	'MacBook Pro',
-];
+$products = ['Apple Watch', 'iMac', 'iPhone'];
+$prices = [10, 20, 30];
 
-$prices = [
-	10, 20, 30, 40, 50,
-];
-
-$discounted_products = array_map(function ($product, $price) {
-	return [
-		'product' => $product,
-		'discounted_price' => $price * (1 - 0.2)
-	];
-}, $products, $prices);
+$discountedProducts = array_map(
+    fn (string $product, int $price) => [
+        'product' => $product,
+        'discounted_price' => $price * 0.8,
+    ],
+    $products,
+    $prices,
+);
 ```
 
-In this block of code, we build a unique multidimensional array out of two dinstinct ones and apply the discount.
+This builds a new array from the matching positions of `$products` and `$prices`.
+
+## array_map() and array keys
+
+One subtle rule from the PHP manual is worth remembering:
+
+- If you pass exactly one array, the original keys are preserved.
+- If you pass more than one array, the result gets sequential integer keys.
+
+That is why this keeps associative keys:
 
 ```php
-[
-	[
-		'product' => 'Apple Watch',
-		'discounted_price' => 8,
-	],
-	…
-]
+$users = [
+    'first' => 'Ben',
+    'second' => 'Taylor',
+];
+
+$upper = array_map('strtoupper', $users);
+// ['first' => 'BEN', 'second' => 'TAYLOR']
 ```
+
+But the earlier multi-array example returns `0`, `1`, `2`, and so on.
+
+## Passing null as the callback
+
+`array_map()` also accepts `null` as the callback. In that case, PHP zips the arrays together instead of transforming them:
+
+```php
+$letters = ['a', 'b', 'c'];
+$numbers = [1, 2, 3];
+
+$pairs = array_map(null, $letters, $numbers);
+
+print_r($pairs);
+// [['a', 1], ['b', 2], ['c', 3]]
+```
+
+That is handy when you need to combine arrays position by position.
+
+## When to use array_map() vs foreach
+
+Use `array_map()` when the job is “turn every item into another item”.
+
+Use `foreach` when the loop has side effects, needs early exits, or becomes too complex for a tidy callback.
 
 If transforming data is the part of PHP you keep coming back to, these are the next reads I would open next:
 
