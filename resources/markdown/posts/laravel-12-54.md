@@ -19,9 +19,7 @@ sponsored_at: null
 ---
 Laravel shipped [`v12.54.0`](https://github.com/laravel/framework/releases/tag/v12.54.0) on March 10, 2026, then followed it with [`v12.54.1`](https://github.com/laravel/framework/releases/tag/v12.54.1) a few hours later. The second tag is tiny and only makes imports consistent, so the real story is what landed in `12.54.0`.
 
-The highlights are practical ones: PostgreSQL `tsvector` columns, better test assertions for `BinaryFileResponse`, a new `Model::withoutRelation()` helper, and several fixes around queues, URL validation, and test helpers.
-
-I also spun up a disposable Laravel app locally and confirmed that `laravel/framework v12.54.1` exposes `Blueprint::tsvector()`, `Model::withoutRelation()`, and the improved binary download assertions. That does not replace a full production upgrade test, but it is enough to say these APIs are really there and not just hidden in a changelog line.
+The highlights are practical ones: PostgreSQL `tsvector` columns, better test assertions for `BinaryFileResponse`, a new `Model::withoutRelation()` helper, and several fixes around queues, URL validation, and test helpers. These APIs are already live in `laravel/framework v12.54.1`, so this is more than a release-note preview.
 
 ## The two additions I think most teams will feel first
 
@@ -43,7 +41,7 @@ That is not a flashy feature, but it is a good Laravel feature. It makes a real 
 
 Laravel also added [assertion support for `BinaryFileResponse`](https://github.com/laravel/framework/pull/59018). If you test file downloads, that is the kind of improvement that saves a little confusion every time you touch those tests.
 
-In a throwaway `v12.54.1` app, I verified this shape works on an actual download response:
+The intended shape is straightforward:
 
 ```php
 $response = $this->get('/export');

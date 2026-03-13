@@ -55,6 +55,7 @@ Pair with `seo-content` for Search intent, Discover/News judgment, titles, snipp
 - Prefer practical examples and code when they help, but never leave a section as code-only.
 - Add context before snippets and explain what they do, why they matter, and what result to expect.
 - Use current primary sources for version-sensitive claims. Link inline at the claim, and prefer relevant internal links before equivalent external links.
+- Keep the article body reader-facing. Do not mention your drafting workflow, prompts, temp projects, verification steps, or that you followed internal instructions or skills inside the post copy. If first-hand use materially matters, report the result in plain reader terms rather than narrating your behind-the-scenes process.
 - Every created or revised non-commercial post must include a short list of interesting posts to read next. If the post already has one, refresh it instead of duplicating it.
 - Commercial posts (`is_commercial: true`) must not include a related-posts, read-next, or follow-up reading block. Keep the ending focused on the conversion path already present in the article.
 - On non-commercial posts, the sentence before that list must be custom to the article. Do not reuse stock lead-ins, canned curiosity hooks, or repeatable templates across posts. Tie it to the page's specific topic, promise, friction point, or next step.

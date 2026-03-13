@@ -3,7 +3,7 @@ id: "01KKK2YPX50X3HW6HY20ERM4EW"
 title: "Laravel MCP feels polished, but most apps still do not need it"
 slug: "laravel-mcp-review"
 author: "benjamincrozat"
-description: "I installed Laravel MCP in a disposable Laravel 12.54.1 app and tried the full basic workflow. My take: it is polished, but it only makes sense when external AI clients need to interact with your app."
+description: "Laravel MCP already feels polished, but it still makes sense only when external AI clients need to interact with your app."
 categories:
   - "laravel"
   - "news"
@@ -21,7 +21,7 @@ Laravel's official [MCP documentation](https://laravel.com/docs/12.x/mcp), [Lara
 
 I think that is the right framing.
 
-To make sure I was not just repeating the docs, I installed `laravel/mcp` into a disposable Laravel `12.54.1` app, published the AI routes, generated a server and a tool, registered the route, and launched the built-in MCP Inspector. The experience was smooth.
+The core workflow already feels smooth: install the package, publish the AI routes, generate a server and a tool, register the route, and open the built-in MCP Inspector.
 
 My opinion after doing that: Laravel MCP already feels well designed. But unless you specifically want external AI clients to call into your application, you probably do not need it yet.
 
@@ -42,8 +42,6 @@ If your goal is "I want Claude Code or another coding agent to understand my Lar
 Laravel MCP becomes the right tool when your app should expose tools, resources, or prompts to an external AI client through the Model Context Protocol.
 
 ## What I tested
-
-I used a throwaway Laravel `12.54.1` app and went through the basic workflow described in the docs.
 
 Installation was exactly what the docs promise:
 
