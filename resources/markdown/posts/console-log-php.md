@@ -1,14 +1,14 @@
 ---
 id: "01KKEW278247QVW51TXXYX9XAE"
-title: "console.log() in PHP"
+title: "How to log to the console in PHP"
 slug: "console-log-php"
 author: "benjamincrozat"
-description: "Explore the world of PHP debugging with var_dump(), and Laravel's friendlier alternatives, dump() and dd(). Much charm, such useful!"
+description: "Learn how to log to the console in PHP with `var_dump()`, `dump()`, `dd()`, and a browser-console option if you really need one."
 categories:
   - "php"
 published_at: 2023-06-24T00:00:00+02:00
-modified_at: 2025-08-10T07:05:00+02:00
-serp_title: "console.log() in PHP (2025)"
+modified_at: 2026-03-13T12:25:00Z
+serp_title: null
 serp_description: null
 canonical_url: ""
 is_commercial: false
@@ -16,13 +16,13 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/UZJJt4EQvodo7Eq.jpg"
 sponsored_at: null
 ---
-## How to log into the console in PHP
+## How to log to the console in PHP
 
-**PHP is a server-side scripting language and cannot log into the console just like in JavaScript.** PHP code is interpreted and executed by the server, not by your visitors' web browser.
+**PHP cannot log to the browser console in the same way JavaScript does because PHP runs on the server.**
 
-However, like with `console.log()` in JavaScript, **PHP can print values using the [`var_dump()`](https://www.php.net/var_dump) function.**
+The closest built-in equivalent to `console.log()` in PHP is [`var_dump()`](https://www.php.net/var_dump). If you use Laravel, `dump()` and `dd()` are usually easier to read.
 
-Let's explore in more details, shall we?
+Here is how to log values in PHP, plus one browser-console option if you really want the output there.
 
 ## var_dump() is the console.log() of PHP
 

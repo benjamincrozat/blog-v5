@@ -1,15 +1,15 @@
 ---
 id: "01KKEW2780NK2M3H3CFCG87HN6"
-title: "6 ways to check your version of PHP"
+title: "How to check your PHP version"
 slug: "check-php-version"
 author: "benjamincrozat"
-description: "Discover how to check your version of PHP using phpinfo(), your terminal, Laravel's welcome page, or a Laravel Artisan command."
+description: "Check your PHP version with `php -v`, `phpinfo()`, `phpversion()`, or Laravel's `php artisan about` command."
 categories:
   - "laravel"
   - "php"
 published_at: 2023-09-02T00:00:00+02:00
-modified_at: 2026-03-12T18:37:53Z
-serp_title: "6 ways to check your version of PHP in 2025"
+modified_at: 2026-03-13T12:25:00Z
+serp_title: null
 serp_description: null
 canonical_url: ""
 is_commercial: false
@@ -19,9 +19,9 @@ sponsored_at: null
 ---
 ## Introduction
 
-To quickly check your [PHP](https://www.php.net) version, open your terminal and run `php -v`. The first line shows your current PHP version (e.g., `PHP 8.3.1`).
+**To check your [PHP](https://www.php.net) version, run `php -v` in your terminal.** The first line shows your current version immediately.
 
-Here's a detailed look at 6 easy methods:
+If you cannot use the terminal, `phpinfo()`, `phpversion()`, and Laravel's `php artisan about` command are the next easiest options.
 
 ## Run `php -v` in your terminal
 

@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27KDH2PAGXTRASWW3D5N"
-title: "PHP's double question mark, or the null coalescing operator"
+title: "PHP double question mark (??) explained"
 slug: "php-double-question-mark-null-coalescing-operator"
 author: "benjamincrozat"
-description: "Learn the PHP null coalescing operator (PHP ??) and null coalescing assignment (PHP ??=) with examples, plus notes on behavior in PHP 7.0 and PHP 7.4."
+description: "Learn what the PHP double question mark operator (`??`) does, how it differs from `?:`, and when to use `??=`."
 categories:
   - "php"
 published_at: 2023-09-03T00:00:00+02:00
-modified_at: 2025-09-28T08:52:00+02:00
+modified_at: 2026-03-13T12:25:00Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -18,7 +18,9 @@ sponsored_at: null
 ---
 ## Introduction
 
-PHP gives us two helpers for safe defaults: the null coalescing operator (??) and the null coalescing assignment operator (??=). ?? arrived in PHP 7.0, and ??= arrived in PHP 7.4. I use ?? every day to pick a clear fallback when a value might be missing.
+**The PHP double question mark operator, `??`, is the null coalescing operator.** It lets you use a fallback value when something is unset or `null`.
+
+PHP added `??` in PHP 7.0 and `??=` in PHP 7.4. Here is what they do, how they differ from `?:`, and when each one is the better choice.
 
 ## The null coalescing operator (??), or the double question mark
 
