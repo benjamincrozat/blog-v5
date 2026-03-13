@@ -8,6 +8,9 @@ This repo is my personal blog about web developent.
 - **Format**: `php vendor/bin/pint --parallel`
 - **Static analysis**: `php vendor/bin/phpstan analyse`
 - **Test**: `php vendor/bin/pest --parallel` (you can use `--filter` to run specific tests)
+- For routine Markdown-only post edits in `resources/markdown/posts`, do not default to browser checks, `pint`, `phpstan`, or `pest`.
+  - Run `php artisan blog:sync` after every Markdown edit instead.
+  - Only do browser or app-level verification when the post has tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, a publishing-state change that needs confirmation, first-hand screenshots that materially help the reader, or the user explicitly asks for it.
 
 ## Development workflow
 
@@ -43,9 +46,14 @@ This repo is my personal blog about web developent.
 - **Static analysis**: `php vendor/bin/phpstan analyse`
 - **Test**: `php vendor/bin/pest --parallel` (you can use `--filter` to run specific tests)
   - **Check coverage**: `php vendor/bin/pest --coverage --parallel` (you can also use `--filter` if necessary too)
+- For routine Markdown-only post edits in `resources/markdown/posts`, verification is lighter by default:
+  - required: `php artisan blog:sync`
+  - optional only when warranted: browser checks, `pint`, `phpstan`, `pest`, or coverage
+  - warranted means tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, a publishing-state change that needs confirmation, first-hand screenshots that materially help the reader, or an explicit user request
 
 ## Local skills
 
+- For Markdown-managed post work, follow the lighter verification rule above so `file-first-posts`, `post-writing`, and `seo-content` stay aligned with this file.
 - `file-first-posts`: Use when the task is about exporting, editing, publishing, or syncing Markdown-managed posts. File: `.agents/skills/file-first-posts/SKILL.md`
 - `framework-news-analysis`: Use when the task is about choosing and framing the strongest weekly news angle for a framework, library, tool, platform, or developer product. File: `.agents/skills/framework-news-analysis/SKILL.md`
 - `post-writing`: Use when the task is about drafting or revising publication-ready Markdown posts for the blog. File: `.agents/skills/post-writing/SKILL.md`
