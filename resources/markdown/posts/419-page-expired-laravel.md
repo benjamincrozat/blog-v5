@@ -1,15 +1,15 @@
 ---
 id: "01KKEW275Z8QCA298G8Z5CAEC5"
-title: "The \"419 Page Expired\" error in Laravel: 5 quick fixes"
+title: "How to fix Laravel’s 419 Page Expired error"
 slug: "419-page-expired-laravel"
 author: "benjamincrozat"
-description: "Stop the “419 Page Expired” error in Laravel. Learn why the CSRF token fails and the exact code tweaks to fix this."
+description: "Fix Laravel’s 419 Page Expired error fast. Check CSRF tokens, session cookies, AJAX headers, SameSite settings, and Laravel 11 exclusions."
 categories:
   - "laravel"
   - "security"
 published_at: 2023-06-26T00:00:00+02:00
-modified_at: 2025-09-16T03:26:00+02:00
-serp_title: "The \"419 Page Expired\" error in Laravel: 5 quick fixes (2025)"
+modified_at: 2026-03-13T11:30:00Z
+serp_title: null
 serp_description: null
 canonical_url: null
 is_commercial: false
@@ -19,7 +19,7 @@ sponsored_at: null
 ---
 ## Introduction
 
-Ever hit the frustrating “419 Page Expired” error in your Laravel app? It commonly disrupts form submissions, logins, and other POST requests tied to CSRF protection and session state. I regularly diagnose 419s for teams, and the checklist below resolves most cases quickly.
+If you see Laravel’s “419 Page Expired” error, the framework is usually rejecting a request because the CSRF token or session cookie no longer matches. It commonly breaks form submissions, logins, and AJAX POST requests, and the checklist below fixes most cases quickly.
 
 Note: **419 Page Expired is a non‑standard status code** that Laravel uses for CSRF token mismatches or expired/rotated sessions; it is not an IANA HTTP status. See the [list of HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) for context.
 

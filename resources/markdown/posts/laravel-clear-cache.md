@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27BWD8HYVKQ1X4B0M5AK"
-title: "9 ways to clear Laravel's cache"
+title: "How to clear Laravel cache: all the useful commands"
 slug: "laravel-clear-cache"
 author: "benjamincrozat"
-description: "When in doubt, clear the cache. In this article, you'll learn why and how to do it like a pro."
+description: "Use the right Laravel cache-clearing command for config, routes, views, events, schedules, or everything at once."
 categories:
   - "laravel"
 published_at: 2022-09-10T00:00:00+02:00
-modified_at: 2025-07-15T15:54:00+02:00
-serp_title: "9 ways to clear Laravel's cache (2025)"
+modified_at: 2026-03-13T11:30:00Z
+serp_title: null
 serp_description: null
 canonical_url: ""
 is_commercial: false
@@ -16,9 +16,9 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/rOFuL6jd7Tu4wFz.jpg"
 sponsored_at: null
 ---
-# TL;DR
+## TL;DR
 
-Run `php artisan optimize:clear` during development, but prefer targeted commands in production.
+Need to clear Laravel cache? Start with `php artisan optimize:clear` during development, but prefer targeted commands in production so you only rebuild what changed.
 
 ![The terminal after running "php artisan optimize" to clear Laravel's cache.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-clear-cache-718bf1cf4dfab9897025.jpg/public)
 
