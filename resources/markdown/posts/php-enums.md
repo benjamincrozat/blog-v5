@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27KKSV7D18ZBY0ZH2WJ0"
-title: "Enums in PHP: a guide to safer coding"
+title: "PHP enums explained with examples"
 slug: "php-enums"
 author: "benjamincrozat"
-description: "Let's take one step toward safer code by using PHP's Enumerations, or Enums."
+description: "Learn what PHP enums are, how to declare them, and when to use backed enums and enum methods."
 categories:
   - "php"
 published_at: 2023-07-05T00:00:00+02:00
-modified_at: 2025-07-06T20:26:00+02:00
-serp_title: "Enums in PHP: a guide to safer coding (2025)"
+modified_at: 2026-03-13T12:20:00Z
+serp_title: null
 serp_description: null
 canonical_url: ""
 is_commercial: false
@@ -18,11 +18,11 @@ sponsored_at: null
 ---
 ## Introduction
 
-As a developer, you must have come across situations where a variable could only take one out of a small set of possible values. For instance, a variable holding a user's status might only have the possibilities "Active", "Inactive", or "Suspended". You could represent these states using separate boolean variables or assign them specific string or integer values, but that's where things start getting messy and error-prone.
+**PHP enums let you model a fixed set of possible values as a real type.**
 
-Wouldn't it be nice to have a way of declaring this restricted set of possible values in a clear, self-documenting manner?  That's exactly where Enumerations, or Enums, as they are often called, come to the rescue.
+They are useful when a value should only ever be one of a small number of allowed options, such as a user status, an order state, or an app environment.
 
-Enumerations have been part of many programming languages for years and I was so envious! They allow you to define a type that is restricted to a specific set of values, enhancing both clarity and safety. For PHP developers, the great news is that as of PHP 8.1, Enums are now part of the PHP core. Yes, you heard it right! PHP now provides built-in support for Enums. 🎉
+PHP added enums in PHP 8.1, and they make this kind of code clearer, safer, and easier to maintain. Here is how they work, with practical examples.
 
 ## A brief history of Enums in PHP
 

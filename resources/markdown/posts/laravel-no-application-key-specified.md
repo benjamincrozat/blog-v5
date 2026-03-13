@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27CZY9FC491NKDCWRR72"
-title: "Fix \"No application encryption key has been specified.\" in Laravel"
+title: "How to fix \"No application encryption key has been specified.\" in Laravel"
 slug: "laravel-no-application-key-specified"
 author: "benjamincrozat"
-description: "Laravel's application encryption key is mandatory for it to properly work. Let me show you why this error occurs and how to fix it."
+description: "Fix Laravel's \"No application encryption key has been specified.\" error with `php artisan key:generate` and a few quick checks."
 categories:
   - "laravel"
   - "security"
 published_at: 2023-06-25T00:00:00+02:00
-modified_at: 2023-08-12T00:00:00+02:00
+modified_at: 2026-03-13T12:20:00Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -19,9 +19,9 @@ sponsored_at: null
 ---
 ## How to fix the "No application encryption key has been specified." error message in Laravel
 
-*"No application encryption key has been specified."* is quite common in Laravel, and it means exactly what it says: *there's no encryption key specified for your application.*
+**To fix *\"No application encryption key has been specified.\"* in Laravel, run `php artisan key:generate`.**
 
-**To fix _"No application encryption key has been specified."_, run the command `php artisan key:generate`.**
+This error means your app is missing `APP_KEY`, so Laravel cannot encrypt sessions, cookies, and other sensitive values correctly.
 
 ## Understanding the "No application encryption key has been specified." error message in Laravel
 
