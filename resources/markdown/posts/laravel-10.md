@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27AZMFC1T80AF1TRRGXA"
-title: "Laravel 10 is out! Here are every new features and changes."
+title: "Laravel 10: features, support status, and upgrade advice"
 slug: "laravel-10"
 author: "benjamincrozat"
-description: "Laravel 10 was released on February 14, 2023. I break down its new features, upgrade steps, and support timelines."
+description: "Laravel 10 shipped on February 14, 2023. Here is what changed, when support ended, and whether it still makes sense as a late upgrade step."
 categories:
   - "laravel"
-published_at: 2022-09-15T00:00:00+02:00
-modified_at: 2025-10-04T21:33:00+02:00
+published_at: 2022-09-14T22:00:00Z
+modified_at: 2026-03-13T15:22:32Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -18,304 +18,117 @@ sponsored_at: null
 ---
 ## Introduction
 
-Laravel 9 is retiring. The framework has a new 10th version, and I walk you through what’s new.
+Laravel 10 was released on February 14, 2023. If you are reading this on March 13, 2026, the most important thing to know is that Laravel 10 is no longer supported. Bug fixes ended on August 6, 2024, and security fixes ended on February 4, 2025, according to the official [release notes](https://laravel.com/docs/10.x/releases#support-policy).
 
-## Laravel 10 release date
+That does not make this release irrelevant. A lot of teams still touch Laravel 10 while upgrading older applications, checking package compatibility, or trying to understand where newer conventions first appeared. This guide focuses on what Laravel 10 changed, what still matters during a late upgrade, and when you should skip straight to a newer version.
 
-**Laravel 10 was released on February 14, 2023.**
+## Support status: should you still target Laravel 10?
 
-But take it slow. It doesn’t mean you have to update all your projects immediately.
+Laravel 10 is not an LTS release. Laravel has not shipped an LTS version since Laravel 6, and the framework now follows shorter major-release support windows. Here is the timeline that matters today:
 
-Laravel 9 will receive bug fixes until August 8, 2023 and security fixes until February 6, 2024.
+| Version | Release date | Bug fixes until | Security fixes until | Status on March 13, 2026 |
+| ------- | ------------ | --------------- | -------------------- | ------------------------ |
+| 10 | February 14, 2023 | August 6, 2024 | February 4, 2025 | End of life |
+| 11 | March 12, 2024 | September 3, 2025 | March 12, 2026 | End of life |
+| 12 | February 24, 2025 | August 13, 2026 | February 24, 2027 | Supported |
 
-| Version | PHP | Release | Bug fixes until | Security fixes until |
-| ------- | --- | ------------ | --------------- | -------------------- |
-| 9 | 8.0–8.2 | February 8, 2022 | August 8, 2023 | February 6, 2024 |
-| 10 | Minimum PHP: 8.1+ | February 14, 2023 | August 6, 2024 | February 4, 2025 |
+For most teams, that means:
 
-## Is Laravel 10 LTS (long term support)?
+- Do not start a new project on Laravel 10.
+- Do not stop on Laravel 10 if you are planning a real long-term upgrade.
+- Do use Laravel 10 as a stepping stone if an older application or a package constraint makes a version-by-version upgrade safer.
 
-**No, Laravel 10 isn’t LTS, but it provides two years of support.**
+If you need the full history, my [Laravel versions guide](/laravel-versions) gives you the broader timeline.
 
-The framework last had LTS in version 6 and you can [learn all about LTS versions here](/laravel-versions).
+## How to install Laravel 10 today
 
-Like I said, each major version offers two years of bug and security fixes, which is plenty of time to prepare your application to [upgrade to the next major version](https://benjamincrozat.com/laravel-10-upgrade-guide).
-
-## How to install Laravel 10?
-
-Using the official [Laravel installer](https://laravel.com/docs/10.x/installation#your-first-laravel-project):
-
-```bash
-laravel new hello-world
-```
-
-Or, if you prefer to use Composer explicitly:
+The old `laravel new hello-world` advice is no longer the right move if you specifically want Laravel 10. The Laravel installer creates the current major version, so you should pin 10.x explicitly with Composer:
 
 ```bash
-composer create-project --prefer-dist laravel/laravel hello-world
+composer create-project laravel/laravel:^10.0 my-app
 ```
 
-Note: Laravel 10 requires PHP 8.1+.
+I verified that command still creates a fresh Laravel 10 project today. The current 10.x skeleton I pulled in required PHP 8.1+, Composer 2.2+, PHPUnit 10, and `nunomaduro/collision` 7, which lines up with the official [upgrade guide](https://laravel.com/docs/10.x/upgrade#updating-dependencies).
 
-## How to upgrade to Laravel v10?
+One small detail that still catches people: a fresh Laravel 10 app does not include a `lang/` directory by default. If you publish language files or ship custom translations, the official [upgrade guide](https://laravel.com/docs/10.x/upgrade#the-language-directory) tells you to generate that directory yourself.
 
-Upgrading to Laravel 10 requires more than just following upgrade instructions. Before proceeding, think this through.
+## What Laravel 10 changed that still matters
 
-Check out [my guide to upgrading to Laravel 10](https://benjamincrozat.com/laravel-10-upgrade-guide) if you need more clarification about the process and considerations you should have before giving the green light. I also talk about a practical way to automate parts of the process, which is helpful for agencies and larger teams.
+Laravel 10 was not a dramatic rewrite, but it introduced a few quality-of-life changes that still show up in modern codebases.
 
-## What’s new in Laravel 10: features and changes
+### Laravel Pennant made feature flags first-party
 
-### [Feature flags with Laravel Pennant](https://laravel.com/docs/10.x/pennant)
-
-<img src="https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-10-4c54d1dd099e874c1eb2.jpg/public" alt="Laravel Pennant feature flags diagram" loading="lazy" />
-
-**[Laravel Pennant](https://laravel.com/docs/10.x/pennant) is a first-party package that adds feature flags to any Laravel 10 project.**
-
-```bash
-composer require laravel/pennant
-```
-
-Feature flags are a way to enable or disable features at runtime without changing your code.
-
-For instance, you can deploy a feature only for a select set of users in your production environment. This is great for A/B testing.
+The [Laravel 10 release notes](https://laravel.com/docs/10.x/releases#laravel-pennant) introduced [Laravel Pennant](https://laravel.com/docs/10.x/pennant), a first-party package for feature flags. If you have ever needed to ship code behind a toggle, limit rollouts to a subset of users, or run a quick experiment, this was a meaningful addition.
 
 ```php
-use Laravel\Pennant\Feature;
 use Illuminate\Support\Lottery;
- 
+use Laravel\Pennant\Feature;
+
 Feature::define('new-onboarding-flow', function () {
     return Lottery::odds(1, 10);
 });
 ```
 
-Check if the user has access to the feature:
+Pennant is one of those features that made Laravel feel more complete for product teams. You no longer had to reach for a third-party flag package for every small rollout.
 
-```php
-if (Feature::active('new-onboarding-flow')) {
-    // ...
-}
-```
+### The Process facade made shell work much nicer
 
-There’s even a Blade directive:
-
-```blade
-@feature('new-onboarding-flow')
-    ...
-@endfeature
-```
-
-Learn more about Laravel Pennant on the [official documentation](https://laravel.com/docs/10.x/pennant). Laravel News also has a [step-by-step tutorial](https://laravel-news.com/laravel-pennant).
-
-### [New Process facade](https://laravel.com/docs/10.x/processes)
-
-Laravel 10 introduced a simple yet comprehensive API for the Symfony Process component, enabling you to run external processes within your Laravel application easily.
-
-This is how you use it:
+Laravel 10 also added the [Process facade](https://laravel.com/docs/10.x/processes), which wraps Symfony Process with a more Laravel-style API. If your app talks to CLIs, image tools, workers, or imports, this is one of the most practical additions from the release.
 
 ```php
 use Illuminate\Support\Facades\Process;
- 
+
 $result = Process::run('ls -la');
- 
+
 return $result->output();
 ```
 
-You can even run processes concurrently:
+It also supports pools and concurrent execution, which made it easier to replace custom shell wrappers with something the framework already understands.
 
-```php
-use Illuminate\Process\Pool;
-use Illuminate\Support\Facades\Process;
- 
-[$first, $second, $third] = Process::concurrently(function (Pool $pool) {
-    $pool->command('cat first.txt');
-    $pool->command('cat second.txt');
-    $pool->command('cat third.txt');
-});
- 
-return $first->output();
-```
+### Native types became the default in the application skeleton
 
-There’s more to learn about processes in the [official documentation](https://laravel.com/docs/10.x/processes). See the pull request on GitHub: [Process DX Layer PR (#45314)](https://github.com/laravel/framework/pull/45314).
+Laravel 10 moved the official skeleton further toward native PHP typing. That sounds small, but it marked a real shift in the framework's defaults. New apps and generated code became clearer, static analysis got better, and the ecosystem kept moving away from docblock-heavy boilerplate.
 
-### [Test profiling (--profile)](https://laravel.com/docs/10.x/testing#profiling-tests)
+You can see the same direction in the official Laravel packages and newer application stubs. If a codebase starts to feel "more modern Laravel" around this era, this change is part of the reason.
 
-The Artisan command `php artisan test` can receive a `--profile` option that shows the 10 slowest tests, so you can spot bottlenecks quickly. Parallel testing pairs well with this (`php artisan test --parallel`).
+### Test tooling got sharper
 
-If your project upgrades to PHPUnit 10, make sure you are on `nunomaduro/collision` ^7.0.
+Laravel 10 kept tightening the feedback loop around testing. The docs added [test profiling](https://laravel.com/docs/10.x/testing#profiling-tests), so `php artisan test --profile` shows your slowest tests first. That is a small feature, but it is exactly the kind of thing that helps on a real project with a growing suite.
 
-<img src="https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-10-c49c7d6792163dbde2ae.png/public" alt="Screenshot of Laravel test profiling --profile output" loading="lazy" />
+The 10.x skeleton also standardized around newer PHPUnit and Collision versions, which matters when you are reviving an older app that skipped a few upgrades.
 
-### [Validation rules are invokable by default](https://laravel.com/docs/10.x/validation#custom-validation-rules)
+### Common schema changes stopped depending on Doctrine DBAL
 
-In Laravel 9, invokable validation rules could be generated using the `--invokable` flag with `php artisan make:rule`. Starting with Laravel 10, new rules implement `Illuminate\Contracts\Validation\ValidationRule` and define a `validate` method.
+Another understated improvement: Laravel 10 expanded native schema operations so many migration changes no longer need `doctrine/dbal`. That made upgrades and deploys a little less fragile, especially on projects that only pulled DBAL in for occasional column changes.
 
-```bash
-php artisan make:rule Uppercase
-```
+If your team still has `doctrine/dbal` in `composer.json` for old reasons, Laravel 10 is often where you can start questioning whether you still need it.
 
-```php
-namespace App\Rules;
+## What usually breaks during a late Laravel 10 upgrade
 
-use Closure;
-use Illuminate\Contracts\Validation\ValidationRule;
+The official [Laravel 10 upgrade guide](https://laravel.com/docs/10.x/upgrade) calls the upgrade medium-impact, but a few items still deserve a manual check:
 
-class Uppercase implements ValidationRule
-{
-    /**
-     * Run the validation rule.
-     */
-    public function validate(string $attribute, mixed $value, Closure $fail): void
-    {
-        if (strtoupper((string) $value) !== (string) $value) {
-            $fail('The :attribute must be uppercase.');
-        }
-    }
-}
-```
+- PHP 8.1 is the minimum supported version, so any PHP 8.0 environment must move first.
+- Composer 2.2 or newer is required.
+- `monolog/monolog` moved to version 3, so custom logging integrations can need cleanup.
+- `dispatchNow()` was removed. Replace it with `dispatchSync()`.
+- Predis 1 is no longer supported, so old Redis setups need `predis/predis:^2.0` or PhpRedis.
+- Custom validation rules now target `Illuminate\Contracts\Validation\ValidationRule`, which affects projects with older rule classes.
+- If your application customizes translation files, publish the `lang/` directory before assuming it exists.
 
-This boilerplate is small and easy to understand. See the `ValidationRule` interface in the [API docs](https://api.laravel.com/docs/10.x/Illuminate/Contracts/Validation/ValidationRule.html).
+If you are actively upgrading a Laravel 9 app, my [Laravel 10 upgrade guide](/laravel-10-upgrade-guide) walks through the step-by-step process in more detail.
 
-### Native type declarations in the skeleton
+## Should you stop at Laravel 10?
 
-Starting with Laravel 10, the skeleton uses native types instead of docblocks.
+Usually, no.
 
-For instance, in the Laravel skeleton, the `schedule()` method in app/Console/Kernel.php looks like this:
+If your application is already on Laravel 10, the right move in 2026 is to plan the next jump because security support ended on February 4, 2025. If you are still on Laravel 9 or older, Laravel 10 can be a temporary bridge, but Laravel 12 is the version you should be aiming to run in production now.
 
-```diff
-/**
- * Define the application's command schedule.
-- * 
-- * @param  Illuminate\Console\Scheduling\Schedule  $schedule 
-- * @return void 
- */
-- protected function schedule($schedule)
-+ protected function schedule(Schedule $schedule): void
-```
+That is the main difference between how this article read in 2023 and how it should read today: Laravel 10 is now more useful as an upgrade checkpoint than as a destination.
 
-The team also added generic type annotations, which improves autocompletion even further (given your code editor supports generics). See the pull request on GitHub: [PHP native type declarations PR (#6010)](https://github.com/laravel/laravel/pull/6010).
+The smartest next reads from here depend on whether you are moving one step or finishing the whole climb:
 
-### First-party packages also use native types
-
-Official packages for Laravel won’t be left out of this transition. Native type hints will be used across the Laravel organization. You can check out [this PR](https://github.com/laravel/jetstream/pull/1175), which starts the switch from docblocks to native type hints in [Laravel Jetstream](https://jetstream.laravel.com).
-
-### Config path customization
-
-A contributor added the possibility to set a custom path for config files. This is useful for projects slowly migrating to Laravel that can’t handle a big directory structure change.
-
-In your bootstrap/app.php, use the `useConfigPath()` method on the `$app` object:
-
-```php
-$app->useConfigPath(__DIR__ . '/../some/path');
-```
-
-(And did you also know about `bootstrapPath()`, `databasePath()`, `langPath()`, etc.? Laravel is highly customizable.) Learn more: [Config path customization PR (#46053)](https://github.com/laravel/framework/pull/46053).
-
-### [Schema native operations in migrations](https://api.laravel.com/docs/10.x/Illuminate/Database/Schema/Builder.html)
-
-Column modifications can now use native database operations in most drivers, so you don’t need `doctrine/dbal` for common changes.
-
-```php
-// ...
-
-return new class extends Migration
-{
-    public function up(): void
-    {
-        Schema::table('foo', function (Blueprint $table) {
-            $table->unsignedBigInteger('bar')->change();
-        });
-    }
-  
-    // ...
-};
-```
-
-Drivers vary, and SQLite is a notable exception. If your project still has Doctrine DBAL installed (for example, to support multiple connections), you can ask Laravel to use native operations when possible and fall back to DBAL only when needed:
-
-```php
-use Illuminate\Support\Facades\Schema;
-
-class AppServiceProvider extends ServiceProvider
-{
-    public function boot(): void
-    {
-        Schema::useNativeSchemaOperationsIfPossible();
-    }
-}
-```
-
-Tip: when changing column types, re-apply attributes like `unsigned` or `default` if your driver drops them during the change.
-
-### [Composer 2.2 or newer requirement](https://laravel.com/docs/10.x/upgrade)
-
-To ensure solid foundations for every new Laravel 10 project, the framework requires Composer 2.2 or newer.
-
-### [Dropped support for PHP 8.0](https://laravel.com/docs/10.x/upgrade)
-
-Laravel 10 drops support for PHP 8.0 and requires PHP 8.1 at minimum. If you want to upgrade, move to PHP 8.1 or 8.2. Don’t rush—plan and test carefully.
-
-<img src="https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-10-2e92a4a16559cc6263cc.jpg/public" alt="Laravel 10 PHP 8.1 requirement screenshot" loading="lazy" />
-
-### [Predis v1 removal](https://laravel.com/docs/10.x/redis)
-
-If you’re forcing the usage of Predis v1 in your project, upgrade to v2 (`predis/predis` ^2.0) or consider using [PHP’s native Redis extension](https://github.com/phpredis/phpredis), which is often faster.
-
-See the pull request on GitHub: [Drop Predis v1 support PR](https://github.com/laravel/framework/pull/44209).
-
-### [dispatchNow() removed](https://laravel.com/docs/10.x/upgrade)
-
-`dispatchNow()` was deprecated in Laravel 9 in favor of [`dispatchSync()`](https://laravel.com/docs/9.x/queues#synchronous-dispatching) and was removed in Laravel 10. Search and replace it across your codebase—this is an easy fix. See the pull request on GitHub: [Remove deprecated dispatchNow functionality PR](https://github.com/laravel/framework/pull/42591).
-
-### Many deprecated methods and properties removed
-
-Releasing a major version also means the Laravel team can remove features that were deprecated in Laravel 9. Carefully test any Laravel application you plan to migrate to version 10.
-
-Here’s a list of related PRs:
-- [Remove deprecated Route::home method](https://github.com/laravel/framework/pull/42614)
-- [Remove deprecated assertTimesSent](https://github.com/laravel/framework/pull/42592)
-- [Remove deprecated method](https://github.com/laravel/framework/pull/42590)
-- [Remove deprecated dates property](https://github.com/laravel/framework/pull/42587)
-- [Use native PHP 8.1 array_is_list function](https://github.com/laravel/framework/pull/41347)
-- [Remove deprecations](https://github.com/laravel/framework/pull/41136)
-
-## How to contribute to Laravel 10?
-
-Did you know you could create the next big feature for Laravel 10?
-
-1. See what’s going on for Laravel 10 on GitHub: browse [laravel/framework pull requests](https://github.com/laravel/framework/pulls). Pull requests will tell you what’s already been done.
-2. Take one of your pain points with the framework and create a solution yourself.
-3. Send the PR to the laravel/framework repository, collect feedback, improve, and get merged.
-
-One important tip to increase your chances of being merged: add something to the framework that’s a win for developers, but not a pain to maintain for Taylor and his team in the long run.
-
-<img src="https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-10-72afa7d6d9cdc7196c78.jpg/public" alt="Screenshot of pull requests on the laravel/framework repository" loading="lazy" />
-
-## Laravel v10 bug hunt: win $1K for fixing bugs
-
-<img src="https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-10-0ee5accc31ae6828f8be.jpg/public" alt="Laravel 10 Bug Hunt banner" loading="lazy" />
-
-[Taylor Otwell announced the Laravel 10 Bug Hunt](https://laravel.com/blog/laravel-v10-bug-hunt). Fix bugs, and you could be one of the random winners who receive $1K.
-
-The contest ended when Laravel 10.0 stable shipped on February 14, 2023.
-
-Here are the rules:
-- Only PRs sent to the 10.x branch of the [laravel/framework](https://github.com/laravel/framework) repository are eligible.
-- Only "true" bug fixes are accepted. New features, refactoring, or typo fixes will not be counted.
-- Every bug fix must include a test.
-- Accepted bug fixes will be labeled, and a random winner will be selected at the end of the contest.
-
-More details on the official Laravel blog: [Laravel 10 Bug Hunt](https://laravel.com/blog/laravel-v10-bug-hunt)
-
-## Conclusion
-
-Laravel 10 brings a lot of quality-of-life updates: Pennant for feature flags, the new Process facade, invokable validation rules, native type declarations, and clear Composer/PHP requirements (Composer 2.2+, PHP 8.1+). Keep an eye on support timelines (Laravel 9 bug fixes until August 8, 2023; security fixes until February 6, 2024).
-
-Ready to move forward? Start with my [upgrade to Laravel 10 guide](https://benjamincrozat.com/laravel-10-upgrade-guide).
-
-If Laravel 10 is only one stop in a longer upgrade path for you, these are the release reads I would keep open:
-
-- [Plan a safer upgrade from Laravel 9 to 10](/laravel-10-upgrade-guide)
-- [See the biggest Laravel 11 changes in one pass](/laravel-11)
-- [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
-- [See what Laravel 12 changed before you adopt it](/laravel-12)
-- [See where this fits in Laravel's release history](/laravel-versions)
+- [Follow the practical path from Laravel 9 to 10](/laravel-10-upgrade-guide)
+- [See which Laravel 11 changes matter after 10](/laravel-11)
+- [Check the Laravel 11 upgrade traps before you move again](/laravel-11-upgrade-guide)
+- [See why Laravel 12 is the version to target now](/laravel-12)
+- [Double-check the whole release timeline before you plan upgrades](/laravel-versions)
