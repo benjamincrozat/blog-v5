@@ -2,7 +2,9 @@
 
 Use [$post-writing](/Users/benjamin/Sites/blog-v5/.agents/skills/post-writing/SKILL.md), [$file-first-posts](/Users/benjamin/Sites/blog-v5/.agents/skills/file-first-posts/SKILL.md), and [$seo-content](/Users/benjamin/Sites/blog-v5/.agents/skills/seo-content/SKILL.md).
 
-Research the most interesting thing that happened this week in `TOPIC`, where `TOPIC` is Laravel, Tailwind CSS, or Livewire.
+Research the most interesting thing that happened this week in `TOPIC`.
+
+Replace `TOPIC` with the framework, library, tool, platform, or product you want to cover.
 
 Work like an editor, not a fan:
 
