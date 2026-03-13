@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27N7017PH7V6DXV5QAYV"
-title: "Tailwind CSS forms plugin: my 2025 guide for v4 and v3"
+title: "How to use the Tailwind CSS forms plugin"
 slug: "tailwind-css-forms-plugin"
 author: "benjamincrozat"
-description: "Discover how the Tailwind CSS forms plugin can reset your forms to a consistent state across all browsers and make styling easier."
+description: "Learn how to install and use the Tailwind CSS forms plugin, `@tailwindcss/forms`, in Tailwind v4 and v3."
 categories:
   - "css"
   - "tailwind-css"
 published_at: 2023-02-12T00:00:00+01:00
-modified_at: 2025-09-28T05:36:00+02:00
+modified_at: 2026-03-13T12:20:00Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -19,11 +19,9 @@ sponsored_at: null
 ---
 ## Introduction
 
-Tailwind CSS is a utility-first CSS framework for productive frontend developers.
+**The Tailwind CSS forms plugin, [`@tailwindcss/forms`](https://github.com/tailwindlabs/tailwindcss-forms), resets form controls to a consistent base so they are easier to style.**
 
-If you have never heard of it, let me [introduce you to the marvelous world of pragmatic CSS frameworks](https://benjamincrozat.com/tailwind-css).
-
-In this article, I’ll show you its forms plugin. It helps unify form appearance across browsers and makes them easier to customize.
+This guide shows how to install and use it in Tailwind v4 and v3.
 
 ## What is @tailwindcss/forms?
 

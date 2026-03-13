@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27CG49GRV02BM10BPV0S"
-title: "Laravel Herd: the simplest way to install PHP on macOS and Windows"
+title: "How to install Laravel Herd on macOS and Windows"
 slug: "laravel-herd"
 author: "benjamincrozat"
-description: "Install PHP on macOS or Windows in minutes with Laravel Herd. Free core includes PHP, nginx, and Node.js; supports PHP 7.4–8.4. Herd Pro adds services and debugging features."
+description: "Download and install Laravel Herd on macOS or Windows to get PHP, nginx, and Node.js running quickly for local development."
 categories:
   - "laravel"
   - "tools"
 published_at: 2023-07-19T00:00:00+02:00
-modified_at: 2025-09-30T16:39:00+02:00
+modified_at: 2026-03-13T12:20:00Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -19,7 +19,9 @@ sponsored_at: null
 ---
 ## Introduction
 
-[Laravel Herd](https://herd.laravel.com) is a free, native app for local PHP development. It runs on macOS and Windows. It bundles PHP, nginx, dnsmasq, and nvm for managing Node.js. Herd was introduced at [Laracon US](https://laracon.us) on July 19, 2023 and developed by [Beyond Code GmbH](https://beyondco.de) for the Laravel team. If you prefer a Homebrew workflow, I also wrote about [Laravel Valet](https://benjamincrozat.com/install-php-mac-laravel-valet).
+[Laravel Herd](https://herd.laravel.com) is a free app for local PHP development on macOS and Windows.
+
+You can download Herd, install it in a few minutes, and get PHP, nginx, and Node.js ready for local Laravel work without a Homebrew-heavy setup. If you prefer that workflow, I also wrote about [Laravel Valet](https://benjamincrozat.com/install-php-mac-laravel-valet).
 
 ## Install Laravel Herd on macOS
 
