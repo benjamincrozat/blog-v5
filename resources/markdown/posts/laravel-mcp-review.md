@@ -1,14 +1,14 @@
 ---
 id: "01KKK2YPX50X3HW6HY20ERM4EW"
-title: "Laravel MCP feels polished, but most apps still do not need it"
+title: "Laravel MCP feels polished, and the SaaS case is getting real"
 slug: "laravel-mcp-review"
 author: "benjamincrozat"
-description: "Laravel MCP already feels polished, but it still makes sense only when external AI clients need to interact with your app."
+description: "Laravel MCP is still not for every app, but more SaaS products now expose governed AI actions through MCP."
 categories:
   - "laravel"
   - "news"
 published_at: 2026-03-13T07:53:09Z
-modified_at: null
+modified_at: 2026-03-13T08:12:28Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -17,17 +17,17 @@ image_disk: null
 image_path: null
 sponsored_at: null
 ---
-Laravel's official [MCP documentation](https://laravel.com/docs/12.x/mcp), [Laravel MCP product page](https://laravel.com/ai/mcp), and last week's ["AI SDK, Boost, or MCP: Which Tool Do You Need?"](https://laravel.com/blog/laravel-ai-sdk-boost-or-mcp-which-tool-do-you-need) article all point in the same direction: Laravel MCP is real, polished, and useful, but it is not the first AI package most Laravel teams need.
+Laravel's official [MCP documentation](https://laravel.com/docs/12.x/mcp), [Laravel MCP product page](https://laravel.com/ai/mcp), and last week's ["AI SDK, Boost, or MCP: Which Tool Do You Need?"](https://laravel.com/blog/laravel-ai-sdk-boost-or-mcp-which-tool-do-you-need) article all point in the same direction: Laravel MCP is real, polished, and narrower than the current hype cycle makes it sound.
 
-I think that is the right framing.
+I still think that is the right framing. Most Laravel teams do not need MCP just because they are doing "AI stuff."
 
-The core workflow already feels smooth: install the package, publish the AI routes, generate a server and a tool, register the route, and open the built-in MCP Inspector.
+But I like the package more after looking at the broader market around it.
 
-My opinion after doing that: Laravel MCP already feels well designed. But unless you specifically want external AI clients to call into your application, you probably do not need it yet.
+The strongest case for Laravel MCP is not "agents need APIs." It is that more SaaS products now want to expose a smaller, safer, AI-facing layer to external clients. In that world, Laravel MCP starts to make much more sense.
 
 ## What Laravel MCP is actually for
 
-Laravel's own summary from the [March 4 article](https://laravel.com/blog/laravel-ai-sdk-boost-or-mcp-which-tool-do-you-need) is the cleanest one I have seen:
+Laravel's own summary from the [March 4 article](https://laravel.com/blog/laravel-ai-sdk-boost-or-mcp-which-tool-do-you-need) is still the cleanest one I have seen:
 
 - the AI SDK helps you build AI features into your app
 - Boost helps AI agents write better Laravel code for you
@@ -35,89 +35,63 @@ Laravel's own summary from the [March 4 article](https://laravel.com/blog/larave
 
 That last point is the important one.
 
-If your goal is "I want to add chat, agents, summaries, embeddings, or AI workflows inside my product," Laravel itself is telling you to look at the AI SDK first, not MCP.
+If your goal is "I want to add chat, agents, summaries, embeddings, or AI workflows inside my product," Laravel is telling you to look at the AI SDK first, not MCP.
 
 If your goal is "I want Claude Code or another coding agent to understand my Laravel project better," that is a Boost problem, not an MCP problem.
 
 Laravel MCP becomes the right tool when your app should expose tools, resources, or prompts to an external AI client through the Model Context Protocol.
 
-## What I tested
+That sounds narrow, but it is becoming easier to picture in real products.
 
-Installation was exactly what the docs promise:
+## The enterprise case is not hypothetical anymore
 
-```bash
-composer require laravel/mcp
-php artisan vendor:publish --tag=ai-routes
-php artisan make:mcp-server DemoServer
-php artisan make:mcp-tool DemoTool
-```
+[Anthropic's MCP docs](https://docs.anthropic.com/en/docs/build-with-claude/mcp) position MCP as the standard way Claude connects to external tools and data. [OpenAI's MCP docs](https://platform.openai.com/docs/mcp/) now do the same, and they explicitly tell developers to prefer official servers run by the service providers themselves.
 
-That gave me a `routes/ai.php` file plus generated classes under `app/Mcp/Servers` and `app/Mcp/Tools`.
+That last part matters.
 
-Registering a web-exposed MCP route was also straightforward:
+It suggests the next phase of MCP is not just hobby servers and internal demos. It is SaaS vendors exposing official capabilities that AI clients can trust.
 
-```php
-use Laravel\Mcp\Facades\Mcp;
+A few examples make the shift obvious:
 
-Mcp::web('/mcp/demo', \App\Mcp\Servers\DemoServer::class);
-```
+- [GitHub's remote MCP server](https://github.blog/changelog/2025-09-04-remote-github-mcp-server-is-now-generally-available/) is already generally available with OAuth 2.1 + PKCE, centralized policy controls, and structured access to GitHub workflows.
+- [Linear's MCP server](https://linear.app/docs/mcp) is presented as a secure way for compatible AI tools to access Linear data, with support for OAuth and restricted API keys.
+- [Atlassian's Rovo MCP server](https://confluence.atlassian.com/cloud/blog/2026/03/atlassian-cloud-changes-mar-2-to-mar-9-2026) is now GA for Jira, Confluence, and Compass, with domain controls, IP allowlist support, audit logs, and API-token authentication for machine-to-machine use cases.
 
-Then I wired the generated tool into the generated server:
+That is why Laravel MCP feels more relevant to me now than it did a week ago. The package is still specialized, but the specialization is easier to justify when serious SaaS products are converging on the same integration shape.
 
-```php
-protected array $tools = [
-    DemoTool::class,
-];
-```
+## Why this is bigger than "agents need API access"
 
-From there, `php artisan route:list --path=mcp` showed the route immediately, and `php artisan mcp:inspector /mcp/demo` launched the built-in inspector flow against that endpoint without any weird setup work.
+I would not frame the enterprise value as "AI agents do not have APIs or CLIs."
 
-That matters. New protocol tooling often falls apart in the first ten minutes. Laravel MCP did not.
+They often do. The real issue is that many companies do not want to hand broad API credentials, raw CLI access, or fragile custom integrations to every agent host they experiment with.
 
-## What feels good already
+MCP gives them another option: expose a governed set of actions and resources through one standard surface.
 
-The biggest strength is that Laravel MCP feels like Laravel, not like a protocol wrapper awkwardly pasted into a Laravel app.
+That is a much better enterprise pitch.
 
-The generated classes are simple. The route registration is readable. The docs cover servers, tools, resources, prompts, metadata, authentication, authorization, and testing in a way that feels consistent with the rest of the framework.
+The good version of an MCP server is not "here is our whole REST API again." It is "here are the twelve things an AI client should be allowed to do, with sane auth, narrow scopes, and useful auditability."
 
-A few specific things stood out to me:
+That is also why official provider-hosted servers matter. [OpenAI's own guidance](https://platform.openai.com/docs/mcp/) is basically a warning against random third-party proxies. If MCP becomes a real enterprise layer, trust, governance, and identity are the product.
 
-- the scaffolding commands are clear and useful
-- `routes/ai.php` is a sensible place for MCP registration
-- the docs already cover both [OAuth 2.1 and Sanctum](https://laravel.com/docs/12.x/mcp#authentication)
-- the built-in [MCP Inspector workflow](https://laravel.com/docs/12.x/mcp#testing-servers) makes early testing much easier
+## Laravel's implementation still feels solid
 
-I also like that Laravel does not oversell it in the docs. The package is presented as a clean way to expose MCP capabilities, not as a magic AI layer that replaces normal application design.
+This is where Laravel's implementation earns credit.
 
-## Why most Laravel teams still do not need it
+The first-run experience is short. The package scaffolds sensible classes. `routes/ai.php` is a good home for the registration layer. The docs already cover [authentication](https://laravel.com/docs/12.x/mcp#authentication), [authorization](https://laravel.com/docs/12.x/mcp#authorization), and the built-in [MCP Inspector workflow](https://laravel.com/docs/12.x/mcp#testing-servers).
 
-This is where the hype around MCP can confuse people.
-
-Because MCP is currently a hot term, it is easy to think every AI-flavored Laravel app should install it. I do not think that is true, and Laravel's own March 4 post basically says the same thing.
-
-Most teams are in one of these buckets:
-
-- they want AI features inside their app
-- they want AI help while writing Laravel code
-- they are just exploring AI without a clear external-client use case yet
-
-In those cases, MCP is usually not the first thing to reach for.
-
-The moment Laravel MCP becomes compelling is when your app itself should act like a well-structured AI-accessible surface. For example: exposing internal business actions as tools, sharing application data as MCP resources, or letting trusted AI clients trigger workflows in a controlled way.
-
-That is real. It is just narrower than "I am doing AI stuff in Laravel."
+Most importantly, Laravel does not sell MCP as a magic AI feature. It treats it as an app integration surface. I think that restraint is one of the best things about the package.
 
 ## My take
 
-Laravel MCP is better than I expected this early.
+Laravel MCP feels polished already, and I trust its product framing more after looking at where MCP is heading.
 
-Not because it is huge, but because the developer experience already feels coherent. The install path is short, the primitives make sense, and the inspector closes the loop quickly enough that you can tell whether your server is wired correctly without fighting the protocol.
+I still would not install it by default.
 
-But I would still treat it as a specialist tool for now.
+If you are building internal AI features, the AI SDK is still the more obvious starting point. If you want better coding help, Boost is still the clearer answer.
 
-If you have a genuine MCP use case, Laravel has made that path much easier than it would have been six months ago. If you do not, I would not install it just because "MCP" is everywhere right now.
+But if you run a SaaS product and can see a future where customers want ChatGPT, Claude, Codex, or another MCP-capable client to interact with your product safely, Laravel MCP stops looking niche and starts looking timely.
 
-That is probably the best compliment I can give this package: Laravel seems to understand exactly what it is for, and the package mostly stays inside that boundary.
+That is my opinion in one line: Laravel MCP is still a specialist tool, but it now looks like a specialist tool for a market that is actually forming.
 
 If you are trying to place Laravel MCP in the bigger framework picture, these are the next reads I would keep open:
 
