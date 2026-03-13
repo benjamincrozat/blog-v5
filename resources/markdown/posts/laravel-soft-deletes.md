@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27DYEEZ3DJW5C45AWWXY"
-title: "Soft deletes in Laravel: the 2025 guide"
+title: "How to use soft deletes in Laravel"
 slug: "laravel-soft-deletes"
 author: "benjamincrozat"
-description: "A soft delete in Laravel allows you to prevent mistakes by not removing sensitive data from your database right away."
+description: "Learn how Laravel soft deletes work, how to query trashed models, restore them, test them, and prune old records."
 categories:
   - "laravel"
 published_at: 2022-11-23T00:00:00+01:00
-modified_at: 2025-07-15T16:13:00+02:00
+modified_at: 2026-03-13T15:40:00Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -18,19 +18,20 @@ sponsored_at: null
 ---
 ## What are soft deletes?
 
-**Soft deletes allows developers to mark models as deleted without deleting them from the database.**
+**Laravel soft deletes mark a model as deleted without removing its row from the database.**
 
-Imagine a `deleted_at` column in your database containing the date where your entry has been deleted.
+Instead, Eloquent writes a timestamp to `deleted_at` and excludes that row from normal queries.
 
-Their main benefit is that you don't loose data anymore. You will always be able to restore it.
-
-Obviously, there is a mechanism to help you clean up old soft deleted models that I'll show you later.
+That gives you a restore path instead of an immediate hard delete.
 
 ## How to set up soft deletes
 
-Laravel requires you to take two easy steps to set up a soft delete.
+Laravel needs two things:
 
-First, specify that you need a column for soft deletion in your migration (I wrote a nice article about [migrations](https://benjamincrozat.com/laravel-migrations)). Once you run it, you'll see a new `deleted_at` column in your posts table.
+1. a `deleted_at` column
+2. the `SoftDeletes` trait on the model
+
+First, add the column in your migration:
 
 ```php
 public function up()
@@ -41,7 +42,7 @@ public function up()
 }
 ```
 
-In the `down()` method, you can remove the column using the `dropSoftDeletes()` method.
+If you roll the migration back, remove it with `dropSoftDeletes()`:
 
 ```php
 public function down()
@@ -52,7 +53,7 @@ public function down()
 }
 ```
 
-Then, in your model, import the `SoftDeletes` trait.
+Then enable soft deletes on the model:
 
 ```php
 namespace App\Models;
@@ -67,15 +68,17 @@ class Post extends Model
 }
 ```
 
-## How to perform a soft delete and check for it
+Laravel also casts `deleted_at` to a date object for you.
 
-To soft delete in Laravel, you don't have to change your habits. Use your model's `delete()` method just like before. The only difference will be that Laravel will add the current date and time inside the `deleted_at` column.
+## Delete, restore, and permanently remove models
+
+To soft delete a model, call `delete()` as usual:
 
 ```php
 $post->delete();
 ```
 
-And if you want to check if a model has been soft deleted, I recommend the `trashed()` method instead of manually checking the `deleted_at` column.
+To check whether a model has been soft deleted, use `trashed()`:
 
 ```php
 if ($post->trashed()) {
@@ -83,9 +86,28 @@ if ($post->trashed()) {
 }
 ```
 
-## More helpers for soft deletes
+To restore it:
 
-Sometimes, you may need to include soft deleted models in your queries. The `withTrashed()` scope can help with that.
+```php
+$post->restore();
+```
+
+To permanently delete a loaded model:
+
+```php
+$post->forceDelete();
+```
+
+Laravel also provides `forceDestroy()` when you want to permanently remove one or more soft-deletable models by ID:
+
+```php
+Post::forceDestroy(1);
+Post::forceDestroy([1, 2, 3]);
+```
+
+## Querying soft deleted models
+
+Soft-deleted rows are excluded from normal Eloquent queries. These helpers let you opt back in:
 
 ```php
 Post::withTrashed()->get();
@@ -97,23 +119,22 @@ You can even query trashed models only:
 Post::onlyTrashed()->get();
 ```
 
-Also, since the model is never really deleted, you can restore it at any moment using the `restore()` method. The `deleted_at` column will be back to `NULL`.
+If you want to be explicit about excluding trashed rows, use `withoutTrashed()`:
 
 ```php
-$post->restore();
-```
-
-Finally, if you want to really remove a soft deletable model from the database definitely, use the `forceDelete()` method.
-
-```php
-$post->forceDelete();
+Post::withoutTrashed()->get();
 ```
 
 ## How to test for a soft delete
 
-To test for a soft delete in Laravel, use the `assertSoftDeleted()` method Laravel provides.
+Laravel provides dedicated assertions for this:
 
-Here's a basic example of how I'd go for it:
+```php
+$this->assertSoftDeleted($post);
+$this->assertNotSoftDeleted($post);
+```
+
+Here is a full example:
 
 ```php
 public function test_it_soft_deletes_posts()
@@ -128,17 +149,16 @@ public function test_it_soft_deletes_posts()
 }
 ```
 
-The inverse method exists as `assertNotSoftDeleted()`.
-
 ## How to clean up old soft deleted models
 
-You can use the pruning mechanism Laravel offers to clean up old soft deleted models.
+If soft-deleted rows should only stay around for a while, use Laravel's pruning system.
 
-For example, import the `Prunable` trait inside your model and tell the framework to remove models that have been soft deleted since a month or more.
+For example, this prunes posts that were soft deleted more than one month ago:
 
 ```php
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Prunable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -148,21 +168,24 @@ class Post extends Model
 {
     use HasFactory, Prunable, SoftDeletes;
   
-    public function prunable()
+    public function prunable(): Builder
 	{
 		return static::where('deleted_at', '<=', now()->subMonth());
 	}
 }
 ```
 
-Don't forget to run the `model:prune` command with the scheduler. Add it to your *app/Console/Kernel.php*:
+Schedule `model:prune` in `routes/console.php`:
 
 ```php
-protected function schedule(Schedule $schedule)
-{
-    $schedule->command('model:prune')->daily(); // [tl! ++]
-}
+use Illuminate\Support\Facades\Schedule;
+
+Schedule::command('model:prune')->daily();
 ```
+
+When a soft-deleted model matches the prunable query, Laravel permanently removes it with `forceDelete()`.
+
+If you want pruning to run through mass-deletion queries for efficiency, use `MassPrunable` instead of `Prunable`.
 
 If you are still thinking about what deleted should really mean in your data model, these are the Laravel reads I would open:
 
