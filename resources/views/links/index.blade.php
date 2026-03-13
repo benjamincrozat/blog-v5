@@ -6,8 +6,8 @@ Displays the links index view.
     title="The latest community-written articles about web development in {{ date('Y') }}"
     description="A collection of content created and shared by other web developers."
 >
-    <div class="container">
-        <x-breadcrumbs :items="$breadcrumbs" class="mb-8 md:mb-10" />
+    <div class="container mb-12 md:mb-14">
+        <x-breadcrumbs :items="$breadcrumbs" />
     </div>
 
     @if ($links->currentPage() === 1)

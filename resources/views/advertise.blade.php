@@ -9,7 +9,7 @@ Displays the advertise view.
     :hide-sticky-carousel="true"
 >
     <div class="container md:text-xl xl:max-w-(--breakpoint-lg)">
-        <x-breadcrumbs :items="$breadcrumbs" class="mb-8 md:mb-10" />
+        <x-breadcrumbs :items="$breadcrumbs" class="mb-12 md:mb-14" />
 
         <x-typography.headline>
             Show off your business to <span class="text-blue-600">{{ Number::format($visitors) }}</span>&nbsp;developers

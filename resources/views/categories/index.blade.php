@@ -6,8 +6,8 @@ Displays the categories index view.
     title="Categories"
     description="Level up as a web developer in {{ date('Y') }} with this collection of articles I wrote sorted by category."
 >
-    <div class="container xl:max-w-(--breakpoint-lg)">
-        <x-breadcrumbs :items="$breadcrumbs" class="mb-8 md:mb-10" />
+    <div class="container xl:max-w-(--breakpoint-lg) mb-12 md:mb-14">
+        <x-breadcrumbs :items="$breadcrumbs" />
     </div>
 
     <x-section

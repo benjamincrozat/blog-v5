@@ -3,14 +3,14 @@ Displays the categories show view.
 --}}
 
 <x-app
-    :title="'The best articles about ' . $category->name . ' in ' . date('Y')"
+    :title="'The latest news about ' . $category->name"
     :description="'Level up in ' . date('Y') . ' as a web developer with this collection of articles I wrote about ' . $category->name . '.'"
 >
     <article class="container">
-        <x-breadcrumbs :items="$breadcrumbs" class="mb-6" />
+        <x-breadcrumbs :items="$breadcrumbs" class="mb-12 md:mb-14" />
 
         <x-typography.heading>
-            {{ $category->name }}
+            The latest news about {{ $category->name }}
         </x-typography.heading>
 
         <x-posts-grid :$posts class="mt-10" />

@@ -7,8 +7,8 @@ Displays the tools index view.
     title="Unlock the best tools for developers"
     description="Browse the great tools I gathered from across the web. Services and apps of all kinds to help you do your job more efficiently."
 >
-    <div class="container">
-        <x-breadcrumbs :items="$breadcrumbs" class="mb-8 md:mb-10" />
+    <div class="container mb-12 md:mb-14">
+        <x-breadcrumbs :items="$breadcrumbs" />
     </div>
 
     <x-typography.headline>

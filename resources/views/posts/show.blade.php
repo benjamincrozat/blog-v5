@@ -16,7 +16,7 @@ Displays the posts show view.
     @endphp
 
     @if (! $post->is_commercial)
-        <x-breadcrumbs :items="$breadcrumbs" class="container mb-6 md:mb-8" />
+        <x-breadcrumbs :items="$breadcrumbs" class="container mb-12 md:mb-16" />
     @endif
     
     <div @class([
@@ -39,7 +39,7 @@ Displays the posts show view.
                     />
                 @endif
 
-                <x-categories :categories="$post->categories" class="justify-center mt-11 mb-8">
+                <x-categories :categories="$post->categories" class="justify-center mb-8">
                     @if ($post->isSponsored())
                         <span class="px-2 py-1 text-xs font-medium text-blue-600 uppercase rounded-sm border border-blue-300">
                             Sponsored

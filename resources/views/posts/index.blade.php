@@ -3,8 +3,8 @@ Displays the posts index view.
 --}}
 
 <x-app title="The latest articles about web development in {{ date('Y') }}">
-    <div class="container">
-        <x-breadcrumbs :items="$breadcrumbs" class="mb-8 md:mb-10" />
+    <div class="container mb-12 md:mb-14">
+        <x-breadcrumbs :items="$breadcrumbs" />
     </div>
 
     <x-section
