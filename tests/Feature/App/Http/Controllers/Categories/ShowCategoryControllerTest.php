@@ -99,11 +99,19 @@ it('orders posts by boosting recent sponsorship then by published_at desc', func
     });
 });
 
-it('treats the news category as a current archive without sponsored boosting', function () {
+it('uses the same category copy and ordering for the news category', function () {
     $news = Category::factory()->create([
         'name' => 'News',
         'slug' => Post::NEWS_CATEGORY_SLUG,
     ]);
+
+    $recentSponsored = Post::factory()
+        ->hasAttached($news, [], 'categories')
+        ->create([
+            'published_at' => now()->subDay(),
+            'is_commercial' => false,
+            'sponsored_at' => now()->subHour(),
+        ]);
 
     $latestUnsponsored = Post::factory()
         ->hasAttached($news, [], 'categories')
@@ -113,27 +121,17 @@ it('treats the news category as a current archive without sponsored boosting', f
             'sponsored_at' => null,
         ]);
 
-    $olderSponsored = Post::factory()
-        ->hasAttached($news, [], 'categories')
-        ->create([
-            'published_at' => now()->subDay(),
-            'is_commercial' => false,
-            'sponsored_at' => now()->subHour(),
-        ]);
-
     get(route('categories.show', $news))
         ->assertOk()
-        ->assertSee('Latest web development news')
-        ->assertSee('Follow current web development news, releases, and notable updates', escape: false)
-        ->assertViewHas('isNewsCategory', true)
-        ->assertViewHas('posts', function (LengthAwarePaginator $paginator) use ($latestUnsponsored, $olderSponsored) {
+        ->assertSee('Articles in the News category')
+        ->assertViewHas('posts', function (LengthAwarePaginator $paginator) use ($recentSponsored, $latestUnsponsored) {
             $ids = collect($paginator->items())->pluck('id')->values();
 
-            return [$latestUnsponsored->id, $olderSponsored->id] === $ids->all();
+            return [$recentSponsored->id, $latestUnsponsored->id] === $ids->all();
         });
 });
 
-it('paginates 24 posts per page and hides intro after page 1', function () {
+it('paginates 24 posts per page and keeps the category heading consistent', function () {
     $category = Category::factory()->create();
 
     // Create 30 published posts in this category.
@@ -151,5 +149,6 @@ it('paginates 24 posts per page and hides intro after page 1', function () {
     // Page 2: 6 items.
     get(route('categories.show', [$category, 'page' => 2]))
         ->assertOk()
+        ->assertSee('Articles in the ' . $category->name . ' category')
         ->assertViewHas('posts', fn (LengthAwarePaginator $p) => 2 === $p->currentPage() && 6 === $p->count());
 });
