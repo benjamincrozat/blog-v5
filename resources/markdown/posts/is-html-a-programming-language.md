@@ -7,8 +7,8 @@ description: "Is HTML a programming language? You can only make sense of the ans
 categories:
   - "html"
 published_at: 2023-12-05T00:00:00+01:00
-modified_at: 2025-09-26T14:23:00+02:00
-serp_title: "Is HTML a programming language? This didn't change in 2025"
+modified_at: 2026-03-13T12:05:00Z
+serp_title: null
 serp_description: null
 canonical_url: null
 is_commercial: false
@@ -18,7 +18,9 @@ sponsored_at: null
 ---
 ## Introduction
 
-HTML often gets called a programming language, but it isn’t. It describes what content is on a page, not how to compute with it. I first learned HTML in 2006 to build Pokémon websites; it helped me get familiar with the kind of thinking developers use.
+HTML often gets called a programming language, but it isn't. It describes what content is on a page, not how to compute with it.
+
+If you're learning web development, the short version is simple: HTML is markup, not programming logic.
 
 ## Short answer: Is HTML a programming language?
 
