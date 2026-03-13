@@ -1,16 +1,16 @@
 ---
 id: "01KKEW276GTB5FS3SPNP5266QE"
-title: "Add Alpine.js to any Laravel project"
+title: "How to install Alpine.js in Laravel"
 slug: "alpine-js-laravel"
 author: "benjamincrozat"
-description: "Alpine.js is a great companion for a Laravel app. Let's see how you can add it in any project."
+description: "Install Alpine.js in Laravel with Vite or a CDN, then verify it works with a tiny component."
 categories:
   - "alpinejs"
   - "javascript"
   - "laravel"
 published_at: 2023-10-13T00:00:00+02:00
-modified_at: 2025-07-04T21:38:00+02:00
-serp_title: "Add Alpine.js to any Laravel project (2025)"
+modified_at: 2026-03-13T11:30:00Z
+serp_title: null
 serp_description: null
 canonical_url: ""
 is_commercial: false
@@ -20,11 +20,11 @@ sponsored_at: null
 ---
 ## Introduction
 
-[Alpine.js](https://alpinejs.dev) is a fantastic way to start adding reactivity to your user interface. [I wrote about this minimalist framework](/alpine-js) if you're not familiar with it yet.
+Need to install [Alpine.js](https://alpinejs.dev) in a Laravel project? The two fastest options are a CDN for simple pages or `npm install alpinejs` if you already use Vite. I also wrote a broader [Alpine.js introduction](/alpine-js) if you want the bigger picture first.
 
-Today, we'll learn how to add Alpine.js into an existing Laravel project. Of course, this will work on new projects too. Let's dive in!
+This guide shows both setup paths, the exact `app.js` snippet, and a quick way to verify everything is working.
 
-## Use Alpine.js via a CDN
+## Install Alpine.js in Laravel with a CDN
 
 Alpine.js is such a simple framework that it can be dropped into any web page using the CDN of your choice.
 
@@ -61,7 +61,7 @@ You could already stop reading this article. If you are missing the good old day
 
 **Pro tip: The URLs in this example redirect to the latest version of the framework and plugin. For production use, it's recommended to specify a fixed version number instead of using the `@3.x.x` syntax to ensure consistency.**
 
-## Install Alpine.js in Laravel
+## Install Alpine.js in Laravel with npm and Vite
 
 If you'd like to control the number of HTTP requests on your page and don't mind using build tools, you might prefer to bundle the framework into your JavaScript.
 
@@ -69,7 +69,7 @@ If you'd like to control the number of HTTP requests on your page and don't mind
 npm install alpinejs
 ```
 
-## Set up Alpine.js
+## Set up Alpine.js in `resources/js/app.js`
 
 Now, we must import Alpine and create an instance of the framework.
 
@@ -104,7 +104,7 @@ Alpine.plugin(Intersect)
 Alpine.start()
 ```
 
-## Add minimal Alpine.js code
+## Add a minimal Alpine.js component
 
 We're almost there!
 
@@ -131,7 +131,7 @@ Yes, this is an old-fashioned counter to demonstrate that the framework is worki
 
 I know, very original, right? 😅
 
-## Compile your assets and check your browser
+## Compile your assets and verify Alpine.js works
 
 If you did everything correctly, Alpine.js should now be up and running. Compile your assets and check your browser!
 
