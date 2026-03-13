@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27E3DQ3AVNGYRB559YXJ"
-title: "The laravel/ui package: my 2025 guide"
+title: "How to install Laravel UI"
 slug: "laravel-ui"
 author: "benjamincrozat"
-description: "Let me show you how to leverage the laravel/ui package to scaffold authentication features on top of your favorite frontend framework."
+description: "Install the `laravel/ui` package to scaffold Bootstrap, Vue, or React auth views in a Laravel app."
 categories:
   - "laravel"
   - "packages"
 published_at: 2023-11-12T00:00:00+01:00
-modified_at: 2025-07-08T06:12:00+02:00
+modified_at: 2026-03-13T12:25:00Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -19,13 +19,13 @@ sponsored_at: null
 ---
 ## Introduction to the laravel/ui package
 
-When working on a web project destined to get some users, having a user-friendly interface is necessary.
+**To install Laravel UI, run `composer require laravel/ui`, then scaffold the frontend preset you want with `php artisan ui`.**
 
-That's where [laravel/ui](https://github.com/laravel/ui) comes into play. It offers a basic yet effective starting point for incorporating some CSS and a JavaScript framework into your Laravel projects. It even supports scaffolding pages related to the authentication of your users.
+[laravel/ui](https://github.com/laravel/ui) gives you a basic starting point for Bootstrap, Vue, or React in a Laravel app, and it can also scaffold simple authentication views.
 
-Now, before you continue, **please note that while Laravel UI is still maintained, it's also an old package that has better alternatives such as [Laravel Jetstream](https://jetstream.laravel.com) and [Laravel Breeze](https://laravel.com/docs/starter-kits#laravel-breeze)**. For instance, Laravel UI does not support as many authentication features as these two.
+It is still maintained, but it is also older than [Laravel Jetstream](https://jetstream.laravel.com) and [Laravel Breeze](https://laravel.com/docs/starter-kits#laravel-breeze), so it makes the most sense when you want the simpler package on purpose.
 
-But I noticed that people are still looking for it, so why not write a small article about it anyway?
+Here is how to install Laravel UI and when it still makes sense to use it.
 
 ## Installing laravel/ui
 
