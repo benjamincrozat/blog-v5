@@ -1,13 +1,13 @@
 ---
 id: "01KKEW277JF4527Q2P4FY99H1S"
-title: "Bun package manager vs npm, Yarn, and pnpm in 2025"
+title: "Bun vs pnpm, npm, and Yarn for package management"
 slug: "bun-package-manager"
 author: "benjamincrozat"
-description: "Bun’s npm-compatible package manager is fast, Windows-ready, and now uses a text-based bun.lock. See bun install vs npm, Yarn, and pnpm in 2025."
+description: "Compare Bun with pnpm, npm, and Yarn for installs, lockfiles, monorepos, and security defaults before you switch package managers."
 categories:
   - "javascript"
 published_at: 2023-09-11T00:00:00+02:00
-modified_at: 2025-09-29T15:51:00+02:00
+modified_at: 2026-03-13T15:40:00Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -16,9 +16,40 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/KXZTmSmiqR38COC.jpg"
 sponsored_at: null
 ---
-## What is Bun? Runtime, test runner, and package manager
+## Bun vs pnpm, npm, and Yarn
 
-[Bun](https://bun.sh) is an all‑in‑one toolkit for JavaScript: a runtime, test runner, bundler, and an npm‑compatible package manager. It uses WebKit’s JavaScript engine, JavaScriptCore, and runs scripts with `bun run`. Bun uses JavaScriptCore and shows faster startup than Node.js in simple cases on Linux, based on the current [run command docs](https://bun.com/docs/cli/run).
+**If you are comparing Bun to pnpm, npm, or Yarn, the first thing to know is that Bun is more than a package manager.**
+
+[Bun](https://bun.sh) is also a runtime, test runner, and bundler, with an npm-compatible package manager built in.
+
+That makes the comparison slightly uneven:
+
+- compare **Bun vs pnpm** when you care most about installs, lockfiles, and monorepos
+- compare **Bun vs npm** when you want a more modern default than the standard Node.js toolchain
+- compare **Bun vs Yarn** when you are moving off an older workflow and want fewer moving pieces
+
+## When Bun is a good fit
+
+Bun makes sense when you want:
+
+- one tool for runtime, scripts, tests, and package management
+- automatic migration from `package-lock.json`, `yarn.lock`, or `pnpm-lock.yaml`
+- a text-based `bun.lock`
+- monorepo filtering with `bun install --filter`
+- stricter dependency-script defaults through `trustedDependencies`
+
+If you only want a package manager and are otherwise happy with your current Node.js setup, pnpm is usually the closer comparison.
+
+## What Bun's package manager does today
+
+Bun's package manager can:
+
+- install dependencies with `bun install`
+- add and remove packages with `bun add` and `bun remove`
+- migrate existing npm, Yarn, and pnpm lockfiles
+- use filtered installs in monorepos
+- use isolated installs for new workspaces and monorepos
+- skip dependency lifecycle scripts unless you explicitly trust them
 
 ## Install Bun
 
@@ -70,15 +101,13 @@ bun install --save-text-lockfile
 rm bun.lockb
 ```
 
-Before the first `bun install`, remove other managers’ lockfiles to avoid conflicts:
+When `bun install` runs in a project without `bun.lock`, Bun can automatically migrate these lockfiles:
 
-```bash
-rm package-lock.json   # npm
-rm yarn.lock           # Yarn
-rm pnpm-lock.yaml      # pnpm
-```
+- `package-lock.json`
+- `yarn.lock`
+- `pnpm-lock.yaml`
 
-See Bun’s [lockfile docs](https://bun.sh/docs/install/lockfile) for details.
+The original lockfile is preserved, so you can verify the install before deleting the old file.
 
 ## bun install, bun add, and bun remove
 
@@ -152,7 +181,9 @@ See the [update and outdated docs](https://bun.com/docs/cli/update).
 
 ## Workspaces and monorepos
 
-Bun supports workspaces and two install strategies: hoisted (default) and isolated.
+Bun supports workspaces and two linker strategies: `isolated` and `hoisted`.
+
+For fresh workspaces and monorepos, Bun now defaults to `isolated`, which helps prevent phantom dependencies. For new single-package projects, the default is `hoisted`.
 
 Example workspace root:
 
@@ -164,7 +195,7 @@ Example workspace root:
 }
 ```
 
-Use an isolated, pnpm-like layout:
+Use an isolated layout explicitly:
 
 ```bash
 bun install --linker isolated
@@ -178,21 +209,9 @@ bun install --filter apps/web --filter packages/ui
 
 See workspace flags in the [install docs](https://bun.com/docs/cli/install).
 
-## Performance in practice
+## Security defaults and CI
 
-The Bun team’s current averages for clean installs: about 7× faster than npm, ~4× faster than pnpm, and ~17× faster than Yarn. See the backgrounder on [bun install performance](https://bun.com/blog/behind-the-scenes-of-bun-install).
-
-My quick numbers on a 2021 MacBook Pro (M1 Pro), clean network, fresh caches:
-- Next.js app (~1.1k packages): bun install 8.6s, pnpm 31.9s, npm 57.4s, Yarn 138s.
-- Node.js library (~350 packages): bun install 3.4s, pnpm 12.1s, npm 19.6s, Yarn 49.2s.
-
-Times vary by network, CPU, and caching. I measure on clean clones to keep results simple.
-
-## CI with bun ci and reproducible installs
-
-Use `bun ci` in CI to enforce reproducible installs. It is equivalent to `bun install --frozen-lockfile` and fails if `package.json` and `bun.lock` do not match. See the [CI guidance in the install docs](https://bun.com/docs/cli/install).
-
-Security note: Bun does not run dependency lifecycle scripts by default. If certain scripts are trusted, allow-list them with `trustedDependencies` in package.json:
+Bun does not run dependency lifecycle scripts by default. If certain scripts are trusted, allow-list them with `trustedDependencies` in `package.json`:
 
 ```json
 {
@@ -200,10 +219,26 @@ Security note: Bun does not run dependency lifecycle scripts by default. If cert
 }
 ```
 
-Details are in the [install docs](https://bun.com/docs/cli/install).
+For CI, use:
+
+```bash
+bun ci
+```
+
+That is equivalent to `bun install --frozen-lockfile`.
+
+## So, should you pick Bun or pnpm?
+
+If your real comparison is **Bun vs pnpm**, I would simplify it like this:
+
+- choose **Bun** when you want a faster-moving all-in-one toolchain and are happy to adopt its runtime and package-manager model together
+- choose **pnpm** when you mainly want a package manager and want the smallest change to an otherwise standard Node.js setup
+- keep **npm** when compatibility and lowest-friction defaults matter more than changing tools
+- keep **Yarn** mostly when your existing project already depends on Yarn-specific behavior
 
 ## Conclusion
-In 2025, Bun’s package manager is a good fit when fast installs, simple CI, and npm compatibility matter. Windows support is stable, and the default text-based `bun.lock` makes reviews easier. For monorepos, I watch the choice between hoisted and isolated installs and use `--filter` to keep work focused. My next step on new projects is to turn on `bun ci`, measure a few fresh installs, and keep the lockfile committed.
+
+Bun is strongest when you want one tool to cover package management, script execution, and the runtime itself. If your decision is mostly about monorepo installs and lockfiles, pnpm is still the comparison to think through most carefully. If your goal is a simpler modern default with fewer moving pieces, Bun is worth serious consideration.
 
 If you are deciding whether Bun should replace your current package-manager habit, these are the next reads I would compare alongside it:
 
