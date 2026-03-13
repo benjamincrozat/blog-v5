@@ -1,291 +1,147 @@
 ---
 id: "01KKEW27B5Z43M95WBDPTWFANX"
-title: "Laravel 11 is out! Here are every new big changes and features."
+title: "Laravel 11: key changes, support status, and upgrade advice"
 slug: "laravel-11"
 author: "benjamincrozat"
-description: "Laravel 11 was released on March 12th, 2024 and is packed with tons of new bits. Let's dive into every relevant new change and feature you need to know about."
+description: "Laravel 11 shipped on March 12, 2024. Here is what changed, when support ended, and whether it still makes sense as a late upgrade step."
 categories:
   - "laravel"
-published_at: 2023-01-05T00:00:00+01:00
-modified_at: 2024-03-12T00:00:00+01:00
+published_at: 2023-01-04T23:00:00Z
+modified_at: 2026-03-13T15:26:21Z
 serp_title: null
 serp_description: null
-canonical_url: ""
+canonical_url: null
 is_commercial: false
 image_disk: "cloudflare-images"
 image_path: "images/posts/iMgO07qBJBb4MJr.png"
 sponsored_at: null
 ---
-## When was Laravel 11 released?
+## Introduction
 
-**Laravel 11 was released on March 12, 2024**.
+Laravel 11 was released on March 12, 2024. If you are reading this on March 13, 2026, the key fact is that Laravel 11 has just reached end of life. Bug fixes ended on September 3, 2025, and security fixes ended on March 12, 2026, according to the official [release notes](https://laravel.com/docs/11.x/releases#support-policy).
 
-The adoption of a new major version should never be rushed, though.
+That makes Laravel 11 a strange but still useful release to study. It introduced a much slimmer application skeleton and several framework improvements that still shape modern Laravel apps, but it is no longer the version you should aim to stay on in production.
 
-The framework last had LTS (Long-Term Support) in version 6, but **each major version has two years of updates**, which should give you enough time to get your codebase in check and upgrade it.
+## Support status: should you still target Laravel 11?
 
-According to the [Support Policy](https://laravel.com/docs/10.x/releases#support-policy), Laravel 10 will receive bug fixes until August 6th, 2024 and security fixes until February 4th, 2025.
+Laravel 11 is not an LTS release. In practical terms, the current support picture looks like this:
 
-| Version | PHP | Release | Bug fixes until | Security fixes until |
-| ------- | --- | ------- | --------------- | -------------------- |
-| 10 | 8.1 | February 14, 2023 | August 6, 2024 | February 4, 2025 |
-| 11 | 8.2 | March 12, 2024 | September 3, 2025 | March 12, 2026 |
+| Version | Release date | Bug fixes until | Security fixes until | Status on March 13, 2026 |
+| ------- | ------------ | --------------- | -------------------- | ------------------------ |
+| 10 | February 14, 2023 | August 6, 2024 | February 4, 2025 | End of life |
+| 11 | March 12, 2024 | September 3, 2025 | March 12, 2026 | End of life |
+| 12 | February 24, 2025 | August 13, 2026 | February 24, 2027 | Supported |
 
-## Upgrade a project to Laravel 11 or create a new one
+So the short answer is:
 
-To upgrade a project to Laravel 11, follow my simple to understand [upgrade guide](/laravel-11-upgrade-guide) that contains tons of tips.
+- Do not launch a new production app on Laravel 11 now.
+- Do not stop on Laravel 11 if you are planning a larger modernization effort.
+- Do use Laravel 11 as a stepping stone if you need a smaller, version-by-version path from older code to Laravel 12.
 
-And to create a new Laravel 11 project, [get the official installer](https://laravel.com/docs/11.x/installation#creating-a-laravel-project) and run the following command:
+If you want the longer release history, my [Laravel versions guide](/laravel-versions) gives you the full timeline.
+
+## How to install Laravel 11 today
+
+If you explicitly need Laravel 11, pin the version with Composer instead of relying on the installer to pick the right major:
 
 ```bash
-laravel new hello-world
+composer create-project laravel/laravel:^11.0 my-app
 ```
 
-Or, if you prefer to use Composer explicitly:
+I verified that command still creates a fresh Laravel 11 app today. The current 11.x skeleton I pulled in requires PHP 8.2+, ships with the new `bootstrap/app.php` setup, includes only `routes/web.php` and `routes/console.php` by default, and leaves `app/Http` with just controllers.
 
-```bash
-composer create-project laravel/laravel hello-world
+That is important because the official [release notes](https://laravel.com/docs/11.x/releases#streamlined-application-structure) introduced the slim structure for new applications only. Existing Laravel 10 apps can still upgrade to 11 without rewriting themselves into the new layout.
+
+## What Laravel 11 changed that still matters
+
+The release notes describe Laravel 11 as a continuation of the Laravel 10 improvements, with a [streamlined application structure, per-second rate limiting, health routing, graceful encryption key rotation, queue testing improvements, and more](https://laravel.com/docs/11.x/releases). For most teams, these are the durable changes worth remembering.
+
+### The slim application structure changed new projects a lot
+
+Laravel 11's biggest visible change was the default skeleton. New projects moved more setup into `bootstrap/app.php`, trimmed the number of framework files in the app itself, and made optional pieces truly optional.
+
+Here is the default shape of a fresh Laravel 11 `bootstrap/app.php`:
+
+```php
+return Application::configure(basePath: dirname(__DIR__))
+    ->withRouting(
+        web: __DIR__.'/../routes/web.php',
+        commands: __DIR__.'/../routes/console.php',
+        health: '/up',
+    )
+    ->withMiddleware(function (Middleware $middleware) {
+        //
+    })
+    ->withExceptions(function (Exceptions $exceptions) {
+        //
+    })->create();
 ```
 
-## What's new in Laravel 11: features and changes
+That one file now handles routing, middleware, exceptions, and the health endpoint. It is the main reason a fresh Laravel 11 app feels lighter than a Laravel 10 app.
 
-### A slimmer application skeleton
+### API and broadcasting files became opt-in
 
-With the introduction of Laravel 11, it was time to declutter and redefine how a Laravel application is structured. The goal? To give you a leaner and more efficient starting point for your projects. And let me tell you, they've delivered.
-
-#### The all-new bootstrap/app.php file
-
-The heart of this makeover is the `bootstrap/app.php` file, revitalized to act as your central command station. It's here you'll tweak application routing, middleware, service providers, exception handling, and a bunch more – all from one spot. Think of it as the captain's chair of a spaceship.
-
-#### Simplified service providers
-
-Are you used to juggling multiple service providers? Laravel 11 says, "No more!" Now, there's just one `AppServiceProvider`. This change consolidates the functions of the old service providers into either the `bootstrap/app.php` or the `AppServiceProvider`, making your codebase tidier.
-
-#### Optional API and broadcast route files
-
-Not every app needs API and broadcasting capabilities out of the gate. Laravel 11 acknowledges this by not including *api.php* and *channels.php* route files by default. Need them? Just a simple [Artisan command away](/install-route-files-laravel). Laravel's flexibility shines here, allowing you to add features only when you need them.
+New Laravel 11 apps do not include `routes/api.php` or `routes/channels.php` by default. If you need them, install them when you actually need them:
 
 ```bash
 php artisan install:api
 php artisan install:broadcasting
 ```
 
-#### Gone are the default middleware classes
+That sounds minor, but it is part of the same philosophy: do not ship boilerplate you may never use. If you need a walkthrough, I have a guide on [restoring route files in Laravel 11](/install-route-files-laravel).
 
-Gone are the days of a cluttered middleware folder. Laravel 11 has moved these middleware into the framework itself, letting you enjoy a cleaner application structure without losing the ability to customize middleware behavior from `bootstrap/app.php`. Learn more: (How to customize default middleware in Laravel 11)[/customize-middleware-laravel-11]
+### Health routing became a first-class feature
 
-```php
-->withMiddleware(function (Middleware $middleware) {
-    $middleware->redirectGuestsTo('/admin/login');
-})
-```
+Laravel 11 added built-in [health routing](https://laravel.com/docs/11.x/deployment#the-health-route) through the `health: '/up'` configuration in `bootstrap/app.php`. That makes it easier to wire Laravel apps into load balancers, container platforms, and uptime checks without rolling your own probe endpoint every time.
 
-#### Exception handling also moved to bootstrap/app.php
+It is a small feature, but it is one of the most operationally useful additions in the release.
 
-In the spirit of consolidation, exception handling has also moved to the cozy confines of `bootstrap/app.php`. This keeps your application's structure lean and means you won't have to hunt through multiple files to manage exceptions.
+### Per-second rate limiting fixed a real blind spot
 
-Here's a code sample from Laravel 11's release notes (*bootstrap/app.php*):
-
-```php
-->withExceptions(function (Exceptions $exceptions) {
-    $exceptions->dontReport(MissedFlightException::class);
- 
-    $exceptions->reportable(function (InvalidOrderException $e) {
-        // ...
-    });
-})
-```
-
-#### Direct tasks scheduling in routes/console.php
-
-Scheduling tasks is now as simple as adding a few lines to your `routes/console.php` file, thanks to the new `Schedule` facade. No need for a console kernel anymore.
-
-In *routes/console.php*:
-
-```php
-use Illuminate\Support\Facades\Schedule;
- 
-Schedule::command('some-service:sync')->daily();
-```
-
-#### A minimalist base controller class
-
-The base controller class in Laravel 11 has gone on a diet. The `AuthorizesRequests` and `ValidatesRequests` traits still exist, but you will also now have to opt-in.
-
-For instance, if you are using policies and want to do check for authorizations, you'll have to include the `AuthorizesRequests` trait in your base controller (*app/Http/Controllers/Controller.php*):
-
-```php
-namespace App\Http\Controllers;
-
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-
-abstract class Controller
-{
-    use AuthorizesRequests;
-}
-```
-
-### The new health-check endpoint
-
-Laravel 11 introduces a new [health-check endpoint](https://laravel.com/docs/11.x/deployment#the-health-route) that allows you to perform various verifications of the different parts of your application and ensure everything is running smoothly.
-
-The endpoint can be defined in *bootstrap/app.php* like so:
-
-```php
-->withRouting(
-    web: __DIR__.'/../routes/web.php',
-    commands: __DIR__.'/../routes/console.php',
-    health: '/up',
-)
-```
-
-Whenever the endpoint is hit, a `Illuminate\Foundation\Events\DiagnosingHealth` event is dispatched.
-
-### Per-second rate limiting
-
-[Rate limiting](https://laravel.com/docs/11.x/routing#rate-limiting) in Laravel is incredibly easy to set up. With Laravel 11, you can now set a rate limit per second.
-
-But why is it useful? Let's take this example:
+Before Laravel 11, per-minute limits were easy, but they still allowed traffic spikes inside that minute. Laravel 11 added [per-second rate limiting](https://laravel.com/docs/11.x/routing#rate-limiting), which is much better when you want to smooth bursts instead of just counting total volume.
 
 ```php
 RateLimiter::for('invoices', function (Request $request) {
-    return Limit::perMinute(120); // [tl! --]
-    return Limit::perSecond(2); // [tl! ++]
+    return Limit::perSecond(2);
 });
 ```
 
-1. If we limit the amount of requests per minute, it means that **your users will also be able to send 120 requests in a second**.
-2. But if we limit the amount of requests per second, **your users won't be able to cram 120 requests in a second**, while still being limited to 120 requests per minute.
+If you protect login forms, webhooks, or expensive endpoints, this is one of the more practical framework-level changes from the release.
 
-See now why it's a great change?
+### Graceful encryption key rotation lowered the risk of rotating secrets
 
-### Discover the new Model::casts() method
+Laravel 11 also introduced [graceful encryption key rotation](https://laravel.com/docs/11.x/releases#graceful-encryption-key-rotation). If you have ever hesitated to rotate `APP_KEY` because it could break old encrypted payloads, this change matters. It gives teams a cleaner path for operational hygiene without forcing an all-at-once cutover.
 
-Usually, in Laravel, you declare attribute casting in an Eloquent model like this:
+### The upgrade stayed moderate, even with the new defaults
 
-```php
-class User extends Model
-{
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-}
-```
+The official [upgrade guide](https://laravel.com/docs/11.x/upgrade#estimated-upgrade-time-15-minutes) estimates about 15 minutes for the upgrade itself. That estimate is optimistic for a messy app, but the underlying point is fair: Laravel 11 changed the starting skeleton more than it changed existing applications.
 
-With Laravel 11, you can now define your casting through a `casts()` method in your model, giving you a chance to use static methods with parameters. This is how it looks:
+That is why many upgrades from 10 to 11 feel smaller than the launch article made them sound in 2024.
 
-```php
-class User extends Model
-{
-    protected function casts() : array
-    {
-        return [
-            'foo' => AsCollection::using(FooCollection::class),
-        ];
-    }
-}
-```
+## What usually matters during a late Laravel 11 upgrade
 
-Moreover, you can now also specify your casts as an array:
+If you are upgrading now, these are the checks I would make first:
 
-```php
-class User extends Model
-{
-	// Even in the old $casts property!
-    protected $casts = [
-        'foo' => [AsCollection::class, FooCollection::class],
-    ];
-  
-    protected function casts() : array
-    {
-        return [
-            'foo' => [AsCollection::class, FooCollection::class],
-        ];
-    }
-}
-```
+- PHP 8.2 is required, so older runtimes must move first.
+- The new application structure is optional for existing apps. Do not rewrite files just to match the new skeleton.
+- Review [password rehashing](https://laravel.com/docs/11.x/upgrade#password-rehashing) if your authentication flow or user provider is customized.
+- Review [Carbon 3](https://laravel.com/docs/11.x/upgrade#carbon-3) if your app or packages rely heavily on `diffIn*` methods, because return values and signs changed.
+- Check package compatibility with `composer why-not laravel/framework 11.0` before touching your constraints.
 
-**Note that the `casts()` method is prioritized over the `$casts` property.**
+If you want the version-by-version mechanics, my [Laravel 11 upgrade guide](/laravel-11-upgrade-guide) goes deeper on the actual upgrade process.
 
-All these changes are non-breaking, meaning they won't affect your current code if you update to Laravel 11.
+## Should you stop at Laravel 11?
 
-See the pull request on GitHub: [[11.x] Adds Model::casts() method and named static methods for built-in casters](https://github.com/laravel/framework/pull/47237)
+Usually, no.
 
-### There's a new handy trait named "Dumpable"
+Laravel 11 was a meaningful release, and its slimmer defaults absolutely influenced the versions that came after it. But as of March 13, 2026, it is already past its security support window. If you are planning work today, Laravel 12 is the version to target for production.
 
-This pull request introduces a new `Dumpable` trait in Laravel 11, intended to replace the current `dd` and `dump` methods in most of the framework's classes.
+That means Laravel 11 is now best understood as a transitional release: very important historically, still useful as an upgrade step, but not a destination.
 
-The trait allows Laravel users and package authors to include debugging methods easily within their classes by utilizing this trait.
+If you are figuring out the next move after reading this, these are the pages I would keep open:
 
-Here's a code example showing how it can be used:
-
-```php
-<?php
-
-namespace App\ValueObjects;
-
-use Illuminate\Support\Traits\Dumpable;
-use Illuminate\Support\Traits\Conditionable;
-
-class Address
-{
-    use Conditionable, Dumpable;
-
-    // ...
-}
-
-$address = new Address;
-
-// Before: 
-$address->foo()->bar();
-
-// After:
-$address->foo()->dd()->bar();
-```
-
-See the pull request on GitHub: [[11.x] Adds Dumpable concern](https://github.com/laravel/framework/pull/47122)
-
-### Dropped support for PHP 8.1
-
-PHP 8.2 is established and PHP 8.3 is now the latest version of PHP. Laravel can now move forward and abandon 8.1.
-
-But remember: your Laravel apps don't need to be updated to the latest and greatest as soon as they're released.
-
-Especially if you have projects with paid clients or employees who depend on them to do their work.
-
-Those projects need to slowly but surely move forward by doing extensive testing. Don't rush.
-
-See the pull request on GitHub: [[11.x] Drop PHP 8.1 support](https://github.com/laravel/framework/pull/45526)
-
-![PHP 8.2](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-11-5245d6555cd11a8430ca.jpg/public)
-
-### Laravel 11 release preparation pull requests
-
-Here's a list of every merged PR I found to prepare the release of Laravel 11:
-
-- [[11.x] Set up Laravel v11](https://github.com/laravel/framework/pull/45525)
-- [[11.x] Update Testbench dependencies for Laravel 11](https://github.com/laravel/framework/pull/45538)
-- [[11.x] Removed old WithoutEvents trait](https://github.com/laravel/framework/pull/47180)
-- [And more!](https://github.com/laravel/framework/pulls?q=is%3Apr+is%3Amerged+%5B11.x%5D+)
-
-There are a lot of small details to dig into that I didn't include in this article for the sake of conciseness.
-
-## How to contribute your own features and bug fixes to this release
-
-Did you know you can fix the bugs you have encountered or create the next big feature for Laravel 11?
-
-1. See what's going on for Laravel 11 on GitHub: https://github.com/laravel/framework/pulls. The Pull Requests will tell you what's already been done.
-2. Take one of your pain points with the framework and create a solution yourself.
-3. Send the PR over to the laravel/framework repository, collect feedback, improve, and get merged.
-
-One important tip to increase your chances of being merged: add something to the framework that's a win for developers but not a pain to maintain for Taylor and his team in the long run.
-
-![Pull requests on the laravel/framework repository.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-11-e9bd7892b52acc41bdd3.jpg/public)
-
-If Laravel 11 is the release you are planning around right now, these are the next reads I would keep close:
-
-- [Check what changes before you move to Laravel 11](/laravel-11-upgrade-guide)
-- [Adjust Laravel 11 middleware without hunting through the framework](/customize-middleware-laravel-11)
-- [Restore Laravel 11 route files when you actually need them](/install-route-files-laravel)
-- [See what Laravel 12 changed before you adopt it](/laravel-12)
-- [See where this fits in Laravel's release history](/laravel-versions)
+- [Follow the practical upgrade path from Laravel 10 to 11](/laravel-11-upgrade-guide)
+- [Adjust middleware in the new Laravel 11 structure](/customize-middleware-laravel-11)
+- [Bring back the missing route files only when you need them](/install-route-files-laravel)
+- [See why Laravel 12 is the version to target now](/laravel-12)
+- [Double-check the whole release timeline before you plan upgrades](/laravel-versions)
