@@ -1,0 +1,4 @@
+version: 1
+agent:
+  name: openai
+  default_prompt: "Use $framework-news-analysis when the task is to identify and frame the best weekly story about a framework, library, tool, platform, or developer product. Start from current primary sources, decide whether the right shape is straight news, reported analysis, or review with opinion, widen to broader ecosystem examples only when the story needs that context, and keep the angle honest when the update is narrower than the hype. Pair with $post-writing, $file-first-posts, and $seo-content for the actual post workflow."
