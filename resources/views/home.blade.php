@@ -4,14 +4,14 @@ Displays the home view.
 
 <x-app :title="config('app.name')">
     <div class="container xl:max-w-(--breakpoint-lg)">
+        <div class="text-xl tracking-tight font-normal text-center text-black mb-4">
+            <div class="font-handwriting">Including a ton of scrapers too!</div>
+            <x-heroicon-o-arrow-down class="size-4 mx-auto mt-1" />
+        </div>
+
         <x-typography.headline>
             The hub for <span class="text-blue-600">{{ Number::format($visitors) }}</span>+ web developers, monthly
         </x-typography.headline>
-
-        <div class="text-xl tracking-tight font-normal text-center text-black">
-            <x-heroicon-o-arrow-up class="size-4 mx-auto mb-2 mt-4" />
-            <div class="font-handwriting">Including a ton of scrapers too!</div>
-        </div>
 
         <x-typography.subheadline class="mt-6 md:mt-10">
             Stay ahead in web development with a good dose of AI and everything else.
