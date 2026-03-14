@@ -40,26 +40,15 @@ Displays the standalone post image preview page.
                     style="background: {{ $mesh['atmosphere'] }};"
                 ></div>
 
-                <div
-                    class="absolute -top-28 left-[-4rem] size-[32rem] rounded-full blur-3xl"
-                    style="background: {{ $mesh['blobs'][0] }};"
-                ></div>
-                <div
-                    class="absolute top-20 right-[-6rem] size-[34rem] rounded-full blur-3xl"
-                    style="background: {{ $mesh['blobs'][1] }};"
-                ></div>
-                <div
-                    class="absolute bottom-[-8rem] left-1/4 size-[30rem] rounded-full blur-3xl"
-                    style="background: {{ $mesh['blobs'][2] }};"
-                ></div>
-                <div
-                    class="absolute bottom-[-10rem] right-[-1rem] size-[26rem] rounded-full blur-3xl"
-                    style="background: {{ $mesh['blobs'][3] }};"
-                ></div>
-                <div
-                    class="absolute top-1/3 left-1/2 size-[18rem] -translate-x-1/2 rounded-full blur-3xl"
-                    style="background: {{ $mesh['blobs'][4] }};"
-                ></div>
+                @foreach ($mesh['blobs'] as $blob)
+                    <div
+                        @class([
+                            'absolute rounded-full blur-3xl',
+                            $blob['class'],
+                        ])
+                        style="background: {{ $blob['color'] }};"
+                    ></div>
+                @endforeach
 
                 <div
                     class="absolute inset-0"
@@ -72,7 +61,7 @@ Displays the standalone post image preview page.
                             benjamincrozat.com
                         </p>
 
-                        <h1 class="font-medium tracking-tight text-black/95 text-7xl/none text-balance">
+                        <h1 class="font-medium tracking-tight text-black/95 text-7xl/[1.15] text-balance">
                             {{ $post->title }}
                         </h1>
                     </header>
