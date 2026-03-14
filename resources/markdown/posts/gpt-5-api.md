@@ -8,7 +8,7 @@ categories:
   - "ai"
   - "gpt"
 published_at: 2025-08-06T15:45:00+02:00
-modified_at: 2026-03-14T12:22:18Z
+modified_at: 2026-03-14T12:53:43Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -307,9 +307,9 @@ If you only copy one thing from this page, copy the pattern:
 
 That is enough to move from "I made my first model call" to "I built something I can wire into a product."
 
-Once this request is working, the next bottleneck is usually prompting, integration, or choosing where GPT-5.0 actually fits in your stack:
+Once this request is working, the next bottleneck is usually prompting, integration, or deciding whether the full GPT-5.0 model is really the right fit:
 
+- [Drop to GPT-5 mini when you want the same family at a much lower cost](/gpt-5-mini-api)
+- [Use GPT-5 nano for very fast classification and summarization workloads](/gpt-5-nano-api)
 - [Move the same workflow into PHP with less boilerplate](/openai-php-client)
 - [Build a better mental model for what GPT-style models are actually doing](/gpt-llm-ai-explanation)
-- [Compare this with a different OpenAI model before you optimize for cost](/gpt-4o-mini)
-- [See how GPT-4.1 changed the trade-off between model quality and context length](/gpt-41)
