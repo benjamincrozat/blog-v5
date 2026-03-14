@@ -13,8 +13,8 @@ serp_title: null
 serp_description: null
 canonical_url: null
 is_commercial: false
-image_disk: "cloudflare-images"
-image_path: "images/posts/01KKP8EX86EYPF96ZSQT78PHX9.png"
+image_disk: null
+image_path: null
 sponsored_at: null
 ---
 ## What this GPT Image guide covers
