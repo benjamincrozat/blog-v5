@@ -13,7 +13,7 @@ Displays the home view.
         </x-typography.headline>
 
         <x-typography.subheadline class="mt-6 md:mt-10">
-            Stay ahead in web development with practical news, techniques, and tools.
+            Stay ahead in web development with practical news, techniques, tools, and a good dose of AI.
         </x-typography.subheadline>
 
         <div class="flex gap-2 justify-center items-center mt-7 text-center md:mt-11">
