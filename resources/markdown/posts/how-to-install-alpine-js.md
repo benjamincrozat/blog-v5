@@ -7,7 +7,7 @@ description: "Install Alpine.js in any project with a CDN or a package manager, 
 categories:
   - "alpinejs"
   - "javascript"
-published_at: null
+published_at: 2026-03-14T09:39:45Z
 modified_at: null
 serp_title: null
 serp_description: null
