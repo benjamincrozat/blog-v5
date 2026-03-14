@@ -6,7 +6,7 @@ author: "benjamincrozat"
 description: "Learn what AGENTS.md is, why it helps coding agents, what to put in it, and how to share one instruction file across Codex, Cursor, and Claude Code."
 categories:
   - "ai"
-published_at: null
+published_at: 2026-03-14T17:04:00+02:00
 modified_at: null
 serp_title: null
 serp_description: null
@@ -136,6 +136,8 @@ Keep it focused on instructions the agent can act on:
 - verification steps
 - framework or content exceptions
 - when to browse or verify external facts instead of guessing
+
+If you are deciding what should stay in the always-on file and what should become a reusable playbook, read [when to use AGENTS.md, CLAUDE.md, and skills](/agents-md-vs-skills) next.
 
 If you are building an MCP server or exposing tools to an external client, that is a different problem. My [Laravel MCP review](/laravel-mcp-review) covers that side of the stack. `AGENTS.md` is about how an agent should work **inside** your codebase.
 
