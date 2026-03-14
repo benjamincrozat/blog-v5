@@ -2,13 +2,18 @@
 Displays the components post component and accepts component props, Blade attributes, and slot content.
 --}}
 
-@props(['post'])
+@props([
+    'post',
+    'priority' => false,
+])
 
 <div {{ $attributes->class('flex flex-col h-full') }}>
     <a wire:navigate href="{{ route('posts.show', $post->slug) }}">
         @if ($post->hasImage())
             <img
-                fetchpriority="high"
+                loading="{{ $priority ? 'eager' : 'lazy' }}"
+                decoding="async"
+                fetchpriority="{{ $priority ? 'high' : 'low' }}"
                 src="{{ $post->image_url }}"
                 alt="{{ $post->title  }}"
                 class="object-cover rounded-xl ring-1 shadow-md transition-opacity shadow-black/5 aspect-video hover:opacity-50 ring-black/5"

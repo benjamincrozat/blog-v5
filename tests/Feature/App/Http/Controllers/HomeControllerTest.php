@@ -13,7 +13,8 @@ it('limits the latest posts collection to twelve entries', function () {
     ensureHomeCreator();
 
     get(route('home'))
-        ->assertViewHas('latest', fn (Collection $latest) => 12 === $latest->count());
+        ->assertViewHas('latest', fn (Collection $latest) => 12 === $latest->count()
+            && $latest->every(fn (Post $post) => $post->relationLoaded('categories') && $post->relationLoaded('user')));
 });
 
 it('shows twelve approved links on the homepage', function () {
@@ -21,7 +22,8 @@ it('shows twelve approved links on the homepage', function () {
     ensureHomeCreator();
 
     get(route('home'))
-        ->assertViewHas('links', fn (Collection $links) => 12 === $links->count());
+        ->assertViewHas('links', fn (Collection $links) => 12 === $links->count()
+            && $links->every(fn (Link $link) => $link->relationLoaded('post') && $link->relationLoaded('user')));
 });
 
 it("exposes Benjamin's about section to the view", function () {

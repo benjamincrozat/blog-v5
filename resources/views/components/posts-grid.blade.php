@@ -15,7 +15,7 @@ Displays the components posts grid component and accepts component props, Blade 
     @foreach ($posts as $post)
         <li>
             @empty($compact)
-                <x-post :$post />
+                <x-post :$post :priority="$loop->first" />
             @else
                 <x-compact-post :$post />
             @endempty

@@ -2,7 +2,10 @@
 Displays the components link component and accepts component props, Blade attributes, and slot content.
 --}}
 
-@props(['link'])
+@props([
+    'link',
+    'priority' => false,
+])
 
 <div {{ $attributes }}>
     <a
@@ -11,7 +14,9 @@ Displays the components link component and accepts component props, Blade attrib
     >
         @if ($link->image_url)
             <img
-                fetchpriority="high"
+                loading="{{ $priority ? 'eager' : 'lazy' }}"
+                decoding="async"
+                fetchpriority="{{ $priority ? 'high' : 'low' }}"
                 src="{{ $link->image_url }}"
                 alt="{{ $link->title  }}"
                 class="object-cover rounded-xl ring-1 shadow-md transition-opacity shadow-black/5 aspect-video hover:opacity-50 ring-black/5"
