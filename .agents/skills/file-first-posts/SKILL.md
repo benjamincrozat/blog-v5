@@ -19,6 +19,7 @@ Pair with `post-writing` when creating or revising article copy so internal link
 - Use `php artisan app:sync-posts` after every Markdown edit.
 - Upload every image used in a post to Cloudflare Images, including featured images, inline screenshots, badges, logos, and comparison cards.
 - Use `php artisan app:upload-post-image` for post images instead of local paths or third-party hotlinks.
+- If a post still has no featured image once the draft is written, run `php artisan app:generate-post-image your-post-slug` so `image_disk` / `image_path` are filled before handoff or publishing.
 - When a post explains an interface, setup flow, settings page, terminal output, or before/after result, prefer creating original screenshots instead of leaving the visual outcome implied.
 - Skip screenshots only when they add no proof or clarity.
 - Give screenshot files descriptive names and useful alt text before upload.
@@ -49,9 +50,11 @@ Pair with `post-writing` when creating or revising article copy so internal link
    - for posts aiming at Discover or Google News strongly, the main image should be original when feasible, not a logo, and at least 1200 px wide
    - hero image: `php artisan app:upload-post-image /absolute/path/to/cover.png --markdown=your-post.md`
    - inline image: `php artisan app:upload-post-image /absolute/path/to/step.png --alt="Describe the screenshot"` and paste the returned URL into the article body
+   - if the post still has no featured image after writing it, generate one with `php artisan app:generate-post-image your-post-slug`
 4. If publishing state changes, update `published_at` in UTC.
    - if this is a news post and you made a substantive reporting update, set `modified_at` in UTC before syncing
 5. Run `php artisan app:sync-posts`.
+   - skip this extra sync only when the last action was `php artisan app:generate-post-image`, because that command already updates the Markdown file and runs `php artisan app:sync-posts` for you
 6. Decide whether a browser check is needed:
    - skip it for routine Markdown-only edits when `php artisan app:sync-posts` succeeds
    - open the public page or Filament only for tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, or publishing changes that need confirmation

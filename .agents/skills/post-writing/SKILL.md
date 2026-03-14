@@ -48,6 +48,7 @@ Pair with `seo-content` for Search intent, Discover/News judgment, titles, snipp
 - If the topic is time-sensitive, you may use a year or date, but only if the page itself is current enough to support it.
 - If `categories` includes `news`, treat the draft as a news post: lead with the new information, verify claims with primary sources, attribute those sources inline, keep the structure tight, and avoid padding it into an evergreen explainer.
 - For posts intended to target Google News or Discover strongly, the primary article image should be original when feasible, not a logo, and at least 1200 px wide.
+- Once the post copy and title are stable, make sure the post has a featured image. If `image_disk` / `image_path` are still empty, generate one with `php artisan app:generate-post-image your-post-slug` before finishing.
 - For evergreen posts meant to compete in Discover, sharpen the opening payoff and framing, but do not force a news structure onto the draft.
 - Avoid clickbait phrasing, vague curiosity hooks, fake urgency, unsupported superlatives, emojis, or decorative all-caps.
 - Open fast: explain the problem, answer, or reason to care in the first few paragraphs.
@@ -93,11 +94,13 @@ Pair with `seo-content` for Search intent, Discover/News judgment, titles, snipp
 5. Pick the simplest outline that matches the post shape, and keep it tighter when the post is news.
 6. Draft for clarity, usefulness, and brevity.
 7. Decide whether original screenshots or simple visuals would materially clarify the piece or prove first-hand use; create them when the answer is yes.
-8. Add or refresh contextual internal links and, for non-commercial posts, the related-posts list.
-9. Validate version-sensitive claims, inline links, and code examples.
-10. Do a final publishing pass:
+8. If the post still has no featured image after the copy is stable, run `php artisan app:generate-post-image your-post-slug`. If you intentionally need a fresh render for an existing generated image, use `--force`.
+9. Add or refresh contextual internal links and, for non-commercial posts, the related-posts list.
+10. Validate version-sensitive claims, inline links, and code examples.
+11. Do a final publishing pass:
    - required frontmatter is present and valid
    - existing post IDs stayed unchanged
+   - the post has a featured image, whether custom-uploaded or generated through `php artisan app:generate-post-image`
    - every image used in the post, including featured images and inline assets, uses Cloudflare Images URLs or paths
    - screenshots or simple visuals were added when they materially improved clarity, credibility, or first-hand evidence, and skipped when they would have been filler
    - frontmatter promise is aligned
