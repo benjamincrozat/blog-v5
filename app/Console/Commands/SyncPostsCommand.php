@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\MarkdownSync\SyncPosts;
 use Illuminate\Console\Command;
+use App\Actions\Posts\SyncMarkdownPosts;
+use App\Exceptions\PostMarkdownException;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Attribute\AsCommand;
 
@@ -16,35 +17,32 @@ use Symfony\Component\Console\Attribute\AsCommand;
 )]
 class SyncPostsCommand extends Command
 {
-    public function handle(SyncPosts $syncPosts) : int
+    public function handle(SyncMarkdownPosts $syncMarkdownPosts) : int
     {
-        $directory = (string) ($this->option('directory') ?: 'resources/markdown/posts');
-        $result = $syncPosts->handle($directory);
+        $directory = $this->resolveDirectory();
 
-        $this->line('Posts sync summary');
-        $this->table(
-            ['Scanned', 'Created', 'Updated', 'Soft deleted', 'Skipped', 'Errors'],
-            [[
-                $result->scanned,
-                $result->created,
-                $result->updated,
-                $result->softDeleted,
-                $result->skipped,
-                count($result->errors),
-            ]]
-        );
-
-        if ($result->hasErrors()) {
-            foreach ($result->errors as $error) {
-                $this->error($error);
+        try {
+            $result = $syncMarkdownPosts->handle($directory);
+        } catch (PostMarkdownException $exception) {
+            foreach (explode("\n", $exception->getMessage()) as $line) {
+                $this->error($line);
             }
 
             return self::FAILURE;
         }
 
-        $this->info('Markdown posts have been synchronized.');
+        $this->info(
+            "Synced posts: created={$result->createdCount}, updated={$result->updatedCount}, restored={$result->restoredCount}, deleted={$result->deletedCount}."
+        );
 
         return self::SUCCESS;
+    }
+
+    protected function resolveDirectory() : ?string
+    {
+        $directory = trim((string) $this->option('directory'));
+
+        return '' === $directory ? null : $directory;
     }
 
     protected function configure() : void
@@ -54,7 +52,6 @@ class SyncPostsCommand extends Command
             null,
             InputOption::VALUE_OPTIONAL,
             'The markdown directory to synchronize',
-            'resources/markdown/posts',
         );
     }
 }

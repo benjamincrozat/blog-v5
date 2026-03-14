@@ -17,9 +17,9 @@ use App\Exceptions\PostMarkdownException;
  */
 class SyncMarkdownPosts
 {
-    public function handle() : SyncMarkdownPostsResult
+    public function handle(?string $path = null) : SyncMarkdownPostsResult
     {
-        $path = (string) config('blog.markdown.posts_path');
+        $path ??= (string) config('blog.markdown.posts_path');
 
         if (! File::isDirectory($path)) {
             throw PostMarkdownException::fromErrors([
