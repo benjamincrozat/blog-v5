@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27KVZP920YG58MHGQPEA"
-title: "How to find your php.ini location"
+title: "php.ini location: how to find the active file"
 slug: "php-ini-location"
 author: "benjamincrozat"
-description: "Find the active php.ini file with `php --ini` or `phpinfo()`, and avoid editing the wrong PHP configuration."
+description: "Find your active php.ini location with php --ini or phpinfo(), then confirm whether CLI and PHP-FPM are using different configuration files."
 categories:
   - "php"
 published_at: 2023-11-02T00:00:00+01:00
-modified_at: 2026-03-13T11:30:00Z
+modified_at: 2026-03-14T10:09:06Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -18,13 +18,15 @@ sponsored_at: null
 ---
 ## Introduction
 
-Need to find your `php.ini` file? The fastest options are `php --ini` in the terminal or `phpinfo()` in the browser. This guide shows both, plus the common locations developers usually expect on Linux, macOS, and Windows.
+Need to find your `php.ini` file? Start with `php --ini` in the terminal or `phpinfo()` in the browser, then confirm whether the CLI and web server are loading the same file.
+
+This guide shows both methods, plus the common locations developers usually expect on Linux, macOS, and Windows.
 
 ## What is php.ini and why does it matter?
 
 The _php.ini_ file is a PHP configuration file used to control your PHP environment’s behavior. You might tweak it to increase memory limits, adjust error reporting, or handle file uploads. [Official PHP docs](https://www.php.net/manual/en/ini.core.php) cover all directives in depth.
 
-## Locate php.ini using phpinfo()
+## How to find your php.ini location with phpinfo()
 
 The fastest method PHP developers usually discover first is through `phpinfo()`:
 
@@ -42,7 +44,7 @@ Look under “Loaded Configuration File” for the exact location.
 
 ![phpinfo showing php.ini location](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/php-ini-location-4f1fce8314bd74f7d44b.jpg/public)
 
-## Locate php.ini using the command line
+## How to find your php.ini location in the terminal
 
 For command-line enthusiasts, PHP provides simple commands:
 

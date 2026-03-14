@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27HC2H5HQCA5SN929N5G"
-title: "npm ci vs. npm install: here's the difference"
+title: "npm ci: what it does and when to use it"
 slug: "npm-ci"
 author: "benjamincrozat"
-description: "Should you run npm ci or stick with good old npm install? Here's exactly what I learned."
+description: "Learn what npm ci does, how it differs from npm install, and when to use it for CI, Docker, and reproducible builds."
 categories:
   - "javascript"
   - "node-js"
 published_at: 2025-07-19T11:55:00+02:00
-modified_at: 2025-11-27T10:34:00+01:00
+modified_at: 2026-03-14T10:09:06Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -19,7 +19,19 @@ sponsored_at: null
 ---
 ## Introduction
 
-If you’ve ever wondered whether to run `npm ci` (which literally means _clean install_) or stick with good old `npm install`, you’re in the right place. Here’s exactly what I learned.
+`npm ci` installs dependencies from your lockfile exactly as committed, wipes `node_modules` first, and fails if `package.json` and `package-lock.json` are out of sync. Use it when you need reproducible installs in CI, Docker, or deployment pipelines.
+
+If you are comparing it with `npm install`, the short version is simple: `npm ci` favors consistency, while `npm install` favors flexibility during local development.
+
+## What does `npm ci` do
+
+When you run `npm ci`, npm does three important things:
+
+- **Lockfile-first install**: it installs exactly what is in `package-lock.json`.
+- **Clean slate**: it removes `node_modules` before reinstalling dependencies.
+- **Strict validation**: it errors out if the lockfile and `package.json` do not match.
+
+That makes it the right default for environments where "works on my machine" is not good enough.
 
 ## What does `npm install` do
 
@@ -28,13 +40,11 @@ When you run `npm install`, here’s what’s happening:
 - **Semver resolution and lockfile updates**: npm reads your `package.json`, figures out the latest acceptable versions based on semver ranges, and then checks against my `package-lock.json`. If allowed ranges in `package.json` mean newer versions are available, npm updates the lockfile accordingly. Since NPM 7, the lockfile typically takes priority.
 - **Incremental node\_modules mutation**: `npm install` tries to save you time by only updating what’s necessary in `node_modules`. This incremental approach is great for local development, especially with fast hot-reloading.
 
-## What does `npm ci` do
-
-But what about `npm ci`? Here’s why it’s special:
+## Why `npm ci` behaves differently from `npm install`
 
 - **Lockfile-first philosophy**: `npm ci` completely trusts the lockfile. No version guessing, no automatic upgrades. Just precise, byte-for-byte consistency.
 - **The “nuke & pave” node\_modules step**: Every time you run `npm ci`, it wipes out the entire `node_modules` folder before rebuilding it exactly according to the lockfile. This ensures absolute cleanliness, though it can be slower locally if you already have an updated node\_modules.
-- **Strict sync checks**: If my `package-lock.json` and `package.json` aren’t perfectly synced (or if there’s no lockfile) `npm ci` throws an error immediately.
+- **Strict sync checks**: If my `package-lock.json` and `package.json` aren’t perfectly synced (or if there’s no lockfile), `npm ci` throws an error immediately.
 
 ## When I reach for `npm ci` (and when I don’t)
 

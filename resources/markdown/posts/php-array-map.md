@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27K0GTJXCM6NM1PQKQGA"
-title: "PHP array_map() explained with examples"
+title: "PHP array_map(): practical examples and key rules"
 slug: "php-array-map"
 author: "benjamincrozat"
-description: "Learn how to use `array_map()` in PHP, map one or more arrays, preserve keys, and zip arrays with a `null` callback."
+description: "Use PHP array_map() to transform arrays, map multiple arrays at once, preserve keys when possible, and zip arrays with a null callback."
 categories:
   - "php"
 published_at: 2023-11-04T00:00:00+01:00
-modified_at: 2026-03-13T15:40:00Z
+modified_at: 2026-03-14T10:09:06Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -20,7 +20,7 @@ sponsored_at: null
 
 **Use [`array_map()`](https://www.php.net/array_map) when you want to transform every item in an array and return a new array.**
 
-It is a clean alternative to building a second array manually in a `foreach` loop, and it becomes even more useful when you need to map multiple arrays at once.
+It is a clean alternative to building a second array manually in a `foreach` loop, and it becomes even more useful when you need to map multiple arrays at once. The main rule worth remembering is that keys are preserved only when you pass one array.
 
 ## How to use array_map() in PHP
 
