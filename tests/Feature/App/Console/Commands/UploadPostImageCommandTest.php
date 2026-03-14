@@ -7,7 +7,7 @@ use App\Markdown\PostMarkdownDocument;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 
-function blogUploadMarkdownPath() : string
+function uploadPostImageMarkdownPath() : string
 {
     return (string) config('blog.markdown.posts_path');
 }
@@ -24,13 +24,13 @@ beforeEach(function () {
 });
 
 afterEach(function () {
-    File::deleteDirectory(blogUploadMarkdownPath());
+    File::deleteDirectory(uploadPostImageMarkdownPath());
 });
 
 it('uploads an inline article image to Cloudflare Images', function () {
     $image = UploadedFile::fake()->image('dashboard-shot.png', 1200, 630);
 
-    Artisan::call('blog:upload-image', [
+    Artisan::call('app:upload-post-image', [
         'source' => $image->getPathname(),
         '--path' => 'images/posts/dashboard-shot.png',
         '--alt' => 'Dashboard shot',
@@ -48,7 +48,7 @@ it('uploads an inline article image to Cloudflare Images', function () {
 it('updates the Markdown hero image fields after uploading to Cloudflare Images', function () {
     $image = UploadedFile::fake()->image('cover.png', 1200, 630);
 
-    writeMarkdownPostForUpload(blogUploadMarkdownPath(), 'cloudflare-post', [
+    writeMarkdownPostForUpload(uploadPostImageMarkdownPath(), 'cloudflare-post', [
         'id' => '"01ARZ3NDEKTSV4RRFFQ69G5FAV"',
         'title' => '"Cloudflare post"',
         'slug' => 'cloudflare-post',
@@ -66,7 +66,7 @@ it('updates the Markdown hero image fields after uploading to Cloudflare Images'
         'sponsored_at' => 'null',
     ], 'Body content');
 
-    Artisan::call('blog:upload-image', [
+    Artisan::call('app:upload-post-image', [
         'source' => $image->getPathname(),
         '--path' => 'images/posts/cloudflare-post-cover.png',
         '--markdown' => 'cloudflare-post.md',
@@ -75,14 +75,14 @@ it('updates the Markdown hero image fields after uploading to Cloudflare Images'
     Storage::disk('cloudflare-images')->assertExists('images/posts/cloudflare-post-cover.png');
 
     $document = PostMarkdownDocument::fromMarkdown(
-        File::get(blogUploadMarkdownPath() . '/cloudflare-post.md'),
+        File::get(uploadPostImageMarkdownPath() . '/cloudflare-post.md'),
         'cloudflare-post.md',
     );
 
     expect($document->imageDisk)->toBe('cloudflare-images')
         ->and($document->imagePath)->toBe('images/posts/cloudflare-post-cover.png')
         ->and($document->body)->toBe('Body content')
-        ->and(Artisan::output())->toContain('Run php artisan blog:sync to persist the new image metadata.');
+        ->and(Artisan::output())->toContain('Run php artisan app:sync-posts to persist the new image metadata.');
 });
 
 function uploadFrontMatter(array $attributes) : string

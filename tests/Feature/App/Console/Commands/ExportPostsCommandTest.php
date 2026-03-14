@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Artisan;
 use App\Exceptions\PostMarkdownException;
 
-function blogExportMarkdownPath() : string
+function exportPostsMarkdownPath() : string
 {
     return (string) config('blog.markdown.posts_path');
 }
@@ -23,7 +23,7 @@ beforeEach(function () {
 });
 
 afterEach(function () {
-    File::deleteDirectory(blogExportMarkdownPath());
+    File::deleteDirectory(exportPostsMarkdownPath());
 });
 
 it('exports canonical markdown files from the local database', function () {
@@ -53,11 +53,11 @@ it('exports canonical markdown files from the local database', function () {
 
     $post->categories()->sync($categories->pluck('id'));
 
-    Artisan::call('blog:export');
+    Artisan::call('app:export-posts');
 
     expect(Artisan::output())->toContain('Exported 1 posts');
 
-    $filePath = blogExportMarkdownPath() . '/export-me.md';
+    $filePath = exportPostsMarkdownPath() . '/export-me.md';
 
     expect(File::exists($filePath))->toBeTrue();
 
@@ -77,6 +77,6 @@ it('exports canonical markdown files from the local database', function () {
 });
 
 it('fails loudly when a requested slug does not exist', function () {
-    expect(fn () => Artisan::call('blog:export', ['--slug' => ['missing-post']]))
+    expect(fn () => Artisan::call('app:export-posts', ['--slug' => ['missing-post']]))
         ->toThrow(PostMarkdownException::class, 'missing-post');
 });

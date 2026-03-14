@@ -14,12 +14,12 @@ use Symfony\Component\Console\Attribute\AsCommand;
  * Uploads local post images to Cloudflare Images and optionally updates front matter.
  */
 #[AsCommand(
-    name: 'blog:upload-image',
+    name: 'app:upload-post-image',
     description: 'Upload a local post image to Cloudflare Images.'
 )]
-class BlogUploadImageCommand extends Command
+class UploadPostImageCommand extends Command
 {
-    protected $signature = 'blog:upload-image
+    protected $signature = 'app:upload-post-image
         {source : Local image path}
         {--path= : Destination path within Cloudflare Images}
         {--markdown= : Markdown post file to update image_disk and image_path}
@@ -60,7 +60,7 @@ class BlogUploadImageCommand extends Command
             $this->line(
                 'Updated Markdown front matter in [' . $this->markdownRelativePath($markdownPath) . '] with image_disk/image_path.'
             );
-            $this->line('Run php artisan blog:sync to persist the new image metadata.');
+            $this->line('Run php artisan app:sync-posts to persist the new image metadata.');
         } else {
             $this->line(
                 'Use the URL above for inline article images, or pass --markdown=post-slug.md to update the hero image fields.'

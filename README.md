@@ -36,42 +36,42 @@ Initial export from the current local database:
 
 ```bash
 php artisan migrate
-php artisan blog:export
+php artisan app:export-posts
 ```
 
 Normal editing workflow:
 
 ```bash
-php artisan blog:sync
+php artisan app:sync-posts
 ```
 
 1. Edit the Markdown file for the post.
 2. Upload the hero image and any inline article images to Cloudflare Images.
 3. Update `published_at` to publish, unpublish, or schedule it.
-4. Run `php artisan blog:sync`.
+4. Run `php artisan app:sync-posts`.
 5. Refresh the site or Filament list to confirm the synced result.
 
 Image upload workflow:
 
 ```bash
 # Hero image: uploads the file and updates image_disk/image_path in the post
-php artisan blog:upload-image /absolute/path/to/cover.png --markdown=your-post.md
+php artisan app:upload-post-image /absolute/path/to/cover.png --markdown=your-post.md
 
 # Inline image: uploads the file and prints a Markdown snippet you can paste
-php artisan blog:upload-image /absolute/path/to/step.png --alt="Describe the screenshot"
+php artisan app:upload-post-image /absolute/path/to/step.png --alt="Describe the screenshot"
 ```
 
 Notes:
-- `blog:upload-image` always uploads to the `cloudflare-images` disk.
+- `app:upload-post-image` always uploads to the `cloudflare-images` disk.
 - Use the returned URL for inline article images.
-- When `--markdown` is passed, the command updates `image_disk` and `image_path` in the Markdown file. Run `php artisan blog:sync` afterward.
+- When `--markdown` is passed, the command updates `image_disk` and `image_path` in the Markdown file. Run `php artisan app:sync-posts` afterward.
 
 Notes:
-- `blog:export` is for one-time migration or explicit regeneration.
-- `blog:sync` validates every Markdown file before writing anything to the database.
+- `app:export-posts` is for one-time migration or explicit regeneration.
+- `app:sync-posts` validates every Markdown file before writing anything to the database.
 - Unknown authors, unknown categories, duplicate IDs/slugs, and invalid front matter fail loudly.
 - Filament is read-only for posts after the cutover.
-- Deployment should run `php artisan blog:sync` before `php artisan app:sync-search-console-sitemap`.
+- Deployment should run `php artisan app:sync-posts` before `php artisan app:sync-search-console-sitemap`.
 
 ## Search Console automation
 
@@ -100,4 +100,4 @@ Configuration:
 Notes:
 - Google’s general Indexing API is not for normal blog posts; this workflow uses the supported Search Console sitemap submission endpoint instead.
 - If you use a service account, add that service account email to the Search Console property first.
-- `blog:sync` never submits to Search Console; keep sitemap submission as an explicit separate step.
+- `app:sync-posts` never submits to Search Console; keep sitemap submission as an explicit separate step.

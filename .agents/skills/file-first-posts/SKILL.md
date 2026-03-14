@@ -15,15 +15,15 @@ Pair with `post-writing` when creating or revising article copy so internal link
 ## Required Rules
 
 - Treat Markdown files as the only write source for post content and SEO fields.
-- Use `php artisan blog:export` only for initial export or explicit regeneration.
-- Use `php artisan blog:sync` after every Markdown edit.
+- Use `php artisan app:export-posts` only for initial export or explicit regeneration.
+- Use `php artisan app:sync-posts` after every Markdown edit.
 - Upload every image used in a post to Cloudflare Images, including featured images, inline screenshots, badges, logos, and comparison cards.
-- Use `php artisan blog:upload-image` for post images instead of local paths or third-party hotlinks.
+- Use `php artisan app:upload-post-image` for post images instead of local paths or third-party hotlinks.
 - When a post explains an interface, setup flow, settings page, terminal output, or before/after result, prefer creating original screenshots instead of leaving the visual outcome implied.
 - Skip screenshots only when they add no proof or clarity.
 - Give screenshot files descriptive names and useful alt text before upload.
 - Use UTC ISO-8601 timestamps for frontmatter dates such as `published_at` and `modified_at`.
-- Publishing is changing `published_at` in the file, then running `php artisan blog:sync`.
+- Publishing is changing `published_at` in the file, then running `php artisan app:sync-posts`.
 - If `categories` includes `news`, publish promptly, sync immediately after substantive edits, and only set `modified_at` when the article changed in a meaningful reporting way.
 - Only first-party, non-commercial, non-sponsored `news` posts should be treated as news-sitemap candidates.
 - Fail loudly on invalid front matter, unknown authors/categories, or duplicate IDs/slugs.
@@ -40,20 +40,20 @@ Pair with `post-writing` when creating or revising article copy so internal link
 ## Workflow
 
 1. Bootstrap files when needed:
-   - run `php artisan blog:export`
+   - run `php artisan app:export-posts`
 2. Edit the target file in `resources/markdown/posts`.
    - if article copy changed, make sure internal links were updated and, for non-commercial posts, the related-posts Markdown list was added or refreshed with a natural lead-in that does not quote or rephrase the title
 3. Capture and upload images before syncing:
    - if the article would be clearer or more trustworthy with original screenshots, capture them yourself when feasible instead of leaving a note for later
    - every image referenced by the post should end up on Cloudflare Images, not just the hero image
    - for posts aiming at Discover or Google News strongly, the main image should be original when feasible, not a logo, and at least 1200 px wide
-   - hero image: `php artisan blog:upload-image /absolute/path/to/cover.png --markdown=your-post.md`
-   - inline image: `php artisan blog:upload-image /absolute/path/to/step.png --alt="Describe the screenshot"` and paste the returned URL into the article body
+   - hero image: `php artisan app:upload-post-image /absolute/path/to/cover.png --markdown=your-post.md`
+   - inline image: `php artisan app:upload-post-image /absolute/path/to/step.png --alt="Describe the screenshot"` and paste the returned URL into the article body
 4. If publishing state changes, update `published_at` in UTC.
    - if this is a news post and you made a substantive reporting update, set `modified_at` in UTC before syncing
-5. Run `php artisan blog:sync`.
+5. Run `php artisan app:sync-posts`.
 6. Decide whether a browser check is needed:
-   - skip it for routine Markdown-only edits when `php artisan blog:sync` succeeds
+   - skip it for routine Markdown-only edits when `php artisan app:sync-posts` succeeds
    - open the public page or Filament only for tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, or publishing changes that need confirmation
 7. Keep deploy notes in mind:
-   - deployment should run `php artisan blog:sync` before sitemap generation
+   - deployment should run `php artisan app:sync-posts` before sitemap generation

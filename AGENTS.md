@@ -9,7 +9,7 @@ This repo is my personal blog about web developent.
 - **Static analysis**: `php vendor/bin/phpstan analyse`
 - **Test**: `php vendor/bin/pest --parallel` (you can use `--filter` to run specific tests)
 - For routine Markdown-only post edits in `resources/markdown/posts`, do not default to browser checks, `pint`, `phpstan`, or `pest`.
-  - Run `php artisan blog:sync` after every Markdown edit instead.
+  - Run `php artisan app:sync-posts` after every Markdown edit instead.
   - Only do browser or app-level verification when the post has tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, a publishing-state change that needs confirmation, first-hand screenshots that materially help the reader, or the user explicitly asks for it.
 
 ## Development workflow
@@ -47,7 +47,7 @@ This repo is my personal blog about web developent.
 - **Test**: `php vendor/bin/pest --parallel` (you can use `--filter` to run specific tests)
   - **Check coverage**: `php vendor/bin/pest --coverage --parallel` (you can also use `--filter` if necessary too)
 - For routine Markdown-only post edits in `resources/markdown/posts`, verification is lighter by default:
-  - required: `php artisan blog:sync`
+  - required: `php artisan app:sync-posts`
   - optional only when warranted: browser checks, `pint`, `phpstan`, `pest`, or coverage
   - warranted means tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, a publishing-state change that needs confirmation, first-hand screenshots that materially help the reader, or an explicit user request
 

@@ -10,12 +10,12 @@ use Symfony\Component\Console\Attribute\AsCommand;
  * Exports the current database posts into canonical Markdown source files.
  */
 #[AsCommand(
-    name: 'blog:export',
+    name: 'app:export-posts',
     description: 'Export posts from the local database to Markdown files.'
 )]
-class BlogExportCommand extends Command
+class ExportPostsCommand extends Command
 {
-    protected $signature = 'blog:export {--slug=* : Limit export to specific post slugs}';
+    protected $signature = 'app:export-posts {--slug=* : Limit export to specific post slugs}';
 
     public function handle(ExportPostsToMarkdown $exportPostsToMarkdown) : int
     {
