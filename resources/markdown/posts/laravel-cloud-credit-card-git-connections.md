@@ -14,7 +14,7 @@ serp_description: null
 canonical_url: null
 is_commercial: false
 image_disk: "cloudflare-images"
-image_path: "images/posts/generated/laravel-cloud-credit-card-git-connections.png"
+image_path: "images/posts/01KKQ7DYXGJ8VPE35T49TCWTRM.png"
 sponsored_at: null
 ---
 Laravel Cloud shipped a useful onboarding update on March 10, 2026. According to the official [Laravel Cloud changelog](https://cloud.laravel.com/docs/changelog), new signups no longer need a credit card, and Git connections are now stored per user instead of per organization.
