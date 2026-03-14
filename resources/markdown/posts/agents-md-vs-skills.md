@@ -1,6 +1,6 @@
 ---
 id: "01KKPPM7YMGYNYA87XWK553W1P"
-title: "When to use AGENTS.md, CLAUDE.md, and skills"
+title: "When to use AGENTS.md and skills"
 slug: "agents-md-vs-skills"
 author: "benjamincrozat"
 description: "A simple mental model for AI coding agents: put repo-wide rules in AGENTS.md or CLAUDE.md, and move specialized workflows into reusable skills."
