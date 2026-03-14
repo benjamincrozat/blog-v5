@@ -9,7 +9,7 @@ categories:
   - "gpt"
   - "php"
 published_at: 2022-10-27T00:00:00+02:00
-modified_at: 2026-03-14T11:18:07Z
+modified_at: 2026-03-14T13:10:13Z
 serp_title: "How to use OpenAI's API in PHP with openai-php/client"
 serp_description: null
 canonical_url: ""
@@ -25,6 +25,8 @@ If you are starting a PHP integration in 2026, use OpenAI's [Responses API](http
 That package is **community-maintained**, not an official OpenAI SDK. The Laravel adapter, [`openai-php/laravel`](https://github.com/openai-php/laravel), is community-maintained too. OpenAI's current docs position Responses as the modern default, and these PHP packages map to it well.
 
 This page is the practical PHP walkthrough. If you want the broader model-family overview first, open my [GPT-5 API guide](/gpt-5-api).
+
+If you mostly want the newest flagship model, OpenAI's current [models guide](https://developers.openai.com/api/docs/models) points new builds to GPT-5.4 first. I still use `gpt-5-mini` in this PHP article because it is the more practical default for many app backends.
 
 ## Why I would start with gpt-5-mini
 

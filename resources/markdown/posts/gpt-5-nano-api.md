@@ -8,7 +8,7 @@ categories:
   - "ai"
   - "gpt"
 published_at: 2026-03-14T12:53:43Z
-modified_at: 2026-03-14T12:53:43Z
+modified_at: 2026-03-14T13:10:13Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -24,6 +24,8 @@ If your main goal is ultra-low cost and ultra-fast responses, GPT-5 nano is the 
 The current [GPT-5 nano model page](https://developers.openai.com/api/docs/models/gpt-5-nano) describes it as the fastest, cheapest version of GPT-5, especially suited to summarization and classification tasks. That matches the live API behavior I saw too: it works well when you keep the job small and explicit.
 
 This guide is about the original GPT-5 nano API snapshot, `gpt-5-nano-2025-08-07`.
+
+If you are starting fresh and mostly want the newest flagship model, look at GPT-5.4 in the current [models guide](https://developers.openai.com/api/docs/models) first. Nano is the deliberate choice when cost, speed, and very high volume matter more than broad reasoning quality.
 
 By the end, you will have:
 
@@ -182,7 +184,7 @@ That kind of output is perfect for:
 
 GPT-5 nano is not just "mini, but smaller." It is the variant you pick when throughput and cost matter most.
 
-The current pricing page lists GPT-5 nano at [\$0.05 input and \$0.40 output per 1M tokens](https://openai.com/api/pricing/), which makes it dramatically cheaper than full GPT-5 and still much cheaper than mini. The model page keeps the same 272,000 input token window and 128,000 max output token cap as the original GPT-5 family.
+The current pricing page lists GPT-5 nano at [\$0.05 input and \$0.40 output per 1M tokens](https://openai.com/api/pricing/), which makes it dramatically cheaper than full GPT-5 and still much cheaper than mini. The current model page lists a 400,000-token context window, which is generous for a model mainly used for narrow high-volume tasks.
 
 That means nano can still handle modern GPT-5-style requests. It is just best used for narrower jobs.
 

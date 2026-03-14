@@ -8,7 +8,7 @@ categories:
   - "ai"
   - "gpt"
 published_at: 2025-08-06T15:45:00+02:00
-modified_at: 2026-03-14T12:53:43Z
+modified_at: 2026-03-14T13:10:13Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -22,6 +22,8 @@ sponsored_at: null
 OpenAI introduced GPT-5 for developers on August 7, 2025 in its [GPT-5 for developers announcement](https://openai.com/index/introducing-gpt-5-for-developers/). This page is about that original GPT-5.0 release, and every example below uses the pinned snapshot `gpt-5-2025-08-07` so the tutorial stays tied to the model that launched that day.
 
 That matters because, as of March 14, 2026, OpenAI's current [GPT-5 model docs](https://developers.openai.com/api/docs/models/gpt-5) treat GPT-5 as a previous model rather than the default recommendation. So this is not a guide to the newest GPT-5-family model. It is a practical walkthrough for the original full GPT-5.0 model on purpose.
+
+If you are starting fresh and mostly want the latest flagship model, OpenAI's current [models guide](https://developers.openai.com/api/docs/models) points developers to GPT-5.4 first. Keep reading here only if you specifically want the original GPT-5.0 release.
 
 By the end, you will have two things working:
 

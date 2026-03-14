@@ -8,7 +8,7 @@ categories:
   - "ai"
   - "gpt"
 published_at: 2026-03-14T13:03:42Z
-modified_at: 2026-03-14T13:03:42Z
+modified_at: 2026-03-14T13:10:13Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -22,6 +22,8 @@ sponsored_at: null
 As of March 14, 2026, OpenAI's current model docs call this model [`gpt-realtime`](https://developers.openai.com/api/docs/models/gpt-realtime), and the pinned snapshot is `gpt-realtime-2025-08-28`.
 
 The current [Realtime guide](https://developers.openai.com/api/docs/guides/realtime/) says this model is built for low-latency conversations over WebRTC, WebSocket, or SIP. That makes it very different from a normal request-response GPT tutorial.
+
+If you are starting a brand-new voice agent today, compare this older model with the newer [`gpt-realtime-1.5`](https://developers.openai.com/api/docs/models/gpt-realtime-1.5) page first. OpenAI describes that newer model as its flagship audio model, so most readers should sanity-check that option before building on the original `gpt-realtime` snapshot.
 
 This guide stays focused on two things that actually matter when you are getting started:
 

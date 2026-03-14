@@ -8,7 +8,7 @@ categories:
   - "ai"
   - "gpt"
 published_at: 2026-03-14T12:53:43Z
-modified_at: 2026-03-14T12:53:43Z
+modified_at: 2026-03-14T13:10:13Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -24,6 +24,8 @@ If you want a cheaper GPT-5 model without dropping back to an older family, GPT-
 The current [GPT-5 mini model page](https://developers.openai.com/api/docs/models/gpt-5-mini) describes it as a faster, more cost-efficient version of GPT-5 for well-defined tasks and precise prompts. The broader [models guide](https://developers.openai.com/api/docs/models) also points developers toward GPT-5 mini when lower latency and lower cost matter more than frontier-level reasoning.
 
 This guide is about the original GPT-5 mini API snapshot, `gpt-5-mini-2025-08-07`.
+
+If you are starting a new project and mostly want the latest flagship quality, start with GPT-5.4 from the current [models guide](https://developers.openai.com/api/docs/models). Reach for GPT-5 mini when lower cost and lower latency are the real reason you are choosing it.
 
 By the end, you will have:
 
@@ -196,7 +198,7 @@ GPT-5 mini keeps the GPT-5-style API surface, but it is tuned for:
 - well-defined tasks
 - precise prompts
 
-The current pricing page lists GPT-5 mini at [\$0.25 input and \$2.00 output per 1M tokens](https://openai.com/api/pricing/), which is much cheaper than full GPT-5. The model page also keeps the same 272,000 input token window and 128,000 max output token cap as the original GPT-5 line.
+The current pricing page lists GPT-5 mini at [\$0.25 input and \$2.00 output per 1M tokens](https://openai.com/api/pricing/), which is much cheaper than full GPT-5. The current model page lists a 400,000-token context window, which gives mini a lot of room even though it is the cheaper tier.
 
 So if your task is structured and repeatable, mini often makes more sense than the full model.
 

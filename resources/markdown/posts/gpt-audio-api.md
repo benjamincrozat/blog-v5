@@ -8,7 +8,7 @@ categories:
   - "ai"
   - "gpt"
 published_at: 2026-03-14T13:03:43Z
-modified_at: 2026-03-14T13:03:43Z
+modified_at: 2026-03-14T13:10:13Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -22,6 +22,8 @@ sponsored_at: null
 As of March 14, 2026, OpenAI's current model docs call this model [`gpt-audio`](https://developers.openai.com/api/docs/models/gpt-audio), and the pinned snapshot is `gpt-audio-2025-08-28`.
 
 The current model page describes it as OpenAI's first generally available audio model. The current [Audio and speech guide](https://developers.openai.com/api/docs/guides/audio/) also says it accepts audio inputs and outputs.
+
+If you are starting fresh and want the newer model in this part of the catalog, compare this guide with [`gpt-audio-1.5`](https://developers.openai.com/api/docs/models/gpt-audio-1.5) first. Keep reading here when you specifically want the original `gpt-audio` model and its current Chat Completions workflow.
 
 This guide is deliberately about the simplest useful path:
 
