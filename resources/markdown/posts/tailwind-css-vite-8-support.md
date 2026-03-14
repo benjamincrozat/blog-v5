@@ -14,7 +14,7 @@ serp_description: null
 canonical_url: null
 is_commercial: false
 image_disk: "cloudflare-images"
-image_path: "images/posts/generated/tailwind-css-vite-8-support.png"
+image_path: "images/posts/01KKQ7J0ZSJ4VCTMTBJ6KW7YP7.png"
 sponsored_at: null
 ---
 [Vite 8.0.0 shipped on March 12, 2026](https://github.com/vitejs/vite/releases/tag/v8.0.0), and Tailwind merged [Vite 8 support for `@tailwindcss/vite`](https://github.com/tailwindlabs/tailwindcss/commit/59b0329f858dd8a25f64dfa55fb971aa6e74c32a) later that same day.
