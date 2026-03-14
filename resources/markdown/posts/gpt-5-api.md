@@ -1,14 +1,14 @@
 ---
 id: "01KKEW279VENBTCY9H2BN894RH"
-title: "GPT‑5: my API quick start guide"
+title: "GPT-5.0 API quick start with a real workflow"
 slug: "gpt-5-api"
 author: "benjamincrozat"
-description: "GPT-5 is the biggest release from OpenAI for 2025. Let&#039;s see the model&#039;s capabilities and use it via the API."
+description: "Learn GPT-5.0 step by step by sending your first API request and building a support triage workflow with structured JSON."
 categories:
   - "ai"
   - "gpt"
 published_at: 2025-08-06T15:45:00+02:00
-modified_at: 2025-09-29T16:30:00+02:00
+modified_at: 2026-03-14T12:22:18Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -17,195 +17,299 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/01K27AZ6VMTJY7M21YWACDXTV2.png"
 sponsored_at: null
 ---
-## Introduction to GPT-5
+## What this GPT-5.0 guide covers
 
-OpenAI introduced GPT-5 on August 7, 2025. It is built for deeper reasoning, better code help, and agent-style workflows. It also adds two controls that matter in real apps: verbosity and reasoning_effort. In the API, GPT-5 supports up to 272,000 input tokens plus up to 128,000 tokens for reasoning and output, for 400,000 tokens total. For an overview of what is new for developers, see the official post on [GPT-5 for developers](https://openai.com/index/introducing-gpt-5-for-developers/).
+OpenAI introduced GPT-5 for developers on August 7, 2025 in its [GPT-5 for developers announcement](https://openai.com/index/introducing-gpt-5-for-developers/). This page is about that original GPT-5.0 release, and every example below uses the pinned snapshot `gpt-5-2025-08-07` so the tutorial stays tied to the model that launched that day.
 
-If you are new to large language models, skim my plain-English explainer on [how GPT-style LLMs work](/gpt-llm-ai-explanation). You will prompt better after.
+That matters because, as of March 14, 2026, OpenAI's current [GPT-5 model docs](https://developers.openai.com/api/docs/models/gpt-5) treat GPT-5 as a previous model rather than the default recommendation. So this is not a guide to the newest GPT-5-family model. It is a practical walkthrough for the original full GPT-5.0 model on purpose.
 
-Ready? Let’s ship your first GPT-5 request.
+By the end, you will have two things working:
 
-## Create an account to get your GPT-5 API key
+- a first successful call to the Responses API
+- a small support-triage workflow that returns strict JSON you can use in an app
 
-1. [Create an account](https://chat.openai.com/auth/login) or sign in.
+If you are new to large language models, start with my plain-English explainer on [how GPT-style LLMs work](/gpt-llm-ai-explanation). It will make the rest of this guide much easier to follow.
 
-![Creating an account on OpenAI](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/GnIIgORlnrbuURrTO3kODEtEp6ATAC5inUSwmCs2.png/public)
+## Get your API key ready
 
-2. Confirm your email address.
-3. [Log in](https://platform.openai.com/login?launch).
-4. Open the [Billing overview](https://platform.openai.com/account/billing/overview) page and add credit or a payment method so your keys work right away (see [prepaid billing](https://help.openai.com/en/articles/8264778-what-is-prepaid-billing)).
-5. [Generate your first API key for GPT-5](https://platform.openai.com/api-keys). Keys are shown once, paste it into a password manager right away.
+You need an OpenAI account, a funded API project, and an API key from the [API keys page](https://platform.openai.com/api-keys). Keys are shown once, so save yours right away.
 
-![API key generation on OpenAI](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-3329720cb9a472ebadbe.jpg/public)
+Then export it in your terminal.
 
-Got your key? Great. Time to hit the API.
-
-## How to make your first request to GPT-5
-
-OpenAI’s Responses API is the modern endpoint. The Chat Completions API still works, but start with Responses when you can. See the [Responses API overview](https://help.openai.com/en/articles/7232945-how-can-i-use-the-chatgpt-api) for details.
-
-**macOS and Linux (Responses API):**
+macOS and Linux:
 
 ```bash
-curl -s https://api.openai.com/v1/responses \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "gpt-5",
-    "input": [
-      { "role": "user", "content": [{ "type": "input_text", "text": "Hello!" }] }
-    ],
-    "verbosity": "medium",
-    "reasoning_effort": "minimal",
-    "max_output_tokens": 200
-  }'
+export OPENAI_API_KEY="sk-..."
 ```
 
-**Windows (one-liner, Chat Completions still fine):**
+Windows Command Prompt:
 
 ```cmd
-curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer %OPENAI_API_KEY%" https://api.openai.com/v1/chat/completions -d "{ \"model\": \"gpt-5\", \"messages\": [{\"role\":\"user\",\"content\":\"Hello!\"}], \"verbosity\":\"medium\", \"reasoning_effort\":\"minimal\", \"max_completion_tokens\":200 }"
+setx OPENAI_API_KEY "sk-..."
 ```
 
-Pro tip: use "gpt-5" to track the latest GPT-5 snapshot. If you need strict reproducibility, pin a dated snapshot like "gpt-5-2025-08-07".
+If you use `setx`, open a new terminal before testing the key.
 
-Token budget: the API supports up to 272,000 input tokens plus up to 128,000 output tokens, for 400,000 tokens total. Your usage tier must be high enough to handle long prompts and high TPM. Check your org’s limits here: [usage tiers and rate limits](https://help.openai.com/en/articles/5955598-is-api-usage-subject-to-any-rate-limits).
+## Send your first GPT-5.0 request
 
-Endpoint notes right where they matter:
-- Responses API uses max_output_tokens and text.format for JSON.
-- Chat Completions API uses max_completion_tokens (or max_tokens for legacy) and response_format. Mixing these fields will cause an error.
-
-## Structured outputs with the Responses API
-
-In the Responses API, JSON control lives under text.format. Here is a minimal shape:
+OpenAI's [Responses API](https://platform.openai.com/docs/api-reference/responses/create) is the cleanest place to start today. Here is the smallest useful request I would use for GPT-5.0:
 
 ```bash
 curl -s https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gpt-5",
-    "input": [
-      { "role": "system", "content": [{ "type": "input_text", "text": "Return compact JSON only." }] },
-      { "role": "user",   "content": [{ "type": "input_text", "text": "Solve 8x + 31 = 2." }] }
-    ],
-    "text": {
-      "format": {
-        "type": "json_schema",
-        "name": "equation_solution",
-        "schema": {
-          "type": "object",
-          "properties": {
-            "steps": { "type": "array", "items": { "type": "string" } },
-            "final_answer": { "type": "string" }
-          },
-          "required": ["steps", "final_answer"],
-          "additionalProperties": false
-        },
-        "strict": true
-      }
-    }
-  }'
-```
-
-For the Chat Completions API, keep using response_format (json_schema or json_object). Do not send text.format to Chat Completions, or the call will fail. If you want a deeper dive, see the Cookbook guide on [structured outputs with JSON Schema](https://cookbook.openai.com/examples/evaluation/use-cases/structured-outputs-evaluation).
-
-## Vision and multimodal (quick start)
-
-GPT-5 accepts text and images in one request. With the Responses API, add image parts as `{ "type": "input_image", "image_url": "<url or data URL>", "detail": "auto" }`, then put your text after the image for better results.
-
-Supported image formats: PNG, JPEG/JPG, and non-animated GIF (see [image input guidance](https://help.openai.com/en/articles/8400551-image-inputs-for-chatgpt-faq)).
-
-Image URL example:
-
-```bash
-curl -s https://api.openai.com/v1/responses \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "gpt-5",
+    "model": "gpt-5-2025-08-07",
     "input": [
       {
         "role": "user",
         "content": [
-          { "type": "input_image", "image_url": "https://cdn.example.com/slide.jpg", "detail": "auto" },
-          { "type": "input_text",  "text": "Describe this slide in 5 bullets." }
+          { "type": "input_text", "text": "Say hello in one short sentence." }
         ]
       }
     ],
-    "max_output_tokens": 250
+    "reasoning": {
+      "effort": "minimal"
+    },
+    "text": {
+      "verbosity": "low"
+    },
+    "max_output_tokens": 80
   }'
 ```
 
-Base64 option:
+If that request works, your key, billing, and endpoint setup are all fine.
 
-```json
-{ "type": "input_image", "image_url": "data:image/jpeg;base64,...." }
+Three details are worth noticing right away:
+
+- The model is pinned to `gpt-5-2025-08-07`, not the moving `gpt-5` alias.
+- GPT-5.0 reasoning now lives under `reasoning.effort`.
+- Verbosity now lives under `text.verbosity`.
+
+Those nested fields are easy to miss if you learned GPT-5 from older launch-week examples.
+
+## Build something useful: support triage
+
+Now let us turn that first successful call into something you can actually ship.
+
+Imagine your app receives this support message:
+
+```text
+Hi, I was billed twice for my Pro plan today. Please refund the extra charge.
 ```
 
-Pro tips
+You want GPT-5.0 to do four things in one pass:
 
-- One image per content part unless you are explicitly comparing. Caption each if you include many.
-- Prefer URLs when you reuse the same image, especially in long threads. Base64 increases payload size and slows requests.
-- Always cap max_output_tokens so multimodal answers stay on budget.
+1. classify the issue
+2. set a priority
+3. decide whether a human should step in
+4. draft a safe reply
 
-## Verbosity (new)
+This is a great first production-style workflow because the output is short, structured, and easy to validate.
 
-What it does: controls how compact or expansive the answer is without changing your prompt.
-Values: "low", "medium" (default), "high".
+## Return strict JSON with a schema
 
-When to use low: terse assistants, tool-first UX, status updates.
-When to use high: audits, code reviews, teaching.
+This example asks GPT-5.0 to return JSON that matches a schema exactly.
 
-```json
-"verbosity": "low"
+```bash
+curl -s https://api.openai.com/v1/responses \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-5-2025-08-07",
+    "instructions": "You triage support messages for a SaaS app. Be cautious. Do not promise actions the billing team has not confirmed. Keep reply_draft to 2 short sentences.",
+    "input": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "input_text",
+            "text": "Hi, I was billed twice for my Pro plan today. Please refund the extra charge."
+          }
+        ]
+      }
+    ],
+    "reasoning": {
+      "effort": "minimal"
+    },
+    "text": {
+      "verbosity": "low",
+      "format": {
+        "type": "json_schema",
+        "name": "support_triage",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "enum": ["billing", "bug", "account", "feature_request", "other"]
+            },
+            "priority": {
+              "type": "string",
+              "enum": ["low", "medium", "high"]
+            },
+            "needs_human": {
+              "type": "boolean"
+            },
+            "reply_draft": {
+              "type": "string"
+            }
+          },
+          "required": ["category", "priority", "needs_human", "reply_draft"],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    },
+    "max_output_tokens": 220
+  }'
 ```
 
-Caveat: verbosity is a hint. The hard cap is still your token limit (max_output_tokens or max_completion_tokens). See the guide on [controlling the length of responses](https://help.openai.com/en/articles/5072518-controlling-the-length-of-openai-model-responses).
-
-## Reasoning effort (new)
-
-What it does: sets how much internal reasoning the model does before responding.
-Values: "minimal", "low", "medium" (default), "high". "minimal" is new and fast for simple tasks.
-
-- Use "minimal" for retrieval, formatting, simple transforms, and low-latency UX.
-- Use "high" for complex planning, multi-step refactors, and tradeoff-heavy tasks.
+You should get back JSON shaped roughly like this:
 
 ```json
-"reasoning_effort": "minimal"
+{
+  "category": "billing",
+  "priority": "high",
+  "needs_human": true,
+  "reply_draft": "Thanks for letting us know about the duplicate charge - sorry for the hassle. I've escalated this to our billing team to review and will update you as soon as we have an outcome."
+}
 ```
 
-## GPT-5 pricing
+That result is immediately useful in a real application:
 
-| Model                      | Input (per 1M tokens) | Output (per 1M tokens) |
-| -------------------------- | --------------------- | ---------------------- |
-| **gpt-5 (400K context)**   | **$1.25**             | **$10.00**             |
-| gpt-5-mini (400K context)  | $0.25                 | $2.00                  |
-| gpt-5-nano (400K context)  | $0.05                 | $0.40                  |
-| gpt-4.1 (1M context)       | $2.00                 | $8.00                  |
-| gpt-4.1-mini (1M context)  | $0.40                 | $1.60                  |
-| gpt-4.1-nano (1M context)  | $0.10                 | $0.40                  |
+- `category` can route the ticket
+- `priority` can change queue order
+- `needs_human` can trigger escalation
+- `reply_draft` can prefill a support response
 
-Prompt-cached input is cheaper. Check the official pages for current numbers: [models and pricing](https://openai.com/api/pricing/) and the developer notes in [GPT-5 for developers](https://openai.com/index/introducing-gpt-5-for-developers/).
+This is the point where the API becomes much more valuable than a simple chatbot. You are no longer parsing prose and hoping it stays consistent.
 
-Output limits: GPT-5 can emit up to 128K tokens per call. GPT-4.1 supports a 1M-token context and has an output cap of about 32K. See the 4.1 post for details: [GPT-4.1](https://openai.com/index/gpt-4-1/).
+## Why this JSON pattern works well
 
-## GPT-5 (full), mini, or nano?
+There are three reasons I would start here with GPT-5.0:
 
-- GPT-5 (full): best quality for deep reasoning, complex coding, and long-context analysis.
-- GPT-5 mini: good when you need lower cost and crisp prompts.
-- GPT-5 nano: best for very low latency and heavy volume.
+- The task is realistic enough to matter, but still easy to debug.
+- The schema keeps the output predictable.
+- The prompt teaches a habit that scales well: tell the model what role it plays, what output shape you need, and what it must avoid.
 
-There is also `gpt-5-chat-latest` if you want a non-reasoning chat flavor.
+If you later move this workflow into PHP, my guide on [using OpenAI's API in PHP with openai-php/client](/openai-php-client) picks up right where this one stops.
+
+## Tune reasoning effort and verbosity on purpose
+
+Two GPT-5.0 controls matter a lot in practice.
+
+### `reasoning.effort`
+
+This controls how much work the model does before answering.
+
+The example above uses `minimal` on purpose so it stays fast and comfortably fits the token budget shown in the tutorial.
+
+For more open-ended versions of this workflow, I would use:
+
+- `minimal` for simple classification or extraction
+- `low` when the model has to weigh a few risks before replying
+- `medium` only if the workflow becomes more ambiguous or policy-heavy
+
+`high` is usually overkill for a first structured workflow like this.
+
+### `text.verbosity`
+
+This controls how compact or expansive the answer should be.
+
+For structured app workflows:
+
+- use `low` when you want terse fields and minimal explanation
+- use `medium` when one field, such as `reply_draft`, should sound natural
+- avoid `high` unless your output genuinely benefits from longer prose
+
+In other words, `reasoning.effort` changes how hard the model thinks, while `text.verbosity` changes how much it says.
+
+## Common mistakes that break GPT-5.0 requests
+
+These are the mistakes I would check first if your request fails or behaves strangely.
+
+### 1. Using the wrong model name
+
+If this article is about GPT-5.0 specifically, use `gpt-5-2025-08-07`.
+
+If you switch to the `gpt-5` alias, you are no longer guaranteed to hit the original GPT-5.0 release.
+
+### 2. Using the old top-level GPT-5 fields
+
+Older examples often show:
+
+```json
+{
+  "verbosity": "medium",
+  "reasoning_effort": "minimal"
+}
+```
+
+For current Responses API requests, the safer shape is:
+
+```json
+{
+  "reasoning": {
+    "effort": "minimal"
+  },
+  "text": {
+    "verbosity": "medium"
+  }
+}
+```
+
+### 3. Mixing Responses API and Chat Completions fields
+
+For the Responses API:
+
+- use `max_output_tokens`
+- use `text.format` for JSON schema output
+
+For Chat Completions:
+
+- use `max_completion_tokens`
+- use `response_format`
+
+Mixing those field names is a fast way to get an error.
+
+### 4. Forgetting billing or key scope
+
+If you get authentication or quota errors, check the boring stuff first:
+
+- the key is real and active
+- billing is enabled
+- the environment variable is set in the terminal you are actually using
+
+## When full GPT-5.0 is worth using
+
+Use full GPT-5.0 when answer quality matters more than keeping cost or latency as low as possible.
+
+That usually means tasks like:
+
+- code-heavy assistance
+- longer reasoning chains
+- app workflows where the output shape matters and mistakes are expensive
+- prompts that need more context than a tiny request
+
+If your task is simple classification, lightweight extraction, or massive volume at low cost, GPT-5.0 is probably more model than you need. But for a first serious walkthrough, the full model is a good place to learn the API shape and prompting style that the rest of the GPT-5 family builds on.
+
+Before you lock any production budget, check OpenAI's current [pricing page](https://openai.com/api/pricing/) and the current [GPT-5 model page](https://developers.openai.com/api/docs/models/gpt-5), because pricing and recommendations can change after the original release.
 
 ## Conclusion
 
-Pick GPT-5 when you want the highest quality and long context. Use mini when cost matters and answers can be shorter. Use nano for the lowest latency. Remember the limits: 272,000 input tokens plus up to 128,000 output tokens, for 400,000 tokens total. Next steps: review [models and pricing](https://openai.com/api/pricing/), skim [GPT-5 for developers](https://openai.com/index/introducing-gpt-5-for-developers/), and try the curl quickstarts above using the [Responses API overview](https://help.openai.com/en/articles/7232945-how-can-i-use-the-chatgpt-api).
+If you only copy one thing from this page, copy the pattern:
 
-If you are deciding what to build on top of GPT-5 instead of stopping at the quickstart, these are the next reads I would keep open:
+1. pin the model when version specificity matters
+2. use the Responses API
+3. return strict JSON for app workflows
+4. tune `reasoning.effort` and `text.verbosity` on purpose
 
-- [Use GPT-4.1 when you want a clearer step up from older models](/gpt-41)
-- [Start with a cheaper OpenAI model before you scale usage](/gpt-4o-mini)
-- [Call the OpenAI API from PHP with less boilerplate](/openai-php-client)
-- [Turn text into speech with the OpenAI API from PHP](/openai-tts-api)
-- [Get a plain-English explanation of how GPT-style models work](/gpt-llm-ai-explanation)
+That is enough to move from "I made my first model call" to "I built something I can wire into a product."
+
+Once this request is working, the next bottleneck is usually prompting, integration, or choosing where GPT-5.0 actually fits in your stack:
+
+- [Move the same workflow into PHP with less boilerplate](/openai-php-client)
+- [Build a better mental model for what GPT-style models are actually doing](/gpt-llm-ai-explanation)
+- [Compare this with a different OpenAI model before you optimize for cost](/gpt-4o-mini)
+- [See how GPT-4.1 changed the trade-off between model quality and context length](/gpt-41)
