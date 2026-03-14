@@ -6,7 +6,7 @@ author: "benjamincrozat"
 description: "Learn what AGENTS.md is, why it helps coding agents, what to put in it, and how to share one instruction file across Codex, Cursor, and Claude Code."
 categories:
   - "ai"
-published_at: null
+published_at: 2026-03-14T18:17:04Z
 modified_at: null
 serp_title: null
 serp_description: null

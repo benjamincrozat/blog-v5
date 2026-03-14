@@ -6,7 +6,7 @@ author: "benjamincrozat"
 description: "A simple mental model for AI coding agents: put repo-wide rules in AGENTS.md or CLAUDE.md, and move specialized workflows into reusable skills."
 categories:
   - "ai"
-published_at: null
+published_at: 2026-03-14T18:17:04Z
 modified_at: null
 serp_title: null
 serp_description: null
