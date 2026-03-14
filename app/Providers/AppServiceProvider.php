@@ -14,8 +14,10 @@ use App\Livewire\LinkWizard\SecondStep;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\ServiceProvider;
+use App\Contracts\PostImageScreenshotter;
 use App\Filesystem\CloudflareImagesAdapter;
 use Illuminate\Filesystem\FilesystemAdapter;
+use App\Support\BrowsershotPostImageScreenshotter;
 
 /**
  * Registers app service provider services.
@@ -26,6 +28,11 @@ class AppServiceProvider extends ServiceProvider
      * Cached visitors count.
      */
     protected ?int $visitors = 50000;
+
+    public function register() : void
+    {
+        $this->app->bind(PostImageScreenshotter::class, BrowsershotPostImageScreenshotter::class);
+    }
 
     public function boot() : void
     {

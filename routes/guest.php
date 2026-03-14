@@ -13,6 +13,7 @@ use App\Http\Controllers\Merchants\ShowMerchantController;
 use App\Http\Controllers\Categories\ShowCategoryController;
 use App\Http\Controllers\Categories\ListCategoriesController;
 use App\Http\Controllers\Checkout\CompletedCheckoutController;
+use App\Http\Controllers\Posts\ShowPostImagePreviewController;
 use App\Http\Controllers\Advertising\RedirectToAdvertiserController;
 use App\Http\Controllers\Advertising\ShowAdvertisingLandingPageController;
 
@@ -21,6 +22,9 @@ Route::get('/', HomeController::class)
 
 Route::get('/blog', ListPostsController::class)
     ->name('posts.index');
+
+Route::get('/preview/posts/{slug}/image', ShowPostImagePreviewController::class)
+    ->name('posts.image-preview');
 
 Route::get('/authors/{slug}', ShowAuthorController::class)
     ->name('authors.show');

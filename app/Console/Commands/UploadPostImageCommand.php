@@ -6,8 +6,7 @@ use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use App\Markdown\PostMarkdownDocument;
-use Illuminate\Support\Facades\Storage;
+use App\Actions\Posts\UploadCloudflarePostImage;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 /**
@@ -25,36 +24,19 @@ class UploadPostImageCommand extends Command
         {--markdown= : Markdown post file to update image_disk and image_path}
         {--alt= : Alt text to use in the returned Markdown snippet}';
 
-    public function handle() : int
+    public function handle(UploadCloudflarePostImage $uploadCloudflarePostImage) : int
     {
         $sourcePath = $this->resolveSourcePath((string) $this->argument('source'));
         $markdownPath = $this->resolveMarkdownPath($this->option('markdown'));
         $destinationPath = $this->resolveDestinationPath($sourcePath, (string) $this->option('path'));
-
-        $stream = fopen($sourcePath, 'r');
-
-        if (false === $stream) {
-            throw new InvalidArgumentException("Image source [{$sourcePath}] could not be opened.");
-        }
-
-        try {
-            Storage::disk('cloudflare-images')->put($destinationPath, $stream);
-        } finally {
-            fclose($stream);
-        }
-
-        if ($markdownPath) {
-            $this->updateMarkdownFrontMatter($markdownPath, $destinationPath);
-        }
-
-        $url = Storage::disk('cloudflare-images')->url($destinationPath);
+        $result = $uploadCloudflarePostImage->handle($sourcePath, $destinationPath, $markdownPath);
         $alt = $this->resolveAltText($sourcePath);
 
         $this->info('Uploaded image to Cloudflare Images.');
         $this->line('Image disk: cloudflare-images');
-        $this->line("Image path: {$destinationPath}");
-        $this->line("URL: {$url}");
-        $this->line("Markdown: ![{$alt}]({$url})");
+        $this->line("Image path: {$result->path}");
+        $this->line("URL: {$result->url}");
+        $this->line("Markdown: ![{$alt}]({$result->url})");
 
         if ($markdownPath) {
             $this->line(
@@ -120,16 +102,6 @@ class UploadPostImageCommand extends Command
         }
 
         return 'images/posts/' . Str::ulid() . ".{$extension}";
-    }
-
-    protected function updateMarkdownFrontMatter(string $markdownPath, string $imagePath) : void
-    {
-        $document = PostMarkdownDocument::fromMarkdown(
-            File::get($markdownPath),
-            $this->markdownRelativePath($markdownPath),
-        )->withImage('cloudflare-images', $imagePath);
-
-        File::put($markdownPath, $document->toMarkdown());
     }
 
     protected function markdownRelativePath(string $markdownPath) : string
