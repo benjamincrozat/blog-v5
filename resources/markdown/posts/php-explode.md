@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27KRDMRV4YFYVNAP1TZG"
-title: "PHP explode(): How you can split strings into arrays"
+title: "PHP explode(): split strings into arrays safely"
 slug: "php-explode"
 author: "benjamincrozat"
-description: "Learn PHP’s explode() to split strings into arrays. See syntax, limit behavior (0 and negative), edge cases, and alternatives like preg_split and str_getcsv."
+description: "Use PHP explode() to split strings into arrays, understand limit behavior, handle empty separators, and know when preg_split() or str_getcsv() is a better fit."
 categories:
   - "php"
 published_at: 2023-11-08T00:00:00+01:00
-modified_at: null
+modified_at: 2026-03-14T10:22:32Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -18,7 +18,7 @@ sponsored_at: null
 ---
 ## Introduction
 
-PHP’s [explode()](https://www.php.net/explode) splits a string into an array using a separator you choose. It is fast and easy, and it is the tool most people use to break a list like "a, b, c" into parts. In this guide, I show you how `explode()` works, how the limit parameter really behaves, common edge cases, and when to use preg_split or str_getcsv instead.
+PHP’s [explode()](https://www.php.net/explode) splits a string into an array using a separator you choose. It is the right tool for simple delimiters like commas, pipes, and spaces, but you need to understand the `limit` parameter and a few edge cases to avoid surprises.
 
 Quick start:
 

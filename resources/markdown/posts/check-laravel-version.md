@@ -1,13 +1,13 @@
 ---
 id: "01KKEW277XY6E6M4TTXXW6XH50"
-title: "How to check your Laravel version"
+title: "Check Laravel version: the quickest commands"
 slug: "check-laravel-version"
 author: "benjamincrozat"
-description: "Learn how to check your Laravel version with `php artisan --version`, `php artisan about`, Composer, and a few reliable fallbacks."
+description: "Check your Laravel version with php artisan --version, php artisan about, Composer, composer.lock, or app()->version(), depending on what access you have."
 categories:
   - "laravel"
 published_at: 2022-09-10T00:00:00+02:00
-modified_at: 2026-03-13T12:05:00Z
+modified_at: 2026-03-14T10:22:32Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -20,7 +20,7 @@ sponsored_at: null
 
 **To check your Laravel version quickly, run `php artisan --version`.**
 
-Knowing which version of Laravel you are running and its [specific details](/laravel-versions) are crucial pieces of information, whether you're planning to upgrade, debug, or simply want to ensure compatibility with a specific feature.
+That gives you the fastest answer. If you want more project details, use `php artisan about`. If Artisan is unavailable, Composer, `composer.lock`, and `app()->version()` are the most reliable fallbacks.
 
 If that is not available or you want more context, there are several other reliable ways to get the Laravel version on macOS, Linux, Docker, and WSL.
 

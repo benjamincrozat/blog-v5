@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27BN44P89RAXD3Q7B8W8"
-title: "Easy data integrity with array validation in Laravel"
+title: "Laravel array validation: rules for nested input"
 slug: "laravel-array-validation"
 author: "benjamincrozat"
-description: "Learn how to effortlessly manage array validation in Laravel to ensure data integrity in your web applications."
+description: "Validate arrays in Laravel with array rules, dot notation, and wildcards so nested input and repeated fields stay predictable."
 categories:
   - "laravel"
 published_at: 2023-12-09T00:00:00+01:00
-modified_at: 2024-02-02T00:00:00+01:00
+modified_at: 2026-03-14T10:22:32Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -18,11 +18,11 @@ sponsored_at: null
 ---
 ## Introduction to array validation in Laravel
 
-Have you ever struggled with ensuring data integrity when handling arrays in user submissions in your web applications?
+Laravel array validation lets you validate nested input, repeated form fields, and structured payloads with rules like `contacts.*.email` and `required|array`.
 
-One aspect where Laravel truly shines is its ability to effortlessly manage array validation.
+If you have ever handled dynamic form rows or JSON-like request data, this is the feature that keeps the structure predictable.
 
-Today, let me guide you with validating arrays in Laravel.
+Let’s walk through the rules and patterns that make validating arrays in Laravel feel straightforward instead of fragile.
 
 ## Understanding array validation in Laravel
 

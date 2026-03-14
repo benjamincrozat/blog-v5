@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27K5Z5DQSFG6MQB97R8Y"
-title: "Convert a PHP array to JSON"
+title: "PHP array to JSON: the safest way to encode it"
 slug: "php-array-to-json"
 author: "benjamincrozat"
-description: "Convert PHP arrays to JSON with `json_encode()`. Ideal for data exchange, storing data, and API communication."
+description: "Convert a PHP array to JSON with json_encode(), handle errors with JSON_THROW_ON_ERROR, and avoid common encoding mistakes."
 categories:
   - "php"
 published_at: 2023-09-16T00:00:00+02:00
-modified_at: 2026-03-12T18:37:53Z
-serp_title: "PHP array to JSON: how everyone does it in 2025"
+modified_at: 2026-03-14T10:22:32Z
+serp_title: null
 serp_description: null
 canonical_url: ""
 is_commercial: false
@@ -18,8 +18,7 @@ sponsored_at: null
 ---
 ## The quickest way to convert a PHP array to JSON
 
-**You want to convert a PHP array to JSON?**
-Use [`json_encode()`](https://www.php.net/json_encode). Here’s what works:
+**Use [`json_encode()`](https://www.php.net/json_encode) to convert a PHP array to JSON.** If you want the safest default, pair it with `JSON_THROW_ON_ERROR` so encoding failures do not silently return `false`.
 
 ```php
 $array = [

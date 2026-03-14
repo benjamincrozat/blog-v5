@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27DFVFB4R7EHDN2WXP15"
-title: "Unlock the power of Laravel's query builder where clauses"
+title: "Laravel where clauses: query builder examples that matter"
 slug: "laravel-query-builder-where-clauses"
 author: "benjamincrozat"
-description: "Unleash Laravel's query builder with my deep dive into the power of \"where\" clauses—triggering conditions, exclusions, JSON queries, and more."
+description: "Use Laravel query builder where clauses with practical examples for where(), orWhere(), whereNot(), JSON conditions, whereBetween(), and whereIn()."
 categories:
   - "laravel"
 published_at: 2023-09-12T00:00:00+02:00
-modified_at: null
+modified_at: 2026-03-14T10:22:32Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -18,15 +18,15 @@ sponsored_at: null
 ---
 ## Introduction
 
-One of the most basic yet powerful features of Laravel's query builder, that I and other developers use all the time, is the ability to utilize "where" clauses.
+Laravel where clauses are the backbone of everyday query builder work. Use them to filter records with `where()`, combine conditions with `orWhere()`, negate groups with `whereNot()`, and target JSON or range-based data when a plain equality check is not enough.
 
-If you're eager to optimize your Laravel apps, understanding their nuances is essential. So, let's dive deep into the realm of the "where" and unlock its full potential!
+If you just need the mental model first, think of them as readable wrappers around SQL conditions that chain naturally in Eloquent and the query builder.
 
-## The essentials of where clauses
+## The essentials of Laravel where clauses
 
 ### Basic where clauses
 
-The foundation of any query is its conditions. In Laravel Laravel's query builder, the basic structure of where clauses is intuitive and expressive. Simply put, you mention the column, the operator, and the value you want to compare.
+The foundation of any query is its conditions. In Laravel's query builder, the basic structure of where clauses is intuitive and expressive. Simply put, you mention the column, the operator, and the value you want to compare.
 
 For instance, imagine fetching comments with 100 votes:
 
