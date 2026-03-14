@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27D7086V9HV2YSPF4CY7"
-title: "Laravel orderBy(): sort query results clearly"
+title: "Laravel orderBy(): examples for asc, desc, and more"
 slug: "laravel-order-by"
 author: "benjamincrozat"
-description: "Learn Laravel's `orderBy()` and `orderByDesc()` with clear Eloquent examples, multiple-column sorting, `orderByRaw()`, and `reorder()`."
+description: "Use Laravel orderBy() to sort Eloquent results by one or more columns, switch to orderByDesc(), reach for orderByRaw() when needed, and reset sorting with reorder()."
 categories:
   - "laravel"
 published_at: 2023-09-09T00:00:00+02:00
-modified_at: 2026-03-13T12:05:00Z
+modified_at: 2026-03-14T10:04:32Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -16,9 +16,11 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/rgz5ybN0xhHeW42.jpg"
 sponsored_at: null
 ---
-## Laravel orderBy() basics
+## How to use Laravel orderBy()
 
 **Use Laravel's `orderBy()` method to sort query results by a column in ascending or descending order.**
+
+Pass the column name first, then the direction if you need descending order. Chain more `orderBy()` calls for tie-breakers, use `orderByDesc()` for readability, and reach for `reorder()` when you need to replace an earlier sort.
 
 If you need `orderByDesc()`, multiple-column sorting, or a quick way to replace an existing order, this guide covers those too. Here's the foundation of `orderBy()`:
 

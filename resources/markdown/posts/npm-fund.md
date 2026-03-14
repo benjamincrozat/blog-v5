@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27HFT8GRG8H0DAFW40A6"
-title: "What `npm fund` means and how to disable it"
+title: "npm fund: what it means and how to disable it"
 slug: "npm-fund"
 author: "benjamincrozat"
-description: "See why npm prints “packages are looking for funding”, what `npm fund` does, and how to disable the message globally or per project."
+description: "Learn what npm fund does, why npm says “packages are looking for funding,” and how to disable the message globally, per project, or per command."
 categories:
   - "javascript"
 published_at: 2024-03-04T00:00:00+01:00
-modified_at: 2026-03-13T11:30:00Z
+modified_at: 2026-03-14T10:04:32Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -21,6 +21,8 @@ sponsored_at: null
 ![The npm fund command showing in my terminal.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/rUiZiYHULe49bgleBIzQmpvA4eHrB2fytglgSxaT.png/public)
 
 If `npm install` keeps printing **“packages are looking for funding”**, the message is informational, not an error. This guide explains what `npm fund` means, why npm shows it, and the fastest ways to disable it when you just want clean installs.
+
+If you only want the fix, run `npm config set fund false` to disable the message globally, add `fund=false` to a project `.npmrc`, or use `npm install --no-fund` for a one-off install.
 
 **TL;DR:**
 
@@ -36,7 +38,11 @@ Maintainers use platforms like GitHub Sponsors, Open Collective, and Tidelift to
 
 But let’s be realistic—financially supporting every dependency isn’t feasible for most of us, so disabling these messages can be totally legitimate.
 
-## Disable the message globally
+## How to disable "packages are looking for funding"
+
+You have three straightforward options, depending on whether you want the change everywhere, in one repo, or just for one command.
+
+### Disable it globally
 
 If you’re absolutely sure you never want to see this message again, disable it globally by running:
 
@@ -50,7 +56,7 @@ If you later change your mind, re-enable it:
 npm config delete fund
 ```
 
-## Disable the message in your project only
+### Disable it in your project only
 
 To silence funding messages for one project only, use the `.npmrc` file:
 
@@ -64,7 +70,7 @@ fund=false
 
 Now NPM will skip the message only in this project.
 
-## Temporarily disable the message (per command)
+### Disable it per command
 
 Want to keep your options open? Use the `--no-fund` flag to temporarily disable funding messages:
 

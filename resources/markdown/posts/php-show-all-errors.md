@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27MFE4P3CS7MMWKGPEHX"
-title: "How to show all errors in PHP safely"
+title: "Show all PHP errors safely"
 slug: "php-show-all-errors"
 author: "benjamincrozat"
-description: "Show all PHP errors with E_ALL, php.ini, .user.ini, .htaccess, or CLI flags, then switch back to production-safe logging."
+description: "Use E_ALL to show all PHP errors, then configure php.ini, .user.ini, .htaccess, or CLI flags depending on whether you use FPM, Apache, or the terminal."
 categories:
   - "php"
 published_at: 2023-10-07T00:00:00+02:00
-modified_at: 2026-03-13T11:30:00Z
+modified_at: 2026-03-14T10:04:32Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -18,9 +18,9 @@ sponsored_at: null
 ---
 ## Introduction
 
-Need to show all errors in PHP while you debug? This guide shows the fastest safe setup with `E_ALL`, plus the right php.ini, `.user.ini`, `.htaccess`, and CLI flags for PHP 8.1-8.4. When I debug locally, I enable display errors; before I deploy, I switch back to logging only.
+Need to show all errors in PHP while you debug? Start with `error_reporting(E_ALL)` plus `display_errors=1`, then choose php.ini, `.user.ini`, `.htaccess`, or CLI flags based on how PHP runs in your environment.
 
-By the way: PHP 8.4 was released on November 21, 2024. See the official news archive on [php.net](https://www.php.net/archive/2024.php). In PHP 8.4, the `E_STRICT` level was removed and the `E_STRICT` constant was deprecated. Referencing it can emit a deprecation notice. See the 8.4 notes in [migration 8.4 incompatible changes](https://www.php.net/manual/en/migration84.incompatible.php). Also, the numeric value of `E_ALL` changed in PHP 8.4 from `32767` to `30719`. If you use numeric masks (for example in Apache config), update them. See the summary at [php.watch on E_STRICT/8.4](https://php.watch/versions/8.4/E_STRICT-deprecated).
+The short version is simple: show errors locally, log everything in production, and make sure you are editing the config that actually applies to your SAPI.
 
 ## TL;DR
 
@@ -40,7 +40,7 @@ error_reporting(-1); // -1 equals E_ALL
 - PHP-FPM: use `.user.ini` or your FPM pool config; `ini_set()` cannot override `php_admin_*` flags.
 - Production defaults: `display_errors=Off`, `log_errors=On`, `error_reporting=E_ALL`.
 
-## Quick snippet (E_ALL)
+## How to show all PHP errors with E_ALL
 
 Place this at the very top of your script to show all errors during development:
 
@@ -54,6 +54,10 @@ error_reporting(-1); // -1 equals E_ALL
 ```
 
 Warning: if a fatal or parse error happens before this runs, it will not display. Set these directives in php.ini, a per-directory `.user.ini`, your PHP-FPM pool, or use an [`auto_prepend_file`](https://www.php.net/manual/en/ini.core.php#ini.auto-prepend-file) so they run earlier. See the manual’s [runtime configuration](https://www.php.net/manual/en/errorfunc.configuration.php).
+
+## PHP 8.4 note
+
+PHP 8.4 removed the `E_STRICT` level and deprecated the `E_STRICT` constant. Referencing it can emit a deprecation notice. Also, the numeric value of `E_ALL` changed from `32767` to `30719`, so if you still use numeric masks in Apache config, update them. See [migration 8.4 incompatible changes](https://www.php.net/manual/en/migration84.incompatible.php), the [2024 PHP news archive](https://www.php.net/archive/2024.php), and [php.watch on E_STRICT in PHP 8.4](https://php.watch/versions/8.4/E_STRICT-deprecated).
 
 ## What each setting does
 

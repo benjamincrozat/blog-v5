@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27JY66N60P9DHKPF8AM5"
-title: "PHP array_filter() explained with examples"
+title: "PHP array_filter(): practical examples and gotchas"
 slug: "php-array-filter"
 author: "benjamincrozat"
-description: "Learn how to use `array_filter()` in PHP, remove empty values, filter by key, and reindex the result when needed."
+description: "Use PHP array_filter() with callbacks, remove empty values carefully, filter by key, and reindex the result when you need clean numeric keys."
 categories:
   - "php"
 published_at: 2023-11-11T00:00:00+01:00
-modified_at: 2026-03-13T15:40:00Z
+modified_at: 2026-03-14T10:04:32Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -20,9 +20,9 @@ sponsored_at: null
 
 **Use [`array_filter()`](https://www.php.net/array_filter) when you want to keep only the array values that match a condition.**
 
-PHP passes each value to your callback and keeps the ones for which the callback returns `true`. If you omit the callback entirely, PHP removes values it considers empty.
+PHP passes each value to your callback and keeps the ones for which the callback returns `true`. The two gotchas worth remembering are that omitting the callback removes values like `'0'` and `0`, and the function preserves the original keys unless you reindex the result.
 
-## Basic syntax
+## How to use array_filter() in PHP
 
 ```php
 array_filter(array $array, ?callable $callback = null, int $mode = 0): array
