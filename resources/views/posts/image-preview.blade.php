@@ -57,13 +57,13 @@ Displays the standalone post image preview page.
 
                 <div class="relative flex flex-col justify-between h-full p-16">
                     <header class="max-w-[980px]">
-                        <p class="mb-5 font-medium tracking-[0.28em] text-black/45 text-xl uppercase">
+                        <p class="mb-5 font-medium tracking-[0.28em] text-black/45 text-2xl uppercase">
                             benjamincrozat.com
                         </p>
 
                         <h1
                             class="font-medium tracking-tight text-transparent text-7xl/[1.15] text-balance bg-clip-text [-webkit-text-fill-color:transparent]"
-                            style="background-image: {{ $titleMesh['gradient'] }}; background-size: {{ $titleMesh['size'] }};"
+                            style="background-image: {{ $titleMesh['gradient'] }}; background-position: {{ $titleMesh['position'] }}; background-size: {{ $titleMesh['size'] }};"
                         >
                             {{ $post->title }}
                         </h1>

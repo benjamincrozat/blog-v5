@@ -33,6 +33,7 @@ class ShowPostImagePreviewController extends Controller
     /**
      * @return array{
      *     gradient: string,
+     *     position: string,
      *     size: string,
      * }
      */
@@ -40,28 +41,34 @@ class ShowPostImagePreviewController extends Controller
     {
         $meshes = [
             [
-                'gradient' => 'radial-gradient(circle at 12% 18%, rgba(15,23,42,0.98), transparent 34%), radial-gradient(circle at 72% 24%, rgba(31,41,55,0.9), transparent 36%), linear-gradient(115deg, rgba(17,24,39,1), rgba(31,41,55,0.92) 48%, rgba(51,65,85,0.95))',
-                'size' => '160% 160%',
+                'gradient' => 'radial-gradient(circle at 12% 22%, rgba(96,165,250,0.34), transparent 28%), radial-gradient(circle at 82% 18%, rgba(148,163,184,0.44), transparent 32%), linear-gradient(102deg, #0f172a 0%, #1e293b 28%, #475569 64%, #0f172a 100%)',
+                'position' => '0% 50%',
+                'size' => '116% 116%',
             ],
             [
-                'gradient' => 'radial-gradient(circle at 18% 70%, rgba(24,24,27,0.96), transparent 32%), radial-gradient(circle at 84% 18%, rgba(39,39,42,0.84), transparent 34%), linear-gradient(130deg, rgba(9,9,11,1), rgba(39,39,42,0.92) 52%, rgba(63,63,70,0.9))',
-                'size' => '170% 170%',
+                'gradient' => 'radial-gradient(circle at 18% 68%, rgba(129,140,248,0.34), transparent 24%), radial-gradient(circle at 84% 18%, rgba(161,161,170,0.44), transparent 30%), linear-gradient(108deg, #111827 0%, #27272a 28%, #52525b 62%, #1f2937 100%)',
+                'position' => '50% 50%',
+                'size' => '114% 114%',
             ],
             [
-                'gradient' => 'radial-gradient(circle at 14% 22%, rgba(17,24,39,0.98), transparent 30%), radial-gradient(circle at 86% 76%, rgba(30,41,59,0.82), transparent 36%), linear-gradient(120deg, rgba(2,6,23,1), rgba(15,23,42,0.94) 45%, rgba(51,65,85,0.92))',
-                'size' => '155% 155%',
+                'gradient' => 'radial-gradient(circle at 14% 24%, rgba(56,189,248,0.28), transparent 22%), radial-gradient(circle at 86% 76%, rgba(100,116,139,0.46), transparent 30%), linear-gradient(96deg, #0f172a 0%, #1e3a8a 18%, #334155 60%, #64748b 100%)',
+                'position' => '100% 50%',
+                'size' => '118% 118%',
             ],
             [
-                'gradient' => 'radial-gradient(circle at 22% 16%, rgba(41,37,36,0.95), transparent 32%), radial-gradient(circle at 78% 44%, rgba(68,64,60,0.82), transparent 34%), linear-gradient(125deg, rgba(28,25,23,1), rgba(68,64,60,0.92) 48%, rgba(87,83,78,0.9))',
-                'size' => '165% 165%',
+                'gradient' => 'radial-gradient(circle at 22% 18%, rgba(251,146,60,0.28), transparent 22%), radial-gradient(circle at 76% 42%, rgba(120,113,108,0.44), transparent 30%), linear-gradient(104deg, #292524 0%, #44403c 34%, #78716c 70%, #374151 100%)',
+                'position' => '25% 50%',
+                'size' => '116% 116%',
             ],
             [
-                'gradient' => 'radial-gradient(circle at 10% 80%, rgba(22,78,99,0.38), transparent 28%), radial-gradient(circle at 82% 18%, rgba(30,41,59,0.86), transparent 34%), linear-gradient(118deg, rgba(17,24,39,1), rgba(30,41,59,0.95) 50%, rgba(51,65,85,0.9))',
-                'size' => '175% 175%',
+                'gradient' => 'radial-gradient(circle at 10% 80%, rgba(20,184,166,0.28), transparent 24%), radial-gradient(circle at 82% 18%, rgba(148,163,184,0.4), transparent 30%), linear-gradient(100deg, #1f2937 0%, #334155 32%, #475569 65%, #0f172a 100%)',
+                'position' => '75% 50%',
+                'size' => '116% 116%',
             ],
             [
-                'gradient' => 'radial-gradient(circle at 18% 26%, rgba(55,48,163,0.28), transparent 26%), radial-gradient(circle at 80% 68%, rgba(24,24,27,0.9), transparent 34%), linear-gradient(122deg, rgba(9,9,11,1), rgba(39,39,42,0.94) 52%, rgba(63,63,70,0.92))',
-                'size' => '168% 168%',
+                'gradient' => 'radial-gradient(circle at 18% 26%, rgba(168,85,247,0.28), transparent 22%), radial-gradient(circle at 78% 68%, rgba(148,163,184,0.42), transparent 28%), linear-gradient(110deg, #18181b 0%, #27272a 28%, #52525b 54%, #475569 100%)',
+                'position' => '50% 50%',
+                'size' => '114% 114%',
             ],
         ];
 
