@@ -8,7 +8,7 @@ categories:
   - "ai"
   - "gpt"
 published_at: 2026-03-14T13:03:43Z
-modified_at: 2026-03-14T13:10:13Z
+modified_at: 2026-03-14T13:15:03Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -123,6 +123,43 @@ So with one request, you now have:
 - a spoken answer you can play
 - the text version you can show in the interface
 
+## You can send audio into GPT Audio too
+
+`gpt-audio` is not limited to text prompts. The current model page says it accepts audio inputs as well as audio outputs, and that is useful when you want a single request to listen and answer back.
+
+I tested that flow by sending the WAV file generated above back into the model with an `input_audio` content part:
+
+```bash
+curl -s https://api.openai.com/v1/chat/completions \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d "$(jq -n \
+    --arg data "$(base64 < hello.wav | tr -d '\n')" \
+    '{
+      model: "gpt-audio-2025-08-28",
+      modalities: ["text", "audio"],
+      audio: { voice: "alloy", format: "wav" },
+      messages: [
+        {
+          role: "user",
+          content: [
+            { type: "text", text: "What is in this recording? Answer in one short sentence." },
+            { type: "input_audio", input_audio: { data: $data, format: "wav" } }
+          ]
+        }
+      ]
+    }'
+  )" > response-audio-input.json
+```
+
+That exact request completed successfully for me and returned this transcript:
+
+```text
+A person is greeting and expressing happiness to talk.
+```
+
+That pattern is useful when you want a lightweight "listen, interpret, answer" workflow without opening a long-lived Realtime session.
+
 ## Build something useful: voice replies for support tickets
 
 This model is a good fit when your app needs to turn one prompt into one audio response without maintaining a live session.
@@ -148,11 +185,14 @@ Three fields matter right away:
 
 The Audio guide currently shows this pattern through Chat Completions, not the Responses API. That is a detail worth checking again if OpenAI changes the guide later, because this part of the API surface is still more specialized than a standard GPT text request.
 
+Another practical detail: the `messages` content can be either a plain string or a richer array of parts. Use the array form as soon as you need to mix text instructions with `input_audio`.
+
 ## When GPT Audio is the right choice
 
 Pick `gpt-audio` when you need:
 
 - one request and one generated spoken reply
+- one request that can listen to audio and answer back
 - audio output plus a transcript
 - a simpler integration than a live Realtime session
 
@@ -175,6 +215,10 @@ The transcript is often just as valuable as the audio file for UI, logging, and 
 ### 4. Using GPT Audio for a live conversation
 
 If the user needs to interrupt, talk back immediately, or stay in an ongoing session, use [GPT Realtime](/gpt-realtime-api) instead.
+
+### 5. Assuming you have to choose between text or audio
+
+You can ask for both with `modalities: ["text", "audio"]`, which is often the most useful shape for a real app.
 
 If you are mapping out the rest of your OpenAI stack, these are the next pages I would open from here:
 

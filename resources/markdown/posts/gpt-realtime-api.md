@@ -8,7 +8,7 @@ categories:
   - "ai"
   - "gpt"
 published_at: 2026-03-14T13:03:42Z
-modified_at: 2026-03-14T13:10:13Z
+modified_at: 2026-03-14T13:15:03Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -83,6 +83,16 @@ That exact request completed successfully for me and returned a short-lived clie
 
 That is the server-side step you need before a browser client opens a live voice session.
 
+## Pick the right connection type first
+
+The current Realtime guide presents three connection styles for this model:
+
+- WebRTC for browser and mobile voice experiences
+- WebSocket for server-side or backend-controlled integrations
+- SIP for phone-style integrations
+
+If you are building an in-browser voice assistant, WebRTC is usually the first option to evaluate. If you want a backend process or a CLI-style integration, WebSocket is the simpler place to start.
+
 ## Send your first live GPT Realtime message
 
 Before you add audio streaming, start with a text-only Realtime turn. It is much easier to debug and still proves the live connection works.
@@ -153,6 +163,29 @@ At that point, you know four important things are working:
 - `response.create` triggers generation
 - the model streams text events back in realtime
 
+## You can update the session without reconnecting
+
+One helpful Realtime pattern is changing the session while the connection stays open.
+
+I also verified that this `session.update` shape worked for me:
+
+```json
+{
+  "type": "session.update",
+  "session": {
+    "type": "realtime",
+    "instructions": "Be extra nice today!",
+    "audio": {
+      "output": {
+        "voice": "marin"
+      }
+    }
+  }
+}
+```
+
+That is useful when your app needs to change tone, instructions, or the output voice without tearing down the whole session.
+
 ## Build something useful: a low-latency support assistant
 
 The useful Realtime pattern is not "generate a long perfect answer." It is "keep the conversation moving with very low delay."
@@ -183,6 +216,7 @@ In my live tests:
 - `response.modalities` failed
 - `response.output_modalities` worked
 - `session.modalities` failed
+- the GA endpoint worked without an `OpenAI-Beta: realtime=v1` header
 
 So if your first WebSocket request returns an unknown-parameter error, check that field first.
 
@@ -224,6 +258,10 @@ The current model page marks structured outputs as unsupported for `gpt-realtime
 ### 4. Exposing your normal API key in the frontend
 
 Use the ephemeral client secret flow for browser and mobile clients.
+
+### 5. Choosing WebSocket for a browser voice UI by default
+
+It can work, but the Realtime guide is built around WebRTC for browser-class voice experiences. WebSocket is usually the better fit for server-side control and debugging.
 
 If you are deciding between low-latency voice and simpler request-response audio, these are the next pages I would keep open:
 
