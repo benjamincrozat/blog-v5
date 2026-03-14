@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27K31T1FCNHMP674ERSA"
-title: "Learn how to sort any kind of array in PHP"
+title: "PHP array sort: which function to use and when"
 slug: "php-array-sort"
 author: "benjamincrozat"
-description: "Let me walk you through some of the most useful functions in PHP that will enable you to sort any kind of array."
+description: "Sort arrays in PHP with sort(), rsort(), asort(), arsort(), ksort(), krsort(), and usort(), and choose the right function for indexed or associative arrays."
 categories:
   - "php"
 published_at: 2023-11-09T00:00:00+01:00
-modified_at: null
+modified_at: 2026-03-14T10:17:05Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -16,13 +16,15 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/fatzUFHaSxNN3gJ.jpg"
 sponsored_at: null
 ---
+## Introduction
+
 Sorting arrays is a common task in PHP, and the language provides a variety of functions to order elements just the way you need.
 
-Whether you're dealing with numerical indices or associative arrays, PHP has you covered. 😎
+The trick is choosing the right one: `sort()` for simple indexed arrays, `asort()` when keys must stay attached to values, `ksort()` for key order, and `usort()` when built-in sorting rules are not enough.
 
 Let me show you some of PHP's array sorting capabilities.
 
-## Utilizing the sort() and rsort() Functions
+## How to sort arrays in PHP
 
 When you have a simple indexed array that needs reordering, `sort()` and `rsort()` are the straightforward choices for ascending and descending order, respectively.
 

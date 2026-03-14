@@ -1,14 +1,14 @@
 ---
 id: "01KKEW2780NK2M3H3CFCG87HN6"
-title: "How to check your PHP version"
+title: "Check PHP version: command line and browser methods"
 slug: "check-php-version"
 author: "benjamincrozat"
-description: "Check your PHP version with `php -v`, `phpinfo()`, `phpversion()`, or Laravel's `php artisan about` command."
+description: "Check your PHP version with php -v, phpinfo(), phpversion(), or Laravel's php artisan about command, and know which method fits CLI or browser access."
 categories:
   - "laravel"
   - "php"
 published_at: 2023-09-02T00:00:00+02:00
-modified_at: 2026-03-13T12:25:00Z
+modified_at: 2026-03-14T10:17:05Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -31,7 +31,7 @@ This method works perfectly on macOS, Linux, Windows, and WSL.
 php -v
 ```
 
-This outputs "PHP 8.3.1 (cli) (built: Feb 10 2025 12:00:00)"
+This outputs something like `PHP 8.4.4 (cli) (built: ...)`.
 
 ## Use the `phpversion()` function
 
@@ -41,7 +41,7 @@ Simply create a PHP script containing:
 
 ```php
 <?php echo phpversion(); ?>
-// Output: 8.3.1
+// Output: 8.4.4
 ```
 
 ## Use the `phpinfo()` function
@@ -55,14 +55,6 @@ Create a PHP file with:
 ```
 
 Open this in your browser and find the PHP version at the top.
-
-## Check PHP version via Composer
-
-If you use Composer, run this command:
-
-```bash
-composer --version
-```
 
 ## Check PHP version using Laravel's welcome page
 
@@ -97,9 +89,9 @@ Run `php -v` in your Ubuntu terminal.
 
 Run `php -v` in your Windows command prompt.
 
-### Which PHP versions are end-of-life (EOL) in 2025?
+### Which PHP versions are end-of-life (EOL) in 2026?
 
-PHP 7.x and older are considered EOL in 2025. Upgrade to PHP 8.x to stay secure.
+PHP 7.x and older are long end-of-life, and even older PHP 8 branches may already be out of active support depending on the exact minor version. Check the official [supported versions page](https://www.php.net/supported-versions.php) before you plan an upgrade path.
 
 ### How do I find my PHP version in WordPress?
 

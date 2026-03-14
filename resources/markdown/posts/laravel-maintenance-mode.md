@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27CTWXZ230CF1KRMBQ8Z"
-title: "Master Laravel's maintenance mode"
+title: "Laravel maintenance mode: down, up, secret, and render"
 slug: "laravel-maintenance-mode"
 author: "benjamincrozat"
-description: "The maintenance mode is like putting a \"Be right back!\" sign on your website. Learn how to get it going."
+description: "Use Laravel maintenance mode with php artisan down and php artisan up, then add refresh, secret, render, or redirect options when deployments need more control."
 categories:
   - "laravel"
 published_at: 2023-12-07T00:00:00+01:00
-modified_at: 2024-01-17T00:00:00+01:00
+modified_at: 2026-03-14T10:17:05Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -18,9 +18,7 @@ sponsored_at: null
 ---
 ## Enabling Laravel's maintenance mode
 
-When it’s time to update your app or change a few things on the server, switching to maintenance mode is super handy. And yet, I always forget it exists. 🤦‍♂️
-
-The maintenance mode is like putting a "Be right back!" sign on your website. To get this going in Laravel, it's as simple as running a command:
+Use Laravel maintenance mode when you need to pause requests during deployment, maintenance, or risky server changes. The basic command is simple:
 
 ```bash
 php artisan down
@@ -38,7 +36,7 @@ This will tell the user's browser to reload the page after 15 seconds.
 
 ## Sneaking past maintenance mode
 
-Now, here's a cool trick. You can bypass maintenance mode with a secret token. Create a token using:
+Now, here's the useful trick. You can bypass maintenance mode with a secret token. Create a token using:
 
 ```bash
 php artisan down --secret="your-secret-token"
@@ -46,7 +44,7 @@ php artisan down --secret="your-secret-token"
 
 Visit your app’s URL with the token appended (http://example.test/WeHrMT6odmCLXWkE for example), and you’ll get a bypass cookie. 
 
-And if you prefer Laravel to create a token for you, version 10.35 lets you do this:
+And if you prefer Laravel to create a token for you, recent Laravel versions let you do this:
 
 ```bash
 php artisan down --with-secret

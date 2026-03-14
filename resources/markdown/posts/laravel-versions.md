@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27EBJJREQW7SC8BS8P5Y"
-title: "Laravel versions, support policy, and LTS status"
+title: "Laravel versions: latest release and support status"
 slug: "laravel-versions"
 author: "benjamincrozat"
-description: "See the current Laravel version, which releases are still supported, and how Laravel's support policy works."
+description: "See the latest Laravel version, which releases are still supported, whether any LTS branch exists, and how Laravel's support policy works."
 categories:
   - "laravel"
 published_at: 2023-09-20T00:00:00+02:00
-modified_at: 2026-03-13T15:40:00Z
+modified_at: 2026-03-14T10:17:05Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -18,7 +18,7 @@ sponsored_at: null
 ---
 ## Introduction
 
-**If you want the short answer first: Laravel 12 is the latest fully documented major release on Laravel's official [release-notes page](https://laravel.com/docs/releases) as of March 13, 2026.**
+**If you want the short answer first: Laravel 12 is the latest fully documented major release on Laravel's official [release-notes page](https://laravel.com/docs/releases) as of March 14, 2026.**
 
 That same support-policy table already lists Laravel 13 for `Q1 2026`, so this is one of those moments where the support matrix is slightly ahead of the narrative release notes.
 
@@ -48,9 +48,9 @@ Modern Laravel does not use special LTS majors anymore. The framework now follow
 
 ## The currently supported Laravel versions
 
-Here is the status from Laravel's official support table as of **March 13, 2026**:
+Here is the status from Laravel's official support table as of **March 14, 2026**:
 
-| Version | Release | Bug fixes until | Security fixes until | Status on March 13, 2026 |
+| Version | Release | Bug fixes until | Security fixes until | Status on March 14, 2026 |
 | --- | --- | --- | --- | --- |
 | Laravel 11 | March 12, 2024 | September 3, 2025 | March 12, 2026 | Security support just ended |
 | Laravel 12 | February 24, 2025 | August 13, 2026 | February 24, 2027 | Supported |
