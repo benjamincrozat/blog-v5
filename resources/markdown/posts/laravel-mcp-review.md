@@ -7,14 +7,14 @@ description: "Laravel MCP is still not for every app, but more SaaS products now
 categories:
   - "laravel"
   - "news"
-published_at: 2026-03-13T07:53:09Z
-modified_at: 2026-03-13T08:12:28Z
+published_at: 2026-03-13T07:53:09+00:00
+modified_at: 2026-03-13T08:12:28+00:00
 serp_title: null
 serp_description: null
 canonical_url: null
 is_commercial: false
-image_disk: null
-image_path: null
+image_disk: "cloudflare-images"
+image_path: "images/posts/generated/laravel-mcp-review.png"
 sponsored_at: null
 ---
 Laravel's official [MCP documentation](https://laravel.com/docs/12.x/mcp), [Laravel MCP product page](https://laravel.com/ai/mcp), and last week's ["AI SDK, Boost, or MCP: Which Tool Do You Need?"](https://laravel.com/blog/laravel-ai-sdk-boost-or-mcp-which-tool-do-you-need) article all point in the same direction: Laravel MCP is real, polished, and narrower than the current hype cycle makes it sound.

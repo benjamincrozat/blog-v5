@@ -7,14 +7,14 @@ description: "Laravel Cloud now lets new users start with $5 in credits and no c
 categories:
   - "laravel"
   - "news"
-published_at: 2026-03-13T07:48:39Z
+published_at: 2026-03-13T07:48:39+00:00
 modified_at: null
 serp_title: null
 serp_description: null
 canonical_url: null
 is_commercial: false
-image_disk: null
-image_path: null
+image_disk: "cloudflare-images"
+image_path: "images/posts/generated/laravel-cloud-credit-card-git-connections.png"
 sponsored_at: null
 ---
 Laravel Cloud shipped a useful onboarding update on March 10, 2026. According to the official [Laravel Cloud changelog](https://cloud.laravel.com/docs/changelog), new signups no longer need a credit card, and Git connections are now stored per user instead of per organization.

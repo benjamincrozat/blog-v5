@@ -7,14 +7,14 @@ description: "Learn GPT Audio step by step by generating a spoken reply, saving 
 categories:
   - "ai"
   - "gpt"
-published_at: 2026-03-14T13:03:43Z
-modified_at: 2026-03-14T13:15:03Z
+published_at: 2026-03-14T13:03:43+00:00
+modified_at: 2026-03-14T13:15:03+00:00
 serp_title: null
 serp_description: null
 canonical_url: null
 is_commercial: false
-image_disk: null
-image_path: null
+image_disk: "cloudflare-images"
+image_path: "images/posts/generated/gpt-audio-api.png"
 sponsored_at: null
 ---
 ## What this GPT Audio guide covers

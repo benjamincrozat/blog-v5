@@ -7,14 +7,14 @@ description: "Install Alpine.js in any project with a CDN or a package manager, 
 categories:
   - "alpinejs"
   - "javascript"
-published_at: 2026-03-14T09:39:45Z
+published_at: 2026-03-14T09:39:45+00:00
 modified_at: null
 serp_title: null
 serp_description: null
 canonical_url: ""
 is_commercial: false
-image_disk: null
-image_path: null
+image_disk: "cloudflare-images"
+image_path: "images/posts/generated/how-to-install-alpine-js.png"
 sponsored_at: null
 ---
 ## Introduction

@@ -7,14 +7,14 @@ description: "Learn GPT-5.2 step by step by sending your first API request and b
 categories:
   - "ai"
   - "gpt"
-published_at: 2026-03-14T12:36:21Z
-modified_at: 2026-03-14T12:36:21Z
+published_at: 2026-03-14T12:36:21+00:00
+modified_at: 2026-03-14T12:36:21+00:00
 serp_title: null
 serp_description: null
 canonical_url: null
 is_commercial: false
-image_disk: null
-image_path: null
+image_disk: "cloudflare-images"
+image_path: "images/posts/generated/gpt-52-api.png"
 sponsored_at: null
 ---
 ## What this GPT-5.2 guide covers

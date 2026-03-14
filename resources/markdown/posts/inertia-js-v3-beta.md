@@ -7,14 +7,14 @@ description: "Inertia.js v3 entered beta on March 5, 2026. The big shifts for La
 categories:
   - "laravel"
   - "news"
-published_at: 2026-03-13T07:59:13Z
+published_at: 2026-03-13T07:59:13+00:00
 modified_at: null
 serp_title: null
 serp_description: null
 canonical_url: null
 is_commercial: false
-image_disk: null
-image_path: null
+image_disk: "cloudflare-images"
+image_path: "images/posts/generated/inertia-js-v3-beta.png"
 sponsored_at: null
 ---
 Inertia.js v3 entered beta on March 5, 2026, and it looks like a meaningful upgrade for Laravel teams that like the Inertia model. The official [beta announcement](https://laravel.com/blog/inertiajs-v3-is-now-in-beta) and [v3 upgrade guide](https://inertiajs.com/upgrade-guide) point to the same themes: fewer moving parts, more built-in frontend power, and a stronger async story.

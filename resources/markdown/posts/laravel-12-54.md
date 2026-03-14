@@ -7,14 +7,14 @@ description: "Laravel 12.54.0 adds PostgreSQL tsvector columns, BinaryFileRespon
 categories:
   - "laravel"
   - "news"
-published_at: 2026-03-13T07:41:39Z
+published_at: 2026-03-13T07:41:39+00:00
 modified_at: null
 serp_title: null
 serp_description: null
 canonical_url: null
 is_commercial: false
-image_disk: null
-image_path: null
+image_disk: "cloudflare-images"
+image_path: "images/posts/generated/laravel-12-54.png"
 sponsored_at: null
 ---
 Laravel shipped [`v12.54.0`](https://github.com/laravel/framework/releases/tag/v12.54.0) on March 10, 2026, then followed it with [`v12.54.1`](https://github.com/laravel/framework/releases/tag/v12.54.1) a few hours later. The second tag is tiny and only makes imports consistent, so the real story is what landed in `12.54.0`.
