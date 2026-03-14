@@ -229,4 +229,4 @@ If GPT-5 nano looks close to what you need, these are the next reads I would kee
 - [Step up to GPT-5 mini when you need a cheaper model with more flexibility](/gpt-5-mini-api)
 - [See when the full GPT-5 model is still worth the extra cost](/gpt-5-api)
 - [Move this same structured-output workflow into PHP](/openai-php-client)
-- [Get a plain-English explanation of how GPT-style models work](/gpt-llm-ai-explanation)
+- [Get a plain-English explanation of how GPT-style models work](/how-llms-work)

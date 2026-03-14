@@ -225,4 +225,4 @@ If you are mapping out the rest of your OpenAI stack, these are the next pages I
 - [Use GPT Realtime when your audio workflow needs low-latency conversation](/gpt-realtime-api)
 - [Compare this with a standard GPT-5 text workflow and structured outputs](/gpt-5-api)
 - [Move the same OpenAI patterns into a PHP backend](/openai-php-client)
-- [Get the GPT model basics straight before choosing another endpoint](/gpt-llm-ai-explanation)
+- [Get the GPT model basics straight before choosing another endpoint](/how-llms-work)

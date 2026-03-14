@@ -30,7 +30,7 @@ By the end, you will have two things working:
 - a first successful call to the Responses API
 - a small support-triage workflow that returns strict JSON you can use in an app
 
-If you are new to large language models, start with my plain-English explainer on [how GPT-style LLMs work](/gpt-llm-ai-explanation). It will make the rest of this guide much easier to follow.
+If you are new to large language models, start with my plain-English explainer on [how GPT-style LLMs work](/how-llms-work). It will make the rest of this guide much easier to follow.
 
 ## Get your API key ready
 
@@ -314,4 +314,4 @@ Once this request is working, the next bottleneck is usually prompting, integrat
 - [Drop to GPT-5 mini when you want the same family at a much lower cost](/gpt-5-mini-api)
 - [Use GPT-5 nano for very fast classification and summarization workloads](/gpt-5-nano-api)
 - [Move the same workflow into PHP with less boilerplate](/openai-php-client)
-- [Build a better mental model for what GPT-style models are actually doing](/gpt-llm-ai-explanation)
+- [Build a better mental model for what GPT-style models are actually doing](/how-llms-work)

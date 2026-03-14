@@ -25,7 +25,7 @@ GPT-4 Turbo is a famous Artificial Intelligence Large Language Model made by [Op
 
 GPT-4 Turbo can generate text outputs known as "completions" that can be used to build a range of applications like truly personal assistants, smart chatbots, grammar checkers, spam filters, code generators, and more! The list could go on forever.
 
-If you are unfamiliar with LLMs, take some time to get up to speed thanks to my simple-to-understand article about [how LLMs such as GPT work](/gpt-llm-ai-explanation).
+If you are unfamiliar with LLMs, take some time to get up to speed thanks to my simple-to-understand article about [how LLMs such as GPT work](/how-llms-work).
 
 Now, let's dive into this step-by-step tutorial that will help you make your first requests to GPT-4 Turbo!
 
@@ -186,8 +186,7 @@ If this article on "How to access and use GPT-4 Turbo's API, step by step" hit t
 - [Call the OpenAI API from PHP with less boilerplate](/openai-php-client)
 - [Use GPT-4.1 when you want a clearer step up from older models](/gpt-41)
 - [Get your first GPT-5 API call working in PHP](/gpt-5-api)
-- [Get a plain-English explanation of how GPT-style models work](/gpt-llm-ai-explanation)
+- [Get a plain-English explanation of how GPT-style models work](/how-llms-work)
 - [See how a Laravel app can expose its own ChatGPT integration](/chatgpt-plugin-laravel)
 - [Speed up factory writing with AI when the data shape is obvious](/generate-laravel-factories-chatgpt)
 - [Turn text into speech with the OpenAI API from PHP](/openai-tts-api)
-

@@ -20,7 +20,7 @@ sponsored_at: null
 ---
 ## Introduction
 
-Generating quality code using a Large Language Model such as GPT requires a basic understand of the technology. And you can quickly learn about it here: [How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)
+Generating quality code using a Large Language Model such as GPT requires a basic understanding of the technology. You can get the plain-English version here: [How LLMs work, explained simply](/how-llms-work)
 
 That being said, you could also follow this tutorial, copy and paste my prompts, and be done with it!
 
@@ -63,6 +63,6 @@ If you are exploring where AI actually saves time in a Laravel codebase, these a
 
 - [See how a Laravel app can expose its own ChatGPT integration](/chatgpt-plugin-laravel)
 - [Call the OpenAI API from PHP with less boilerplate](/openai-php-client)
-- [Get a plain-English explanation of how GPT-style models work](/gpt-llm-ai-explanation)
+- [Get a plain-English explanation of how GPT-style models work](/how-llms-work)
 - [Get your first GPT-5 API call working in PHP](/gpt-5-api)
 - [Build better Artisan prompts without extra ceremony](/laravel-prompts)

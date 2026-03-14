@@ -21,7 +21,7 @@ sponsored_at: null
 
 GPT‑4.1 is OpenAI’s brand‑new flagship model for 2025. It speaks text and images, handles a **mind‑blowing 1,000,000‑token window per request**, and still answers faster than GPT‑4o. Even better, it costs less. (See pricing below.)
 
-If you are new to large language models, take a moment to skim my plain‑English explainer on [how GPT‑style LLMs work](/gpt‑llm‑ai‑explanation). It will save you headaches later.
+If you are new to large language models, take a moment to skim my plain-English explainer on [how GPT-style LLMs work](/how-llms-work). It will save you headaches later.
 
 Ready to roll? Let’s build your first GPT‑4.1 request.
 
@@ -212,5 +212,5 @@ If you are comparing where GPT-4.1 fits before you commit to a model, these are 
 - [Get your first GPT-5 API call working in PHP](/gpt-5-api)
 - [Start with a cheaper OpenAI model before you scale usage](/gpt-4o-mini)
 - [Call the OpenAI API from PHP with less boilerplate](/openai-php-client)
-- [Get a plain-English explanation of how GPT-style models work](/gpt-llm-ai-explanation)
+- [Get a plain-English explanation of how GPT-style models work](/how-llms-work)
 - [Turn text into speech with the OpenAI API from PHP](/openai-tts-api)

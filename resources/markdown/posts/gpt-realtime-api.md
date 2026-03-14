@@ -268,4 +268,4 @@ If you are deciding between low-latency voice and simpler request-response audio
 - [See when GPT Audio is simpler than a live realtime session](/gpt-audio-api)
 - [Compare that with a normal GPT-5 text workflow and structured JSON](/gpt-5-api)
 - [Move the same OpenAI patterns into a PHP backend](/openai-php-client)
-- [Get the GPT model basics straight before choosing another endpoint](/gpt-llm-ai-explanation)
+- [Get the GPT model basics straight before choosing another endpoint](/how-llms-work)

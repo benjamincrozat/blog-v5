@@ -237,6 +237,6 @@ If you are thinking less about plugins and more about what to build with OpenAI 
 
 - [Speed up factory writing with AI when the data shape is obvious](/generate-laravel-factories-chatgpt)
 - [Call the OpenAI API from PHP with less boilerplate](/openai-php-client)
-- [Get a plain-English explanation of how GPT-style models work](/gpt-llm-ai-explanation)
+- [Get a plain-English explanation of how GPT-style models work](/how-llms-work)
 - [Get your first GPT-5 API call working in PHP](/gpt-5-api)
 - [Tighten the API decisions most Laravel apps get wrong](/laravel-restful-api-best-practices)

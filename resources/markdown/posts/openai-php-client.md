@@ -674,5 +674,5 @@ If your PHP app is moving from simple prompts toward real agent behavior, these 
 
 - [Get the broader GPT-5 model overview before you scale usage](/gpt-5-api)
 - [Add text-to-speech after your text workflow is solid](/openai-tts-api)
-- [Understand how GPT-style models behave before you over-prompt them](/gpt-llm-ai-explanation)
+- [Understand how GPT-style models behave before you over-prompt them](/how-llms-work)
 - [Compare a cheaper OpenAI model path too](/gpt-4o-mini)
