@@ -46,6 +46,13 @@ Displays the components app component and accepts component props, Blade attribu
             onload="this.onload=null;this.rel='stylesheet'"
         />
 
+        <link 
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Indie+Flower&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+            onload="this.onload=null;this.rel='stylesheet'"
+        >
+
         <link rel="icon" type="image/png" href="{{ Vite::asset('resources/img/favicon-96x96.png') }}" sizes="96x96" />
         <link rel="icon" type="image/svg+xml" href="{{ Vite::asset('resources/img/favicon.svg') }}" />
         <link rel="shortcut icon" href="{{ Vite::asset('resources/img/favicon.ico') }}" />

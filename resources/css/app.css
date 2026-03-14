@@ -14,6 +14,9 @@
     --font-sans:
         Outfit, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
         "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+    --font-handwriting:
+        Indie Flower;
 }
 
 @utility container {
