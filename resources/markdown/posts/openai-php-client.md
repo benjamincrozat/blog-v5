@@ -1,16 +1,16 @@
 ---
 id: "01KKEW27HJEP1C47C28TND87SV"
-title: "openai-php/client: leverage OpenAI's API, effortlessly"
+title: "How to use OpenAI's API in PHP"
 slug: "openai-php-client"
 author: "benjamincrozat"
-description: "Improve your projects by leveraging the power of GPT, the famous language model, using PHP and OpenAI's REST API."
+description: "A modern PHP guide to OpenAI's Responses API using openai-php/client, Laravel, and direct HTTP requests."
 categories:
   - "ai"
   - "gpt"
   - "php"
 published_at: 2022-10-27T00:00:00+02:00
-modified_at: 2023-11-07T00:00:00+01:00
-serp_title: null
+modified_at: 2026-03-14T10:48:54Z
+serp_title: "How to use OpenAI's API in PHP with openai-php/client"
 serp_description: null
 canonical_url: ""
 is_commercial: false
@@ -18,340 +18,413 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/01K29KHRCYXQAS1A3VMRMP7TF1.png"
 sponsored_at: null
 ---
-## Introduction to using the OpenAI API with PHP
+## How to use OpenAI's API in PHP today
 
-To use OpenAI's REST API, you can either:
-1. Use the API directly.
-2. Or use a client written in PHP that will significantly simplify your journey.
+If you want the shortest path in 2026, use OpenAI's [Responses API](https://platform.openai.com/docs/api-reference/responses/create) and call it from PHP with [`openai-php/client`](https://github.com/openai-php/client).
 
-Option #2 is precisely what we're aiming for, thanks to the unofficial [OpenAI PHP client](https://github.com/openai-php/client) written by Nuno Maduro and Sandro Gehri.
+That package is **community-maintained**, not an official OpenAI SDK. The same goes for [`openai-php/laravel`](https://github.com/openai-php/laravel). OpenAI's current docs point new projects toward the Responses API, and these PHP packages map to it cleanly.
 
-**This package is usable in any kind of PHP project.** No matter what your favorite framework or CMS is (Symfony, CodeIgniter, CakePHP, WordPress, Magento, etc.), there's something here for you.
+If you are still getting comfortable with models and prompts, this quick refresher on [how GPT-style LLMs work](/gpt-llm-ai-explanation) will make the examples below easier to reason about.
 
-And a [**Laravel adapter (openai-php/laravel) is available**](https://github.com/openai-php/laravel), which adds a handy facade and mocking abilities for everyone's convenience.
+## Pick the simplest PHP path
 
-By the way, for the ones who still don't know what GPT is, I recommend you to read the next section. I also have a comprehensive yet simple-to-understand article about [how Large Language Models such as GPT work](/gpt-llm-ai-explanation).
+You have three good options:
 
-## What GPT is
+- **`openai-php/client`**: the best default for plain PHP, Symfony, WordPress, Laravel, or anything else.
+- **`openai-php/laravel`**: same client, but with a Facade and nicer test helpers.
+- **Laravel's HTTP client**: useful if you want zero OpenAI-specific dependencies.
 
-GPT is essentially an advanced computer program (or model) designed to process and generate human-like text by predicting what word should come next in a sentence.
+If you came here specifically for `composer require openai-php/client`, yes, that is still the package I would start with.
 
-Imagine it as a super-smart autocomplete feature that has read an enormous library of text and can now write on a wide array of topics by stringing together words in a way that sounds human.
+## Install openai-php/client
 
-Its creators, OpenAI, have trained it with a vast amount of online text, which is why it can compose anything from poetry to technical manuals, but it isn't conscious or truly understanding—it's just really good at spotting and replicating patterns in language.
+The current package requires **PHP 8.2+**.
 
-I wrote more for those who want to go deeper: "[How do language-based AIs, such as GPT, work?](/gpt-llm-ai-explanation)"
-
-## Create an account to get your OpenAI API key
-
-1. [Create an account](https://platform.openai.com/login?launch).
-
-![Creating an account on OpenAI](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-846047ea8d4bc781aaa6.jpg/public)
-
-3. Confirm your email address.
-4. [Log in](https://chat.openai.com/auth/login).
-5. Check for your free $5 of credits on [this page](https://platform.openai.com/account/billing/overview). Be careful, once you used them, the API keys you will generate won't work.
-
-![The free $5 of credit given to all new developers.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-403fe06e5749406ea8a4.jpg/public)
-
-7. [Generate your first API key](https://platform.openai.com/api-keys). Be careful, it will only be displayed once. Copy and paste it into a password manager so it's stored securely.
-8. Start using GPT-4 Turbo's API! (Continue reading to learn how.)
-
-![API key generation on OpenAI](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/gpt-35-turbo-3329720cb9a472ebadbe.jpg/public)
-
-
-## GPT models pricing
-
-Once you spent your $5 of free credit, you will have to pay for what you use. Don't worry, invoices will be automatically calculated for you. It's not like taxes, haha!
-
-Model | Input | Output
------ | ----- | ------
-GPT-4 Turbo (128K context) | $0.01 | $0.03 
-GPT-4 (32K context) | $0.06 | $0.12 
-GPT-4 (8K context) | $0.03 | $0.06 
-GPT-3.5 Turbo (16K context) | $0.0030 | $0.0060
-
-*1K tokens = ~750 words* ([learn more about tokens](https://openai.com/api/pricing/#faq-token))
-
-In this tutorial, we will use the super cheap, but very capable GPT-3.5 Turbo.
-
-## How to use the OpenAI API PHP wrapper (openai-php/client)
-
-The best way to learn is to build. Let's get started by setting up the PHP package and by performing a basic request.
-
-We will focus on the `gpt-3.5-turbo` model. It's cheap, fast and this is the same model that powers ChatGPT for non-premium users. That being said, feel free to use `gpt-4` if you need GPT to be smarter.
-
-The PHP wrapper is great because it'll fit no matter what your favorite framework or CMS is (Symfony, CodeIgniter, CakePHP, WordPress, Magento, etc.).
-
-### Install openai-php/client
-
-First, create a bare-minimum PHP project:
-
-```bash
-# Create a directory.
-mkdir openai-test
-
-# Go into the directory.
-cd openai-test
-
-# Create an empty file.
-touch index.php
-```
-
-Next, install the [OpenAI client](https://github.com/openai-php/client):
+Install the client first:
 
 ```bash
 composer require openai-php/client
 ```
 
-Then, open the project in your favorite code editor and copy and paste this PHP code snippet:
+If your project does not already have a PSR-18 HTTP client, install one too:
+
+```bash
+composer require guzzlehttp/guzzle
+```
+
+Store your API key in an environment variable before making requests:
+
+```bash
+export OPENAI_API_KEY="sk-..."
+```
+
+## Make your first request
+
+This is the smallest useful example with the modern Responses API:
 
 ```php
 <?php
 
 require 'vendor/autoload.php';
 
-$client = OpenAI::client('YOUR_API_KEY');
-```
+$client = OpenAI::client(getenv('OPENAI_API_KEY'));
 
-[**You can generate your own API key here.**](https://beta.openai.com/account/api-keys)
-
-### Usage of openai-php/client
-
-Once the instance of the OpenAI PHP client has been created, you can start using it by calling the `chat()` method and have a conversation with GPT:
-
-```php
-$data = $client->chat()->create([
-    'model' => 'gpt-3.5-turbo',
-    'messages' => [[
-        'role' => 'user',
-        'content' => 'Hello!',
-     ]],
+$response = $client->responses()->create([
+    'model' => 'gpt-4o-mini',
+    'input' => 'Say hello from PHP in one short sentence.',
+    'max_output_tokens' => 60,
 ]);
 
-// Hello there! How can I assist you today?
-echo $data['choices'][0]['message']['content'];
+echo $response->outputText;
 ```
 
-As you can see, the API is super easy to use. You just have to pass the model you want to use and the messages you want to send to GPT.
+That is already enough to prove your PHP app is wired correctly.
 
-## How to use the OpenAI API Laravel wrapper (openai-php/laravel)
+## Build something useful: support triage
 
-The [OpenAI Laravel wrapper](https://github.com/openai-php/laravel) is a package made to help developers get started even more easily with GPT.
+Now let us turn one incoming support message into something your app can use.
 
-The package supports:
-- Listing the available models for your account (gpt-4, gpt-3.5-turbo, etc.).
-- Using completions (letting AI complete a piece of text).
-- Chatting with a model, just like in ChatGPT.
-- Transcribing an audio file (useful for podcasts for instance).
-- And so much more! This is an extensive package.
+Imagine a customer sends this:
 
-### Install openai-php/laravel
-
-Install the package via Composer:
-
-```bash
-composer require openai-php/laravel
+```text
+Hi, I was billed twice for my Pro plan today. Please refund the extra charge.
 ```
 
-Note that this package will also install openai-php/client, which it depends on to work. The Laravel wrapper just provides a service that register the client in the container and a Facade to make it easier to use.
-
-### Usage of openai-php/laravel
-
-First, make sure [**you have generated your own API key**](https://beta.openai.com/account/api-keys).
-
-Then, publish the configuration file:
-
-```bash
-php artisan vendor:publish --provider="OpenAI\Laravel\ServiceProvider"
-```
-
-Finally, add your API key it in your *.env* file:
-
-```
-OPENAI_API_KEY=your-api-key
-```
-
-The Facade makes it super convenient to get started:
+You can start with a plain text answer:
 
 ```php
-$data = OpenAI::chat()->create([
-    'model' => 'gpt-3.5-turbo',
-    'messages' => [[
-        'role' => 'user',
-        'content' => 'Hello!',
-    ]],
-])
+<?php
 
-// Hello there! How can I assist you today?
-echo $data['choices'][0]['message']['content'];
-```
+require 'vendor/autoload.php';
 
-As you can see, there are differences with the vanilla PHP client:
-1. We skip creating an OpenAI client instance, since the package already did it and stored the instance in the container.
-2. We call the Facade instead of a newly created object.
+$client = OpenAI::client(getenv('OPENAI_API_KEY'));
 
-## How to choose your GPT model
+$message = <<<'TEXT'
+Hi, I was billed twice for my Pro plan today. Please refund the extra charge.
+TEXT;
 
-Each model (GPT-4 Turbo, GPT-4, GPT-3.5 Turbo, etc.) have different capabilities. "Turbo" models such as `gpt-4-1106-preview` and `gpt-3.5-turbo-1106` are the smartest and most reliable.
-
-Other models like `gpt-4`, `gpt-4-32k-0613`, and even the ones based on GPT-3 like `davinci` are now legacy and OpenAI keeps them for compatibility purposes.
-
-Your choice should be dictated by the kind of task you want to perform and your budget. OpenAI has pages detailing their GPT [models' capabilities](https://platform.openai.com/docs/models) as well as [their pricing](https://openai.com/pricing).
-
-## Build a powerful spam detection tool in 5 minutes with PHP and GPT
-
-Let's say you have a comments system.
-
-You want to make sure the user isn't spamming you.
-
-This was a hard problem to solve. Luckily, AI can help like it's nothing.
-
-1. Choose the model you want to use. It can be `gpt-3.5-turbo`, `gpt-3.5-turbo-16k`, or `gpt-4`.
-2. Create a system prompt that defines the purpose of the model. We tell it it's a spam detection tool and give it some rules to follow.
-3. Create a user prompt that contains the potentially spammy comment.
-
-```php
-$data = OpenAI::chat()->create([
-    'model' => 'gpt-3.5-turbo',
-    'messages' => [[
-        'role' => 'system',
-        'content' => <<<'PROMPT'
-You are a spam detection tool. Every prompt you get is a user-generated input from my comments system. Tell me if it should pass validation or not.
-
-The only rules to follow are:
-* No self-promotion
-* No offensive statements
-PROMPT,
-    ], [
-        'role' => 'user',
-        'content' => 'Get rich with Bitcoins, now!',
-    ]],
-	   
+$response = $client->responses()->create([
+    'model' => 'gpt-4o-mini',
+    'instructions' => 'You triage support tickets. Summarize the issue and suggest the next action in two short sentences.',
+    'input' => $message,
+    'max_output_tokens' => 120,
 ]);
 
-// Not valid. This is self-promotion and potentially a scam.
-echo $data['choices'][0]['message']['content'];
+echo $response->outputText;
 ```
 
-How incredible is that? Building this spam detection tool required almost zero effort.
+That works, but structured data is usually more useful than prose.
 
-But what if we change the system prompt to generate a more exploitable reply with JSON?
+## Return structured JSON instead
 
-Here's how to proceed:
+For real applications, I would rather get a compact JSON object back than parse free-form text.
 
-1. Change you system prompt to include the instructions to reply with JSON and the desired structure:
+```php
+<?php
 
-```diff
-<<<PROMPT
-You are a spam detection tool. Every prompt you get is a user-generated input from my commenting system. Tell me if it should pass validation or not.
+require 'vendor/autoload.php';
 
-The only rules to follow are:
-* No self-promotion
-* No offensive statements
-+
-+ Reply with the following JSON:
-+
-+ {
-+    "pass": true,
-+    "reason": "foo"
-+ }
+$client = OpenAI::client(getenv('OPENAI_API_KEY'));
 
-The "reason" key should thoroughly describe why the input passes validation or not.
-PROMPT,
+$message = <<<'TEXT'
+Hi, I was billed twice for my Pro plan today. Please refund the extra charge.
+TEXT;
+
+$response = $client->responses()->create([
+    'model' => 'gpt-4o-mini',
+    'instructions' => 'Classify the support message and draft a short reply.',
+    'input' => $message,
+    'text' => [
+        'format' => [
+            'type' => 'json_schema',
+            'name' => 'support_triage',
+            'schema' => [
+                'type' => 'object',
+                'properties' => [
+                    'category' => [
+                        'type' => 'string',
+                        'enum' => ['billing', 'bug', 'account', 'feature_request', 'other'],
+                    ],
+                    'priority' => [
+                        'type' => 'string',
+                        'enum' => ['low', 'medium', 'high'],
+                    ],
+                    'suggested_reply' => [
+                        'type' => 'string',
+                    ],
+                ],
+                'required' => ['category', 'priority', 'suggested_reply'],
+                'additionalProperties' => false,
+            ],
+            'strict' => true,
+        ],
+    ],
+    'max_output_tokens' => 200,
+]);
+
+$triage = json_decode($response->outputText, true, flags: JSON_THROW_ON_ERROR);
+
+var_dump($triage);
 ```
 
-2. To make sure GPT always replies with JSON, we will also tell it to use the [JSON mode](https://platform.openai.com/docs/guides/text-generation/json-mode). If you don't, GPT can be unreliable and reply with text instead:
+You now get something your app can route immediately:
 
-```diff
+```php
 [
-  'model' => 'gpt-3.5-turbo',
-+ "response_format": {
-+     "type": "json_object"
-+ }
+    'category' => 'billing',
+    'priority' => 'high',
+    'suggested_reply' => 'Sorry about the duplicate charge. I am escalating this to billing now and we will refund the extra payment.',
 ]
 ```
 
-Now, for the same *"Get rich with Bitcoins, now!"* comment, the `gpt-3.5-model` replies with:
+That is much easier to store, validate, or feed into a queue worker.
+
+One small warning: structured outputs are stricter, but you should still keep normal PHP validation and fallback handling around the response.
+
+## Stream the response when you want live output
+
+If you want to show text as it arrives, the package supports streaming too:
 
 ```php
-// {
-//     "pass": false,
-//     "reason": "This input should not pass validation because it is promoting a get-rich-quick scheme related to cryptocurrencies, which is often associated with fraudulent activities."
-// }
-echo $data['choices'][0]['message']['content'];
-```
+<?php
 
-From there, you can experiment and refine this spam detection tool even more. 💪
+require 'vendor/autoload.php';
 
-## Even without a PHP or Laravel wrapper, using the OpenAI API is super easy
+$client = OpenAI::client(getenv('OPENAI_API_KEY'));
 
-While openai-php/client is time saving and extremely useful, some people (like me) might prefer to avoid dependencies. This is how easy it is to send requests to OpenAI's API using Laravel's HTTP client:
+$stream = $client->responses()->createStreamed([
+    'model' => 'gpt-4o-mini',
+    'input' => 'Write a calm two-sentence reply to a customer who was billed twice.',
+    'max_output_tokens' => 120,
+]);
 
-```php
-namespace App\Actions;
-
-use Illuminate\Support\Facades\Http;
-
-class DoSomething
-{
-    public function do() : string
-	{
-		$response = Http::withToken(config('services.openai.api_key'))
-			->post('https://api.openai.com/v1/chat/completions', [
-				'model' => 'gpt-3.5-turbo',
-				'messages' => [
-					[
-						'role' => 'user',
-						'content' => 'I want you to do this thing.'
-					],
-				],
-			])
-			->throw()
-			->json();
-
-		return $response['choices'][0]['message']['content'];
-	}
+foreach ($stream as $event) {
+    if ($event->event === 'response.output_text.delta') {
+        echo $event->response->delta;
+    }
 }
 ```
 
-Then, you can test this code using the `fake()` method of the HTTP client's Facade. Here's an example written with Pest:
+I mostly use this for chat UIs, generators, or anything where a blank loading state feels slow.
+
+## Use the Laravel wrapper when you are already on Laravel
+
+The Laravel package installs the same client behind a Facade:
+
+```bash
+composer require openai-php/laravel
+php artisan openai:install
+```
+
+Then add your key to `.env`:
+
+```dotenv
+OPENAI_API_KEY=sk-...
+```
+
+Now the same support-triage example becomes:
 
 ```php
-use App\Actions\DoSomething;
-use Illuminate\Http\Client\Request;
+<?php
+
+namespace App\Actions\Support;
+
+use OpenAI\Laravel\Facades\OpenAI;
+
+class TriageSupportMessage
+{
+    public function handle(string $message): array
+    {
+        $response = OpenAI::responses()->create([
+            'model' => 'gpt-4o-mini',
+            'instructions' => 'Classify the support message and draft a short reply.',
+            'input' => $message,
+            'text' => [
+                'format' => [
+                    'type' => 'json_schema',
+                    'name' => 'support_triage',
+                    'schema' => [
+                        'type' => 'object',
+                        'properties' => [
+                            'category' => [
+                                'type' => 'string',
+                                'enum' => ['billing', 'bug', 'account', 'feature_request', 'other'],
+                            ],
+                            'priority' => [
+                                'type' => 'string',
+                                'enum' => ['low', 'medium', 'high'],
+                            ],
+                            'suggested_reply' => [
+                                'type' => 'string',
+                            ],
+                        ],
+                        'required' => ['category', 'priority', 'suggested_reply'],
+                        'additionalProperties' => false,
+                    ],
+                    'strict' => true,
+                ],
+            ],
+            'max_output_tokens' => 200,
+        ]);
+
+        return json_decode($response->outputText, true, flags: JSON_THROW_ON_ERROR);
+    }
+}
+```
+
+If you already live in Laravel all day, this is usually the cleanest version.
+
+## Call the API directly with Laravel's HTTP client
+
+If you want less package surface area, direct HTTP is still straightforward.
+
+First, map your key in `config/services.php`:
+
+```php
+'openai' => [
+    'key' => env('OPENAI_API_KEY'),
+],
+```
+
+Then send the request yourself:
+
+```php
+<?php
+
+namespace App\Actions\Support;
+
 use Illuminate\Support\Facades\Http;
 
-it('asks GPT to do a thing', function () {
-    Http::fake([
-        'api.openai.com/v1/chat/completions' => Http::response([
-            'choices' => [['message' => ['content' => 'Lorem ipsum dolor sit amet.']]],
+class TriageSupportMessage
+{
+    public function handle(string $message): array
+    {
+        $response = Http::withToken(config('services.openai.key'))
+            ->post('https://api.openai.com/v1/responses', [
+                'model' => 'gpt-4o-mini',
+                'instructions' => 'Classify the support message and draft a short reply.',
+                'input' => $message,
+                'text' => [
+                    'format' => [
+                        'type' => 'json_schema',
+                        'name' => 'support_triage',
+                        'schema' => [
+                            'type' => 'object',
+                            'properties' => [
+                                'category' => [
+                                    'type' => 'string',
+                                    'enum' => ['billing', 'bug', 'account', 'feature_request', 'other'],
+                                ],
+                                'priority' => [
+                                    'type' => 'string',
+                                    'enum' => ['low', 'medium', 'high'],
+                                ],
+                                'suggested_reply' => [
+                                    'type' => 'string',
+                                ],
+                            ],
+                            'required' => ['category', 'priority', 'suggested_reply'],
+                            'additionalProperties' => false,
+                        ],
+                        'strict' => true,
+                    ],
+                ],
+                'max_output_tokens' => 200,
+            ])
+            ->throw()
+            ->json();
+
+        $text = data_get($response, 'output.0.content.0.text');
+
+        if (! is_string($text)) {
+            throw new \RuntimeException('OpenAI did not return text output.');
+        }
+
+        return json_decode($text, true, flags: JSON_THROW_ON_ERROR);
+    }
+}
+```
+
+This route is perfectly valid if you prefer full control.
+
+## Test it without hitting the API
+
+This is one reason I like the Laravel wrapper. You can fake the response and assert the outgoing request cleanly.
+
+```php
+<?php
+
+use App\Actions\Support\TriageSupportMessage;
+use OpenAI\Laravel\Facades\OpenAI;
+use OpenAI\Resources\Responses;
+use OpenAI\Responses\Responses\CreateResponse;
+
+it('triages a support message', function () {
+    OpenAI::fake([
+        CreateResponse::fake([
+            'model' => 'gpt-4o-mini',
+            'output' => [
+                [
+                    'type' => 'message',
+                    'id' => 'msg_123',
+                    'status' => 'completed',
+                    'role' => 'assistant',
+                    'content' => [
+                        [
+                            'type' => 'output_text',
+                            'text' => '{"category":"billing","priority":"high","suggested_reply":"Sorry about the duplicate charge. I am escalating this to billing now."}',
+                            'annotations' => [],
+                        ],
+                    ],
+                ],
+            ],
+            'tools' => [],
+            'tool_choice' => 'auto',
+            'parallel_tool_calls' => true,
+            'text' => [
+                'format' => [
+                    'type' => 'text',
+                ],
+            ],
         ]),
     ]);
 
-    $result = (new DoSomething)->do();
+    $result = app(TriageSupportMessage::class)->handle(
+        'Hi, I was billed twice for my Pro plan today.'
+    );
 
-    $this->assertEquals('Lorem ipsum dolor sit amet.', $result);
-  
-    Http::assertSent(function (Request $request) {
-	    // You can also test that:
-	    // - You are using the right model ("gpt-3.5-turbo" for instance).
-	    // - You sent the right prompt. Because it might contain dynamic
-	    // values or be different depending on some parameters.
-	});
+    expect($result['category'])->toBe('billing');
+    expect($result['priority'])->toBe('high');
+
+    OpenAI::assertSent(Responses::class, function (string $method, array $parameters): bool {
+        return $method === 'create'
+            && $parameters['model'] === 'gpt-4o-mini'
+            && isset($parameters['text']['format']);
+    });
 });
 ```
 
+That is enough to prove your action builds the right request without burning credits in test runs.
+
+## How to choose a model without overthinking it
+
+For a small classification or extraction task like support triage, I would start with **`gpt-4o-mini`**.
+
+If you need heavier reasoning, bigger context windows, or more ambitious coding help, then compare it with the latest models in OpenAI's [models overview](https://platform.openai.com/docs/models) and [pricing page](https://openai.com/api/pricing/). If you want the broader flagship overview from a PHP angle, my [GPT-5 API guide](/gpt-5-api) is the next stop.
+
+The important part is not the exact model name. It is using the modern Responses API and keeping your prompt plus output shape simple.
+
 ## Conclusion
 
-GPT is the basis for a variety of great products nowadays and only the imagination is the limit. I hope you will create something unique thanks to the power of AI!
+If you want the shortest answer:
 
-Talking about unique products, did you know OpenAI provides an [API endpoint to generate true to life voices](https://benjamincrozat.com/openai-tts-api)?
+- Use **Responses API** for new PHP work.
+- Start with **`openai-php/client`** unless you have a strong reason not to.
+- Return **structured JSON** as soon as the result needs to drive real app logic.
 
-If you are turning one OpenAI request into something more ambitious in PHP, these are the next reads I would keep nearby:
+If this support-triage flow is only your first OpenAI feature, these are the next reads I would keep open:
 
-- [Turn text into speech with the OpenAI API from PHP](/openai-tts-api)
-- [Get your first GPT-5 API call working in PHP](/gpt-5-api)
-- [Get a plain-English explanation of how GPT-style models work](/gpt-llm-ai-explanation)
-- [See how a Laravel app can expose its own ChatGPT integration](/chatgpt-plugin-laravel)
-- [Speed up factory writing with AI when the data shape is obvious](/generate-laravel-factories-chatgpt)
+- [See when GPT-5 is worth the extra cost and complexity](/gpt-5-api)
+- [Start with a cheaper OpenAI model before your traffic grows](/gpt-4o-mini)
+- [Add text-to-speech once your text workflow is working](/openai-tts-api)
+- [Get a plain-English refresher on how GPT-style models behave](/gpt-llm-ai-explanation)
