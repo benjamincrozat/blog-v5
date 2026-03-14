@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae9a2bf5328c064746f5ffa44c6a82f6",
+    "content-hash": "4f68cb33e73b5f6f97bb7cb39d3b87cc",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -8089,16 +8089,16 @@
         },
         {
             "name": "spatie/browsershot",
-            "version": "5.2.0",
+            "version": "5.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/browsershot.git",
-                "reference": "9bc6b8d67175810d7a399b2588c3401efe2d02a8"
+                "reference": "d2e4ac7c69162999940172a674bf83ddc5ac59ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/browsershot/zipball/9bc6b8d67175810d7a399b2588c3401efe2d02a8",
-                "reference": "9bc6b8d67175810d7a399b2588c3401efe2d02a8",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/d2e4ac7c69162999940172a674bf83ddc5ac59ea",
+                "reference": "d2e4ac7c69162999940172a674bf83ddc5ac59ea",
                 "shasum": ""
             },
             "require": {
@@ -8145,7 +8145,7 @@
                 "webpage"
             ],
             "support": {
-                "source": "https://github.com/spatie/browsershot/tree/5.2.0"
+                "source": "https://github.com/spatie/browsershot/tree/5.2.3"
             },
             "funding": [
                 {
@@ -8153,7 +8153,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-12-22T10:02:16+00:00"
+            "time": "2026-02-18T16:10:58+00:00"
         },
         {
             "name": "spatie/crawler",

@@ -23,6 +23,7 @@
         "livewire/livewire": "^3.7",
         "openai-php/laravel": "^0.19.0",
         "sentry/sentry-laravel": "^4.20",
+        "spatie/browsershot": "^5.2",
         "spatie/laravel-activitylog": "^4.12",
         "spatie/laravel-feed": "^4.5",
         "spatie/laravel-livewire-wizard": "^2.4",
