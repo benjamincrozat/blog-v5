@@ -6,14 +6,14 @@ author: "benjamincrozat"
 description: "A simple mental model for AI coding agents: put repo-wide rules in AGENTS.md or CLAUDE.md, and move specialized workflows into reusable skills."
 categories:
   - "ai"
-published_at: 2026-03-14T18:17:04Z
+published_at: 2026-03-14T18:17:04+00:00
 modified_at: null
 serp_title: null
 serp_description: null
 canonical_url: null
 is_commercial: false
-image_disk: null
-image_path: null
+image_disk: "cloudflare-images"
+image_path: "images/posts/generated/agents-md-vs-skills.png"
 sponsored_at: null
 ---
 The confusing part of setting up AI coding agents is that every tool seems to offer a few different places to put instructions.
