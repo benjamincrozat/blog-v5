@@ -27,6 +27,8 @@ The simplest useful model I have found is this:
 
 That split is simple, but it is enough to keep your setup clean.
 
+If you mainly want the dedicated `AGENTS.md` walkthrough first, I already have that in [How to use AGENTS.md with Codex, Cursor, and Claude Code](/agents-md). This article is the broader mental model around where that file stops and skills begin.
+
 ## Use AGENTS.md or CLAUDE.md for defaults every task should know
 
 Use the main instruction file for the stuff an agent should know before it does almost anything.
