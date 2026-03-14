@@ -10,7 +10,20 @@ Displays the standalone post image preview page.
         <meta name="robots" content="noindex, nofollow, noimageindex" />
         <title>{{ $post->title }} image preview</title>
 
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@200..800&display=swap"
+            onload="this.onload=null;this.rel='stylesheet'"
+        />
+
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+        <style type="text/tailwindcss">
+            @theme {
+              --font-sans: Outfit;
+            }
+          </style>
     </head>
     <body class="m-0 bg-[#f4efe9]">
         {{-- Renders a fixed 16:9 preview canvas for screenshot generation. --}}
@@ -30,17 +43,17 @@ Displays the standalone post image preview page.
 
                 <div class="relative flex flex-col justify-between h-full p-16">
                     <header class="max-w-[980px]">
-                        <p class="mb-5 font-medium tracking-[0.28em] text-black/45 text-sm uppercase">
+                        <p class="mb-5 font-medium tracking-[0.28em] text-black/45 text-lg uppercase">
                             benjamincrozat.com
                         </p>
 
-                        <h1 class="font-semibold tracking-tight text-black/95 text-[72px]/[0.96] text-balance">
+                        <h1 class="font-bold tracking-tight text-black/95 text-7xl/tight text-balance">
                             {{ $post->title }}
                         </h1>
                     </header>
 
                     <footer class="flex items-end">
-                        <div class="w-[172px] text-black/75">
+                        <div class="w-[128px] text-black/75">
                             <x-icon-logo />
                         </div>
                     </footer>
