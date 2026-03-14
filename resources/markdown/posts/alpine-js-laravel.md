@@ -20,7 +20,7 @@ sponsored_at: null
 ---
 ## Introduction
 
-Need to install [Alpine.js](https://alpinejs.dev) in a Laravel project? The two fastest options are a CDN for simple pages or `npm install alpinejs` if you already use Vite. I also wrote a broader [Alpine.js introduction](/alpine-js) if you want the bigger picture first.
+Need to install [Alpine.js](https://alpinejs.dev) in a Laravel project? The two fastest options are a CDN for simple pages or `npm install alpinejs` if you already use Vite. If you want the framework-agnostic version first, I also wrote [how to install Alpine.js in any project](/how-to-install-alpine-js).
 
 This guide shows both setup paths, the exact `app.js` snippet, and a quick way to verify everything is working.
 
@@ -149,6 +149,7 @@ Remember to explore Alpine.js's documentation for more advanced features and bes
 
 If you are shaping the frontend layer of a Laravel app right now, these next reads cover the companion tools and alternatives worth looking at:
 
+- [Start with the framework-agnostic Alpine setup if Laravel is not required](/how-to-install-alpine-js)
 - [See when Alpine.js is enough for the interactivity you need](/alpine-js)
 - [Add Vue to Laravel without overbuilding the frontend](/laravel-vue)
 - [Add Tailwind to Laravel without setup guesswork](/tailwind-css-laravel)

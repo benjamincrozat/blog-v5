@@ -23,6 +23,8 @@ Front-end web development has increased in complexity over the past decade. Desp
 
 Luckily, Alpine.js is a good compromise. This Alpine.js tutorial shows how I use x-data, x-show, x-transition, and click.outside to build small interactive pieces.
 
+If you landed here because you only need setup steps, start with my guide on [how to install Alpine.js in any project](/how-to-install-alpine-js). This article is the bigger-picture overview.
+
 ### Who this is for
 
 You want simple interactivity without a heavy build step. You’re comfortable with HTML and a bit of JavaScript, and you’re curious when Alpine.js vs jQuery makes sense.
@@ -212,6 +214,7 @@ I reach for Alpine.js when I need small, interactive UI pieces without heavy too
 
 If this made you want smaller, snappier UI interactions without dragging in a huge stack, these are the next reads I would keep open:
 
+- [Get Alpine installed first if you just want the setup steps](/how-to-install-alpine-js)
 - [Add Alpine to Laravel when you just need lightweight interactivity](/alpine-js-laravel)
 - [Add Vue to Laravel without overbuilding the frontend](/laravel-vue)
 - [Add Tailwind to Laravel without setup guesswork](/tailwind-css-laravel)
