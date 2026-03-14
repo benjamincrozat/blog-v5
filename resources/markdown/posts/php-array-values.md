@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27K8BSG582BAQ3YAJT9K"
-title: "Bring order back to your PHP arrays using array_values()"
+title: "PHP array_values(): reindex arrays the right way"
 slug: "php-array-values"
 author: "benjamincrozat"
-description: "Discover how array_values() in PHP can help you re-do what has been undone."
+description: "Use PHP array_values() to reset numeric keys after filtering or unsetting items and get a clean zero-based array back."
 categories:
   - "php"
 published_at: 2023-11-11T00:00:00+01:00
-modified_at: null
+modified_at: 2026-03-14T10:12:17Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -16,15 +16,17 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/a0TQCHHF0o4xrnB.jpg"
 sponsored_at: null
 ---
-Talking about PHP, it's hard not to dive into its array handling capabilities. 😅 One particularly handy function is [`array_values()`](https://www.php.net/array_values). Ever found yourself needing to re-index an array? That's where `array_values()` shines.
+## Introduction
+
+Use [`array_values()`](https://www.php.net/array_values) when you need to reindex an array and keep only its values. It is especially useful after `array_filter()`, `unset()`, or any operation that leaves gaps in numeric keys.
 
 ## What is array_values() in PHP?
 
-In PHP, `array_values()` is a built-in function that returns all the values from an array and indexes them numerically. It's perfect when you're not concerned about the keys but just want the values in a simple, 0-indexed array.
+In PHP, `array_values()` is a built-in function that returns all the values from an array and indexes them numerically from `0`. Use it when you do not care about the original keys and want a clean, zero-based array.
 
 ## How does array_values() work?
 
-Imagine you have an associative array where the keys are all over the place. Maybe they're strings, or perhaps they're just not in the order you need. If you only need the values, `array_values()` simplifies this by stripping away the keys and providing a neatly indexed array.
+Imagine you have an array with string keys or numeric gaps. If you only need the values, `array_values()` strips the keys away and returns a neatly reindexed array.
 
 ## Simple examples for array_values()
 
@@ -60,36 +62,42 @@ Notice how the associative keys are gone, and the values are indexed from 0 onwa
 
 ### Example #2
 
-Another great use case is when you sort your array alphabetically using the [`sort()`](https://www.php.net/sort) function, which can mess up the order of your key. Let me show you:
+Another common use case is after filtering an array, because filtering preserves the original numeric keys:
 
 ```php
-$fruits = [
-    'Orange',
-    'Banana',
-    'Apple',
-];
+$numbers = [10, 15, 20, 25, 30];
 
-sort($fruits);
+$even = array_filter($numbers, fn (int $number) => $number % 20 === 0 || $number % 10 === 0);
 
-// [
-//     3 => 'Apple',
-//     2 => 'Banana',
-//     1 => 'Orange',
-// ]
-var_dump($fruits);
+var_dump($even);
 ```
 
-As you can see, the numerical keys are not in ascending order anymore. But if you apply `array_values()` to this array, you'll get a nice, clean array back:
+Output:
 
 ```php
-array_values($fruits);
+[
+    0 => 10,
+    2 => 20,
+    4 => 30,
+]
+```
 
-// [
-//     0 => 'Apple',
-//     1 => 'Banana',
-//     2 => 'Orange',
-// ]
-var_dump($fruits);
+If you apply `array_values()` to that filtered array, you get a clean result back:
+
+```php
+$clean = array_values($even);
+
+var_dump($clean);
+```
+
+Output:
+
+```php
+[
+    0 => 10,
+    1 => 20,
+    2 => 30,
+]
 ```
 
 If you keep reindexing arrays after filtering or sorting them, these are the next reads I would open:

@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27ANMYBTWJVHQ6HD7YA2"
-title: "How and when to use jQuery's $(document).ready() method"
+title: "jQuery $(document).ready(): how and when to use it"
 slug: "jquery-document-ready"
 author: "benjamincrozat"
-description: "In JavaScript, running code at the wrong time can lead to errors or unpredictable behavior. Let me show you the fix using jQuery."
+description: "Use jQuery $(document).ready() to run code after the DOM is ready, then see when plain JavaScript DOMContentLoaded is the better modern choice."
 categories:
   - "javascript"
   - "jquery"
 published_at: 2024-02-11T00:00:00+01:00
-modified_at: null
+modified_at: 2026-03-14T10:12:17Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -19,7 +19,9 @@ sponsored_at: null
 ---
 ## Introduction to jQuery's $(document).ready() method
 
-One of the reasons [jQuery](https://jquery.com) became so popular was how it simplified interacting with the DOM, including waiting for it to be fully loaded before running any JavaScript code. In jQuery, the `$(document).ready()` method is the go-to way to ensure your scripts run only after the HTML document is ready to be manipulated. This is crucial because trying to manipulate DOM elements before the document is fully loaded can lead to errors or unpredictable behavior.
+Use `$(document).ready()` when you need jQuery code to run after the DOM is ready to be manipulated. It prevents errors that happen when your script runs before the elements it needs exist.
+
+If you still work on jQuery codebases, this is the pattern you want. If you are writing modern vanilla JavaScript, `DOMContentLoaded` is usually the better equivalent.
 
 Here's a simple example of how you might use jQuery's `$(document).ready()` method:
 

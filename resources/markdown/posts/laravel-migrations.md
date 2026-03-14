@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27CX8RCPAS0DE6DQRSXN"
-title: "Laravel migrations: a simplified and step by step guide"
+title: "Laravel migrations: commands, examples, and rollback basics"
 slug: "laravel-migrations"
 author: "benjamincrozat"
-description: "Migrations are essential in any Laravel app using a database. I will tell you what they are, why you should use them and how you can generate them."
+description: "Learn Laravel migrations with practical examples for make:migration, migrate, migrate:fresh, rollback, and the up() and down() methods."
 categories:
   - "laravel"
 published_at: 2022-09-12T00:00:00+02:00
-modified_at: 2024-02-02T00:00:00+01:00
+modified_at: 2026-03-14T10:12:17Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -18,9 +18,9 @@ sponsored_at: null
 ---
 ## What are migrations in Laravel
 
-**In Laravel, migrations are a way to manage and apply changes to your database schema.** See them like a phpMyAdmin, but with code instead of a user interface. **Migrations also allow you to keep all your team members and environments in sync.**
+**Laravel migrations are version-controlled changes to your database schema.** Instead of clicking around in a database UI, you define schema changes in code and run them with Artisan. That keeps teammates, environments, and deployments in sync.
 
-In theory, you could start working on a new project, clone it onto your machine, and run `php artisan migrate` to generate a fresh and up to date database. Why? Because since migrations are based on code, they also are versioned just like the rest of the project.
+In practice, that means you can clone a project, run `php artisan migrate`, and build the database structure the project expects. Because migrations live in code, they are reviewed, versioned, and deployed like the rest of the app.
 
 Interesting, right? Let's learn more about migrations!
 

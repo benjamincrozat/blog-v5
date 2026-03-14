@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27MCJ5T5D29CNAF1290Q"
-title: "How to redirect to another page in PHP"
+title: "PHP redirect: how to redirect to another page"
 slug: "php-redirect"
 author: "benjamincrozat"
-description: "Discover how to use PHP code to effortlessly redirect your website's visitors to a different page. Explore the magic of HTTP."
+description: "Use header(Location: ...) and exit to redirect in PHP, then choose the right HTTP status code for permanent, temporary, or post-redirect-get flows."
 categories:
   - "php"
 published_at: 2023-09-02T00:00:00+02:00
-modified_at: 2023-09-19T00:00:00+02:00
-serp_title: "How to redirect to another page in PHP (2025)"
+modified_at: 2026-03-14T10:12:17Z
+serp_title: null
 serp_description: null
 canonical_url: ""
 is_commercial: false
@@ -18,7 +18,7 @@ sponsored_at: null
 ---
 ## Introduction
 
-Performing a redirect in PHP is straightforward, but mastering redirects involves understanding HTTP status codes, avoiding common pitfalls, keeping SEO considerations in mind, and ensuring security best practices.
+To redirect in PHP, send a `Location` header and stop execution with `exit`. That is the core fix. After that, the important decision is choosing the right status code: `301`, `302`, `303`, `307`, or `308`.
 
 ## Quick PHP redirect example (TL;DR)
 

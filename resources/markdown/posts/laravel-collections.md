@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27BY0J3WYK72J6M2GVDV"
-title: "15 Laravel Collections tips to refactor your codebase"
+title: "Laravel Collections: practical methods and examples"
 slug: "laravel-collections"
 author: "benjamincrozat"
-description: "Learn 15 Laravel Collection tips with real examples: map vs. transform, higher order messages, when/unless, dd/dump, only/except, and more."
+description: "Learn Laravel Collections with practical examples for collect(), map(), filter(), each(), when(), only(), except(), and other methods you will use often."
 categories:
   - "laravel"
 published_at: 2022-11-09T00:00:00+01:00
-modified_at: 2025-09-28T05:56:00+02:00
+modified_at: 2026-03-14T10:12:17Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -19,6 +19,8 @@ sponsored_at: null
 ## Introduction to Laravel Collections
 
 [Laravel Collections](https://laravel.com/docs/collections) are a powerful tool for working with arrays. They wrap native PHP functions, add helpful helpers, and give you a fluent API.
+
+If you want the short version, Laravel Collections give you chainable methods like `map()`, `filter()`, `each()`, and `when()` so everyday array work reads more clearly than raw loops.
 
 In general, collections behave immutably: most methods return a new collection instead of changing the current one. Some methods do mutate the instance (for example, `transform`, `push`, `pop`, `shift`, `put`, `prepend`). When you want a non-mutating alternative, reach for `map`. See the docs for [`transform`](https://laravel.com/docs/11.x/collections#method-transform) and [`map`](https://laravel.com/docs/11.x/collections#method-map).
 
@@ -345,4 +347,3 @@ If you are still thinking about "15 Laravel Collections tips to refactor your co
 - [See what Laravel 12 changed before you adopt it](/laravel-12)
 - [Pick the right Eloquent create helper before duplicates sneak in](/laravel-firstorcreate-firstornew-createorfirst-updateorcreate-updateorinsert)
 - [See the Laravel 10 changes that matter in real projects](/laravel-10)
-
