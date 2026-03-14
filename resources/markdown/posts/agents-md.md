@@ -1,5 +1,5 @@
 ---
-id: "01KKPPM7YMGYNYA87XWK553W1P"
+id: "01KKPR4KW75TMFARAQA4YTH68V"
 title: "How to use AGENTS.md with Codex, Cursor, and Claude Code"
 slug: "agents-md"
 author: "benjamincrozat"
