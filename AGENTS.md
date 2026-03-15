@@ -31,6 +31,7 @@ This repo is my personal blog about web developent.
 - **Keep changes small.** Implement the smallest change that solves the problem.
 - **No scope drift.** Do not refactor, restyle, or add “nice-to-haves” unless explicitly requested.
 - **Fix root causes.** Don’t band-aid symptoms.
+- **Publish new posts in file frontmatter right away.** For new Markdown-managed posts, set `published_at` immediately in UTC unless the user explicitly asks to keep the post unpublished; the open PR is the real draft/review gate until approval.
 - **Use web search when needed.** If version-specific behavior, third-party APIs, or unclear edge cases could change the implementation, verify in official docs/release notes and cite the source in your summary.
 - **State assumptions when needed.** If a requirement is underspecified, proceed with clearly labeled assumptions; only ask questions when blocked.
 - **Be concise and structured.** Prefer short, skimmable answers and concrete next actions over long explanations.
