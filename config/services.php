@@ -20,6 +20,14 @@ return [
         'token' => env('CLOUDFLARE_API_TOKEN'),
     ],
 
+    'forge' => [
+        'heartbeats' => [
+            'generate_sitemap' => env('FORGE_HEARTBEAT_URL_GENERATE_SITEMAP'),
+            'refresh_user_data' => env('FORGE_HEARTBEAT_URL_REFRESH_USER_DATA'),
+            'sync_visitors' => env('FORGE_HEARTBEAT_URL_SYNC_VISITORS'),
+        ],
+    ],
+
     'github' => [
         'client_id' => env('GITHUB_CLIENT_ID'),
         'client_secret' => env('GITHUB_CLIENT_SECRET'),

@@ -4,11 +4,14 @@ use Illuminate\Support\Facades\Schedule;
 use App\Console\Commands\RefreshUserDataCommand;
 use App\Console\Commands\SyncSearchConsoleSitemapCommand;
 
+$generateSitemapHeartbeat = config('services.forge.heartbeats.generate_sitemap');
+$refreshUserDataHeartbeat = config('services.forge.heartbeats.refresh_user_data');
+
 Schedule::command(SyncSearchConsoleSitemapCommand::class)
     ->daily()
-    ->thenPing(config('services.forge.heatbeats.generate-sitemap'));
+    ->thenPingIf(filled($generateSitemapHeartbeat), $generateSitemapHeartbeat);
 
 Schedule::command(RefreshUserDataCommand::class)
     ->hourly()
     ->withoutOverlapping()
-    ->thenPing(config('services.forge.heatbeats.refresh-user-data'));
+    ->thenPingIf(filled($refreshUserDataHeartbeat), $refreshUserDataHeartbeat);
