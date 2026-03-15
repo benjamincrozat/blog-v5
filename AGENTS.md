@@ -15,12 +15,26 @@ This repo is my personal blog about web developent.
 ## Development workflow
 
 - `composer setup`
+  - Note: this script is currently not defined in `composer.json`, so do not rely on it when bootstrapping a fresh worktree.
 - `composer dev`
   - This runs multiple processes concurrently.
 - Assume the project is always accessible locally at `https://blog-v5.test`. Never use `php artisan serve` unless `https://blog-v5.test` is not accessible.
 - Commit every change you make to the codebase. Be as granular as possible.
 - When you have to commit, start the message with a short summary (10 words, tops). Then, add a detailed description of the changes (use lists to make it easier to read).
 - **Don't push code unless you have my approval.**
+
+## Worktrees
+
+- Create feature worktrees from a real branch, not a detached HEAD. Preferred pattern: `git worktree add -b codex/<short-name> <path> main`.
+- Fresh worktrees may not contain the local runtime files needed to run the app or checks. Reuse the primary checkout's local install by linking these into the new worktree when needed:
+  - `.env`
+  - `vendor`
+  - `node_modules`
+  - `public/build`
+- In this repo, the primary local checkout is typically `/Users/benjamin/Sites/blog-v5`. If a fresh worktree is missing the files above, link them from there instead of reinstalling everything by default.
+- After wiring a fresh worktree, confirm it boots with `php artisan about --only=environment` before running `pint`, `phpstan`, or `pest`.
+- `https://blog-v5.test` may still serve the primary checkout rather than the new worktree. If you need to verify branch-specific changes and `blog-v5.test` is not serving the worktree, use `php artisan serve --host=127.0.0.1 --port=<port>` from that worktree and run the browser check against that port.
+- Keep worktree-only browser artifacts out of git. Clean up folders like `.playwright-cli/` and `output/` before finishing unless the user explicitly wants those files.
 
 ## Guardrails to keep in mind
 
