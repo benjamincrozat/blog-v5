@@ -32,13 +32,13 @@ I weighted repeated user feedback more heavily than vendor positioning. That mea
 
 ## My ranking at a glance
 
-| Tool | Best for | Main tradeoff | Confidence |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ---------- |
-| [Fathom Analytics](/recommends/fathom-analytics) | The easiest recommendation for most sites | Lighter reporting than heavier analytics suites | High |
-| [Simple Analytics](/recommends/simple-analytics) | Teams that want the cleanest UI and strongest support reputation | Intentionally less depth than GA4-style tools | High |
-| [Clicky](/recommends/clicky) | Real-time monitoring and live visitor logs | Feels dated and basic next to newer tools | Medium |
-| [Usermaven](/recommends/usermaven) | Teams that want more attribution and journey data | Public sentiment is noisier and less clean | Medium |
-| [AesirX](/recommends/aesirx) | Privacy-led teams willing to experiment | The thinnest independent proof of the group | Low |
+| Tool | Best for | Main tradeoff |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| [Fathom Analytics](/recommends/fathom-analytics) | The easiest recommendation for most sites | Lighter reporting than heavier analytics suites |
+| [Simple Analytics](/recommends/simple-analytics) | Teams that want the cleanest UI and strongest support reputation | Intentionally less depth than GA4-style tools |
+| [Clicky](/recommends/clicky) | Real-time monitoring and live visitor logs | Feels dated and basic next to newer tools |
+| [Usermaven](/recommends/usermaven) | Teams that want more attribution and journey data | Public sentiment is noisier and less clean |
+| [AesirX](/recommends/aesirx) | Privacy-led teams willing to experiment | The thinnest independent proof of the group |
 
 ## The best GDPR-compliant Google Analytics alternatives
 
