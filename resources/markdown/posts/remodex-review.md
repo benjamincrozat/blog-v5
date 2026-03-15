@@ -20,7 +20,11 @@ I like [Remodex](https://github.com/Emanuele-web04/remodex) a lot more than I ex
 
 The short version is simple: it lets me control [Codex](https://openai.com/index/codex/) from my iPhone without pretending the phone should become the real runtime. The actual work still happens on my Mac. The phone is the remote control, the session stays paired, and the whole thing feels much more practical than "AI on mobile" usually does.
 
-If you want to try it right away, there is a public [TestFlight beta](https://testflight.apple.com/join/PKZhBUVM) for iOS, and the bridge itself is also published on [npm as `remodex`](https://www.npmjs.com/package/remodex).
+If you want to try it right away, there is a public [TestFlight beta](https://testflight.apple.com/join/PKZhBUVM) for iOS.
+
+![The Remodex iPhone app showing a Codex thread with a draft-post summary and the reply composer at the bottom.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/01KKRTEAJ0JGB0JWN2BFJ9NMVG.png/public)
+
+That is also why I think the app lands so well. The interface feels like a real companion to an active Codex session, not a gimmicky wrapper around a chatbot.
 
 ## What Remodex actually is
 
@@ -44,36 +48,28 @@ If you mainly use Codex for real repo work, my guide on [using AGENTS.md with Co
 
 ## The setup already feels real
 
-I tried the published bridge first because that is the most honest way to judge the happy path.
+What matters here is not the package story. It is the fact that the app is easy to get running.
 
-The install is exactly what the project promises:
+The setup is basically:
 
 ```sh
 npm install -g remodex@latest
 remodex up
 ```
 
-On my side, `remodex up` immediately printed a pairing QR code, created a session, and connected cleanly. That does not prove every part of the iPhone flow is perfect, but it does prove this is not just a nice README with an imaginary quick start.
+Then you open Remodex on the phone, scan the QR code from inside the app, and continue the session there.
 
-One detail I appreciate is that the repo draws a clear line between the public source checkout and the published package. The [README](https://github.com/Emanuele-web04/remodex/blob/main/README.md) says source checkouts stay self-host friendly and do not bake in a public relay, while the published npm package may include a default relay at publish time. That is exactly the kind of detail I like seeing in an early project, because it shows the author has thought about the distribution model instead of hiding it.
+On my side, `remodex up` immediately printed a pairing QR code, created a session, and connected cleanly. That does not prove every part of the iPhone flow is perfect, but it does prove this is a working product and not just a clever README.
 
-If you clone the repo instead of using npm, the README tells you to run:
-
-```sh
-git clone https://github.com/Emanuele-web04/remodex.git
-cd remodex
-./run-local-remodex.sh
-```
-
-It also calls out a small but useful onboarding detail: scan the QR from inside the Remodex app, not with the generic iPhone camera app, or you may just get a web search instead of a pairing flow.
+The README also calls out one detail that is worth repeating: scan the QR from inside the Remodex app, not with the generic iPhone camera app, or you may just get a web search instead of a pairing flow.
 
 <!-- Screenshot placeholder: the terminal right after `remodex up` shows the QR code and session details. -->
 
 ## Why I like the product direction
 
-The main thing I like is that Remodex does not try to fake convenience by centralizing everything on somebody else's server.
+The main thing I like is that Remodex does not try to fake convenience by pretending the phone should replace the Mac.
 
-The [project architecture in the README](https://github.com/Emanuele-web04/remodex/blob/main/README.md#architecture) keeps the bridge on the Mac, forwards JSON-RPC traffic to Codex, and lets the phone act as a paired client. The [self-hosting model](https://github.com/Emanuele-web04/remodex/blob/main/SELF_HOSTING_MODEL.md) also makes the philosophy explicit: the public repo stays open-source and self-host friendly, while hosted defaults are treated as a distribution choice rather than the whole product.
+The [README](https://github.com/Emanuele-web04/remodex/blob/main/README.md#architecture) makes the architecture clear: Codex still runs on the Mac, and the phone acts as a paired client for prompts, follow-ups, notifications, and git actions.
 
 That feels right for this kind of tool.
 
@@ -107,7 +103,7 @@ This is the path I would use:
 3. Install the iOS beta from [TestFlight](https://testflight.apple.com/join/PKZhBUVM) or build the app from source in Xcode
 4. Open the app and scan the pairing QR from inside Remodex
 
-If you prefer reading the source before you touch anything, start with the [GitHub repo](https://github.com/Emanuele-web04/remodex). If you want the quickest route, the [TestFlight beta](https://testflight.apple.com/join/PKZhBUVM) plus the npm bridge looks like the real shortcut.
+If you want the quickest route, the [TestFlight beta](https://testflight.apple.com/join/PKZhBUVM) plus the Mac bridge is the one I would take. If you prefer reading more first, start with the [GitHub repo](https://github.com/Emanuele-web04/remodex).
 
 My current take is simple: Remodex already feels like one of the more interesting Codex companion apps around. Not because it tries to do everything, but because it understands exactly what should stay on the Mac and exactly what is useful to move onto the phone.
 
