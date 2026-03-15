@@ -1,5 +1,5 @@
 {{--
-Displays the components link wizard steps component and accepts component props, Blade attributes, and slot content.
+Presents the link wizard steps component UI and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props(['steps'])

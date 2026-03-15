@@ -1,11 +1,12 @@
 {{--
-Displays the livewire search Livewire view.
+Provides the global search dialog markup and expects Livewire query state plus Alpine modal state.
 --}}
 
 <div
     class="fixed inset-4"
     x-cloak
     x-data="{ open: false }"
+    x-id="['search-dialog', 'search-title']"
     x-show="open"
 >
     <div
@@ -14,6 +15,11 @@ Displays the livewire search Livewire view.
         x-show="open"
         x-transition.duration.300ms
         x-trap.noscroll="open"
+        role="dialog"
+        aria-modal="true"
+        x-bind:id="$id('search-dialog')"
+        x-bind:aria-labelledby="$id('search-title')"
+        x-bind:aria-hidden="(! open).toString()"
         @click.away="open = false"
         @keydown.esc="open = false"
         @keydown.arrow-down.stop.prevent="$focus.next()"
@@ -30,7 +36,7 @@ Displays the livewire search Livewire view.
                 <span class="sr-only">Close</span>
             </button>
 
-            <p class="cursor-default">Search for posts and links</p>
+            <p class="cursor-default" x-bind:id="$id('search-title')">Search for posts and links</p>
         </div>
 
         <div class="flex relative items-center">
@@ -98,7 +104,6 @@ Displays the livewire search Livewire view.
                             @foreach ($links as $link)
                                 <li class="group">
                                     <a
-                                        wire:navigate
                                         href="{{ $link->url }}"
                                         class="flex gap-4 items-start p-4 leading-tight border-b transition-colors focus:outline-none focus:bg-blue-600/75 focus:text-white border-black/10 group-last:border-b-0"
                                     >

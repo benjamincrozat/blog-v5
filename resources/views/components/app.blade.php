@@ -1,5 +1,5 @@
 {{--
-Displays the components app component and accepts component props, Blade attributes, and slot content.
+Wraps public pages in the shared site chrome and accepts page metadata, flags, attributes, and slot content.
 --}}
 
 @props([
@@ -35,7 +35,7 @@ Displays the components app component and accepts component props, Blade attribu
         <meta name="twitter:description" content="{{ $description }}" />
         <meta name="twitter:image" content="{{ $image }}" />
 
-        <livewire:styles />
+        @livewireStyles
 
         @vite('resources/css/app.css')
 
@@ -134,11 +134,7 @@ Displays the components app component and accepts component props, Blade attribu
         <livewire:search />
 
         @empty($hideStickyCarousel)
-            @php
-                $bottomAds = [];
-            @endphp
-
-            <x-ads.bottom :ads="$bottomAds" />
+            <x-ads.bottom :ads="[]" />
         @endempty
 
         @livewireScriptConfig

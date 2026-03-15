@@ -137,6 +137,18 @@ it('keeps app classes documented with intentful docblocks', function () {
         if (preg_match('/Defines the .* implementation\./', $docblock)) {
             $violations[] = "{$path}: generic class-level docblock";
         }
+
+        if (preg_match('/Handles(?: the)? .* controller requests\./', $docblock)) {
+            $violations[] = "{$path}: generic controller docblock";
+        }
+
+        if (preg_match('/Boots framework services for this application area\./', $docblock)) {
+            $violations[] = "{$path}: generic provider docblock";
+        }
+
+        if (preg_match('/Coordinates server-driven UI state for this Livewire component\./', $docblock)) {
+            $violations[] = "{$path}: generic class-level docblock";
+        }
     }
 
     expect($violations)->toBeEmpty();
@@ -178,6 +190,14 @@ it('keeps blade top comments structured and contract-focused', function () {
 
         if (str_contains($normalizedComment, 'renders the ')) {
             $violations[] = "{$path}: top comment still uses generic render phrasing";
+        }
+
+        if (str_contains($normalizedComment, 'displays the components ')) {
+            $violations[] = "{$path}: top comment still uses generic component phrasing";
+        }
+
+        if (str_contains($normalizedComment, 'provides a responsive breadcrumb trail')) {
+            $violations[] = "{$path}: top comment still uses generic breadcrumb phrasing";
         }
 
         if (str_starts_with($path, 'resources/views/components/') && ! str_contains($normalizedComment, 'accepts')) {

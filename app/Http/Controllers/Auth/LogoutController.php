@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * Handles logout controller requests.
+ * Coordinates a single-action HTTP endpoint for the site.
  */
 class LogoutController extends Controller
 {

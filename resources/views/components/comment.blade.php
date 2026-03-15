@@ -1,11 +1,14 @@
 {{--
-Displays the components comment component and accepts component props, Blade attributes, and slot content.
+Renders a comment thread item and accepts the comment, parent reply target, attributes, and optional visibility flags.
 --}}
 
+@props([
+    'comment',
+    'parentId' => null,
+])
+
 @php
-// Temporary fix.
-$parentId = $this->parentId ?? $attributes->get('parentId');
-$commentUser = $comment->user;
+    $commentUser = $comment->user;
 @endphp
 
 <div {{ $attributes }}>
@@ -100,7 +103,7 @@ $commentUser = $comment->user;
         <ul class="grid gap-8 mt-8 ml-11 md:ml-12">
             @foreach ($comment->children as $child)
                 <li>
-                    <x-comment :comment="$child" />
+                    <x-comment :comment="$child" :parent-id="$parentId" />
                 </li>
             @endforeach
         </ul>

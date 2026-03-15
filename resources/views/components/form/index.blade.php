@@ -1,5 +1,5 @@
 {{--
-Displays the components form index component and accepts component props, Blade attributes, and slot content.
+Presents the form index component UI and accepts component props, Blade attributes, and slot content.
 --}}
 
 <form {{ $attributes }}>

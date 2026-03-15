@@ -1,5 +1,5 @@
 {{--
-Displays the components form textarea component and accepts component props, Blade attributes, and slot content.
+Presents the form textarea component UI and accepts component props, Blade attributes, and slot content.
 --}}
 
 <div {{ $attributes->only('class') }}>

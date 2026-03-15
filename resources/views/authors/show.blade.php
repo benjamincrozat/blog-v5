@@ -1,5 +1,5 @@
 {{--
-Displays the authors show view.
+Shows an author profile with biography, published articles, approved links, and profile schema data.
 --}}
 
 <x-app
@@ -31,7 +31,7 @@ Displays the authors show view.
             </p>
         </header>
 
-        @if ($author->biography)
+        @if ($author->about)
             <x-prose class="mt-6 md:mt-8">
                 {!! \App\Markdown\MarkdownRenderer::parse($author->about) !!}
             </x-prose>

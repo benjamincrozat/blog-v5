@@ -12,7 +12,7 @@ use Illuminate\Http\Client\ConnectionException;
 use Spatie\LivewireWizard\Components\StepComponent;
 
 /**
- * Renders and coordinates the first step Livewire component.
+ * Validates a submitted URL before advancing the public link wizard.
  */
 class FirstStep extends StepComponent
 {

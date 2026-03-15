@@ -1,5 +1,5 @@
 {{--
-Displays the components tools digitalocean component and accepts component props, Blade attributes, and slot content.
+Presents the tools digitalocean component UI and accepts component props, Blade attributes, and slot content.
 --}}
 
 <x-tools.item

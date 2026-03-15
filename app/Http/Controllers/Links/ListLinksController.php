@@ -9,7 +9,7 @@ use App\Actions\BuildBreadcrumbSchema;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Handles list links controller requests.
+ * Coordinates a single-action HTTP endpoint for the site.
  */
 class ListLinksController extends Controller
 {

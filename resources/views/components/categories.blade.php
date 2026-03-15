@@ -1,5 +1,5 @@
 {{--
-Displays the components categories component and accepts component props, Blade attributes, and slot content.
+Presents the categories component UI and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props(['categories'])

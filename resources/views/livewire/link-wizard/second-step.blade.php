@@ -1,8 +1,12 @@
 {{--
-Displays the livewire link wizard second step Livewire view.
+Shows the link details step and expects fetched metadata plus the shared wizard step state.
 --}}
 
 <div>
+    <x-slot:title>
+        Submit a link
+    </x-slot>
+
     <x-section class="mt-16 md:max-w-(--breakpoint-sm)">
         <x-link-wizard.steps :$steps />
 

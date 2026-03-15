@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * Handles show merchant controller requests.
+ * Coordinates a single-action HTTP endpoint for the site.
  */
 class ShowMerchantController extends Controller
 {

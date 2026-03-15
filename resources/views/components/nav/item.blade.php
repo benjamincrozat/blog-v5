@@ -1,5 +1,5 @@
 {{--
-Displays the components nav item component and accepts component props, Blade attributes, and slot content.
+Renders a primary navigation item and accepts icon props, link attributes, and slot content.
 --}}
 
 @props([
@@ -12,7 +12,9 @@ Displays the components nav item component and accepts component props, Blade at
         'transition-colors hover:text-blue-600',
         'text-blue-600' => request()->fullUrlIs($attributes->get('href')),
     ])->merge([
-        'wire:navigate' => ! $attributes->has('no-wire-navigate') && $attributes->has('href'),
+        'wire:navigate' => ! $attributes->has('no-wire-navigate')
+            && $attributes->has('href')
+            && \App\Support\InternalNavigation::shouldUseWireNavigate((string) $attributes->get('href')),
     ]) }}
 >
     @if (! empty($activeIcon) && request()->fullUrlIs($attributes->get('href')))

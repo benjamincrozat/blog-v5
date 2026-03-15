@@ -21,7 +21,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 
 /**
- * Registers admin panel provider services.
+ * Configures the Filament admin panel, middleware stack, and widgets.
  */
 class AdminPanelProvider extends PanelProvider
 {

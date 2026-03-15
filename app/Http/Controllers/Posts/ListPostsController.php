@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Actions\BuildBreadcrumbSchema;
 
 /**
- * Handles list posts controller requests.
+ * Coordinates a single-action HTTP endpoint for the site.
  */
 class ListPostsController extends Controller
 {

@@ -1,10 +1,10 @@
 {{--
-Displays the components ads bottom item component and accepts component props, Blade attributes, and slot content.
+Renders a sticky sponsorship card and accepts the internal host, Blade attributes, and Alpine item bindings.
 --}}
 
-@php
-$domain = preg_replace('/https?:\/\//', '', config('app.url'));
-@endphp
+@props([
+    'internalHost' => null,
+])
 
 <a
     {{
@@ -12,7 +12,7 @@ $domain = preg_replace('/https?:\/\//', '', config('app.url'));
             ->class('flex items-start gap-4 sm:gap-6 basis-full shrink-0 snap-center px-4 pb-4 sm:px-6')
             ->merge([
                 'x-bind:href' => 'ad.url',
-                'x-bind:target' => "ad.url.includes('$domain') ? null : '_blank'",
+                'x-bind:target' => "new URL(ad.url, window.location.origin).host === '{$internalHost}' ? null : '_blank'",
                 'x-bind:data-ad-index' => 'index',
             ])
     }}

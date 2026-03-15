@@ -1,5 +1,5 @@
 {{--
-Displays the components tools tinkerwell component and accepts component props, Blade attributes, and slot content.
+Presents the tools tinkerwell component UI and accepts component props, Blade attributes, and slot content.
 --}}
 
 <x-tools.item

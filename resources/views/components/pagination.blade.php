@@ -1,5 +1,5 @@
 {{--
-Displays the components pagination component and accepts component props, Blade attributes, and slot content.
+Presents the pagination component UI and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props(['paginator'])

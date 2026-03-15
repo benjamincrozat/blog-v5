@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 /**
- * Handles list user comments controller requests.
+ * Coordinates a single-action HTTP endpoint for the site.
  */
 class ListUserCommentsController extends Controller
 {

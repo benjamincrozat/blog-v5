@@ -23,6 +23,24 @@ it('shows an author only when they have published posts', function () {
         });
 });
 
+it('renders the author about fallback when biography is empty', function () {
+    $user = User::factory()
+        ->hasPosts(1, ['published_at' => now()])
+        ->create([
+            'biography' => null,
+            'github_data' => [
+                'user' => [
+                    'bio' => 'Writes about queues and Laravel.',
+                    'company' => 'Acme',
+                ],
+            ],
+        ]);
+
+    get(route('authors.show', $user->slug))
+        ->assertOk()
+        ->assertSee('Writes about queues and Laravel.');
+});
+
 it('shows an author when they only have approved links', function () {
     $user = User::factory()
         ->hasLinks(2, ['is_approved' => now()])

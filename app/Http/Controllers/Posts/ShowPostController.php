@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Actions\BuildBreadcrumbSchema;
 
 /**
- * Handles show post controller requests.
+ * Shows a blog post with its breadcrumb schema and related sidebar state.
  */
 class ShowPostController extends Controller
 {

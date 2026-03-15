@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use Laravel\Horizon\HorizonApplicationServiceProvider;
 
 /**
- * Registers horizon service provider services.
+ * Configures Horizon authorization and failure notification routing.
  */
 class HorizonServiceProvider extends HorizonApplicationServiceProvider
 {

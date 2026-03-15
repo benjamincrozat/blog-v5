@@ -1,8 +1,11 @@
 {{--
-Displays the components ads bottom index component and accepts component props, Blade attributes, and slot content.
+Shows the sticky sponsorship carousel and accepts the ad payload, attributes, and Alpine-driven state.
 --}}
 
-@props(['ads' => []])
+@props([
+    'ads' => [],
+    'internalHost' => parse_url((string) config('app.url'), PHP_URL_HOST),
+])
 
 <div
     {{
@@ -51,7 +54,7 @@ Displays the components ads bottom index component and accepts component props, 
             x-ref="container"
         >
             <template x-for="(ad, index) in ads" x-bind:key="index">
-                <x-ads.bottom.item />
+                <x-ads.bottom.item :internal-host="$internalHost" />
             </template>
         </div>
     </template>

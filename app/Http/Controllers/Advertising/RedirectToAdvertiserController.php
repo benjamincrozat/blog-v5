@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * Handles redirect to advertiser controller requests.
+ * Coordinates a single-action HTTP endpoint for the site.
  */
 class RedirectToAdvertiserController extends Controller
 {

@@ -35,7 +35,7 @@ Route::get('/categories', ListCategoriesController::class)
 Route::get('/categories/{category:slug}', ShowCategoryController::class)
     ->name('categories.show');
 
-Route::get('/links/create', LinkWizard::class)
+Route::livewire('/links/create', LinkWizard::class)
     ->middleware('auth')
     ->name('links.create');
 

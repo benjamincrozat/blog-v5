@@ -1,5 +1,5 @@
 {{--
-Displays the components ads deals index component and accepts component props, Blade attributes, and slot content.
+Presents the ads deals index component UI and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props([

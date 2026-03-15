@@ -1,5 +1,5 @@
 {{--
-Provides a responsive breadcrumb trail that accepts label and URL pairs, treating items without a URL as the current page.
+Presents breadcrumb navigation and accepts label and URL pairs, treating items without a URL as the current page.
 --}}
 
 @props(['items'])

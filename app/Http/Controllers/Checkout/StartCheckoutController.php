@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Stripe\Checkout\Session as StripeSession;
 
 /**
- * Handles start checkout controller requests.
+ * Coordinates a single-action HTTP endpoint for the site.
  */
 class StartCheckoutController extends Controller
 {

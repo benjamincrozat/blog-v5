@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\View\View;
 
 /**
- * Handles home controller requests.
+ * Coordinates a single-action HTTP endpoint for the site.
  */
 class HomeController extends Controller
 {

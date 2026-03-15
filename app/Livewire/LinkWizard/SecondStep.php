@@ -15,7 +15,7 @@ use App\Notifications\LinkWaitingForValidation;
 use Spatie\LivewireWizard\Components\StepComponent;
 
 /**
- * Renders and coordinates the second step Livewire component.
+ * Fetches link metadata, validates details, and stores submitted links.
  */
 class SecondStep extends StepComponent
 {

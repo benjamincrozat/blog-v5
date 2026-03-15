@@ -1,5 +1,5 @@
 {{--
-Displays the components form input component and accepts component props, Blade attributes, and slot content.
+Presents the form input component UI and accepts component props, Blade attributes, and slot content.
 --}}
 
 <div>

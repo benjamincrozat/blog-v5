@@ -31,9 +31,12 @@ it('renders NewsArticle schema for eligible news posts while keeping the simple 
         'slug' => Post::NEWS_CATEGORY_SLUG,
     ]);
 
+    $publishedAt = now()->subDay()->startOfDay()->setTime(9, 17);
+    $modifiedAt = now()->subDay()->startOfDay()->setTime(14, 37);
+
     $post = Post::factory()->create([
-        'published_at' => now()->startOfDay()->setTime(9, 17),
-        'modified_at' => now()->startOfDay()->setTime(14, 37),
+        'published_at' => $publishedAt,
+        'modified_at' => $modifiedAt,
         'is_commercial' => false,
         'sponsored_at' => null,
     ]);

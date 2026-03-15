@@ -13,7 +13,7 @@ use Livewire\Attributes\Locked;
 use App\Notifications\NewComment;
 
 /**
- * Renders and coordinates the comments Livewire component.
+ * Manages comment pagination, submissions, and deletion for a post thread.
  */
 class Comments extends Component
 {

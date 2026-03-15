@@ -3,6 +3,6 @@
 namespace App\Http\Controllers;
 
 /**
- * Handles controller requests.
+ * Provides the shared base controller type for HTTP endpoints.
  */
 abstract class Controller {}

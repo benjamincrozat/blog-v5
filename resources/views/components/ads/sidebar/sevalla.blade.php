@@ -1,5 +1,5 @@
 {{--
-Displays the components ads sidebar sevalla component and accepts component props, Blade attributes, and slot content.
+Presents the ads sidebar sevalla component UI and accepts component props, Blade attributes, and slot content.
 --}}
 
 <a

@@ -1,5 +1,5 @@
 {{--
-Displays the components status component and accepts component props, Blade attributes, and slot content.
+Shows transient status feedback and accepts Blade attributes while syncing visibility with Alpine state.
 --}}
 
 @if (session('status') || ! empty(request()->submitted))
@@ -52,6 +52,9 @@ Displays the components status component and accepts component props, Blade attr
                 }
             },
         }"
+        role="status"
+        aria-live="polite"
+        x-bind:aria-hidden="(! show).toString()"
         x-cloak
         x-init="setTimeout(() => start(), 100)"
         x-show="show"

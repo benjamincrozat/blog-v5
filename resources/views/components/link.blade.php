@@ -1,5 +1,5 @@
 {{--
-Displays the components link component and accepts component props, Blade attributes, and slot content.
+Shows a curated link card and accepts the link record, loading priority, attributes, and slot content.
 --}}
 
 @props([
@@ -22,13 +22,7 @@ Displays the components link component and accepts component props, Blade attrib
                 class="object-cover rounded-xl ring-1 shadow-md transition-opacity shadow-black/5 aspect-video hover:opacity-50 ring-black/5"
             />
         @else
-            @php
-            $bgColors = collect([
-                'bg-amber-600', 'bg-blue-600', 'bg-cyan-600', 'bg-emerald-600', 'bg-gray-600', 'bg-green-600', 'bg-indigo-600', 'bg-lime-600', 'bg-pink-600', 'bg-purple-600', 'bg-red-600', 'bg-sky-600', 'bg-teal-600', 'bg-yellow-600',
-            ])->random();
-            @endphp
-
-            <div class="transition-opacity {{ $bgColors }} shadow-md ring-1 ring-black/5 hover:opacity-50 aspect-video rounded-xl shadow-black/5"></div>
+            <div class="transition-opacity {{ \App\Support\PlaceholderCardColor::for($link->url) }} shadow-md ring-1 ring-black/5 hover:opacity-50 aspect-video rounded-xl shadow-black/5"></div>
         @endif
     </a>
 

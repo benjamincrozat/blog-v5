@@ -1,5 +1,5 @@
 {{--
-Displays the components links grid component and accepts component props, Blade attributes, and slot content.
+Presents the links grid component UI and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props(['links'])

@@ -1,5 +1,5 @@
 {{--
-Displays the components btn component and accepts component props, Blade attributes, and slot content.
+Presents the btn component UI and accepts component props, Blade attributes, and slot content.
 --}}
 
 @if ($attributes->has('href'))

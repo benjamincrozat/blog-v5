@@ -1,5 +1,5 @@
 {{--
-Displays the components section component and accepts component props, Blade attributes, and slot content.
+Presents the section component UI and accepts component props, Blade attributes, and slot content.
 --}}
 
 @props([

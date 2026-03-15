@@ -20,7 +20,7 @@ use Illuminate\Filesystem\FilesystemAdapter;
 use App\Support\BrowsershotPostImageScreenshotter;
 
 /**
- * Registers app service provider services.
+ * Bootstraps shared bindings, storage extensions, and global view data.
  */
 class AppServiceProvider extends ServiceProvider
 {
