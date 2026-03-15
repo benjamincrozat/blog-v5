@@ -57,10 +57,11 @@ Pair with `seo-content` for Search intent, Discover/News judgment, titles, snipp
 - Add context before snippets and explain what they do, why they matter, and what result to expect.
 - Use current primary sources for version-sensitive claims. Link inline at the claim, and prefer relevant internal links before equivalent external links.
 - Keep the article body reader-facing. Do not mention your drafting workflow, prompts, temp projects, verification steps, or that you followed internal instructions or skills inside the post copy. If first-hand use materially matters, report the result in plain reader terms rather than narrating your behind-the-scenes process.
+- Avoid filler judgments in post copy such as "feels real", "feels natural", "feels polished", or similar vibe-based phrasing unless you are quoting or attributing a sourced opinion.
 - Every created or revised non-commercial post must include a short list of interesting posts to read next. If the post already has one, refresh it instead of duplicating it.
 - Commercial posts (`is_commercial: true`) must not include a related-posts, read-next, or follow-up reading block. Keep the ending focused on the conversion path already present in the article.
 - On non-commercial posts, the sentence before that list must be custom to the article. Do not reuse stock lead-ins, canned curiosity hooks, or repeatable templates across posts. Tie it to the page's specific topic, promise, friction point, or next step.
-- Do not quote, paraphrase, or simply restate the article title in that lead-in. It should feel like a smooth, natural transition that makes the reader want to keep going.
+- Do not quote, paraphrase, or simply restate the article title in that lead-in. It should read as a clear article-specific transition into the next useful links.
 - Format the non-commercial block as a custom lead-in sentence ending with a colon, then a standard Markdown list with one linked item per bullet, like this:
   Custom lead-in text for this specific article:
 
@@ -70,7 +71,7 @@ Pair with `seo-content` for Search intent, Discover/News judgment, titles, snipp
 - Write each anchor as the reader's most likely next question, tension, or payoff from this specific article. It should explain why that next post matters now, not just name the destination.
 - Favor clarity over cleverness. If the anchor sounds vague, ambiguous, or too cute, rewrite it in plainer language while keeping the curiosity.
 - Add as many recommendations as the topic honestly supports on non-commercial posts: usually at least 3, sometimes more, with a hard cap of 10. Do not pad the list with weak matches.
-- Pick recommended posts that genuinely extend the topic because they feel like strong next reads for this exact reader journey. Use editorial judgment, not category matching or obvious heuristics. You do not need to fully read every recommended post before linking it, but you should believe the recommendation makes sense.
+- Pick recommended posts that genuinely extend the topic for this exact reader journey. Use editorial judgment, not category matching or obvious heuristics. You do not need to fully read every recommended post before linking it, but you should believe the recommendation makes sense.
 - When creating or revising a post, add or improve natural internal links in the body wherever a reader would want the next step, not only in the closing list.
 - Verify links and commands when feasible. If something cannot be verified, tell the user outside the post copy.
 - When setting frontmatter timestamps, use UTC rather than the machine's local timezone.

@@ -32,7 +32,7 @@ Pair with `post-writing` when creating or revising article copy so internal link
 - If an edit changes article copy or scope, refresh the post's internal links and, for non-commercial posts, the related-posts Markdown list before syncing.
 - Commercial posts (`is_commercial: true`) must not add or keep a related-posts or read-next block. Keep those pages focused on the conversion path already in the article.
 - On non-commercial posts, that related-posts block must use a smooth article-specific lead-in sentence, not a stock phrase, canned curiosity hook, or title echo.
-- Choose related posts because they feel like smart next reads for the current article, not because they happen to share a category.
+- Choose related posts because they are smart next reads for the current article, not because they happen to share a category.
 - Rewrite the related-post anchor text contextually instead of pasting destination post titles into the list.
 - Make those anchors sound like the reader's next useful click from this page, not like a shelf label copied from somewhere else.
 - Keep them plain and clear enough that the reader immediately gets why the next post is worth opening.
