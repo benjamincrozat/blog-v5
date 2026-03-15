@@ -57,7 +57,9 @@ return [
     ],
 
     'services' => [
+        'aesirx' => 'https://aesirx.io/',
         'cleanmymac' => 'https://macpaw.audw.net/c/3801334/3398815/1733?u=https%3A%2F%2Fmacpaw.com%2Fcleanmymac',
+        'clicky' => 'https://clicky.com/',
         'cloudways-php' => 'https://www.cloudways.com/en/php-hosting.php?id=1242932',
         'cloudways' => 'https://www.cloudways.com/en/laravel-hosting?id=1242932',
         'codecademy' => 'https://www.pjtra.com/t/2-438168-292025-213588',
@@ -84,6 +86,7 @@ return [
         'tower' => 'https://www.git-tower.com/?via=benjamincrozat',
         'uptimia' => 'https://www.uptimia.com/?via=benjamincrozat',
         'untitled-ui' => 'https://store.untitledui.com?aff=WJ9DG',
+        'usermaven' => 'https://usermaven.com/',
         'vultr' => 'https://www.vultr.com/products/cloud-compute/?ref=9270910-8H',
         'webshare' => 'https://www.webshare.io/?referral_code=dt6d6ofk1rzp',
         'wincher' => 'https://www.wincher.com/rank-tracker?via=benjamincrozat',
