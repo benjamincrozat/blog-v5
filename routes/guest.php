@@ -12,6 +12,7 @@ use App\Http\Controllers\Checkout\StartCheckoutController;
 use App\Http\Controllers\Merchants\ShowMerchantController;
 use App\Http\Controllers\Categories\ShowCategoryController;
 use App\Http\Controllers\Categories\ListCategoriesController;
+use Livewire\Mechanisms\HandleRouting\LivewirePageController;
 use App\Http\Controllers\Checkout\CompletedCheckoutController;
 use App\Http\Controllers\Posts\ShowPostImagePreviewController;
 use App\Http\Controllers\Advertising\RedirectToAdvertiserController;
@@ -35,7 +36,9 @@ Route::get('/categories', ListCategoriesController::class)
 Route::get('/categories/{category:slug}', ShowCategoryController::class)
     ->name('categories.show');
 
-Route::livewire('/links/create', LinkWizard::class)
+tap(Route::get('/links/create', LivewirePageController::class), function ($route) {
+    $route->action['livewire_component'] = LinkWizard::class;
+})
     ->middleware('auth')
     ->name('links.create');
 
