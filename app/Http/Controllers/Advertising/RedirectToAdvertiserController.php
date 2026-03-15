@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * Coordinates a single-action HTTP endpoint for the site.
+ * Redirects an ad slug to its configured advertiser URL with tracking parameters.
  */
 class RedirectToAdvertiserController extends Controller
 {

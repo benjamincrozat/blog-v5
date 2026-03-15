@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * Coordinates a single-action HTTP endpoint for the site.
+ * Redirects merchant slugs to their configured outbound recommendation links.
  */
 class ShowMerchantController extends Controller
 {

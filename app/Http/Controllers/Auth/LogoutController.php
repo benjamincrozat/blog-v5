@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * Coordinates a single-action HTTP endpoint for the site.
+ * Logs the current user out and resets the session state.
  */
 class LogoutController extends Controller
 {

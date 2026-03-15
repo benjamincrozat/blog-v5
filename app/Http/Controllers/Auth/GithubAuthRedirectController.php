@@ -8,7 +8,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\GithubProvider;
 
 /**
- * Coordinates a single-action HTTP endpoint for the site.
+ * Starts the GitHub OAuth flow and preserves the intended return URL.
  */
 class GithubAuthRedirectController extends Controller
 {

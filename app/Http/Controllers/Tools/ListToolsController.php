@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Actions\BuildBreadcrumbSchema;
 
 /**
- * Coordinates a single-action HTTP endpoint for the site.
+ * Shows the public tools page with breadcrumb schema data.
  */
 class ListToolsController extends Controller
 {

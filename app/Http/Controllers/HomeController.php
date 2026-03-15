@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\View\View;
 
 /**
- * Coordinates a single-action HTTP endpoint for the site.
+ * Builds the public home page with recent posts, links, and the about profile.
  */
 class HomeController extends Controller
 {

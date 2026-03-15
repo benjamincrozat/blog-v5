@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Laravel\Socialite\Facades\Socialite;
 
 /**
- * Coordinates a single-action HTTP endpoint for the site.
+ * Completes GitHub OAuth, upserts the user record, and signs the user in.
  */
 class GithubAuthCallbackController extends Controller
 {

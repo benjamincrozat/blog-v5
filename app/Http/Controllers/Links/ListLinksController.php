@@ -9,7 +9,7 @@ use App\Actions\BuildBreadcrumbSchema;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Coordinates a single-action HTTP endpoint for the site.
+ * Lists approved community links with contributor avatars and breadcrumb schema data.
  */
 class ListLinksController extends Controller
 {

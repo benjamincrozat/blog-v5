@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Actions\BuildBreadcrumbSchema;
 
 /**
- * Coordinates a single-action HTTP endpoint for the site.
+ * Lists published blog posts with pagination and breadcrumb schema data.
  */
 class ListPostsController extends Controller
 {

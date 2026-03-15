@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Actions\BuildBreadcrumbSchema;
 
 /**
- * Coordinates a single-action HTTP endpoint for the site.
+ * Shows the advertising landing page with metrics and sample placements.
  */
 class ShowAdvertisingLandingPageController extends Controller
 {

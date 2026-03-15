@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 /**
- * Coordinates a single-action HTTP endpoint for the site.
+ * Lists the authenticated user's comments with pagination.
  */
 class ListUserCommentsController extends Controller
 {
