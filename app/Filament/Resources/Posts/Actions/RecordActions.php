@@ -27,7 +27,27 @@ class RecordActions
             Action::make('copy')
                 ->label('Copy as Markdown')
                 ->icon('heroicon-o-clipboard-document')
-                ->alpineClickHandler(fn (Post $record) => 'window.navigator.clipboard.writeText(' . Js::from($record->toMarkdown()) . ')'),
+                ->alpineClickHandler(
+                    fn (Post $record) => strtr(
+                        <<<'JS'
+(async () => {
+    const response = await fetch(__URL__, {
+        headers: {
+            Accept: 'text/plain',
+            'X-Requested-With': 'XMLHttpRequest',
+        },
+    });
+
+    if (! response.ok) {
+        throw new Error('Unable to fetch post markdown.');
+    }
+
+    await window.navigator.clipboard.writeText(await response.text());
+})().catch((error) => console.error(error))
+JS,
+                        ['__URL__' => Js::from(route('admin.posts.markdown', $record))]
+                    )
+                ),
 
             Action::make('check_in_gsc')
                 ->label('Check in GSC')

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Posts\ShowPostMarkdownController;
 use App\Http\Controllers\Auth\GithubAuthCallbackController;
 use App\Http\Controllers\Auth\GithubAuthRedirectController;
 use App\Http\Controllers\Impersonation\LeaveImpersonationController;
@@ -23,6 +24,9 @@ Route::middleware('auth')
         Route::post('/logout', LogoutController::class)
             ->middleware('auth')
             ->name('logout');
+
+        Route::get('/admin/posts/{post}/markdown', ShowPostMarkdownController::class)
+            ->name('admin.posts.markdown');
 
         Route::get('/leave-impersonation', LeaveImpersonationController::class)
             ->middleware('auth')

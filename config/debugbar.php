@@ -19,6 +19,7 @@ return [
     'except' => [
         'telescope*',
         'horizon*',
+        'livewire*',
     ],
 
     /*
@@ -125,9 +126,9 @@ return [
      | You can defer loading the dataset, so it will be loaded with ajax after the request is done. (Experimental)
      */
 
-    'capture_ajax' => true,
+    'capture_ajax' => env('DEBUGBAR_CAPTURE_AJAX', false),
     'add_ajax_timing' => false,
-    'ajax_handler_auto_show' => true,
+    'ajax_handler_auto_show' => env('DEBUGBAR_AJAX_HANDLER_AUTO_SHOW', false),
     'ajax_handler_enable_tab' => true,
     'defer_datasets' => false,
     /*
@@ -184,7 +185,7 @@ return [
         'config' => true, // Display config settings
         'cache' => true, // Display cache events
         'models' => true,  // Display models
-        'livewire' => true,  // Display Livewire (when available)
+        'livewire' => env('DEBUGBAR_COLLECTORS_LIVEWIRE', false),  // Display Livewire (when available)
         'jobs' => true, // Display dispatched jobs
         'pennant' => true, // Display Pennant feature flags
     ],
