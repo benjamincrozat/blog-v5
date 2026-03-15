@@ -27,7 +27,8 @@ return [
     ],
 
     'postmark' => [
-        'key' => env('POSTMARK_API_KEY'),
+        'key' => env('POSTMARK_API_KEY', env('POSTMARK_TOKEN')),
+        'token' => env('POSTMARK_TOKEN', env('POSTMARK_API_KEY')),
     ],
 
     'resend' => [
