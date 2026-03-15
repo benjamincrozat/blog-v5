@@ -2,26 +2,14 @@
 
 This repo is my personal blog about web developent.
 
-## Check and tidy your work with these commands
-
-- Use your web browser to ensure what's been prompted: visuals and behavior.
-- **Format**: `php vendor/bin/pint --parallel`
-- **Static analysis**: `php vendor/bin/phpstan analyse`
-- **Test**: `php vendor/bin/pest --parallel` (you can use `--filter` to run specific tests)
-- For routine Markdown-only post edits in `resources/markdown/posts`, do not default to browser checks, `pint`, `phpstan`, or `pest`.
-  - Run `php artisan app:sync-posts` after every Markdown edit instead.
-  - Only do browser or app-level verification when the post has tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, a publishing-state change that needs confirmation, first-hand screenshots that materially help the reader, or the user explicitly asks for it.
-
 ## Development workflow
 
 - `composer setup`
-  - Note: this script is currently not defined in `composer.json`, so do not rely on it when bootstrapping a fresh worktree.
 - `composer dev`
-  - This runs multiple processes concurrently.
-- Assume the project is always accessible locally at `https://blog-v5.test`. Never use `php artisan serve` unless `https://blog-v5.test` is not accessible.
-- Commit every change you make to the codebase. Be as granular as possible.
+- Serve the project using `php artisan serve`, but on another port.
+- Commit every change you make. Be as granular as possible.
+- Create a PR for the active branch as soon as it is ready to publish, and keep that PR up to date as more changes land on the branch.
 - When you have to commit, start the message with a short summary (10 words, tops). Then, add a detailed description of the changes (use lists to make it easier to read).
-- **Don't push code unless you have my approval.**
 
 ## Worktrees
 
