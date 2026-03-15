@@ -6,14 +6,14 @@ author: "benjamincrozat"
 description: "These are the best GDPR-compliant Google Analytics alternatives if you want privacy-first analytics without GA4 headaches."
 categories:
   - "tools"
-published_at: 2024-02-15T23:00:00Z
-modified_at: 2026-03-15T08:00:49Z
+published_at: 2024-02-15T23:00:00+00:00
+modified_at: 2026-03-15T08:00:49+00:00
 serp_title: null
 serp_description: null
 canonical_url: null
 is_commercial: true
 image_disk: "cloudflare-images"
-image_path: "images/posts/pYQAef8sy9iLrxK.jpg"
+image_path: "images/posts/01KKR900CSD7TDXJAR5A85F64H.png"
 sponsored_at: null
 ---
 ## Why switch away from Google Analytics?
