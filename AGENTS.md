@@ -15,13 +15,14 @@ This repo is my personal blog about web developent.
 
 - Create feature worktrees from a real branch, not a detached HEAD. Preferred pattern: `git worktree add -b codex/<short-name> <path> main`.
 - Fresh worktrees may not contain the local runtime files needed to run the app or checks. Reuse the primary checkout's local install by linking these into the new worktree when needed:
-  - `.env`
+  - `.env` (copy it instead of linking if the worktree needs its own `APP_URL` or other local-only overrides)
   - `vendor`
   - `node_modules`
   - `public/build`
 - In this repo, the primary local checkout is typically `/Users/benjamin/Sites/blog-v5`. If a fresh worktree is missing the files above, link them from there instead of reinstalling everything by default.
 - After wiring a fresh worktree, confirm it boots with `php artisan about --only=environment` before running `pint`, `phpstan`, or `pest`.
 - `https://blog-v5.test` may still serve the primary checkout rather than the new worktree. If you need to verify branch-specific changes and `blog-v5.test` is not serving the worktree, use `php artisan serve --host=127.0.0.1 --port=<port>` from that worktree and run the browser check against that port.
+- Post image generation uses `BLOG_PREVIEW_BASE_URL` when set, otherwise it falls back to `APP_URL`. For worktrees served through `php artisan serve`, give that worktree its own `.env` copy and set `APP_URL` to the matching `http://127.0.0.1:<port>` value before generating images.
 - Keep worktree-only browser artifacts out of git. Clean up folders like `.playwright-cli/` and `output/` before finishing unless the user explicitly wants those files.
 
 ## Guardrails to keep in mind
