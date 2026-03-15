@@ -4,6 +4,7 @@ This repo is my personal blog about web development.
 
 ## Development workflow
 
+- Before starting any task, pull the latest changes from `main` into the active branch or worktree.
 - `composer setup`
 - `composer dev`
 - Serve the project with `php artisan serve` on a non-default port.
@@ -14,6 +15,7 @@ This repo is my personal blog about web development.
 ## Worktrees
 
 - Create feature worktrees from a real branch, not a detached HEAD. Preferred pattern: `git worktree add -b codex/<short-name> <path> main`.
+- If a worktree is detached or behind, switch to a real `codex/...` branch from the latest `origin/main` before making changes.
 - Fresh worktrees may not contain the local runtime files needed to run the app or checks. Reuse the primary checkout's local install by linking these into the new worktree when needed:
   - `.env` (copy it instead of linking if the worktree needs its own `APP_URL` or other local-only overrides)
   - `vendor`
