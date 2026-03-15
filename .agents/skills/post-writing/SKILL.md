@@ -46,6 +46,7 @@ Pair with `seo-content` for Search intent, Discover/News judgment, titles, snipp
 - When choosing among title options, favor the one with the clearest benefit, strongest specificity, and best query match.
 - Descriptions should read like a useful pitch for the page: one short sentence or two short clauses, with the main benefit near the start.
 - If the topic is time-sensitive, you may use a year or date, but only if the page itself is current enough to support it.
+- For new posts, set `published_at` in UTC as part of the initial frontmatter unless the user explicitly asks to keep the post unpublished; the open PR is the draft/review gate until approval.
 - If `categories` includes `news`, treat the draft as a news post: lead with the new information, verify claims with primary sources, attribute those sources inline, keep the structure tight, and avoid padding it into an evergreen explainer.
 - For posts intended to target Google News or Discover strongly, the primary article image should be original when feasible, not a logo, and at least 1200 px wide.
 - Once the post copy and title are stable, make sure the post has a featured image. If `image_disk` / `image_path` are still empty, generate one with `php artisan app:generate-post-image your-post-slug` before finishing.
@@ -104,6 +105,7 @@ Pair with `seo-content` for Search intent, Discover/News judgment, titles, snipp
    - every image used in the post, including featured images and inline assets, uses Cloudflare Images URLs or paths
    - screenshots or simple visuals were added when they materially improved clarity, credibility, or first-hand evidence, and skipped when they would have been filler
    - frontmatter promise is aligned
+   - new posts have a non-null `published_at` unless the user explicitly asked to keep them unpublished
    - `serp_title` and `serp_description` are either `null` or clearly justified and aligned with the visible page copy
    - title and description make a strong, accurate click promise
    - headings read naturally in the generated table of contents
