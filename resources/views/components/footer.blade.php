@@ -18,6 +18,6 @@ Presents the footer component UI and accepts component props, Blade attributes, 
             This platform is hosted on <a href="{{ route('merchants.show', 'digitalocean') }}" target="_blank">DigitalOcean</a>.
         </p>
 
-        <p class="mt-8 text-center text-gray-400">Please don't steal my content. © {{ date('Y') }} blah blah blah.</p>
+        <p class="mt-8 text-center text-gray-400">Please don't steal my content. © {{ date('Y') }} benjamincrozat.com.</p>
     </footer>
 </div>
