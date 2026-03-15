@@ -10,7 +10,7 @@ metadata:
 ## Scope
 
 Use for drafting or revising publication-ready posts in `resources/markdown/posts`.
-Pair with `seo-content` for Search intent, Discover/News judgment, titles, snippets, and internal linking.
+Pair with `seo-content` for search intent, Discover/News judgment, titles, snippets, and internal linking.
 
 ## Frontmatter Contract
 
@@ -28,7 +28,7 @@ Pair with `seo-content` for Search intent, Discover/News judgment, titles, snipp
 
 - Write for competent beginners first: plain language, short sentences, clear payoff.
 - Explain unavoidable technical terms in simple words the first time they appear.
-- Upload every image used in the post to Cloudflare Images with `php artisan blog:upload-image`, including featured images, inline screenshots, badges, logos, and comparison cards.
+- Upload every image used in the post to Cloudflare Images with `php artisan app:upload-post-image`, including featured images, inline screenshots, badges, logos, and comparison cards.
 - Do not leave local file paths or third-party hotlinked images in post Markdown.
 - For walkthroughs, dashboards, UI-heavy how-tos, comparisons, and reviews, actively look for places where an original screenshot, crop, or simple visual would make the article clearer or more credible.
 - Create those visuals yourself when feasible instead of leaving a TODO or only describing the interface in prose.
@@ -60,16 +60,14 @@ Pair with `seo-content` for Search intent, Discover/News judgment, titles, snipp
 - Avoid filler judgments in post copy such as "feels real", "feels natural", "feels polished", or similar vibe-based phrasing unless you are quoting or attributing a sourced opinion.
 - Every created or revised non-commercial post must include a short list of interesting posts to read next. If the post already has one, refresh it instead of duplicating it.
 - Commercial posts (`is_commercial: true`) must not include a related-posts, read-next, or follow-up reading block. Keep the ending focused on the conversion path already present in the article.
-- On non-commercial posts, the sentence before that list must be custom to the article. Do not reuse stock lead-ins, canned curiosity hooks, or repeatable templates across posts. Tie it to the page's specific topic, promise, friction point, or next step.
-- Do not quote, paraphrase, or simply restate the article title in that lead-in. It should read as a clear article-specific transition into the next useful links.
-- Format the non-commercial block as a custom lead-in sentence ending with a colon, then a standard Markdown list with one linked item per bullet, like this:
+- On non-commercial posts, use a custom article-specific lead-in sentence ending with a colon, then a standard Markdown list with one linked item per bullet, like this:
   Custom lead-in text for this specific article:
 
   - [Highly specific anchor text](/target-slug)
   - [Another highly specific anchor text](/another-target)
-- Do not copy and paste the destination post title as the anchor text by default. Rewrite the anchor so it fits the current article's context, stays accurate to the destination, and sparks enough curiosity to earn the click.
-- Write each anchor as the reader's most likely next question, tension, or payoff from this specific article. It should explain why that next post matters now, not just name the destination.
-- Favor clarity over cleverness. If the anchor sounds vague, ambiguous, or too cute, rewrite it in plainer language while keeping the curiosity.
+- Do not quote or lightly rephrase the article title in that lead-in.
+- Do not copy the destination post title as anchor text by default. Rewrite each anchor so it fits the current article's context, stays accurate, and makes the next click obvious.
+- Favor clarity over cleverness. If an anchor sounds vague, ambiguous, or too cute, rewrite it in plainer language.
 - Add as many recommendations as the topic honestly supports on non-commercial posts: usually at least 3, sometimes more, with a hard cap of 10. Do not pad the list with weak matches.
 - Pick recommended posts that genuinely extend the topic for this exact reader journey. Use editorial judgment, not category matching or obvious heuristics. You do not need to fully read every recommended post before linking it, but you should believe the recommendation makes sense.
 - When creating or revising a post, add or improve natural internal links in the body wherever a reader would want the next step, not only in the closing list.
@@ -109,6 +107,6 @@ Pair with `seo-content` for Search intent, Discover/News judgment, titles, snipp
    - title and description make a strong, accurate click promise
    - headings read naturally in the generated table of contents
    - contextual internal links were added or improved where helpful
-   - non-commercial posts have one up-to-date related-posts list with a custom, natural lead-in that does not echo the title and anchor text that is contextual rather than a pasted destination title
+   - non-commercial posts have one up-to-date related-posts list with a custom lead-in that does not echo the title and anchor text that is contextual rather than a pasted destination title
    - commercial posts do not include a related-posts, read-next, or follow-up reading block
    - code and links support the nearby claim

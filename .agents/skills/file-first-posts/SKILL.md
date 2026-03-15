@@ -10,7 +10,7 @@ metadata:
 ## Scope
 
 Use this skill when posts are managed from `resources/markdown/posts`.
-Pair with `post-writing` when creating or revising article copy so internal links and, for non-commercial posts, the related-posts Markdown list stay current.
+Pair with `post-writing` when revising copy, and with `seo-content` when search framing matters.
 
 ## Required Rules
 
@@ -29,13 +29,10 @@ Pair with `post-writing` when creating or revising article copy so internal link
 - Only first-party, non-commercial, non-sponsored `news` posts should be treated as news-sitemap candidates.
 - Fail loudly on invalid front matter, unknown authors/categories, or duplicate IDs/slugs.
 - Do not use Filament to create, edit, delete, or restore posts.
-- If an edit changes article copy or scope, refresh the post's internal links and, for non-commercial posts, the related-posts Markdown list before syncing.
-- Commercial posts (`is_commercial: true`) must not add or keep a related-posts or read-next block. Keep those pages focused on the conversion path already in the article.
-- On non-commercial posts, that related-posts block must use a smooth article-specific lead-in sentence, not a stock phrase, canned curiosity hook, or title echo.
-- Choose related posts because they are smart next reads for the current article, not because they happen to share a category.
-- Rewrite the related-post anchor text contextually instead of pasting destination post titles into the list.
-- Make those anchors sound like the reader's next useful click from this page, not like a shelf label copied from somewhere else.
-- Keep them plain and clear enough that the reader immediately gets why the next post is worth opening.
+- If an edit changes article copy or scope, refresh internal links and, for non-commercial posts, the related-posts list before syncing.
+- Commercial posts (`is_commercial: true`) must not include a related-posts or read-next block.
+- Non-commercial related-posts blocks must use a custom article-specific lead-in sentence ending with a colon, followed by clear, contextual anchors rather than pasted destination titles.
+- Pick related posts because they are the best next reads for this article, not because they share a category.
 - Do not open the public page or Filament just for a routine post edit. Use browser checks only when the post includes tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, a publishing-state change that needs confirmation, the article needs purposeful screenshots that materially help the reader, or the user explicitly asks for a visual check.
 
 ## Workflow
@@ -43,7 +40,7 @@ Pair with `post-writing` when creating or revising article copy so internal link
 1. Bootstrap files when needed:
    - run `php artisan app:export-posts`
 2. Edit the target file in `resources/markdown/posts`.
-   - if article copy changed, make sure internal links were updated and, for non-commercial posts, the related-posts Markdown list was added or refreshed with a natural lead-in that does not quote or rephrase the title
+   - if article copy changed, update internal links and, for non-commercial posts, add or refresh the related-posts list with a natural lead-in that does not quote or rephrase the title
 3. Capture and upload images before syncing:
    - if the article would be clearer or more trustworthy with original screenshots, capture them yourself when feasible instead of leaving a note for later
    - every image referenced by the post should end up on Cloudflare Images, not just the hero image

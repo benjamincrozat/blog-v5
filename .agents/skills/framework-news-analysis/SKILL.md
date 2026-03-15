@@ -11,7 +11,7 @@ metadata:
 
 Use when the task is to find, frame, and write the strongest weekly news or analysis post about a framework, library, tool, platform, or developer product.
 
-Pair with `post-writing`, `file-first-posts`, and `seo-content` for the actual post workflow and publishing rules.
+Pair with `post-writing`, `file-first-posts`, and `seo-content` for drafting, publishing, and search framing.
 
 ## Required Rules
 
