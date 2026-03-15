@@ -6,7 +6,7 @@ author: "benjamincrozat"
 description: "Remodex is a local-first iPhone companion for Codex that pairs through a QR code and keeps the real runtime on your Mac."
 categories:
   - "ai"
-published_at: null
+published_at: 2026-03-15T13:25:00Z
 modified_at: null
 serp_title: null
 serp_description: null
