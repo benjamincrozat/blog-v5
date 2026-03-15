@@ -54,9 +54,9 @@ Read these references as needed:
 - Keep the post's related-posts list current as part of that internal-linking pass on non-commercial posts. Update stale recommendations or anchors when the article's angle changes instead of leaving an outdated list behind.
 - Commercial posts (`is_commercial: true`) must not include a related-posts, read-next, or follow-up reading block. Keep those pages focused on conversion rather than onward reading.
 - On non-commercial posts, the lead-in sentence before the related-posts list must be unique to that article. Do not reuse the same stock phrasing, canned curiosity line, or obvious template across the site.
-- Do not quote, parrot, or lightly rephrase the title in that lead-in. Write a smooth, natural bridge that nudges the reader toward the next useful clicks.
+- Do not quote, parrot, or lightly rephrase the title in that lead-in. Write a clear article-specific bridge that nudges the reader toward the next useful clicks.
 - The related-posts list should use that custom lead-in line ending with a colon, then a standard Markdown list with entries like `- [Very specific anchor text](/target-slug)`.
-- Do not default to the destination post's exact title as the anchor text. Rewrite anchors so they fit the current article's context, stay accurate, and make the next click feel earned.
+- Do not default to the destination post's exact title as the anchor text. Rewrite anchors so they fit the current article's context, stay accurate, and make the reason to click immediately clear.
 - Treat each anchor like the reader's next sensible click from this page. It should surface the next tension, decision, or payoff, not read like a pasted catalog title.
 - Keep the wording plain enough that the reader instantly understands why that link matters. Curiosity is useful, but not at the cost of clarity.
 - Add only the number of recommendations the topic can support on non-commercial posts: usually 3 or more, sometimes more, with a hard cap of 10. Choose them with editorial judgment based on what a reader would genuinely want next, not by category matching alone. You do not need to fully read every recommended post.
