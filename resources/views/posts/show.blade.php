@@ -28,7 +28,7 @@ Displays the posts show view.
             'lg:col-span-8 xl:col-span-9' => ! $post->is_commercial,
         ])>
             <article>
-                @if ($post->hasImage() && ! $isNewsPost)
+                @if ($post->hasImage())
                     <img
                         fetchpriority="high"
                         src="{{ $post->image_url }}"
@@ -181,17 +181,6 @@ Displays the posts show view.
                         </x-slot>
                     </x-dropdown>
                 </div>
-
-                @if ($post->hasImage() && $isNewsPost)
-                    <img
-                        fetchpriority="high"
-                        src="{{ $post->image_url }}"
-                        alt="{{ $post->title }}"
-                        width="1280"
-                        height="720"
-                        class="object-cover mt-12 w-full rounded-xl ring-1 shadow-xl ring-black/5 aspect-video md:mt-16"
-                    />
-                @endif
 
                 {{ $post->toTableOfContents() }}
 
