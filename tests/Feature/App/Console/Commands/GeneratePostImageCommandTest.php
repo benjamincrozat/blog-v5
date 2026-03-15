@@ -199,3 +199,39 @@ it('forces regeneration for a Markdown path input and overwrites the generated a
     expect($fakeScreenshotter->captures)->toHaveCount(1)
         ->and($document->imagePath)->toBe('images/posts/generated/forced-post.png');
 });
+
+it('falls back to APP_URL when no dedicated preview base URL is configured', function () {
+    User::factory()->create(['github_login' => 'benjamincrozat']);
+    Category::factory()->create(['slug' => 'laravel', 'name' => 'Laravel']);
+
+    config()->set('blog.preview_base_url', null);
+    config()->set('app.url', 'http://127.0.0.1:8090');
+
+    writeGeneratePostImagePost(generatePostImageMarkdownPath(), 'app-url-post', [
+        'id' => '01ARZ3NDEKTSV4RRFFQ69G5FB1',
+        'title' => '"APP URL post"',
+        'slug' => 'app-url-post',
+        'author' => 'benjamincrozat',
+        'description' => '"Generated summary"',
+        'categories' => ['laravel'],
+        'published_at' => 'null',
+        'modified_at' => 'null',
+        'serp_title' => 'null',
+        'serp_description' => 'null',
+        'canonical_url' => 'null',
+        'is_commercial' => false,
+        'image_disk' => 'null',
+        'image_path' => 'null',
+        'sponsored_at' => 'null',
+    ]);
+
+    $fakeScreenshotter = new FakePostImageScreenshotter;
+    app()->instance(PostImageScreenshotter::class, $fakeScreenshotter);
+
+    expect(Artisan::call('app:generate-post-image', [
+        'post' => 'app-url-post',
+    ]))->toBe(0);
+
+    expect($fakeScreenshotter->captures)->toHaveCount(1)
+        ->and($fakeScreenshotter->captures[0]['url'])->toBe('http://127.0.0.1:8090/preview/posts/app-url-post/image');
+});

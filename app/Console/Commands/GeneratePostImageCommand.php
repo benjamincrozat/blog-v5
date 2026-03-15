@@ -42,7 +42,8 @@ class GeneratePostImageCommand extends Command
         File::ensureDirectoryExists($temporaryDirectory);
 
         $temporaryScreenshotPath = $temporaryDirectory . '/' . $source->document->slug . '.png';
-        $previewUrl = rtrim((string) config('blog.preview_base_url'), '/')
+        $previewBaseUrl = (string) (config('blog.preview_base_url') ?: config('app.url', 'http://localhost'));
+        $previewUrl = rtrim($previewBaseUrl, '/')
             . route('posts.image-preview', ['slug' => $source->document->slug], absolute: false);
         $destinationPath = "images/posts/generated/{$source->document->slug}.png";
 
