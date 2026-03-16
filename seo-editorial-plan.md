@@ -133,7 +133,7 @@ This is the working SEO backlog for the next article batch. We should move throu
   - Must cover: `selectSub()`, `joinSub()`, correlated subqueries, SQL equivalents, and refactoring examples.
   - Visual plan: a before/after query comparison is more useful than screenshots.
 
-- [ ] `laravel seeder`
+- [x] `laravel seeder`
   - Angle: explain when to use seeders, factories, or both in a real Laravel workflow.
   - Must cover: realistic sample data, local setup, test data, idempotent seeding, and common mistakes.
   - Visual plan: screenshots only if they improve a demo workflow materially.
