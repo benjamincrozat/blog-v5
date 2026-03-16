@@ -145,6 +145,10 @@ This works, but it is a classic N+1 query pattern.
 
 If you open that page with Debugbar enabled, the **Queries** tab will show the first query for the users, followed by repeated queries for each user's posts. That is the kind of bug Debugbar makes painfully obvious.
 
+Here is what that looks like in practice when the same lazy-loaded relationship keeps firing one query per user:
+
+![Laravel Debugbar showing repeated post queries caused by a lazy-loaded relationship](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/laravel-debugbar-n-plus-one.png/public)
+
 A better version is:
 
 ```php
