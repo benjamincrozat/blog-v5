@@ -123,7 +123,7 @@ This is the working SEO backlog for the next article batch. We should move throu
   - Must cover: warnings vs fatal errors, duplicate loads, return values, and modern project guidance.
   - Visual plan: no screenshots needed.
 
-- [ ] `laravel redis`
+- [x] `laravel redis`
   - Angle: use Redis in Laravel for concrete jobs instead of explaining Redis in the abstract.
   - Must cover: cache, queues, sessions, rate limiting, local setup, config, and common production pitfalls.
   - Visual plan: screenshots may help for Horizon, logs, or local tooling if those examples add proof.
