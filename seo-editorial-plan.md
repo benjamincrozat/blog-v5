@@ -42,7 +42,7 @@ This is the working SEO backlog for the next article batch. We should move throu
   - Visual plan: code/output examples and a decision table should be enough.
   - Why first: the SERP is split between two functions, which creates room for a cleaner decision guide.
 
-- [ ] `php substr`
+- [x] `php substr`
   - Angle: a practical substring guide, not a shallow function reference.
   - Must cover: positive offsets, negative offsets, length behavior, falsey-looking outputs, and when to switch to `mb_substr()`.
   - Visual plan: examples plus a compact behavior table.

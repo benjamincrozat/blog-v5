@@ -6,7 +6,7 @@ author: "benjamincrozat"
 description: "Use PHP implode() to join array values into strings, choose the right separator, handle associative arrays, and avoid the edge cases that trip people up."
 categories:
   - "php"
-published_at: null
+published_at: 2026-03-16T12:27:00Z
 modified_at: null
 serp_title: null
 serp_description: null
