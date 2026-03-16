@@ -154,7 +154,7 @@ This is the working SEO backlog for the next article batch. We should move throu
   - Better target: "How to use Blade templates in Laravel" or "Blade components, layouts, props, and slots."
   - Execution note: do not chase the bare head term with a generic overview.
 
-- [ ] `laravel debugbar`
+- [x] `laravel debugbar`
   - Better target: "How to install Laravel Debugbar and keep it out of production."
   - Execution note: treat the package name as partly navigational and win on the setup workflow.
 
