@@ -65,7 +65,7 @@ One important nuance: the cheapest plans are fine for experiments, but for a rea
 
 ### DigitalOcean
 
-[![DigitalOcean Droplets page showing its virtual machine offering and starting credit offer.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/01KKRCZEDJ3SHMCXTDDJ63H723.png/public)](/recommends/digitalocean)
+[![DigitalOcean Droplets page showing its virtual machine offering and starting credit offer.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/01KKTW7Z625RDXN4W5130CKY1S.webp/public)](/recommends/digitalocean)
 
 [DigitalOcean](/recommends/digitalocean) is still my default recommendation for Laravel developers who want control without AWS-level complexity. Its [Droplets page](https://www.digitalocean.com/products/droplets) still starts at $4/month, and the platform remains easy to pair with [Laravel Forge](/laravel-forge).
 
@@ -80,7 +80,7 @@ The public feedback is also very stable. On [G2](https://www.g2.com/products/dig
 
 ### Sevalla
 
-[![Sevalla application hosting page showing its managed platform and dashboard preview.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/01KKRCZEDJST2TNEQBHGK6ZPCW.png/public)](/recommends/kinsta)
+[![Sevalla application hosting page showing its managed platform and dashboard preview.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/01KKTW7Z62J7ZYMSRCSJRX7EV1.webp/public)](/recommends/kinsta)
 
 [Sevalla](/recommends/kinsta) is the managed platform I would look at first if you want Laravel hosting without dealing with server maintenance. The product is now where Kinsta’s application-hosting effort lives, and the official [application hosting page](https://sevalla.com/application-hosting/) and [pricing page](https://sevalla.com/application-hosting/pricing/) are much more relevant than the old Kinsta branding now.
 
@@ -97,7 +97,7 @@ If you want a closer look, I also have a full [step-by-step Sevalla deployment g
 
 ### Cloudways
 
-[![Cloudways Laravel hosting landing page with managed hosting trial and plan links.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/01KKRCZEDJ0BGD8KW3ZF4QMXZS.png/public)](/recommends/cloudways)
+[![Cloudways Laravel hosting landing page with managed hosting trial and plan links.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/01KKTW7Z62DRRK671XK1XXP0W6.webp/public)](/recommends/cloudways)
 
 [Cloudways](/recommends/cloudways) is still the easiest traditional managed option if you want Laravel hosting without thinking too much about package updates, security hardening, backups, or staging. Its [Laravel hosting page](https://www.cloudways.com/en/laravel-hosting) still emphasizes one-click installs, built-in caching, staging, backups, and Cloudflare integration, and its [pricing page](https://www.cloudways.com/en/pricing.php) still starts at $11/month on standard plans.
 
@@ -112,7 +112,7 @@ Public feedback is a bit more mixed than with DigitalOcean, which is useful to k
 
 ### Vultr
 
-[![Vultr Cloud Compute page highlighting globally available compute for all workloads.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/01KKRCZEDJG0V3N0F991RB2NS9.png/public)](/recommends/vultr)
+[![Vultr Cloud Compute page highlighting globally available compute for all workloads.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/01KKTW7Z62WBJDQDN3GYGKN1T5.webp/public)](/recommends/vultr)
 
 [Vultr](/recommends/vultr) is the VPS alternative I would shortlist next to DigitalOcean. Its current [Cloud Compute page](https://www.vultr.com/products/cloud-compute/) still pushes global reach, quick deployment, and a $5/month starting point, and it continues to be attractive if you care a lot about region choice.
 
