@@ -26,3 +26,24 @@ it('lists the latest 50 posts that are not associated to a link and shows the de
         $response->assertDontSee($post->content);
     });
 });
+
+it('lists the latest approved community links in the Atom feed', function () {
+    $approvedLinks = Link::factory(30)->approved()->create();
+
+    Link::factory()->create([
+        'is_approved' => null,
+        'is_declined' => null,
+    ]);
+
+    Link::factory()->declined()->create();
+
+    $response = get(route('feeds.links'))
+        ->assertOk();
+
+    $approvedLinks->each(function (Link $link) use ($response) {
+        $response->assertSee($link->title, escape: false);
+        $response->assertSee($link->description, escape: false);
+        $response->assertSee($link->url);
+        $response->assertSee($link->user->name, escape: false);
+    });
+});

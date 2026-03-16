@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Spatie\Feed\Feedable;
+use App\Models\Traits\LinkFeedable;
 use App\Notifications\LinkApproved;
 use Database\Factories\LinkFactory;
 use App\Models\Traits\LinkSearchable;
@@ -15,10 +17,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Represents link records.
  */
-class Link extends Model
+class Link extends Model implements Feedable
 {
     /** @use HasFactory<LinkFactory> */
-    use HasFactory, LinkSearchable;
+    use HasFactory, LinkFeedable, LinkSearchable;
 
     protected function casts() : array
     {

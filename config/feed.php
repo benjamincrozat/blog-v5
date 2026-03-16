@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Link;
 use App\Models\Post;
 
 return [
@@ -51,6 +52,18 @@ return [
              * The content type for the feed response. Set to an empty string to automatically
              * determine the correct value.
              */
+            'contentType' => '',
+        ],
+        'links' => [
+            'items' => [Link::class, 'getFeedItems'],
+            'url' => '/links/feed',
+            'title' => config('app.name') . ' community links',
+            'description' => 'Latest community links from ' . config('app.name'),
+            'language' => 'en-US',
+            'image' => '',
+            'format' => 'atom',
+            'view' => 'feed::atom',
+            'type' => '',
             'contentType' => '',
         ],
     ],
