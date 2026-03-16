@@ -6,7 +6,7 @@ author: "benjamincrozat"
 description: "Decode JSON in PHP with json_decode(), choose arrays vs objects, catch errors with JSON_THROW_ON_ERROR, and avoid null, depth, and bigint surprises."
 categories:
   - "php"
-published_at: null
+published_at: 2026-03-16T12:28:00Z
 modified_at: null
 serp_title: null
 serp_description: null
