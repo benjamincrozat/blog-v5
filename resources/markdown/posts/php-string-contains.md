@@ -1,12 +1,12 @@
 ---
 id: "01KKV9G24MNK41XG6FFCD34FNJ"
-title: "PHP string contains: use str_contains() and strpos() safely"
+title: "How to check if a string contains something in PHP"
 slug: "php-string-contains"
 author: "benjamincrozat"
 description: "Check whether a PHP string contains a value with str_contains(), use strpos() safely on older PHP versions, and handle case sensitivity without false positives."
 categories:
   - "php"
-published_at: 2026-03-16T12:28:30Z
+published_at: 2026-03-16T12:28:30+00:00
 modified_at: null
 serp_title: null
 serp_description: null
