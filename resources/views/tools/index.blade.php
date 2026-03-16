@@ -34,16 +34,17 @@ Displays the tools index view.
             Services and apps of all kinds to help you do your job more efficiently.
         </p>
 
-        <div class="grid gap-8 mt-8 md:grid-cols-2">
-            <x-tools.tinkerwell />
-            <x-tools.tower />
-            <x-tools.fathom-analytics />
-            <x-tools.cloudways />
-            <x-tools.mailcoach />
-            <x-tools.wincher />
-            <x-tools.uptimia />
-            <x-tools.digitalocean />
-        </div>
+        @if ($tools->isEmpty())
+            <p class="px-4 mt-8 text-center text-gray-600">
+                No tools are published yet.
+            </p>
+        @else
+            <div class="grid gap-8 mt-8 md:grid-cols-2">
+                @foreach ($tools as $tool)
+                    <x-tool-card :tool="$tool" />
+                @endforeach
+            </div>
+        @endif
     </x-section>
 
     <script type="application/ld+json">
