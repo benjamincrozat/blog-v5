@@ -6,7 +6,7 @@ author: "benjamincrozat"
 description: "Learn how to use Redis in Laravel with practical setup steps and examples for cache, queues, sessions, rate limiting, and direct Redis commands."
 categories:
   - "laravel"
-published_at: 2026-03-16T13:14:03+00:00
+published_at: 2026-03-16T13:14:03Z
 modified_at: null
 serp_title: null
 serp_description: null
@@ -33,6 +33,10 @@ If you only remember one thing from this guide, make it this:
 > Use Redis in Laravel when you need fast shared state that should survive between requests.
 
 This walkthrough shows the real setup and the four jobs that matter most in day-to-day Laravel work.
+
+This is the simplest way to picture the role Redis plays in a Laravel app:
+
+![Diagram showing Laravel using Redis for cache, queues, sessions, and rate limiting](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/laravel-redis-cache-queue-session-rate-limit.png/public)
 
 ## When Redis makes sense in Laravel
 

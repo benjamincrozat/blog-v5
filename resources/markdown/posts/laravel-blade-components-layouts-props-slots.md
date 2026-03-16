@@ -6,7 +6,7 @@ author: "benjamincrozat"
 description: "Learn how to use Blade components in Laravel with layouts, props, and slots so your templates stay reusable instead of turning into copy-paste markup."
 categories:
   - "laravel"
-published_at: 2026-03-16T14:52:57+00:00
+published_at: 2026-03-16T14:52:57Z
 modified_at: null
 serp_title: null
 serp_description: null
@@ -291,6 +291,10 @@ Here is what this looks like together in a real page:
     </x-card>
 </x-layout>
 ```
+
+And here is the kind of rendered result that structure gives you:
+
+![Rendered example page using a Blade layout, alert component, and named slot](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/laravel-blade-components-rendered-example.png/public)
 
 That is the shape you want: layout for page shell, components for repeated UI, props for configuration, and slots for content regions.
 

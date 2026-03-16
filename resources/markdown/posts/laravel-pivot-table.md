@@ -6,7 +6,7 @@ author: "benjamincrozat"
 description: "Learn how Laravel pivot tables work with a practical many-to-many example, including the migration, belongsToMany(), extra pivot fields, attach(), sync(), and updateExistingPivot()."
 categories:
   - "laravel"
-published_at: 2026-03-16T13:09:30+00:00
+published_at: 2026-03-16T13:09:30Z
 modified_at: null
 serp_title: null
 serp_description: null
@@ -35,6 +35,10 @@ role_user
 ```
 
 That is the mental model. The rest is just wiring it into Eloquent correctly.
+
+Here is the same relationship as a quick diagram, including the extra fields that belong on the pivot table itself:
+
+![Diagram of users and roles connected by a role_user pivot table in Laravel](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/laravel-pivot-table-relationship-diagram.png/public)
 
 This guide walks through one real example from start to finish:
 

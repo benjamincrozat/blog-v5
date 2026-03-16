@@ -6,7 +6,7 @@ author: "benjamincrozat"
 description: "Learn how Laravel hasManyThrough works with one concrete example, including the relationship definition, custom keys, and when it is a better fit than manual joins."
 categories:
   - "laravel"
-published_at: 2026-03-16T14:49:40+00:00
+published_at: 2026-03-16T14:49:40Z
 modified_at: null
 serp_title: null
 serp_description: null
@@ -43,6 +43,10 @@ That means:
 ```text
 Project -> Environment -> Deployment
 ```
+
+Here is the relationship visually before we get into the code:
+
+![Diagram showing a project reaching deployments through environments in Laravel](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/laravel-hasmanythrough-project-environment-deployment.png/public)
 
 So from `Project`, you want:
 
