@@ -48,7 +48,7 @@ This is the working SEO backlog for the next article batch. We should move throu
   - Visual plan: examples plus a compact behavior table.
   - Why first: many competing pages stay thin on multibyte handling and edge cases.
 
-- [ ] `php isset`
+- [x] `php isset`
   - Angle: make this the clearest `isset()` vs `empty()` vs `??` guide for everyday PHP.
   - Must cover: arrays, forms, object properties, null values, undefined keys, and comparison-driven examples.
   - Visual plan: no screenshots needed; code comparisons should carry the piece.
