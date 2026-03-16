@@ -37,6 +37,8 @@ Read these references as needed:
 - For CTR, prefer a concrete outcome, strong query match, and a clear differentiator over clever phrasing.
 - As a soft title heuristic, aim for roughly 40-60 characters or 6-9 words when possible. Break that range when extra specificity meaningfully improves relevance or trust.
 - Front-load the primary query match and main payoff early in the title, because the start of the title is the most consistently visible part.
+- For function-led or helper-led tutorials, prefer natural task-led titles over bare keyword labels. A good pattern is `How to <outcome> in <language> with <function>()` when the function name adds clarity without making the title stiff.
+- Do not force an exact-match head term into the visible title if it makes the title read like a search query. Keep the search intent intact, but write for humans first.
 - For custom descriptions, put the main benefit and query match in the first ~120 characters. A one-sentence summary often lands around 140-160 characters, but clarity matters more than hitting a count.
 - Questions are not an automatic CTR win. Positive, specific wording can help, but only when it stays natural and accurate.
 - Avoid cheap CTR bait: fake urgency, fake freshness, unsupported numbers, emoji gimmicks, or all-caps unless the query and vertical clearly support them.
