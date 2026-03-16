@@ -23,7 +23,7 @@ Pair with `post-writing` when revising copy, and with `seo-content` when search 
 - When a post explains an interface, setup flow, settings page, terminal output, or before/after result, prefer creating original screenshots instead of leaving the visual outcome implied.
 - Skip screenshots only when they add no proof or clarity.
 - Give screenshot files descriptive names and useful alt text before upload.
-- Use UTC ISO-8601 timestamps for frontmatter dates such as `published_at` and `modified_at`.
+- Use UTC ISO-8601 timestamps with a trailing `Z` for frontmatter dates such as `published_at` and `modified_at`. Treat `Z` as the only canonical UTC format in this repo; do not use `+00:00`.
 - Publishing is changing `published_at` in the file, then running `php artisan app:sync-posts`.
 - If `categories` includes `news`, publish promptly, sync immediately after substantive edits, and only set `modified_at` when the article changed in a meaningful reporting way.
 - Only first-party, non-commercial, non-sponsored `news` posts should be treated as news-sitemap candidates.
@@ -48,10 +48,11 @@ Pair with `post-writing` when revising copy, and with `seo-content` when search 
    - hero image: `php artisan app:upload-post-image /absolute/path/to/cover.png --markdown=your-post.md`
    - inline image: `php artisan app:upload-post-image /absolute/path/to/step.png --alt="Describe the screenshot"` and paste the returned URL into the article body
    - if the post still has no featured image after writing it, generate one with `php artisan app:generate-post-image your-post-slug`
-4. If publishing state changes, update `published_at` in UTC.
-   - if this is a news post and you made a substantive reporting update, set `modified_at` in UTC before syncing
+4. If publishing state changes, update `published_at` in UTC with a trailing `Z`.
+   - if this is a news post and you made a substantive reporting update, set `modified_at` in UTC with a trailing `Z` before syncing
 5. Run `php artisan app:sync-posts`.
    - skip this extra sync only when the last action was `php artisan app:generate-post-image`, because that command already updates the Markdown file and runs `php artisan app:sync-posts` for you
+   - if `php artisan app:sync-posts` or `php artisan app:generate-post-image` rewrites timestamps to `+00:00`, normalize them back to the repo standard `Z` format before finishing
 6. Decide whether a browser check is needed:
    - skip it for routine Markdown-only edits when `php artisan app:sync-posts` succeeds
    - open the public page or Filament only for tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, or publishing changes that need confirmation

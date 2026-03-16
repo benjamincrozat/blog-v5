@@ -19,6 +19,7 @@ Pair with `seo-content` for search intent, Discover/News judgment, titles, snipp
 - `author` must use the author's `github_login`.
 - `categories` must use category slugs.
 - `published_at`, `modified_at`, and `sponsored_at` use UTC ISO-8601 datetimes with a `Z` suffix or `null`.
+- Treat the `Z` suffix as the only canonical UTC format for frontmatter timestamps in this repo. Do not use `+00:00` when writing or normalizing dates.
 - `serp_title`, `serp_description`, `canonical_url`, `image_disk`, and `image_path` are nullable strings.
 - `serp_title` overrides the HTML `<title>` tag and `serp_description` overrides the meta description tag.
 - `is_commercial` must be `true` or `false`.
@@ -72,7 +73,7 @@ Pair with `seo-content` for search intent, Discover/News judgment, titles, snipp
 - Pick recommended posts that genuinely extend the topic for this exact reader journey. Use editorial judgment, not category matching or obvious heuristics. You do not need to fully read every recommended post before linking it, but you should believe the recommendation makes sense.
 - When creating or revising a post, add or improve natural internal links in the body wherever a reader would want the next step, not only in the closing list.
 - Verify links and commands when feasible. If something cannot be verified, tell the user outside the post copy.
-- When setting frontmatter timestamps, use UTC rather than the machine's local timezone.
+- When setting frontmatter timestamps, use UTC rather than the machine's local timezone, and write them with a trailing `Z`.
 - Skip browser-based validation for routine post-writing tasks. Only use it when the post has tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, the article needs first-hand screenshots that materially help the reader, or the user explicitly asks for a visual check.
 
 ## Common Shapes
@@ -110,3 +111,4 @@ Pair with `seo-content` for search intent, Discover/News judgment, titles, snipp
    - non-commercial posts have one up-to-date related-posts list with a custom lead-in that does not echo the title and anchor text that is contextual rather than a pasted destination title
    - commercial posts do not include a related-posts, read-next, or follow-up reading block
    - code and links support the nearby claim
+   - all frontmatter timestamps use the repo's canonical UTC format with a trailing `Z`, not `+00:00`
