@@ -6,7 +6,7 @@ author: "benjamincrozat"
 description: "Learn how to generate PDFs in Laravel with barryvdh/laravel-dompdf, including installation, a practical invoice example, downloads, streams, images, and the rendering limits to watch for."
 categories:
   - "laravel"
-published_at: 2026-03-16T14:46:37+00:00
+published_at: 2026-03-16T14:46:37Z
 modified_at: null
 serp_title: null
 serp_description: null
@@ -173,6 +173,10 @@ return $pdf->stream("invoice-{$invoice->id}.pdf");
 ```
 
 This is useful for previews or browser-based review flows.
+
+Here is the kind of result you get from a simple streamed invoice:
+
+![Streamed invoice PDF generated with Laravel DomPDF in a browser preview](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/laravel-dompdf-invoice-preview.png/public)
 
 ## Set paper size and orientation
 
