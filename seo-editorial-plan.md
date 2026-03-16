@@ -138,7 +138,7 @@ This is the working SEO backlog for the next article batch. We should move throu
   - Must cover: realistic sample data, local setup, test data, idempotent seeding, and common mistakes.
   - Visual plan: screenshots only if they improve a demo workflow materially.
 
-- [ ] `laravel dompdf`
+- [x] `laravel dompdf`
   - Angle: teach PDF generation through a concrete invoice or receipt build.
   - Must cover: package install, Blade views, CSS limitations, images, downloads, streaming, and rendering gotchas.
   - Visual plan: screenshots or output samples are likely worth it because the final artifact is visual.
