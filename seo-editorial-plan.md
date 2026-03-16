@@ -128,7 +128,7 @@ This is the working SEO backlog for the next article batch. We should move throu
   - Must cover: cache, queues, sessions, rate limiting, local setup, config, and common production pitfalls.
   - Visual plan: screenshots may help for Horizon, logs, or local tooling if those examples add proof.
 
-- [ ] `laravel subquery`
+- [x] `laravel subquery`
   - Angle: show how to write readable subqueries with Laravel's query builder and Eloquent.
   - Must cover: `selectSub()`, `joinSub()`, correlated subqueries, SQL equivalents, and refactoring examples.
   - Visual plan: a before/after query comparison is more useful than screenshots.
