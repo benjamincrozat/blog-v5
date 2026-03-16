@@ -30,7 +30,7 @@ This is the working SEO backlog for the next article batch. We should move throu
   - Visual plan: code and output blocks should be enough unless a comparison table makes the tradeoffs clearer.
   - Why first: the SERP is beatable after the manual because few results feel like the clearest real-world tutorial.
 
-- [ ] `php json_decode`
+- [x] `php json_decode`
   - Angle: a troubleshooting-first guide for decoding JSON safely in PHP.
   - Must cover: associative arrays vs objects, exceptions, invalid JSON, depth, flags, and safe decoding patterns.
   - Visual plan: no screenshots by default; use before/after outputs and error examples.
