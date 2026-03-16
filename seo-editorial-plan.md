@@ -150,7 +150,7 @@ This is the working SEO backlog for the next article batch. We should move throu
 
 ## Reframe before writing
 
-- [ ] `laravel blade`
+- [x] `laravel blade`
   - Better target: "How to use Blade templates in Laravel" or "Blade components, layouts, props, and slots."
   - Execution note: do not chase the bare head term with a generic overview.
 
