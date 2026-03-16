@@ -58,7 +58,7 @@ return [
             'items' => [Link::class, 'getFeedItems'],
             'url' => '/links/feed',
             'title' => config('app.name') . ' community links',
-            'description' => 'Latest community links from ' . config('app.name'),
+            'description' => 'Latest community links from benjamincrozat.com',
             'language' => 'en-US',
             'image' => '',
             'format' => 'atom',
