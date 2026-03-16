@@ -107,6 +107,11 @@ class Post extends Model implements Feedable
         return $this->hasOne(Link::class);
     }
 
+    public function reviewedTool() : HasOne
+    {
+        return $this->hasOne(Tool::class, 'review_post_id');
+    }
+
     public function formattedContent() : Attribute
     {
         return Attribute::make(
