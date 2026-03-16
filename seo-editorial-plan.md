@@ -143,7 +143,7 @@ This is the working SEO backlog for the next article batch. We should move throu
   - Must cover: package install, Blade views, CSS limitations, images, downloads, streaming, and rendering gotchas.
   - Visual plan: screenshots or output samples are likely worth it because the final artifact is visual.
 
-- [ ] `laravel hasmanythrough`
+- [x] `laravel hasmanythrough`
   - Angle: teach one confusing relationship through one concrete example readers can map to their own app.
   - Must cover: relationship setup, example schema, query usage, mental model, and common mistakes.
   - Visual plan: include a relationship diagram.
