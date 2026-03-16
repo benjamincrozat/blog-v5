@@ -24,7 +24,7 @@ This is the working SEO backlog for the next article batch. We should move throu
 
 ## Write first
 
-- [ ] `php implode`
+- [x] `php implode`
   - Angle: a practical "array to string" guide instead of a syntax reference.
   - Must cover: separators, quoted output, associative-array caveats, empty arrays, and `implode()` vs `explode()`.
   - Visual plan: code and output blocks should be enough unless a comparison table makes the tradeoffs clearer.
