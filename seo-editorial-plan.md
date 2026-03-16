@@ -90,7 +90,7 @@ This is the working SEO backlog for the next article batch. We should move throu
   - Visual plan: side-by-side output examples and a quick rule-of-thumb box.
   - Why first: the SERP looks unusually weak beyond the manual.
 
-- [ ] `laravel pivot table`
+- [x] `laravel pivot table`
   - Angle: an end-to-end many-to-many guide with realistic examples.
   - Must cover: migrations, models, `belongsToMany`, extra pivot fields, `attach()`, `sync()`, `syncWithoutDetaching()`, and `updateExistingPivot()`.
   - Visual plan: add a simple relationship diagram and consider screenshots only if the article includes a UI workflow.
