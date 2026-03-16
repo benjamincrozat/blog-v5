@@ -36,7 +36,7 @@ This is the working SEO backlog for the next article batch. We should move throu
   - Visual plan: no screenshots by default; use before/after outputs and error examples.
   - Why first: the query has high confusion intent and most pages stop at syntax.
 
-- [ ] `php string contains`
+- [x] `php string contains`
   - Angle: answer "how do I check if a string contains something in PHP?" with the right function for modern and older versions.
   - Must cover: `str_contains()`, `strpos()` for older PHP, case sensitivity, and common mistakes.
   - Visual plan: code/output examples and a decision table should be enough.
