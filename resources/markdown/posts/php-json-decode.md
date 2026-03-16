@@ -1,6 +1,6 @@
 ---
 id: "01KKV90580W2NP6VWBSYGZQDSE"
-title: "PHP json_decode(): practical examples and safer defaults"
+title: "How to decode JSON in PHP with json_decode()"
 slug: "php-json-decode"
 author: "benjamincrozat"
 description: "Decode JSON in PHP with json_decode(), choose arrays vs objects, catch errors with JSON_THROW_ON_ERROR, and avoid null, depth, and bigint surprises."

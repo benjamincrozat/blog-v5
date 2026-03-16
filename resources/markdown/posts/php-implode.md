@@ -1,6 +1,6 @@
 ---
 id: "01KKV8GGB19F5CZ69PP32W1YRR"
-title: "PHP implode(): join array values into strings safely"
+title: "How to join array values into a string in PHP"
 slug: "php-implode"
 author: "benjamincrozat"
 description: "Use PHP implode() to join array values into strings, choose the right separator, handle associative arrays, and avoid the edge cases that trip people up."

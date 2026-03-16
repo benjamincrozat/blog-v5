@@ -1,6 +1,6 @@
 ---
 id: "01KKV9RKMYRHHTXEKB0QEF4T9S"
-title: "PHP substr(): practical examples and edge cases"
+title: "How to get part of a string in PHP with substr()"
 slug: "php-substr"
 author: "benjamincrozat"
 description: "Use PHP substr() to extract part of a string, understand negative offsets and lengths, and know when mb_substr() is the safer choice."
