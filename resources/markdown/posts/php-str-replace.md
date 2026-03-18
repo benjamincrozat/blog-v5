@@ -132,5 +132,5 @@ While versatile, [`str_replace()`](https://www.php.net/str_replace) has its limi
 If you are still cleaning up string handling in everyday PHP code, these are the next reads I would keep nearby:
 
 - [Split strings into arrays cleanly with explode](/php-explode)
-- [Read the current URL path without framework helpers](/php-current-url-path)
+- [Parse URL paths and query strings without framework helpers](/php-parse-url)
 - [Catch the PHP 8.4 changes that could affect your code](/php-84)

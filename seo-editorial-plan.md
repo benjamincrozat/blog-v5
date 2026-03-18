@@ -141,7 +141,7 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
   - Must cover: Apache, Nginx, local dev, Docker gotchas, `php.ini`, custom paths, and practical debugging patterns.
   - Visual plan: screenshots may help if we show log locations in a real environment; otherwise code and config examples are enough.
 
-- [ ] `php parse_url`
+- [x] `php parse_url`
   - Angle: a safe URL parsing guide built around real broken inputs.
   - Must cover: missing schemes, relative URLs, query strings, `parse_str()`, validation, and extraction pitfalls.
   - Visual plan: no screenshots needed.
