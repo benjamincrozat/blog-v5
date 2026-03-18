@@ -24,8 +24,6 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
 
 ## Articles to update
 
-### Refresh first
-
 | Page | Keyword cluster | Why update now | Core update |
 | --- | --- | --- | --- |
 | `/php-str-replace` | `php str_replace`, `str_replace`, `php string replace` | Strong GSC impressions, a beatable SERP beyond the PHP manual, and a clean page-query fit | Tighten the title and intro, move practical examples higher, and sharpen `str_replace()` vs `str_ireplace()` vs `preg_replace()` guidance. |
@@ -38,11 +36,6 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
 | `/laravel-versions` | `latest laravel version`, `laravel 11 release date` | The page already matches the intent cluster, but it needs a freshness pass | Lead with Laravel 12 as current and label Laravel 13 as upcoming on March 18, 2026. |
 | `/check-php-version` | `check php version` | Useful utility query with a page that can answer faster | Improve the quick answer and split the methods cleanly by CLI, browser, and Laravel. |
 | `/bun-package-manager` | `bun vs pnpm`, `bun vs npm` | `bun vs pnpm` already shows the best traction in this cluster | Add a clearer comparison table and a stronger recommendation framework for when Bun is worth switching to. |
-
-### Refresh next
-
-| Page | Keyword cluster | Why update next | Core update |
-| --- | --- | --- | --- |
 | `/laravel-herd` | `laravel herd` | Good intent fit, but the query is still partly navigational | Refresh screenshots and installation notes for current macOS and Windows behavior. |
 | `/php-explode` | `php explode`, `explode php` | Useful impressions and a soft tutorial SERP | Strengthen the answer-first intro and make the alternatives section more practical. |
 | `/php-redirect` | `php redirect` | The page fits, but the ranking is still weak | Make the redirect recipe faster to scan and explain status codes and `exit` more clearly. |
@@ -50,11 +43,6 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
 | `/php-laravel-print-array` | `php print array` | The page fits, but it should answer faster | Put `print_r()`, `var_dump()`, and Laravel helpers in a compact quick-answer section. |
 | `/tailwind-css-forms-plugin` | `tailwindcss forms`, `tailwind forms` | The no-space variant is stronger than the spaced variant | Make `@tailwindcss/forms` more explicit in the title, intro, and key headings. |
 | `/openai-tts-api` | `openai tts` | Worth refreshing only if we make it current | Rewrite it around the current OpenAI text-to-speech docs, models, and endpoints before treating it as active SEO work. |
-
-### Maintain, but do not force
-
-| Page | Keyword cluster | Why not force the refresh |
-| --- | --- | --- |
 | `/gpt-4o-mini` | `gpt-4o-mini`, `gpt-4o-mini openai model` | OpenAI docs dominate the head terms, so the page should stay focused on implementation intent rather than the broad model query. |
 | `/laravel-forge` | `laravel forge` | The head term is heavily navigational. Pricing, free trial, and alternatives remain the better angle. |
 | `/laravel-11` | `laravel 11 release` | This is now mostly historical support content, not a major growth target. |
@@ -68,28 +56,13 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
 | `/laravel-pulse` | `laravel pulse` | The package name is partly navigational. A jobs-to-be-done framing is better than chasing the bare term. |
 | `/laravel-migrations` | `laravel migrations` | The docs dominate the head term, so the article should stay command- and workflow-led. |
 
-### Do not update for this keyword set
-
-| Page | Keyword cluster | Why not worth the effort |
-| --- | --- | --- |
-| `/gpt-4-turbo` | `how to use gpt 4` | The query is too broad, unstable, and model-naming dependent for this specific page. |
-| `/php-90` | `php news`, `latest version of php` | Neither keyword matches the page intent. This page should stay about PHP 9 readiness, not current-version tracking or news. |
-| `/best-cloud-hosting-provider-php` | `php hosting` | The SERP is too broad, commercial, and vendor-heavy for the current page and likely payoff. |
-| `/laravel-clear-cache` | `laravel cache` | The page is about clearing cache, not caching strategy or the broader Laravel cache topic. |
-| `/laravel-10` | `laravel 10` | Historical demand only. As of March 18, 2026, this is a maintenance page, not a growth play. |
-| `/gpt-35-turbo` | `gpt 3.5 turbo` | Legacy model query with lower forward-looking value than current OpenAI model pages. |
-
 ## Articles to create
-
-### Add from the current ranking review
 
 - [ ] `latest php version`
   - Angle: build a PHP equivalent of your `laravel-versions` page instead of forcing that intent onto `/php-90`.
   - Must cover: the current stable PHP version, active support vs security support, supported branches, where to verify the latest release, and how to tell whether your project is behind.
   - Visual plan: a compact support-status table should do more work than screenshots.
   - Why now: the site has a real gap for this utility intent, while `/php-90` is the wrong page for it.
-
-### Write first
 
 - [x] `php implode`
   - Angle: a practical "array to string" guide instead of a syntax reference.
@@ -162,8 +135,6 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
   - Must cover: migrations, models, `belongsToMany`, extra pivot fields, `attach()`, `sync()`, `syncWithoutDetaching()`, and `updateExistingPivot()`.
   - Visual plan: add a simple relationship diagram and consider screenshots only if the article includes a UI workflow.
   - Why first: tutorial-style content already proves it can compete here if the example is concrete enough.
-
-### Write next
 
 - [ ] `php error_log`
   - Angle: explain where PHP logs go and how to log useful custom messages without guessing.
