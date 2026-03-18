@@ -136,7 +136,7 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
   - Visual plan: add a simple relationship diagram and consider screenshots only if the article includes a UI workflow.
   - Why first: tutorial-style content already proves it can compete here if the example is concrete enough.
 
-- [ ] `php error_log`
+- [x] `php error_log`
   - Angle: explain where PHP logs go and how to log useful custom messages without guessing.
   - Must cover: Apache, Nginx, local dev, Docker gotchas, `php.ini`, custom paths, and practical debugging patterns.
   - Visual plan: screenshots may help if we show log locations in a real environment; otherwise code and config examples are enough.

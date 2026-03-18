@@ -193,4 +193,4 @@ If you are trying to make failure paths in PHP feel less chaotic, these are the 
 
 - [Show every PHP error when debugging gets vague](/php-show-all-errors)
 - [Turn a PHP array into valid JSON without surprises](/php-array-to-json)
-- [Log to the browser console from PHP when you just need a quick check](/console-log-php)
+- [Write PHP messages to your error log when you need a trace you can tail](/php-error-log)
