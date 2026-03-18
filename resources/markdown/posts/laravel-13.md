@@ -7,7 +7,7 @@ description: "Laravel 13 was released on March 17, 2026. Here is what changed, h
 categories:
   - "laravel"
 published_at: 2025-07-06T19:26:00Z
-modified_at: 2026-03-18T11:23:52Z
+modified_at: 2026-03-18T11:43:35Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -94,6 +94,10 @@ In modern browsers it first checks the `Sec-Fetch-Site` header and only falls ba
 ### PHP attributes are much more useful
 
 The [release notes](https://laravel.com/docs/13.x/releases#expanded-php-attributes) also expand Laravel's PHP attribute story. You can now attach controller middleware and authorization through attributes like `#[Middleware]` and `#[Authorize]`, and queue jobs gain new first-party attributes such as `#[DeleteWhenMissingModels]`, `#[FailOnTimeout]`, `#[Tries]`, and `#[WithoutRelations]`.
+
+Laravel News' [Laravel 13 roundup](https://laravel-news.com/laravel-13) is useful here because it highlights how broad that change really is. Eloquent models can now use attributes like `#[Table]`, `#[Hidden]`, and `#[Fillable]`, while console commands can use `#[Signature]` and `#[Description]` instead of only class properties.
+
+That makes the feature more than a nice syntax tweak for controllers and queues. Laravel 13 is clearly moving more framework configuration toward attributes across models, commands, form requests, API resources, factories, and test seeders.
 
 If your team already prefers attribute-driven configuration, Laravel 13 makes that approach feel first-class instead of experimental.
 
