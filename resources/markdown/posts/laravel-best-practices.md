@@ -7,7 +7,7 @@ description: "A practical Laravel checklist for cleaner apps: updates, structure
 categories:
   - "laravel"
 published_at: 2022-10-29T23:00:00Z
-modified_at: 2026-03-12T21:41:43Z
+modified_at: 2026-03-18T18:07:37Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -152,6 +152,10 @@ Then your controller can stick to orchestration:
 Post::create($request->validated());
 ```
 
+In a tiny demo app, an empty submission comes back with a clean error bag before the controller has to guess what went wrong:
+
+![Form request validation errors on a draft form in a fresh Laravel demo app.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/01KM122Z3Z7AYH4VWFQ6TTPX5N.png/public)
+
 If validation is a weak point in your current codebase, this more focused [Laravel validation guide](/laravel-validation) is the next stop.
 
 ## 8. Use policies for authorization
@@ -223,6 +227,10 @@ public function boot(): void
 ```
 
 This one change catches a surprising amount of hidden sloppiness before users pay for it.
+
+Here is the same six-row page rendered two ways in a small demo: once with lazy-loaded authors, then again with `with('user')`:
+
+![Comparison of a Laravel page without eager loading and with with('user'), showing 7 queries versus 2.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/01KM122Z3Z9APEHQ8GM393JP8R.png/public)
 
 ## 13. Use modern casts, accessors, and mutators deliberately
 
