@@ -1,65 +1,51 @@
 # benjamincrozat.com
 
-This repo is my personal blog about web development.
+Agent rules for this repo.
 
-## Development workflow
+## Start
 
-- Before starting any task, pull the latest changes from `main` into the active branch or worktree.
-- `composer setup`
-- `composer dev`
-- Serve the project with `php artisan serve` on a non-default port.
-- Commit every change you make, as granularly as practical.
-- Open a PR once the branch is ready to publish, and keep it updated as more changes land.
-- Commit messages should start with a short summary of 10 words or fewer, followed by a detailed list of changes.
+- Sync the active branch/worktree with latest `main` before work.
+- Boot with `composer setup` and `composer dev`.
+- Use `php artisan serve --host=127.0.0.1 --port=<port>` for branch-specific checks.
+- Commit every change; keep commits small.
+- Commit subject: 10 words or fewer, then a detailed list.
+- Open/update the PR when the branch is publishable.
 
 ## Worktrees
 
-- Create feature worktrees from a real branch, not a detached HEAD. Preferred pattern: `git worktree add -b codex/<short-name> <path> main`.
-- If a worktree is detached or behind, switch to a real `codex/...` branch from the latest `origin/main` before making changes.
-- Fresh worktrees may not contain the local runtime files needed to run the app or checks. Reuse the primary checkout's local install by linking these into the new worktree when needed:
-  - `.env` (copy it instead of linking if the worktree needs its own `APP_URL` or other local-only overrides)
-  - `vendor`
-  - `node_modules`
-  - `public/build`
-- The primary local checkout is usually `/Users/benjamin/Sites/blog-v5`. Link missing runtime files from there instead of reinstalling by default.
-- After wiring a fresh worktree, confirm it boots with `php artisan about --only=environment` before running `pint`, `phpstan`, or `pest`.
-- `https://blog-v5.test` may still serve the primary checkout instead of the new worktree. When you need branch-specific browser checks, serve the worktree with `php artisan serve --host=127.0.0.1 --port=<port>` and test against that port.
-- Post image generation uses `BLOG_PREVIEW_BASE_URL` when set, otherwise it falls back to `APP_URL`. For a worktree served through `php artisan serve`, use a worktree-specific `.env` copy and set `APP_URL` to the matching `http://127.0.0.1:<port>` before generating images.
-- Keep worktree-only browser artifacts out of git. Clean up folders like `.playwright-cli/` and `output/` before finishing unless the user explicitly wants those files.
+- Use real branches, not detached HEADs: `git worktree add -b codex/<name> <path> main`.
+- If detached or behind, switch to a fresh `codex/...` branch from `origin/main` before editing.
+- Reuse runtime files from `/Users/benjamin/Sites/blog-v5`: `.env` (copy if local overrides are needed), `vendor`, `node_modules`, `public/build`.
+- After wiring a worktree, run `php artisan about --only=environment` before `pint`, `phpstan`, or `pest`.
+- `https://blog-v5.test` may hit another checkout; use the local `php artisan serve` URL for browser checks.
+- For post image generation in a worktree, set `APP_URL=http://127.0.0.1:<port>` in that worktree's `.env`. `BLOG_PREVIEW_BASE_URL` overrides `APP_URL`.
+- Remove worktree-only artifacts like `.playwright-cli/` and `output/` before finishing unless asked to keep them.
 
-## Guardrails to keep in mind
+## Guardrails
 
-- **Do not overwrite user edits between reads.** If something changed since your last read, understand why and build on it. Ask for clarification only when needed.
-- **Never restore deleted code.** If something was removed, assume it was intentional until you confirm otherwise.
-- **Keep changes small.** Implement the smallest change that solves the problem.
-- **No scope drift.** Do not refactor, restyle, or add “nice-to-haves” unless explicitly requested.
-- **Fix root causes.** Don’t band-aid symptoms.
-- **Use web search when needed.** If version-specific behavior, third-party APIs, or unclear edge cases could change the implementation, verify in official docs/release notes and cite the source in your summary.
-- **State assumptions when needed.** If a requirement is underspecified, proceed with clearly labeled assumptions; only ask questions when blocked.
-- **Be concise and structured.** Prefer short, skimmable answers and concrete next actions over long explanations.
-- **Narrate tool usage briefly.** Before multi-step work or tool calls, give a 1–2 sentence “what I’m doing and why” update.
-- When executing a plan or todo list, continue until it is complete. Don’t ask for permission between tasks.
+- Never overwrite user edits between reads.
+- Never restore deleted code without confirmation.
+- Make the smallest fix that solves the problem.
+- No scope drift: no refactors, restyles, or extras unless asked.
+- Fix root causes, not symptoms.
+- Use web search for unstable or version-specific behavior; cite sources.
+- State assumptions; ask only when blocked.
+- Briefly narrate multi-step tool usage.
+- Finish the full plan once started.
 
-## How to verify your work
+## Verify
 
-- **Use your web browser when the task affects visuals or behavior.**
-  - Set desktop checks to `1512x982`.
-  - Confirm the behavior matches the spec.
-  - Take a screenshot and critique the result for visual quality.
-- If you need credentials to log in, use what's in ./database/seeders/UserSeeder.php. The password is always `password`.
-- **Format**: `php vendor/bin/pint --parallel`
-- **Static analysis**: `php vendor/bin/phpstan analyse`
-- **Test**: `php vendor/bin/pest --parallel` (you can use `--filter` to run specific tests)
-  - **Check coverage**: `php vendor/bin/pest --coverage --parallel` (you can also use `--filter` if necessary too)
-- For routine Markdown-only post edits in `resources/markdown/posts`, use lighter verification by default:
-  - required: `php artisan app:sync-posts`
-  - optional only when warranted: browser checks, `pint`, `phpstan`, `pest`, or coverage
-  - warranted means tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, a publishing-state change that needs confirmation, first-hand screenshots that materially help the reader, or an explicit user request
+- Visual/behavior changes: use a browser, set desktop to `1512x982`, confirm against spec, take a screenshot, critique the result.
+- Login seed: `database/seeders/UserSeeder.php`, password `password`.
+- Format: `php vendor/bin/pint --parallel`
+- Static analysis: `php vendor/bin/phpstan analyse`
+- Tests: `php vendor/bin/pest --parallel`
+- Coverage when needed: `php vendor/bin/pest --coverage --parallel`
+- Routine Markdown-only edits in `resources/markdown/posts`: run `php artisan app:sync-posts`. Add browser checks, `pint`, `phpstan`, `pest`, or coverage only for tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, publishing-state checks, useful first-hand screenshots, or explicit requests.
 
 ## Local skills
 
-- For Markdown-managed post work, follow the lighter verification rule above so these skills stay aligned with this file.
-- `file-first-posts`: Export, edit, publish, or sync Markdown-managed posts. File: `.agents/skills/file-first-posts/SKILL.md`
-- `framework-news-analysis`: Choose and frame the strongest weekly news angle for a framework, library, tool, platform, or developer product. File: `.agents/skills/framework-news-analysis/SKILL.md`
-- `post-writing`: Draft or revise publication-ready Markdown posts for the blog. File: `.agents/skills/post-writing/SKILL.md`
-- `seo-content`: Handle search intent, titles, snippets, internal links, AI-search visibility, and top-3 competitor analysis for blog posts and keywords. File: `.agents/skills/seo-content/SKILL.md`
+- `file-first-posts`: Markdown post export/edit/publish/sync. File: `.agents/skills/file-first-posts/SKILL.md`
+- `framework-news-analysis`: Weekly framework/tool news angle and sourcing. File: `.agents/skills/framework-news-analysis/SKILL.md`
+- `post-writing`: Publication-ready blog drafting/revision. File: `.agents/skills/post-writing/SKILL.md`
+- `seo-content`: Search, Discover, News, and competitor framing. File: `.agents/skills/seo-content/SKILL.md`
