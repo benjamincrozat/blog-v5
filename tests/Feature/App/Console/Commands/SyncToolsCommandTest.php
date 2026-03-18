@@ -3,8 +3,12 @@
 use App\Models\Post;
 use App\Models\Tool;
 use Illuminate\Support\Str;
+
+use function Pest\Laravel\artisan;
+
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Artisan;
+use App\Console\Commands\SyncToolsCommand;
 
 function syncToolsMarkdownPath() : string
 {
@@ -118,11 +122,9 @@ it('fails when a review post slug does not exist', function () {
         'published_at' => '"2026-03-17T09:00:00+00:00"',
     ]);
 
-    expect(Artisan::call('app:sync-tools', ['--directory' => syncToolsMarkdownPath()]))
-        ->toBe(1);
-
-    expect(Artisan::output())
-        ->toContain('Unknown review post slug [not-a-real-post]');
+    artisan(SyncToolsCommand::class, ['--directory' => syncToolsMarkdownPath()])
+        ->expectsOutputToContain('Unknown review post slug [not-a-real-post]')
+        ->assertFailed();
 });
 
 it('deletes a tool when its markdown file is removed', function () {
@@ -213,11 +215,9 @@ it('fails when the tool id is not a valid ulid', function () {
         'published_at' => '"2026-03-17T09:00:00+00:00"',
     ]);
 
-    expect(Artisan::call('app:sync-tools', ['--directory' => syncToolsMarkdownPath()]))
-        ->toBe(1);
-
-    expect(Artisan::output())
-        ->toContain('Front matter key [id] must be a valid ULID.');
+    artisan(SyncToolsCommand::class, ['--directory' => syncToolsMarkdownPath()])
+        ->expectsOutputToContain('Front matter key [id] must be a valid ULID.')
+        ->assertFailed();
 });
 
 it('fails when published_at is not ISO-8601', function () {
@@ -239,11 +239,9 @@ it('fails when published_at is not ISO-8601', function () {
         'published_at' => '"tomorrow"',
     ]);
 
-    expect(Artisan::call('app:sync-tools', ['--directory' => syncToolsMarkdownPath()]))
-        ->toBe(1);
-
-    expect(Artisan::output())
-        ->toContain('Front matter key [published_at] must be an ISO-8601 datetime or null.');
+    artisan(SyncToolsCommand::class, ['--directory' => syncToolsMarkdownPath()])
+        ->expectsOutputToContain('Front matter key [published_at] must be an ISO-8601 datetime or null.')
+        ->assertFailed();
 });
 
 it('fails when pricing_model is invalid', function () {
@@ -265,11 +263,9 @@ it('fails when pricing_model is invalid', function () {
         'published_at' => '"2026-03-17T09:00:00+00:00"',
     ]);
 
-    expect(Artisan::call('app:sync-tools', ['--directory' => syncToolsMarkdownPath()]))
-        ->toBe(1);
-
-    expect(Artisan::output())
-        ->toContain('Front matter key [pricing_model] must be one of');
+    artisan(SyncToolsCommand::class, ['--directory' => syncToolsMarkdownPath()])
+        ->expectsOutputToContain('Front matter key [pricing_model] must be one of')
+        ->assertFailed();
 });
 
 it('fails when a disk-backed image_path is missing image_disk', function () {
@@ -291,9 +287,7 @@ it('fails when a disk-backed image_path is missing image_disk', function () {
         'published_at' => '"2026-03-17T09:00:00+00:00"',
     ]);
 
-    expect(Artisan::call('app:sync-tools', ['--directory' => syncToolsMarkdownPath()]))
-        ->toBe(1);
-
-    expect(Artisan::output())
-        ->toContain('Front matter key [image_path] requires [image_disk]');
+    artisan(SyncToolsCommand::class, ['--directory' => syncToolsMarkdownPath()])
+        ->expectsOutputToContain('Front matter key [image_path] requires [image_disk]')
+        ->assertFailed();
 });

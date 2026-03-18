@@ -1,5 +1,5 @@
 {{--
-Displays the tools index view.
+Pairs the sponsored placement with the database-backed tool catalog so readers can browse the latest recommendations in one pass.
 --}}
 
 <x-app

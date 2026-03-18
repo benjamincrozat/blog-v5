@@ -1,5 +1,6 @@
 {{--
-Presents a Markdown-managed tool card.
+Accepts: $tool, a published App\Models\Tool instance with optional review and image metadata.
+Keeps each tool recommendation card consistent across the catalog while exposing both outbound and review actions.
 --}}
 
 @props([
