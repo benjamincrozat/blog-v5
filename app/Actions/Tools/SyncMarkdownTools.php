@@ -50,6 +50,13 @@ class SyncMarkdownTools
         return DB::transaction(function () use ($documents, $reviewPostsBySlug, $existingById) {
             $createdCount = 0;
             $updatedCount = 0;
+            $trackedIds = collect($documents)->pluck('id');
+
+            $deletedCount = Tool::query()
+                ->whereNotIn('source_uuid', $trackedIds)
+                ->delete();
+
+            $this->releaseReviewPostsThatAreChanging($documents, $reviewPostsBySlug->all(), $existingById->all());
 
             foreach ($documents as $document) {
                 $tool = $existingById[$document->id] ?? new Tool;
@@ -67,6 +74,7 @@ class SyncMarkdownTools
                     'has_free_trial' => $document->hasFreeTrial,
                     'is_open_source' => $document->isOpenSource,
                     'categories' => $document->categories,
+                    'image_disk' => $document->imageDisk,
                     'image_path' => $document->imagePath,
                     'review_post_id' => $document->reviewPostSlug
                         ? $reviewPostsBySlug[$document->reviewPostSlug]->getKey()
@@ -91,12 +99,6 @@ class SyncMarkdownTools
                     $updatedCount++;
                 }
             }
-
-            $trackedIds = collect($documents)->pluck('id');
-
-            $deletedCount = Tool::query()
-                ->whereNotIn('source_uuid', $trackedIds)
-                ->delete();
 
             return new SyncMarkdownToolsResult(
                 createdCount: $createdCount,
@@ -228,6 +230,32 @@ class SyncMarkdownTools
 
         if ([] !== $errors) {
             throw ToolMarkdownException::fromErrors($errors);
+        }
+    }
+
+    /**
+     * @param  array<int, ToolMarkdownDocument>  $documents
+     * @param  array<string, Post>  $reviewPostsBySlug
+     * @param  array<string, Tool>  $existingById
+     */
+    protected function releaseReviewPostsThatAreChanging(array $documents, array $reviewPostsBySlug, array $existingById) : void
+    {
+        foreach ($documents as $document) {
+            $existingTool = $existingById[$document->id] ?? null;
+
+            if (! $existingTool?->review_post_id) {
+                continue;
+            }
+
+            $desiredReviewPostId = $document->reviewPostSlug
+                ? $reviewPostsBySlug[$document->reviewPostSlug]->getKey()
+                : null;
+
+            if ($existingTool->review_post_id === $desiredReviewPostId) {
+                continue;
+            }
+
+            $existingTool->forceFill(['review_post_id' => null])->save();
         }
     }
 

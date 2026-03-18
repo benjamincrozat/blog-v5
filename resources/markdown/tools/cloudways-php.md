@@ -12,6 +12,7 @@ is_open_source: false
 categories:
   - "hosting"
   - "php"
+image_disk: null
 image_path: "resources/img/screenshots/cloudways.webp"
 review_post_slug: null
 published_at: 2026-03-11T09:00:00+00:00

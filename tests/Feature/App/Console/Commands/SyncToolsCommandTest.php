@@ -77,6 +77,7 @@ it('creates a tool from markdown and links its review post', function () {
         'has_free_trial' => false,
         'is_open_source' => true,
         'categories' => ['ai', 'developer-tools'],
+        'image_disk' => '"public"',
         'image_path' => 'null',
         'review_post_slug' => '"remodex-review"',
         'published_at' => '"2026-03-17T09:00:00+00:00"',
@@ -93,6 +94,7 @@ it('creates a tool from markdown and links its review post', function () {
     expect($tool->name)->toBe('Remodex')
         ->and($tool->reviewPost?->is($reviewPost))->toBeTrue()
         ->and($tool->categories)->toBe(['ai', 'developer-tools'])
+        ->and($tool->image_disk)->toBe('public')
         ->and($tool->content)->toBe("A short tool summary.\n")
         ->and($tool->source_path)->toBe('remodex.md');
 });
@@ -110,6 +112,7 @@ it('fails when a review post slug does not exist', function () {
         'has_free_trial' => true,
         'is_open_source' => false,
         'categories' => ['testing'],
+        'image_disk' => 'null',
         'image_path' => 'null',
         'review_post_slug' => '"not-a-real-post"',
         'published_at' => '"2026-03-17T09:00:00+00:00"',
@@ -135,6 +138,7 @@ it('deletes a tool when its markdown file is removed', function () {
         'has_free_trial' => true,
         'is_open_source' => false,
         'categories' => ['git'],
+        'image_disk' => 'null',
         'image_path' => '"resources/img/screenshots/tower.webp"',
         'review_post_slug' => 'null',
         'published_at' => '"2026-03-17T09:00:00+00:00"',
@@ -148,4 +152,122 @@ it('deletes a tool when its markdown file is removed', function () {
         ->toBe(0);
 
     expect(Tool::query()->where('slug', 'tower')->exists())->toBeFalse();
+});
+
+it('reassigns a review post cleanly when a replacement tool takes over', function () {
+    $reviewPost = Post::factory()->create([
+        'slug' => 'laravel-mcp-review',
+        'published_at' => now()->subDay(),
+    ]);
+
+    Tool::factory()->create([
+        'source_uuid' => '01KP0KD9D8ZVZ9CV08D2YCV8ZZ',
+        'slug' => 'old-laravel-mcp',
+        'review_post_id' => $reviewPost->getKey(),
+    ]);
+
+    writeSyncTool(syncToolsMarkdownPath(), 'laravel-mcp', [
+        'id' => '01KP0KDABYBCQW3MZB8Z0E3SKA',
+        'name' => '"Laravel MCP"',
+        'slug' => 'laravel-mcp',
+        'description' => '"An MCP server for Laravel projects."',
+        'website_url' => '"https://github.com/benjamincrozat/laravel-mcp"',
+        'outbound_url' => '"https://github.com/benjamincrozat/laravel-mcp"',
+        'pricing_model' => '"free"',
+        'has_free_plan' => true,
+        'has_free_trial' => false,
+        'is_open_source' => true,
+        'categories' => ['laravel', 'ai'],
+        'image_disk' => 'null',
+        'image_path' => 'null',
+        'review_post_slug' => '"laravel-mcp-review"',
+        'published_at' => '"2026-03-17T09:00:00+00:00"',
+    ]);
+
+    expect(Artisan::call('app:sync-tools', ['--directory' => syncToolsMarkdownPath()]))
+        ->toBe(0);
+
+    expect(Tool::query()->where('slug', 'old-laravel-mcp')->exists())->toBeFalse();
+
+    $tool = Tool::query()->where('slug', 'laravel-mcp')->firstOrFail();
+
+    expect($tool->reviewPost?->is($reviewPost))->toBeTrue();
+});
+
+it('fails when the tool id is not a valid ulid', function () {
+    writeSyncTool(syncToolsMarkdownPath(), 'bad-id', [
+        'id' => '"not-a-ulid"',
+        'name' => '"Bad ID"',
+        'slug' => 'bad-id',
+        'description' => '"A tool with an invalid source id."',
+        'website_url' => '"https://example.com/tool"',
+        'outbound_url' => '"https://example.com/tool"',
+        'pricing_model' => '"free"',
+        'has_free_plan' => true,
+        'has_free_trial' => false,
+        'is_open_source' => true,
+        'categories' => ['testing'],
+        'image_disk' => 'null',
+        'image_path' => 'null',
+        'review_post_slug' => 'null',
+        'published_at' => '"2026-03-17T09:00:00+00:00"',
+    ]);
+
+    expect(Artisan::call('app:sync-tools', ['--directory' => syncToolsMarkdownPath()]))
+        ->toBe(1);
+
+    expect(Artisan::output())
+        ->toContain('Front matter key [id] must be a valid ULID.');
+});
+
+it('fails when published_at is not ISO-8601', function () {
+    writeSyncTool(syncToolsMarkdownPath(), 'bad-published-at', [
+        'id' => '01KP0KDAMZ0AZ3CP6GFFVZXFJ6',
+        'name' => '"Bad Published At"',
+        'slug' => 'bad-published-at',
+        'description' => '"A tool with a non-deterministic publish date."',
+        'website_url' => '"https://example.com/tool"',
+        'outbound_url' => '"https://example.com/tool"',
+        'pricing_model' => '"free"',
+        'has_free_plan' => true,
+        'has_free_trial' => false,
+        'is_open_source' => true,
+        'categories' => ['testing'],
+        'image_disk' => 'null',
+        'image_path' => 'null',
+        'review_post_slug' => 'null',
+        'published_at' => '"tomorrow"',
+    ]);
+
+    expect(Artisan::call('app:sync-tools', ['--directory' => syncToolsMarkdownPath()]))
+        ->toBe(1);
+
+    expect(Artisan::output())
+        ->toContain('Front matter key [published_at] must be an ISO-8601 datetime or null.');
+});
+
+it('fails when pricing_model is invalid', function () {
+    writeSyncTool(syncToolsMarkdownPath(), 'bad-pricing', [
+        'id' => '01KP0KDB5XNZSAAWQ8M5Q7B419',
+        'name' => '"Bad Pricing"',
+        'slug' => 'bad-pricing',
+        'description' => '"A tool with an invalid pricing model."',
+        'website_url' => '"https://example.com/tool"',
+        'outbound_url' => '"https://example.com/tool"',
+        'pricing_model' => '"enterprise"',
+        'has_free_plan' => false,
+        'has_free_trial' => false,
+        'is_open_source' => false,
+        'categories' => ['testing'],
+        'image_disk' => 'null',
+        'image_path' => 'null',
+        'review_post_slug' => 'null',
+        'published_at' => '"2026-03-17T09:00:00+00:00"',
+    ]);
+
+    expect(Artisan::call('app:sync-tools', ['--directory' => syncToolsMarkdownPath()]))
+        ->toBe(1);
+
+    expect(Artisan::output())
+        ->toContain('Front matter key [pricing_model] must be one of');
 });

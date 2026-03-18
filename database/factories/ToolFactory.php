@@ -31,6 +31,7 @@ class ToolFactory extends Factory
             'has_free_trial' => fake()->boolean(),
             'is_open_source' => fake()->boolean(),
             'categories' => [fake()->word()],
+            'image_disk' => null,
             'image_path' => null,
             'review_post_id' => null,
             'published_at' => fake()->dateTimeBetween('-1 year', 'now'),

@@ -28,6 +28,7 @@ class ToolMarkdownDocument
         public readonly bool $hasFreeTrial,
         public readonly bool $isOpenSource,
         public readonly array $categories,
+        public readonly ?string $imageDisk,
         public readonly ?string $imagePath,
         public readonly ?string $reviewPostSlug,
         public readonly ?CarbonImmutable $publishedAt,
@@ -61,7 +62,7 @@ class ToolMarkdownDocument
         }
 
         return new self(
-            id: static::expectString($frontMatter, 'id', $relativePath),
+            id: static::expectId($frontMatter, 'id', $relativePath),
             name: static::expectString($frontMatter, 'name', $relativePath),
             slug: $slug,
             description: static::expectString($frontMatter, 'description', $relativePath, allowBlank: true),
@@ -72,6 +73,7 @@ class ToolMarkdownDocument
             hasFreeTrial: static::expectBool($frontMatter, 'has_free_trial', $relativePath),
             isOpenSource: static::expectBool($frontMatter, 'is_open_source', $relativePath),
             categories: static::expectCategories($categories, $relativePath),
+            imageDisk: static::expectNullableString($frontMatter, 'image_disk', $relativePath),
             imagePath: static::expectNullableString($frontMatter, 'image_path', $relativePath),
             reviewPostSlug: static::expectNullableString($frontMatter, 'review_post_slug', $relativePath),
             publishedAt: static::expectNullableDate($frontMatter, 'published_at', $relativePath),
@@ -102,6 +104,7 @@ class ToolMarkdownDocument
             ...collect($this->categories)
                 ->map(fn (string $category) => '  - ' . static::formatScalar($category))
                 ->all(),
+            'image_disk: ' . static::formatScalar($this->imageDisk),
             'image_path: ' . static::formatScalar($this->imagePath),
             'review_post_slug: ' . static::formatScalar($this->reviewPostSlug),
             'published_at: ' . static::formatDate($this->publishedAt),
@@ -127,6 +130,7 @@ class ToolMarkdownDocument
             'has_free_trial',
             'is_open_source',
             'categories',
+            'image_disk',
             'image_path',
             'review_post_slug',
             'published_at',
@@ -247,6 +251,20 @@ class ToolMarkdownDocument
     /**
      * @param  array<string, mixed>  $frontMatter
      */
+    protected static function expectId(array $frontMatter, string $key, string $relativePath) : string
+    {
+        $value = static::expectString($frontMatter, $key, $relativePath);
+
+        if (! Str::isUlid($value)) {
+            throw ToolMarkdownException::forPath($relativePath, "Front matter key [{$key}] must be a valid ULID.");
+        }
+
+        return $value;
+    }
+
+    /**
+     * @param  array<string, mixed>  $frontMatter
+     */
     protected static function expectNullableString(array $frontMatter, string $key, string $relativePath) : ?string
     {
         $value = $frontMatter[$key] ?? null;
@@ -316,6 +334,10 @@ class ToolMarkdownDocument
         }
 
         if (! is_string($value) || blank($value)) {
+            throw ToolMarkdownException::forPath($relativePath, "Front matter key [{$key}] must be an ISO-8601 datetime or null.");
+        }
+
+        if (! preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $value)) {
             throw ToolMarkdownException::forPath($relativePath, "Front matter key [{$key}] must be an ISO-8601 datetime or null.");
         }
 

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->boolean('has_free_trial')->default(false);
             $table->boolean('is_open_source')->default(false);
             $table->json('categories');
+            $table->string('image_disk')->nullable();
             $table->string('image_path')->nullable();
             $table->foreignId('review_post_id')->nullable()->unique()->constrained('posts')->nullOnDelete();
             $table->dateTime('published_at')->nullable();

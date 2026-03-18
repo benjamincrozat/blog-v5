@@ -12,6 +12,7 @@ is_open_source: true
 categories:
   - "ai"
   - "laravel"
+image_disk: null
 image_path: null
 review_post_slug: "laravel-mcp-review"
 published_at: 2026-03-15T08:00:00+00:00

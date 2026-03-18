@@ -12,6 +12,7 @@ is_open_source: false
 categories:
   - "monitoring"
   - "ops"
+image_disk: null
 image_path: "resources/img/screenshots/uptimia.webp"
 review_post_slug: null
 published_at: 2026-03-05T09:00:00+00:00

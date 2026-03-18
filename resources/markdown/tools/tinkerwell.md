@@ -12,6 +12,7 @@ is_open_source: false
 categories:
   - "php"
   - "debugging"
+image_disk: null
 image_path: "resources/img/screenshots/tinkerwell.webp"
 review_post_slug: null
 published_at: 2026-03-07T09:00:00+00:00

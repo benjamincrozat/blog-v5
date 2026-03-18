@@ -12,6 +12,7 @@ is_open_source: true
 categories:
   - "ai"
   - "developer-tools"
+image_disk: null
 image_path: null
 review_post_slug: "remodex-review"
 published_at: 2026-03-16T09:00:00+00:00

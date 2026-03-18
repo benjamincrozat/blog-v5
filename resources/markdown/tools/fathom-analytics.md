@@ -12,6 +12,7 @@ is_open_source: false
 categories:
   - "analytics"
   - "privacy"
+image_disk: null
 image_path: "resources/img/screenshots/fathom-analytics.webp"
 review_post_slug: null
 published_at: 2026-03-09T09:00:00+00:00

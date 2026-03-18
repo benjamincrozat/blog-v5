@@ -61,7 +61,11 @@ class Tool extends Model
                 return Vite::asset($this->image_path);
             }
 
-            return Storage::disk('cloudflare-images')->url($this->image_path);
+            if (blank($this->image_disk)) {
+                return null;
+            }
+
+            return Storage::disk($this->image_disk)->url($this->image_path);
         })->shouldCache();
     }
 
