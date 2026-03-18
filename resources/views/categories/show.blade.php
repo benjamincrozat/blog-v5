@@ -10,7 +10,7 @@ Displays the categories show view.
         <x-breadcrumbs :items="$breadcrumbs" class="mb-12 md:mb-14" />
 
         <x-typography.heading>
-            The latest news about {{ $category->name }}
+            Articles, news, takes, and tutorials about {{ $category->name }}
         </x-typography.heading>
 
         <x-posts-grid :$posts class="mt-10" />
