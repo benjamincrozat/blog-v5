@@ -9,7 +9,12 @@ Agent rules for this repo.
 - Use `php artisan serve --host=127.0.0.1 --port=<port>` for branch-specific checks.
 - Commit every change; keep commits small.
 - Commit subject: 10 words or fewer, then a detailed list.
-- Open/update the PR when the branch is publishable.
+- Create or update a GitHub PR before finishing work on any branch or worktree.
+- Do not wait for the user to ask for the PR.
+- If a PR for the current branch already exists, update it instead of creating a duplicate.
+- If no PR exists for the current branch, push the branch and open one against `main`.
+- Include the PR URL in the final response.
+- If a PR cannot be created, say why in the final response.
 
 ## Worktrees
 
@@ -42,6 +47,15 @@ Agent rules for this repo.
 - Tests: `php vendor/bin/pest --parallel`
 - Coverage when needed: `php vendor/bin/pest --coverage --parallel`
 - Routine Markdown-only edits in `resources/markdown/posts`: run `php artisan app:sync-posts`. Add browser checks, `pint`, `phpstan`, `pest`, or coverage only for tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, publishing-state checks, useful first-hand screenshots, or explicit requests.
+
+## Before finishing
+
+- Run the required verification for the scope of the task.
+- Commit the changes.
+- Push the branch.
+- Create or update the PR.
+- Share the preview URL when relevant.
+- Share the PR URL in the final response.
 
 ## Local skills
 
