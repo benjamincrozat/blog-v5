@@ -1,9 +1,17 @@
 # SEO editorial plan
 
-Last updated: March 16, 2026
-Source brief: `/Users/benjamin/Downloads/PLAN.md`
+Last updated: March 18, 2026
+Source brief: fresh Search Console export from the browser plus live Google US desktop SERP checks on March 18, 2026
 
 This is the working SEO backlog for the next article batch. We should move through it from top to bottom unless fresh Search Console or SERP data changes the priority. Check an item only when the article is drafted, reviewed, synced, and ready to publish.
+
+## New creation gap from the current ranking review
+
+- [ ] `latest php version`
+  - Angle: build a PHP equivalent of your `laravel-versions` page instead of forcing that intent onto `/php-90`.
+  - Must cover: the current stable PHP version, active support vs security support, supported branches, where to verify the latest release, and how to tell whether your project is behind.
+  - Visual plan: a compact support-status table should do more work than screenshots.
+  - Why now: the site has a real gap for this utility intent, while `/php-90` is the wrong page for it.
 
 ## What is already working
 
