@@ -143,7 +143,7 @@ if (str_contains($path, '/forge')) {
 }
 ```
 
-If you are working with raw request paths, [this current URL path guide](/php-current-url-path) covers the safer way to get the path first.
+If you are working with raw request paths, [this `parse_url()` guide](/php-parse-url) covers the safer way to pull the path out first.
 
 ### Check for a tag or keyword in free text
 

@@ -183,6 +183,6 @@ Browser developer tools also show redirect details clearly.
 
 If you are still wiring request and response behavior by hand in PHP, these are the next reads I would keep open:
 
-- [Read the current URL path without framework helpers](/php-current-url-path)
+- [Parse URL paths and query strings without framework helpers](/php-parse-url)
 - [Check whether your PHP version is part of the problem](/check-php-version)
 - [Find the php.ini file that's actually affecting your setup](/php-ini-location)
