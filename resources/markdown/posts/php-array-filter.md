@@ -134,4 +134,4 @@ If you spend a lot of time shaping arrays before they hit the rest of the app, t
 
 - [Reset array keys cleanly when the indexes get weird](/php-array-values)
 - [Map arrays in PHP without overcomplicating the callback](/php-array-map)
-- [Check arrays the right way before you branch on them](/php-array-empty)
+- [Count arrays correctly before you branch on them](/php-array-length)

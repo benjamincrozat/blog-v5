@@ -106,7 +106,7 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
   - Visual plan: a compact cheat sheet table is likely more useful than screenshots.
   - Why first: most searchers want examples, not two separate manual pages.
 
-- [ ] `php array length`
+- [x] `php array length`
   - Angle: answer the question fast with `count()`, then explain the real edge cases.
   - Must cover: normal arrays, multidimensional arrays, `COUNT_RECURSIVE`, `Countable` objects, and common misunderstandings.
   - Visual plan: no screenshots; examples and small comparison blocks are enough.
