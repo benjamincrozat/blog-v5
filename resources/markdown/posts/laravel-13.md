@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27BBGFKC1KETMVEMKHM5"
-title: "Laravel 13: release date, features, and upgrade guide"
+title: "Laravel 13 released: features and upgrade guide"
 slug: "laravel-13"
 author: "benjamincrozat"
 description: "Laravel 13 was released on March 17, 2026. Here is what changed, how to install it today, and what to verify before upgrading from Laravel 12."
 categories:
   - "laravel"
 published_at: 2025-07-06T19:26:00Z
-modified_at: 2026-03-18T11:43:35Z
+modified_at: 2026-03-18T11:51:37Z
 serp_title: null
 serp_description: null
 canonical_url: null
