@@ -1,24 +1,24 @@
 ---
 id: "01KKEW27MFE4P3CS7MMWKGPEHX"
-title: "Show all PHP errors safely"
+title: "How to show all PHP errors safely"
 slug: "php-show-all-errors"
 author: "benjamincrozat"
-description: "Use E_ALL to show all PHP errors, then configure php.ini, .user.ini, .htaccess, or CLI flags depending on whether you use FPM, Apache, or the terminal."
+description: "Use E_ALL to show all PHP errors, then choose CLI flags, php.ini, Apache, or PHP-FPM settings that match how your app actually runs."
 categories:
   - "php"
 published_at: 2023-10-07T00:00:00+02:00
-modified_at: 2026-03-14T10:04:32Z
+modified_at: 2026-03-18T21:02:00+00:00
 serp_title: null
 serp_description: null
 canonical_url: null
 is_commercial: false
 image_disk: "cloudflare-images"
-image_path: "images/posts/Tf6C7ooxyLR7PCE.jpg"
+image_path: "images/posts/generated/php-show-all-errors.png"
 sponsored_at: null
 ---
 ## Introduction
 
-Need to show all errors in PHP while you debug? Start with `error_reporting(E_ALL)` plus `display_errors=1`, then choose php.ini, `.user.ini`, `.htaccess`, or CLI flags based on how PHP runs in your environment.
+Need to show all errors in PHP while you debug? Start with `error_reporting(E_ALL)` plus `display_errors=1`, then choose CLI flags, php.ini, `.htaccess`, or PHP-FPM settings based on how PHP runs in your environment.
 
 The short version is simple: show errors locally, log everything in production, and make sure you are editing the config that actually applies to your SAPI.
 
@@ -35,6 +35,7 @@ error_reporting(E_ALL);
 error_reporting(-1); // -1 equals E_ALL
 ```
 
+- CLI one-off: `php -d display_errors=stderr -d display_startup_errors=1 -d error_reporting=-1 script.php`
 - php.ini: set `display_errors=On`, `display_startup_errors=On`, `error_reporting=E_ALL` (or `-1`).
 - .htaccess (mod_php only): use numerics: `php_flag display_errors On`, `php_flag display_startup_errors On`, `php_value error_reporting -1`.
 - PHP-FPM: use `.user.ini` or your FPM pool config; `ini_set()` cannot override `php_admin_*` flags.
@@ -57,7 +58,7 @@ Warning: if a fatal or parse error happens before this runs, it will not display
 
 ## PHP 8.4 note
 
-PHP 8.4 removed the `E_STRICT` level and deprecated the `E_STRICT` constant. Referencing it can emit a deprecation notice. Also, the numeric value of `E_ALL` changed from `32767` to `30719`, so if you still use numeric masks in Apache config, update them. See [migration 8.4 incompatible changes](https://www.php.net/manual/en/migration84.incompatible.php), the [2024 PHP news archive](https://www.php.net/archive/2024.php), and [php.watch on E_STRICT in PHP 8.4](https://php.watch/versions/8.4/E_STRICT-deprecated).
+PHP 8.4 removed the `E_STRICT` level and deprecated the `E_STRICT` constant. Referencing it can emit a deprecation notice. Also, the numeric value of `E_ALL` changed from `32767` to `30719`, so if you still use numeric masks in Apache config, update them. See [migration 8.4 incompatible changes](https://www.php.net/manual/en/migration84.incompatible.php) and the [2024 PHP news archive](https://www.php.net/archive/2024.php).
 
 ## What each setting does
 
@@ -66,6 +67,22 @@ PHP 8.4 removed the `E_STRICT` level and deprecated the `E_STRICT` constant. Ref
 - error_reporting(E_ALL): Reports all errors, warnings, notices, and deprecations. The `@` suppression operator still silences specific calls.
 
 ## Configure by environment
+
+### CLI one-off flags
+
+For quick checks on the command line, set directives per run:
+
+```bash
+php -d display_errors=stderr -d display_startup_errors=1 -d error_reporting=E_ALL script.php
+```
+
+Or with the equivalent numeric setting:
+
+```bash
+php -d display_errors=stderr -d display_startup_errors=1 -d error_reporting=-1 script.php
+```
+
+Using `display_errors=stderr` sends errors to the error stream, which is useful for CI and shell pipelines. See [runtime configuration](https://www.php.net/manual/en/errorfunc.configuration.php).
 
 ### php.ini
 
@@ -101,7 +118,7 @@ php_value error_reporting -1
 
 Use numeric values in Apache config/.htaccess; constants like `E_ALL` are not recognized here. See [changing PHP configuration](https://www.php.net/manual/en/configuration.changes.php).
 
-Important: these directives do nothing on PHP-FPM and may cause a 500 error if used there. See WordPress guidance on [display_errors across environments](https://developer.wordpress.org/advanced-administration/security/hardening/display-errors/).
+Important: these directives do nothing on PHP-FPM and may cause a 500 error if used there.
 
 ### .user.ini (PHP-FPM) and FPM pool directives
 
@@ -135,22 +152,6 @@ php_value[error_reporting] = E_ALL
 
 Settings defined with `php_admin_value` and `php_admin_flag` cannot be overridden by `ini_set()`. The pool config wins. Verify in `phpinfo()`. See the FPM manual: [install.fpm.configuration](https://www.php.net/manual/en/install.fpm.configuration.php).
 
-### CLI one-off flags
-
-For quick checks on the command line, set directives per run:
-
-```bash
-php -d display_errors=stderr -d display_startup_errors=1 -d error_reporting=E_ALL script.php
-```
-
-Or with the equivalent numeric setting:
-
-```bash
-php -d display_errors=stderr -d display_startup_errors=1 -d error_reporting=-1 script.php
-```
-
-Using `display_errors=stderr` sends errors to the error stream, which is useful for CI and shell pipelines. See [runtime configuration](https://www.php.net/manual/en/errorfunc.configuration.php).
-
 ## Verify and diagnose
 
 - Check current values (CLI): `php -i | grep error_reporting` and `php -i | grep display_errors`.
@@ -162,8 +163,8 @@ Using `display_errors=stderr` sends errors to the error stream, which is useful 
 ## Troubleshooting: errors still not showing
 
 - A fatal or parse error happens before your `ini_set` line executes. Configure php.ini, a `.user.ini`, or your FPM pool instead, or use an [`auto_prepend_file`](https://www.php.net/manual/en/ini.core.php#ini.auto-prepend-file) so settings are applied earlier.
-- You edited the wrong php.ini or the wrong SAPI. Confirm with `php --ini` (CLI) or `phpinfo()` in the web SAPI. Sentry’s guide also shows common locations: see [How do I get PHP errors to display](https://sentry.io/answers/how-do-i-get-php-errors-to-display/).
-- You used Apache `.htaccess` directives on a PHP-FPM host. Switch to `.user.ini` or FPM pool configuration. See WordPress’s [display_errors](https://developer.wordpress.org/advanced-administration/security/hardening/display-errors/).
+- You edited the wrong php.ini or the wrong SAPI. Confirm with `php --ini` (CLI) or `phpinfo()` in the web SAPI.
+- You used Apache `.htaccess` directives on a PHP-FPM host. Switch to `.user.ini` or FPM pool configuration.
 - A framework or custom error handler is intercepting errors. Check your framework toggles (for example, WordPress `WP_DEBUG`, Laravel `APP_DEBUG`, Symfony `APP_ENV=dev`).
 - The `@` operator is suppressing output for specific calls. Search your codebase for `@` to find silenced calls.
 - FPM pool uses `php_admin_flag`/`php_admin_value` to lock settings. `ini_set` cannot override these. See [install.fpm.configuration](https://www.php.net/manual/en/install.fpm.configuration.php).
@@ -195,10 +196,6 @@ error_log = /var/log/php_errors.log
 ```
 
 On FPM, prefer pool-level `php_admin_flag[log_errors] = On` and set `php_admin_value[error_log]` to enforce logging.
-
-## Consider advanced debugging tools
-
-For deep debugging in development, use Xdebug, or add error monitoring so production errors are captured without exposing them to users. See Sentry’s step-by-step guide on [getting PHP errors to display](https://sentry.io/answers/how-do-i-get-php-errors-to-display/) and its [PHP SDK docs](https://docs.sentry.io/platforms/php/). Stackify’s overview also covers the php.ini, in-code, and `.htaccess` paths with the key parse-error caveat: [How to display all PHP errors](https://stackify.com/display-php-errors/).
 
 ## FAQs
 
@@ -242,7 +239,7 @@ No. `E_STRICT` was removed in PHP 8.4 and the constant is deprecated. Referencin
 
 ## Conclusion
 
-Use `E_ALL` and enable display locally to fix issues fast, then deploy with display disabled and comprehensive logging. Choose the right place to configure it: php.ini for global or early errors, `.htaccess` for Apache mod_php, `.user.ini` or FPM pool settings for PHP-FPM, and `-d` flags for one-off CLI runs. With PHP 8.4 now mainstream, drop `E_STRICT` and prefer logging everything so deprecations are visible during upgrades. For reference materials, see [error_reporting()](https://www.php.net/error_reporting), [ini_set()](https://www.php.net/ini_set), [runtime configuration](https://www.php.net/manual/en/errorfunc.configuration.php), and WordPress’s [display_errors](https://developer.wordpress.org/advanced-administration/security/hardening/display-errors/).
+Use `E_ALL` and enable display locally to fix issues fast, then deploy with display disabled and comprehensive logging. Choose the right place to configure it: php.ini for global or early errors, `.htaccess` for Apache mod_php, `.user.ini` or FPM pool settings for PHP-FPM, and `-d` flags for one-off CLI runs. With PHP 8.4 now mainstream, drop `E_STRICT` and prefer logging everything so deprecations are visible during upgrades. For reference materials, see [error_reporting()](https://www.php.net/error_reporting), [ini_set()](https://www.php.net/ini_set), and [runtime configuration](https://www.php.net/manual/en/errorfunc.configuration.php).
 
 If you are in the middle of troubleshooting and want the rest of the basics close at hand, these are the next reads I would open:
 
