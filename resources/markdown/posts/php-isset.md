@@ -137,7 +137,7 @@ var_dump(isset($values['flag']), empty($values['flag']));
 
 So if `0`, `''`, or `false` are valid values in your app, `empty()` is usually the wrong check.
 
-If that specific comparison is what you are dealing with, [this PHP array empty guide](/php-array-empty) is the better deep dive.
+If that specific comparison is what you are dealing with, [this PHP array length guide](/php-array-length) is the better deep dive because it covers `count()` and empty-array checks side by side.
 
 ## `isset()` vs `??`
 
@@ -245,5 +245,5 @@ If any of those assumptions is wrong, another tool is usually clearer.
 If you are still sorting out these tiny PHP checks that cause bigger bugs than they should, these are the next reads I would keep open:
 
 - [Use `??` when a fallback value is the real goal](/php-double-question-mark-null-coalescing-operator)
-- [Check arrays the right way before you branch on them](/php-array-empty)
+- [Count arrays correctly before you branch on them](/php-array-length)
 - [Decode request or API data more safely in PHP](/php-json-decode)

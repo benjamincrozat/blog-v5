@@ -98,4 +98,4 @@ If you are tidying the everyday operators that make PHP code easier to read, the
 
 - [Stop foreach from blowing up on the wrong input](/invalid-argument-supplied-for-foreach)
 - [See what PHP 8.5 changes before you upgrade](/php-85)
-- [Check arrays the right way before you branch on them](/php-array-empty)
+- [Count arrays correctly before you branch on them](/php-array-length)
