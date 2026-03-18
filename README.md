@@ -1,30 +1,34 @@
 <img src="https://github.com/user-attachments/assets/45c65ced-ba72-4de1-a047-7f2aa85f8e4a" width="100" />
 
-# The modern hub for developers, by Benjamin Crozat
+# The code behind a blog that generated $20K+ and peaked at 100K monthly visits
 
-This is the source code for my revenue-generating 45K monthly visitors [developer hub](https://benjamincrozat.com).
+This is the source code for [benjamincrozat.com](https://benjamincrozat.com), my content-driven developer blog and one of the main ways I market my work.
 
-**Feel free to steal whatever you need.** But first, why don't you follow me on [X](https://x.com/benjamincrozat)?
+It has generated more than **$20,000 in revenue** and reached a peak of **100,000 visits per month**.
 
-## What to expect
+If you're checking me out as a developer, this repo shows how I build and run a real Laravel publishing business: content, monetization, automation, performance, and editorial tooling included.
 
-- **Independently built and maintained:**  
-  This codebase evolves organically as time allows and needs arise.
-  
-- **Production-ready Laravel code:**  
-  Explore clean, fast, and tested code with Actions, Jobs, Policies, and more.
+**Feel free to borrow whatever is useful.** If you want to keep up with what I ship, follow me on [X](https://x.com/benjamincrozat).
 
-- **Monetization & analytics:**  
-  See how I implemented affiliate links, ad-blocker-resistant analytics, etc.
+## What you'll find inside
 
-- **Automation & background jobs:**  
-  See how I automate background operations with queues (managed by Horizon) and scheduled tasks.
+- **A real-world Laravel application:**  
+  Clean, production-tested code with Actions, Jobs, Policies, queues, scheduled tasks, and the kind of decisions that come from running a site people actually use.
+
+- **A content engine, not a demo project:**  
+  Posts are managed in Markdown, synced into the app, enriched with images, and published through a workflow designed for consistent output.
+
+- **Monetization and analytics patterns:**  
+  Affiliate links, attribution, ad-blocker-resistant analytics, and the practical plumbing behind a site that earns revenue.
+
+- **Automation and background processing:**  
+  Queues, Horizon, and scheduled jobs that keep repetitive work off the critical path.
 
 - **Cloudflare Images integration:**  
-  Because I didn't want to develop my own image upload flow from scratch and Cloudflare Images is pretty damn good.
+  A pragmatic image workflow for hero images and inline article assets without building a custom media system from scratch.
 
-- **Comprehensive test suite:**  
-  350+ tests written using Pest show how to keep features reliable and code maintainable.
+- **A serious testing mindset:**  
+  A large Pest test suite that helps keep the publishing flow and business logic reliable as the site evolves.
 
 <img src="https://github.com/user-attachments/assets/3d1f2ca8-cfbf-458c-a451-9f093820361f" />
 
