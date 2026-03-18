@@ -3,17 +3,21 @@ Displays the categories show view.
 --}}
 
 <x-app
-    :title="'The latest news about ' . $category->name"
-    :description="'Level up in ' . date('Y') . ' as a web developer with this collection of articles I wrote about ' . $category->name . '.'"
+    :title="$category->name . ' articles, news, takes, and tutorials'"
+    :description="'Browse articles, news, takes, and tutorials about ' . $category->name . ' for web developers.'"
 >
-    <article class="container">
+    <article class="container xl:max-w-(--breakpoint-lg)">
         <x-breadcrumbs :items="$breadcrumbs" class="mb-12 md:mb-14" />
 
-        <x-typography.heading>
-            Articles, news, takes, and tutorials about {{ $category->name }}
-        </x-typography.heading>
+        <x-typography.headline>
+            Stay ahead in <span class="text-blue-600">{{ $category->name }}</span>
+        </x-typography.headline>
 
-        <x-posts-grid :$posts class="mt-10" />
+        <x-typography.subheadline class="mt-6 md:mt-10">
+            Articles, news, takes, and tutorials for web developers who want to keep up with {{ $category->name }}.
+        </x-typography.subheadline>
+
+        <x-posts-grid :$posts class="mt-16 md:mt-24" />
 
         <x-pagination
             :paginator="$posts"
