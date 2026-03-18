@@ -1,136 +1,222 @@
 ---
 id: "01KKEW27MJ9HYRQFW9G3BG0KXY"
-title: "PHP str_replace(): practical examples and gotchas"
+title: "PHP str_replace(): examples, gotchas, and alternatives"
 slug: "php-str-replace"
 author: "benjamincrozat"
-description: "Use PHP str_replace() to replace one string, many strings, or values inside arrays, and know when to switch to str_ireplace() or preg_replace()."
+description: "Use PHP str_replace() to replace one string, many strings, or array values, and know when str_ireplace() or preg_replace() is the better fit."
 categories:
   - "php"
 published_at: 2023-07-10T00:00:00+02:00
-modified_at: 2026-03-14T10:09:06Z
+modified_at: 2026-03-18T21:02:00+00:00
 serp_title: null
 serp_description: null
 canonical_url: ""
 is_commercial: false
 image_disk: "cloudflare-images"
-image_path: "images/posts/ZlcgxPjBYUPoQGA.png"
+image_path: "images/posts/generated/php-str-replace.png"
 sponsored_at: null
 ---
 ## Introduction
 
-**PHP's [`str_replace()`](https://www.php.net/str_replace) function replaces part of a string with something else.**
+**Use [`str_replace()`](https://www.php.net/str_replace) when you want to replace exact text in PHP.**
 
-You can use it to replace one value, multiple values, or even values inside an array. It is the right tool for literal string replacement, while `str_ireplace()` handles case-insensitive replacements and `preg_replace()` handles patterns.
+```php
+$title = 'Laravel 12 is out';
+
+echo str_replace('12', '13', $title);
+
+// Laravel 13 is out
+```
+
+That is the quick answer most searchers want.
+
+The useful part is knowing when `str_replace()` stops being the right tool:
+
+- `str_ireplace()` is for case-insensitive matching
+- `preg_replace()` is for patterns, not exact strings
+- array replacements run left to right, which can create surprising results
+- if the replacement array is shorter than the search array, PHP uses empty strings for the leftovers
+
+This guide focuses on those practical edges instead of stopping at one line of syntax.
 
 ## How to use str_replace() in PHP
 
-The [`str_replace()`](https://www.php.net/str_replace) function in PHP replaces strings with other strings. It's that simple, yet powerful.
+[`str_replace()`](https://www.php.net/str_replace) replaces every occurrence of one exact string with another exact string.
 
-Its signature looks like this:
+Its signature is:
 
 ```php
 str_replace(
     string|array $search,
-    string|array $replace, 
-    string|array $subject, 
+    string|array $replace,
+    string|array $subject,
     int &$count = null
 ) : string|array
 ```
 
-- `search`: It specifies the value to find. It can either be a `string` or an `array`.
-- `replace`: It defines the value to replace the found value with. It can either be a `string` or an `array`.
-- `subject`: It's the string or array to be searched and replaced on. It can either be a `string` or an `array`.
-- `count`: It's an *optional* `integer` and determines the number of replacements performed.
+- `$search`: the text to find
+- `$replace`: the replacement text
+- `$subject`: the string or array you want to change
+- `$count`: optional; PHP stores the number of replacements here
 
-To me, examples speak more than theory. Let's explore how to use [`str_replace()`](https://www.php.net/str_replace).
+The important detail is “exact string.” If you need patterns or capture groups, skip straight to `preg_replace()`.
 
-## Practical use cases of str_replace() in PHP
+## Replace one string with another
 
-### Classic search and replace
-
-Let's say we have a greeting "Hello, unknown person!" and we want to change "unknown person" to "Benjamin".
-
-Using [`str_replace()`](https://www.php.net/str_replace), we can achieve this like so:
+This is the normal case:
 
 ```php
-$sentence = 'Hello, unknown person!';
+$message = 'Hello, unknown person!';
 
-echo str_replace('unknown person', 'Benjamin', $sentence);
+echo str_replace('unknown person', 'Benjamin', $message);
 
-// Outputs: Hello, Benjamin!
+// Hello, Benjamin!
 ```
 
-### Search and replace multiple values
+PHP replaces all matching occurrences, not just the first one.
 
-`str_replace()` can also be used with arrays, sequentially searching and replacing the values.
+## Replace multiple values in one call
 
-This can avoid you having to call [`str_replace()`](https://www.php.net/str_replace) multiple times.
-
-For example:
+You can pass arrays to avoid stacking several calls:
 
 ```php
 $sentence = '1st, 2nd, and 3rd.';
 
 echo str_replace(
-    ['1st', '2nd', '3rd'], 
-    ['first', 'second', 'third'], 
+    ['1st', '2nd', '3rd'],
+    ['first', 'second', 'third'],
     $sentence
 );
 
-// Outputs: first, second, and third.
+// first, second, and third.
 ```
 
-### Search and replace in an array of strings
+That is usually easier to read than nesting multiple `str_replace()` calls.
 
-`str_replace()` accepts a value of type `array` as the subject.
+## Replace text inside an array of strings
 
-Which means you can still avoid calling `str_replace` multiple times if you are able to build an array of subjects. I didn't know that before writing this article!
-
-Let me show you:
+The subject can also be an array:
 
 ```php
 $sentences = [
-    'You cannot mention Mastodon on Twitter!',
-    "Let's build a new society on Mastodon!",
-    'Is Mastodon a Twitter-killer?',
+    'Laravel makes PHP pleasant.',
+    'Symfony also makes PHP pleasant.',
 ];
 
 var_dump(
     str_replace(
-        'Mastodon', 
-        '@&$!?%', 
+        'PHP',
+        'web development',
         $sentences
     )
 );
 
-// Outputs: [
-//     'You cannot mention @&$!?% on Twitter!',
-//     "Let's build a new society on @&$!?%!",
-//     'Is @&$!?% a Twitter-killer?',
+// [
+//     'Laravel makes web development pleasant.',
+//     'Symfony also makes web development pleasant.',
 // ]
 ```
 
-### PHP's str_ireplace() isn't case sensitive
+That is handy when you are cleaning imported values, labels, or batches of messages.
 
-The str_replace() function is case-sensitive.
+## Count how many replacements happened
 
-If you need case-insensitive replacement, PHP offers the [`str_ireplace()`](https://php.net/str_ireplace) function.
+The optional fourth parameter is useful when you want both the changed value and the number of replacements:
 
 ```php
-echo str_ireplace('foo', 'bar', 'FOo foo fOO');
+$count = 0;
 
-// Outputs: bar bar bar
+echo str_replace('a', 'b', 'banana', $count);
+var_dump($count);
+
+// bbnbnb
+// int(3)
 ```
 
-## The limitations of the str_replace() function in PHP
+That can save you from running a second check just to see whether anything changed.
 
-While versatile, [`str_replace()`](https://www.php.net/str_replace) has its limitations:
-- **No direct support for regular expressions:** As mentioned, [`str_replace()`](https://www.php.net/str_replace) does not support regex. For this, you'll need to use [`preg_replace()`](https://www.php.net/preg_replace).
-- **It's unable to replace multi-byte unicode characters:** The [`str_replace()`](https://www.php.net/str_replace) function is not safe for multi-byte characters like those found in UTF-8 strings.
-- **There are problems with case sensitivity:** As noted before, [`str_replace()`](https://www.php.net/str_replace) is case-sensitive. If you need to ignore case, use [`str_ireplace()`](https://www.php.net/str_ireplace).
+## `str_replace()` vs `str_ireplace()` vs `preg_replace()`
+
+This is the comparison most tutorials leave too vague.
+
+Use [`str_replace()`](https://www.php.net/str_replace) for exact, case-sensitive replacement:
+
+```php
+echo str_replace('php', 'PHP', 'php is fun');
+
+// PHP is fun
+```
+
+Use [`str_ireplace()`](https://www.php.net/str_ireplace) when case should not matter:
+
+```php
+echo str_ireplace('php', 'PHP', 'Php is fun');
+
+// PHP is fun
+```
+
+Use [`preg_replace()`](https://www.php.net/preg_replace) when the match is a pattern:
+
+```php
+echo preg_replace('/\d+/', '#', 'Version 8.4.16');
+
+// Version #.#.#
+```
+
+My rule of thumb is:
+
+- exact text: `str_replace()`
+- exact text, case-insensitive: `str_ireplace()`
+- patterns or capture groups: `preg_replace()`
+
+## Gotchas worth knowing before you ship
+
+### Multiple replacements are processed left to right
+
+This one surprises people:
+
+```php
+echo str_replace(['A', 'B', 'C'], ['B', 'C', 'D'], 'ABC');
+
+// DDD
+```
+
+Why `DDD` instead of `BCD`?
+
+Because PHP replaces `A` with `B`, then sees that new `B` and replaces it with `C`, and so on.
+
+If you need one-pass character translation, [`strtr()`](https://www.php.net/strtr) is often the safer fit.
+
+### A shorter replacement array means empty strings
+
+If the replacement array has fewer items than the search array, PHP uses an empty string for the rest:
+
+```php
+echo str_replace(['quick', 'brown'], ['slow'], 'quick brown fox');
+
+// slow  fox
+```
+
+That is easy to miss when those arrays are built dynamically.
+
+### `str_replace()` is fine for exact UTF-8 text
+
+[`str_replace()`](https://www.php.net/str_replace) is binary-safe, so replacing an exact UTF-8 sequence is fine:
+
+```php
+echo str_replace('é', 'e', 'café');
+
+// cafe
+```
+
+The more relevant Unicode caveat is with [`str_ireplace()`](https://www.php.net/str_ireplace): as of PHP 8.2, its case folding is ASCII-only, so non-ASCII bytes are compared by byte value.
+
+## Conclusion
+
+For exact string replacement in PHP, `str_replace()` is still the right default. The real value is knowing when to step up to `str_ireplace()` or `preg_replace()`, and when array replacement behavior will give you results that look random until you remember PHP processes them left to right.
 
 If you are still cleaning up string handling in everyday PHP code, these are the next reads I would keep nearby:
 
 - [Split strings into arrays cleanly with explode](/php-explode)
-- [Parse URL paths and query strings without framework helpers](/php-parse-url)
-- [Catch the PHP 8.4 changes that could affect your code](/php-84)
+- [Parse URLs safely when you need more than a string replace](/php-parse-url)
+- [Extract part of a string cleanly with substr](/php-substr)
