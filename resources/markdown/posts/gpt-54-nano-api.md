@@ -19,9 +19,9 @@ sponsored_at: null
 ---
 ## What this GPT-5.4 nano guide covers
 
-OpenAI released GPT-5.4 nano on March 17, 2026 in its [launch post](https://openai.com/index/introducing-gpt-5-4-mini-and-nano/). The current [GPT-5.4 nano model page](https://developers.openai.com/api/docs/models/gpt-5.4-nano) places it in the new GPT-5.4 family, and the current [pricing page](https://openai.com/api/pricing/) puts it at the low end of that lineup.
+OpenAI introduced the GPT-5.4 family on March 5, 2026 in its [GPT-5.4 launch post](https://openai.com/index/introducing-gpt-5-4/). The current [GPT-5.4 nano model page](https://developers.openai.com/api/docs/models/gpt-5.4-nano) places nano in that family, and the current [pricing page](https://openai.com/api/pricing/) puts it at the low end of that lineup.
 
-That makes GPT-5.4 nano the model I would reach for when the job is small, repetitive, and high-volume: classification, extraction, ranking, and lightweight routing to sub-agents. OpenAI also says it is a significant upgrade over GPT-5 nano.
+That makes GPT-5.4 nano the model I would reach for when the job is small, repetitive, and high-volume: classification, extraction, ranking, and lightweight routing to sub-agents.
 
 This guide uses the pinned snapshot `gpt-5.4-nano-2026-03-17`.
 
@@ -77,7 +77,7 @@ curl -s https://api.openai.com/v1/responses \
   }'
 ```
 
-That exact request completed successfully for me and returned `Hello!`.
+If your key and billing are set up correctly, you should get a short greeting back.
 
 ## Build something useful: route work to sub-agents
 
@@ -174,16 +174,6 @@ OpenAI's pricing page puts it at the low end of the GPT-5.4 family, which is why
 
 That also makes it a natural step up from the older [GPT-5 nano guide](/gpt-5-nano-api) when you want the newer GPT-5.4 family without jumping all the way to full GPT-5.4.
 
-## How I would choose reasoning effort on GPT-5.4 nano
-
-For nano, I would start with:
-
-- `minimal` for almost everything
-- `low` when the task needs a little more judgment
-- `medium` only when the prompt is still small but the answer quality is not quite there yet
-
-The key is to keep the task compact. Nano shines when the job is precise, not when it needs a long chain of reasoning.
-
 ## When GPT-5.4 nano is the right model
 
 Pick GPT-5.4 nano when you care about:
@@ -214,5 +204,5 @@ If GPT-5.4 nano looks close to what you need, these are the next reads I would k
 
 - [See the full GPT-5.4 API quick start for the flagship family](/gpt-54-api)
 - [Compare it with the older GPT-5 nano quick start](/gpt-5-nano-api)
-- [See the cheaper GPT-5 mini workflow for broader low-cost tasks](/gpt-5-mini-api)
+- [Step up to GPT-5.4 mini when you want a broader low-cost model](/gpt-54-mini-api)
 - [Move this same structured-output pattern into PHP](/openai-php-client)

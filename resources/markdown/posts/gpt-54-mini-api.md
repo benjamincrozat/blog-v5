@@ -19,11 +19,11 @@ sponsored_at: null
 ---
 ## What this GPT-5.4 mini guide covers
 
-OpenAI released GPT-5.4 mini on March 17, 2026 in its [launch post](https://openai.com/index/introducing-gpt-5-4-mini-and-nano/). The current [GPT-5.4 mini model page](https://developers.openai.com/api/docs/models/gpt-5.4-mini) describes it as OpenAI's strongest mini model yet for coding, computer use, and subagents.
+OpenAI introduced the GPT-5.4 family on March 5, 2026 in its [GPT-5.4 launch post](https://openai.com/index/introducing-gpt-5-4/). The current [GPT-5.4 mini model page](https://developers.openai.com/api/docs/models/gpt-5.4-mini) describes mini as OpenAI's strongest mini model yet for coding, computer use, and subagents.
 
-That makes GPT-5.4 mini the practical middle ground in the GPT-5.4 family. It is built for high-volume workloads, it brings the strengths of GPT-5.4 to a smaller model, and it improves noticeably over GPT-5 mini across coding, reasoning, multimodal understanding, and tool use. OpenAI also says it runs more than 2x faster than GPT-5 mini.
+That makes GPT-5.4 mini the practical middle ground in the GPT-5.4 family. The model page says it brings the strengths of GPT-5.4 to a faster, more efficient model designed for high-volume workloads.
 
-If you are starting fresh and want the flagship option first, read my [GPT-5.4 API guide](/gpt-54-api). If you only care about the cheapest branch, compare this with [GPT-5.4 nano](/gpt-5-nano-api).
+If you are starting fresh and want the flagship option first, read my [GPT-5.4 API guide](/gpt-54-api). If you only care about the cheapest branch, compare this with [GPT-5.4 nano](/gpt-54-nano-api).
 
 By the end, you will have:
 
@@ -77,7 +77,7 @@ curl -s https://api.openai.com/v1/responses \
   }'
 ```
 
-That gives you a quick way to verify the API key, endpoint, and model selection are all working.
+If your key and billing are set up correctly, that gives you a quick way to verify the endpoint and model selection are working.
 
 The model page also lists the parts that matter for real apps:
 
@@ -160,7 +160,7 @@ curl -s https://api.openai.com/v1/responses \
   }'
 ```
 
-That request should give you JSON shaped like this:
+If everything is wired correctly, you should get JSON shaped like this:
 
 ```json
 {
@@ -184,9 +184,9 @@ If you want to move this pattern into PHP next, my guide on [using OpenAI's API 
 
 GPT-5.4 mini sits in a sweet spot.
 
-The launch post says it is a significant upgrade over GPT-5 mini, and the model page backs that up with a clearer value proposition: a faster, more efficient model for high-volume workloads. The pricing page puts it at [\$0.75 input and \$4.50 output per 1M tokens](https://openai.com/api/pricing/), while the same comparison area shows GPT-5.4 at [\$2.50 input and \$15 output per 1M tokens](https://openai.com/api/pricing/). That makes GPT-5.4 mini much cheaper than the full model while still staying in the newer GPT-5.4 family.
+The model page backs up a clear value proposition: a faster, more efficient model for high-volume workloads. The pricing page puts it at [\$0.75 input and \$4.50 output per 1M tokens](https://openai.com/api/pricing/), while the same comparison area shows GPT-5.4 at [\$2.50 input and \$15 output per 1M tokens](https://openai.com/api/pricing/). That makes GPT-5.4 mini much cheaper than the full model while still staying in the newer GPT-5.4 family.
 
-So if your task is precise and repeatable, mini often makes more sense than the flagship model. If the work is even narrower and cost is the main constraint, [GPT-5.4 nano](/gpt-5-nano-api) is the next model I would compare.
+So if your task is precise and repeatable, mini often makes more sense than the flagship model. If the work is even narrower and cost is the main constraint, [GPT-5.4 nano](/gpt-54-nano-api) is the next model I would compare.
 
 ## How I would use GPT-5.4 mini
 
@@ -211,11 +211,11 @@ This model shines when you tell it exactly what to classify, extract, or decide.
 
 ### 3. Skipping the cheaper or larger sibling when the fit is obvious
 
-If you only need very fast, very cheap classification, [GPT-5.4 nano](/gpt-5-nano-api) may be enough. If the task needs more breadth or judgment, [GPT-5.4](/gpt-54-api) is the better upgrade path.
+If you only need very fast, very cheap classification, [GPT-5.4 nano](/gpt-54-nano-api) may be enough. If the task needs more breadth or judgment, [GPT-5.4](/gpt-54-api) is the better upgrade path.
 
 If GPT-5.4 mini looks close to what you need, these are the next reads I would keep open:
 
 - [See when the full GPT-5.4 model is still worth the extra cost](/gpt-54-api)
-- [Compare GPT-5.4 mini with the cheaper GPT-5.4 nano](/gpt-5-nano-api)
+- [Compare GPT-5.4 mini with the cheaper GPT-5.4 nano](/gpt-54-nano-api)
 - [Move this same structured-output pattern into PHP](/openai-php-client)
 - [Build a better mental model for what GPT-style models are actually doing](/how-llms-work)
