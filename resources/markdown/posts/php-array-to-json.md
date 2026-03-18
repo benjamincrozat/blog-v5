@@ -85,7 +85,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 
 But you shouldn’t be writing legacy code. Just use the error flag and catch exceptions.
 
-If you want a faster way to inspect data before encoding it, my [`console.log()` in PHP](/console-log-php) guide covers a few simple debugging options.
+If you need to log the raw payload before encoding it, my [PHP `error_log()` guide](/php-error-log) covers a few safe debugging patterns.
 
 ## Conclusion
 

@@ -155,6 +155,6 @@ dd($a, $b, $c, $d, $e, …);
 
 If you are still in debugging mode after dumping that array, these are the next reads I would keep nearby:
 
-- [Log to the browser console from PHP when you just need a quick check](/console-log-php)
+- [Write PHP messages to your error log when screen output gets in the way](/php-error-log)
 - [Show every PHP error when debugging gets vague](/php-show-all-errors)
 - [Stop foreach from blowing up on the wrong input](/invalid-argument-supplied-for-foreach)
