@@ -61,6 +61,11 @@ class ToolMarkdownDocument
             throw ToolMarkdownException::forPath($relativePath, "Filename must match slug [{$slug}].");
         }
 
+        $imageDisk = static::expectNullableString($frontMatter, 'image_disk', $relativePath);
+        $imagePath = static::expectNullableString($frontMatter, 'image_path', $relativePath);
+
+        static::ensureValidImageSource($imageDisk, $imagePath, $relativePath);
+
         return new self(
             id: static::expectId($frontMatter, 'id', $relativePath),
             name: static::expectString($frontMatter, 'name', $relativePath),
@@ -73,8 +78,8 @@ class ToolMarkdownDocument
             hasFreeTrial: static::expectBool($frontMatter, 'has_free_trial', $relativePath),
             isOpenSource: static::expectBool($frontMatter, 'is_open_source', $relativePath),
             categories: static::expectCategories($categories, $relativePath),
-            imageDisk: static::expectNullableString($frontMatter, 'image_disk', $relativePath),
-            imagePath: static::expectNullableString($frontMatter, 'image_path', $relativePath),
+            imageDisk: $imageDisk,
+            imagePath: $imagePath,
             reviewPostSlug: static::expectNullableString($frontMatter, 'review_post_slug', $relativePath),
             publishedAt: static::expectNullableDate($frontMatter, 'published_at', $relativePath),
             body: $matches['body'],
@@ -374,6 +379,35 @@ class ToolMarkdownDocument
         }
 
         return $categories;
+    }
+
+    protected static function ensureValidImageSource(?string $imageDisk, ?string $imagePath, string $relativePath) : void
+    {
+        if (blank($imageDisk) && blank($imagePath)) {
+            return;
+        }
+
+        if (filled($imageDisk) && blank($imagePath)) {
+            throw ToolMarkdownException::forPath(
+                $relativePath,
+                'Front matter key [image_disk] requires [image_path] to be set.'
+            );
+        }
+
+        if (blank($imagePath)) {
+            return;
+        }
+
+        if (str_starts_with($imagePath, 'http://') || str_starts_with($imagePath, 'https://') || str_starts_with($imagePath, 'resources/')) {
+            return;
+        }
+
+        if (blank($imageDisk)) {
+            throw ToolMarkdownException::forPath(
+                $relativePath,
+                'Front matter key [image_path] requires [image_disk] unless it is an absolute URL or a resources/ asset.'
+            );
+        }
     }
 
     protected static function parseScalar(string $value) : string|bool|null

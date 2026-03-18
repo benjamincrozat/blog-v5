@@ -78,7 +78,7 @@ it('creates a tool from markdown and links its review post', function () {
         'is_open_source' => true,
         'categories' => ['ai', 'developer-tools'],
         'image_disk' => '"public"',
-        'image_path' => 'null',
+        'image_path' => '"images/tools/remodex.png"',
         'review_post_slug' => '"remodex-review"',
         'published_at' => '"2026-03-17T09:00:00+00:00"',
     ], "A short tool summary.\n");
@@ -270,4 +270,30 @@ it('fails when pricing_model is invalid', function () {
 
     expect(Artisan::output())
         ->toContain('Front matter key [pricing_model] must be one of');
+});
+
+it('fails when a disk-backed image_path is missing image_disk', function () {
+    writeSyncTool(syncToolsMarkdownPath(), 'bad-image', [
+        'id' => '01KP0KDBER66R3C81GZVWXW3B7',
+        'name' => '"Bad Image"',
+        'slug' => 'bad-image',
+        'description' => '"A tool with incomplete image metadata."',
+        'website_url' => '"https://example.com/tool"',
+        'outbound_url' => '"https://example.com/tool"',
+        'pricing_model' => '"free"',
+        'has_free_plan' => true,
+        'has_free_trial' => false,
+        'is_open_source' => true,
+        'categories' => ['testing'],
+        'image_disk' => 'null',
+        'image_path' => '"images/tools/foo.jpg"',
+        'review_post_slug' => 'null',
+        'published_at' => '"2026-03-17T09:00:00+00:00"',
+    ]);
+
+    expect(Artisan::call('app:sync-tools', ['--directory' => syncToolsMarkdownPath()]))
+        ->toBe(1);
+
+    expect(Artisan::output())
+        ->toContain('Front matter key [image_path] requires [image_disk]');
 });
