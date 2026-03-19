@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27KKSV7D18ZBY0ZH2WJ0"
-title: "PHP enums explained with examples"
+title: "PHP enums: backed vs unit enums with examples"
 slug: "php-enums"
 author: "benjamincrozat"
-description: "Learn what PHP enums are, how to declare them, and when to use backed enums and enum methods."
+description: "Learn when to use PHP enums, how unit and backed enums differ, and how to model real application states safely."
 categories:
   - "php"
 published_at: 2023-07-05T00:00:00+02:00
-modified_at: 2026-03-13T12:20:00Z
+modified_at: 2026-03-19T22:39:10Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -18,415 +18,286 @@ sponsored_at: null
 ---
 ## Introduction
 
-**PHP enums let you model a fixed set of possible values as a real type.**
+**PHP enums let you model a fixed list of allowed values as a real type.**
 
-They are useful when a value should only ever be one of a small number of allowed options, such as a user status, an order state, or an app environment.
+If you only need the quick answer:
 
-PHP added enums in PHP 8.1, and they make this kind of code clearer, safer, and easier to maintain. Here is how they work, with practical examples.
+- Use a **unit enum** when the case itself is enough.
+- Use a **backed enum** when you also need a stable string or integer value for a database, API, queue payload, or config file.
 
-## A brief history of Enums in PHP
+Native enums were added in **PHP 8.1**, and the PHP manual describes them as a special kind of object. That makes them much safer than passing raw strings like `"draft"` or `"published"` around your app.
 
-### Before PHP 8.1
+## When PHP enums are worth using
 
-PHP did not have built-in support for Enums. While this lack of Enums did not prevent developers from writing code, it did mean that PHP lacked a tool found in many other languages that can make coding safer and more efficient.
+Enums are a good fit when a value should only ever be one of a small number of valid choices.
 
-Without built-in Enums, developers had to use other constructs to represent a set of possible values, often resorting to class constants, arrays, or sometimes just strings or integers.
+Typical examples:
 
-However, this could lead to potential errors and often resulted in code that was not as clear as it could be.
+- order status
+- user role
+- payment state
+- app environment
+- HTTP method
 
-### PHP 8.1
-
-The introduction of Enums in PHP 8.1 has been a significant addition to the language.
-
-PHP's implementation of Enums is more powerful than many other languages, as Enums in PHP are not merely integer or string values under the hood.
-
-In PHP, an Enum is a special kind of object, with cases of the Enum being single-instance objects of that class.
-
-This means you can use Enums anywhere you could use an object, making them extremely versatile.
-
-The addition of Enums to PHP signifies the language's ongoing evolution to incorporate more modern programming concepts and paradigms, increasing its efficiency, and enabling developers to write safer and cleaner code.
-
-## Understanding the basics of Enums in PHP
-
-To unravel the basics of Enums in PHP, I decided to use the magical world of Harry Potter.
-
-Imagine we're coding for the Hogwarts School of Witchcraft and Wizardry, where each new student must be sorted into a house by the virtual Sorting Hat.
-
-At Hogwarts, there are only four houses: Gryffindor, Hufflepuff, Ravenclaw, and Slytherin.
-
-So, we could represent this as an Enum in PHP.
-
-Here's how you declare an Enum:
+Without enums, those values often end up as loose strings, which makes typos and invalid states easier to miss.
 
 ```php
-<?php
+$status = 'publshed'; // typo, but still a string
+```
 
-enum House
+With an enum, PHP restricts the value to known cases:
+
+```php
+enum PostStatus
 {
-    case Gryffindor;
-    case Hufflepuff;
-    case Ravenclaw;
-    case Slytherin;
+    case Draft;
+    case Published;
+    case Archived;
 }
 ```
 
-In this example, we have created an Enum named House, which can have four possible values - `Gryffindor`, `Hufflepuff`, `Ravenclaw`, and `Slytherin`.
+Now a property, argument, or return type can only be one of those three cases.
 
-Let's create a `Student` class, where each student holds a `$house` property.
+## Unit enums vs backed enums
+
+This is the part most people are actually trying to sort out.
+
+| Type | Best for | Stores scalar value? | Common example |
+| --- | --- | --- | --- |
+| Unit enum | In-memory app logic | No | workflow states |
+| Backed enum | Database or API values | Yes | `draft`, `published`, `archived` |
+
+### Use a unit enum when the case name is enough
+
+Unit enums only define cases:
 
 ```php
-class Student
+enum ServerEnvironment
 {
-    public ?House $house = null;
+    case Local;
+    case Staging;
+    case Production;
 }
 ```
 
-We also have a `SortingHat` class with a `sort` method.
+This is great when you just need a constrained value inside your application.
 
-This method either accepts a house suggestion or randomly assigns a house to the student.
+### Use a backed enum when you need a stable stored value
 
-Just like in Harry Potter, the Sorting Hat took Harry's choice into consideration!
-
-```php
-class SortingHat
-{   
-    public function sort(Student $student, ?House $suggestedHouse = null)
-    {
-        if ($suggestedHouse) {
-            $student->house = $suggestedHouse;
-            
-            return;
-        }
-
-        $houses = [
-            House::Gryffindor,
-            House::Hufflepuff,
-            House::Ravenclaw,
-            House::Slytherin,
-        ];
-
-        $index = array_rand($houses);
-        
-        $student->house = $houses[$index];
-    }
-}
-```
-
-As you can see, we've limited the values of the `$suggestedHouse` variable and `$house` property to only be one of the four Hogwarts houses using the `House` Enum.
-
-If you were to try to sort a student into a non-existent house, PHP will catch this, and it wouldn't run.
-
-That's the magic of Enums!
-
-In this scenario, the Hogwarts houses with no associated data are called "Pure Cases," and an Enum that contains only Pure Cases, like our House Enum, is referred to as a "Pure Enum."
-
-## Pure Enums VS. backed Enums
-
-Backed Enums are Enums backed with a scalar value. That's why they are considered "not pure."
-
-For a reminder, a scalar value in PHP is either of type `bool`, `float`, `int` or `string`.
-
-Code speaks more than words sometimes, so here's a Backed Enum:
+Backed enums attach each case to a `string` or `int`:
 
 ```php
-<?php
-
-enum House: string
+enum PostStatus: string
 {
-    case Gryffindor = 'Gryffindor';
-    case Hufflepuff = 'Hufflepuff';
-    case Ravenclaw = 'Ravenclaw';
-    case Slytherin = 'Slytherin';
+    case Draft = 'draft';
+    case Published = 'published';
+    case Archived = 'archived';
 }
 ```
 
-As you can see, we defined the type that backs the Enum (`string` in that case) and we assign a value to each case. Couldn't be simpler than that. But why would you use Backed Enums?
+That is usually the better choice when you need to:
 
-Here's a great use case:
+- save the value in a database
+- send it in JSON
+- receive it from an API
+- keep values stable even if you rename a case later
+
+## A practical backed-enum example
+
+Here is the common Laravel or plain PHP scenario: you read a string from storage and want a typed enum again.
 
 ```php
-// Let's pretend we fetched this value from the database.
-$house = 'Gryffindor';
+enum OrderStatus: string
+{
+    case Pending = 'pending';
+    case Paid = 'paid';
+    case Refunded = 'refunded';
+}
 
-$student = new Student(
-    House::from($house)
-);
+$status = OrderStatus::from('paid');
 
-// object(Student)#1 (1) {
-//   ["house"]=>
-//   enum(House::Gryffindor)
-// }
-var_dump($student);
+var_dump($status === OrderStatus::Paid); // true
 ```
 
-In this example:
-1. We pretend we fetched data from a database and we try to create a new `Student` object.
-2. We initialize the `$house` property with the `House::from()` static method from a string value (since `House` is now a backed enum of type `string`).
-3. If this fails, an exception is throw. (`Uncaught ValueError: "Foo" is not a valid backing value for enum "House"`)
-
-In some cases, instead of throwing an exception, you might want to fall back on a default value. Here's how you can do that with the `House::tryFrom()` static method, which returns `null` in case of failure.
+If the value may be invalid, use `tryFrom()` instead of `from()`:
 
 ```php
-$student = new Student(
-    House::tryFrom('Slytherin') ?? House::Gryffindor
+$status = OrderStatus::tryFrom($request['status']) ?? OrderStatus::Pending;
+```
+
+- `from()` throws a `ValueError` for an invalid value
+- `tryFrom()` returns `null`
+
+That small difference matters a lot when the data comes from a request, CSV import, or third-party API.
+
+## Listing enum cases
+
+All enums can list their cases with `cases()`:
+
+```php
+enum UserRole
+{
+    case Admin;
+    case Editor;
+    case Viewer;
+}
+
+$roles = UserRole::cases();
+```
+
+That is useful for:
+
+- select options
+- validation rules
+- docs or debug output
+- random test data
+
+If you are using a backed enum and want just the scalar values, map over the cases:
+
+```php
+$values = array_map(
+    fn (OrderStatus $status) => $status->value,
+    OrderStatus::cases(),
 );
 ```
 
-## Listing Enum values
+## Enum methods are where they start paying off
 
-You saw in the previous example that without a suggestion from the student, a house is randomly assigned.
-
-What bothers me in the example I provided, though, is that we manually listed the possible values of the `House` Enum to build our array.
-
-Fortunately, Enums all have a `cases()` method that can make our code more flexible!
+Enums are not just constants with nicer syntax. You can add methods and keep related logic close to the cases.
 
 ```php
-class SortingHat
-{   
-    public function sort(Student $student, ?House $suggestedHouse = null)
-    {
-        if ($suggestedHouse) {
-            $student->house = $suggestedHouse;
-            
-            return;
-        }
-
-        $houses = [
-            House::Gryffindor,
-            House::Hufflepuff,
-            House::Ravenclaw,
-            House::Slytherin,
-        ];
-	    $houses = House::cases();
-
-        $index = array_rand($houses);
-        
-        $student->house = $houses[$index];
-    }
-}
-```
-
-Pretty neat, right?
-
-## A deep dive into PHP Enums and their comparison with classes
-
-In our journey with PHP Enums so far, you might have noticed that they are similar to classes.
-
-They can be namespaced, implement interfaces, use traits, and they are also autoloadable in the same way.
-
-But, of course, there are also some significant differences between PHP classes and Enums.
-
-Let's revisit our magical Harry Potter example to understand these differences.
-
-When a student is sorted into a house by the Sorting Hat, we know that the house will always be one of the four predefined options - `Gryffindor`, `Hufflepuff`, `Ravenclaw`, or `Slytherin`. 
-
-There are no other possibilities in the context of Hogwarts. This scenario is perfect for Enums.
-
-An Enum, like `House`, is a unique data type that comprises a set of predefined constants.
-
-It signifies that a variable can have only one of these predefined constants and nothing else.
-
-For example, the `$house` property of the `Student` class can only hold one of the four house options defined in the `House` Enum.
-
-```php
-class Student
+enum OrderStatus: string
 {
-    public ?House $house = null;
-}
-```
+    case Pending = 'pending';
+    case Paid = 'paid';
+    case Refunded = 'refunded';
 
-In contrast, classes in PHP, like our `Student` class, can hold a variety of different properties and can be instantiated multiple times with different property values.
-
-Enums, on the other hand, cannot be instantiated and are used to define a fixed, limited set of instances.
-
-Another difference is in the way we compare classes and Enums. 
-
-In PHP, Enums are compared by their identity, not by their values.
-
-Let's take a look at an example:
-
-```php
-$a = House::Gryffindor;
-$b = House::Gryffindor;
-
-var_dump($a === $b); // bool(true)
-```
-
-In this example, `$a` and `$b` are the same `House` Enum instance, so `$a === $b` is `true`.
-
-Comparisons using less than `<` or greater than `>` operators are not meaningful for Enum objects and will always return false.
-
-Enum cases in PHP have a special property called `name`, which is the case-sensitive name of the case itself. This can be useful when you want to print the name of the Enum case.
-
-```php
-echo House::Gryffindor->name; // Prints "Gryffindor".
-```
-
-## Working with enum methods
-
-Now that we've explored how Enums can be compared and their differences from classes, it's time to dive deeper and explore enumeration methods in PHP Enums.
-
-Just like classes, Enums in PHP can contain methods.
-
-Let's see how we can utilize this feature using our Harry Potter sorting scenario.
-
-```php
-enum House
-{
-    case Gryffindor;
-    case Hufflepuff;
-    case Ravenclaw;
-    case Slytherin;
-
-    public function getHouseColors() : array
+    public function label(): string
     {
-        return match($this) {
-            House::Gryffindor => ['Red', 'Gold'],
-            House::Hufflepuff => ['Yellow', 'Black'],
-            House::Ravenclaw => ['Blue', 'Bronze'],
-            House::Slytherin => ['Green', 'Silver'],
+        return match ($this) {
+            self::Pending => 'Pending payment',
+            self::Paid => 'Paid',
+            self::Refunded => 'Refunded',
         };
     }
-}
 
-// array(2) {
-//   [0]=>
-//   string(3) "Red"
-//   [1]=>
-//   string(4) "Gold"
-// }
-var_dump(House::Gryffindor->getHouseColors());
-```
-
-In the magical world of Hogwarts, every house has its colors. In our example above, we've added a `getHouseColor()` method to our `House` Enum to return the color of each house.
-
-When a method is defined within an Enum, the `$this` variable is defined and refers to the case instance.
-
-## Enums can use Traits and implement Interfaces
-
-Like classes, Enums can use Traits. This is great when there are a lot of methods and you need to split them across multiple files to keep your code tidier.
-
-There are some restrictions, though:
-- You can't have properties.
-- You can't override Enums methods (like `cases()`).
-
-```php
-trait Colors
-{
-    public function getHouseColors() : array
+    public function isFinal(): bool
     {
-        return match($this) {
-            House::Gryffindor => ['Red', 'Gold'],
-            House::Hufflepuff => ['Yellow', 'Black'],
-            House::Ravenclaw => ['Blue', 'Bronze'],
-            House::Slytherin => ['Green', 'Silver'],
-        };
-    }
-}
-
-enum House
-{
-    use Colors;
-  
-    case Gryffindor;
-    case Hufflepuff;
-    case Ravenclaw;
-    case Slytherin;
-}
-```
-
-Like like Traits in Classes, Interfaces can also be implemented into Enums. It's difficult to find a concrete example for this use case, but here you go anyway:
-
-```php
-interface HasColors
-{
-    public function getHouseColors() : array;
-}
-
-enum House implements HasColors
-{
-    case Gryffindor;
-    case Hufflepuff;
-    case Ravenclaw;
-    case Slytherin;
-  
-    public function getHouseColors() : array
-    {
-        return match($this) {
-            House::Gryffindor => ['Red', 'Gold'],
-            House::Hufflepuff => ['Yellow', 'Black'],
-            House::Ravenclaw => ['Blue', 'Bronze'],
-            House::Slytherin => ['Green', 'Silver'],
+        return match ($this) {
+            self::Pending => false,
+            self::Paid, self::Refunded => true,
         };
     }
 }
 ```
 
-## What about Enums in PHP 7 or even PHP 5?
+That keeps your code easier to read than scattering `match` blocks throughout controllers, jobs, and views.
 
-Before the introduction of native Enumerations in PHP 8.1, enums were typically handled in PHP in a few different ways, none of which were particularly elegant or reliable. Here are some of the common strategies:
+## Real use cases for PHP enums
 
-- **Class constants:** Perhaps the most common way of implementing enums was through class constants. Here's an example:
+Here are the patterns I see most often in real projects.
+
+### Database-backed state
+
+Use a backed enum for values that live in a table:
 
 ```php
-class House
+enum SubscriptionStatus: string
 {
-    const Gryffindor = 'Gryffindor';
-    const Hufflepuff = 'Hufflepuff';
-    const Ravenclaw = 'Ravenclaw';
-    const Slytherin = 'Slytherin';
+    case Trialing = 'trialing';
+    case Active = 'active';
+    case Canceled = 'canceled';
 }
 ```
 
-In this way, you could refer to an enum value with House::Gryffindor, for instance. This approach provides a way to group related constants, but doesn't provide any of the type safety or functionality that true enums might offer (because class constants cannot be typed and marked as readonly).
+### API-friendly values
 
-- **Arrays:** Another common way was to use arrays to hold possible values.
-
-```php
-$houses = [
-    'Gryffindor', 
-    'Hufflepuff',
-    'Ravenclaw',
-    'Slytherin',
-];
-```
-
-However, this method also lacks the benefits of true Enums such as type safety and autocompletion.
-
-- **[SplEnum](http://php.adamharvey.name/manual/en/class.splenum.php):** PHP used to have a built-in SplEnum class, which was a part of the Standard PHP Library (SPL). However, it was not widely adopted due to its performance issues and it required the SPL Types extension which was not bundled with PHP and was considered experimental.
+If an external API expects `"GET"` or `"POST"`, a backed enum gives you safer code:
 
 ```php
-class House extends SplEnum
+enum HttpMethod: string
 {
-    const Gryffindor = 'Gryffindor';
-    const Hufflepuff = 'Hufflepuff';
-    const Ravenclaw = 'Ravenclaw';
-    const Slytherin = 'Slytherin';
+    case Get = 'GET';
+    case Post = 'POST';
+    case Put = 'PUT';
+    case Delete = 'DELETE';
 }
 ```
 
-This class was removed in PHP 7.0, so it's not used anymore.
+### Domain rules with methods
 
-- **Third-party packages:** There are also several packages that provide enum functionality, such as [myclabs/php-enum](https://packagist.org/packages/myclabs/php-enum). These often provide more features than simple class constants or arrays, such as methods for listing all possible values, converting to/from strings, etc.
+Enums become especially useful when the value has behavior:
 
 ```php
-use MyCLabs\Enum\Enum;
-
-class House extends Enum
+enum InvoiceStatus: string
 {
-    const Gryffindor = 'Gryffindor';
-    const Hufflepuff = 'Hufflepuff';
-    const Ravenclaw = 'Ravenclaw';
-    const Slytherin = 'Slytherin';
+    case Draft = 'draft';
+    case Sent = 'sent';
+    case Paid = 'paid';
+
+    public function canBeEdited(): bool
+    {
+        return $this !== self::Paid;
+    }
 }
 ```
 
-Despite these workarounds, none of them could provide the full set of features that true Enumerations can offer, such as type safety and functionality like getting all possible values.
+## Traits and interfaces also work
 
-This is why the addition of native Enumerations in PHP 8.1 was such an important upgrade for the language.
+Enums can implement interfaces and use traits, which is handy when several enums should share a contract.
 
-If you are exploring the newer PHP building blocks that make domain code cleaner, these are the next reads I would open:
+```php
+interface HasLabel
+{
+    public function label(): string;
+}
 
+enum Visibility: string implements HasLabel
+{
+    case Public = 'public';
+    case Private = 'private';
+
+    public function label(): string
+    {
+        return match ($this) {
+            self::Public => 'Public',
+            self::Private => 'Private',
+        };
+    }
+}
+```
+
+That said, enums are still more restricted than normal classes. They are not general-purpose objects.
+
+## Common enum gotchas
+
+These are the mistakes that usually trip people up:
+
+- Enums require **PHP 8.1 or newer**.
+- A backed enum can only use `string` or `int`.
+- Use `from()` only when you trust the input.
+- Store **backed enum values** in databases, not case names, unless you have a very specific reason not to.
+- A unit enum has `name`, but not `value`.
+
+Another practical rule: if the value must cross a storage or network boundary, a backed enum is usually the safer default.
+
+## What if you are stuck on PHP 7 or older?
+
+If you cannot use PHP 8.1 yet, your fallback is usually class constants or a small value object. That works, but you lose the native enum ergonomics and type safety.
+
+```php
+final class LegacyPostStatus
+{
+    public const DRAFT = 'draft';
+    public const PUBLISHED = 'published';
+    public const ARCHIVED = 'archived';
+}
+```
+
+That is serviceable, but native enums are cleaner, harder to misuse, and easier to extend with methods.
+
+If you are deciding whether to use enums or older PHP patterns, these are the next reads I would open:
+
+- [Use `match` when `switch` starts feeling clumsy](/a-quick-look-at-the-php-match-expression)
 - [Make PHP serialization finally click without the usual confusion](/a-friendly-guide-to-php-serialization-that-finally-clicked)
-- [Use match when switch starts feeling clumsy](/a-quick-look-at-the-php-match-expression)
 - [See where the state machine pattern helps in PHP](/a-friendly-intro-to-the-state-machine-pattern-in-php)
