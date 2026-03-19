@@ -7,13 +7,13 @@ description: "Use PHP array_filter() with callbacks, remove empty values careful
 categories:
   - "php"
 published_at: 2023-11-11T00:00:00+01:00
-modified_at: 2026-03-14T10:04:32Z
+modified_at: 2026-03-19T09:50:00+00:00
 serp_title: null
 serp_description: null
 canonical_url: ""
 is_commercial: false
 image_disk: "cloudflare-images"
-image_path: "images/posts/wMRMazWfWw2CTos.jpg"
+image_path: "images/posts/generated/php-array-filter.png"
 sponsored_at: null
 ---
 ## Introduction
@@ -59,6 +59,22 @@ print_r($filtered);
 
 That behavior is useful, but it can surprise you because `'0'` and `0` are removed too.
 
+If you want to remove only `null` and empty strings while keeping `0`, `'0'`, or `false`, be explicit:
+
+```php
+$values = ['foo', false, -1, null, '', '0', 0];
+
+$filtered = array_filter(
+    $values,
+    fn ($value) => $value !== null && $value !== '',
+);
+
+print_r($filtered);
+// ['foo', false, -1, '0', 0]
+```
+
+That small callback is usually safer than relying on the default behavior when form or request data is involved.
+
 ## Filter by key or by both key and value
 
 Use the third argument when the key matters:
@@ -88,6 +104,8 @@ $filtered = array_filter(
     ARRAY_FILTER_USE_BOTH,
 );
 ```
+
+That is the mode to reach for when the filtering rule depends on field names as much as data.
 
 ## Keys are preserved
 
