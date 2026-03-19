@@ -79,27 +79,27 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
   - Why update now: Good intent fit, but the query is still partly navigational.
   - Core update: Refresh screenshots and installation notes for current macOS and Windows behavior.
 
-- [ ] `/php-explode`
+- [x] `/php-explode`
   - Keyword cluster: `php explode`, `explode php`
   - Why update now: Useful impressions and a soft tutorial SERP.
   - Core update: Strengthen the answer-first intro and make the alternatives section more practical.
 
-- [ ] `/php-redirect`
+- [x] `/php-redirect`
   - Keyword cluster: `php redirect`
   - Why update now: The page fits, but the ranking is still weak.
   - Core update: Make the redirect recipe faster to scan and explain status codes and `exit` more clearly.
 
-- [ ] `/jquery-document-ready`
+- [x] `/jquery-document-ready`
   - Keyword cluster: `jquery document ready`, `document ready`, `javascript document ready`
   - Why update now: The page fits several query variants, but the snippet can do more work.
   - Core update: Improve the answer-first intro and make the vanilla JavaScript alternative easier to spot.
 
-- [ ] `/php-laravel-print-array`
+- [x] `/php-laravel-print-array`
   - Keyword cluster: `php print array`
   - Why update now: The page fits, but it should answer faster.
   - Core update: Put `print_r()`, `var_dump()`, and Laravel helpers in a compact quick-answer section.
 
-- [ ] `/tailwind-css-forms-plugin`
+- [x] `/tailwind-css-forms-plugin`
   - Keyword cluster: `tailwindcss forms`, `tailwind forms`
   - Why update now: The no-space variant is stronger than the spaced variant.
   - Core update: Make `@tailwindcss/forms` more explicit in the title, intro, and key headings.

@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27N7017PH7V6DXV5QAYV"
-title: "How to use the Tailwind CSS forms plugin"
+title: "How to use @tailwindcss/forms in Tailwind CSS"
 slug: "tailwind-css-forms-plugin"
 author: "benjamincrozat"
-description: "Learn how to install and use the Tailwind CSS forms plugin, `@tailwindcss/forms`, in Tailwind v4 and v3."
+description: "Learn how to install and use @tailwindcss/forms in Tailwind CSS v4 and v3, then choose between the base and class strategies."
 categories:
   - "css"
   - "tailwind-css"
-published_at: 2023-02-12T00:00:00+01:00
-modified_at: 2026-03-13T12:20:00Z
+published_at: 2023-02-11T23:00:00Z
+modified_at: 2026-03-19T22:59:10Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -19,62 +19,30 @@ sponsored_at: null
 ---
 ## Introduction
 
-**The Tailwind CSS forms plugin, [`@tailwindcss/forms`](https://github.com/tailwindlabs/tailwindcss-forms), resets form controls to a consistent base so they are easier to style.**
+[`@tailwindcss/forms`](https://github.com/tailwindlabs/tailwindcss-forms) is the official Tailwind CSS forms plugin. It resets form elements like inputs, selects, textareas, checkboxes, and radios so they are easier to style with utilities.
 
-This guide shows how to install and use it in Tailwind v4 and v3.
+If you searched for `tailwindcss forms` or `tailwind forms`, this is the package you want.
 
-## What is @tailwindcss/forms?
+## Quick answer
 
-[@tailwindcss/forms](https://github.com/tailwindlabs/tailwindcss-forms) is an official plugin that resets forms to a consistent state across all browsers and makes them easy to style.
-
-### What the plugin does and doesn’t style
-
-The tailwind forms plugin targets common controls like text inputs, selects, textareas, checkboxes, and radios so they look consistent. Some uncommon controls, like `input[type="range"]`, are intentionally not styled. This avoids using a broad `input` selector that could cause unwanted side effects. See the full list in the [plugin README](https://github.com/tailwindlabs/tailwindcss-forms).
-
-## Installation
-
-Here is how to do a Tailwind v4 plugin install, plus a v3 fallback.
-
-### Installation for Tailwind v4
-
-Install as a dev dependency:
+Install the plugin:
 
 ```bash
 npm install -D @tailwindcss/forms
 ```
 
-Or with Yarn:
+Then register it.
 
-```bash
-yarn add -D @tailwindcss/forms
-```
-
-Register the plugin in your main stylesheet after importing Tailwind:
+In Tailwind CSS v4:
 
 ```css
-/* app.css or main.css */
 @import "tailwindcss";
 @plugin "@tailwindcss/forms";
 ```
 
-### Installation for Tailwind v3 (legacy)
-
-Install as a dev dependency:
-
-```bash
-npm install -D @tailwindcss/forms
-```
-
-Or with Yarn:
-
-```bash
-yarn add -D @tailwindcss/forms
-```
-
-Then enable it in your Tailwind config:
+In Tailwind CSS v3:
 
 ```js
-// tailwind.config.js
 module.exports = {
     plugins: [
         require('@tailwindcss/forms'),
@@ -82,166 +50,179 @@ module.exports = {
 }
 ```
 
-Note: install as a dev dependency and rebuild your CSS as part of your normal build step.
+After that, normal form elements get cleaner defaults that are much easier to customize.
 
-## Usage in your forms
+## What @tailwindcss/forms does
 
-First, I recommend you try the [live demo](https://tailwindcss-forms.vercel.app/).
+The plugin gives common form controls a consistent starting point across browsers. That includes elements like:
 
-Important: styles apply only to specific input types. A plain `<input>` with no `type` will not pick up styles. Make sure to set a type like `type="text"` or one from the list below.
+- text inputs
+- email inputs
+- selects
+- textareas
+- checkboxes
+- radio buttons
 
-Once the forms plugin is ready, your forms get clean, accessible defaults.
+It does **not** try to style every possible input type. That is intentional. The plugin focuses on the controls it can reset predictably without broad selectors creating surprises elsewhere.
 
-Here are all the supported form elements:
+## Install @tailwindcss/forms in Tailwind CSS v4
 
-- `input[type='text']`
-- `input[type='password']`
-- `input[type='email']`
-- `input[type='number']`
-- `input[type='url']`
-- `input[type='date']`
-- `input[type='datetime-local']`
-- `input[type='month']`
-- `input[type='week']`
-- `input[type='time']`
-- `input[type='search']`
-- `input[type='tel']`
-- `input[type='checkbox']`
-- `input[type='radio']`
-- `select`
-- `select[multiple]`
-- `textarea`
+Install the package:
 
-As mentioned in the README on the [official GitHub repository](https://github.com/tailwindlabs/tailwindcss-forms), you must at least use `type="text"` (or any of the types mentioned above) for the styles to take effect.
-
-> This is a trade-off to avoid relying on a greedy `input` selector and unintentionally styling elements the plugin does not handle yet, like `input[type="range"]`.
-
-Now you can style a select element: this is a simple way to style select with Tailwind.
-
-```html
-<select class="px-4 py-3 rounded-full shadow">
-  ...
-</select>
+```bash
+npm install -D @tailwindcss/forms
 ```
 
-You can also change a checkbox color using text color utilities (tailwind checkbox color):
-
-```html
-<input type="checkbox" class="rounded text-green-400" />
-```
-
-Tip: Tailwind’s native accent color utilities work great too. For example, `accent-purple-600` on a checkbox or radio. See the [accent-color docs](https://tailwindcss.com/docs/accent-color).
-
-## Use classes instead of global styles for your forms
-
-In some cases, you may want a less opinionated approach for existing projects, so instead of global resets you can use the classes provided by the plugin.
-
-The `strategy` option controls this: `base` generates global resets; `class` is opt-in.
-
-| Base                    | Class              |
-| ----------------------- | ------------------ |
-| `[type='text']`         | `form-input`       |
-| `[type='email']`        | `form-input`       |
-| `[type='url']`          | `form-input`       |
-| `[type='password']`     | `form-input`       |
-| `[type='number']`       | `form-input`       |
-| `[type='date']`         | `form-input`       |
-| `[type='datetime-local']` | `form-input`     |
-| `[type='month']`        | `form-input`       |
-| `[type='search']`       | `form-input`       |
-| `[type='tel']`          | `form-input`       |
-| `[type='time']`         | `form-input`       |
-| `[type='week']`         | `form-input`       |
-| `textarea`              | `form-textarea`    |
-| `select`                | `form-select`      |
-| `select[multiple]`      | `form-multiselect` |
-| `[type='checkbox']`     | `form-checkbox`    |
-| `[type='radio']`        | `form-radio`       |
-
-To opt into class-based styling in Tailwind CSS v4, configure the plugin like this:
+Register it in your main stylesheet:
 
 ```css
 /* app.css */
-@plugin "@tailwindcss/forms" {
-  strategy: "base"; /* Only generate global styles. */
-  strategy: "class"; /* Only generate classes. */
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+```
+
+That is the whole setup for the default behavior.
+
+## Install @tailwindcss/forms in Tailwind CSS v3
+
+Install the package:
+
+```bash
+npm install -D @tailwindcss/forms
+```
+
+Then enable it in `tailwind.config.js`:
+
+```js
+module.exports = {
+    plugins: [
+        require('@tailwindcss/forms'),
+    ],
 }
 ```
 
-And in Tailwind CSS v3:
+Rebuild your CSS after changing the config.
+
+## Use @tailwindcss/forms with the default base strategy
+
+The default plugin behavior is the `base` strategy. That means it applies global resets to supported form elements automatically.
+
+```html
+<input type="email" class="rounded-md px-4 py-3 shadow-sm" />
+
+<select class="rounded-md px-4 py-3 shadow-sm">
+    <option>France</option>
+</select>
+```
+
+This is the easiest option when you want better-looking forms across the whole project without adding special plugin classes everywhere.
+
+## Use @tailwindcss/forms with the class strategy
+
+If you do **not** want global resets, switch to the `class` strategy and opt in manually.
+
+### Tailwind CSS v4 class strategy
+
+```css
+@import "tailwindcss";
+@plugin "@tailwindcss/forms" {
+  strategy: "class";
+}
+```
+
+Then use the generated classes:
+
+```html
+<input type="text" class="form-input rounded-md px-4 py-3 shadow-sm" />
+<select class="form-select rounded-md px-4 py-3 shadow-sm"></select>
+<textarea class="form-textarea rounded-md px-4 py-3 shadow-sm"></textarea>
+```
+
+### Tailwind CSS v3 class strategy
 
 ```js
-// tailwind.config.js
 module.exports = {
     plugins: [
         require('@tailwindcss/forms')({
-            strategy: 'base', // Only generate global styles.
-            strategy: 'class', // Only generate classes.
+            strategy: 'class',
         }),
     ],
 }
 ```
 
-## Build a beautiful newsletter form
+Use this strategy when you are adding the plugin to an existing project and you do not want it to restyle every form control globally.
 
-This blog’s interface was built with Tailwind CSS, and I also use the forms plugin. Why don't we create something like a newsletter form just to get our hands dirty?
+## Base vs class: which strategy should you choose?
 
-![A newsletter form made with Tailwind CSS and its forms plugin.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/5lOOQ04LlOkH8RYdPzAMa5jJVxFLuZ6qflrxlsKz.png/public)
+| Strategy | Best when | Tradeoff |
+| --- | --- | --- |
+| `base` | You want the plugin to improve form controls project-wide | Global resets can affect more existing markup |
+| `class` | You want opt-in control with classes like `form-input` | You must remember to add the plugin classes manually |
 
-Let’s start with the label and input field ([live demo on Tailwind Play](https://play.tailwindcss.com/dS9TDg6Uav)):
+For new projects, `base` is usually the easiest starting point. For older codebases or design systems, `class` can be safer.
 
-```html
-<input type="email" placeholder="homer@simpson.com" class="w-full rounded-md border-0 px-4 py-3 placeholder-gray-300 shadow" />
+## Common examples with @tailwindcss/forms
 
-<button class="mt-2 block w-full rounded-md bg-gradient-to-r from-purple-300 to-purple-400 px-4 py-3 font-semibold text-white shadow-lg transition-all duration-500 hover:-hue-rotate-90">
-	  Subscribe
-</button>
-```
-
-1. `w-full`: makes the input take the full width.
-2. `rounded-md`: makes the border rounded.
-3. `border-0`: the Tailwind CSS forms plugin adds a border by default, so this removes it.
-4. `px-4 py-3`: padding values that feel right here.
-5. `placeholder-gray-300`: placeholder text is lighter, so it reads as a hint.
-6. `shadow`: adds a small box shadow for depth.
-7. `focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2`: gives a clear focus style for accessibility.
-
-Then, the button:
+### Style a text input
 
 ```html
-<button
-    class="mt-2 w-full rounded-md bg-gradient-to-r from-purple-300 to-purple-400 px-4 py-3 font-semibold text-white shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2"
->
-    Subscribe
-</button>
+<input
+    type="text"
+    class="w-full rounded-md px-4 py-3 shadow-sm focus:ring-2 focus:ring-sky-500"
+    placeholder="Your email"
+/>
 ```
 
-1. `mt-2`: adds a bit of spacing.
-2. `bg-gradient-to-r from-purple-300 to-purple-400`: a soft purple gradient from left to right.
-3. `font-semibold`: slightly bolder text.
-4. `text-white`: white text.
-5. `shadow-lg`: a larger shadow that helps the button stand out.
-6. `focus-visible:ring-2 ...`: a visible focus ring.
+### Style a select
 
-Accessibility note: always pair inputs with labels, do not rely on placeholder alone, and make sure focus states are visible. If you include checkboxes or radios, you can use `accent-*` classes like `accent-purple-600` for a clear, native color. See the [accent-color docs](https://tailwindcss.com/docs/accent-color).
+```html
+<select class="rounded-md px-4 py-3 shadow-sm">
+    <option>Starter</option>
+    <option>Pro</option>
+</select>
+```
+
+### Style a checkbox or radio
+
+```html
+<input type="checkbox" class="rounded text-emerald-600" />
+<input type="radio" class="text-sky-600" />
+```
+
+You can also use Tailwind's native `accent-*` utilities when you want a simpler color override.
+
+## Why @tailwindcss/forms is not working
+
+If your inputs are not changing, check these first:
+
+- the plugin is installed and registered for your Tailwind version
+- you rebuilt your CSS after the config change
+- your input has a supported `type`, such as `text`, `email`, or `password`
+- you are not using `strategy: 'class'` without adding `form-input`, `form-select`, or similar classes
+
+A plain `<input>` without a supported `type` is a very common reason people think the plugin failed.
 
 ## FAQ
 
-### Why aren’t my inputs styled?
+### Is @tailwindcss/forms an official Tailwind plugin?
 
-Add a specific `type` like `type="text"`. Check that the plugin is installed for your Tailwind version: v4 uses the `@plugin` directive in your CSS; v3 uses `plugins: [require('@tailwindcss/forms')]` in `tailwind.config.js`. Also note that inputs like `type="range"` are not styled. See the [plugin README](https://github.com/tailwindlabs/tailwindcss-forms).
+Yes. It is maintained by Tailwind Labs.
 
-### How do I opt out of global styles?
+### Do I need @tailwindcss/forms in Tailwind CSS v4?
 
-Use the plugin option `strategy: 'class'` so styles apply only when you add classes like `form-input`. This is the tailwind plugin strategy class vs base toggle.
+Only if you want its form reset behavior. Tailwind CSS v4 does not include it automatically.
 
-### How do I change checkbox or radio color?
+### Should I use base or class?
 
-You can keep using `text-{color}` with the plugin, or use modern `accent-{color}` (for example, `accent-green-600`) for better native behavior. See the [accent-color docs](https://tailwindcss.com/docs/accent-color).
+Use `base` for project-wide defaults. Use `class` when you want opt-in control.
+
+### Does the plugin style every input type?
+
+No. It intentionally focuses on the common form controls it can style predictably.
 
 ## Conclusion
 
-The Tailwind CSS forms plugin gives you consistent, easy-to-style controls out of the box. Use `base` when you want global resets across your app; use `class` when you want opt-in control with utilities like the `form-input` class. Try the [official live demo](https://tailwindcss-forms.vercel.app/) and experiment with my [Tailwind Play example](https://play.tailwindcss.com/qZ5rc9oEMd).
+`@tailwindcss/forms` is the Tailwind package most people mean when they search for `tailwindcss forms`. Install it, register it for your Tailwind version, and then choose between `base` for global resets or `class` for opt-in styling. Once that is in place, styling form controls with Tailwind utilities becomes much easier.
 
 If you are still smoothing out form UI after this plugin pass, these are the next Tailwind reads I would keep open:
 

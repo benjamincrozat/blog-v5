@@ -3,14 +3,14 @@ id: "01KKEW27MCJ5T5D29CNAF1290Q"
 title: "PHP redirect: how to redirect to another page"
 slug: "php-redirect"
 author: "benjamincrozat"
-description: "Use header(Location: ...) and exit to redirect in PHP, then choose the right HTTP status code for permanent, temporary, or post-redirect-get flows."
+description: "Use header('Location: ...') with exit in PHP, then choose the right status code for permanent, temporary, and post-redirect-get redirects."
 categories:
   - "php"
-published_at: 2023-09-02T00:00:00+02:00
-modified_at: 2026-03-14T10:12:17Z
+published_at: 2023-09-01T22:00:00Z
+modified_at: 2026-03-19T22:56:36Z
 serp_title: null
 serp_description: null
-canonical_url: ""
+canonical_url: null
 is_commercial: false
 image_disk: "cloudflare-images"
 image_path: "images/posts/q6Lm6JbHGdEbWUB.jpg"
@@ -18,171 +18,209 @@ sponsored_at: null
 ---
 ## Introduction
 
-To redirect in PHP, send a `Location` header and stop execution with `exit`. That is the core fix. After that, the important decision is choosing the right status code: `301`, `302`, `303`, `307`, or `308`.
-
-## Quick PHP redirect example (TL;DR)
-
-Here's the essential PHP redirect code snippet:
+To redirect in PHP, send a `Location` header and stop the script immediately with `exit`.
 
 ```php
-// Start output buffering to avoid "headers already sent" errors.
-ob_start();
-
-header('Location: https://example.com', true, 301); // Permanent redirect.
-
+header('Location: /dashboard', true, 302);
 exit;
 ```
 
-Let's break down what's happening here:
+That is the whole pattern. The only real decisions are:
 
-1. **Output buffering (`ob_start()`):** Ensures nothing is sent to the browser prematurely, preventing PHP "headers already sent" errors.
-2. **`header()` function:** Directs browsers to the specified URL.
-3. **HTTP status code (301):** Indicates this redirect is permanent, beneficial for SEO.
-4. **`exit`:** Stops PHP execution immediately after redirection.
+- which URL to redirect to
+- which HTTP status code to send
+- how to avoid sending output before the redirect
 
-## HTTP headers explained
+## The quickest PHP redirect recipes
 
-When you redirect with PHP, the server sends an HTTP response like this:
+### Temporary redirect
 
-```http
-HTTP/1.1 301 Moved Permanently
-Location: https://example.com
-Content-Type: text/html
-```
-
-The important elements:
-
-* **Status code (301):** Signals browsers and search engines this URL has moved permanently.
-* **Location header:** Indicates the new URL destination.
-
-Avoid echoing text before sending headers. Output buffering (`ob_start()`) reliably prevents "headers already sent" errors.
-
-## Absolute vs. relative URLs
-
-Always use absolute URLs (`https://example.com/page`) in PHP redirects. Relative URLs (`/page`) may fail with proxies or older browsers, causing unpredictable behavior.
-
-## Choosing the correct HTTP status code
-
-PHP defaults to a `302 Found` redirect if no status code is specified:
+Use `302` when the target may change again.
 
 ```php
-header('Location: https://example.com'); // defaults to 302
-```
-
-Explicitly choose the correct status code for SEO:
-
-| Status | Meaning                              | Method preserved? | Cache behavior      |
-| ------ | ------------------------------------ | ----------------- | ------------------- |
-| 301    | Permanent redirect                   | No                | Aggressively cached |
-| 302    | Temporary redirect                   | No                | Rarely cached       |
-| 303    | Redirect after form submission (PRG) | No                | Not cached          |
-| 307    | Temporary redirect                   | Yes               | Temporarily cached  |
-| 308    | Permanent redirect                   | Yes               | Aggressively cached |
-
-Example:
-
-```php
-// Temporary redirect, preserves POST method.
-header('Location: https://example.com/temp-page', true, 307);
-
+header('Location: /login', true, 302);
 exit;
 ```
 
-### HTTP 308 permanent redirect
+### Permanent redirect
 
-The 308 status code preserves the request method (e.g., POST), making it ideal for migrating APIs or services where method consistency matters.
+Use `301` when an old URL has moved for good.
 
 ```php
-header('Location: https://api.example.com/new-endpoint', true, 308);
+header('Location: /new-url', true, 301);
 exit;
 ```
 
-## Alternative redirect methods (meta refresh & JavaScript)
+### Redirect after a form submission
 
-Use server-side PHP redirects whenever possible. Meta refresh and JavaScript redirects should only be fallback solutions:
-
-### Meta refresh
-
-Meta refresh redirects occur within HTML tags. Immediate refreshes (`content="0"`) act as permanent redirects; delayed refreshes (`content="5"`) are treated as temporary. Example:
-
-```html
-<meta http-equiv="refresh" content="0;url=https://example.com">
-```
-
-### JavaScript redirects
-
-JavaScript redirects rely on client-side execution and might not be reliable for all users. They're often slower and can negatively affect SEO. Example:
-
-```javascript
-window.location.href = 'https://example.com';
-```
-
-## SEO considerations: redirect chains and caching
-
-Googlebot follows a maximum of **10 redirect hops**. Long chains negatively impact SEO and performance. Consolidate redirect chains whenever possible.
-
-Permanent redirects (`301`, `308`) are aggressively cached by browsers and CDNs. For anticipated changes or A/B testing, use temporary codes (`302`, `307`).
-
-Each redirect adds latency, affecting Core Web Vitals, critical to Google's ranking signals in 2025. Optimize redirects to minimize delays.
-
-## Best practices
-
-* Prefer server-level redirects (e.g., `.htaccess`, Nginx).
-* Avoid redirect chains and loops.
-* Regularly update internal links instead of relying on redirects.
-* Monitor redirects with tools like Google Search Console or Screaming Frog.
-
-### Security: avoiding open redirects
-
-Never directly redirect to URLs from user input without validation, risking phishing attacks.
-
-Secure example with URL whitelist:
+Use `303` after handling a POST request so the next request becomes a normal `GET`.
 
 ```php
-$allowed_urls = ['/dashboard', '/profile', '/home'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Save data...
 
-$next = $_GET['next'] ?? '/home';
+    header('Location: /thanks', true, 303);
+    exit;
+}
+```
 
-if (!in_array($next, $allowed_urls, true)) {
-    $next = '/home';
+This is the standard Post/Redirect/Get flow.
+
+## Why `exit` matters
+
+Always stop execution after the redirect:
+
+```php
+header('Location: /dashboard');
+exit;
+```
+
+Without `exit`, the rest of the script can keep running. That can lead to:
+
+- extra output being sent accidentally
+- database writes continuing after a redirect
+- confusing bugs when protected code still executes
+
+## Which redirect status code should you use?
+
+PHP sends `302 Found` by default if you omit the status code:
+
+```php
+header('Location: /login');
+exit;
+```
+
+That is fine for many cases, but it is better to choose intentionally.
+
+| Status | Use it when | Method preserved? |
+| --- | --- | --- |
+| `301` | The move is permanent | No |
+| `302` | The move is temporary | No |
+| `303` | You are redirecting after a POST | No, next request becomes `GET` |
+| `307` | Temporary redirect and the request method must stay the same | Yes |
+| `308` | Permanent redirect and the request method must stay the same | Yes |
+
+### 303 vs 307 vs 308
+
+This is where most confusion happens:
+
+- `303` is best after form submissions
+- `307` keeps the original method and body, so a `POST` stays a `POST`
+- `308` is the permanent version of `307`
+
+For normal page redirects, `301`, `302`, and `303` are usually enough.
+
+## Relative vs absolute URLs
+
+Both relative and absolute URLs work with `Location` headers in modern PHP setups.
+
+```php
+header('Location: /pricing', true, 302);
+exit;
+```
+
+```php
+header('Location: https://example.com/pricing', true, 302);
+exit;
+```
+
+Use absolute URLs when you are redirecting to another domain. For same-site redirects, relative paths are usually simpler and easier to move between environments.
+
+## Common PHP redirect mistakes
+
+### Output sent before `header()`
+
+This is the classic `"Cannot modify header information - headers already sent"` error.
+
+```php
+echo 'Hello';
+
+header('Location: /dashboard'); // Too late
+exit;
+```
+
+Common causes:
+
+- `echo` or `print` before the redirect
+- stray whitespace before `<?php`
+- included files that already sent output
+- UTF-8 BOM issues in older files
+
+If you are debugging this, [`headers_sent()`](https://www.php.net/manual/en/function.headers-sent.php) can help you find where output started.
+
+### Forgetting `exit`
+
+This is the second most common mistake:
+
+```php
+header('Location: /dashboard');
+
+// This code still runs if you forget exit
+```
+
+### Using user input directly
+
+Never redirect to a raw `$_GET['next']` value without validation. That creates an open redirect risk.
+
+```php
+$allowedPaths = ['/dashboard', '/settings', '/billing'];
+$next = $_GET['next'] ?? '/dashboard';
+
+if (!in_array($next, $allowedPaths, true)) {
+    $next = '/dashboard';
 }
 
 header("Location: $next", true, 303);
 exit;
 ```
 
-## Clearer PHP redirection with `http_response_code()`
+## When PHP redirects are the wrong tool
 
-Explicitly set HTTP status codes for clarity:
+For one-off request handling inside an app, PHP redirects are fine.
 
-```php
-ob_start();
+For large URL migrations, domain moves, or many SEO redirects, handle them at the web server or CDN layer when possible. That is usually faster and easier to maintain than scattering redirect logic through PHP files.
 
-http_response_code(301);
-header('Location: https://example.com');
+## How to verify a redirect
 
-exit;
-```
-
-## Verifying redirects
-
-Use `curl` to verify redirects from the command line:
+Use `curl -I` to inspect the response headers:
 
 ```bash
-curl -I https://your-site.com/old-page
+curl -I https://example.com/old-url
 ```
 
-Expected output:
+Example response:
 
 ```http
 HTTP/1.1 301 Moved Permanently
-Location: https://your-site.com/new-page
+Location: https://example.com/new-url
 ```
 
-Browser developer tools also show redirect details clearly.
+That confirms both the status code and the redirect target.
 
-If you are still wiring request and response behavior by hand in PHP, these are the next reads I would keep open:
+## FAQ
+
+### Do I need `ob_start()` before every PHP redirect?
+
+No. It can help in some debugging situations, but it should not be the default fix. The better fix is to avoid sending output before `header()`.
+
+### Does `header('Location: ...')` stop PHP automatically?
+
+No. You still need `exit` or `die`.
+
+### What redirect code is best for SEO?
+
+Use `301` for permanent moves. Use `302` or `307` when the change is temporary.
+
+### What code should I use after a POST form submission?
+
+Use `303 See Other`.
+
+## Conclusion
+
+The standard PHP redirect pattern is small: send the `Location` header, choose the right status code, and call `exit`. If you remember one thing, remember the `303` pattern for forms and the `301` pattern for permanent URL changes. The rest is mostly about avoiding output-before-header bugs and validating redirect targets safely.
+
+If you are still wiring request handling by hand in PHP, these are the next reads I would keep open:
 
 - [Parse URL paths and query strings without framework helpers](/php-parse-url)
-- [Check whether your PHP version is part of the problem](/check-php-version)
+- [Show every PHP error when debugging gets vague](/php-show-all-errors)
 - [Find the php.ini file that's actually affecting your setup](/php-ini-location)
