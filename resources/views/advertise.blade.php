@@ -116,7 +116,7 @@ Displays the advertise view.
                 class="bg-white shadow-md shadow-black/10 ring-1 ring-black/10 rounded-xl p-4 md:p-8"
             >
                 <x-typography.heading tag="h2">
-                    <x-phosphor-sidebar-duotone class="size-16 mx-auto mb-2 -scale-x-100" />
+                    <x-heroicon-o-window class="size-16 mx-auto mb-2" />
                     Be visible in the sidebar
                     <span class="bg-yellow-500 inline-block ml-2 font-normal p-2 leading-tight px-4 rounded-full normal-case tracking-normal">Sold out!</span>
                 </x-typography.heading>
