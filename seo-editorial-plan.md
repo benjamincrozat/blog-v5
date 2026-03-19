@@ -1,6 +1,6 @@
 # SEO editorial plan
 
-Last updated: March 18, 2026
+Last updated: March 19, 2026
 Source brief: fresh Search Console export from the browser plus live Google US desktop SERP checks on March 18, 2026
 
 This is the working SEO backlog for the next article batch and refresh cycle. We should move through it from top to bottom unless fresh Search Console or SERP data changes the priority. Check an item only when the article is drafted or refreshed, reviewed, synced, and ready to publish.
@@ -54,27 +54,27 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
   - Why update now: Same practical-example opportunity as `array_map`.
   - Core update: Strengthen the intro, empty-value caveats, and filtering-by-key examples.
 
-- [ ] `/php-enums`
+- [x] `/php-enums`
   - Keyword cluster: `php enum`
   - Why update now: Strong evergreen fit and good impression volume.
   - Core update: Add better backed-vs-unit enum guidance and more real use cases.
 
-- [ ] `/laravel-versions`
+- [x] `/laravel-versions`
   - Keyword cluster: `latest laravel version`, `laravel 11 release date`
   - Why update now: The page already matches the intent cluster, but it needs a freshness pass.
   - Core update: Lead with Laravel 12 as current and label Laravel 13 as upcoming on March 18, 2026.
 
-- [ ] `/check-php-version`
+- [x] `/check-php-version`
   - Keyword cluster: `check php version`
   - Why update now: Useful utility query with a page that can answer faster.
   - Core update: Improve the quick answer and split the methods cleanly by CLI, browser, and Laravel.
 
-- [ ] `/bun-package-manager`
+- [x] `/bun-package-manager`
   - Keyword cluster: `bun vs pnpm`, `bun vs npm`
   - Why update now: `bun vs pnpm` already shows the best traction in this cluster.
   - Core update: Add a clearer comparison table and a stronger recommendation framework for when Bun is worth switching to.
 
-- [ ] `/laravel-herd`
+- [x] `/laravel-herd`
   - Keyword cluster: `laravel herd`
   - Why update now: Good intent fit, but the query is still partly navigational.
   - Core update: Refresh screenshots and installation notes for current macOS and Windows behavior.
