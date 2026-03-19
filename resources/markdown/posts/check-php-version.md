@@ -1,14 +1,14 @@
 ---
 id: "01KKEW2780NK2M3H3CFCG87HN6"
-title: "Check PHP version: command line and browser methods"
+title: "How to check your PHP version quickly"
 slug: "check-php-version"
 author: "benjamincrozat"
-description: "Check your PHP version with php -v, phpinfo(), phpversion(), or Laravel's php artisan about command, and know which method fits CLI or browser access."
+description: "Check your PHP version with php -v, phpversion(), phpinfo(), or Laravel's artisan about command, depending on whether you are in CLI, browser, or a Laravel app."
 categories:
   - "laravel"
   - "php"
 published_at: 2023-09-02T00:00:00+02:00
-modified_at: 2026-03-14T10:17:05Z
+modified_at: 2026-03-19T22:39:10Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -19,92 +19,158 @@ sponsored_at: null
 ---
 ## Introduction
 
-**To check your [PHP](https://www.php.net) version, run `php -v` in your terminal.** The first line shows your current version immediately.
+**To check your PHP version, run `php -v` in your terminal.**
 
-If you cannot use the terminal, `phpinfo()`, `phpversion()`, and Laravel's `php artisan about` command are the next easiest options.
+That is the fastest and most reliable method when you have shell access.
 
-## Run `php -v` in your terminal
+If you do not have terminal access, use one of these instead:
 
-This method works perfectly on macOS, Linux, Windows, and WSL.
+- `phpversion()` for a tiny browser-safe output
+- `phpinfo()` if you need full configuration details
+- `php artisan about` inside a Laravel project
+
+## Check PHP version in the CLI
+
+For most people, this is the right answer.
 
 ```bash
 php -v
 ```
 
-This outputs something like `PHP 8.4.4 (cli) (built: ...)`.
+You will get output like this:
 
-## Use the `phpversion()` function
-
-![Checking PHP version using phpversion().](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/check-php-version-068c21630df8ec212ffd.jpg/public)
-
-Simply create a PHP script containing:
-
-```php
-<?php echo phpversion(); ?>
-// Output: 8.4.4
+```text
+PHP 8.4.16 (cli) ...
 ```
 
-## Use the `phpinfo()` function
+That first line is enough if you only want the current version.
 
-![Checking PHP version using phpinfo().](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/check-php-version-b4f57c73364e57eadefb.jpg/public)
+### Why `php -v` is usually the best method
 
-Create a PHP file with:
+- it is fast
+- it works on macOS, Linux, Windows, and WSL
+- it tells you which PHP binary your shell is actually using
+
+If you have multiple PHP versions installed, the terminal result may not match the version your web server is using. That is where the browser methods below help.
+
+## Check PHP version in the browser
+
+If you need to know what the web server is running, use `phpversion()` or `phpinfo()`.
+
+### Use `phpversion()` for the cleanest output
+
+Create a temporary PHP file with:
 
 ```php
-<?php phpinfo(); ?>
+<?php
+
+echo phpversion();
 ```
 
-Open this in your browser and find the PHP version at the top.
+That prints only the version string, which makes it the cleaner browser option when you do not need extra details.
 
-## Check PHP version using Laravel's welcome page
+The PHP manual describes `phpversion()` as the function that gets the current PHP version.
 
-![Laravel welcome page showing PHP version.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/check-php-version-061c7222686bd6a5e33c.jpg/public)
+### Use `phpinfo()` when you also need configuration details
 
-Laravel conveniently shows your PHP version in the bottom-right corner of the default welcome page.
+Create a file like this:
 
-## Check PHP version with Laravel Artisan
+```php
+<?php
 
-![Checking PHP version using Laravel Artisan.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/check-php-version-c2831ffe38082032d779.jpg/public)
+phpinfo();
+```
 
-From your Laravel project's root, run:
+Open it in your browser and look at the top of the page.
+
+This is useful when you need more than the version number, for example:
+
+- loaded extensions
+- active `php.ini`
+- SAPI details
+- environment information
+
+The tradeoff is that `phpinfo()` exposes a lot more information, so do not leave that file publicly accessible after you are done.
+
+## Check PHP version in Laravel
+
+If you are already inside a Laravel project, this is the easiest framework-aware command:
 
 ```bash
 php artisan about
 ```
 
-You'll see your PHP version along with other useful details.
-If you also need the framework version, here are [6 ways to check Laravel's version](/check-laravel-version).
+You will see the PHP version alongside your Laravel version and other environment details.
+
+If you want the framework version too, here is the companion guide:
+
+[Ways to check which Laravel version you are running](/check-laravel-version)
+
+## Why the browser and CLI versions sometimes differ
+
+This confusion is extremely common.
+
+Your terminal may use one PHP binary while Apache, nginx, PHP-FPM, Valet, or Herd uses another.
+
+If that happens:
+
+1. run `php -v` in the terminal
+2. check the browser version with `phpversion()` or `phpinfo()`
+3. compare the results
+
+If they are different, you are looking at two different PHP runtimes.
+
+That is usually a configuration issue, not a PHP bug.
+
+## Which method should you use?
+
+Use this simple rule:
+
+| Situation | Best method |
+| --- | --- |
+| You have terminal access | `php -v` |
+| You need the web-server version | `phpversion()` |
+| You need config details too | `phpinfo()` |
+| You are already in a Laravel app | `php artisan about` |
 
 ## FAQ
 
 ### How do I check my PHP version on macOS?
 
-Run `php -v` in your macOS terminal.
+Run:
 
-### How do I check my PHP version on Ubuntu?
+```bash
+php -v
+```
 
-Run `php -v` in your Ubuntu terminal.
+### How do I check my PHP version on Ubuntu or Debian?
+
+Run:
+
+```bash
+php -v
+```
 
 ### How do I check my PHP version on Windows?
 
-Run `php -v` in your Windows command prompt.
+Run the same command in Command Prompt, PowerShell, or Windows Terminal:
 
-### Which PHP versions are end-of-life (EOL) in 2026?
+```powershell
+php -v
+```
 
-PHP 7.x and older are long end-of-life, and even older PHP 8 branches may already be out of active support depending on the exact minor version. Check the official [supported versions page](https://www.php.net/supported-versions.php) before you plan an upgrade path.
+### How do I check the PHP version used by my website?
 
-### How do I find my PHP version in WordPress?
+Use a temporary file with `phpversion()` or `phpinfo()` and open it in the browser. That shows the PHP runtime behind the web server, not just the one in your shell.
 
-In the admin panel, go to **Tools → Site Health → Info → Server**.
+### Which PHP versions are still supported in 2026?
 
-### Can I have multiple PHP versions installed?
+Check the official [PHP supported versions page](https://www.php.net/supported-versions.php) before planning an upgrade. As of March 19, 2026, PHP **8.5** and **8.4** are in active support, while older branches are further along in their lifecycle.
 
-Yes! Tools like [Laravel Herd](/laravel-herd), [Laravel Valet](/laravel-valet), [Homebrew](https://brew.sh) (macOS), [Docker](https://www.docker.com), and version managers allow multiple PHP versions on the same system.
+If you know your PHP version now and need the next step, these are the follow-up reads I would open:
 
-Once you know which PHP version you are really on, these next reads help with local setup, config, and the Laravel side around it:
-
-- [Run PHP and Laravel more smoothly on macOS](/laravel-valet)
+- [Find the `php.ini` file that is actually affecting your setup](/php-ini-location)
+- [Check which Laravel version is running too](/check-laravel-version)
 - [Set up PHP on macOS or Windows with less friction](/laravel-herd)
-- [Find the php.ini file that's actually affecting your setup](/php-ini-location)
-- [Double-check which Laravel version is actually running](/check-laravel-version)
+- [Run PHP and Laravel more smoothly on macOS](/laravel-valet)
 - [Set up Laravel on macOS without a messy local stack](/laravel-installation-macos)
