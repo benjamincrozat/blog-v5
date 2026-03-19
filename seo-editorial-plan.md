@@ -24,37 +24,138 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
 
 ## Articles to update
 
-| Page | Keyword cluster | Why update now | Core update |
-| --- | --- | --- | --- |
-| `/php-str-replace` | `php str_replace`, `str_replace`, `php string replace` | Strong GSC impressions, a beatable SERP beyond the PHP manual, and a clean page-query fit | Tighten the title and intro, move practical examples higher, and sharpen `str_replace()` vs `str_ireplace()` vs `preg_replace()` guidance. |
-| `/php-show-all-errors` | `php show all errors`, `php show errors` | One of the best current mixes of impressions, ranking, and intent fit in the batch | Lead with the quick answer, then organize the page by CLI, `php.ini`, Apache, and PHP-FPM environments. |
-| `/is-html-a-programming-language` | `is html a programming language` | High impressions with a weak mixed SERP | Make the answer immediate, add a markup-vs-programming comparison block, and improve the snippet promise. |
-| `/npm-fund` | `npm fund` | Good traction already and very clear intent | Put the exact warning message and the disable commands near the top, then keep the explanation below. |
-| `/php-array-map` | `php array_map` | Good impressions and a reference-style SERP we can beat with examples | Pull the most useful transformation examples to the top and add clearer key-preservation rules. |
-| `/php-array-filter` | `php array_filter` | Same practical-example opportunity as `array_map` | Strengthen the intro, empty-value caveats, and filtering-by-key examples. |
-| `/php-enums` | `php enum` | Strong evergreen fit and good impression volume | Add better backed-vs-unit enum guidance and more real use cases. |
-| `/laravel-versions` | `latest laravel version`, `laravel 11 release date` | The page already matches the intent cluster, but it needs a freshness pass | Lead with Laravel 12 as current and label Laravel 13 as upcoming on March 18, 2026. |
-| `/check-php-version` | `check php version` | Useful utility query with a page that can answer faster | Improve the quick answer and split the methods cleanly by CLI, browser, and Laravel. |
-| `/bun-package-manager` | `bun vs pnpm`, `bun vs npm` | `bun vs pnpm` already shows the best traction in this cluster | Add a clearer comparison table and a stronger recommendation framework for when Bun is worth switching to. |
-| `/laravel-herd` | `laravel herd` | Good intent fit, but the query is still partly navigational | Refresh screenshots and installation notes for current macOS and Windows behavior. |
-| `/php-explode` | `php explode`, `explode php` | Useful impressions and a soft tutorial SERP | Strengthen the answer-first intro and make the alternatives section more practical. |
-| `/php-redirect` | `php redirect` | The page fits, but the ranking is still weak | Make the redirect recipe faster to scan and explain status codes and `exit` more clearly. |
-| `/jquery-document-ready` | `jquery document ready`, `document ready`, `javascript document ready` | The page fits several query variants, but the snippet can do more work | Improve the answer-first intro and make the vanilla JavaScript alternative easier to spot. |
-| `/php-laravel-print-array` | `php print array` | The page fits, but it should answer faster | Put `print_r()`, `var_dump()`, and Laravel helpers in a compact quick-answer section. |
-| `/tailwind-css-forms-plugin` | `tailwindcss forms`, `tailwind forms` | The no-space variant is stronger than the spaced variant | Make `@tailwindcss/forms` more explicit in the title, intro, and key headings. |
-| `/openai-tts-api` | `openai tts` | Worth refreshing only if we make it current | Rewrite it around the current OpenAI text-to-speech docs, models, and endpoints before treating it as active SEO work. |
-| `/gpt-4o-mini` | `gpt-4o-mini`, `gpt-4o-mini openai model` | OpenAI docs dominate the head terms, so the page should stay focused on implementation intent rather than the broad model query. |
-| `/laravel-forge` | `laravel forge` | The head term is heavily navigational. Pricing, free trial, and alternatives remain the better angle. |
-| `/laravel-11` | `laravel 11 release` | This is now mostly historical support content, not a major growth target. |
-| `/alpine-js` | `alpinejs`, `alpine.js` | Official docs dominate the head terms, so support clearer intent instead of forcing the bare keyword. |
-| `/tailwind-css-typography-plugin` | `tailwind typography`, `tailwind prose` | Official Tailwind and GitHub pages dominate. Keep the plugin and implementation angle. |
-| `/jquery-each` | `jquery each`, `jquery foreach` | Useful but not very strategic because the official jQuery docs dominate. |
-| `/best-laravel-hosting-providers` | `laravel hosting`, `laravel web hosting` | Competitive commercial SERP. Only keep investing if the comparison page stays aggressively current. |
-| `/laravel-validation` | `laravel validation` | Docs dominate the head term, so the page should lean harder into practical tasks instead of the generic keyword. |
-| `/laravel-sanctum-api-tokens-authentication` | `laravel sanctum` | The broad head term is too docs-dominated. API tokens and concrete auth workflows are still the right angle. |
-| `/php-ini-location` | `php.ini` | Keep this as a support term. The real page fit is still `php.ini location`. |
-| `/laravel-pulse` | `laravel pulse` | The package name is partly navigational. A jobs-to-be-done framing is better than chasing the bare term. |
-| `/laravel-migrations` | `laravel migrations` | The docs dominate the head term, so the article should stay command- and workflow-led. |
+- [x] `/php-str-replace`
+  - Keyword cluster: `php str_replace`, `str_replace`, `php string replace`
+  - Why update now: Strong GSC impressions, a beatable SERP beyond the PHP manual, and a clean page-query fit.
+  - Core update: Tighten the title and intro, move practical examples higher, and sharpen `str_replace()` vs `str_ireplace()` vs `preg_replace()` guidance.
+
+- [x] `/php-show-all-errors`
+  - Keyword cluster: `php show all errors`, `php show errors`
+  - Why update now: One of the best current mixes of impressions, ranking, and intent fit in the batch.
+  - Core update: Lead with the quick answer, then organize the page by CLI, `php.ini`, Apache, and PHP-FPM environments.
+
+- [x] `/is-html-a-programming-language`
+  - Keyword cluster: `is html a programming language`
+  - Why update now: High impressions with a weak mixed SERP.
+  - Core update: Make the answer immediate, add a markup-vs-programming comparison block, and improve the snippet promise.
+
+- [x] `/npm-fund`
+  - Keyword cluster: `npm fund`
+  - Why update now: Good traction already and very clear intent.
+  - Core update: Put the exact warning message and the disable commands near the top, then keep the explanation below.
+
+- [x] `/php-array-map`
+  - Keyword cluster: `php array_map`
+  - Why update now: Good impressions and a reference-style SERP we can beat with examples.
+  - Core update: Pull the most useful transformation examples to the top and add clearer key-preservation rules.
+
+- [x] `/php-array-filter`
+  - Keyword cluster: `php array_filter`
+  - Why update now: Same practical-example opportunity as `array_map`.
+  - Core update: Strengthen the intro, empty-value caveats, and filtering-by-key examples.
+
+- [ ] `/php-enums`
+  - Keyword cluster: `php enum`
+  - Why update now: Strong evergreen fit and good impression volume.
+  - Core update: Add better backed-vs-unit enum guidance and more real use cases.
+
+- [ ] `/laravel-versions`
+  - Keyword cluster: `latest laravel version`, `laravel 11 release date`
+  - Why update now: The page already matches the intent cluster, but it needs a freshness pass.
+  - Core update: Lead with Laravel 12 as current and label Laravel 13 as upcoming on March 18, 2026.
+
+- [ ] `/check-php-version`
+  - Keyword cluster: `check php version`
+  - Why update now: Useful utility query with a page that can answer faster.
+  - Core update: Improve the quick answer and split the methods cleanly by CLI, browser, and Laravel.
+
+- [ ] `/bun-package-manager`
+  - Keyword cluster: `bun vs pnpm`, `bun vs npm`
+  - Why update now: `bun vs pnpm` already shows the best traction in this cluster.
+  - Core update: Add a clearer comparison table and a stronger recommendation framework for when Bun is worth switching to.
+
+- [ ] `/laravel-herd`
+  - Keyword cluster: `laravel herd`
+  - Why update now: Good intent fit, but the query is still partly navigational.
+  - Core update: Refresh screenshots and installation notes for current macOS and Windows behavior.
+
+- [ ] `/php-explode`
+  - Keyword cluster: `php explode`, `explode php`
+  - Why update now: Useful impressions and a soft tutorial SERP.
+  - Core update: Strengthen the answer-first intro and make the alternatives section more practical.
+
+- [ ] `/php-redirect`
+  - Keyword cluster: `php redirect`
+  - Why update now: The page fits, but the ranking is still weak.
+  - Core update: Make the redirect recipe faster to scan and explain status codes and `exit` more clearly.
+
+- [ ] `/jquery-document-ready`
+  - Keyword cluster: `jquery document ready`, `document ready`, `javascript document ready`
+  - Why update now: The page fits several query variants, but the snippet can do more work.
+  - Core update: Improve the answer-first intro and make the vanilla JavaScript alternative easier to spot.
+
+- [ ] `/php-laravel-print-array`
+  - Keyword cluster: `php print array`
+  - Why update now: The page fits, but it should answer faster.
+  - Core update: Put `print_r()`, `var_dump()`, and Laravel helpers in a compact quick-answer section.
+
+- [ ] `/tailwind-css-forms-plugin`
+  - Keyword cluster: `tailwindcss forms`, `tailwind forms`
+  - Why update now: The no-space variant is stronger than the spaced variant.
+  - Core update: Make `@tailwindcss/forms` more explicit in the title, intro, and key headings.
+
+- [ ] `/openai-tts-api`
+  - Keyword cluster: `openai tts`
+  - Why update now: Worth refreshing only if we make it current.
+  - Core update: Rewrite it around the current OpenAI text-to-speech docs, models, and endpoints before treating it as active SEO work.
+
+- [ ] `/gpt-4o-mini`
+  - Keyword cluster: `gpt-4o-mini`, `gpt-4o-mini openai model`
+  - Why update now: OpenAI docs dominate the head terms, so the page should stay focused on implementation intent rather than the broad model query.
+
+- [ ] `/laravel-forge`
+  - Keyword cluster: `laravel forge`
+  - Why update now: The head term is heavily navigational. Pricing, free trial, and alternatives remain the better angle.
+
+- [ ] `/laravel-11`
+  - Keyword cluster: `laravel 11 release`
+  - Why update now: This is now mostly historical support content, not a major growth target.
+
+- [ ] `/alpine-js`
+  - Keyword cluster: `alpinejs`, `alpine.js`
+  - Why update now: Official docs dominate the head terms, so support clearer intent instead of forcing the bare keyword.
+
+- [ ] `/tailwind-css-typography-plugin`
+  - Keyword cluster: `tailwind typography`, `tailwind prose`
+  - Why update now: Official Tailwind and GitHub pages dominate. Keep the plugin and implementation angle.
+
+- [ ] `/jquery-each`
+  - Keyword cluster: `jquery each`, `jquery foreach`
+  - Why update now: Useful but not very strategic because the official jQuery docs dominate.
+
+- [ ] `/best-laravel-hosting-providers`
+  - Keyword cluster: `laravel hosting`, `laravel web hosting`
+  - Why update now: Competitive commercial SERP. Only keep investing if the comparison page stays aggressively current.
+
+- [ ] `/laravel-validation`
+  - Keyword cluster: `laravel validation`
+  - Why update now: Docs dominate the head term, so the page should lean harder into practical tasks instead of the generic keyword.
+
+- [ ] `/laravel-sanctum-api-tokens-authentication`
+  - Keyword cluster: `laravel sanctum`
+  - Why update now: The broad head term is too docs-dominated. API tokens and concrete auth workflows are still the right angle.
+
+- [ ] `/php-ini-location`
+  - Keyword cluster: `php.ini`
+  - Why update now: Keep this as a support term. The real page fit is still `php.ini location`.
+
+- [ ] `/laravel-pulse`
+  - Keyword cluster: `laravel pulse`
+  - Why update now: The package name is partly navigational. A jobs-to-be-done framing is better than chasing the bare term.
+
+- [ ] `/laravel-migrations`
+  - Keyword cluster: `laravel migrations`
+  - Why update now: The docs dominate the head term, so the article should stay command- and workflow-led.
 
 ## Articles to create
 
