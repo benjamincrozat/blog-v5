@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27KRDMRV4YFYVNAP1TZG"
-title: "PHP explode(): split strings into arrays safely"
+title: "PHP explode(): split a string into an array"
 slug: "php-explode"
 author: "benjamincrozat"
-description: "Use PHP explode() to split strings into arrays, understand limit behavior, handle empty separators, and know when preg_split() or str_getcsv() is a better fit."
+description: "Use PHP explode() to split a string by a fixed delimiter, understand limit behavior, and know when preg_split() or str_getcsv() is the better tool."
 categories:
   - "php"
-published_at: 2023-11-08T00:00:00+01:00
-modified_at: 2026-03-14T10:22:32Z
+published_at: 2023-11-07T23:00:00Z
+modified_at: 2026-03-19T22:55:03Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -18,207 +18,222 @@ sponsored_at: null
 ---
 ## Introduction
 
-PHP’s [explode()](https://www.php.net/explode) splits a string into an array using a separator you choose. It is the right tool for simple delimiters like commas, pipes, and spaces, but you need to understand the `limit` parameter and a few edge cases to avoid surprises.
-
-Quick start:
+Use [`explode()`](https://www.php.net/manual/en/function.explode.php) when you need to split a string by a fixed delimiter like a comma, pipe, slash, or space.
 
 ```php
-$devices = explode(', ', 'apple tv, apple watch, imac, iphone, macbook pro');
+$tags = explode(', ', 'php, laravel, mysql');
 
-print_r($devices);
+print_r($tags);
 
-// Array ( [0] => apple tv [1] => apple watch [2] => imac [3] => iphone [4] => macbook pro )
+// Array ( [0] => php [1] => laravel [2] => mysql )
 ```
 
-## Syntax and parameters
+That is the main job of `explode()`: turn one string into an array. The two things that usually trip people up are the `limit` argument and choosing `explode()` when the input is not really fixed-delimiter text.
 
-### explode(string $separator, string $string, int $limit = PHP_INT_MAX): array
-
-```php
-array explode(string $separator, string $string, int $limit = PHP_INT_MAX)
-```
-- separator: The boundary string to split on.
-- string: The input text to split.
-- limit (optional): Controls the number of array elements returned.
-  - If limit > 0: return at most limit elements; the last element contains the rest of the string.
-  - If limit = 0: treated as 1 (not “no limit”).
-  - If limit < 0: return all parts except the last |limit| parts.
-
-Note on missing separators:
-- If the separator is not found, explode() returns an array with the original string as a single element. With a negative limit, it returns an empty array.
-
-### What limit > 0, 0, and < 0 actually do
-
-- limit > 0: Split up to that many elements; the last element gets the remainder.
-- limit = 0: Works like 1; you get a one-element array.
-- limit < 0: Drop that many parts from the end and return the rest.
-
-## Examples
-
-### Basic split by comma and by space
+## PHP explode() syntax
 
 ```php
-// Comma + space
-$devices = explode(', ', 'apple tv, apple watch, imac, iphone, macbook pro');
-
-print_r($devices);
-
-// Array ( [0] => apple tv [1] => apple watch [2] => imac [3] => iphone [4] => macbook pro )
-
-// Single space
-$words = explode(' ', 'split this line');
-
-print_r($words);
-
-// Array ( [0] => split [1] => this [2] => line )
+explode(string $separator, string $string, int $limit = PHP_INT_MAX): array
 ```
 
-### Using limit > 0, 0, and < 0 (with outputs)
+- `$separator`: the string to split on
+- `$string`: the input string
+- `$limit`: optional control over how many pieces you get back
+
+Quick rules:
+
+- Positive `limit`: returns at most that many elements, with the last one containing the remainder
+- `limit = 0`: treated as `1`
+- Negative `limit`: returns everything except the last `abs($limit)` parts
+
+## The most useful explode() examples
+
+### Split a comma-separated string
 
 ```php
-// limit > 0 (2): last element holds the remainder
-$parts = explode(', ', 'a, b, c, d', 2);
+$emails = explode(',', 'ana@example.com,ben@example.com,cam@example.com');
+
+print_r($emails);
+
+// Array ( [0] => ana@example.com [1] => ben@example.com [2] => cam@example.com )
+```
+
+If your input contains spaces after commas, trim the pieces:
+
+```php
+$emails = array_map('trim', explode(',', 'ana@example.com, ben@example.com, cam@example.com'));
+
+print_r($emails);
+
+// Array ( [0] => ana@example.com [1] => ben@example.com [2] => cam@example.com )
+```
+
+### Split only once
+
+This is handy when you want the first token and everything after it.
+
+```php
+$line = 'name: Benjamin Crozat';
+$parts = explode(':', $line, 2);
 
 print_r($parts);
 
-// Array ( [0] => a [1] => b, c, d )
+// Array ( [0] => name [1] =>  Benjamin Crozat )
 ```
 
+With `2`, the second element keeps the rest of the string intact.
+
+### Drop the last piece with a negative limit
+
 ```php
-// limit = 0: treated as 1
-$parts = explode(', ', 'a, b, c', 0);
+$path = 'posts/php/explode/draft';
+$parts = explode('/', $path, -1);
 
 print_r($parts);
 
-// Array ( [0] => a, b, c )
+// Array ( [0] => posts [1] => php [2] => explode )
 ```
 
+This is useful when you want to remove a known suffix.
+
+### Split on line breaks or mixed whitespace
+
+`explode()` is great for one exact delimiter. If the input may contain multiple spaces, tabs, or newlines, [`preg_split()`](https://www.php.net/manual/en/function.preg-split.php) is usually the better choice.
+
 ```php
-// limit < 0 (-1): drop the last element
-$parts = explode(', ', 'a, b, c, d', -1);
+$text = "php   laravel\tmysql\nredis";
+$parts = preg_split('/\s+/', trim($text));
 
 print_r($parts);
 
-// Array ( [0] => a [1] => b [2] => c )
+// Array ( [0] => php [1] => laravel [2] => mysql [3] => redis )
 ```
 
-### Edge cases: missing delimiter; leading/trailing delimiters
+## Common explode() edge cases
+
+### What happens if the separator is not found?
+
+You still get an array back. It just contains the original string as its only element.
 
 ```php
-// Separator not found.
-$missing = explode('|', 'no pipes here');
+$result = explode('|', 'no pipes here');
 
-print_r($missing);
+print_r($result);
 
 // Array ( [0] => no pipes here )
+```
 
-// Separator not found with negative limit → empty array.
-$empty = explode('|', 'still no pipes', -1);
+If you use a negative limit and the separator is missing, PHP returns an empty array.
 
-print_r($empty);
+```php
+$result = explode('|', 'no pipes here', -1);
+
+print_r($result);
 
 // Array ( )
 ```
 
+### Leading or trailing delimiters create empty elements
+
 ```php
-// Leading and trailing delimiters produce empty elements.
-$around = explode(',', ',a,b,');
+$result = explode(',', ',php,laravel,');
 
-print_r($around);
+print_r($result);
 
-// Array ( [0] =>  [1] => a [2] => b [3] =>  )
+// Array ( [0] =>  [1] => php [2] => laravel [3] =>  )
 ```
 
-## Common pitfalls and gotchas
-
-### Empty separator (PHP 8+ ValueError)
-
-In PHP 8+, passing an empty string as the separator throws a ValueError. Always pass a non-empty separator.
+If that is not what you want, trim the string first or filter empty values afterward:
 
 ```php
-explode('', 'abc'); // ValueError in PHP 8+
+$result = array_values(array_filter(explode(',', ',php,laravel,'), 'strlen'));
+
+print_r($result);
+
+// Array ( [0] => php [1] => laravel )
 ```
 
-### Parameter order (explode vs implode)
+### An empty separator throws in PHP 8+
 
-[explode()](https://www.php.net/explode) takes (separator, string) and has never supported reversed order. A common mistake is to swap them. By contrast, implode() accepts (glue, array) and also supports (array, glue).
+As of PHP 8.0, `explode('', 'abc')` throws a `ValueError`.
 
 ```php
-// Wrong:
-explode($string, $separator)
-
-// Right:
-$parts = explode($separator, $string);
+explode('', 'abc'); // ValueError
 ```
 
-### Trimming whitespace (array_map + trim)
+### Parameter order matters
 
-When splitting CSV-like text, trim each part to remove stray spaces.
+`explode()` is always `explode($separator, $string)`.
 
 ```php
-$raw = ' a , b ,  c ';
+// Wrong
+explode($string, $separator);
 
-$parts = array_map('trim', explode(',', $raw));
+// Right
+explode($separator, $string);
+```
+
+## explode() vs the main alternatives
+
+Use `explode()` when the delimiter is fixed and simple. Use something else when the real problem is more complex.
+
+| Use case | Best choice | Why |
+| --- | --- | --- |
+| Split by one exact delimiter like `,` or `|` | `explode()` | Fast, readable, built for this |
+| Split by spaces, tabs, or multiple delimiters | [`preg_split()`](https://www.php.net/manual/en/function.preg-split.php) | Regex handles variable separators |
+| Parse real CSV with quotes or escaped commas | [`str_getcsv()`](https://www.php.net/manual/en/function.str-getcsv.php) | Keeps quoted values intact |
+| Split into characters | [`str_split()`](https://www.php.net/manual/en/function.str-split.php) | Works character by character |
+
+### Use str_getcsv() for CSV, not explode()
+
+This is a very common mistake. `explode(',', $string)` breaks as soon as a field contains a quoted comma.
+
+```php
+$csv = '"Crozat, Benjamin",Developer,Remote';
+$parts = str_getcsv($csv);
 
 print_r($parts);
 
-// Array ( [0] => a [1] => b [2] => c )
+// Array ( [0] => Crozat, Benjamin [1] => Developer [2] => Remote )
 ```
 
-## explode vs alternatives
+### Use preg_split() when whitespace is inconsistent
 
-### preg_split for regex or multiple delimiters
-
-Use preg_split() when you need regex support or several delimiters at once (for example, split on commas, semicolons, or any whitespace). See the [preg_split manual](https://www.php.net/manual/en/function.preg-split.php).
+If the input can contain one space, three spaces, tabs, or newlines, `explode(' ', $string)` is too brittle.
 
 ```php
-$text = "one   two\tthree\nfour";
-
-$parts = preg_split('/\s+/', $text, -1, PREG_SPLIT_NO_EMPTY);
+$text = "php   laravel\tmysql";
+$parts = preg_split('/\s+/', trim($text));
 
 print_r($parts);
 
-// Array ( [0] => one [1] => two [2] => three [3] => four )
+// Array ( [0] => php [1] => laravel [2] => mysql )
 ```
 
-### str_getcsv for real CSV
+## FAQ
 
-If your data has quotes or escaped commas, use str_getcsv() so quoted fields stay intact. See the [str_getcsv manual](https://www.php.net/manual/en/function.str-getcsv.php).
+### Does explode() remove spaces automatically?
 
-```php
-$csv = '"Last, First",30,Developer';
+No. If you split a comma-separated string like `'a, b, c'` with `explode(',', $string)`, the second and third values keep their leading spaces. Use `array_map('trim', ...)` if needed.
 
-$row = str_getcsv($csv);
+### Why does explode() return empty strings?
 
-print_r($row);
+Because delimiters at the start, end, or repeated in the middle create empty array elements. That behavior is normal.
 
-// Array ( [0] => Last, First [1] => 30 [2] => Developer )
-```
+### Does explode() work with regular expressions?
 
-## FAQs
+No. If you need regex matching, use [`preg_split()`](https://www.php.net/manual/en/function.preg-split.php).
 
-### What happens if the separator is not found?
+### What is the opposite of explode() in PHP?
 
-You get an array with the original string as the only element. If you use a negative limit, [explode()](https://www.php.net/explode) returns an empty array.
-
-### Why does limit = 0 act like 1?
-
-By design, PHP treats 0 as 1 for this function. It never means “no limit.” If you want “no limit,” omit the parameter or pass a positive number large enough.
-
-### How do I use explode with spaces or newlines?
-
-For a single space, use explode(' ', $string). For multiple spaces or newlines, use [preg_split()](https://www.php.net/preg_split) with a regex like /\s+/ to handle any whitespace.
-
-### How do I split into characters?
-
-Use [str_split()](https://www.php.net/preg_split) to break a string into individual characters.
+[`implode()`](https://www.php.net/manual/en/function.implode.php). It joins array elements into one string.
 
 ## Conclusion
 
-`explode()` splits strings by a separator and returns an array. Remember the key rules: limit > 0 returns up to that many parts (with the remainder in the last part), limit = 0 acts like 1, and limit < 0 drops parts from the end. For regex or many delimiters, prefer `preg_split()`; for true CSV data, prefer `str_getcsv()`. If you need the reverse, join arrays with [implode()](https://www.php.net/implode). I hope this helped you use explode() with confidence. For full details, see the [explode() manual](https://www.php.net/explode).
+`explode()` is the right PHP function when you want to split a string by one known delimiter. Reach for it first for commas, pipes, slashes, and similar fixed separators. If the input is really CSV, inconsistent whitespace, or pattern-based text, switch to the more appropriate tool instead of forcing `explode()` to do a job it was not built for.
 
-If you are still doing a lot of string-to-array cleanup in PHP, these are the next reads I would keep open:
+If you are still cleaning up string handling in PHP, these are the next reads I would keep open:
 
+- [Join array values back into a string with implode()](/php-implode)
 - [Clean up strings with str_replace without weird edge cases](/php-str-replace)
-- [Map arrays in PHP without overcomplicating the callback](/php-array-map)
-- [Filter PHP arrays cleanly without awkward loops](/php-array-filter)
+- [Parse URLs safely before splitting paths by hand](/php-parse-url)
