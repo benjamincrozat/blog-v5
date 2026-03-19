@@ -4,24 +4,23 @@
         "php": "^8.4",
         "algolia/algoliasearch-client-php": "^4.39",
         "andreiio/blade-iconoir": "^4.7",
-        "blade-ui-kit/blade-heroicons": "^2.6",
+        "blade-ui-kit/blade-heroicons": "^2.7",
         "coconutcraig/laravel-postmark": "^3.4",
-        "codeat3/blade-phosphor-icons": "^2.3",
         "embed/embed": "^4.4",
-        "filament/filament": "^5.3",
+        "filament/filament": "^5.4",
         "guzzlehttp/guzzle": "^7.10",
         "jaybizzle/crawler-detect": "^1.3",
         "knplabs/github-api": "^3.16",
-        "lab404/laravel-impersonate": "^1.7",
-        "laravel/cashier": "^16.4",
-        "laravel/framework": "^12.53",
+        "lab404/laravel-impersonate": "^1.7.8",
+        "laravel/cashier": "^16.5",
+        "laravel/framework": "^13.0",
         "laravel/horizon": "^5.45",
         "laravel/scout": "^11.0",
         "laravel/socialite": "^5.25",
-        "laravel/tinker": "^2.11",
+        "laravel/tinker": "^3.0",
         "league/flysystem-aws-s3-v3": "^3.32",
         "livewire/livewire": "^4.2",
-        "openai-php/laravel": "^0.19.0",
+        "openai-php/laravel": "^0.19.1",
         "sentry/sentry-laravel": "^4.20",
         "spatie/browsershot": "^5.2",
         "spatie/laravel-activitylog": "^4.12",
@@ -31,7 +30,7 @@
         "tempest/highlight": "^2.17"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.16",
+        "barryvdh/laravel-debugbar": "^4.1",
         "fakerphp/faker": "^1.24",
         "larastan/larastan": "^3.9",
         "laravel/pail": "^1.2",
@@ -58,6 +57,18 @@
         }
     },
     "scripts": {
+        "setup": [
+            "composer install",
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php artisan key:generate",
+            "@php artisan migrate --force",
+            "npm install",
+            "npm run build"
+        ],
+        "test": [
+            "@php artisan config:clear --ansi",
+            "@php artisan test"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
@@ -73,6 +84,9 @@
             "@php artisan key:generate --ansi",
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
+        ],
+        "pre-package-uninstall": [
+            "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
