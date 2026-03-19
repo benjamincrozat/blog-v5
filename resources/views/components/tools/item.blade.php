@@ -38,12 +38,14 @@ Presents the tools item component UI and accepts component props, Blade attribut
         </x-btn>
     </div>
 
-    <div class="relative flex-none w-[20%] sm:w-[33.33%] lg:flex-1">
-        <img
-            loading="lazy"
-            src="{{ $src }}"
-            alt="{{ $name }}"
-            class="object-cover absolute inset-0 w-full h-full ring-1 shadow-2xl ring-black/10 object-top-left"
-        />
-    </div>
+    @if (filled($src))
+        <div class="relative flex-none w-[20%] sm:w-[33.33%] lg:flex-1">
+            <img
+                loading="lazy"
+                src="{{ $src }}"
+                alt="{{ $name }}"
+                class="object-cover absolute inset-0 w-full h-full ring-1 shadow-2xl ring-black/10 object-top-left"
+            />
+        </div>
+    @endif
 </a>
