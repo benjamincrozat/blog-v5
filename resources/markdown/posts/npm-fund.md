@@ -7,18 +7,16 @@ description: "Learn what npm fund does, why npm says “packages are looking for
 categories:
   - "javascript"
 published_at: 2024-03-04T00:00:00+01:00
-modified_at: 2026-03-14T10:04:32Z
+modified_at: 2026-03-19T09:15:00+00:00
 serp_title: null
 serp_description: null
 canonical_url: null
 is_commercial: false
 image_disk: "cloudflare-images"
-image_path: "images/posts/01K57MRHV35PSWPMR3PFKQJ105.png"
+image_path: "images/posts/generated/npm-fund.png"
 sponsored_at: null
 ---
 ## Introduction
-
-![The npm fund command showing in my terminal.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/rUiZiYHULe49bgleBIzQmpvA4eHrB2fytglgSxaT.png/public)
 
 If `npm install` keeps printing **“packages are looking for funding”**, the message is informational, not an error. This guide explains what `npm fund` means, why npm shows it, and the fastest ways to disable it when you just want clean installs.
 
@@ -30,11 +28,30 @@ If you only want the fix, run `npm config set fund false` to disable the message
 *   **Per project:** Add `fund=false` to your `.npmrc`
 *   **Per command:** `npm install --no-fund`
 
+## The exact message and the quick fix
+
+The message usually looks like this after an install:
+
+```text
+added 47 packages, and 12 packages are looking for funding
+  run `npm fund` for details
+```
+
+If you want it gone:
+
+- disable it globally: `npm config set fund false`
+- disable it in one repo: add `fund=false` to `.npmrc`
+- disable it for one install: `npm install --no-fund`
+
+![The npm fund command showing in my terminal.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/rUiZiYHULe49bgleBIzQmpvA4eHrB2fytglgSxaT.png/public)
+
 ## What does `npm fund` mean?
 
 `npm fund` isn’t an error or warning—it’s informational. This message is npm’s polite reminder that some of the open-source packages you’re using would appreciate financial support.
 
-Maintainers use platforms like GitHub Sponsors, Open Collective, and Tidelift to gather contributions. Supporting packages helps ensure their long-term maintenance, security, and improvement.
+If you run `npm fund`, npm shows the funding information it found for the dependencies in your project. In current npm CLI help, the command description is simply “Retrieve funding information.”
+
+Maintainers often point to places like GitHub Sponsors or Open Collective. Supporting packages helps keep the ecosystem maintained, but the message itself is still just informational.
 
 But let’s be realistic—financially supporting every dependency isn’t feasible for most of us, so disabling these messages can be totally legitimate.
 
@@ -53,7 +70,7 @@ npm config set fund false
 If you later change your mind, re-enable it:
 
 ```bash
-npm config delete fund
+npm config set fund true
 ```
 
 ### Disable it in your project only
@@ -79,10 +96,6 @@ npm install --no-fund
 ```
 
 This flag also works with other npm commands like `npm update`.
-
-## Does this affect Yarn or pnpm?
-
-Nope. Yarn and pnpm don’t display NPM’s “packages are looking for funding” message because they handle funding notices differently. This configuration only applies to npm itself.
 
 ## Why are packages looking for funding?
 
