@@ -94,7 +94,7 @@ That makes it a much simpler starting point than piecing together a Homebrew-bas
 
 ## PHP versions in Laravel Herd
 
-Herd now ships with the latest stable PHP version by default. As of March 19, 2026, the official macOS and Windows docs say that default is PHP 8.5.
+Herd ships with the latest stable PHP version by default, and its current public pages show support from PHP 7.4 through PHP 8.5.
 
 You can change the global PHP version from the app or with the CLI:
 
