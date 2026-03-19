@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27CG49GRV02BM10BPV0S"
-title: "How to install Laravel Herd on macOS and Windows"
+title: "Laravel Herd: install it on macOS or Windows"
 slug: "laravel-herd"
 author: "benjamincrozat"
-description: "Install Laravel Herd on macOS or Windows to get PHP, nginx, Composer, Node.js, and .test sites running with less local setup friction."
+description: "Laravel Herd is Laravel's native local PHP development environment for macOS and Windows. Here's how to install it, verify it, and switch PHP versions."
 categories:
   - "laravel"
   - "tools"
-published_at: 2023-07-19T00:00:00+02:00
-modified_at: 2026-03-19T22:39:10Z
+published_at: 2023-07-18T22:00:00Z
+modified_at: 2026-03-19T22:45:00Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -19,48 +19,28 @@ sponsored_at: null
 ---
 ## Introduction
 
-**Laravel Herd is the easiest local PHP stack for macOS or Windows if you want PHP, nginx, Composer, Node.js, and `.test` domains without stitching everything together by hand.**
+Laravel Herd is Laravel's native local PHP development environment for macOS and Windows.
 
-If you only need the short version:
+If you want the short version: download Herd from the official site, run the installer, approve the admin prompt when asked, and then verify `herd`, `php`, `composer`, `laravel`, and `node` in your terminal. Herd handles local `.test` domains for you and bundles the PHP, nginx, and Node.js tooling you need to start quickly.
 
-- install **Herd** on **macOS 12+** or **Windows 10+**
-- open it once and finish the onboarding flow
-- verify with `herd --version`, `php --version`, and `composer --version`
-- use `herd isolate` when a project needs a different PHP version
+This guide focuses on the current install flow for both platforms, how Herd handles PHP and Node.js today, and when it makes more sense than [Laravel Valet](/laravel-valet).
 
-The official docs now position Herd as the dependency-light alternative to a Homebrew-heavy or manually assembled local stack.
+## Laravel Herd requirements at a glance
 
-## What Laravel Herd gives you
+- macOS: Herd requires macOS 12 or later.
+- Windows: Herd requires Windows 10 or later and needs administrator privileges during setup.
+- Default project folder: Herd parks `~/Herd` on macOS and `%USERPROFILE%\Herd` on Windows, so projects there are automatically available at `your-project.test`.
 
-After setup, Herd gives you a local environment with:
+## How to install Laravel Herd on macOS
 
-- PHP
-- nginx
-- Composer
-- the Laravel installer
-- Node.js
-- `.test` local domains
-
-That is why Herd is attractive for Laravel work: it gets you from "new machine" to "app running locally" faster than a more manual stack.
-
-## Install Laravel Herd on macOS
-
-### Requirements
-
-According to the official macOS installation docs, Herd requires **macOS 12.0 or later**.
-
-### Installation steps
-
-1. Download the latest macOS build from [the official Herd download page](https://herd.laravel.com/download).
+1. [Download Herd](https://herd.laravel.com/download).
 2. Open the DMG file.
-3. Drag Herd into the **Applications** folder.
-4. Launch Herd to start the onboarding process.
+3. Drag Herd into your Applications folder.
+4. Launch Herd from Applications.
+5. Complete onboarding. Herd downloads the latest stable PHP version, installs its background service, and configures local `.test` routing.
+6. If you already use Valet, Herd can detect your existing Valet sites, certificates, and settings and help you migrate them.
 
-During onboarding, Herd downloads the latest PHP version and installs its background service for nginx and local DNS handling.
-
-If you are moving from Valet, Herd can detect an existing Valet installation and migrate sites, certificates, and settings.
-
-### Verify the install
+### Verify the macOS install
 
 Run:
 
@@ -72,25 +52,23 @@ composer --version
 node --version
 ```
 
-If those commands resolve, the core setup is working.
+If you use Fish shell, add Herd's binaries to your path:
 
-## Install Laravel Herd on Windows
+```bash
+fish_add_path -U $HOME/Library/Application\ Support/Herd/bin/
+```
 
-### Requirements
+## How to install Laravel Herd on Windows
 
-The current Windows installation docs say Herd requires **Windows 10 or higher** and needs **administrator privileges** during setup.
+1. [Download Herd for Windows](https://herd.laravel.com/download/windows).
+2. Run the installer as administrator.
+3. Let the installer add the HerdHelper service, which updates your hosts file and maps your local sites to `.test` domains.
+4. Open Herd and finish setup.
+5. Put Laravel projects in `%USERPROFILE%\Herd` if you want them available automatically as `your-project.test`.
 
-### Installation steps
+### Verify the Windows install
 
-1. Download Herd from [the official Windows download page](https://herd.laravel.com/download/windows).
-2. Run the installer as an administrator.
-3. Open Herd and complete the setup flow.
-
-The Windows installer adds the Herd helper service that handles host-file updates and maps local sites to `.test` domains.
-
-### Verify the install
-
-Run these in PowerShell or Windows Terminal:
+Run these commands in PowerShell or Command Prompt:
 
 ```powershell
 herd --version
@@ -100,103 +78,86 @@ composer --version
 node --version
 ```
 
-## Which PHP version does Herd install?
+### Windows performance note
 
-Herd now ships with the **latest stable PHP version by default**.
+If Herd feels slow on Windows, the official docs recommend excluding `%USERPROFILE%\.config\herd` from Windows Defender scans.
 
-As of **March 19, 2026**, the Herd docs say that default is **PHP 8.5** on both macOS and Windows.
+## What Laravel Herd installs for you
 
-That is a meaningful update from older Herd guides that were anchored to PHP 8.4.
+Herd is designed to be the fast native option for local Laravel work.
 
-## Switching PHP versions globally or per project
+- On macOS, Herd ships with PHP, nginx, dnsmasq, and Node.js tooling.
+- On Windows, Herd ships with PHP, nginx, and Node.js tooling, and uses HerdHelper to handle `.test` mappings.
+- On both platforms, Herd includes the `herd` CLI and lets you use `php`, `composer`, and the Laravel installer from your terminal.
 
-This is one of Herd's best features.
+That makes it a much simpler starting point than piecing together a Homebrew-based stack on macOS or a Docker-based one with Sail.
 
-You can switch the global PHP version:
+## PHP versions in Laravel Herd
+
+Herd now ships with the latest stable PHP version by default. As of March 19, 2026, the official macOS and Windows docs say that default is PHP 8.5.
+
+You can change the global PHP version from the app or with the CLI:
 
 ```bash
-herd use 8.5
+herd use 8.2
 ```
 
-Or isolate a single project to its own PHP version:
+To see what Herd can install and add another version:
 
 ```bash
-cd ~/Sites/my-app
-herd isolate 8.3
+herd php:list
+herd php:install 8.3
+herd php:update 8.4
 ```
 
-Remove that per-project pin with:
+If one project needs a different PHP version than the global default, isolate it:
 
 ```bash
+cd ~/Herd/my-app
+herd isolate 8.1
 herd unisolate
 ```
 
-If you work across older and newer Laravel apps, this is where Herd becomes more useful than a one-version local stack.
+On Windows, the same commands work. If your project lives in the default parked directory, start in `%USERPROFILE%/Herd/my-app` instead.
 
-## Managing extra PHP versions
+If you need help checking which PHP version Laravel is actually using, see [Check PHP version in CLI, browser, or Laravel](/check-php-version).
 
-The current Herd docs focus less on a fixed support matrix and more on managing PHP versions through the app or CLI.
+## Node.js and extensions
 
-The practical takeaway is:
+Herd ships with `nvm` and installs the latest available Node.js version during setup. You can switch Node versions with `nvm use` or isolate a project with Herd's Node commands if you need a different version for one app.
 
-- Herd installs the latest stable PHP version by default
-- you can install additional versions as needed
-- you can set a global version or isolate a single project
+Herd also includes many common PHP extensions out of the box, but the exact list can change by platform and release. If you need something extra:
 
-That is a better mental model than memorizing an older static list of bundled versions.
+- On macOS, Herd's docs recommend installing extra extensions with Homebrew and PECL, then enabling them in `~/Library/Application Support/Herd/config/php/<version>/php.ini`.
+- On Windows, Herd's docs point you to non-thread-safe Windows builds from PECL and to `%USERPROFILE%\.config\herd\bin\<version>\php.ini` for activation.
 
-## PHP extensions in Herd
+For the always-current details, check the official [macOS PHP extensions docs](https://herd.laravel.com/docs/macos/technology/php-extensions) or [Windows PHP extensions docs](https://herd.laravel.com/docs/windows/technology/php-extensions).
 
-Herd includes many extensions out of the box, but not every possible one.
-
-If you need something extra on macOS, the official docs recommend installing it with **Homebrew** and **PECL**, then enabling it in Herd's `php.ini`.
-
-That means Herd stays lightweight while still letting you add what a specific project needs.
-
-## Herd vs Valet vs Sail
-
-Use this shorter rule of thumb:
-
-- choose **Herd** if you want the easiest native local setup on macOS or Windows
-- choose **Valet** if you prefer the Homebrew-style macOS workflow
-- choose **Sail** if you want Docker containers that look more like production
-
-Herd is the easiest recommendation when the main goal is "get Laravel running locally without yak-shaving."
-
-## Herd Pro
+## Laravel Herd Pro pricing
 
 Herd Basic is free.
 
-Herd Pro is the paid tier and the current checkout page describes it as a **one-year license** that works on **macOS and Windows** and can be activated on **up to two devices**.
+Herd Pro starts at $99 per year for one license, and that license can be activated on two devices at the same time. Team licenses start at $299. Pro adds the integrated services and debugging tools that Herd does not include in the free tier by default.
 
-The Pro tier adds developer-focused tools like:
+If you do not renew, Herd drops back to the free version. The official pricing page also says there is a 14-day refund policy.
 
-- service management
-- debugging helpers
-- mail, dump, and log viewers
+## Herd vs Valet vs Sail
 
-Because pricing can change, I would always confirm the current details on the official [Herd Pro page](https://herd.laravel.com/checkout).
+- Choose Herd if you want the fastest native Laravel setup on macOS or Windows, with `.test` domains, GUI controls, and optional Pro services.
+- Choose [Laravel Valet](/laravel-valet) if you are on macOS and prefer a lighter, CLI-first workflow built around Homebrew.
+- Choose Sail if you want Docker containers because you need closer parity with a containerized production setup.
 
-## Troubleshooting note for Windows
+## Is Laravel Herd available on Linux?
 
-The current Windows docs include one practical fix worth knowing: if Herd feels slow, Windows Defender may be scanning Herd's config folder. The official docs recommend excluding `%USERPROFILE%\\.config\\herd` when Defender is the bottleneck.
-
-That is not always necessary, but it is a useful first thing to check if the Windows install feels unexpectedly sluggish.
-
-## Platform availability
-
-Herd is available on **macOS** and **Windows**.
-
-There is still **no Linux version planned** in the official positioning.
+No. The official Herd pricing FAQ says there are currently no plans for a Linux version.
 
 ## Conclusion
 
-If you want the easiest Laravel-friendly local stack on macOS or Windows in 2026, Herd is the simplest recommendation. The main things to remember are that installation now centers around the onboarding flow, the default PHP version is currently **8.5**, and per-project isolation is the feature that really earns its keep.
+Laravel Herd is the easiest way to get a modern Laravel PHP environment running on macOS or Windows without piecing the stack together yourself. For most Laravel projects, the free tier is enough to get started, and the install flow is now straightforward on both platforms.
 
-If you are piecing together the rest of your local setup after Herd, these are the follow-up reads I would keep open:
+If you are building out the rest of your local Laravel setup, these next reads are the most relevant:
 
-- [Check whether your PHP version is part of the problem](/check-php-version)
-- [Run PHP and Laravel more smoothly on macOS](/laravel-valet)
-- [Set up Laravel on macOS without a messy local stack](/laravel-installation-macos)
-- [See whether Laravel Forge still fits the way you deploy](/laravel-forge)
-- [Compare hosting options before you deploy another Laravel app](/best-laravel-hosting-providers)
+- [How to install Laravel Valet on macOS](/laravel-valet)
+- [How to install Laravel on macOS](/laravel-installation-macos)
+- [Check PHP version in CLI, browser, or Laravel](/check-php-version)
+- [Latest Laravel version and support status](/laravel-versions)
