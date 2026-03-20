@@ -1,14 +1,14 @@
 ---
 id: "01KKEW276EXG2JH016XWX60YSZ"
-title: "Alpine.js: a lightweight framework for productive developers"
+title: "Alpine.js: what it is and when to use it"
 slug: "alpine-js"
 author: "benjamincrozat"
-description: "Learn what Alpine.js is, how I set it up by CDN or Vite, when to use it vs jQuery, and which official plugins and devtools speed up my workflow."
+description: "Learn what Alpine.js is, how to install it by CDN or Vite, and when it makes more sense than jQuery or a larger framework."
 categories:
   - "alpinejs"
   - "javascript"
 published_at: 2023-01-26T00:00:00+01:00
-modified_at: 2025-09-28T10:48:00+02:00
+modified_at: 2026-03-20T12:45:00Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -19,9 +19,9 @@ sponsored_at: null
 ---
 ## Introduction
 
-Front-end web development has increased in complexity over the past decade. Despite being well aware of this fact, we are still reaching for JavaScript frameworks because building good user interfaces is even more challenging than writing Vanilla JavaScript.
+Front-end web development is full of heavy choices. Alpine.js is the opposite of that: a small framework for the little interactions that make a page feel alive.
 
-Luckily, Alpine.js is a good compromise. This Alpine.js tutorial shows how I use x-data, x-show, x-transition, and click.outside to build small interactive pieces.
+This article shows how I use `x-data`, `x-show`, `x-transition`, and `@click.outside` to build dropdowns, toggles, and other bite-sized UI pieces without dragging in a big client-side app.
 
 If you landed here because you only need setup steps, start with my guide on [how to install Alpine.js in any project](/how-to-install-alpine-js). This article is the bigger-picture overview.
 
@@ -33,7 +33,7 @@ You want simple interactivity without a heavy build step. You’re comfortable w
 
 **[Alpine.js](https://alpinejs.dev) is a tiny JavaScript framework for building interactive user interfaces.**
 
-Imagine Vue.js, but smaller, easier and pragmatic. Alpine relies on a small set of directives and magic helpers you sprinkle into your HTML.
+Think of it as a pragmatic way to keep behavior close to your markup. Alpine relies on a small set of directives and magic helpers you sprinkle into your HTML.
 
 This is all it takes to build an Alpine.js dropdown:
 
@@ -64,9 +64,9 @@ No component file and no build process are required. You can see what’s going 
 
 ## Alpine.js vs jQuery: gently modernize how you write JavaScript
 
-In my experience, teams keep jQuery for habit, AJAX helpers, DOM queries, and quick effects. If you want a number, as of August 31, 2025, jQuery appears on about 72.8% of websites according to [W3Techs](https://w3techs.com/technologies/comparison/js-jquery).
+In my experience, teams keep jQuery for habit, AJAX helpers, DOM queries, and quick effects. Alpine.js keeps the same "small interaction" feel, but it is easier to line up with modern HTML and component-driven rendering.
 
-Alpine.js keeps things easy like jQuery but feels modern. Here’s how I switch common patterns:
+Here’s how I switch common patterns:
 - First, jQuery’s `$()` isn’t needed. Use `document.querySelector()` and `document.querySelectorAll()`.
 - Second, make AJAX requests with the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch): `fetch('https://example.com/api/bar')`.
 
@@ -102,7 +102,7 @@ Alpine.js is one of the easiest frameworks to set up. Just copy-and-paste this c
     <head>
         …
         <style>[x-cloak] { display: none !important; }</style>
-        <script defer src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </head>
     <body>
         …
@@ -115,10 +115,10 @@ Using a version range like `@3.x.x` causes a redirect to the latest matching ver
 Same thing for plugins. **Make sure they come before Alpine.js** when using a CDN:
 
 ```html
-<script defer src="https://unpkg.com/@alpinejs/intersect@3.14.9/dist/cdn.min.js"></script>
-<script defer src="https://unpkg.com/@alpinejs/persist@3.14.9/dist/cdn.min.js"></script>
-<script defer src="https://unpkg.com/@alpinejs/focus@3.14.9/dist/cdn.min.js"></script>
-<script defer src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script>
+<script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 ```
 
 ### CDN vs bundling
@@ -210,7 +210,7 @@ By engaging with the Alpine.js community through these channels, you’ll not on
 
 ## Conclusion
 
-I reach for Alpine.js when I need small, interactive UI pieces without heavy tooling. For quick pages I load it from a CDN and pin versions; for apps I bundle it with Vite and register plugins before `Alpine.start()`. Give the dropdown example a try, then explore the official plugins and install the Alpine.js devtools to speed up your workflow.
+I reach for Alpine.js when I need small, interactive UI pieces without heavy tooling. For quick pages I load it from a CDN; for apps I bundle it with Vite and register plugins before `Alpine.start()`. Give the dropdown example a try, then explore the official plugins and install the Alpine.js devtools to speed up your workflow.
 
 If this made you want smaller, snappier UI interactions without dragging in a huge stack, these are the next reads I would keep open:
 

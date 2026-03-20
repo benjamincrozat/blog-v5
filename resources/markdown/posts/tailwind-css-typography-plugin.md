@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27NERD9Q9AGVN5YGM72V"
-title: "Tailwind CSS typography plugin: a step-by-step build guide"
+title: "How to use the Tailwind CSS typography plugin"
 slug: "tailwind-css-typography-plugin"
 author: "benjamincrozat"
-description: "Discover how the Tailwind CSS typography plugin can help you easily style text you don't control, such as content from CMS platforms."
+description: "Install @tailwindcss/typography and use prose classes to style Markdown, CMS content, and long-form text."
 categories:
   - "css"
   - "tailwind-css"
 published_at: 2023-04-26T00:00:00+02:00
-modified_at: 2023-09-01T00:00:00+02:00
+modified_at: 2026-03-20T12:45:00Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -17,35 +17,40 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/05sz2hKF7klJ3jc.png"
 sponsored_at: null
 ---
-## Introduction to making your proses beautiful
+## Introduction to making your prose beautiful
 
-To me, one of the key features of Tailwind CSS is its [typography plugin](https://tailwindcss.com/docs/typography-plugin), which offers opinionated defaults, and also easy customization to our proses.
+To me, one of the best Tailwind CSS features is the [typography plugin](https://tailwindcss.com/docs/typography-plugin), which gives you sensible defaults for prose that you do not fully control.
 
-The blog post you are reading is actually using this plugin!
+This blog post is using the plugin too.
 
-Now, let's walk you through a step-by-step guide on installing and using it to build your own beautiful blog posts (which is, of course, just one use case among many others).
+Now, let's walk through how to install it and use it for Markdown, CMS content, and any other long-form text you want to make easier to read.
 
 ## What is @tailwindcss/typography?
 
-**@tailwindcss/typography is a plugin that helps make your text look great.**
+**`@tailwindcss/typography` is a plugin that styles long-form text for you.**
 
-It comes with ready-to-use styles for your HTML. You don't need to write your own CSS. This is very helpful when working with HTML generated from Markdown content for instance (like in this blog post). 
+It comes with ready-to-use styles for your HTML, so you do not need to hand-code every heading, list, or blockquote. That is especially handy when your content comes from Markdown or a CMS.
 
 Let's start by adding the plugin to your project and learn how to use it.
 
 ## Installation
 
-Before you start using the plugin, you need to install it. Follow these simple steps:
+Tailwind CSS v4 and v3 use slightly different installation steps.
 
-Open your terminal and type this command:
+If you are on Tailwind CSS v4, add the plugin in your CSS entry point:
+
+```css
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+```
+
+If you are still on Tailwind CSS v3, install the package first:
 
 ```bash
 npm install -D @tailwindcss/typography
 ```
 
-This will install the plugin from the NPM repository.
-
-Now, add the plugin to your *tailwind.config.js* file. Open the file and add this code:
+Then add it to your *tailwind.config.js* file:
 
 ```js
 module.exports = {
@@ -55,13 +60,11 @@ module.exports = {
 }
 ```
 
-This tells Tailwind to actually use the typography plugin.
-
-That's it! The plugin is installed. Now, let's learn how to use it in your project.
+That is all you need for the plugin itself. Now let's use it in markup.
 
 ## Usage
 
-You can now use the prose classes to style your text.
+Wrap your content in a `prose` container to get the base typography styles.
 
 Here's an example of how to use these classes with simple HTML:
 
@@ -72,18 +75,16 @@ Here's an example of how to use these classes with simple HTML:
 </article>
 ```
 
-In this example, we wrap the HTML content in an `<article>` element and add the prose class. This class applies nice styles to the text inside.
+In this example, we wrap the HTML content in an `<article>` element and add the `prose` class. That one class does most of the heavy lifting for blog posts like this one.
 
-Honestly I don't do a lot more than that on this blog. This is already a huge time saver.
-
-## Choosing a grayscale (the theme)
+## Choosing a color theme
 
 The Tailwind CSS typography plugin comes with built-in themes to make your content look even better.
 
 You can easily style your content to match the colors you're using in your project. Here's how to do it:
 
-Wrap your content in an `<article>` element with the prose class.
-Then, add a theme modifier class.
+Wrap your content in an `<article>` element with the `prose` class.
+Then add a theme modifier class.
 
 ```html
 <article class="prose prose-slate">
@@ -120,7 +121,7 @@ To apply a type scale to your content, add the corresponding size modifier class
 </article>
 ```
 
-These size modifiers can also be combined with Tailwind CSS' breakpoint modifiers to change the font size of your content at different viewport sizes:
+These size modifiers can also be combined with Tailwind CSS breakpoint modifiers to change the font size of your content at different viewport sizes:
 
 ```html
 <article class="prose md:prose-lg lg:prose-xl">
@@ -207,7 +208,7 @@ When using these modifiers alongside others like hover, it's best to have the ot
 
 ## Use all the width
 
-The plugin comes with built-in `max-width` setting that are designed to maintain the readability of your content. However, there might be scenarios where you want your content to fill the width of its container.
+The plugin comes with built-in `max-width` settings that are designed to maintain the readability of your content. However, there might be scenarios where you want your content to fill the width of its container.
 
 By default, a `max-width` is applied to each size modifier to optimize readability. If you want to remove this constraint and allow your content to fill its container, simply add the `max-w-none` utility class to your HTML element:
 
@@ -219,7 +220,7 @@ By default, a `max-width` is applied to each size modifier to optimize readabili
 
 ## Exclude blocks of HTML from prose styles
 
-To exclude a block of markup from inheriting the prose styles, you can use the `not-prose`. This is particularly useful when you have a part of your content that requires different styling from the main content.
+To exclude a block of markup from inheriting the prose styles, you can use the `not-prose` class. This is particularly useful when you have a part of your content that requires different styling from the main content.
 
 Here's an example:
 
@@ -237,11 +238,11 @@ Here's an example:
 </article>
 ```
 
-In the example above, we exclude our from the prose styles by applying a `not-prose` class.
+In the example above, we exclude the form from the prose styles by applying a `not-prose` class.
 
-It's important to note that, at the moment, you cannot nest new `prose` instances within a `not-prose` block. If you need to apply different typography styles within a not-prose block, you'll need to handle that with separate custom styling or utility classes.
+It is important to note that you cannot nest new `prose` instances within a `not-prose` block. If you need different typography styles inside that area, handle them with separate custom styling or utility classes.
 
-If you are polishing the reading experience of a Tailwind UI, these are the next posts I would keep nearby:
+If you are polishing the reading experience of a Tailwind-powered UI, these are the next posts I would keep nearby:
 
 - [Style forms faster with Tailwind's forms plugin](/tailwind-css-forms-plugin)
 - [Tighten your Tailwind habits before the CSS gets messy](/tailwind-css)
