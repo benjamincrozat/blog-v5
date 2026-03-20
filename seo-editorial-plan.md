@@ -1,6 +1,6 @@
 # SEO editorial plan
 
-Last updated: March 19, 2026
+Last updated: March 20, 2026
 Source brief: fresh Search Console export from the browser plus live Google US desktop SERP checks on March 18, 2026
 
 This is the working SEO backlog for the next article batch and refresh cycle. We should move through it from top to bottom unless fresh Search Console or SERP data changes the priority. Check an item only when the article is drafted or refreshed, reviewed, synced, and ready to publish.
