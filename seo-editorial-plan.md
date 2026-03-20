@@ -159,7 +159,7 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
 
 ## Articles to create
 
-- [ ] `latest php version`
+- [x] `latest php version`
   - Angle: build a PHP equivalent of your `laravel-versions` page instead of forcing that intent onto `/php-90`.
   - Must cover: the current stable PHP version, active support vs security support, supported branches, where to verify the latest release, and how to tell whether your project is behind.
   - Visual plan: a compact support-status table should do more work than screenshots.
