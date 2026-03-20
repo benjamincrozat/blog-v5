@@ -104,56 +104,56 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
   - Why update now: The no-space variant is stronger than the spaced variant.
   - Core update: Make `@tailwindcss/forms` more explicit in the title, intro, and key headings.
 
-- [ ] `/openai-tts-api`
+- [x] `/openai-tts-api`
   - Keyword cluster: `openai tts`
   - Why update now: Worth refreshing only if we make it current.
   - Core update: Rewrite it around the current OpenAI text-to-speech docs, models, and endpoints before treating it as active SEO work.
 
-- [ ] `/gpt-4o-mini`
+- [x] `/gpt-4o-mini`
   - Keyword cluster: `gpt-4o-mini`, `gpt-4o-mini openai model`
   - Why update now: OpenAI docs dominate the head terms, so the page should stay focused on implementation intent rather than the broad model query.
 
-- [ ] `/laravel-forge`
+- [x] `/laravel-forge`
   - Keyword cluster: `laravel forge`
   - Why update now: The head term is heavily navigational. Pricing, free trial, and alternatives remain the better angle.
 
-- [ ] `/laravel-11`
+- [x] `/laravel-11`
   - Keyword cluster: `laravel 11 release`
   - Why update now: This is now mostly historical support content, not a major growth target.
 
-- [ ] `/alpine-js`
+- [x] `/alpine-js`
   - Keyword cluster: `alpinejs`, `alpine.js`
   - Why update now: Official docs dominate the head terms, so support clearer intent instead of forcing the bare keyword.
 
-- [ ] `/tailwind-css-typography-plugin`
+- [x] `/tailwind-css-typography-plugin`
   - Keyword cluster: `tailwind typography`, `tailwind prose`
   - Why update now: Official Tailwind and GitHub pages dominate. Keep the plugin and implementation angle.
 
-- [ ] `/jquery-each`
+- [x] `/jquery-each`
   - Keyword cluster: `jquery each`, `jquery foreach`
   - Why update now: Useful but not very strategic because the official jQuery docs dominate.
 
-- [ ] `/best-laravel-hosting-providers`
+- [x] `/best-laravel-hosting-providers`
   - Keyword cluster: `laravel hosting`, `laravel web hosting`
   - Why update now: Competitive commercial SERP. Only keep investing if the comparison page stays aggressively current.
 
-- [ ] `/laravel-validation`
+- [x] `/laravel-validation`
   - Keyword cluster: `laravel validation`
   - Why update now: Docs dominate the head term, so the page should lean harder into practical tasks instead of the generic keyword.
 
-- [ ] `/laravel-sanctum-api-tokens-authentication`
+- [x] `/laravel-sanctum-api-tokens-authentication`
   - Keyword cluster: `laravel sanctum`
   - Why update now: The broad head term is too docs-dominated. API tokens and concrete auth workflows are still the right angle.
 
-- [ ] `/php-ini-location`
+- [x] `/php-ini-location`
   - Keyword cluster: `php.ini`
   - Why update now: Keep this as a support term. The real page fit is still `php.ini location`.
 
-- [ ] `/laravel-pulse`
+- [x] `/laravel-pulse`
   - Keyword cluster: `laravel pulse`
   - Why update now: The package name is partly navigational. A jobs-to-be-done framing is better than chasing the bare term.
 
-- [ ] `/laravel-migrations`
+- [x] `/laravel-migrations`
   - Keyword cluster: `laravel migrations`
   - Why update now: The docs dominate the head term, so the article should stay command- and workflow-led.
 
