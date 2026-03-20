@@ -3,12 +3,12 @@ id: "01KKEW27ANMYBTWJVHQ6HD7YA2"
 title: "jQuery document ready: how and when to use it"
 slug: "jquery-document-ready"
 author: "benjamincrozat"
-description: "Use jQuery document ready to run code after the DOM is ready, then see when DOMContentLoaded or defer is the better modern choice."
+description: "Use jQuery document ready to run code after the DOM is parsed, then see when DOMContentLoaded or defer is the better modern choice."
 categories:
   - "javascript"
   - "jquery"
 published_at: 2024-02-10T23:00:00Z
-modified_at: 2026-03-19T22:57:32Z
+modified_at: 2026-03-20T09:45:55Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -19,7 +19,9 @@ sponsored_at: null
 ---
 ## Introduction
 
-Use jQuery document ready when you need your code to run after the HTML has been parsed and the DOM is safe to query.
+Use jQuery document ready when you are maintaining an existing jQuery codebase and need code to run after the HTML has been parsed and the DOM is safe to query.
+
+If you are writing new JavaScript, `DOMContentLoaded` or a deferred script is usually the better choice.
 
 ```js
 $(function () {
@@ -27,23 +29,11 @@ $(function () {
 });
 ```
 
-That shorthand is the modern jQuery way to do what many people still write as `$(document).ready(...)`.
-
-If you are maintaining a jQuery codebase, this pattern is still fine. If you are writing new vanilla JavaScript, `DOMContentLoaded` or a `defer` script is usually the better choice.
+That shorthand is the recommended jQuery form. `$(document).ready(...)` still works, but the shorthand is cleaner. If you are writing new vanilla JavaScript, `DOMContentLoaded` or a `defer` script is usually the better choice.
 
 ## Quick answer
 
-### jQuery version
-
-```js
-$(function () {
-    $('.menu-toggle').on('click', function () {
-        $('.menu').toggleClass('is-open');
-    });
-});
-```
-
-### Vanilla JavaScript version
+### Modern vanilla JavaScript version
 
 ```js
 document.addEventListener('DOMContentLoaded', () => {
@@ -57,6 +47,16 @@ If your script already uses `defer`, you often do not need either wrapper:
 
 ```html
 <script src="/app.js" defer></script>
+```
+
+### jQuery version
+
+```js
+$(function () {
+    $('.menu-toggle').on('click', function () {
+        $('.menu').toggleClass('is-open');
+    });
+});
 ```
 
 ## What jQuery document ready actually does
@@ -87,6 +87,8 @@ $(document).ready(function () {
 ```
 
 The shorthand is cleaner, and it is the version I would use today in jQuery code.
+
+If you see `$(document).on("ready", handler)`, treat it as legacy code. jQuery deprecated that form in 1.8 and removed it in 3.0.
 
 ## jQuery ready vs `window.load`
 

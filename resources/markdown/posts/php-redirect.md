@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27MCJ5T5D29CNAF1290Q"
-title: "PHP redirect: how to redirect to another page"
+title: "PHP redirect: how to send users to another page"
 slug: "php-redirect"
 author: "benjamincrozat"
-description: "Use header('Location: ...') with exit in PHP, then choose the right status code for permanent, temporary, and post-redirect-get redirects."
+description: "Use header('Location: ...') with exit in PHP, then choose the right status code for permanent, temporary, and form redirects."
 categories:
   - "php"
 published_at: 2023-09-01T22:00:00Z
-modified_at: 2026-03-19T22:56:36Z
+modified_at: 2026-03-20T09:46:02Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -16,9 +16,9 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/q6Lm6JbHGdEbWUB.jpg"
 sponsored_at: null
 ---
-## Introduction
+## Quick answer
 
-To redirect in PHP, send a `Location` header and stop the script immediately with `exit`.
+To redirect in PHP, send a `Location` header and stop the script immediately with `exit`. PHP's [`header()` manual](https://www.php.net/manual/en/function.header.php) notes that `Location` defaults to `302` unless you already set a `3xx` status code, so choose the right one on purpose.
 
 ```php
 header('Location: /dashboard', true, 302);
@@ -27,11 +27,11 @@ exit;
 
 That is the whole pattern. The only real decisions are:
 
-- which URL to redirect to
-- which HTTP status code to send
-- how to avoid sending output before the redirect
+- where the user should land
+- whether the move is permanent or temporary
+- whether the next request must keep the same HTTP method
 
-## The quickest PHP redirect recipes
+## The fastest redirect recipes
 
 ### Temporary redirect
 
@@ -68,7 +68,7 @@ This is the standard Post/Redirect/Get flow.
 
 ## Why `exit` matters
 
-Always stop execution after the redirect:
+`header('Location: ...')` sends the redirect response, but it does not stop PHP from running the rest of the file. `exit` is what actually ends the request.
 
 ```php
 header('Location: /dashboard');
@@ -83,32 +83,15 @@ Without `exit`, the rest of the script can keep running. That can lead to:
 
 ## Which redirect status code should you use?
 
-PHP sends `302 Found` by default if you omit the status code:
+Use the smallest code that matches the intent:
 
-```php
-header('Location: /login');
-exit;
-```
+- `301` when the move is permanent
+- `302` when the move is temporary
+- [`303 See Other`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/303) when a `POST` should finish on a `GET` page
+- `307` when the move is temporary but the method must stay the same
+- `308` when the move is permanent and the method must stay the same
 
-That is fine for many cases, but it is better to choose intentionally.
-
-| Status | Use it when | Method preserved? |
-| --- | --- | --- |
-| `301` | The move is permanent | No |
-| `302` | The move is temporary | No |
-| `303` | You are redirecting after a POST | No, next request becomes `GET` |
-| `307` | Temporary redirect and the request method must stay the same | Yes |
-| `308` | Permanent redirect and the request method must stay the same | Yes |
-
-### 303 vs 307 vs 308
-
-This is where most confusion happens:
-
-- `303` is best after form submissions
-- `307` keeps the original method and body, so a `POST` stays a `POST`
-- `308` is the permanent version of `307`
-
-For normal page redirects, `301`, `302`, and `303` are usually enough.
+If you want the short rule of thumb: use `301` for permanent URL changes, `302` for temporary navigation, and `303` after form submissions.
 
 ## Relative vs absolute URLs
 
@@ -173,6 +156,8 @@ if (!in_array($next, $allowedPaths, true)) {
 header("Location: $next", true, 303);
 exit;
 ```
+
+If you need to inspect or normalize a redirect target first, [Parse URL paths and query strings without framework helpers](/php-parse-url) is the safer companion read.
 
 ## When PHP redirects are the wrong tool
 
