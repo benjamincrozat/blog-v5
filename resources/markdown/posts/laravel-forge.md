@@ -1,15 +1,15 @@
 ---
 id: "01KKEW27CEKPSEC2VH2X09RZWS"
-title: "Laravel Forge pricing, free trial, and alternatives"
+title: "Laravel Forge pricing and alternatives"
 slug: "laravel-forge"
 author: "benjamincrozat"
-description: "See Laravel Forge pricing, what the free trial includes, and which alternatives are worth considering for Laravel hosting."
+description: "See current Laravel Forge pricing, what each plan includes, and the best alternatives for Laravel server management."
 categories:
   - "laravel"
   - "tools"
   - "web-hosting"
 published_at: 2022-11-17T00:00:00+01:00
-modified_at: 2026-03-13T12:25:00Z
+modified_at: 2026-03-20T12:41:49Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -20,29 +20,29 @@ sponsored_at: null
 ---
 ## TL;DR
 
-Laravel Forge is a paid server management tool for PHP and Laravel apps. It includes a short free trial, but you still need to pay for your hosting provider separately.
+Laravel Forge is a flat-rate server management tool for PHP and Laravel apps. The current pricing page lists Hobby, Growth, and Business plans, and you still need to pay for hosting unless you use Laravel VPS.
 
 If you are comparing plans or alternatives, here is the quick version:
 
-- The most convenient → [Cloudways](/recommends/cloudways).
-- Full control and great value → Laravel Forge + [DigitalOcean](/recommends/digitalocean).
-- Easy backups and zero-downtime deploys without paying for Envoyer → [Ploi](/recommends/ploi) + [DigitalOcean](/recommends/digitalocean).
+- The most managed option → [Cloudways](/recommends/cloudways).
+- Full control and strong value → Laravel Forge + [DigitalOcean](/recommends/digitalocean) or [Laravel VPS](https://forge.laravel.com/pricing).
+- A similar server-management workflow with a different tradeoff → [Ploi](/recommends/ploi).
 
 ## What’s Laravel Forge?
 
-*[Laravel Forge](https://forge.laravel.com) is a service that automatically provisions optimized PHP servers **using the cloud hosting provider of your choice**.*
+*[Laravel Forge](https://forge.laravel.com) is the next-generation server management platform built by the Laravel team.*
+
+It supports modern PHP and web app stacks, and you can either provision a server through Forge's own Laravel VPS offering or connect your preferred cloud provider.
 
 Be ready to save a lot of time and focus on building!
 
-You will find below the best cloud providers that work well with Laravel Forge, as well as the best alternatives. (It’s good to keep an open mind!)
+You will find below the current pricing, the main tradeoffs, and the alternatives I would still consider.
 
 ## Is Laravel Forge free?
 
-No, Laravel Forge isn’t free.
+No, Laravel Forge is not free.
 
-Luckily, it offers a 5-day free trial for you to review it.
-
-That being said, you will still need to subscribe to a cloud hosting provider (and I hand-picked some of the best for you).
+The pricing page currently lists three flat-rate plans, and you will still need hosting unless you use Forge's Laravel VPS option.
 
 ## Laravel Forge pricing
 
@@ -52,169 +52,71 @@ That being said, you will still need to subscribe to a cloud hosting provider (a
 
 | Plan | Price |
 | --- | --- |
-| Plan | Price |
 | Hobby | $12 per month |
 | Growth | $19 per month |
 | Business | $39 per month |
 
-**Forge’s hobby plan has everything you can ask for**.
-
-Unless you need to use multiple servers, **this is the way to go**.
-
-The only critical thing missing for me would be database backups, but you can set this up yourself with [spatie/laravel-backup](https://packagist.org/packages/spatie/laravel-backup) for instance.
-
-**The growth plan is the perfect balance of price and features** because you can manage multiple servers, which is very useful when your web applications need to handle a lot of traffic.
-
-The business plan is perfect if you’re actually running a business. $39 is a fair price. **This plan will let you set up database backups directly from the UI and is compatible with pretty much any storage provider (S3, DigitalOcean Spaces, etc.).**
+The useful detail here is not just the price. Hobby includes one external server plus unlimited Laravel VPS servers, while Growth and Business scale up the number of servers, support level, and team access.
 
 ### Annual pricing
 
 | Plan | Price |
 | --- | --- |
-| Plan | Price |
 | Hobby | $120 per year |
 | Growth | $199 per year |
 | Business | $399 per year |
 
-The annual plans let you save 17%, which is a no brainer for people running critical Laravel applications.
+The annual plans still save you money if you know you will keep the tool for a while.
 
 ## What I like about Laravel Forge
 
-- The UI and UX are top-notch!
-- Laravel Forge has been created by Taylor Otwell himself and is actively maintained by a huge team of developers. You can expect frequent updates and great support.
+- The UI and UX stay focused on the deployment job, not on hiding the infrastructure from you.
+- Zero-downtime deployments, managed databases, hosted domains, and server monitoring are all part of the current pricing tiers.
+- It is still the closest thing to "Laravel-native" server management if you want speed without giving up control.
 
 ## What I dislike about Laravel Forge
 
-- Backups are walled behind the business plan unlike [Cloudways](/recommends/cloudways) and [Ploi](/recommends/ploi).
-- No VPS resizing option. Something [Cloudways](/recommends/cloudways) does, which allows you to not have to go to the providers’ dashboard.
-- No zero-downtime deployments unless you pay for Envoyer. Forge has been updated to faciliate the link with Envoyer, so that’s nice, but you still have to pay a separate subscription. [Ploi](/recommends/ploi) includes this in their cheapest package.
+- Forge still expects you to think about your hosting layer separately unless you use Laravel VPS.
+- If you want a fully managed, hands-off host, Forge is not that product.
+- The pricing is straightforward, but you still need to compare it against the total cost of the server provider underneath it.
 
 ## Key features
 
-- Logs viewer;
-- Edit your *.env* file;
-- Create Nginx redirections;
-- Effortless tasks scheduler;
-- Share projects with teammates;
-- Deploy a new website in minutes;
-- **Free 1-click SSL certificates** (Let’s Encrypt or Cloudflare);
-- Monitor your server and send alerts;
-- **Install multiple versions of PHP**;
-- Trigger deployment when after a `git push`;
-- Provision highly optimized and secure PHP web servers;
-- **Automatic database backups** (S3, DigitalOcean Spaces, etc.).
+- Unlimited deployments;
+- Zero-downtime deploys;
+- Managed databases;
+- Hosted Forge domains;
+- Server monitoring;
+- Team access and collaboration;
+- Laravel VPS provisioning;
+- Support for external cloud providers if you want to keep your own stack.
 
 ## How to get started
 
-1. [Create an account](https://forge.laravel.com/auth/register) and subscribe to the desired plan (**you get a 5-day free trial no matter what**);
-2. Subscribe to a cloud hosting provider (you will find my recommendations in this article, such as [DigitalOcean](/recommends/digitalocean), my favorite);
-3. Connect your provider to Laravel Forge (this is where having root access over SSH comes in handy 👍);
+1. [Create an account](https://forge.laravel.com/auth/register) and pick the plan that matches your server count and support needs.
+2. Decide whether you want Forge's Laravel VPS or your own cloud provider.
+3. Connect your provider or provision a server through Forge.
 4. Deploy your application ([the documentation](https://forge.laravel.com/docs/1.0/introduction.html) will help you get started).
-5. If you’re still lost and prefer video tutorials, Laracasts also has a [free course for Laravel Forge](https://laracasts.com/series/learn-laravel-forge-2022-edition).
 
 ![How to get started with Laravel Forge](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-forge-ec5a03039c53e5ea130c.jpg/public)
 
-## Cloud hosting providers for Laravel Forge by price
+## Cloud hosting providers for Laravel Forge
 
-Being cost-efficient is important. Here, I sorted every hosting provider by price.
+If you want to keep using your own hosting provider, these are still the most natural starting points:
 
-| Provider | Lowest monthly price |
-| --- | --- |
-| Provider | Lowest monthly price |
-| [Vultr](/recommends/vultr) | $2.50 |
-| [DigitalOcean](/recommends/digitalocean) | $4 |
-| [Hostgator](/recommends/hostgator) | $34.99 (VPS) |
+- [DigitalOcean](/recommends/digitalocean) if you want simple VPS management and a familiar default choice.
+- [Vultr](/recommends/vultr) if you care more about region choice and raw VPS flexibility.
+- [HostGator](/recommends/hostgator) if you already use it and want to keep the stack familiar.
 
-## Alternatives to Laravel Forge by price
+## Why alternatives matter
 
-The great thing with the alternatives to Laravel Forge is that they also provide the hosting. This can lower the cost and simplify bookkeeping.
-
-| Provider | Lowest monthly price |
-| --- | --- |
-| Provider | Lowest monthly price |
-| [Ploi](/recommends/ploi) | €8 (+ hosting) |
-| Laravel Forge | $12 (+ hosting) |
-| [Cloudways](/recommends/cloudways) | $14 (hosting included ✓) |
-
-## The best cloud hosting providers for Laravel Forge
-
-Discover **my top picks of cloud providers fit to be used along with Laravel Forge**.
-
-**I also list alternative services to Laravel Forge**, which some of them are lower cost.
-
-### DigitalOcean
-
-![DigitalOcean](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-cloud-hosting-provider-php-0192f3dca1c0fe407c3f.jpg/public)
-
-To me, [DigitalOcean](/recommends/digitalocean) has been a fantastic companion for Laravel Forge over the last ten years.
-
-Its droplets, which are essentially Linux-based virtual machines, are full-featured and can be set up in seconds.
-
-This makes it incredibly easy and efficient to manage my cloud infrastructure as I can interact with my droplets via an intuitive UI.
-
-Additionally, the predictable monthly pricing and 99.99% uptime SLA give me peace of mind as I don’t have to worry about unexpected costs or downtime.
-
-With various options available, like Premium CPU-Optimized, Memory-Optimized, and Storage-Optimized droplets, I can choose the right plan based on my workload and the demands of the applications I’m working on. Plus, the free outbound data transfer, monitoring, and firewalls make it a cost-effective solution.
-
-Lastly, the team management feature has been invaluable for collaborating on projects while keeping everything secure.
-
-Overall, combining Laravel Forge with [DigitalOcean](/recommends/digitalocean) has streamlined my development workflow and allowed me to focus on writing code rather than managing infrastructure.
-
-[Try DigitalOcean](/recommends/digitalocean)
-
-### Vultr
-
-![Vultr](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-cloud-hosting-provider-php-df93542e09f35ca9f73d.jpg/public)
-
-[Vultr](/recommends/vultr) is especially handy for developers as it allows instant deployment worldwide, offering a vast array of OS combinations and no long-term contracts.
-
-This flexibility meant I could scale up and down on demand and only pay for what I used.
-
-Also, the fact that it runs atop best-in-class AMD and Intel CPUs, with an optional upgrade to NVMe SSD, ensured I had incredible performance at an unbeatable price.
-
-Although I’m not using [Vultr](/recommends/vultr) anymore, I appreciated its powerful add-ons and user-friendly control panel and API that allowed me to spend more time coding and less time managing my infrastructure.
-
-To conclude, it was a great experience using [Vultr](/recommends/vultr) with Laravel Forge, as it offered flexibility, performance, and ease of management essential for any developer.
-
-[Try Vultr](/recommends/vultr)
-
-### HostGator
-
-![HostGator](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/19ba70c7-6de3-4c08-2303-c00f2d7fab00/public)
-
-The VPS hosting plans of [HostGator](/recommends/hostgator) are incredibly flexible (hence the higher price) and come with a full suite of features that developers, like myself, find very useful.
-
-The full root access allowed me to install any necessary software and the unrestricted access to create unlimited email addresses, databases, and FTP accounts make it easy to manage projects (as a developer though, you’ll likely want to push to deploy instead). Also, the weekly off-site backups can be **life saving**.
-
-While I’ve moved on to another solution that better fit my current needs, I can definitely vouch for the reliability and performance of [HostGator](/recommends/hostgator)’s VPS hosting, especially when used alongside Forge.
-
-It’s a reliable solution for developers.
-
-[Try HostGator](/recommends/hostgator)
-
-## Alternatives to Laravel Forge
+The alternatives to Laravel Forge are worth comparing because they also provide the hosting. That can simplify bookkeeping and reduce the number of vendors you have to manage.
 
 ### Cloudways
 
 [![Cloudways](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-forge-fdc0dc41107f3e1eba1f.jpg/public)](/recommends/cloudways)
 
-[Cloudways](/recommends/cloudways) is an excellent alternative to Laravel Forge for several reasons.
-
-First and foremost, it takes away all the deployment hassles and provides ready-made solutions for effortless application deployment.
-
-Unlike Forge, [Cloudways](/recommends/cloudways) comes with advanced hosting features that make application management significantly easier.
-
-For instance, the 1-click Laravel install feature reduces the developer’s load to install apps manually.
-
-Then, we have other features that Forge also has like pre-configured optimization tools such as PHP-FPM, Supervisord, and Redis, which greatly improve the Laravel app performance.
-
-[Cloudways](/recommends/cloudways) also offers a dedicated IP address and SSD-based hosting, ensuring powerful and consistent performance.
-
-The advanced cache technologies, optimized stack, and Cloudflare integration also contribute to fast content delivery and superior performance.
-
-Plus, the 24/7 expert support and free migration service are invaluable add-ons.
-
-All these features, combined with the transparent and affordable pricing plans, make [Cloudways](/recommends/cloudways) a robust and reliable hosting solution for Laravel applications.
+[Cloudways](/recommends/cloudways) is a good fit if you want a more managed host than a pure server panel. It reduces the amount of setup you have to think about and can make sense when you want fewer moving parts than Forge plus your own provider.
 
 [Try Cloudways](/recommends/cloudways)
 
@@ -222,19 +124,15 @@ All these features, combined with the transparent and affordable pricing plans, 
 
 [![Ploi](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/best-cloud-hosting-provider-php-cc885df02e547207d637.jpg/public)](/recommends/ploi)
 
-[Ploi](/recommends/ploi) is an alternative to Laravel Forge that drastically cut cost for the average person and small businesses. Let’s face it: it started as a clone. But using it, you quickly realize it’s more than that. It’s easy to use and in some areas, it even does better than Forge.
-
-And I also appreciate that you get some features using the middle pricing tier that would require you to pay a premium on Forge + a separate subscription for Envoyer.
-
-Ploi was the service I use for a while to manage the DigitalOcean Droplet (VPS) this blog is hosted on. I don’t have a lot of negative things to say about it. They have tons of features that make your life so convenient. I never needed their support yet, but I only heard good things about it so far.
+[Ploi](/recommends/ploi) stays close to the Forge workflow and can be a nice middle ground if you want server management without the heavier DevOps overhead. I still think it is one of the easiest comparisons to make if Forge feels a little too self-managed for your stack.
 
 [Try Ploi](/recommends/ploi)
 
 ## Free alternatives to Laravel Forge
 
-Unfortunately, it seems **there are no worthy free alternative to Forge**.
+Unfortunately, there are not many direct free alternatives to Forge that cover the same server-management workflow.
 
-Remember: **if something that costs money to a company is free, it means that YOU are the product.**
+Remember: **if something that costs money to a company is free, it usually means that you are the product.**
 
 However, if you are ready to make compromises, you could host static websites (meaning it’s just HTML, CSS, and JavaScript) for free on these awesome services:
 

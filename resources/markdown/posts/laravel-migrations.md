@@ -3,11 +3,11 @@ id: "01KKEW27CX8RCPAS0DE6DQRSXN"
 title: "Laravel migrations: commands, examples, and rollback basics"
 slug: "laravel-migrations"
 author: "benjamincrozat"
-description: "Learn Laravel migrations with practical examples for make:migration, migrate, migrate:fresh, rollback, and the up() and down() methods."
+description: "Learn Laravel migrations with practical examples for make:migration, migrate, migrate:fresh, schema:dump, rollback, and the up() and down() methods."
 categories:
   - "laravel"
 published_at: 2022-09-12T00:00:00+02:00
-modified_at: 2026-03-14T10:12:17Z
+modified_at: 2026-03-20T12:41:49Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -18,7 +18,7 @@ sponsored_at: null
 ---
 ## What are migrations in Laravel
 
-**Laravel migrations are version-controlled changes to your database schema.** Instead of clicking around in a database UI, you define schema changes in code and run them with Artisan. That keeps teammates, environments, and deployments in sync.
+**Laravel migrations are version-controlled changes to your database schema.** Instead of clicking around in a database UI, you define schema changes in code and run them with Artisan. That keeps teammates, environments, and deployments in sync, and it scales well once you start using schema dumps for larger apps.
 
 In practice, that means you can clone a project, run `php artisan migrate`, and build the database structure the project expects. Because migrations live in code, they are reviewed, versioned, and deployed like the rest of the app.
 
@@ -31,7 +31,7 @@ Interesting, right? Let's learn more about migrations!
 Creating a migration can be done thanks to Artisan with the command below:
 
 ```bash
-php artisan make:migration CreatePostsTable
+php artisan make:migration create_posts_table
 ```
 
 1. Write the migration's name in PascalCase.
@@ -53,7 +53,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration {
-    public function up()
+    public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
@@ -67,7 +67,7 @@ return new class extends Migration {
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('posts');
     }
@@ -77,7 +77,7 @@ return new class extends Migration {
 But there's more. Did you know you can pass multiple parameters?
 
 ```
-php artisan make: migration
+php artisan make:migration --help
 
 Options:
  --create[=CREATE] The table to be created
@@ -94,7 +94,7 @@ Let's see how to use them and why.
 The `--create` option tells Artisan to use something other than the table name it inferred from the migration's name. For instance, it could be helpful if you use another language from tables' names.
 
 ```bash
-php artisan make:migration CreatePostsTable --create=billets
+php artisan make:migration create_billets_table --create=billets
 ```
 
 ### Create a migration with the --table option
@@ -116,7 +116,7 @@ php artisan make:model Post --migration
 You can even use the shorthand option for the migration:
 
 ```bash
-php artisan make:model Post -m 
+php artisan make:model Post -m
 ```
 
 And if you look at the help, you will appreciate what Artisan can do for you even more.
@@ -205,12 +205,12 @@ So make sure to use the `down()` method correctly.
 The `down()` method must do the opposite of the `up()` method.
 
 ```php
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    public function up()
+    public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
             // The column was a boolean, but we want to switch to a datetime.
@@ -218,19 +218,33 @@ return new class extends Migration {
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::table('posts', function (Blueprint $table) {
             // When rolling back, we have to restore the column to its previous state.
             $table->boolean('is_published')->default(false)->change();
         });
     }
-}
+};
+```
+
+## Keep large apps fast with schema dumps
+
+As your app grows, you may want to squash older migrations into a schema file. Laravel supports that with `php artisan schema:dump`, and you can prune the old migration files at the same time with `--prune`.
+
+```bash
+php artisan schema:dump --prune
+```
+
+If your tests use a different database connection, dump that connection too so fresh environments can build the schema quickly:
+
+```bash
+php artisan schema:dump --database=testing --prune
 ```
 
 ## Conclusion
 
-You now have all the skills to keep leveling up with migrations. Why don't you learn in the official documentation about all the [available methods from the Blueprint class](https://laravel.com/docs/migrations#available-column-types)?
+You now have all the skills to keep leveling up with migrations. The official documentation's [available methods from the Blueprint class](https://laravel.com/docs/migrations#available-column-types) is the next best place to go.
 
 If you are still working through how schema changes ripple through the app, these are the next Laravel reads I would keep nearby:
 

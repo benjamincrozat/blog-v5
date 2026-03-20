@@ -3,11 +3,11 @@ id: "01KKEW27B5Z43M95WBDPTWFANX"
 title: "Laravel 11: key changes, support status, and upgrade advice"
 slug: "laravel-11"
 author: "benjamincrozat"
-description: "Laravel 11 shipped on March 12, 2024. Here is what changed, when support ended, and whether it still makes sense as a late upgrade step."
+description: "Laravel 11 shipped on March 12, 2024. Here is what changed, why it reached end of life, and whether it still makes sense as a late upgrade step."
 categories:
   - "laravel"
 published_at: 2023-01-04T23:00:00Z
-modified_at: 2026-03-13T15:26:21Z
+modified_at: 2026-03-20T12:41:49Z
 serp_title: null
 serp_description: null
 canonical_url: null
@@ -18,7 +18,7 @@ sponsored_at: null
 ---
 ## Introduction
 
-Laravel 11 was released on March 12, 2024. If you are reading this on March 13, 2026, the key fact is that Laravel 11 has just reached end of life. Bug fixes ended on September 3, 2025, and security fixes ended on March 12, 2026, according to the official [release notes](https://laravel.com/docs/11.x/releases#support-policy).
+Laravel 11 was released on March 12, 2024. As of March 20, 2026, it is end of life: bug fixes ended on September 3, 2025, and security fixes ended on March 12, 2026, according to the official [release notes](https://laravel.com/docs/11.x/releases#support-policy).
 
 That makes Laravel 11 a strange but still useful release to study. It introduced a much slimmer application skeleton and several framework improvements that still shape modern Laravel apps, but it is no longer the version you should aim to stay on in production.
 
@@ -26,7 +26,7 @@ That makes Laravel 11 a strange but still useful release to study. It introduced
 
 Laravel 11 is not an LTS release. In practical terms, the current support picture looks like this:
 
-| Version | Release date | Bug fixes until | Security fixes until | Status on March 13, 2026 |
+| Version | Release date | Bug fixes until | Security fixes until | Status on March 20, 2026 |
 | ------- | ------------ | --------------- | -------------------- | ------------------------ |
 | 10 | February 14, 2023 | August 6, 2024 | February 4, 2025 | End of life |
 | 11 | March 12, 2024 | September 3, 2025 | March 12, 2026 | End of life |
@@ -42,13 +42,13 @@ If you want the longer release history, my [Laravel versions guide](/laravel-ver
 
 ## How to install Laravel 11 today
 
-If you explicitly need Laravel 11, pin the version with Composer instead of relying on the installer to pick the right major:
+If you explicitly need Laravel 11 for an existing project or compatibility test, pin the version with Composer instead of relying on the installer to pick the right major:
 
 ```bash
 composer create-project laravel/laravel:^11.0 my-app
 ```
 
-I verified that command still creates a fresh Laravel 11 app today. The current 11.x skeleton I pulled in requires PHP 8.2+, ships with the new `bootstrap/app.php` setup, includes only `routes/web.php` and `routes/console.php` by default, and leaves `app/Http` with just controllers.
+The current 11.x skeleton still uses the slim `bootstrap/app.php` setup, requires PHP 8.2+, includes only `routes/web.php` and `routes/console.php` by default, and leaves `app/Http` with just controllers.
 
 That is important because the official [release notes](https://laravel.com/docs/11.x/releases#streamlined-application-structure) introduced the slim structure for new applications only. Existing Laravel 10 apps can still upgrade to 11 without rewriting themselves into the new layout.
 
@@ -134,7 +134,7 @@ If you want the version-by-version mechanics, my [Laravel 11 upgrade guide](/lar
 
 Usually, no.
 
-Laravel 11 was a meaningful release, and its slimmer defaults absolutely influenced the versions that came after it. But as of March 13, 2026, it is already past its security support window. If you are planning work today, Laravel 12 is the version to target for production.
+Laravel 11 was a meaningful release, and its slimmer defaults absolutely influenced the versions that came after it. But as of March 20, 2026, it is already past its security support window. If you are planning work today, Laravel 12 is the version to target for production.
 
 That means Laravel 11 is now best understood as a transitional release: very important historically, still useful as an upgrade step, but not a destination.
 
