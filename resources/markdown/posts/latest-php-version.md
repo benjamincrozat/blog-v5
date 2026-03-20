@@ -42,6 +42,10 @@ That distinction matters because people often ask for the "latest PHP version" w
 - the latest stable **major** branch: **PHP 8.5**
 - the latest stable **point** release in that branch: **PHP 8.5.4**
 
+This is the kind of direct release check I mean:
+
+![Terminal output showing the official php.net release JSON for PHP 8.5.4](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/latest-php-version-official-check.png/public)
+
 ## Supported PHP versions right now
 
 Here is the current support picture from the official [PHP supported versions page](https://www.php.net/supported-versions.php), interpreted on **March 20, 2026**:
@@ -109,10 +113,14 @@ That tells you the CLI version, which is often enough to spot whether you are st
 If you are working in Laravel, this is a nice companion check:
 
 ```bash
-php artisan about
+php artisan about --only=environment
 ```
 
 If you are not sure whether the browser and CLI are using the same PHP binary, [this guide to checking your PHP version](/check-php-version) walks through the common methods.
+
+Here is what that quick local check looks like in practice:
+
+![Terminal output showing php -v and php artisan about --only=environment for local version checks](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/latest-php-version-terminal-check.png/public)
 
 One more practical check is your Composer constraint. Look at the `php` requirement in `composer.json`. If it still pins your project to an older branch, that is often why upgrades feel stuck.
 
