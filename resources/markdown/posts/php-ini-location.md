@@ -3,14 +3,14 @@ id: "01KKEW27KVZP920YG58MHGQPEA"
 title: "php.ini location: how to find the active file"
 slug: "php-ini-location"
 author: "benjamincrozat"
-description: "Find your active php.ini location with php --ini or phpinfo(), then confirm whether CLI and PHP-FPM are using different configuration files."
+description: "Find your active `php.ini` location with `php --ini` or `phpinfo()`, then confirm whether CLI and PHP-FPM are using different configuration files."
 categories:
   - "php"
 published_at: 2023-11-02T00:00:00+01:00
-modified_at: 2026-03-14T10:09:06Z
+modified_at: 2026-03-20T12:41:41Z
 serp_title: null
 serp_description: null
-canonical_url: ""
+canonical_url: null
 is_commercial: false
 image_disk: "cloudflare-images"
 image_path: "images/posts/01K29KD5WZQ4SNNJG02F14A8QR.png"
@@ -18,17 +18,17 @@ sponsored_at: null
 ---
 ## Introduction
 
-Need to find your `php.ini` file? Start with `php --ini` in the terminal or `phpinfo()` in the browser, then confirm whether the CLI and web server are loading the same file.
+Need to find your `php.ini` file? Start with `php --ini` in the terminal or `phpinfo()` in the browser, then confirm whether CLI and PHP-FPM are reading the same file.
 
-This guide shows both methods, plus the common locations developers usually expect on Linux, macOS, and Windows.
+The exact path depends on how PHP is running. This guide shows the two quickest checks first, then the common locations developers usually expect on Linux, macOS, and Windows.
 
 ## What is php.ini and why does it matter?
 
-The _php.ini_ file is a PHP configuration file used to control your PHP environment’s behavior. You might tweak it to increase memory limits, adjust error reporting, or handle file uploads. [Official PHP docs](https://www.php.net/manual/en/ini.core.php) cover all directives in depth.
+The _php.ini_ file is PHP's main configuration file. You might tweak it to increase memory limits, adjust error reporting, or handle file uploads. The [PHP manual](https://www.php.net/manual/en/configuration.file.php) explains how PHP looks for the active file and how scan directories fit into that process.
 
 ## How to find your php.ini location with phpinfo()
 
-The fastest method PHP developers usually discover first is through `phpinfo()`:
+The fastest browser check is usually `phpinfo()`:
 
 *   Create a new PHP file, _index.php_, and add:
 
@@ -40,13 +40,13 @@ phpinfo();
 
 *   Open the file in your web browser.
 
-Look under “Loaded Configuration File” for the exact location.
+Look under “Loaded Configuration File” for the exact location. If that field differs from what you saw in the terminal, you are probably comparing CLI and web-server PHP.
 
 ![phpinfo showing php.ini location](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/php-ini-location-4f1fce8314bd74f7d44b.jpg/public)
 
 ## How to find your php.ini location in the terminal
 
-For command-line enthusiasts, PHP provides simple commands:
+For command-line checks, PHP provides a simple answer:
 
 *   Open your terminal and run:
 
@@ -54,7 +54,7 @@ For command-line enthusiasts, PHP provides simple commands:
 php --ini
 ```
 
-The terminal output clearly shows the active _php.ini_ path.
+The terminal output clearly shows the active _php.ini_ path and any additional scan directories.
 
 ![Terminal command to find php.ini](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/php-ini-location-0a2e20d55030ea90d1a3.jpg/public)
 
@@ -96,13 +96,13 @@ sudo systemctl restart php<version>-fpm
 
 ### Changes to php.ini not taking effect?
 
-*   Ensure you’re editing the correct file (verify via `php --ini`).
-*   Restart your PHP/Apache server.
+*   Ensure you are editing the correct file (verify via `php --ini` and `phpinfo()`).
+*   Restart your PHP or web server after making the change.
 
 ### Multiple php.ini files found?
 
-*   PHP CLI and Web Server (Apache/Nginx) typically use separate php.ini files.
-*   Check via `phpinfo()` in your browser vs. `php --ini` in your terminal.
+*   PHP CLI and the web server stack often use separate `php.ini` files.
+*   Check the browser output from `phpinfo()` against `php --ini` in your terminal.
 
 ## Common php.ini directives cheat-sheet
 

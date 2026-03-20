@@ -1,16 +1,16 @@
 ---
 id: "01KKEW27E8F6VWDYEH2RG5FC1M"
-title: "Validation in Laravel made easy"
+title: "Laravel validation: rules, form requests, and custom rules"
 slug: "laravel-validation"
 author: "benjamincrozat"
-description: "Learn how to validate incoming data in your Laravel applications, from the basics to more advanced concepts."
+description: "Validate incoming data in Laravel with `validate()`, Form Requests, custom rules, nested arrays, and clear error messages."
 categories:
   - "laravel"
 published_at: 2024-02-01T00:00:00+01:00
-modified_at: null
+modified_at: 2026-03-20T12:41:41Z
 serp_title: null
 serp_description: null
-canonical_url: ""
+canonical_url: null
 is_commercial: false
 image_disk: "cloudflare-images"
 image_path: "images/posts/abZxAj9dlqBjeKf.jpg"
@@ -18,15 +18,13 @@ sponsored_at: null
 ---
 ## Introduction to validation in Laravel
 
-Validation is like the bouncer at the door of your web application. It ensures that only the good data gets in, keeping the messy, unwanted stuff out. (I really love this analogy! 😅)
+Laravel validation is the first filter for incoming request data. In most apps, you will either use `$request->validate()` for a quick check or move the rules into a Form Request when they deserve their own class.
 
-Laravel, being the friendly and powerful PHP framework it is, offers a robust suite of tools to make validating data a breeze (pun intended).
-
-Let's dive into validation with Laravel, starting simple and gradually exploring more complex scenarios.
+This guide keeps the examples practical: start with the fast path, then add custom rules only when Laravel's built-in rules are not enough.
 
 ## The basics of Laravel validation
 
-Imagine you're building a form on your website where visitors can sign up for a newsletter. You'll want to make sure they provide a name and a valid email address. Here's where Laravel's validation shines.
+Imagine you're building a form on your website where visitors can sign up for a newsletter. You want a name and a valid email address, and you want Laravel to reject anything else before your controller does more work.
 
 In Laravel, you can validate incoming data very easily. Let's say you have a route for submitting the newsletter form:
 
@@ -71,12 +69,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreNewsletterRequest extends FormRequest
 {
-    public function authorize()
+    public function authorize(): bool
     {
         return true; // Anyone can submit the form
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'name' => 'required|min:3',
@@ -92,11 +90,11 @@ Then, use it in your controller method:
 public function store(StoreNewsletterRequest $request)
 {
     // Data has been validated, you can now access it.
-    $validated = $request→validated();
+    $validated = $request->validated();
 }
 ```
 
-By extracting to a form request, your controller stays clean, and your validation logic remains neatly encapsulated.
+By extracting to a Form Request, your controller stays clean and your validation logic stays in one place.
 
 ## More validation rules provided by Laravel
 
@@ -110,7 +108,7 @@ For instance, verifying a user's age could be as simple as:
 
 This ensures the age is provided (`required`), is a number (`integer`), and is at least 18 (`min:18`).
 
-You can [check out every validation rules](https://laravel.com/docs/validation#available-validation-rules) Laravel provides on the official documentation. 
+You can [check out every validation rule](https://laravel.com/docs/13.x/validation#available-validation-rules) Laravel provides in the official documentation.
 
 ## Custom error messages
 
@@ -139,7 +137,11 @@ php artisan make:rule Uppercase
 
 Then, define its behavior:
 
+Laravel 13 uses the `ValidationRule` contract. That means a custom rule should define `validate()` instead of the older `passes()` / `message()` shape:
+
 ```php
+<?php
+
 namespace App\Rules;
 
 use Closure;
@@ -147,16 +149,16 @@ use Illuminate\Contracts\Validation\ValidationRule;
 
 class Uppercase implements ValidationRule
 {
-    public function passes(string $attribute, mixed $value, Closure $fail)
+    public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (strtoupper($value) !== $value) {
-            return $fail(':attribute must be uppercase.');
+        if (strtoupper((string) $value) !== $value) {
+            $fail('The :attribute must be uppercase.');
         }
     }
 }
 ```
 
-And finally, you can use it wherever you like:
+And finally, you can use it wherever you need it:
 
 ```php
 use App\Rules\Uppercase;
@@ -166,7 +168,7 @@ $request->validate([
 ]);
 ```
 
-Using custom rules makes your application logic remain expressive while addressing specific requirements.
+Using custom rules keeps your validation expressive while still letting Laravel handle the boring parts.
 
 ## Validating nested data (or arrays)
 

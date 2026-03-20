@@ -1,18 +1,18 @@
 ---
 id: "01KKEW27DR7SXVZV7VGE0ZJAF9"
-title: "Secure your REST API in 5 minutes with Laravel Sanctum"
+title: "Laravel Sanctum API tokens: issue and revoke them"
 slug: "laravel-sanctum-api-tokens-authentication"
 author: "benjamincrozat"
-description: "Quickly secure a REST API using Laravel Sanctum by letting your users generate tokens."
+description: "Use Laravel Sanctum to issue API tokens, protect routes with `auth:sanctum`, and revoke tokens when users no longer need them."
 categories:
   - "laravel"
   - "packages"
   - "security"
 published_at: 2024-01-16T00:00:00+01:00
-modified_at: null
+modified_at: 2026-03-20T12:41:41Z
 serp_title: null
 serp_description: null
-canonical_url: ""
+canonical_url: null
 is_commercial: false
 image_disk: "cloudflare-images"
 image_path: "images/posts/JbUCltgFbjrgpDm.jpg"
@@ -20,15 +20,13 @@ sponsored_at: null
 ---
 ## Introduction to Laravel Sanctum and how it helps securing REST APIs
 
-[Laravel Sanctum](https://laravel.com/docs/sanctum) is a package for Laravel that provides a simple way to secure your REST API. For instance, in case you want your users to be able to build services top of your application.
+[Laravel Sanctum](https://laravel.com/docs/sanctum) gives Laravel apps a lightweight way to handle SPAs, mobile apps, and simple token-based APIs. This guide focuses on the token side: issuing API tokens, protecting routes with `auth:sanctum`, and revoking tokens later.
 
-That being said, the official documentation is extensive and you probably don't have that kind of time. So I hope my quick guide will serve you well.
+If you only need one takeaway, it is this: Sanctum is simpler than OAuth when you want personal access tokens for your users.
 
 ## Install Laravel Sanctum via Composer
 
-The package now comes installed by default in any new Laravel application.
-
-If for some reason you don't have Laravel Sanctum in your project, install it using Composer:
+If Sanctum is not already installed in your project, install it with Composer:
 
 ```bash
 composer require laravel/sanctum
@@ -55,11 +53,11 @@ Add the `Laravel\Sanctum\HasApiTokens` trait in your `User` model:
 ```php
 namespace App\Models;
 
-use Laravel\Sanctum\HasApiTokens; // [tl! ++]
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens; // [tl! ++]
+    use HasApiTokens;
 }
 ```
 
@@ -69,11 +67,11 @@ You can issue a token using the `createToken` method:
 $token = $user->createToken('token-name')->plainTextToken;
 ```
 
-Make sure to let the user know that the token is only shown once. If they lose it, they'll have to generate a new one.
+Make sure to tell the user that the plain-text token is only shown once. If they lose it, they will need to generate a new one.
 
 ## Protect your REST API routes with Sanctum's auth guard
 
-To secure your API routes, use the `sanctum` guard. This ensures that all incoming requests are authenticated:
+To secure your API routes, use the `auth:sanctum` middleware. Sanctum will accept either a valid bearer token or a stateful request from your own SPA:
 
 ```php
 Route::middleware('auth:sanctum')
@@ -81,6 +79,8 @@ Route::middleware('auth:sanctum')
         return $request->user();
     });
 ```
+
+That split is the useful part to remember. Sanctum can authenticate an SPA with cookies or a third-party client with a bearer token, so you do not need to reach for OAuth just to cover the common cases.
 
 ## Manage your users' API tokens
 
@@ -96,7 +96,7 @@ $user->tokens()->where('id', $tokenId)->delete();
 
 ## Conclusion
 
-Securing your REST API with Laravel Sanctum is an effective way to manage authentication and prevent misuses without overcomplicating everything.
+Securing a Laravel API with Sanctum is a good fit when you want simple token auth without adding OAuth complexity.
 
 There's a lot more to Laravel Sanctum and I encourage you to go read the [official documentation](https://laravel.com/docs/sanctum).
 
