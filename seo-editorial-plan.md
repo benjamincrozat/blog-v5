@@ -195,7 +195,7 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
   - Visual plan: no screenshots needed; code comparisons should carry the piece.
   - Why first: searchers are usually confused and comparison-style content is more useful than the manual.
 
-- [ ] `php trim`
+- [x] `php trim`
   - Angle: explain how to clean user input and why whitespace bugs keep slipping through.
   - Must cover: invisible whitespace, custom character masks, line breaks, Unicode gotchas, and why `trim()` sometimes appears not to work.
   - Visual plan: use code plus visible output markers; no screenshots unless needed to show hidden characters more clearly.
