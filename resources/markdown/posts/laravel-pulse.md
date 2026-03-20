@@ -1,45 +1,57 @@
 ---
 id: "01KKEW27DCZPXQBM87JV2KV9GJ"
-title: "Laravel Pulse: what it does and how to install it"
+title: "Laravel Pulse: what it tracks and how to set it up"
 slug: "laravel-pulse"
 author: "benjamincrozat"
-description: "Discover Laravel Pulse, a free open-source monitoring dashboard for Laravel apps, plus what it tracks, how to install it, and how to secure it."
+description: "Learn what Laravel Pulse tracks, how to install and secure it, when to run pulse:check or pulse:work, and when it is a better fit than Telescope."
 categories:
   - "laravel"
   - "packages"
-published_at: 2023-11-17T00:00:00+01:00
-modified_at: 2026-03-20T12:41:49Z
+published_at: 2023-11-16T23:00:00Z
+modified_at: 2026-03-20T13:05:54Z
 serp_title: null
 serp_description: null
 canonical_url: ""
 is_commercial: false
 image_disk: "cloudflare-images"
-image_path: "images/posts/09C9GV4aDcqTtbh.jpg"
+image_path: "images/posts/laravel-pulse/hero.png"
 sponsored_at: null
 ---
 ## What Laravel Pulse is
 
-**[Laravel Pulse](https://pulse.laravel.com) is a free, open-source monitoring dashboard for the [Laravel framework](https://laravel.com).** It gives you at-a-glance insight into application usage, server stats, queue throughput, performance bottlenecks, trending exceptions, and custom cards.
+**[Laravel Pulse](https://pulse.laravel.com) is Laravel's first-party dashboard for application health and performance.** It is the package I would reach for when I want one screen that answers practical questions like:
 
-Taylor Otwell, the creator of Laravel, [said](https://twitter.com/taylorotwell/status/1725210034399797365) that the tool was born out of frustration he had with Laravel Forge and its inability to quickly diagnose why the service was underperforming and which users were causing that.
+- which routes are suddenly slow
+- whether queues are backing up
+- which users are generating the most load
+- whether a server is under memory or CPU pressure
+- which exceptions are trending right now
 
-![Laravel Pulse's dashboard in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-pulse-e87805b3b21317bee441.webp/public)
+Pulse is much more of an **at-a-glance operations dashboard** than a step-by-step debugger. If you need deep per-request inspection, [Laravel Debugbar](/laravel-debugbar) or Telescope are closer fits. If you want quick visibility into the app's overall health without leaving Laravel, Pulse is the stronger tool.
 
-## The features Laravel Pulse offers
+![Current Laravel Pulse dashboard preview from the official site](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/laravel-pulse/hero.png/public)
 
-- **Application usage**: see which users make the most requests, hit the slowest endpoints, and dispatch the most jobs.
-- **Server stats**: monitor CPU, memory, and disk usage from one dashboard.
-- **Queue monitoring**: spot backlog trends before queue delays become user-visible.
-- **Performance monitoring**: review slow routes, slow queries, slow jobs, and outgoing requests.
-- **Trending exceptions**: see which exceptions are surfacing most often across the app.
-- **Custom cards**: build your own metrics when the built-in cards are not enough.
-- **Custom dashboard layout**: change the dashboard layout to fit the way your team works.
+## What Laravel Pulse tracks
+
+Out of the box, Pulse can surface:
+
+- **Application usage**: top users by requests, slow requests, and jobs
+- **Slow requests and routes**: useful when the app feels slower but the cause is not obvious yet
+- **Slow queries and slow jobs**: good early warning before users start complaining
+- **Queues**: enough to tell whether work is piling up or processing normally
+- **Server health**: CPU, memory, and disk usage from each machine running `pulse:check`
+- **Exceptions**: recurring errors that deserve attention
+- **Custom cards**: useful when the built-in metrics are close, but not quite your app's real bottleneck
+
+That mix is why Pulse feels practical. It is not trying to replace a full observability stack. It gives Laravel teams a dashboard that is close to the application and quick to extend.
+
+![Laravel Pulse application usage card from the official feature preview](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/laravel-pulse/application-usage.png/public)
 
 ## Install Laravel Pulse
 
-Pulse's first-party storage implementation currently requires a MySQL, MariaDB, or PostgreSQL database. If you are using a different engine, you will need a separate supported database for Pulse data.
+Pulse's first-party storage driver needs **MySQL, MariaDB, or PostgreSQL**. If your app uses another database engine, keep that app database and give Pulse its own supported connection.
 
-You may install Pulse using Composer:
+The basic install is short:
 
 ```bash
 composer require laravel/pulse
@@ -51,29 +63,50 @@ Next, publish the Pulse configuration and migration files:
 php artisan vendor:publish --provider="Laravel\Pulse\PulseServiceProvider"
 ```
 
-Then run the migrations:
+Then create the tables:
 
 ```bash
 php artisan migrate
 ```
 
-Once this is done, open your browser and visit `/pulse`.
+After that, open `/pulse`.
 
-![Laravel Pulse right after it has been installed.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-pulse-8c9ee7a064375fb17457.webp/public)
+If you want Pulse data isolated from your main app database, point `PULSE_DB_CONNECTION` to a dedicated connection in `.env`.
 
-## Let Laravel Pulse monitor your server
+## What to run in production
 
-Most Pulse recorders capture entries automatically, but the servers recorder and some third-party cards need a background process. Start it with:
+This part is where many Pulse tutorials stay too light.
+
+Most recorders start collecting data once the package is installed and the app has traffic. But the **servers** card needs a long-running process:
 
 ```bash
 php artisan pulse:check
 ```
 
-Keep that daemon running in the background with a process monitor such as [Supervisor](http://supervisord.org). If you use Pulse's Redis ingest path, you will also need `php artisan pulse:work`, and both long-lived commands should be restarted during deployments with `php artisan pulse:restart`.
+Run that under a process monitor such as Supervisor. If you deploy on multiple servers, run it on every server you want represented in the dashboard.
 
-![Laravel Pulse's php artisan pulse:check command in action.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-pulse-bf75437dd76cff38c2dd.webp/public)
+If you switch Pulse to **Redis ingest** for busier apps, add this worker too:
 
-## Make Laravel Pulse secure
+```bash
+php artisan pulse:work
+```
+
+And during deploys, restart the long-lived Pulse processes so they pick up new code:
+
+```bash
+php artisan pulse:restart
+```
+
+That is the minimum operational setup I would remember:
+
+- install the package
+- migrate
+- visit `/pulse`
+- keep `pulse:check` alive
+- add `pulse:work` only when you use Redis ingest
+- restart Pulse workers during deploys
+
+## Secure the Pulse dashboard
 
 By default, Pulse is only accessible in the `local` environment. For production, define the `viewPulse` gate in your `AppServiceProvider` and apply whatever check you need:
 
@@ -98,41 +131,78 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
-## Install custom cards made by the community
+The simplest real-world rule is usually “admins only” or “specific team emails only.”
 
-The Laravel community is already working on custom cards to make it even more useful. Here's the link to the article where I try to gather the best ones I've found: [The best custom cards for Laravel Pulse](/best-laravel-pulse-custom-cards)
+## Customize the dashboard without much ceremony
 
-## Contribute to Laravel Pulse
+Pulse publishes a dashboard view you can edit, and the dashboard itself is powered by Livewire. That means you can rearrange cards, make some cards wider, or publish the dashboard view and tailor it without building a separate frontend.
 
-Laravel Pulse is free, open source, and available through a GitHub repository at [laravel/pulse](https://github.com/laravel/pulse). You can send as many Pull Requests as you want for bug fixes and enhancements.
+That is a big part of the appeal. Pulse starts useful, then grows with your app:
 
-![Laravel Pulse's GitHub repository.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-pulse-b189909fa59cbde54f4d.webp/public)
+- show more server information
+- expand the cards your team checks most
+- add your own custom cards for business-specific signals
+
+If that is the direction you want to go, [these Laravel Pulse custom cards](/best-laravel-pulse-custom-cards) are a good source of ideas, and [this custom Pulse card tutorial](/custom-laravel-pulse-card) is the next step once you are ready to build your own.
+
+## Laravel Pulse vs Telescope
+
+This is the comparison I find most useful:
+
+- **Use Pulse** when you want trends, summaries, and “what is unhealthy right now?”
+- **Use Telescope** when you want to inspect individual requests, queries, jobs, and exceptions in detail
+
+Pulse helps you notice a problem quickly. Telescope helps you dissect it. They are complementary, not interchangeable.
 
 ## Laravel Pulse troubleshooting
 
 ### Laravel Pulse returns a 404 not found error
 
-For anyone having a 404 after installing Laravel Pulse, here's a potential solution: You may have a wildcard hijacking the `pulse` route.
+If `/pulse` returns a 404 after installation, a wildcard route may be swallowing the path before Pulse can handle it.
 
-Here are possible fixes:
-- Change the `path` configuration value in `config/pulse.php` to something like `/pulse/dashboard`.
-- Or a more elegant solution would be to filter your wildcard route like so (which is what I did for this blog):
+You have two common fixes:
+
+- change the Pulse path in `config/pulse.php`
+- exclude `pulse` from your wildcard route
 
 ```php
 Route::get('/{post:slug}', [PostController::class, 'show'])->name('posts.show')
     ->where('post', '^(?!pulse$).*$');
 ```
 
-Basically, we are instructing Laravel to match the route only if it isn't `pulse`.
+That route constraint tells Laravel to match the wildcard only when the slug is **not** `pulse`.
 
-### My Laravel Pulse dashboard is empty
+### Laravel Pulse looks empty
 
-If your Laravel Pulse dashboard is empty, chances are that there's a problem with Livewire. If you open your developer tools and check for errors, you will most likely see a 404 not found error on */livewire/livewire.js*. Luckily, I wrote about this recurring issue caused by how Livewire serves its JavaScript by default: [Fix the /livewire/livewire.js 404 not found error](https://benjamincrozat.com/livewire-js-404-not-found)
+An empty dashboard usually means one of these:
+
+- you just installed Pulse and there is not enough traffic yet
+- `pulse:check` is not running, so the servers card has nothing to show
+- you enabled Redis ingest but forgot `pulse:work`
+- Livewire assets or requests are failing
+
+If the page loads but stays blank, open your browser devtools and check whether Livewire is erroring. A common Laravel setup issue is the `/livewire/livewire.js` asset returning 404, which I covered here: [Fix the /livewire/livewire.js 404 not found error](/livewire-js-404-not-found)
+
+### Should you use a separate database for Pulse?
+
+For smaller apps, I would usually keep Pulse in the main database and revisit later.
+
+For busier apps, or if you want cleaner operational separation, a dedicated Pulse connection is a good idea. The docs support that through `PULSE_DB_CONNECTION`, and it keeps Pulse's write volume away from your main app tables.
+
+## Is Laravel Pulse worth it?
+
+Yes, if you want a Laravel-native monitoring dashboard that gets you from “something feels off” to “here is the slow route / noisy user / backed-up queue” quickly.
+
+That is the sweet spot:
+
+- lighter than a full external observability stack
+- more operationally useful than no dashboard at all
+- easier to extend than most teams expect on day one
 
 If you want Pulse to become part of how you actually run the app, these are the next reads I would open:
 
 - [Steal ideas for Laravel Pulse cards worth building](/best-laravel-pulse-custom-cards)
 - [Build your own Laravel Pulse card once the built-ins are not enough](/custom-laravel-pulse-card)
+- [Use Laravel Debugbar when you need request-by-request inspection](/laravel-debugbar)
 - [Fix the Livewire JS 404 before it blocks the whole page](/livewire-js-404-not-found)
-- [Build better Artisan prompts without extra ceremony](/laravel-prompts)
-- [See when Laravel Volt is the simpler Livewire option](/laravel-volt)
+- [See how Laravel maintenance mode fits the same operational toolkit](/laravel-maintenance-mode)
