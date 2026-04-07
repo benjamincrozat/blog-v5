@@ -13,7 +13,7 @@
         "laravel-vite-plugin": "^1.2.0",
         "puppeteer": "^24.39.1",
         "tailwindcss": "^4.1.4",
-        "vite": "^6.3.2"
+        "vite": "^6.4.2"
     },
     "devDependencies": {
         "concurrently": "^9.1.2"
