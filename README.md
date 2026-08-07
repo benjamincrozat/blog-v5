@@ -31,3 +31,18 @@ If you're checking me out as a developer, this repo shows how I build and run a 
   A large Pest test suite that helps keep the publishing flow and business logic reliable as the site evolves.
 
 <img src="https://github.com/user-attachments/assets/3d1f2ca8-cfbf-458c-a451-9f093820361f" />
+
+## Run locally
+
+Create the `blog_v5` and `blog_v5_test` MySQL databases first. Then run:
+
+```bash
+composer setup
+composer dev
+```
+
+In another terminal, start the app on an unused local port:
+
+```bash
+php artisan serve --host=127.0.0.1 --port=8000
+```

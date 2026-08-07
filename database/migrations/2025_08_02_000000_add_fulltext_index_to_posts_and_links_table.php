@@ -10,41 +10,37 @@ return new class extends Migration
 {
     public function up() : void
     {
+        if ('sqlite' === Schema::getConnection()->getDriverName()) {
+            return;
+        }
+
         Schema::table('posts', function (Blueprint $table) {
-            // In order to keep using SQLite in CI, I need to skip this migration.
-            if (! app()->runningUnitTests()) {
-                $table->fullText(
-                    ['title', 'slug', 'content', 'description'],
-                    'posts_fulltext_all'
-                );
-            }
+            $table->fullText(
+                ['title', 'slug', 'content', 'description'],
+                'posts_fulltext_all'
+            );
         });
 
         Schema::table('links', function (Blueprint $table) {
-            // In order to keep using SQLite in CI, I need to skip this migration.
-            if (! app()->runningUnitTests()) {
-                $table->fullText(
-                    ['url', 'title', 'description'],
-                    'links_fulltext_all'
-                );
-            }
+            $table->fullText(
+                ['url', 'title', 'description'],
+                'links_fulltext_all'
+            );
         });
     }
 
     public function down() : void
     {
+        if ('sqlite' === Schema::getConnection()->getDriverName()) {
+            return;
+        }
+
         Schema::table('posts', function (Blueprint $table) {
-            // In order to keep using SQLite in CI, I need to skip this migration.
-            if (! app()->runningUnitTests()) {
-                $table->dropFullText('posts_fulltext_all');
-            }
+            $table->dropFullText('posts_fulltext_all');
         });
 
         Schema::table('links', function (Blueprint $table) {
-            // In order to keep using SQLite in CI, I need to skip this migration.
-            if (! app()->runningUnitTests()) {
-                $table->dropFullText('links_fulltext_all');
-            }
+            $table->dropFullText('links_fulltext_all');
         });
     }
 };

@@ -23,7 +23,7 @@ Renders a comment thread item and accepts the comment, parent reply target, attr
         <div class="grow">
             <div class="flex gap-4 justify-between">
                 <div>
-                    <a href="{{ data_get($commentUser->github_data, 'user.html_url') ?? '#' }}" target="_blank" class="font-medium">
+                    <a href="{{ $commentUser->github_url }}" target="_blank" class="font-medium">
                         {{ $commentUser->name ?? 'Deleted user' }}
                     </a>
 

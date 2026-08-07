@@ -1,7 +1,7 @@
 import.meta.glob([
     '../img/**',
     '../svg/**',
-])
+], { eager: true })
 
 import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm'
 import Autosize from '@marcreichel/alpine-autosize'

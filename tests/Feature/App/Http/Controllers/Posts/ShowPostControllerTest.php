@@ -137,16 +137,6 @@ it('returns 410 gone when the post is soft deleted', function () {
         ->assertStatus(410);
 });
 
-it('hides the sticky carousel for commercial posts', function () {
-    $post = Post::factory()->create([
-        'is_commercial' => true,
-    ]);
-
-    get(route('posts.show', $post))
-        ->assertOk()
-        ->assertDontSee('Black Friday');
-});
-
 it('builds a single blog breadcrumb trail for posts and omits the current page URL from schema', function () {
     $post = Post::factory()->create([
         'title' => 'Better breadcrumbs for posts',

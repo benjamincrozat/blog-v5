@@ -52,21 +52,6 @@ Displays the home view.
         </x-btn>
     </x-section>
 
-    <x-section
-        title="Great tools for developers"
-        class="mt-24 md:mt-32"
-    >
-        <div class="grid gap-8 mt-8 lg:grid-cols-2">
-            <x-tools.tinkerwell />
-            <x-tools.tower />
-            <x-tools.fathom-analytics />
-            <x-tools.cloudways />
-            <x-tools.mailcoach />
-            <x-tools.wincher />
-            <x-tools.uptimia />
-        </div>
-    </x-section>
-
     <x-section title="Latest links" id="links" class="mt-24 md:mt-32">
         @if ($links->isNotEmpty())
             <x-links-grid :$links />

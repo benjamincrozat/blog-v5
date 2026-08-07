@@ -17,7 +17,7 @@ class LinkFactory extends Factory
         return [
             'user_id' => User::factory(),
             'url' => fake()->unique()->url(),
-            'image_url' => 'https://picsum.photos/' . random_int(1024, 1280) . '/' . random_int(640, 720),
+            'image_url' => null,
             'title' => fake()->sentence(),
             'description' => fake()->paragraph(),
         ];

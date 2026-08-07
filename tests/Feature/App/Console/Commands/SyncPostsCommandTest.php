@@ -23,15 +23,23 @@ function syncPostsMarkdownPath() : string
 
 beforeEach(function () {
     $markdownPath = storage_path('framework/testing/markdown-sync-' . Str::uuid());
+    $publicPath = storage_path('framework/testing/public-sync-' . Str::uuid());
 
     File::deleteDirectory($markdownPath);
     File::ensureDirectoryExists($markdownPath);
+    File::ensureDirectoryExists($publicPath);
 
     config()->set('blog.markdown.posts_path', $markdownPath);
+    app()->usePublicPath($publicPath);
 });
 
 afterEach(function () {
+    $publicPath = public_path();
+
+    app()->usePublicPath(base_path('public'));
+
     File::deleteDirectory(syncPostsMarkdownPath());
+    File::deleteDirectory($publicPath);
 });
 
 function syncPostsFrontMatter(array $attributes) : string

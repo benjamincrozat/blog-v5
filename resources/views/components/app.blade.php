@@ -37,21 +37,9 @@ Wraps public pages in the shared site chrome and accepts page metadata, flags, a
 
         @livewireStyles
 
+        @fonts
+
         @vite('resources/css/app.css')
-
-        <link
-            rel="preload"
-            as="style"
-            href="https://fonts.googleapis.com/css2?family=Outfit:wght@200..800&display=swap"
-            onload="this.onload=null;this.rel='stylesheet'"
-        />
-
-        <link 
-            rel="preload"
-            as="style"
-            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Indie+Flower&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-            onload="this.onload=null;this.rel='stylesheet'"
-        >
 
         <link rel="icon" type="image/png" href="{{ Vite::asset('resources/img/favicon-96x96.png') }}" sizes="96x96" />
         <link rel="icon" type="image/svg+xml" href="{{ Vite::asset('resources/img/favicon.svg') }}" />
@@ -109,8 +97,6 @@ Wraps public pages in the shared site chrome and accepts page metadata, flags, a
                 <x-ads.top.sevalla />
             @endempty
 
-            <div x-intersect:leave="$dispatch('toggle-sticky-carousel')"></div>
-    
             @empty($hideNavigation)
                 <header class="container mt-4 xl:max-w-(--breakpoint-lg)">
                     <x-nav />
@@ -132,10 +118,6 @@ Wraps public pages in the shared site chrome and accepts page metadata, flags, a
         <x-status />
 
         <livewire:search />
-
-        @empty($hideStickyCarousel)
-            <x-ads.bottom :ads="[]" />
-        @endempty
 
         @livewireScriptConfig
 

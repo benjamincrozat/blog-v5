@@ -2,54 +2,14 @@
 
 return [
     'books' => [
-        'battle-ready-laravel' => [
-            'name' => 'Battle Ready Laravel',
-            'author' => 'Ash Allen',
-            'link' => 'https://battle-ready-laravel.com/?aff=WJ9DG',
-            'image' => 'resources/img/books/battle-ready-laravel.jpg',
-        ],
-        'consuming-apis-laravel' => [
-            'name' => 'Consuming APIs in Laravel',
-            'author' => 'Ash Allen',
-            'link' => 'https://consuming-apis-in-laravel.com/?aff=WJ9DG',
-            'image' => 'resources/img/books/consuming-apis-laravel.jpg',
-        ],
-        'domain-driven-laravel' => [
-            'name' => 'Domain-Driven Laravel',
-            'author' => 'Martin Joo',
-            'link' => 'https://martinjoo.gumroad.com/l/ddd-laravel-premium?a=266251475',
-            'image' => 'resources/img/books/domain-driven-laravel.jpg',
-        ],
-        'level-up-tailwind-css' => [
-            'name' => 'Level up with Tailwind CSS',
-            'author' => 'Shruti Balasa',
-            'link' => 'https://shrutibalasa.gumroad.com/l/level-up-with-tailwind-css?a=266251475',
-            'image' => 'resources/img/books/level-up-tailwind-css.jpg',
-        ],
-        'mastering-laravel-validation-rules' => [
-            'name' => 'Mastering Laravel Validation Rules',
-            'author' => 'Aaron Saray / Joel Clermont',
-            'link' => 'https://nocompromises.gumroad.com/l/laravel-validation?a=266251475',
-            'image' => 'resources/img/books/mastering-laravel-validation.jpg',
-        ],
-        'microservices-laravel' => [
-            'name' => 'Microservices with Laravel',
-            'author' => 'Martin Joo',
-            'link' => 'https://martinjoo.gumroad.com/l/microservices-with-laravel-premium?a=266251475',
-            'image' => 'resources/img/books/microservices-laravel.jpg',
-        ],
-        'vue-design-patterns' => [
-            'name' => 'Vue.js Design Patterns',
-            'author' => 'Lachlan Miller',
-            'link' => 'https://lachlanmiller.gumroad.com/l/vuejs-design-patterns?a=266251475',
-            'image' => 'resources/img/books/vue-design-patterns.jpg',
-        ],
-        'best-practices-laravel-enterprise-apps' => [
-            'name' => 'Best Practices for Laravel Enterprise Applications',
-            'author' => 'Wendell Adriel',
-            'link' => 'https://gumroad.com/a/708015763/vtxqpk',
-            'image' => '',
-        ],
+        'battle-ready-laravel' => 'https://battle-ready-laravel.com/?aff=WJ9DG',
+        'consuming-apis-laravel' => 'https://consuming-apis-in-laravel.com/?aff=WJ9DG',
+        'domain-driven-laravel' => 'https://martinjoo.gumroad.com/l/ddd-laravel-premium?a=266251475',
+        'level-up-tailwind-css' => 'https://shrutibalasa.gumroad.com/l/level-up-with-tailwind-css?a=266251475',
+        'mastering-laravel-validation-rules' => 'https://nocompromises.gumroad.com/l/laravel-validation?a=266251475',
+        'microservices-laravel' => 'https://martinjoo.gumroad.com/l/microservices-with-laravel-premium?a=266251475',
+        'vue-design-patterns' => 'https://lachlanmiller.gumroad.com/l/vuejs-design-patterns?a=266251475',
+        'best-practices-laravel-enterprise-apps' => 'https://gumroad.com/a/708015763/vtxqpk',
     ],
 
     'courses' => [

@@ -6,13 +6,12 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Filesystem\FilesystemAdapter;
 
-beforeEach(function () {
-    if (! shouldRunCloudflareLiveTests()) {
-        $this->markTestSkipped('Set CLOUDFLARE_LIVE_TESTS=true with valid Cloudflare credentials to run live adapter tests.');
-    }
+beforeEach(fn () => Http::allowStrayRequests());
 
-    Http::allowStrayRequests();
-});
+beforeEach()->skip(
+    fn () => ! shouldRunCloudflareLiveTests(),
+    'Set CLOUDFLARE_LIVE_TESTS=true with valid Cloudflare credentials to run live adapter tests.',
+);
 
 it('uploads an image, returns a public URL, and deletes it using the Cloudflare Images adapter', function () {
     /** @var FilesystemAdapter $disk */

@@ -38,14 +38,6 @@ Presents the nav index component UI and accepts component props, Blade attribute
             Links
         </x-nav.item>
 
-        <x-nav.item
-            active-icon="heroicon-s-computer-desktop"
-            icon="heroicon-o-computer-desktop"
-            href="{{ route('tools.index') }}"
-        >
-            Tools
-        </x-nav.item>
-
         @auth
             <x-dropdown>
                 <x-slot:btn>
@@ -151,15 +143,6 @@ Presents the nav index component UI and accepts component props, Blade attribute
                     @click="$dispatch('search'); open = false"
                 >
                     Search
-                </x-dropdown.item>
-
-                <x-dropdown.item
-                    icon="heroicon-o-megaphone"
-                    description="Sponsor me and show off your business to {{ Number::format($visitors) }} monthly visitors."
-                    wire:navigate
-                    href="{{ route('advertise') }}"
-                >
-                    Show off your business
                 </x-dropdown.item>
 
                 <x-dropdown.item

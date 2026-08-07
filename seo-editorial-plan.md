@@ -1,7 +1,7 @@
 # SEO editorial plan
 
-Last updated: March 20, 2026
-Source brief: fresh Search Console export from the browser plus live Google US desktop SERP checks on March 18, 2026
+Repository status reconciled: August 6, 2026
+Priority data last refreshed: Search Console export and live Google US desktop SERP checks from March 18, 2026
 
 This is the working SEO backlog for the next article batch and refresh cycle. We should move through it from top to bottom unless fresh Search Console or SERP data changes the priority. Check an item only when the article is drafted or refreshed, reviewed, synced, and ready to publish.
 
@@ -62,7 +62,7 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
 - [x] `/laravel-versions`
   - Keyword cluster: `latest laravel version`, `laravel 11 release date`
   - Why update now: The page already matches the intent cluster, but it needs a freshness pass.
-  - Core update: Lead with Laravel 12 as current and label Laravel 13 as upcoming on March 18, 2026.
+  - Core update: Lead with Laravel 13 as current and keep the release and support details accurate.
 
 - [x] `/check-php-version`
   - Keyword cluster: `check php version`
@@ -201,7 +201,7 @@ This is the working SEO backlog for the next article batch and refresh cycle. We
   - Visual plan: use code plus visible output markers; no screenshots unless needed to show hidden characters more clearly.
   - Why first: the SERP is relatively soft beyond the PHP manual.
 
-- [ ] `php date format`
+- [x] `php date format`
   - Angle: a practical formatting guide with copy-ready patterns.
   - Must cover: `date()` vs `DateTimeImmutable::format()`, common patterns, escaping, timestamps, time zones, and when `date()` is not enough.
   - Visual plan: a compact cheat sheet table is likely more useful than screenshots.

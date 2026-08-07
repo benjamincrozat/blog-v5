@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Sentry\Laravel\Integration;
 use Illuminate\Foundation\Application;
 use App\Http\Middleware\HandleRedirects;
@@ -18,12 +19,16 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function (Middleware $middleware) {
+    ->withMiddleware(function (Middleware $middleware) : void {
         $middleware
             ->redirectGuestsTo('/login')
             ->append(HandleRedirects::class);
     })
-    ->withExceptions(function (Exceptions $exceptions) {
+    ->withExceptions(function (Exceptions $exceptions) : void {
+        $exceptions->shouldRenderJsonWhen(
+            fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
+        );
+
         Integration::handles($exceptions);
     })
     ->create();

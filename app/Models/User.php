@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Lab404\Impersonate\Models\Impersonate;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,18 +18,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 /**
  * Represents user records.
  */
+#[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Impersonate, MustVerifyEmail, Notifiable;
-
-    /**
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
 
     protected static function booted() : void
     {
@@ -92,6 +86,14 @@ class User extends Authenticatable implements FilamentUser
     {
         return Attribute::make(
             fn () => data_get($this->github_data, 'user.blog'),
+        );
+    }
+
+    public function githubUrl() : Attribute
+    {
+        return Attribute::make(
+            fn () => data_get($this->github_data, 'user.html_url')
+                ?? 'https://github.com/' . $this->github_login,
         );
     }
 

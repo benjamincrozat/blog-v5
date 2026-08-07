@@ -23,13 +23,6 @@ it('has the expected subject and static content', function () {
         ->toContain('popular articles:');
 
     expect(implode("\n", array_merge($message->introLines, $message->outroLines)))
-        ->toContain(route('tools.index'))
-        ->toContain(route('merchants.show', 'tower'))
-        ->toContain(route('merchants.show', 'fathom-analytics'))
-        ->toContain(route('merchants.show', 'cloudways-php'))
-        ->toContain(route('merchants.show', 'mailcoach'))
-        ->toContain(route('merchants.show', 'wincher'))
-        ->toContain(route('merchants.show', 'uptimia'))
         ->toContain(route('feeds.main'));
 });
 

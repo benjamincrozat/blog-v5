@@ -6,7 +6,6 @@ Displays the posts show view.
     :canonical="filled($post->canonical_url) ? $post->canonical_url : url()->current()"
     :description="$post->serp_description ?: $post->description"
     :hide-top-ad="$post->is_commercial"
-    :hide-sticky-carousel="$post->is_commercial"
     :image="filled($post->image_url) ? $post->image_url : Vite::asset('resources/img/apple-touch-icon.png')"
     :title="! empty($post->serp_title) ? $post->serp_title : $post->title"
     type="article"
@@ -247,38 +246,12 @@ Displays the posts show view.
                 <div class="mt-24">
                     <livewire:comments :post-id="$post->id" />
                 </div>
-
-                <section class="mt-24">
-                    <x-typography.heading tag="h2">
-                        Great tools for developers
-                    </x-typography.heading>
-
-                    <div class="grid gap-4 mt-8">
-                        <x-tools.tinkerwell />
-                        <x-tools.tower />
-                        <x-tools.fathom-analytics />
-                        <x-tools.cloudways />
-                        <x-tools.mailcoach />
-                        <x-tools.wincher />
-                        <x-tools.uptimia />
-                    </div>
-                </section>
             @endif
         </div>
 
         @if (! $post->is_commercial)
             <div class="lg:col-span-4 xl:col-span-3">
                 <x-ads.sidebar.sevalla class="max-w-[280px] mx-auto lg:max-w-none lg:mx-0" />
-
-                <a
-                    wire:navigate
-                    href="{{ route('tools.index') }}"
-                    class="hidden lg:block"
-                >
-                    <p class="p-4 mt-4 leading-tight rounded-xl text-balance bg-gray-100/75">
-                        <strong class="font-medium">I have even more tools for developers.</strong> Services, apps, and all kinds of tools at a discount. <span class="font-medium underline">Check available tools →</span>
-                    </p>
-                </a>
 
                 @if ($latestComment)
                     <div class="hidden mt-16 lg:block">
@@ -297,7 +270,7 @@ Displays the posts show view.
                             <div>
                                 <p>
                                     <a
-                                        href="{{ $latestComment->user->github_data['user']['html_url'] }}"
+                                        href="{{ $latestComment->user->github_url }}"
                                         target="_blank"
                                         class="font-medium"
                                     >

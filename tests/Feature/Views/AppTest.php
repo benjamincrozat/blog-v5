@@ -17,6 +17,12 @@ it('signals the Atom feed', function () {
         ->assertSee('application/atom+xml', escape: false);
 });
 
+it('serves the public site fonts locally', function () {
+    get('/')
+        ->assertSee('font-family: "Outfit"', escape: false)
+        ->assertDontSee('fonts.googleapis.com', escape: false);
+});
+
 it('allows large image previews and exposes website schema', function () {
     get('/')
         ->assertSee('<meta name="robots" content="max-image-preview:large" />', escape: false)

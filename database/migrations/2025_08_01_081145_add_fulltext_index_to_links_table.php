@@ -8,27 +8,29 @@ return new class extends Migration
 {
     public function up() : void
     {
+        if ('sqlite' === Schema::getConnection()->getDriverName()) {
+            return;
+        }
+
         Schema::table('links', function (Blueprint $table) {
-            // In order to keep using SQLite in CI, I need to skip this migration.
-            if (! app()->runningUnitTests()) {
-                $table->fullText('url');
-                $table->fullText('title');
-                $table->fullText('description');
-            }
+            $table->fullText('url');
+            $table->fullText('title');
+            $table->fullText('description');
         });
     }
 
     public function down() : void
     {
+        if ('sqlite' === Schema::getConnection()->getDriverName()) {
+            return;
+        }
+
         Schema::table('links', function (Blueprint $table) {
-            // In order to keep using SQLite in CI, I need to skip this migration.
-            if (! app()->runningUnitTests()) {
-                $table->dropFullText([
-                    'url',
-                    'title',
-                    'description',
-                ]);
-            }
+            $table->dropFullText([
+                'url',
+                'title',
+                'description',
+            ]);
         });
     }
 };

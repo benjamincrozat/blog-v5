@@ -5,9 +5,16 @@
 .phpactor.json
 *.cache
 *.log
+/.codex
+/.cursor/
+/.idea
+/.nova
+/.phpunit.cache
 /.vscode
+/.zed
 /node_modules
 /public/build
+/public/fonts-manifest.dev.json
 /public/hot
 /public/*sitemap.xml
 /public/storage
@@ -16,6 +23,9 @@
 /storage/pail
 /vendor
 /venv
-auth.json
+/auth.json
 phpunit.xml
+_ide_helper.php
+Homestead.json
+Homestead.yaml
 Thumbs.db

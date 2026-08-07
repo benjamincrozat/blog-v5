@@ -18,7 +18,11 @@ it('limits the latest posts collection to twelve entries', function () {
 });
 
 it('shows twelve approved links on the homepage', function () {
-    Link::factory(20)->approved()->create();
+    $olderUser = User::factory()->create([
+        'github_data' => ['id' => 123],
+    ]);
+
+    Link::factory(20)->for($olderUser)->approved()->create();
     ensureHomeCreator();
 
     get(route('home'))

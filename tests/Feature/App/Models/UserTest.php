@@ -19,6 +19,7 @@ it('derives profile data from github metadata when biography is missing', functi
                 'bio' => 'GitHub bio.',
                 'blog' => 'https://example.com',
                 'company' => 'Example Inc.',
+                'html_url' => 'https://github.com/example',
             ],
         ],
     ]);
@@ -26,6 +27,16 @@ it('derives profile data from github metadata when biography is missing', functi
     expect($user->about)->toBe('GitHub bio.');
     expect($user->blogUrl)->toBe('https://example.com');
     expect($user->company)->toBe('Example Inc.');
+    expect($user->githubUrl)->toBe('https://github.com/example');
+});
+
+it('builds a GitHub profile URL when refreshed profile data is missing', function () {
+    $user = User::factory()->create([
+        'github_login' => 'older-user',
+        'github_data' => ['id' => 123],
+    ]);
+
+    expect($user->githubUrl)->toBe('https://github.com/older-user');
 });
 
 it('detects admins and panel access based on the GitHub login', function () {

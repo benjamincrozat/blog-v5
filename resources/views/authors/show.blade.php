@@ -80,7 +80,7 @@ Shows an author profile with biography, published articles, approved links, and 
                 'url' => url()->current(),
                 'description' => $description,
                 'sameAs' => array_values(array_filter([
-                    data_get($author->github_data, 'user.html_url'),
+                    $author->github_url,
                     $author->blog_url,
                 ])),
                 'worksFor' => filled($author->company) ? [

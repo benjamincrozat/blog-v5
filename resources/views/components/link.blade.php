@@ -38,7 +38,7 @@ Shows a curated link card and accepts the link record, loading priority, attribu
         @endif
 
         <a
-            href="{{ $link->user->github_data['user']['html_url'] }}"
+            href="{{ $link->user->github_url }}"
             target="_blank"
             class="flex items-center"
         >
