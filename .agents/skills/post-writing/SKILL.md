@@ -9,7 +9,7 @@ metadata:
 
 ## Trigger
 
-Use for publication-ready posts in `resources/markdown/posts`. Pair with `seo-content` for search framing and `file-first-posts` for sync, publish, and image workflow.
+Use for publication-ready posts in `resources/markdown/posts`. Pair with `file-first-posts` for sync, publish, and image workflow.
 
 ## Frontmatter Contract
 

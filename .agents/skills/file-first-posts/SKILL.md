@@ -9,7 +9,7 @@ metadata:
 
 ## Trigger
 
-Use this skill for `resources/markdown/posts`. Pair with `post-writing` for copy and `seo-content` for search framing.
+Use this skill for `resources/markdown/posts`. Pair with `post-writing` for copy.
 
 ## Rules
 

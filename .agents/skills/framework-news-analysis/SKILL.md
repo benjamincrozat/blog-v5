@@ -9,7 +9,7 @@ metadata:
 
 ## Trigger
 
-Use for weekly news or analysis posts about a framework, library, tool, platform, or developer product. Pair with `post-writing`, `file-first-posts`, and `seo-content`.
+Use for weekly news or analysis posts about a framework, library, tool, platform, or developer product. Pair with `post-writing` and `file-first-posts`.
 
 ## Rules
 
@@ -27,4 +27,4 @@ Use for weekly news or analysis posts about a framework, library, tool, platform
 2. Gather current primary sources for this week first.
 3. Choose the strongest angle: direct release/update, broader ecosystem analysis, or review/opinion grounded in the official material.
 4. Pressure-test the angle: would it inform a competent developer, or just repeat buzzwords?
-5. Hand off to `post-writing`, `file-first-posts`, and `seo-content` for drafting, publishing, and search framing.
+5. Hand off to `post-writing` and `file-first-posts` for drafting and publishing.
