@@ -15,13 +15,6 @@ class Category extends Model
     /** @use HasFactory<CategoryFactory> */
     use HasFactory;
 
-    protected function casts() : array
-    {
-        return [
-            'modified_at' => 'datetime',
-        ];
-    }
-
     public function posts() : BelongsToMany
     {
         return $this->belongsToMany(Post::class);
