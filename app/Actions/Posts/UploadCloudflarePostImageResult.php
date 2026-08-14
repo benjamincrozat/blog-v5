@@ -11,6 +11,5 @@ class UploadCloudflarePostImageResult
         public readonly string $disk,
         public readonly string $path,
         public readonly string $url,
-        public readonly ?string $markdownPath,
     ) {}
 }

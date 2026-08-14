@@ -4,8 +4,8 @@ namespace App\Actions\Posts;
 
 use Illuminate\Support\Str;
 use InvalidArgumentException;
+use App\Markdown\MarkdownPostSource;
 use Illuminate\Support\Facades\File;
-use App\Markdown\PostMarkdownDocument;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -16,11 +16,10 @@ class UploadCloudflarePostImage
     public function handle(
         string $sourcePath,
         ?string $destinationPath = null,
-        ?string $markdownPath = null,
+        ?MarkdownPostSource $markdownSource = null,
         bool $overwrite = false,
     ) : UploadCloudflarePostImageResult {
         $resolvedSourcePath = $this->resolveSourcePath($sourcePath);
-        $resolvedMarkdownPath = $this->resolveMarkdownPath($markdownPath);
         $resolvedDestinationPath = $this->resolveDestinationPath($resolvedSourcePath, $destinationPath);
 
         if ($overwrite && Storage::disk('cloudflare-images')->exists($resolvedDestinationPath)) {
@@ -39,15 +38,14 @@ class UploadCloudflarePostImage
             fclose($stream);
         }
 
-        if ($resolvedMarkdownPath) {
-            $this->updateMarkdownFrontMatter($resolvedMarkdownPath, $resolvedDestinationPath);
+        if ($markdownSource) {
+            $this->updateMarkdownFrontMatter($markdownSource, $resolvedDestinationPath);
         }
 
         return new UploadCloudflarePostImageResult(
             disk: 'cloudflare-images',
             path: $resolvedDestinationPath,
             url: Storage::disk('cloudflare-images')->url($resolvedDestinationPath),
-            markdownPath: $resolvedMarkdownPath,
         );
     }
 
@@ -58,30 +56,6 @@ class UploadCloudflarePostImage
         }
 
         return $sourcePath;
-    }
-
-    protected function resolveMarkdownPath(?string $markdownPath) : ?string
-    {
-        $trimmedMarkdownPath = trim((string) $markdownPath);
-
-        if ('' === $trimmedMarkdownPath) {
-            return null;
-        }
-
-        $candidates = array_unique([
-            $trimmedMarkdownPath,
-            rtrim((string) config('blog.markdown.posts_path'), DIRECTORY_SEPARATOR)
-                . DIRECTORY_SEPARATOR
-                . ltrim($trimmedMarkdownPath, DIRECTORY_SEPARATOR),
-        ]);
-
-        foreach ($candidates as $candidate) {
-            if (File::isFile($candidate)) {
-                return $candidate;
-            }
-        }
-
-        throw new InvalidArgumentException("Markdown post [{$trimmedMarkdownPath}] does not exist.");
     }
 
     protected function resolveDestinationPath(string $sourcePath, ?string $destinationPath) : string
@@ -103,28 +77,12 @@ class UploadCloudflarePostImage
         return 'images/posts/' . Str::ulid() . ".{$extension}";
     }
 
-    protected function updateMarkdownFrontMatter(string $markdownPath, string $imagePath) : void
+    protected function updateMarkdownFrontMatter(MarkdownPostSource $source, string $imagePath) : void
     {
-        $document = PostMarkdownDocument::fromMarkdown(
-            File::get($markdownPath),
-            $this->markdownRelativePath($markdownPath),
-        )->withImage('cloudflare-images', $imagePath);
-
-        File::put($markdownPath, $document->toMarkdown());
-    }
-
-    protected function markdownRelativePath(string $markdownPath) : string
-    {
-        $basePath = rtrim((string) config('blog.markdown.posts_path'), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
-
-        $normalizedBasePath = $this->normalizePath($basePath);
-        $normalizedMarkdownPath = $this->normalizePath($markdownPath);
-
-        if (str_starts_with($normalizedMarkdownPath, $normalizedBasePath)) {
-            return ltrim(Str::after($normalizedMarkdownPath, $normalizedBasePath), '/');
-        }
-
-        return basename($normalizedMarkdownPath);
+        File::put(
+            $source->absolutePath,
+            $source->document->withImage('cloudflare-images', $imagePath)->toMarkdown(),
+        );
     }
 
     protected function normalizePath(string $path) : string

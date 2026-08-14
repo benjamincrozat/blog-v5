@@ -26,11 +26,6 @@ class ResolveMarkdownPost
             : $this->resolveBySlug($trimmedInput);
     }
 
-    public function fromSlug(string $slug) : MarkdownPostSource
-    {
-        return $this->resolveBySlug($slug);
-    }
-
     protected function resolveByPath(string $path) : MarkdownPostSource
     {
         foreach ($this->pathCandidates($path) as $candidate) {

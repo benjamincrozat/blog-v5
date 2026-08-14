@@ -5,7 +5,9 @@ namespace App\Console\Commands;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Illuminate\Console\Command;
+use App\Markdown\MarkdownPostSource;
 use Illuminate\Support\Facades\File;
+use App\Actions\Posts\ResolveMarkdownPost;
 use App\Actions\Posts\UploadCloudflarePostImage;
 use Symfony\Component\Console\Attribute\AsCommand;
 
@@ -24,12 +26,18 @@ class UploadPostImageCommand extends Command
         {--markdown= : Markdown post file to update image_disk and image_path}
         {--alt= : Alt text to use in the returned Markdown snippet}';
 
-    public function handle(UploadCloudflarePostImage $uploadCloudflarePostImage) : int
-    {
+    public function handle(
+        ResolveMarkdownPost $resolveMarkdownPost,
+        UploadCloudflarePostImage $uploadCloudflarePostImage,
+    ) : int {
         $sourcePath = $this->resolveSourcePath((string) $this->argument('source'));
-        $markdownPath = $this->resolveMarkdownPath($this->option('markdown'));
+        $markdownSource = $this->resolveMarkdownSource($this->option('markdown'), $resolveMarkdownPost);
         $destinationPath = $this->resolveDestinationPath($sourcePath, (string) $this->option('path'));
-        $result = $uploadCloudflarePostImage->handle($sourcePath, $destinationPath, $markdownPath);
+        $result = $uploadCloudflarePostImage->handle(
+            sourcePath: $sourcePath,
+            destinationPath: $destinationPath,
+            markdownSource: $markdownSource,
+        );
         $alt = $this->resolveAltText($sourcePath);
 
         $this->info('Uploaded image to Cloudflare Images.');
@@ -38,9 +46,9 @@ class UploadPostImageCommand extends Command
         $this->line("URL: {$result->url}");
         $this->line("Markdown: ![{$alt}]({$result->url})");
 
-        if ($markdownPath) {
+        if ($markdownSource) {
             $this->line(
-                'Updated Markdown front matter in [' . $this->markdownRelativePath($markdownPath) . '] with image_disk/image_path.'
+                'Updated Markdown front matter in [' . $markdownSource->relativePath . '] with image_disk/image_path.'
             );
             $this->line('Run php artisan app:sync-posts to persist the new image metadata.');
         } else {
@@ -61,28 +69,17 @@ class UploadPostImageCommand extends Command
         return $sourcePath;
     }
 
-    protected function resolveMarkdownPath(mixed $markdownPath) : ?string
-    {
-        $markdownPath = trim((string) $markdownPath);
+    protected function resolveMarkdownSource(
+        mixed $markdownInput,
+        ResolveMarkdownPost $resolveMarkdownPost,
+    ) : ?MarkdownPostSource {
+        $markdownInput = trim((string) $markdownInput);
 
-        if ('' === $markdownPath) {
+        if ('' === $markdownInput) {
             return null;
         }
 
-        $candidates = array_unique([
-            $markdownPath,
-            rtrim((string) config('blog.markdown.posts_path'), DIRECTORY_SEPARATOR)
-                . DIRECTORY_SEPARATOR
-                . ltrim($markdownPath, DIRECTORY_SEPARATOR),
-        ]);
-
-        foreach ($candidates as $candidate) {
-            if (File::isFile($candidate)) {
-                return $candidate;
-            }
-        }
-
-        throw new InvalidArgumentException("Markdown post [{$markdownPath}] does not exist.");
+        return $resolveMarkdownPost->handle($markdownInput);
     }
 
     protected function resolveDestinationPath(string $sourcePath, string $pathOption) : string
@@ -102,20 +99,6 @@ class UploadPostImageCommand extends Command
         }
 
         return 'images/posts/' . Str::ulid() . ".{$extension}";
-    }
-
-    protected function markdownRelativePath(string $markdownPath) : string
-    {
-        $basePath = rtrim((string) config('blog.markdown.posts_path'), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
-
-        $normalizedBasePath = $this->normalizePath($basePath);
-        $normalizedMarkdownPath = $this->normalizePath($markdownPath);
-
-        if (str_starts_with($normalizedMarkdownPath, $normalizedBasePath)) {
-            return ltrim(Str::after($normalizedMarkdownPath, $normalizedBasePath), '/');
-        }
-
-        return basename($normalizedMarkdownPath);
     }
 
     protected function normalizePath(string $path) : string

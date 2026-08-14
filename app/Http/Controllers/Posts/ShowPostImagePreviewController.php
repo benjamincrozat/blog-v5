@@ -16,7 +16,7 @@ class ShowPostImagePreviewController extends Controller
     public function __invoke(string $slug, ResolveMarkdownPost $resolveMarkdownPost) : Response
     {
         try {
-            $source = $resolveMarkdownPost->fromSlug($slug);
+            $source = $resolveMarkdownPost->handle($slug);
         } catch (InvalidArgumentException|PostMarkdownException) {
             abort(404);
         }

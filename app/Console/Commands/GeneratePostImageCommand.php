@@ -53,7 +53,7 @@ class GeneratePostImageCommand extends Command
             $result = $uploadCloudflarePostImage->handle(
                 sourcePath: $temporaryScreenshotPath,
                 destinationPath: $destinationPath,
-                markdownPath: $source->absolutePath,
+                markdownSource: $source,
                 overwrite: (bool) $this->option('force'),
             );
         } finally {
