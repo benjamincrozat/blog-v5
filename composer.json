@@ -1,11 +1,7 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "benjamincrozat/blog-v5",
-    "type": "project",
-    "description": "The Laravel application for benjamincrozat.com.",
-    "license": "proprietary",
     "require": {
-        "php": "^8.4",
+        "php": "^8.5",
         "algolia/algoliasearch-client-php": "^4.39",
         "andreiio/blade-iconoir": "^4.7",
         "blade-ui-kit/blade-heroicons": "^2.7",
