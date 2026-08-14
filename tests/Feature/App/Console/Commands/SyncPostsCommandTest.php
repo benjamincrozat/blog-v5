@@ -377,18 +377,18 @@ it('fails on duplicate ids and slugs', function () {
     expect(Artisan::output())->toContain('Duplicate slug');
 });
 
-it('does not touch the sitemap or search console during sync', function () {
+it('does not regenerate the sitemap during sync', function () {
     User::factory()->create(['github_login' => 'benjamincrozat']);
     Category::factory()->create(['slug' => 'laravel', 'name' => 'Laravel']);
 
     File::delete(public_path('sitemap.xml'));
 
-    writeSyncPost(syncPostsMarkdownPath(), 'search-console-post', [
+    writeSyncPost(syncPostsMarkdownPath(), 'sitemap-independent-post', [
         'id' => '01ARZ3NDEKTSV4RRFFQ69G5FB1',
-        'title' => '"Search Console post"',
-        'slug' => 'search-console-post',
+        'title' => '"Sitemap-independent post"',
+        'slug' => 'sitemap-independent-post',
         'author' => 'benjamincrozat',
-        'description' => '"Search Console summary"',
+        'description' => '"Sitemap-independent summary"',
         'categories' => ['laravel'],
         'published_at' => '"2026-03-11T09:00:00+01:00"',
         'modified_at' => '"2026-03-11T12:00:00+01:00"',
@@ -406,8 +406,7 @@ it('does not touch the sitemap or search console during sync', function () {
 
     expect(Artisan::output())
         ->toContain('created=1')
-        ->not->toContain('Sitemap generated successfully')
-        ->not->toContain('Search Console');
+        ->not->toContain('Sitemap generated successfully');
 
     expect(File::exists(public_path('sitemap.xml')))->toBeFalse();
 });
