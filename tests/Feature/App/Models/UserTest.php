@@ -1,6 +1,5 @@
 <?php
 
-use Filament\Panel;
 use App\Models\User;
 
 it('generates a slug from the name', function () {
@@ -39,7 +38,7 @@ it('builds a GitHub profile URL when refreshed profile data is missing', functio
     expect($user->githubUrl)->toBe('https://github.com/older-user');
 });
 
-it('detects admins and panel access based on the GitHub login', function () {
+it('detects admins based on the GitHub login', function () {
     $admin = User::factory()->make([
         'github_login' => 'benjamincrozat',
     ]);
@@ -48,11 +47,6 @@ it('detects admins and panel access based on the GitHub login', function () {
         'github_login' => 'other-user',
     ]);
 
-    $panel = Mockery::mock(Panel::class);
-
     expect($admin->isAdmin())->toBeTrue();
-    expect($admin->canAccessPanel($panel))->toBeTrue();
-
     expect($regular->isAdmin())->toBeFalse();
-    expect($regular->canAccessPanel($panel))->toBeFalse();
 });

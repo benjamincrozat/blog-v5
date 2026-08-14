@@ -59,13 +59,6 @@ Presents the nav index component UI and accepts component props, Blade attribute
 
                     @if (auth()->user()->isAdmin())
                         <x-dropdown.item
-                            icon="heroicon-o-adjustments-horizontal"
-                            href="{{ route('filament.admin.pages.dashboard') }}"
-                        >
-                            Admin
-                        </x-dropdown.item>
-
-                        <x-dropdown.item
                             icon="icon-horizon"
                             href="{{ route('horizon.index') }}"
                         >

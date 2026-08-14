@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Filament\Panel;
 use Illuminate\Support\Str;
 use Database\Factories\UserFactory;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
-use Lab404\Impersonate\Models\Impersonate;
-use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -19,10 +16,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * Represents user records.
  */
 #[Hidden(['password', 'remember_token'])]
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Impersonate, MustVerifyEmail, Notifiable;
+    use HasFactory, MustVerifyEmail, Notifiable;
 
     protected static function booted() : void
     {
@@ -107,10 +104,5 @@ class User extends Authenticatable implements FilamentUser
     public function isAdmin() : bool
     {
         return 'benjamincrozat' === $this->github_login;
-    }
-
-    public function canAccessPanel(Panel $panel) : bool
-    {
-        return $this->isAdmin();
     }
 }

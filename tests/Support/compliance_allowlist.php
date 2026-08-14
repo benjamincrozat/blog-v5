@@ -10,6 +10,5 @@ return [
     ],
     'internal_anchor_without_wire' => [
         'resources/views/posts/show.blade.php::{{ route(\'feeds.main\') }}',
-        'resources/views/components/app.blade.php::{{ route(\'leave-impersonation\') }}',
     ],
 ];

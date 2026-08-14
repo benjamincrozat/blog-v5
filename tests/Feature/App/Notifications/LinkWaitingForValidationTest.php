@@ -27,8 +27,8 @@ it('has the expected subject, greeting and action', function () {
         ->toContain('example.com')
         ->toContain($link->user->name);
 
-    expect($message->actionText)->toBe('Check');
-    expect($message->actionUrl)->toBe(url('/admin/links'));
+    expect($message->actionText)->toBe('Open link');
+    expect($message->actionUrl)->toBe($link->url);
 });
 
 it('sends via the mail channel and is queueable', function () {
