@@ -10,7 +10,7 @@ return new class extends Migration
     public function up() : void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('github_id')->index()->after('slug');
+            $table->string('github_id')->index()->after('name');
         });
 
         User::all()->each(function (User $user) {

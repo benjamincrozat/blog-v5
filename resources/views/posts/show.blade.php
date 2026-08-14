@@ -88,22 +88,17 @@ Displays the posts show view.
                         {{ ($post->modified_at ?? $post->published_at ?? $post->created_at)->isoFormat('ll') }}
                     </div>
 
-                    <a
-                        wire:navigate
-                        href="{{ route('authors.show', $post->user->slug) }}"
-                    >
-                        <div class="p-3 text-center bg-gray-50 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-900">
-                            <img
-                                loading="lazy"
-                                src="{{ $post->user->avatar }}"
-                                alt="{{ $post->user->name }}"
-                                class="mx-auto mb-2 rounded-full size-6"
-                            />
+                    <div class="p-3 text-center bg-gray-50 rounded-lg">
+                        <img
+                            loading="lazy"
+                            src="{{ $post->user->avatar }}"
+                            alt="{{ $post->user->name }}"
+                            class="mx-auto mb-2 rounded-full size-6"
+                        />
 
-                            Written by<br />
-                            {{ $post->user->name }}
-                        </div>
-                    </a>
+                        Written by<br />
+                        {{ $post->user->name }}
+                    </div>
 
                     @if (! $post->is_commercial)
                         <a
@@ -377,7 +372,6 @@ Displays the posts show view.
                 'author' => [
                     '@type' => 'Person',
                     'name' => $post->user->name,
-                    'url' => route('authors.show', $post->user->slug),
                 ],
                 'publisher' => [
                     '@type' => 'Organization',

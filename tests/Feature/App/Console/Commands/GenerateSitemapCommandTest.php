@@ -2,7 +2,6 @@
 
 use App\Models\Link;
 use App\Models\Post;
-use App\Models\User;
 use App\Models\Category;
 
 use function Pest\Laravel\artisan;
@@ -31,9 +30,7 @@ it('generates a sitemap with the most important pages', function () {
         ->cursor()
         ->each(fn (Post $post) => expect($content)->toContain(route('posts.show', $post)));
 
-    User::query()
-        ->cursor()
-        ->each(fn (User $user) => expect($content)->toContain(route('authors.show', $user->slug)));
+    expect($content)->not->toContain('/authors/');
 
     expect($content)->toContain(route('categories.index'));
 

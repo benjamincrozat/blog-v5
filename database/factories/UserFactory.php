@@ -26,16 +26,12 @@ class UserFactory extends Factory
                 'id' => fake()->unique()->randomNumber(),
                 'name' => fake()->name(),
                 'user' => [
-                    'bio' => fake()->paragraph(),
-                    'blog' => fake()->url(),
-                    'company' => fake()->company(),
                     'html_url' => fake()->url(),
                     'login' => fake()->userName(),
                 ],
                 'email' => $email,
             ],
             'email' => $email,
-            'biography' => fake()->paragraph(),
             'remember_token' => Str::random(10),
         ];
     }

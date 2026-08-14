@@ -2,30 +2,15 @@
 
 use App\Models\User;
 
-it('generates a slug from the name', function () {
+it('uses the refreshed GitHub profile URL when available', function () {
     $user = User::factory()->create([
-        'name' => 'John Doe',
-    ]);
-
-    expect($user->slug)->toBe('john-doe');
-});
-
-it('derives profile data from github metadata when biography is missing', function () {
-    $user = User::factory()->create([
-        'biography' => null,
         'github_data' => [
             'user' => [
-                'bio' => 'GitHub bio.',
-                'blog' => 'https://example.com',
-                'company' => 'Example Inc.',
                 'html_url' => 'https://github.com/example',
             ],
         ],
     ]);
 
-    expect($user->about)->toBe('GitHub bio.');
-    expect($user->blogUrl)->toBe('https://example.com');
-    expect($user->company)->toBe('Example Inc.');
     expect($user->githubUrl)->toBe('https://github.com/example');
 });
 

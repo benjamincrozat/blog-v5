@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
 use Database\Factories\UserFactory;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
@@ -20,13 +19,6 @@ class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, MustVerifyEmail, Notifiable;
-
-    protected static function booted() : void
-    {
-        static::creating(
-            fn (User $user) => $user->slug = Str::slug($user->name)
-        );
-    }
 
     /**
      * @return array<string, string>
@@ -72,32 +64,11 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function about() : Attribute
-    {
-        return Attribute::make(
-            fn () => $this->biography ?? data_get($this->github_data, 'user.bio', ''),
-        );
-    }
-
-    public function blogUrl() : Attribute
-    {
-        return Attribute::make(
-            fn () => data_get($this->github_data, 'user.blog'),
-        );
-    }
-
     public function githubUrl() : Attribute
     {
         return Attribute::make(
             fn () => data_get($this->github_data, 'user.html_url')
                 ?? 'https://github.com/' . $this->github_login,
-        );
-    }
-
-    public function company() : Attribute
-    {
-        return Attribute::make(
-            fn () => data_get($this->github_data, 'user.company'),
         );
     }
 

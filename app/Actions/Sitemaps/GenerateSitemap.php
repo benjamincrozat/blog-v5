@@ -3,7 +3,6 @@
 namespace App\Actions\Sitemaps;
 
 use App\Models\Post;
-use App\Models\User;
 use App\Models\Category;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
@@ -32,10 +31,6 @@ class GenerateSitemap
                         ->setLastModificationDate($post->modified_at ?? $post->published_at ?? $post->created_at)
                 );
             });
-
-        User::query()
-            ->cursor()
-            ->each(fn (User $user) => $sitemap->add(route('authors.show', $user->slug)));
 
         $sitemap->add(route('categories.index'));
 

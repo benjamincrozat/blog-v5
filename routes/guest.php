@@ -6,7 +6,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Posts\ShowPostController;
 use App\Http\Controllers\Links\ListLinksController;
 use App\Http\Controllers\Posts\ListPostsController;
-use App\Http\Controllers\Authors\ShowAuthorController;
 use App\Http\Controllers\Merchants\ShowMerchantController;
 use App\Http\Controllers\Categories\ShowCategoryController;
 use App\Http\Controllers\Categories\ListCategoriesController;
@@ -21,9 +20,6 @@ Route::get('/blog', ListPostsController::class)
 
 Route::get('/preview/posts/{slug}/image', ShowPostImagePreviewController::class)
     ->name('posts.image-preview');
-
-Route::get('/authors/{slug}', ShowAuthorController::class)
-    ->name('authors.show');
 
 Route::get('/categories', ListCategoriesController::class)
     ->name('categories.index');

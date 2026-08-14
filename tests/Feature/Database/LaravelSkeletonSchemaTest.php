@@ -12,3 +12,8 @@ it('uses the current Laravel queue and cache column shapes', function () {
         ->and(Schema::getColumnType('failed_jobs', 'queue', true))->toBe('varchar(255)')
         ->and(Schema::hasIndex('failed_jobs', ['connection', 'queue', 'failed_at']))->toBeTrue();
 });
+
+it('does not keep public author profile columns', function () {
+    expect(Schema::hasColumn('users', 'slug'))->toBeFalse()
+        ->and(Schema::hasColumn('users', 'biography'))->toBeFalse();
+});

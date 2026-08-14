@@ -30,12 +30,10 @@ Shows a compact post row and accepts the post, attributes, and slot content forw
         </p>
 
         <div class="flex flex-wrap items-center gap-x-3 mt-1">
-            <a wire:navigate href="{{ route('authors.show', $post->user->slug) }}" class="hover:text-blue-600 transition-colors">
-                <p class="flex items-center gap-2">
-                    <x-heroicon-o-user class="size-[.65lh] opacity-75" />
-                    {{ $post->user->name }}
-                </p>
-            </a>
+            <p class="flex items-center gap-2">
+                <x-heroicon-o-user class="size-[.65lh] opacity-75" />
+                {{ $post->user->name }}
+            </p>
 
             <div class="text-xs opacity-50">/</div>
 

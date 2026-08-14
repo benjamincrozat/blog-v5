@@ -40,17 +40,13 @@ Shows a blog post card and accepts the post, loading priority, attributes, and o
             {{ $post->title }}
         </a>
 
-        <a
-            wire:navigate
-            href="{{ route('authors.show', $post->user->slug) }}"
-            class="flex-none"
-        >
+        <div class="flex-none">
             <img
                 src="{{ $post->user->avatar }}"
                 alt="{{ $post->user->name }}"
                 class="rounded-full ring-1 ring-black/5 size-10"
             />
-        </a>
+        </div>
     </div>
 
     <div class="mt-4 grow">

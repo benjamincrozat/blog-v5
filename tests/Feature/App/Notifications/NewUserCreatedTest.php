@@ -15,7 +15,7 @@ it('renders as an email', function () {
     expect($rendered)->toBeInstanceOf(HtmlString::class);
 });
 
-it('has the expected subject, content, and action', function () {
+it('has the expected subject and content without a profile action', function () {
     $user = User::factory()->create(['name' => 'Taylor Otwell']);
 
     $message = (new NewUserCreated($user))->toMail(User::factory()->create());
@@ -23,8 +23,8 @@ it('has the expected subject, content, and action', function () {
     expect($message->subject)->toBe('A new user was just created');
     expect($message->introLines)->toHaveCount(1);
     expect($message->introLines[0])->toContain('Taylor Otwell');
-    expect($message->actionText)->toBe('Check Profile');
-    expect($message->actionUrl)->toBe(route('authors.show', $user->slug));
+    expect($message->actionText)->toBeNull();
+    expect($message->actionUrl)->toBeNull();
 });
 
 it('sends via the mail channel and is queueable', function () {

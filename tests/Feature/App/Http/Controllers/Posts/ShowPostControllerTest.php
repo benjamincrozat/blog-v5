@@ -20,6 +20,8 @@ it('shows a post', function () {
             ->first())
         ->assertSee("<title>{$post->serp_title}</title>", escape: false)
         ->assertSee("<meta name=\"description\" content=\"{$post->serp_description}\" />", escape: false)
+        ->assertSee($post->user->name)
+        ->assertDontSee('/authors/', escape: false)
         ->assertSee('Ask ChatGPT')
         ->assertSee('Ask Claude')
         ->assertDontSee('Did you like this article? Then, keep learning:');
@@ -51,7 +53,8 @@ it('renders NewsArticle schema for eligible news posts while keeping the simple 
         ->assertSee('"@type": "NewsArticle"', escape: false)
         ->assertSee('"mainEntityOfPage"', escape: false)
         ->assertSee('"publisher"', escape: false)
-        ->assertSee(route('authors.show', $post->user->slug), escape: false)
+        ->assertSee('"author"', escape: false)
+        ->assertDontSee('/authors/', escape: false)
         ->assertSee($expectedDate)
         ->assertDontSee('UTC');
 
