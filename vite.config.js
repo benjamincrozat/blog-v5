@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import laravel from 'laravel-vite-plugin'
-import { google } from 'laravel-vite-plugin/fonts'
+import { fontsource } from 'laravel-vite-plugin/fonts'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
@@ -9,13 +9,13 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
             fonts: [
-                google('Outfit', {
-                    weights: ['200..800'],
+                fontsource('Outfit', {
+                    weights: [200, 300, 400, 500, 600, 700, 800],
                 }),
-                google('Bebas Neue'),
-                google('Indie Flower'),
-                google('Playfair Display', {
-                    weights: ['400..900'],
+                fontsource('Bebas Neue'),
+                fontsource('Indie Flower'),
+                fontsource('Playfair Display', {
+                    weights: [400, 500, 600, 700, 800, 900],
                     styles: ['normal', 'italic'],
                 }),
             ],
