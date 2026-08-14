@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Schedule;
+use App\Console\Commands\GenerateSitemapCommand;
 use App\Console\Commands\RefreshUserDataCommand;
-use App\Console\Commands\SyncSearchConsoleSitemapCommand;
 
-Schedule::command(SyncSearchConsoleSitemapCommand::class)
+Schedule::command(GenerateSitemapCommand::class)
     ->daily();
 
 Schedule::command(RefreshUserDataCommand::class)

@@ -41,21 +41,6 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    'search_console' => [
-        'property' => env('SEARCH_CONSOLE_PROPERTY'),
-        'sitemap_url' => env('SEARCH_CONSOLE_SITEMAP_URL'),
-        'token_uri' => env('SEARCH_CONSOLE_TOKEN_URI', 'https://oauth2.googleapis.com/token'),
-        'oauth' => [
-            'client_id' => env('SEARCH_CONSOLE_OAUTH_CLIENT_ID'),
-            'client_secret' => env('SEARCH_CONSOLE_OAUTH_CLIENT_SECRET'),
-            'refresh_token' => env('SEARCH_CONSOLE_OAUTH_REFRESH_TOKEN'),
-        ],
-        'service_account' => [
-            'client_email' => env('SEARCH_CONSOLE_SERVICE_ACCOUNT_EMAIL'),
-            'private_key' => env('SEARCH_CONSOLE_SERVICE_ACCOUNT_PRIVATE_KEY'),
-        ],
-    ],
-
     'slack' => [
         'notifications' => [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
