@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\Metric;
 use Livewire\Livewire;
 use Carbon\CarbonImmutable;
 use League\Flysystem\Filesystem;
@@ -24,11 +23,6 @@ use App\Support\BrowsershotPostImageScreenshotter;
  */
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Cached visitors count.
-     */
-    protected ?int $visitors = 50000;
-
     public function register() : void
     {
         $this->app->bind(PostImageScreenshotter::class, BrowsershotPostImageScreenshotter::class);
@@ -68,12 +62,6 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('*', fn (\Illuminate\View\View $view) => $view->with([
             'user' => auth()->user(),
-
-            'visitors' => $this->visitors ??= cache()->remember(
-                'visitors', 600, fn () => Metric::query()
-                    ->where('key', 'visitors')
-                    ->value('value') ?? 0
-            ),
         ]));
     }
 }
