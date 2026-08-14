@@ -16,25 +16,6 @@ Displays the home view.
         <x-typography.subheadline class="mt-6 md:mt-10">
             Stay ahead in web development with a good dose of AI and everything else.
         </x-typography.subheadline>
-
-        <div class="flex gap-2 justify-center items-center mt-7 text-center md:mt-11">
-            <x-btn
-                size="md"
-                wire:navigate
-                href="{{ route('authors.show', 'benjamin-crozat') }}"
-            >
-                Who the F are you?
-            </x-btn>
-
-            <x-btn
-                primary
-                size="md"
-                wire:navigate
-                href="{{ route('posts.index') }}"
-            >
-                Start reading
-            </x-btn>
-        </div>
     </div>
 
     <x-section title="Latest posts" id="latest" class="mt-24 md:mt-32">
@@ -67,18 +48,4 @@ Displays the home view.
         </x-btn>
     </x-section>
 
-    @if ($aboutUser)
-        <x-section title="About {{ $aboutUser->name }}" id="about" class="mt-24 lg:max-w-(--breakpoint-md) md:mt-32">
-            <x-prose>
-                <img
-                    loading="lazy"
-                    src="{{ $aboutUser->avatar }}"
-                    alt="{{ $aboutUser->name }}"
-                    class="float-right mt-4 ml-4 rounded-full! size-20 sm:size-28 md:size-32"
-                />
-
-                {!! \App\Markdown\MarkdownRenderer::parse($aboutUser->biography) !!}
-            </x-prose>
-        </x-section>
-    @endif
 </x-app>

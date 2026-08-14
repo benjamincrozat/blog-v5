@@ -10,7 +10,6 @@ use Illuminate\Support\Collection;
 
 it('limits the latest posts collection to twelve entries', function () {
     Post::factory(20)->create(['published_at' => now()]);
-    ensureHomeCreator();
 
     get(route('home'))
         ->assertViewHas('latest', fn (Collection $latest) => 12 === $latest->count()
@@ -23,24 +22,17 @@ it('shows twelve approved links on the homepage', function () {
     ]);
 
     Link::factory(20)->for($olderUser)->approved()->create();
-    ensureHomeCreator();
 
     get(route('home'))
         ->assertViewHas('links', fn (Collection $links) => 12 === $links->count()
             && $links->every(fn (Link $link) => $link->relationLoaded('post') && $link->relationLoaded('user')));
 });
 
-it("exposes Benjamin's about section to the view", function () {
-    $creator = ensureHomeCreator();
-
+it('omits the homepage calls to action and about links', function () {
     get(route('home'))
-        ->assertViewHas('aboutUser', fn (User $aboutUser) => $aboutUser->is($creator));
+        ->assertDontSee('Who the F are you?')
+        ->assertDontSee('Start reading')
+        ->assertDontSee('About me')
+        ->assertDontSee(route('home') . '#about', escape: false)
+        ->assertViewMissing('aboutUser');
 });
-
-function ensureHomeCreator() : User
-{
-    return User::query()->firstOrCreate(
-        ['github_login' => 'benjamincrozat'],
-        User::factory()->make(['github_login' => 'benjamincrozat'])->getAttributes(),
-    );
-}

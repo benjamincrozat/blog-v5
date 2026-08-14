@@ -146,13 +146,6 @@ Presents the nav index component UI and accepts component props, Blade attribute
                 </x-dropdown.item>
 
                 <x-dropdown.item
-                    icon="heroicon-o-question-mark-circle"
-                    href="{{ route('home') }}#about"
-                >
-                    About me
-                </x-dropdown.item>
-
-                <x-dropdown.item
                     icon="heroicon-o-envelope"
                     href="mailto:hello@benjamincrozat.com"
                 >
