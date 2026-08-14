@@ -4,20 +4,23 @@ Agent rules for this repo.
 
 ## Start
 
-- Sync the active branch/worktree with latest `main` before work.
+- Work directly on `main` unless the task explicitly states otherwise.
+- Sync `main` with `origin/main` before work.
 - Boot with `composer setup` and `composer dev`.
 - Use `php artisan serve --host=127.0.0.1 --port=<port>` for branch-specific checks.
 - Commit every change; keep commits small.
 - Commit subject: 10 words or fewer, then a detailed list.
-- Create or update a GitHub PR before finishing work on any branch or worktree.
+- Push completed commits to the active branch.
+- When working on a non-`main` branch or worktree, create or update a GitHub PR before finishing.
 - Do not wait for the user to ask for the PR.
 - If a PR for the current branch already exists, update it instead of creating a duplicate.
 - If no PR exists for the current branch, push the branch and open one against `main`.
-- Include the PR URL in the final response.
-- If a PR cannot be created, say why in the final response.
+- Include the PR URL in the final response when a PR is required.
+- If a required PR cannot be created, say why in the final response.
 
 ## Worktrees
 
+- Use a branch or worktree only when the task explicitly requires one.
 - Use real branches, not detached HEADs: `git worktree add -b codex/<name> <path> main`.
 - If detached or behind, switch to a fresh `codex/...` branch from `origin/main` before editing.
 - Reuse runtime files from `/Users/benjamin/Sites/blog-v5`: `.env` (copy if local overrides are needed), `vendor`, `node_modules`, `public/build`.
@@ -52,10 +55,10 @@ Agent rules for this repo.
 
 - Run the required verification for the scope of the task.
 - Commit the changes.
-- Push the branch.
-- Create or update the PR.
+- Push the active branch.
+- Create or update a PR when working on a non-`main` branch or worktree.
 - Share the preview URL when relevant.
-- Share the PR URL in the final response.
+- Share the PR URL in the final response when a PR is required.
 
 ## Local skills
 
