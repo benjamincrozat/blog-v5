@@ -1,60 +1,39 @@
 # benjamincrozat.com
 
-Agent rules for this repo.
+Keep this file limited to repository-specific facts and exceptions. Global instructions, personal preferences, and discovered skills still apply; do not copy them here.
 
-## Start
+## Main is mandatory
 
-- Work directly on `main` unless the task explicitly states otherwise.
-- Sync `main` with `origin/main` before work.
-- Boot with `composer setup` and `composer dev`.
-- Use `php artisan serve --host=127.0.0.1 --port=<port>` for branch-specific checks.
-- Commit every change; keep commits small.
-- Commit subject: 10 words or fewer, then a detailed list.
-- Push completed commits to the active branch.
+- Work in the permanent checkout at `/Users/benjamin/Sites/blog-v5` on `main` at all times unless the user explicitly says otherwise in the current task.
+- This overrides generic isolation advice. A dirty checkout, overlapping work, task size, or risk is not permission to leave `main`. If the requested files already contain conflicting changes, stop and report the conflict.
+- Before editing, fetch `origin/main` and fast-forward `main` when that will not disturb existing changes. Do not clean, reset, or stash unrelated work just to sync.
+- Stage only the files owned by the current task. After verification, commit and push `main`.
 
-## Worktrees
+## Worktrees are explicit exceptions
 
-- Use a branch or worktree only when the task explicitly requires one.
-- Use real branches, not detached HEADs: `git worktree add -b codex/<name> <path> main`.
-- If detached or behind, switch to a fresh `codex/...` branch from `origin/main` before editing.
-- Reuse runtime files from `/Users/benjamin/Sites/blog-v5`: `.env` (copy if local overrides are needed), `vendor`, `node_modules`, `public/build`.
-- After wiring a worktree, run `php artisan about --only=environment` before `pint`, `phpstan`, or `pest`.
-- `https://blog-v5.test` may hit another checkout; use the local `php artisan serve` URL for browser checks.
-- For post image generation in a worktree, set `APP_URL=http://127.0.0.1:<port>` in that worktree's `.env`. `BLOG_PREVIEW_BASE_URL` overrides `APP_URL`.
-- Remove worktree-only artifacts like `.playwright-cli/` and `output/` before finishing unless asked to keep them.
+Only use a worktree when the user explicitly requires one in the current task. For this repository:
 
-## Guardrails
+- Start it from the fully synced `main` branch. The permanent checkout remains the source of truth.
+- Copy `.env` from the permanent checkout; never symlink it. Set a worktree-specific `APP_URL=http://127.0.0.1:<port>`.
+- `https://blog-v5.test` serves the permanent checkout. Run `php artisan serve --host=127.0.0.1 --port=<port>` inside the worktree and use that URL for its browser checks.
+- Post image previews use `BLOG_PREVIEW_BASE_URL` when set and otherwise use `APP_URL`. Point either value at the worktree server before generating an image.
+- The copied `.env` targets `blog_v5`, and `phpunit.xml.dist` targets `blog_v5_test`. For schema-changing, data-mutating, or concurrent work, use dedicated databases in `.env` and an ignored worktree-local `phpunit.xml` copied from `phpunit.xml.dist`; do not edit `phpunit.xml.dist` just to isolate a worktree.
+- Link `vendor` and `node_modules` from the permanent checkout only while their lockfiles are unchanged. Use worktree-local installs when dependencies change.
+- Reuse `public/build` only when the task does not change frontend assets. Never run a build through a linked `public/build`; create a worktree-local build instead.
+- `composer setup` installs dependencies, runs migrations, installs npm packages, and builds assets. Do not run it in a worktree that is sharing dependencies, assets, or databases with the permanent checkout.
+- After wiring the worktree, run `php artisan about --only=environment` before any formatter, static analysis, test, browser, or image-generation check.
+- Unless the task explicitly says to keep the work isolated, bring the verified commit back to the permanent `main`, recheck anything affected by different runtime or build files, push `main`, then remove only a clean worktree and branch whose commit is on `main`. Remove `.playwright-cli/` and `output/` unless the task asks to keep them.
 
-- Never overwrite user edits between reads.
-- Never restore deleted code without confirmation.
-- Make the smallest fix that solves the problem.
-- No scope drift: no refactors, restyles, or extras unless asked.
-- Fix root causes, not symptoms.
-- Use web search for unstable or version-specific behavior; cite sources.
-- State assumptions; ask only when blocked.
-- Briefly narrate multi-step tool usage.
-- Finish the full plan once started.
+## Local runtime
 
-## Verify
+- The permanent checkout normally runs at `https://blog-v5.test`.
+- Use `composer setup` only for a fresh local bootstrap. Use `composer dev` when the task needs the combined development processes.
 
-- Visual/behavior changes: use a browser, set desktop to `1512x982`, confirm against spec, take a screenshot, critique the result.
-- Login seed: `database/seeders/UserSeeder.php`, password `password`.
-- Format: `php vendor/bin/pint --parallel`
+## Verification commands
+
+Choose the checks that match the changed surface:
+
+- Format PHP: `php vendor/bin/pint --parallel`
 - Static analysis: `php vendor/bin/phpstan analyse`
-- Tests: `php vendor/bin/pest --parallel`
-- Coverage when needed: `php vendor/bin/pest --coverage --parallel`
-- Routine Markdown-only edits in `resources/markdown/posts`: run `php artisan app:sync-posts`. Add browser checks, `pint`, `phpstan`, `pest`, or coverage only for tricky rendering, embeds, custom HTML, unusual formatting, interactive behavior, publishing-state checks, useful first-hand screenshots, or explicit requests.
-
-## Before finishing
-
-- Run the required verification for the scope of the task.
-- Commit the changes.
-- Push the active branch.
-- Share the preview URL when relevant.
-
-## Local skills
-
-- `file-first-posts`: Markdown post export/edit/publish/sync. File: `.agents/skills/file-first-posts/SKILL.md`
-- `framework-news-analysis`: Weekly framework/tool news angle and sourcing. File: `.agents/skills/framework-news-analysis/SKILL.md`
-- `post-writing`: Publication-ready blog drafting/revision. File: `.agents/skills/post-writing/SKILL.md`
-- `seo-content`: Search, Discover, News, and competitor framing. File: `.agents/skills/seo-content/SKILL.md`
+- PHP tests: `php vendor/bin/pest --parallel`
+- Frontend build: `npm run build`
