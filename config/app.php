@@ -57,8 +57,6 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
-    'url_shortener_domain' => env('URL_SHORTENER_DOMAIN'),
-
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

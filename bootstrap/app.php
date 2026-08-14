@@ -13,7 +13,6 @@ return Application::configure(basePath: dirname(__DIR__))
             __DIR__ . '/../routes/auth.php',
             __DIR__ . '/../routes/legacy.php',
             __DIR__ . '/../routes/user.php',
-            __DIR__ . '/../routes/shortener.php',
             __DIR__ . '/../routes/guest.php',
         ],
         commands: __DIR__ . '/../routes/console.php',
