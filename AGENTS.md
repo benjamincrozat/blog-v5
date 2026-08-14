@@ -11,12 +11,6 @@ Agent rules for this repo.
 - Commit every change; keep commits small.
 - Commit subject: 10 words or fewer, then a detailed list.
 - Push completed commits to the active branch.
-- When working on a non-`main` branch or worktree, create or update a GitHub PR before finishing.
-- Do not wait for the user to ask for the PR.
-- If a PR for the current branch already exists, update it instead of creating a duplicate.
-- If no PR exists for the current branch, push the branch and open one against `main`.
-- Include the PR URL in the final response when a PR is required.
-- If a required PR cannot be created, say why in the final response.
 
 ## Worktrees
 
@@ -56,9 +50,7 @@ Agent rules for this repo.
 - Run the required verification for the scope of the task.
 - Commit the changes.
 - Push the active branch.
-- Create or update a PR when working on a non-`main` branch or worktree.
 - Share the preview URL when relevant.
-- Share the PR URL in the final response when a PR is required.
 
 ## Local skills
 
