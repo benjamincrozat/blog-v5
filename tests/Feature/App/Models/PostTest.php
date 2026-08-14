@@ -306,25 +306,6 @@ it('accurately detects if a post has an attached image via hasImage()', function
     expect($withoutImage->hasImage())->toBeFalse();
 });
 
-it('generates valid Markdown with YAML front matter via toMarkdown()', function () {
-    $post = Post::factory()->hasCategories(3)->create([
-        'title' => 'Foo Bar',
-        'content' => 'Baz',
-        'slug' => 'foo-bar',
-        'description' => 'Desc',
-        'serp_title' => 'SERP',
-        'source_uuid' => '01ARZ3NDEKTSV4RRFFQ69G5FAV',
-    ]);
-
-    $markdown = $post->toMarkdown();
-
-    expect($markdown)->toMatch('/^---\n/')
-        ->and($markdown)->toContain('id: "01ARZ3NDEKTSV4RRFFQ69G5FAV"')
-        ->and($markdown)->toContain('slug: "foo-bar"')
-        ->and($markdown)->not->toContain('# Foo Bar')
-        ->and($markdown)->toEndWith('Baz');
-});
-
 it('getFeedItems only returns the 50 most recent published posts without links', function () {
     // 60 published posts without links.
     Post::factory(60)->create(['published_at' => now()]);

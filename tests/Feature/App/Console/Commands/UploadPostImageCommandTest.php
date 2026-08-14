@@ -55,8 +55,8 @@ it('updates the Markdown hero image fields after uploading to Cloudflare Images'
         'author' => 'benjamincrozat',
         'description' => '"Cloudflare summary"',
         'categories' => ['laravel'],
-        'published_at' => 'null',
-        'modified_at' => 'null',
+        'published_at' => '2026-03-11T12:00:00+01:00',
+        'modified_at' => '2026-03-11T12:00:00+00:00',
         'serp_title' => 'null',
         'serp_description' => 'null',
         'canonical_url' => 'null',
@@ -78,10 +78,13 @@ it('updates the Markdown hero image fields after uploading to Cloudflare Images'
         File::get(uploadPostImageMarkdownPath() . '/cloudflare-post.md'),
         'cloudflare-post.md',
     );
+    $markdown = File::get(uploadPostImageMarkdownPath() . '/cloudflare-post.md');
 
     expect($document->imageDisk)->toBe('cloudflare-images')
         ->and($document->imagePath)->toBe('images/posts/cloudflare-post-cover.png')
         ->and($document->body)->toBe('Body content')
+        ->and($markdown)->toContain('published_at: 2026-03-11T11:00:00Z')
+        ->and($markdown)->toContain('modified_at: 2026-03-11T12:00:00Z')
         ->and(Artisan::output())->toContain('Run php artisan app:sync-posts to persist the new image metadata.');
 });
 

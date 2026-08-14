@@ -124,10 +124,6 @@ class SyncMarkdownPosts
             $deletedCount = 0;
 
             foreach ($postsToDelete as $post) {
-                if ($post->trashed()) {
-                    continue;
-                }
-
                 $post->delete();
                 $deletedCount++;
             }

@@ -2,7 +2,6 @@
 
 namespace App\Markdown;
 
-use App\Models\Post;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
@@ -82,43 +81,6 @@ class PostMarkdownDocument
         );
     }
 
-    public static function fromPost(Post $post) : self
-    {
-        $post->loadMissing([
-            'user:id,github_login',
-            'categories:id,slug',
-        ]);
-
-        $author = $post->user?->github_login;
-
-        if (! filled($author)) {
-            throw PostMarkdownException::forPath(
-                $post->slug . '.md',
-                "Post [{$post->slug}] cannot be exported without an author github_login."
-            );
-        }
-
-        return new self(
-            id: $post->source_uuid ?: (string) Str::ulid(),
-            title: $post->title,
-            slug: $post->slug,
-            author: $author,
-            description: $post->description ?? '',
-            categories: $post->categories->pluck('slug')->filter()->values()->all(),
-            publishedAt: $post->published_at?->toImmutable(),
-            modifiedAt: $post->modified_at?->toImmutable(),
-            serpTitle: $post->serp_title,
-            serpDescription: $post->serp_description,
-            canonicalUrl: $post->canonical_url,
-            isCommercial: (bool) $post->is_commercial,
-            imageDisk: $post->image_disk,
-            imagePath: $post->image_path,
-            sponsoredAt: $post->sponsored_at?->toImmutable(),
-            body: static::normalizeLineEndings($post->content),
-            relativePath: static::buildRelativePath($post->source_path, $post->slug),
-        );
-    }
-
     public function toMarkdown() : string
     {
         $lines = [
@@ -171,16 +133,6 @@ class PostMarkdownDocument
     public function hash() : string
     {
         return hash('sha256', static::normalizeLineEndings($this->toMarkdown()));
-    }
-
-    protected static function buildRelativePath(?string $sourcePath, string $slug) : string
-    {
-        $directory = collect(explode('/', static::normalizeRelativePath($sourcePath ?? '')))
-            ->filter()
-            ->slice(0, -1)
-            ->implode('/');
-
-        return ltrim(($directory ? "{$directory}/" : '') . "{$slug}.md", '/');
     }
 
     /**
@@ -424,7 +376,7 @@ class PostMarkdownDocument
 
     protected static function formatDate(?CarbonImmutable $value) : string
     {
-        return $value?->toIso8601String() ?? 'null';
+        return $value?->utc()->format('Y-m-d\TH:i:s\Z') ?? 'null';
     }
 
     protected static function formatBool(bool $value) : string
