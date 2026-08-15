@@ -1,4 +1,4 @@
 interface:
   display_name: "Post Writing"
-  short_description: "Write evidence-rich, reader-first blog posts"
-  default_prompt: "Use $post-writing to draft or revise a publication-ready blog post with a proof plan, verified runnable examples, reproducible benchmarks for quantitative claims, original screenshots when visuals add proof, current primary sources, valid frontmatter, and clear reader-first writing."
+  short_description: "Write proof-first technical posts that rank"
+  default_prompt: "Use $post-writing to create or refresh a publication-ready technical post with a search brief, tested evidence, visually inspected screenshots, ranking hypotheses grounded in real evidence, current primary sources, and a clear reader and business outcome."
