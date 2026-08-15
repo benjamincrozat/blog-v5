@@ -21,10 +21,11 @@ Displays the home view.
 
             <a
                 wire:navigate
+                aria-label="Browse all articles"
                 href="{{ route('posts.index') }}"
-                class="shrink-0 font-medium underline transition-colors hover:text-blue-600 underline-offset-4 decoration-1 decoration-black/30 hover:decoration-blue-600/50"
+                class="shrink-0 font-medium text-blue-600 underline transition-colors hover:text-blue-500 underline-offset-4 decoration-1 decoration-blue-600/30 hover:decoration-blue-500/50"
             >
-                Browse all articles
+                Browse all →
             </a>
         </div>
 
@@ -41,10 +42,11 @@ Displays the home view.
 
             <a
                 wire:navigate
+                aria-label="Browse all links"
                 href="{{ route('links.index') }}"
-                class="shrink-0 font-medium underline transition-colors hover:text-blue-600 underline-offset-4 decoration-1 decoration-black/30 hover:decoration-blue-600/50"
+                class="shrink-0 font-medium text-blue-600 underline transition-colors hover:text-blue-500 underline-offset-4 decoration-1 decoration-blue-600/30 hover:decoration-blue-500/50"
             >
-                Browse all links
+                Browse all →
             </a>
         </div>
 
