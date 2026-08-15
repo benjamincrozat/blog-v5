@@ -8,6 +8,13 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
 /**
+ * Keeps old post URLs working when a post is created or renamed.
+ *
+ * A new post gets a slug from its title when none was given. When the slug changes,
+ * one database transaction removes redirect loops and points older redirects at
+ * the new slug. It then saves the previous slug as a permanent redirect. Every
+ * old root URL therefore reaches the newest location in one step.
+ *
  * @mixin Post
  */
 trait PostSlugable

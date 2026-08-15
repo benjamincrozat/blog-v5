@@ -17,7 +17,15 @@ use League\Flysystem\UnableToRetrieveMetadata;
 use League\Flysystem\InvalidVisibilityProvided;
 
 /**
- * Implements cloudflare images adapter filesystem behavior.
+ * Lets Laravel store post images in Cloudflare Images through its Storage API.
+ *
+ * Post-image commands write through this disk. Post pages use it to turn saved
+ * paths into public URLs. Each path becomes the image's Cloudflare ID.
+ *
+ * Authenticated API calls check, upload, and delete images. Reads use the public
+ * delivery URL. The disk has no folders, and listing one returns nothing. Folder
+ * changes, moves, copies, and private access are rejected. Failed reads, writes,
+ * and deletes become Flysystem errors.
  */
 class CloudflareImagesAdapter implements FilesystemAdapter
 {

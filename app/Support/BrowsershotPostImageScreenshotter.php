@@ -7,7 +7,11 @@ use Spatie\Browsershot\Browsershot;
 use App\Contracts\PostImageScreenshotter;
 
 /**
- * Captures post image screenshots with Browsershot.
+ * Takes post-image screenshots with the local Browsershot and Node setup.
+ *
+ * It opens the preview at 1280x720, waits for the page to finish loading, keeps
+ * the background, and writes the file within 60 seconds. If no file is created,
+ * it throws so the upload cannot continue with a missing image.
  */
 class BrowsershotPostImageScreenshotter implements PostImageScreenshotter
 {

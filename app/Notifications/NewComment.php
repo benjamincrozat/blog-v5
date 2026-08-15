@@ -10,7 +10,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 /**
- * Builds the new comment notification.
+ * Emails the site owner after another user posts a comment.
+ *
+ * The Comments component sends this queued message after saving the comment and
+ * skips it for the owner's own comments. The email names the user and article
+ * and links to the comment section.
  */
 class NewComment extends Notification implements ShouldQueue
 {

@@ -10,7 +10,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 /**
- * Builds the link declined notification.
+ * Emails a submitter to explain why a community link was declined.
+ *
+ * The caller gives it the link and the message shown to the user. This queued
+ * notification only sends that reason. It does not decline the link or decide
+ * when the email should be sent.
  */
 class LinkDeclined extends Notification implements ShouldQueue
 {

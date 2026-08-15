@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 /**
- * Provides the shared base controller type for HTTP endpoints.
+ * Gives the application's HTTP controllers one shared base type.
+ *
+ * It intentionally adds no behavior, middleware, or dependencies. Each real
+ * controller keeps its own request rules visible instead of inheriting hidden work.
  */
 abstract class Controller {}

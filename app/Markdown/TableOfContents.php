@@ -5,7 +5,11 @@ namespace App\Markdown;
 use Illuminate\Support\Str;
 
 /**
- * Provides table of contents markdown behavior.
+ * Builds a nested table of contents from an article's Markdown headings.
+ *
+ * It skips fenced code blocks, uses heading levels to group child sections, and
+ * removes inline Markdown before making each heading link. It returns plain data
+ * for the Blade component and does not build the final HTML itself.
  */
 class TableOfContents
 {

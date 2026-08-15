@@ -12,7 +12,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Represents comment records.
+ * Stores one comment or reply in a blog post discussion.
+ *
+ * Comments load their authors and reply tree together. If an account was deleted,
+ * a placeholder name keeps the old discussion readable. Short preview fields
+ * remove Markdown and HTML. Deleting a comment soft-deletes every reply below it
+ * so no child comment is left on its own.
  */
 class Comment extends Model
 {

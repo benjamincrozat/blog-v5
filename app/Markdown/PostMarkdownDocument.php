@@ -8,7 +8,12 @@ use Illuminate\Support\Str;
 use App\Exceptions\PostMarkdownException;
 
 /**
- * Holds the canonical Markdown contract for a file-managed post.
+ * Reads, checks, and rewrites the Markdown format used for blog posts.
+ *
+ * It turns front matter and article text into typed, read-only values. Missing,
+ * unknown, badly formed, and duplicate values are rejected, and the filename
+ * must match the slug. When written back, fields always use the same order and
+ * UTC dates. A hash of the cleaned file lets the post sync spot content changes.
  */
 class PostMarkdownDocument
 {

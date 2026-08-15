@@ -8,7 +8,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * Redirects an ad slug to its configured advertiser URL with tracking parameters.
+ * Sends an advertising link to the destination set for its slug.
+ *
+ * It keeps query values from the incoming link and adds the blog's UTM source
+ * when one was not already given. An unknown or disabled advertising slug returns
+ * a 404 instead of sending the visitor to a guessed or empty URL.
  */
 class RedirectToAdvertiserController extends Controller
 {

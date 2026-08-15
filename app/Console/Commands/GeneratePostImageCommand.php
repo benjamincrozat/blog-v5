@@ -11,7 +11,13 @@ use App\Actions\Posts\UploadCloudflarePostImage;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 /**
- * Generates and uploads a fallback post image from a local preview page.
+ * Generates a fallback hero image for one Markdown-managed post.
+ *
+ * It captures the local preview as a temporary 1280x720 PNG and uploads it to a
+ * stable Cloudflare path. It saves that path in front matter, then runs the post
+ * sync. It will not replace existing image data unless --force is passed.
+ * Temporary files are always removed. The remote upload can remain if the final
+ * sync fails.
  */
 #[AsCommand(
     name: 'app:generate-post-image',

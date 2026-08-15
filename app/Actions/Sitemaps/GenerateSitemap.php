@@ -8,7 +8,12 @@ use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 
 /**
- * Builds the public sitemap.xml file from the current public routes.
+ * Writes the regular sitemap and the Google News sitemap from public content.
+ *
+ * The regular sitemap includes the main pages, every published post, every
+ * category, and the links page. The news sitemap includes at most 1,000 allowed
+ * posts from the last 48 hours. Both files are replaced on disk. Nothing is sent
+ * or submitted to a search engine.
  */
 class GenerateSitemap
 {

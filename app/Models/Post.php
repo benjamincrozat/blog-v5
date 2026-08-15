@@ -22,7 +22,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
- * Represents post records.
+ * Stores the database copy used to publish a blog article.
+ *
+ * It decides whether an article is published, sponsored, or allowed in Google
+ * News and connects it to its author, categories, comments, and community link.
+ * It also renders Markdown, finds the image URL, and estimates reading time. Slugs
+ * are public URLs, deleted rows remain available for 410 responses, and posts
+ * with a source UUID get their content from Markdown files.
  */
 class Post extends Model implements Feedable
 {

@@ -9,7 +9,12 @@ use App\Http\Controllers\Controller;
 use App\Actions\BuildBreadcrumbSchema;
 
 /**
- * Shows a blog post with its breadcrumb schema and related sidebar state.
+ * Checks whether a post may be shown before building its article page.
+ *
+ * A missing slug returns 404, a deleted post returns 410, and an unpublished post
+ * is hidden unless the visitor is the site administrator. A visible post also
+ * gets breadcrumbs, the latest comment not written by the owner, and the prompt
+ * used for follow-up questions.
  */
 class ShowPostController extends Controller
 {

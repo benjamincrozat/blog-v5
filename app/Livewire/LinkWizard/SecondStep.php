@@ -15,7 +15,12 @@ use App\Notifications\LinkWaitingForValidation;
 use Spatie\LivewireWizard\Components\StepComponent;
 
 /**
- * Fetches link metadata, validates details, and stores submitted links.
+ * Saves a link after its URL has passed the first wizard step.
+ *
+ * A missing URL sends the user back. Otherwise, the page title, description, and
+ * image are fetched and cached for one hour. The browser cannot replace the URL
+ * or image, but the user may edit the text. Submitting creates a pending link,
+ * emails the site owner, and returns to the public links page.
  */
 class SecondStep extends StepComponent
 {

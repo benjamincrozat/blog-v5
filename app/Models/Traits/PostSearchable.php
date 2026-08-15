@@ -6,6 +6,12 @@ use App\Models\Post;
 use Laravel\Scout\Searchable;
 
 /**
+ * Defines what Scout stores and searches for a blog post.
+ *
+ * The search record contains the article text, author, and category names used by
+ * the site search window. Only published posts are added, so drafts and scheduled
+ * posts cannot appear in public results.
+ *
  * @mixin Post
  */
 trait PostSearchable

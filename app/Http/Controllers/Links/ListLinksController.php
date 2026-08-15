@@ -9,7 +9,11 @@ use App\Actions\BuildBreadcrumbSchema;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Lists approved community links with contributor avatars and breadcrumb schema data.
+ * Builds the public list of approved community links and their contributors.
+ *
+ * Pending and declined links are left out. The page also shows random avatars
+ * from up to 10 different contributors other than the site owner and counts that
+ * contributor group. The visible breadcrumbs and JSON-LD share the same data.
  */
 class ListLinksController extends Controller
 {

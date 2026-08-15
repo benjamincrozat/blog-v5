@@ -8,10 +8,11 @@ use Livewire\Component;
 use Illuminate\View\View;
 
 /**
- * Renders the search modal results for posts and links.
+ * Searches the post and community-link indexes for the site search window.
  *
- * Extracted to keep search UI logic centralized in a Livewire component.
- * Callers can rely on non-string query payloads being treated as empty input.
+ * Blank input and invalid non-text browser data skip both searches. A real query
+ * returns up to five posts and five links. The model rules keep unpublished
+ * posts and unapproved links out of these public search indexes.
  */
 class Search extends Component
 {

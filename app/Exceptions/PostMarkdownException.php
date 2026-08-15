@@ -5,7 +5,11 @@ namespace App\Exceptions;
 use RuntimeException;
 
 /**
- * Reports invalid Markdown post source data with actionable context.
+ * Marks invalid Markdown post files with errors that tell the reader what to fix.
+ *
+ * Parsing can report one error with its file path, while a full sync can group
+ * errors from several files. Commands can show these expected content problems
+ * apart from unexpected filesystem, database, or remote-service failures.
  */
 class PostMarkdownException extends RuntimeException
 {

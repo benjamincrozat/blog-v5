@@ -19,7 +19,12 @@ use Illuminate\Filesystem\FilesystemAdapter;
 use App\Support\BrowsershotPostImageScreenshotter;
 
 /**
- * Bootstraps shared bindings, storage extensions, and global view data.
+ * Sets shared application rules and bindings when Laravel starts.
+ *
+ * It connects the screenshot interface to Browsershot and uses immutable dates.
+ * It also registers the link wizard and sets Eloquent safety rules. Finally, it
+ * adds the Cloudflare Images disk and gives every view the current user. These
+ * settings affect every web request and command.
  */
 class AppServiceProvider extends ServiceProvider
 {

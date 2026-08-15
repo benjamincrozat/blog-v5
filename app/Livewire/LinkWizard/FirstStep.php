@@ -12,7 +12,12 @@ use Illuminate\Http\Client\ConnectionException;
 use Spatie\LivewireWizard\Components\StepComponent;
 
 /**
- * Validates a submitted URL before advancing the public link wizard.
+ * Checks that a submitted URL is unique and reachable before moving on.
+ *
+ * The URL stays in browser history so the form can be resumed or shared. Both a
+ * prefilled URL and a typed URL must pass database checks and a live HEAD request.
+ * A connection error or bad HTTP response becomes a field error instead of
+ * sending a broken link to the details step.
  */
 class FirstStep extends StepComponent
 {

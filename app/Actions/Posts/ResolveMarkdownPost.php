@@ -9,7 +9,12 @@ use Illuminate\Support\Facades\File;
 use App\Markdown\PostMarkdownDocument;
 
 /**
- * Resolves markdown-managed posts from a slug or file path.
+ * Finds and reads a Markdown post from either a slug or a file path.
+ *
+ * Image commands use it so both input forms follow the same rules. It looks only
+ * in the configured posts folder, and a slug must match exactly one file. A
+ * successful result includes checked post data and both path forms; missing or
+ * duplicate matches stop the command before it can edit a file.
  */
 class ResolveMarkdownPost
 {

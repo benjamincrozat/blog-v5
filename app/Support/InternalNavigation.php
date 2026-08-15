@@ -3,7 +3,12 @@
 namespace App\Support;
 
 /**
- * Determines whether a link should use Livewire navigation.
+ * Decides whether a link should use Livewire page navigation.
+ *
+ * Relative links and full links to this site's host may use it. Blank links and
+ * page fragments keep normal browser behavior. So do email links, phone links,
+ * other URL types, and outside hosts. This stops Livewire from taking over the
+ * wrong destination.
  */
 class InternalNavigation
 {

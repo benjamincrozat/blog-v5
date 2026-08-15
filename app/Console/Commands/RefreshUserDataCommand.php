@@ -7,7 +7,12 @@ use App\Jobs\RefreshUserData;
 use Illuminate\Console\Command;
 
 /**
- * Runs the refresh user data command artisan command.
+ * Queues GitHub profile refreshes for one user or every stale user.
+ *
+ * A given value can match the local ID, name, GitHub ID, or GitHub login. Without
+ * one, users that were never refreshed or are more than one day old are queued
+ * five seconds apart to reduce GitHub rate limits. The jobs contact GitHub; this
+ * command only schedules them.
  */
 class RefreshUserDataCommand extends Command
 {

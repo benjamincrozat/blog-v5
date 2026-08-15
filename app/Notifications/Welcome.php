@@ -10,7 +10,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 /**
- * Builds the welcome notification.
+ * Welcomes a first-time GitHub user and shows what they can do on the blog.
+ *
+ * The sign-in callback sends this queued email only when it creates an account.
+ * It explains comments and link sharing, includes five popular published posts,
+ * and links to the feed and social accounts. Returning users do not receive it.
  */
 class Welcome extends Notification implements ShouldQueue
 {

@@ -10,7 +10,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 /**
- * Builds the link approved notification.
+ * Emails the submitter after a community link is approved.
+ *
+ * Link::approve sends this queued message only after the link becomes public.
+ * The email names the destination site and confirms the result. It does not
+ * change the link's review status.
  */
 class LinkApproved extends Notification implements ShouldQueue
 {

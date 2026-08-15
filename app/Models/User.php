@@ -12,7 +12,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * Represents user records.
+ * Stores a GitHub user who can take part in the blog.
+ *
+ * GitHub sign-in and refresh jobs keep the profile data used for avatar and link
+ * fallbacks. A user can own posts, submit links, write comments, and receive
+ * queued email. Admin access belongs only to the site's fixed owner login; there
+ * is no general role field.
  */
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable

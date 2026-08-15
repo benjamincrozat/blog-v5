@@ -8,7 +8,11 @@ use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\GithubProvider;
 
 /**
- * Starts the GitHub OAuth flow and preserves the intended return URL.
+ * Starts GitHub sign-in without losing the page the visitor meant to return to.
+ *
+ * It saves the previous URL only when another flow, such as the link wizard, has
+ * not already chosen a return page. It then sends the visitor to GitHub through
+ * Socialite and asks for the email address needed to find the local account.
  */
 class GithubAuthRedirectController extends Controller
 {

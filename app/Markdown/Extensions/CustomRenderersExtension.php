@@ -10,7 +10,11 @@ use League\CommonMark\Environment\EnvironmentBuilderInterface;
 use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 
 /**
- * Provides custom renderers extension markdown behavior.
+ * Adds the site's code highlighters to the Markdown parser.
+ *
+ * Tempest renders both fenced code blocks and inline code. The comment parser
+ * and the full article parser both use this extension. Code therefore looks the
+ * same everywhere the site shows Markdown.
  */
 class CustomRenderersExtension implements ExtensionInterface
 {

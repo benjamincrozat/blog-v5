@@ -3,7 +3,11 @@
 namespace App\Actions;
 
 /**
- * Builds a schema.org breadcrumb payload from route breadcrumbs.
+ * Builds the schema.org breadcrumb data used by public pages.
+ *
+ * Controllers give it labels and optional links in display order. It numbers
+ * each item and leaves the current page without a link, so every page produces
+ * the same JSON-LD shape.
  */
 class BuildBreadcrumbSchema
 {

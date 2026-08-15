@@ -12,7 +12,11 @@ use App\Actions\Posts\UploadCloudflarePostImage;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 /**
- * Uploads local post images to Cloudflare Images and optionally updates front matter.
+ * Uploads a local article image and prints the Cloudflare details needed to use it.
+ *
+ * It creates a remote path and alt text when they are missing, then prints the
+ * storage path, public URL, and ready-to-paste Markdown. When given a post, it
+ * also updates that file's hero-image front matter. It does not run the post sync.
  */
 #[AsCommand(
     name: 'app:upload-post-image',

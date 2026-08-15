@@ -10,7 +10,12 @@ use Illuminate\Http\RedirectResponse;
 use Laravel\Socialite\Facades\Socialite;
 
 /**
- * Completes GitHub OAuth, upserts the user record, and signs the user in.
+ * Finishes GitHub sign-in and starts the visitor's remembered blog session.
+ *
+ * It creates or updates the local user by email, saves the latest GitHub data,
+ * and signs the user in. A new account receives the welcome email and alerts the
+ * site owner. A returning user gets no signup email and continues to the page
+ * they originally wanted.
  */
 class GithubAuthCallbackController extends Controller
 {

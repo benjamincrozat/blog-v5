@@ -6,7 +6,12 @@ use Livewire\Component;
 use Livewire\Attributes\Validate;
 
 /**
- * Captures and validates comment form input before dispatching submissions.
+ * Checks the form input for a new comment or reply.
+ *
+ * The user must be signed in. An optional parent comment must exist, and the text
+ * must contain at least three characters. Valid input is sent to the Comments
+ * component and the form is cleared. This class does not save or delete comments
+ * and does not send notifications.
  */
 class CommentForm extends Component
 {

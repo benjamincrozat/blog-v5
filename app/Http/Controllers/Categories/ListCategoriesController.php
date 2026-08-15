@@ -8,7 +8,11 @@ use App\Http\Controllers\Controller;
 use App\Actions\BuildBreadcrumbSchema;
 
 /**
- * Lists public categories with post counts and breadcrumb schema data.
+ * Builds the public list of blog categories.
+ *
+ * It sorts categories by name and includes each category's current post count.
+ * The same breadcrumb list is used for the visible page and its JSON-LD data.
+ * Published-post filtering happens on the individual category page, not here.
  */
 class ListCategoriesController extends Controller
 {

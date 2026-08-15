@@ -9,7 +9,12 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 /**
- * Synchronizes markdown post files into the posts database read model.
+ * Makes Markdown-to-database syncing available as the app:sync-posts command.
+ *
+ * It uses the configured posts folder unless another folder is passed. Bad post
+ * files produce a failed exit code and readable error lines. A successful run
+ * prints how many posts were created, updated, restored, and deleted. The sync
+ * action owns all database changes.
  */
 #[AsCommand(
     name: 'app:sync-posts',

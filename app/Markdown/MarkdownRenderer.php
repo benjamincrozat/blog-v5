@@ -12,7 +12,12 @@ use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 use League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension;
 
 /**
- * Renders rich markdown content for published pages.
+ * Turns article and link Markdown into the site's full HTML format.
+ *
+ * It adds stable heading links, smart punctuation, highlighted code, and safe
+ * behavior for outside links while blocking risky raw HTML. Posts, cards, feeds,
+ * and table-of-contents labels share these rules so the same Markdown is not
+ * rendered in several different ways.
  */
 class MarkdownRenderer
 {

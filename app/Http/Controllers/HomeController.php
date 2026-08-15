@@ -7,7 +7,11 @@ use App\Models\Post;
 use Illuminate\View\View;
 
 /**
- * Builds the public home page with recent posts and links.
+ * Loads the article and community-link sections for the public home page.
+ *
+ * It shows up to 12 published posts, with recent sponsors first, and up to 12
+ * approved links. Posts that already represent community links are left out of
+ * the article section so the same item does not appear twice.
  */
 class HomeController extends Controller
 {

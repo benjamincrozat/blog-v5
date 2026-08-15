@@ -7,7 +7,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * Logs the current user out and resets the session state.
+ * Signs the current user out and returns them to the home page.
+ *
+ * It clears the old session and creates a new form token before logging out, so
+ * old session data cannot be reused. The next page receives a one-time message
+ * confirming that sign-out finished.
  */
 class LogoutController extends Controller
 {

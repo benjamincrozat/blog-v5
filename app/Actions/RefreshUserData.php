@@ -8,7 +8,12 @@ use Github\Exception\RuntimeException;
 use Github\Exception\ApiLimitExceedException;
 
 /**
- * Executes the refresh user data action.
+ * Updates the stored GitHub profile data for an existing blog user.
+ *
+ * A queued job looks up the account by its GitHub ID. Success saves the returned
+ * user data and refresh time. A rate limit leaves the record for a later run.
+ * GitHub's Not Found response deletes the stale user. Other GitHub errors leave
+ * the local record unchanged.
  */
 class RefreshUserData
 {

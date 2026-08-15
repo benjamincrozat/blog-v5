@@ -8,6 +8,12 @@ use App\Markdown\MarkdownRenderer;
 use Illuminate\Support\Collection;
 
 /**
+ * Adds standalone blog posts to the Atom feed.
+ *
+ * It selects the 50 newest published posts that are not community-link items.
+ * Each feed item points to the article and uses its latest edit or publication
+ * date. It also includes a short description with a link back to the site.
+ *
  * @mixin Post
  */
 trait PostFeedable

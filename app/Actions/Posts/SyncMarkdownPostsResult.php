@@ -3,7 +3,11 @@
 namespace App\Actions\Posts;
 
 /**
- * Carries the counters returned by a Markdown-to-post sync run.
+ * Holds the result counts from one Markdown post sync.
+ *
+ * Its read-only values separate created, updated, restored, and soft-deleted
+ * posts. Commands can show the exact result without querying the database again
+ * or knowing how the sync works.
  */
 class SyncMarkdownPostsResult
 {

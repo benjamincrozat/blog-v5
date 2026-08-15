@@ -15,7 +15,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * Represents link records.
+ * Stores a community link from submission through review.
+ *
+ * The approval and decline dates define whether a link is pending, approved, or
+ * declined. Approval can save review notes and emails the submitter. Only approved
+ * links may appear in public search and feeds. A linked Post means the same item
+ * is also stored as blog content.
  */
 class Link extends Model implements Feedable
 {

@@ -13,7 +13,12 @@ use Livewire\Attributes\Locked;
 use App\Notifications\NewComment;
 
 /**
- * Manages comment pagination, submissions, and deletion for a post thread.
+ * Runs the interactive comment thread for one fixed post.
+ *
+ * It shows top-level comments in pages while counting all replies. It saves input
+ * from CommentForm and emails the parent author or site owner when needed. A
+ * delete request must pass the comment policy and soft-deletes the comment and
+ * all replies below it. The browser cannot change the locked post ID.
  */
 class Comments extends Component
 {

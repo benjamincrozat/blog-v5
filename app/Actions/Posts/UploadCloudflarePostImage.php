@@ -9,7 +9,11 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * Uploads a local image to Cloudflare Images and can sync Markdown front matter.
+ * Uploads a local post image to the configured Cloudflare Images disk.
+ *
+ * It checks the source file, cleans or creates the remote path, and can delete an
+ * existing image when overwrite mode is on. If a Markdown post is supplied, it
+ * also writes the new disk and path into that file. It does not run the post sync.
  */
 class UploadCloudflarePostImage
 {

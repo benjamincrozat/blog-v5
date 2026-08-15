@@ -7,7 +7,11 @@ use App\Actions\Sitemaps\GenerateSitemap;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 /**
- * Builds the public sitemap.xml file from current content routes.
+ * Makes sitemap generation available as the app:generate-sitemap command.
+ *
+ * GenerateSitemap chooses the content and writes both files. This command only
+ * starts that work and prints the regular sitemap path. It does not submit either
+ * file to a search engine.
  */
 #[AsCommand(
     name: 'app:generate-sitemap',

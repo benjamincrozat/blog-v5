@@ -3,7 +3,11 @@
 namespace App\Support;
 
 /**
- * Picks a stable Tailwind background utility for image-less content cards.
+ * Picks a stable Tailwind background for a content card without an image.
+ *
+ * The same non-empty text always maps to the same color in the fixed build-safe
+ * list. Empty text uses the first color. Cards stay visually stable without
+ * saving a color in the database.
  */
 class PlaceholderCardColor
 {

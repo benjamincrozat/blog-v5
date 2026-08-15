@@ -7,7 +7,11 @@ use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
- * Queues refresh user data work.
+ * Runs one user's GitHub profile refresh in the queue.
+ *
+ * The job stores the target user and hands the real GitHub and database work to
+ * the RefreshUserData action. The command can therefore spread many jobs over
+ * time without copying the rules for provider errors or saved profile data.
  */
 class RefreshUserData implements ShouldQueue
 {

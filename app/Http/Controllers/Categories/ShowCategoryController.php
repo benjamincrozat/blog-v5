@@ -8,10 +8,11 @@ use App\Http\Controllers\Controller;
 use App\Actions\BuildBreadcrumbSchema;
 
 /**
- * Displays a category page with its posts.
+ * Builds one category page from its published posts.
  *
- * Extracted as a single-action controller to keep routing thin and explicit.
- * Callers can rely on the category being resolved from the route binding.
+ * Recently sponsored posts come first, followed by the newest publication date,
+ * and results are split into pages of 24. The visible breadcrumbs and JSON-LD
+ * use the same data. Laravel's route lookup returns 404 for an unknown category.
  */
 class ShowCategoryController extends Controller
 {

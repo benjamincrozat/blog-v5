@@ -8,7 +8,11 @@ use Illuminate\Support\Facades\Gate;
 use Laravel\Horizon\HorizonApplicationServiceProvider;
 
 /**
- * Configures Horizon authorization and failure notification routing.
+ * Sets access and email alerts for the Horizon queue dashboard.
+ *
+ * Laravel's Horizon setup runs first. This provider then sends failure emails to
+ * the operations inbox and allows only the fixed site administrator to open the
+ * dashboard.
  */
 class HorizonServiceProvider extends HorizonApplicationServiceProvider
 {

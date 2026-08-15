@@ -9,7 +9,11 @@ use Illuminate\Queue\Events\QueueFailedOver;
 use Illuminate\Notifications\Messages\MailMessage;
 
 /**
- * Builds the queue failover happened notification.
+ * Emails the site owner after Laravel moves a job to a backup queue.
+ *
+ * NotifyOnQueueFailover chooses the recipient. This queued message includes the
+ * failed connection and moved job. It reports the event but does not repair the
+ * queue or run the job.
  */
 class QueueFailoverHappened extends Notification implements ShouldQueue
 {

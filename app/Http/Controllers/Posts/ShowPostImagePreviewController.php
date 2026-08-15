@@ -9,7 +9,11 @@ use App\Exceptions\PostMarkdownException;
 use App\Actions\Posts\ResolveMarkdownPost;
 
 /**
- * Displays a standalone preview page for generated post images.
+ * Shows the standalone preview page used to create fallback post images.
+ *
+ * It reads the Markdown file directly, so it can capture a new post before the
+ * database is synced. The page gets a random background design. A bad post
+ * returns 404. The response tells search engines to ignore the page and its images.
  */
 class ShowPostImagePreviewController extends Controller
 {

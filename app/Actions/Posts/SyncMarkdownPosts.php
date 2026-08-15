@@ -13,7 +13,16 @@ use App\Markdown\PostMarkdownDocument;
 use App\Exceptions\PostMarkdownException;
 
 /**
- * Syncs canonical Markdown post sources into the database read model.
+ * Copies Markdown post files into the database used to serve the blog.
+ *
+ * It reads and checks every file before writing anything. Duplicate IDs or slugs,
+ * missing authors, missing categories, and slug conflicts stop the whole run.
+ * Valid files create, update, or restore posts and replace their category links
+ * inside one database transaction.
+ *
+ * Markdown files are the main source for posts with a source UUID. Removing one
+ * of those files soft-deletes its database row. Database-only posts without a
+ * matching file stay unchanged, and a failed check cannot leave a half-finished sync.
  */
 class SyncMarkdownPosts
 {

@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Provides handle redirects behavior.
+ * Sends old root-level post URLs to their current slugs.
+ *
+ * Before normal request handling, it checks only a non-empty path with one part.
+ * A stored match returns a permanent 301 and keeps the original query string.
+ * Paths with several parts and paths without a match continue unchanged.
  */
 class HandleRedirects
 {

@@ -8,6 +8,11 @@ use App\Markdown\MarkdownRenderer;
 use Illuminate\Support\Collection;
 
 /**
+ * Adds community links to the Atom feed.
+ *
+ * It selects the 50 newest approved links and builds each feed item with the
+ * original URL and submitter's name. Pending and declined links are never included.
+ *
  * @mixin Link
  */
 trait LinkFeedable

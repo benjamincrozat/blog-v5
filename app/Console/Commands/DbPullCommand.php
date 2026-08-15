@@ -8,10 +8,12 @@ use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 /**
- * Pulls a remote database snapshot into a local connection.
+ * Replaces one configured database with a snapshot of another one.
  *
- * Extracted to keep snapshot orchestration and safety checks in one place.
- * Callers can rely on compatible client handling before snapshot operations.
+ * It first checks that both connections exist and use the same driver. It then
+ * creates a dated snapshot and loads it after dropping the target tables. Dry-run
+ * mode prints those steps without running them. On macOS, it uses MySQL 8.4's
+ * dump tool when MySQL 9 is first on PATH because the snapshot package needs it.
  */
 #[AsCommand(
     name: 'app:db:pull',

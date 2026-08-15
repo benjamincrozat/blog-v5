@@ -9,7 +9,11 @@ use League\CommonMark\Node\Inline\AbstractStringContainer;
 use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 
 /**
- * Provides lightdown markdown behavior.
+ * Turns comment Markdown into HTML with the site's safe link and code rules.
+ *
+ * It blocks risky raw HTML, opens outside links in a new window, keeps links to
+ * this site internal, and highlights code. It leaves out article features such
+ * as heading links and smart punctuation because comments do not need them.
  */
 class Lightdown
 {

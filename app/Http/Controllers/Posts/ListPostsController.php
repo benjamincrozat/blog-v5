@@ -8,7 +8,11 @@ use App\Http\Controllers\Controller;
 use App\Actions\BuildBreadcrumbSchema;
 
 /**
- * Lists published blog posts with pagination and breadcrumb schema data.
+ * Builds the main list of published blog posts.
+ *
+ * Posts that represent community links are left out. Recent sponsors come first,
+ * then the newest publication date, and results are split into pages of 24. The
+ * visible breadcrumbs and JSON-LD use the same list.
  */
 class ListPostsController extends Controller
 {

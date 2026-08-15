@@ -6,7 +6,11 @@ use App\Models\User;
 use App\Models\Comment;
 
 /**
- * Defines authorization rules for comment policy.
+ * Decides who can create or delete a blog comment.
+ *
+ * Any signed-in user may comment. A user may delete their own comment, and the
+ * fixed site administrator may delete any comment. Routes and Livewire reject
+ * guests before this policy runs.
  */
 class CommentPolicy
 {

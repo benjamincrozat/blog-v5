@@ -10,7 +10,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 /**
- * Builds the new reply notification.
+ * Emails a comment author after someone replies to their comment.
+ *
+ * The Comments component chooses the recipient and sends this queued message
+ * after saving the reply. The email names the replier and article and links to
+ * the comment thread.
  */
 class NewReply extends Notification implements ShouldQueue
 {
