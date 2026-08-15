@@ -25,7 +25,6 @@ jobs:
           --health-timeout=5s
           --health-retries=5
     env:
-      APP_KEY: 'base64:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='
       DB_CONNECTION: mysql
       DB_HOST: 127.0.0.1
       DB_PORT: 3306
@@ -50,8 +49,14 @@ jobs:
           cache: npm
           node-version: 24
 
+      - name: Create .env file
+        run: cp .env.example .env
+
       - name: Install Composer dependencies
         run: composer install --no-interaction --no-scripts --no-progress
+
+      - name: Generate encryption key
+        run: php artisan key:generate
 
       - name: Install frontend dependencies
         run: npm ci
