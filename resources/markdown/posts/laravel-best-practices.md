@@ -7,17 +7,15 @@ description: "A practical Laravel checklist for cleaner apps: updates, structure
 categories:
   - "laravel"
 published_at: 2022-10-29T23:00:00Z
-modified_at: 2026-03-18T18:07:37Z
+modified_at: 2026-08-15T09:28:36Z
 serp_title: null
 serp_description: null
-canonical_url: null
+canonical_url: ""
 is_commercial: false
 image_disk: "cloudflare-images"
 image_path: "images/posts/01JYZ22BGRDPV8C7SCG9FJWR63.webp"
 sponsored_at: null
 ---
-## Introduction
-
 When people ask for Laravel best practices, the short answer is usually much less glamorous than they expect:
 
 - stay close to the framework
@@ -28,9 +26,26 @@ That is what this guide is about.
 
 It is not a list of trendy patterns you must apply to every project. It is a practical checklist for keeping Laravel codebases easier to upgrade, easier to onboard, and harder to accidentally break.
 
-One quick reminder before we start: if you are still on Laravel 10 or older, upgrade first. Those releases are already out of security support in 2026.
+One quick reminder before we start: Laravel 11 and older are out of support. Laravel 12 now receives security fixes only, while Laravel 13 is the current major. Check the live dates on my [Laravel versions page](/laravel-versions).
 
 If you want deeper guidance on one slice of this topic, I already broke out dedicated posts for [architecture best practices](/laravel-architecture-best-practices), [API best practices](/laravel-restful-api-best-practices), [testing best practices](/laravel-testing-best-practices), and [security best practices](/laravel-security-best-practices).
+
+## A fast Laravel 13 audit
+
+Advice becomes useful when you can prove whether a project follows it. Start with this small audit:
+
+| Check | Evidence | A practical pass |
+| --- | --- | --- |
+| Framework support | `php artisan --version` | The major is supported, or an upgrade has an owner and date |
+| Dependencies | `composer audit --format=table` | No known vulnerability is left unexplained |
+| HTTP boundaries | Sample write actions | Validation lives in form requests and authorization in policies where the rules are meaningful |
+| Eloquent queries | Query count on one representative list page | The count does not grow once per rendered row, and local strictness catches accidental lazy loading |
+| Queues | Failed-job list plus one retry test | Slow or retryable work is queued, failures are visible, and the job is safe to retry |
+| External APIs | Test setup | `Http::preventStrayRequests()` blocks unplanned network calls |
+| Database behavior | CI configuration | Important tests run against the same database engine used in production |
+| Regression history | Recent production fixes | Each meaningful bug has a test that fails without its fix |
+
+This is not a score. A red row tells you where the next hour of cleanup will buy the most confidence.
 
 ## 1. Keep Laravel up to date
 
@@ -38,7 +53,7 @@ Running a supported Laravel version is the baseline best practice. It keeps you 
 
 If upgrades feel scary, that is usually a testing problem or a customization problem, not a reason to stay on an unsupported release.
 
-Laravel's [upgrade guides](https://laravel.com/docs/12.x/upgrade) should be part of your normal maintenance rhythm, not an emergency document you open every two years.
+Laravel's [upgrade guides](https://laravel.com/docs/13.x/upgrade) should be part of your normal maintenance rhythm, not an emergency document you open every two years.
 
 ## 2. Keep packages up to date and audited
 
@@ -75,7 +90,7 @@ Extra layers are valuable when they remove real duplication or real coupling. Th
 
 ## 4. Stay close to Laravel's default structure
 
-Laravel's [directory structure](https://laravel.com/docs/12.x/structure) is a strength, not a beginner compromise.
+Laravel's [directory structure](https://laravel.com/docs/13.x/structure) is a strength, not a beginner compromise.
 
 Following it makes onboarding easier, package integration safer, and upgrades less surprising. It also means most Laravel developers can open your project and find their way around quickly.
 
@@ -107,7 +122,7 @@ That gives you the best of both worlds:
 
 Laravel already knows how to resolve many of the things your controllers need.
 
-Use [route model binding](https://laravel.com/docs/12.x/routing#route-model-binding) and typed dependencies so your route and controller code stays focused on behavior instead of lookup glue.
+Use [route model binding](https://laravel.com/docs/13.x/routing#route-model-binding) and typed dependencies so your route and controller code stays focused on behavior instead of lookup glue.
 
 ```php
 Route::get('/posts/{post:slug}', ShowPostController::class);
@@ -127,7 +142,7 @@ This keeps controllers slimmer and makes failure modes like missing records much
 
 If a controller action accepts meaningful input, it probably deserves a form request.
 
-Laravel's [form request validation](https://laravel.com/docs/12.x/validation#form-request-validation) gives you a dedicated place for:
+Laravel's [form request validation](https://laravel.com/docs/13.x/validation#form-request-validation) gives you a dedicated place for:
 
 - validation rules
 - authorization checks
@@ -162,7 +177,7 @@ If validation is a weak point in your current codebase, this more focused [Larav
 
 Authorization rules become fragile when they are scattered across controllers, Livewire components, jobs, and random helper classes.
 
-Laravel's [policies](https://laravel.com/docs/12.x/authorization#creating-policies) give you a central place for those decisions.
+Laravel's [policies](https://laravel.com/docs/13.x/authorization#creating-policies) give you a central place for those decisions.
 
 ```php
 public function update(User $user, Post $post): bool
@@ -179,7 +194,7 @@ Controllers should coordinate work, not become a storage unit for every rule in 
 
 Use middleware for cross-cutting HTTP concerns like locale detection, rate limits, tenant resolution, or precondition checks.
 
-Use [single-action controllers](https://laravel.com/docs/12.x/controllers#single-action-controllers) when an endpoint is clearer as one focused action instead of another method on a bloated resource controller.
+Use [single-action controllers](https://laravel.com/docs/13.x/controllers#single-action-controllers) when an endpoint is clearer as one focused action instead of another method on a bloated resource controller.
 
 The best controller is usually the one that stays boring.
 
@@ -215,7 +230,7 @@ You can still optimize hard when necessary, but do not start by fighting the ORM
 
 N+1 queries are one of the easiest Laravel performance problems to create accidentally.
 
-Use eager loading where relationships are clearly needed, and consider enabling [Eloquent strictness](https://laravel.com/docs/12.x/eloquent#configuring-eloquent-strictness) outside production so lazy loading and other mistakes fail loudly while you are still developing.
+Use eager loading where relationships are clearly needed, and consider enabling [Eloquent strictness](https://laravel.com/docs/13.x/eloquent#configuring-eloquent-strictness) outside production so lazy loading and other mistakes fail loudly while you are still developing.
 
 ```php
 use Illuminate\Database\Eloquent\Model;
@@ -234,7 +249,7 @@ Here is the same six-row page rendered two ways in a small demo: once with lazy-
 
 ## 13. Use modern casts, accessors, and mutators deliberately
 
-Laravel's modern [casts](https://laravel.com/docs/12.x/eloquent-mutators#attribute-casting) and `Attribute` objects make it easy to keep data formatting close to the model without scattering transformation logic everywhere.
+Laravel's modern [casts](https://laravel.com/docs/13.x/eloquent-mutators#attribute-casting) and `Attribute` objects make it easy to keep data formatting close to the model without scattering transformation logic everywhere.
 
 Use them for things like:
 
@@ -250,7 +265,7 @@ Just avoid turning models into a dumping ground for unrelated presentation logic
 
 If work is slow, network-bound, or non-essential to the immediate response, it probably belongs on a queue.
 
-Laravel's [queues](https://laravel.com/docs/12.x/queues) are the right home for emails, indexing, third-party syncs, media processing, and similar side effects.
+Laravel's [queues](https://laravel.com/docs/13.x/queues) are the right home for emails, indexing, third-party syncs, media processing, and similar side effects.
 
 `dispatchAfterResponse()` is still useful, but mainly for tiny follow-up work that can happen right after the response without becoming a real background job strategy.
 
@@ -273,7 +288,7 @@ I rewrote the full version of this advice in the dedicated [Laravel testing best
 
 Tests become flaky fast when they rely on leftover data or giant seeders.
 
-Laravel's [database testing tools](https://laravel.com/docs/12.x/database-testing) and [factories](https://laravel.com/docs/12.x/eloquent-factories) make it easy to keep setup explicit and isolated.
+Laravel's [database testing tools](https://laravel.com/docs/13.x/database-testing) and [factories](https://laravel.com/docs/13.x/eloquent-factories) make it easy to keep setup explicit and isolated.
 
 ```php
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -287,7 +302,7 @@ The smaller the setup each test needs, the easier the suite is to trust and main
 
 When your app talks to third-party APIs, do not let every test hit the network.
 
-Laravel's [HTTP client testing tools](https://laravel.com/docs/12.x/http-client#testing) let you fake those boundaries and block unexpected outbound calls.
+Laravel's [HTTP client testing tools](https://laravel.com/docs/13.x/http-client#testing) let you fake those boundaries and block unexpected outbound calls.
 
 ```php
 use Illuminate\Support\Facades\Http;
@@ -349,7 +364,7 @@ Eager load the relationships you know you need and enable Eloquent strictness in
 
 Use queues for slow or retryable work. Use `dispatchAfterResponse()` only for tiny, non-critical follow-ups that do not justify a real background job.
 
-## Conclusion
+## The rule behind all 20
 
 The best Laravel projects are usually the ones that stay pleasantly boring.
 

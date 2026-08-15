@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27CX8RCPAS0DE6DQRSXN"
-title: "Laravel migrations: commands, examples, and rollback basics"
+title: "Laravel migrations: commands, examples, and safe deploys"
 slug: "laravel-migrations"
 author: "benjamincrozat"
-description: "Learn Laravel migrations with practical examples for make:migration, migrate, migrate:fresh, schema:dump, rollback, and the up() and down() methods."
+description: "Use Laravel migrations to create and change tables, preview SQL, inspect status, deploy with an isolation lock, roll back, and build schema dumps."
 categories:
   - "laravel"
-published_at: 2022-09-12T00:00:00+02:00
-modified_at: 2026-03-20T12:41:49Z
+published_at: 2022-09-11T22:00:00Z
+modified_at: 2026-08-15T09:28:36Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -16,53 +16,57 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/tTXXRvK0zEcrJgK.jpg"
 sponsored_at: null
 ---
-## What are migrations in Laravel
+Laravel migrations are version-controlled changes to your database schema. Create one with `make:migration`, review its `up()` and `down()` methods, then run it with `migrate`.
 
-**Laravel migrations are version-controlled changes to your database schema.** Instead of clicking around in a database UI, you define schema changes in code and run them with Artisan. That keeps teammates, environments, and deployments in sync, and it scales well once you start using schema dumps for larger apps.
+```bash
+php artisan make:migration create_posts_table
+php artisan migrate
+```
 
-In practice, that means you can clone a project, run `php artisan migrate`, and build the database structure the project expects. Because migrations live in code, they are reviewed, versioned, and deployed like the rest of the app.
+## Laravel migration commands at a glance
 
-Interesting, right? Let's learn more about migrations!
+| Job | Command |
+| --- | --- |
+| Create a migration | `php artisan make:migration create_posts_table` |
+| Show migration status | `php artisan migrate:status` |
+| Show only pending migrations | `php artisan migrate:status --pending` |
+| Preview SQL without changing the database | `php artisan migrate --pretend` |
+| Run pending migrations | `php artisan migrate` |
+| Give each migration its own batch | `php artisan migrate --step` |
+| Prevent several servers from migrating together | `php artisan migrate --isolated` |
+| Roll back the latest batch | `php artisan migrate:rollback` |
+| Roll back one migration | `php artisan migrate:rollback --step=1` |
+| Roll back everything and migrate again | `php artisan migrate:refresh` |
+| Drop every table and migrate again | `php artisan migrate:fresh` |
+| Write the current schema to a dump | `php artisan schema:dump` |
 
-## Laravel's make:migration command
+I checked these commands against Laravel 13.25. Use `--help` on your installed Laravel version when maintaining an older project.
 
-### Basic usage
+## Create a table migration
 
-Creating a migration can be done thanks to Artisan with the command below:
+Laravel infers the table and operation from a clear snake-case name:
 
 ```bash
 php artisan make:migration create_posts_table
 ```
 
-1. Write the migration's name in PascalCase.
-2. Begin with the "Create" prefix.
-3. Continue with the desired table's name.
-4. End with the "Table" suffix.
-5. Artisan will create a new file and convert its name to snake_case (making the name more readable).
-6. A timestamp will be added as a prefix.
-
-```
-INFO Created migration [2022_09_12_142156_create_posts_table]. 
-```
-
-A migration looks like this:
+The generated filename starts with a timestamp, which gives migrations their order. Define the change in `up()` and its practical reverse in `down()`:
 
 ```php
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-
-            // These are the columns you want to add to your table.
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('title');
-            $table->text('content');
-
-            // These are the "created_at" and "updated_at" columns.
+            $table->text('body');
+            $table->timestamp('published_at')->nullable()->index();
             $table->timestamps();
         });
     }
@@ -74,181 +78,148 @@ return new class extends Migration {
 };
 ```
 
-But there's more. Did you know you can pass multiple parameters?
+You do not need a PascalCase migration name. A descriptive name such as `create_posts_table` or `add_published_at_to_posts_table` helps Artisan generate the right stub and helps humans understand the change.
 
-```
-php artisan make:migration --help
-
-Options:
- --create[=CREATE] The table to be created
- --table[=TABLE] The table to migrate
- --path[=PATH] The location where the migration file should be created
- --realpath Indicate any provided migration file paths are pre-resolved absolute paths
- --fullpath Output the full path of the migration
-```
-
-Let's see how to use them and why.
-
-### Create a migration with the --create option
-
-The `--create` option tells Artisan to use something other than the table name it inferred from the migration's name. For instance, it could be helpful if you use another language from tables' names.
+If the name cannot express the table cleanly, be explicit:
 
 ```bash
 php artisan make:migration create_billets_table --create=billets
+php artisan make:migration add_status_to_posts --table=posts
 ```
 
-### Create a migration with the --table option
-
-The `--table` option tells Artisan we don't need to create a new table but rather update an existing one. If you don't follow Laravel's conventions for naming your migrations, this is the option you need.
-
-```bash
-php artisan make:migration Whatever --table=posts
-```
-
-### Create a migration with its model
-
-What I love about Artisan is the possibility of effortlessly creating a model with its migration. For that, we need to use another command, though.
+You can also create a model and migration together:
 
 ```bash
 php artisan make:model Post --migration
 ```
 
-You can even use the shorthand option for the migration:
+## Change an existing table
 
-```bash
-php artisan make:model Post -m
-```
-
-And if you look at the help, you will appreciate what Artisan can do for you even more.
-
-```
-php artisan make:model -h
-
-Description:
- Create a new Eloquent model class
-
-Usage:
- make:model [options] [--] <name>
-
-Arguments:
- name The name of the class
-
-Options:
- -a, --all Generate a migration, seeder, factory, policy, resource controller, and form request classes for the model
- -c, --controller Create a new controller for the model
- -f, --factory Create a new factory for the model
- --force Create the class even if the model already exists
- -m, --migration Create a new migration file for the model
- --morph-pivot Indicates if the generated model should be a custom polymorphic intermediate table model
- --policy Create a new policy for the model
- -s, --seed Create a new seeder for the model
- -p, --pivot Indicates if the generated model should be a custom intermediate table model
- -r, --resource Indicates if the generated controller should be a resource controller
- --api Indicates if the generated controller should be an API resource controller
- -R, --requests Create new form request classes and use them in the resource controller
- --test Generate an accompanying PHPUnit test for the model
- --pest Generate an accompanying Pest test for the model
-```
-
-## Use the migrate command to run your newest migrations
-
-To migrate your database, use the `php artisan migrate` command. 
-
-```
-INFO  Running migrations.  
-
-2014_10_12_000000_create_users_table ................................................................................................ 4ms DONE
-2014_10_12_100000_create_password_resets_table ...................................................................................... 1ms DONE
-2018_01_01_000000_create_action_events_table ........................................................................................ 7ms DONE
-2019_05_10_000000_add_fields_to_action_events_table ................................................................................. 1ms DONE
-2019_08_19_000000_create_failed_jobs_table .......................................................................................... 1ms DONE
-```
-
-## Wipe out your database using migrate:fresh
-
-The `php artisan migrate:fresh` command will wipe out your database before migrating.
-
-```
-Dropping all tables ................................................................................................................. 7ms DONE
-
-INFO  Preparing database.  
-
-Creating migration table ............................................................................................................ 3ms DONE
-
-INFO  Running migrations.  
-
-2014_10_12_000000_create_users_table ................................................................................................ 2ms DONE
-2014_10_12_100000_create_password_resets_table ...................................................................................... 1ms DONE
-2018_01_01_000000_create_action_events_table ........................................................................................ 6ms DONE
-2019_05_10_000000_add_fields_to_action_events_table ................................................................................. 1ms DONE
-2019_08_19_000000_create_failed_jobs_table .......................................................................................... 1ms DONE
-```
-
-This command won't work in production to prevent disasters. 😬
-
-## Roll back migrations when something goes wrong
-
-Roll back any change using the `php artisan migrate:rollback` command. As you can see below, migrations are rolled back in the inverse order.
-
-```
-INFO  Rolling back migrations.  
-
-2019_08_19_000000_create_failed_jobs_table .......................................................................................... 1ms DONE
-2019_05_10_000000_add_fields_to_action_events_table ................................................................................. 8ms DONE
-2018_01_01_000000_create_action_events_table ........................................................................................ 1ms DONE
-2014_10_12_100000_create_password_resets_table ...................................................................................... 1ms DONE
-2014_10_12_000000_create_users_table ................................................................................................ 1ms DONE
-```
-
-So make sure to use the `down()` method correctly.
-
-The `down()` method must do the opposite of the `up()` method.
+Use `Schema::table()` rather than editing an old migration that has already run in another environment:
 
 ```php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            // The column was a boolean, but we want to switch to a datetime.
-            $table->datetime('is_published')->nullable()->change();
+            $table->boolean('is_featured')->default(false)->index();
         });
     }
 
     public function down(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            // When rolling back, we have to restore the column to its previous state.
-            $table->boolean('is_published')->default(false)->change();
+            $table->dropColumn('is_featured');
         });
     }
 };
 ```
 
-## Keep large apps fast with schema dumps
+Editing an already-deployed migration makes a fresh database differ from an upgraded database. A new migration keeps both paths visible.
 
-As your app grows, you may want to squash older migrations into a schema file. Laravel supports that with `php artisan schema:dump`, and you can prune the old migration files at the same time with `--prune`.
+## Inspect and preview before running
+
+Start with the status:
+
+```bash
+php artisan migrate:status --pending
+```
+
+Then ask Laravel to print the SQL without executing it:
+
+```bash
+php artisan migrate --pretend
+```
+
+`--pretend` is especially useful for spotting SQL that may lock a table, build a large index, or behave differently across engines. It does not measure the lock or replace testing against the same database engine and a realistic amount of data.
+
+## Run migrations safely in production
+
+Laravel asks for confirmation in production unless you pass `--force`:
+
+```bash
+php artisan migrate --force
+```
+
+If several application servers deploy at the same time, use an isolation lock:
+
+```bash
+php artisan migrate --force --isolated
+```
+
+`--isolated` needs a default cache store that supports atomic locks. It prevents two servers from running the migration command concurrently; it does not make every schema operation online or reversible.
+
+My production checklist is short:
+
+1. back up data when the change can destroy or rewrite it
+2. run the migration on the same database engine in staging
+3. inspect `migrate --pretend` output
+4. check how the database handles locks and long index changes
+5. deploy code that can tolerate the transition when zero downtime matters
+6. run `migrate --force --isolated`
+7. verify the schema and the affected application path
+
+For risky changes, split the deploy into compatible steps: add the new column, deploy code that writes both shapes, backfill, switch reads, then remove the old column later.
+
+## Roll back deliberately
+
+This rolls back the latest migration batch:
+
+```bash
+php artisan migrate:rollback
+```
+
+This limits the rollback to one migration:
+
+```bash
+php artisan migrate:rollback --step=1
+```
+
+`down()` can reverse a schema operation, but it cannot magically restore deleted or transformed data. A rollback plan may need a backup, a forward-fix migration, or both.
+
+Useful local reset commands are:
+
+```bash
+php artisan migrate:refresh --seed
+php artisan migrate:fresh --seed
+```
+
+`migrate:refresh` rolls migrations back through their `down()` methods and runs them again. `migrate:fresh` skips that history, drops every table on the configured connection, and rebuilds the database.
+
+Do not assume `migrate:fresh` is blocked in production. Laravel can run it there with `--force`. Never point it at a production or shared database unless dropping every table is the exact intended operation.
+
+## Keep large projects fast with schema dumps
+
+Once a project has years of old migrations, write the current schema to a file:
+
+```bash
+php artisan schema:dump
+```
+
+Laravel loads the dump first when it builds a database with no migration history, then runs newer migrations.
+
+After the dump is reviewed and committed, `--prune` also deletes migrations represented by that schema:
 
 ```bash
 php artisan schema:dump --prune
 ```
 
-If your tests use a different database connection, dump that connection too so fresh environments can build the schema quickly:
+If tests use another connection, create its dump explicitly:
 
 ```bash
-php artisan schema:dump --database=testing --prune
+php artisan schema:dump --database=testing
 ```
 
-## Conclusion
+The [Laravel 13 migration documentation](https://laravel.com/docs/13.x/migrations) is the source for column types, indexes, foreign keys, and database-specific details.
 
-You now have all the skills to keep leveling up with migrations. The official documentation's [available methods from the Blueprint class](https://laravel.com/docs/migrations#available-column-types) is the next best place to go.
+Related guides:
 
-If you are still working through how schema changes ripple through the app, these are the next Laravel reads I would keep nearby:
-
-- [Use database transactions when partial writes would hurt](/database-transactions-laravel)
-- [Use the Artisan commands you run every day with more confidence](/laravel-artisan)
-- [Write where clauses with fewer query-builder surprises](/laravel-query-builder-where-clauses)
-- [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)
+- [Use database transactions for application writes](/database-transactions-laravel)
+- [Use everyday Artisan commands with more confidence](/laravel-artisan)
+- [Write query-builder where clauses without surprises](/laravel-query-builder-where-clauses)
+- [Audit the Laravel habits that keep projects maintainable](/laravel-best-practices)

@@ -3,11 +3,11 @@ id: "01KKEW27D7086V9HV2YSPF4CY7"
 title: "Laravel orderBy(): examples for asc, desc, and more"
 slug: "laravel-order-by"
 author: "benjamincrozat"
-description: "Use Laravel orderBy() to sort Eloquent results by one or more columns, switch to orderByDesc(), reach for orderByRaw() when needed, and reset sorting with reorder()."
+description: "Sort Laravel and Eloquent queries with orderBy(), orderByDesc(), latest(), relationship counts, safe user-selected columns, null handling, and reorder()."
 categories:
   - "laravel"
-published_at: 2023-09-09T00:00:00+02:00
-modified_at: 2026-03-14T10:04:32Z
+published_at: 2023-09-08T22:00:00Z
+modified_at: 2026-08-15T09:28:36Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -16,13 +16,29 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/rgz5ybN0xhHeW42.jpg"
 sponsored_at: null
 ---
-## How to use Laravel orderBy()
+Use Laravel's `orderBy()` method to sort a query by a column. Ascending order is the default; pass `desc` or use `orderByDesc()` for descending order.
 
-**Use Laravel's `orderBy()` method to sort query results by a column in ascending or descending order.**
+```php
+$users = User::query()
+    ->orderBy('name')
+    ->get();
+```
 
-Pass the column name first, then the direction if you need descending order. Chain more `orderBy()` calls for tie-breakers, use `orderByDesc()` for readability, and reach for `reorder()` when you need to replace an earlier sort.
+## Common Laravel ordering methods
 
-If you need `orderByDesc()`, multiple-column sorting, or a quick way to replace an existing order, this guide covers those too. Here's the foundation of `orderBy()`:
+| Job | Query |
+| --- | --- |
+| Name A-Z | `->orderBy('name')` |
+| Name Z-A | `->orderBy('name', 'desc')` |
+| Newest creation first | `->latest()` |
+| Oldest creation first | `->oldest()` |
+| Newest update first | `->latest('updated_at')` |
+| Several tie-breakers | Chain more `orderBy()` calls |
+| Replace an existing order | `->reorder('name')` |
+
+## Sort ascending or descending
+
+The second argument accepts `asc` or `desc`:
 
 ```php
 $users = User::query()
@@ -30,18 +46,7 @@ $users = User::query()
     ->get();
 ```
 
-In this snippet, Eloquent fetches users and sorts them by `name` in descending order.
-
-Its parameters are:
-
-* **The column's name**.
-* **The order direction**: Either `asc` (the default value) for ascending or `desc` for descending.
-
-[See the official docs for ordering queries.](https://laravel.com/docs/11.x/queries#ordering)
-
-## The orderByDesc() method
-
-If you want to sort your results in descending order, you can also use the `orderByDesc()` method, which is a shortcut for `orderBy('column', 'desc')`:
+I prefer `orderByDesc()` when the direction is fixed because it is harder to miss while scanning the query:
 
 ```php
 $users = User::query()
@@ -49,73 +54,140 @@ $users = User::query()
     ->get();
 ```
 
-It's all in the details!
+`latest()` and `oldest()` default to `created_at`, but both accept another column:
 
-## Multi-column sorting using orderBy()
+```php
+$posts = Post::query()
+    ->latest('published_at')
+    ->get();
+```
 
-What if you want to sort by multiple columns? Simple. Just chain multiple `orderBy()` methods:
+## Add a tie-breaker with several orderBy() calls
+
+SQL does not promise a stable order for rows that compare equal. Add another column when the output must be deterministic:
 
 ```php
 $users = User::query()
-    ->orderBy('name', 'desc')
-    ->orderBy('email', 'asc')
+    ->orderByDesc('score')
+    ->orderBy('name')
+    ->orderBy('id')
     ->get();
 ```
 
-This way, Eloquent sorts users by their names first. If two or more users have the same name, it then sorts those users by their email in ascending order.
+This sorts by score first, then name, then the unique ID when both values tie.
 
-I actually learned that only after years of SQL and Laravel experience.
+## Sort by a relationship count
 
-## Getting fancy with orderByRaw()
-
-When you need a more complex sorting mechanism, Laravel's got you covered with `orderByRaw()`:
+Use `withCount()` to add the aggregate before ordering by it:
 
 ```php
-$orders = User::query()
-    ->orderByRaw('updated_at - created_at DESC')
+$posts = Post::query()
+    ->withCount('comments')
+    ->orderByDesc('comments_count')
     ->get();
 ```
 
-This advanced method lets you sort the results based on the difference between the `updated_at` and `created_at` timestamps. Handy, right?
-**If you need to use user input, always use bindings to prevent SQL injection:**
+The resulting models include a `comments_count` attribute. This avoids loading every comment just to count it in PHP.
+
+Laravel can order by other relationship aggregates too:
 
 ```php
-$query->orderByRaw('some_column > ?', [$value]);
+$posts = Post::query()
+    ->withMax('comments', 'created_at')
+    ->orderByDesc('comments_max_created_at')
+    ->get();
 ```
 
-[See the official docs for raw orderings.](https://laravel.com/docs/11.x/queries#raw-orderings)
+That puts posts with the most recent comment first.
 
-> *Heads-up:* `updated_at - created_at` works in MySQL and Postgres, but not in SQL Server. On SQL Server, use `DATEDIFF(SECOND, created_at, updated_at)`.
+## Allow user-selected sorting safely
 
-## Use reorder() to unorder what's already been ordered
+Do not pass a request value directly as a column name. SQL parameter bindings protect values, not identifiers such as column names.
 
-If you need to undo the ordering of a query you are building based on some condition, you can use the `reorder()` method:
+Map public options to a fixed allowlist:
 
 ```php
-$ordered = User::query()->orderBy('name');
+$columns = [
+    'name' => 'name',
+    'email' => 'email',
+    'joined' => 'created_at',
+];
 
-$unordered = $ordered->reorder()->get();
+$column = $columns[$request->string('sort')->toString()] ?? 'created_at';
+$direction = $request->string('direction')->toString() === 'asc'
+    ? 'asc'
+    : 'desc';
+
+$users = User::query()
+    ->orderBy($column, $direction)
+    ->get();
 ```
 
-And if you wish to reset and apply a completely new ordering without calling `orderBy()` again:
+The URL can expose friendly names while the query only receives columns and directions you chose.
+
+## Put null values last
+
+Null ordering differs between database engines. There is no one portable `orderBy()` call that gives every engine the same result.
+
+PostgreSQL supports `NULLS LAST`:
 
 ```php
-$ordered = User::query()->orderBy('name');
-
-$reorderedByEmail = $ordered->reorder('email', 'desc')->get();
+$posts = Post::query()
+    ->orderByRaw('published_at DESC NULLS LAST')
+    ->get();
 ```
 
-I'll never get bored of Laravel's convenience!
-[Docs: Removing existing orderings](https://laravel.com/docs/11.x/queries#removing-existing-orderings)
+For MySQL and SQLite, sort by the null check first:
 
-**See also:**
+```php
+$posts = Post::query()
+    ->orderByRaw('published_at IS NULL')
+    ->orderByDesc('published_at')
+    ->get();
+```
 
-* [`latest()`](https://laravel.com/docs/11.x/queries#retrieving-latest-or-oldest-records) / [`oldest()`](https://laravel.com/docs/11.x/queries#retrieving-latest-or-oldest-records): terser helpers that default to `created_at` but can take any column.
-* [`inRandomOrder()`](https://laravel.com/docs/11.x/queries#random-ordering): for that random "featured" user or contest winner logic.
+Test the query on the same engine used in production, especially when null placement matters to pagination.
 
-If you are cleaning up query logic and want the rest of that toolbox to feel just as clear, these are the next reads I would open:
+## Use orderByRaw() for a real SQL expression
 
-- [Write where clauses with fewer query-builder surprises](/laravel-query-builder-where-clauses)
-- [Filter results with whereIn() without tripping over the basics](/laravel-query-builder-wherein)
+Raw ordering is useful for a fixed expression that the query builder cannot describe cleanly:
+
+```php
+$posts = Post::query()
+    ->orderByRaw(
+        'CASE WHEN status = ? THEN 0 ELSE 1 END',
+        ['featured'],
+    )
+    ->latest()
+    ->get();
+```
+
+Bind values as shown. Never interpolate request input into a raw ordering string.
+
+## Remove or replace an earlier order
+
+Scopes and relationships can add ordering before your code receives the builder. `reorder()` removes it:
+
+```php
+$query = User::query()->orderBy('name');
+
+$users = $query->reorder()->get();
+```
+
+You can remove the old order and add a new one in the same call:
+
+```php
+$users = User::query()
+    ->orderBy('name')
+    ->reorder('email', 'desc')
+    ->get();
+```
+
+The [Laravel 13 query builder documentation](https://laravel.com/docs/13.x/queries#ordering-grouping-limit-and-offset) covers `orderBy()`, `latest()`, `oldest()`, random ordering, and `reorder()`.
+
+Related guides:
+
+- [Write query-builder where clauses without surprises](/laravel-query-builder-where-clauses)
+- [Filter results with whereIn()](/laravel-query-builder-wherein)
 - [Use database transactions when partial writes would hurt](/database-transactions-laravel)
 - [Write validation rules with less guesswork](/laravel-validation)
