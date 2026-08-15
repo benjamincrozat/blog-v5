@@ -8,17 +8,15 @@ categories:
   - "css"
   - "tailwind-css"
 published_at: 2022-12-24T23:00:00Z
-modified_at: 2026-03-12T21:47:58Z
+modified_at: 2026-08-15T09:28:36Z
 serp_title: null
 serp_description: null
-canonical_url: null
+canonical_url: ""
 is_commercial: false
 image_disk: "cloudflare-images"
 image_path: "images/posts/0ZPhadIzB2KgRMb.png"
 sponsored_at: null
 ---
-## Introduction
-
 The biggest Tailwind CSS mistake is not "using too many classes."
 
 It is treating Tailwind like a random utility grab bag instead of a design system with fast feedback loops.
@@ -33,6 +31,8 @@ That is where the chaos starts:
 Used well, Tailwind stays boring in the best possible way. You move quickly, keep styling close to markup, and still end up with a consistent codebase.
 
 These are the Tailwind CSS best practices I would follow in 2026, especially on Tailwind v4 projects.
+
+I checked the v4 syntax in this guide against Tailwind CSS 4.3.3, which is also the version this site currently builds with.
 
 ## 1. Start from theme variables, not random values
 
@@ -54,6 +54,34 @@ That means colors, fonts, breakpoints, shadows, and spacing decisions can live i
 Now you can use utilities like `bg-brand-500`, `font-display`, `shadow-soft`, and `3xl:grid-cols-4` without inventing a second styling system.
 
 If a value shows up more than once, it is usually a token. Promote it to `@theme` instead of repeating bracket syntax forever.
+
+Here is a real v4 refactor. This version hides three design decisions inside arbitrary values:
+
+```html
+<article class="rounded-[18px] bg-[#0f172a] shadow-[0_18px_50px_rgb(15_23_42_/_0.18)]">
+    ...
+</article>
+```
+
+Give those decisions names in your stylesheet:
+
+```css
+@import "tailwindcss";
+
+@theme {
+    --color-panel: #0f172a;
+    --radius-card: 1.125rem;
+    --shadow-card: 0 18px 50px rgb(15 23 42 / 0.18);
+}
+```
+
+The markup now explains the design instead of repeating its raw measurements:
+
+```html
+<article class="rounded-card bg-panel shadow-card">
+    ...
+</article>
+```
 
 ## 2. Think in utility classes first
 
@@ -188,6 +216,15 @@ const variants = {
 
 This one habit prevents a lot of "why is this class missing in production?" bugs.
 
+Tailwind also ignores `node_modules` and other paths covered by `.gitignore` during automatic detection. Register a library explicitly when it contains full utility classes you need:
+
+```css
+@import "tailwindcss";
+@source "../node_modules/@acmecorp/ui-lib";
+```
+
+`@source` paths are relative to the stylesheet. In a monorepo, you can also set an explicit base path with `source()` on the Tailwind import. The [source detection docs](https://tailwindcss.com/docs/detecting-classes-in-source-files#explicitly-registering-sources) show both forms.
+
 ## 8. Write custom CSS only when Tailwind stops being the right tool
 
 Tailwind is not a religion. Sometimes custom CSS is the clean answer.
@@ -236,6 +273,19 @@ In practice, a good v4 upgrade pass includes:
 - testing pages that relied on older defaults or reset behavior
 
 If you are still on v3 for compatibility reasons, that is fine. Just make it a conscious compatibility choice, not inertia.
+
+## A 10-minute Tailwind audit
+
+Use this checklist on one representative screen:
+
+1. Find repeated arbitrary colors, radii, shadows, spacing, and breakpoints. Promote real design decisions to `@theme`.
+2. Find class strings repeated across several templates. Extract a component when the markup and behavior repeat too.
+3. Find interpolated fragments such as `` `bg-${color}-600` ``. Replace them with a map of complete class names.
+4. Check whether shared packages live in ignored folders. Add `@source` for the exact sources Tailwind must scan.
+5. Build production CSS and open hover, focus, disabled, dark, and responsive states—not only the default desktop view.
+6. Keep one unusual arbitrary value when it is truly one-off. A clean system still needs escape hatches.
+
+The audit passes when every repeated decision has a name, every generated class is statically visible, and the production build matches the component states you actually ship.
 
 ## FAQ
 

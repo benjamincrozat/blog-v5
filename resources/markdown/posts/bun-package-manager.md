@@ -6,18 +6,16 @@ author: "benjamincrozat"
 description: "Compare Bun with pnpm and npm for lockfiles, workspaces, dependency scripts, and migration risk before you switch package managers."
 categories:
   - "javascript"
-published_at: 2023-09-11T00:00:00+02:00
-modified_at: 2026-03-19T22:39:10Z
+published_at: 2023-09-10T22:00:00Z
+modified_at: 2026-08-15T09:28:36Z
 serp_title: null
 serp_description: null
-canonical_url: null
+canonical_url: ""
 is_commercial: false
 image_disk: "cloudflare-images"
 image_path: "images/posts/KXZTmSmiqR38COC.jpg"
 sponsored_at: null
 ---
-## Introduction
-
 **If your real question is "should I switch to Bun?", the short answer is this: choose Bun when you want an all-in-one toolchain, not just a different package manager.**
 
 If you only want the package-manager decision fast:
@@ -34,11 +32,13 @@ Here is the quickest way to compare them for real-world use.
 
 | Tool | Best fit | Runtime included | Lockfile | Monorepo workflow | Script security default |
 | --- | --- | --- | --- | --- | --- |
-| Bun | You want one fast tool for install + run + build + test | Yes | `bun.lock` | Good, with `--filter` and isolated installs | Dependency scripts are not run by default |
+| Bun | You want one tool for install + run + build + test | Yes | `bun.lock` | Good, with `--filter` and isolated installs | Untrusted dependency scripts are blocked; a default trusted list still exists |
 | pnpm | You want the strongest package-manager upgrade while staying in standard Node.js land | No | `pnpm-lock.yaml` | Excellent | Traditional Node ecosystem behavior |
 | npm | You want the safest compatibility baseline | No | `package-lock.json` | Fine, but less opinionated | Traditional Node ecosystem behavior |
 
 If you read nothing else, that table captures the real tradeoff better than vague "Bun is fast" claims.
+
+I checked the migration and frozen-install behavior with Bun 1.3.14. It converted a small npm fixture from `package-lock.json` to `bun.lock`, and `bun ci` failed when I changed `package.json` without updating the lockfile. That is the behavior I want from CI.
 
 ## When Bun is worth switching to
 
@@ -96,7 +96,7 @@ The current Bun docs make these details worth paying attention to:
 - `bun install --frozen-lockfile` is the no-surprises install mode for CI-style workflows
 - `bun install --filter` targets specific workspace packages
 - Bun supports isolated installs with `--linker isolated`
-- dependency scripts are not run by default, and trusted packages can be allow-listed
+- arbitrary dependency scripts are blocked unless the package is in Bun's default trusted list or your own `trustedDependencies`
 
 Those are meaningful differences, not cosmetic ones.
 
@@ -114,14 +114,44 @@ Bun can migrate these lockfiles automatically when `bun.lock` does not exist:
 - `yarn.lock`
 - `pnpm-lock.yaml`
 
+It preserves the original lockfile. Keep it until you have reviewed `bun.lock` and run the project's real tests and build.
+
+Then use the frozen install in automation:
+
+```bash
+bun ci
+bun run test
+bun run build
+```
+
+`bun ci` is equivalent to `bun install --frozen-lockfile`. It fails instead of rewriting `bun.lock` when `package.json` disagrees with it.
+
 If you are moving from the older binary lockfile format, convert it like this:
 
 ```bash
-bun install --save-text-lockfile
-rm bun.lockb
+bun install --save-text-lockfile --frozen-lockfile --lockfile-only
 ```
 
-That gives you a reviewable text lockfile before you fully commit to the switch.
+Verify the new `bun.lock`, then delete `bun.lockb`. The longer command is intentional: it converts the existing resolution without installing packages or changing versions.
+
+## Use Bun in GitHub Actions
+
+Install a known Bun release, enforce the lockfile, then run the same project checks you use locally:
+
+```yaml
+steps:
+  - uses: actions/checkout@v4
+
+  - uses: oven-sh/setup-bun@v2
+    with:
+      bun-version: 1.3.14
+
+  - run: bun ci
+  - run: bun run test
+  - run: bun run build
+```
+
+Pinning the version keeps a Bun runtime update from silently joining an unrelated application change. Update it deliberately after the same checks pass.
 
 ## Monorepos and workspace filtering
 
@@ -143,9 +173,17 @@ That is the part of Bun that overlaps most with pnpm's appeal.
 
 ## Security and dependency scripts
 
-One reason some teams like Bun is that dependency scripts are not run by default.
+One reason some teams like Bun is that arbitrary dependency scripts do not all run automatically.
 
-If you trust specific packages, you can explicitly allow them with `trustedDependencies` in `package.json`.
+The precise rule matters: Bun maintains a default trusted list for popular packages, and you can explicitly allow more packages with `trustedDependencies` in `package.json`.
+
+```json
+{
+    "trustedDependencies": ["sharp"]
+}
+```
+
+Run `bun pm untrusted` to see dependencies whose lifecycle scripts were blocked. Trust a package because the project needs and expects its install script, not merely because an error disappeared.
 
 That makes Bun's default posture more appealing for cautious teams than the classic "install first, hope the lifecycle scripts are fine" flow.
 
@@ -170,8 +208,6 @@ Here is the decision framework I would use.
 - your team values stability over experimentation
 - the current setup is not the bottleneck
 - third-party tooling compatibility is the main priority
-
-## Conclusion
 
 Bun is worth switching to when you want a broader tooling change, not just a faster install command. If you mostly want a better package manager while keeping the rest of your Node.js setup familiar, pnpm is usually the sharper comparison and often the safer answer.
 

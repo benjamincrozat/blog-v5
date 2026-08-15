@@ -3,123 +3,112 @@ id: "01KKEW27HFT8GRG8H0DAFW40A6"
 title: "npm fund: what it means and how to disable it"
 slug: "npm-fund"
 author: "benjamincrozat"
-description: "Learn what npm fund does, why npm says “packages are looking for funding,” and how to disable the message globally, per project, or per command."
+description: "Understand npm's packages are looking for funding message, inspect dependency funding links, and disable the notice for one command, one project, or your user config."
 categories:
   - "javascript"
-published_at: 2024-03-04T00:00:00+01:00
-modified_at: 2026-03-19T09:15:00+00:00
+published_at: 2024-03-03T23:00:00Z
+modified_at: 2026-08-15T09:28:36Z
 serp_title: null
 serp_description: null
-canonical_url: null
+canonical_url: ""
 is_commercial: false
 image_disk: "cloudflare-images"
 image_path: "images/posts/generated/npm-fund.png"
 sponsored_at: null
 ---
-## Introduction
+The npm message saying “packages are looking for funding” is informational. It does not mean the install failed or that payment is required.
 
-If `npm install` keeps printing **“packages are looking for funding”**, the message is informational, not an error. This guide explains what `npm fund` means, why npm shows it, and the fastest ways to disable it when you just want clean installs.
+To hide it for one install:
 
-If you only want the fix, run `npm config set fund false` to disable the message globally, add `fund=false` to a project `.npmrc`, or use `npm install --no-fund` for a one-off install.
+```bash
+npm install --no-fund
+```
 
-**TL;DR:**
+To hide it in one repository:
 
-*   **Globally:** `npm config set fund false`
-*   **Per project:** Add `fund=false` to your `.npmrc`
-*   **Per command:** `npm install --no-fund`
+```bash
+npm config set fund false --location=project
+```
 
-## The exact message and the quick fix
+To hide it for your user account across projects:
 
-The message usually looks like this after an install:
+```bash
+npm config set fund false --location=user
+```
+
+![The npm fund message in my terminal after installing packages.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/rUiZiYHULe49bgleBIzQmpvA4eHrB2fytglgSxaT.png/public)
+
+## What npm fund does
+
+Package authors can add a `funding` field to `package.json`. npm collects those entries from the installed dependency tree.
+
+Run this to see them:
+
+```bash
+npm fund
+```
+
+The command prints a tree of packages and their funding URLs. It does not send money, change dependencies, or modify the lockfile.
+
+The install summary is only telling you that this metadata exists:
 
 ```text
 added 47 packages, and 12 packages are looking for funding
   run `npm fund` for details
 ```
 
-If you want it gone:
+## Choose the right config scope
 
-- disable it globally: `npm config set fund false`
-- disable it in one repo: add `fund=false` to `.npmrc`
-- disable it for one install: `npm install --no-fund`
+| Scope | Command | What changes |
+| --- | --- | --- |
+| One command | `npm install --no-fund` | Nothing is saved |
+| One project | `npm config set fund false --location=project` | Writes `fund=false` to the project's `.npmrc` |
+| Your user | `npm config set fund false --location=user` | Applies to projects using your user npm config |
 
-![The npm fund command showing in my terminal.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/rUiZiYHULe49bgleBIzQmpvA4eHrB2fytglgSxaT.png/public)
-
-## What does `npm fund` mean?
-
-`npm fund` isn’t an error or warning—it’s informational. This message is npm’s polite reminder that some of the open-source packages you’re using would appreciate financial support.
-
-If you run `npm fund`, npm shows the funding information it found for the dependencies in your project. In current npm CLI help, the command description is simply “Retrieve funding information.”
-
-Maintainers often point to places like GitHub Sponsors or Open Collective. Supporting packages helps keep the ecosystem maintained, but the message itself is still just informational.
-
-But let’s be realistic—financially supporting every dependency isn’t feasible for most of us, so disabling these messages can be totally legitimate.
-
-## How to disable "packages are looking for funding"
-
-You have three straightforward options, depending on whether you want the change everywhere, in one repo, or just for one command.
-
-### Disable it globally
-
-If you’re absolutely sure you never want to see this message again, disable it globally by running:
-
-```bash
-npm config set fund false
-```
-
-If you later change your mind, re-enable it:
-
-```bash
-npm config set fund true
-```
-
-### Disable it in your project only
-
-To silence funding messages for one project only, use the `.npmrc` file:
-
-1.  Navigate to your project’s root.
-2.  Create or edit `.npmrc`.
-3.  Add:
+Project scope is the right choice when a repository wants quiet CI logs for everyone. Commit `.npmrc` if that is an intentional team setting:
 
 ```ini
 fund=false
 ```
 
-Now NPM will skip the message only in this project.
+User scope is better when the preference is yours and should not change the repository.
 
-### Disable it per command
+## Check the active value
 
-Want to keep your options open? Use the `--no-fund` flag to temporarily disable funding messages:
+Run:
 
 ```bash
-npm install --no-fund
+npm config get fund
 ```
 
-This flag also works with other npm commands like `npm update`.
+It prints `true` or `false` after npm merges project, user, global, and command-line settings.
 
-## Why are packages looking for funding?
+To see which configuration files npm is reading:
 
-Open-source developers dedicate time and resources to maintaining packages that everyone uses freely. The `npm fund` message encourages users to contribute financially to sustain this ecosystem.
+```bash
+npm config get userconfig
+npm config get globalconfig
+```
 
-However, it’s understandable that you can’t fund everyone. Disabling this notice is a practical choice if it fits your workflow.
+If the funding notice still appears, check for a higher-priority project `.npmrc` or a command that explicitly passes `--fund`.
 
-## Alternative ways to support maintainers
+## Turn the message back on
 
-If financial support isn’t your thing or isn’t feasible, you can still help:
+For your user configuration:
 
-*   Star projects on GitHub to boost their visibility.
-*   Submit bug reports, improvements, or PRs.
-*   Share projects you find valuable on social media or blogs.
+```bash
+npm config set fund true --location=user
+```
 
-These actions still significantly help maintainers and the community.
+For a project, either set it back to `true` or delete the `fund=false` line from `.npmrc`.
 
-## Conclusion
+Disabling the notice does not affect `npm fund`; you can still run the command whenever you want to inspect the funding links.
 
-You’ve now got multiple ways to disable npm’s “packages are looking for funding” message. Choose the method that suits you best and enjoy clearer terminal output!
+The official [npm fund documentation](https://docs.npmjs.com/cli/v11/commands/npm-fund) covers the command, while the [npm config documentation](https://docs.npmjs.com/cli/v11/using-npm/config) explains scope and precedence.
 
-If you are cleaning up noisy Node tooling while keeping the workflow sane, these are the next reads I would open:
+Related guides:
 
-- [Use npm ci when you need repeatable installs, not surprises](/npm-ci)
-- [See where Bun fits compared with npm, Yarn, and pnpm](/bun-package-manager)
-- [Use Bun in plain PHP projects too, not just Laravel](/bun-php)
-- [Swap npm out for Bun in Laravel without friction](/bun-laravel)
+- [Use npm ci for clean lockfile installs](/npm-ci)
+- [Compare Bun with pnpm and npm](/bun-package-manager)
+- [Use Bun in a plain PHP project](/bun-php)
+- [Swap npm for Bun in Laravel](/bun-laravel)

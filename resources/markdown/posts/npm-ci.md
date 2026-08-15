@@ -3,86 +3,183 @@ id: "01KKEW27HC2H5HQCA5SN929N5G"
 title: "npm ci: what it does and when to use it"
 slug: "npm-ci"
 author: "benjamincrozat"
-description: "Learn what npm ci does, how it differs from npm install, and when to use it for CI, Docker, and reproducible builds."
+description: "Use npm ci for clean lockfile installs in CI, Docker, and deployments, understand how it differs from npm install, and fix lockfile and flag errors."
 categories:
   - "javascript"
   - "node-js"
-published_at: 2025-07-19T11:55:00+02:00
-modified_at: 2026-03-14T10:09:06Z
+published_at: 2025-07-19T09:55:00Z
+modified_at: 2026-08-15T09:28:36Z
 serp_title: null
 serp_description: null
-canonical_url: null
+canonical_url: ""
 is_commercial: false
 image_disk: "cloudflare-images"
 image_path: "images/posts/01K29DVXKM78X3NCPZZ1GYSTF3.png"
 sponsored_at: null
 ---
-## Introduction
+`npm ci` installs the dependency graph from `package-lock.json`, removes the existing `node_modules` directory first, and fails when the lockfile does not match `package.json`.
 
-`npm ci` installs dependencies from your lockfile exactly as committed, wipes `node_modules` first, and fails if `package.json` and `package-lock.json` are out of sync. Use it when you need reproducible installs in CI, Docker, or deployment pipelines.
+```bash
+npm ci
+```
 
-If you are comparing it with `npm install`, the short version is simple: `npm ci` favors consistency, while `npm install` favors flexibility during local development.
+Use it in CI, Docker builds, and deployments. Use `npm install` when you intentionally add, remove, or update dependencies.
 
-## What does `npm ci` do
+## npm ci versus npm install
 
-When you run `npm ci`, npm does three important things:
+| Behavior | `npm ci` | `npm install` |
+| --- | --- | --- |
+| Needs a lockfile | Yes | No |
+| Fails when `package.json` and the lockfile disagree | Yes | Usually updates the lockfile |
+| Removes `node_modules` first | Yes | No |
+| Writes `package.json` or the lockfile | No | Can |
+| Adds one package | No | Yes |
+| Best use | Automation and clean verification | Local dependency changes |
 
-- **Lockfile-first install**: it installs exactly what is in `package-lock.json`.
-- **Clean slate**: it removes `node_modules` before reinstalling dependencies.
-- **Strict validation**: it errors out if the lockfile and `package.json` do not match.
+`npm ci` gives you the same locked dependency graph when the npm version, platform, architecture, configuration, registry, and package artifacts are the same. It does not promise byte-for-byte identical `node_modules` across different operating systems or CPU architectures.
 
-That makes it the right default for environments where "works on my machine" is not good enough.
+## What npm ci requires
 
-## What does `npm install` do
+The project must contain `package-lock.json` or `npm-shrinkwrap.json` with a supported lockfile version. Commit that file with `package.json`.
 
-When you run `npm install`, here’s what’s happening:
+I checked the current behavior with npm 11.16.0:
 
-- **Semver resolution and lockfile updates**: npm reads your `package.json`, figures out the latest acceptable versions based on semver ranges, and then checks against my `package-lock.json`. If allowed ranges in `package.json` mean newer versions are available, npm updates the lockfile accordingly. Since NPM 7, the lockfile typically takes priority.
-- **Incremental node\_modules mutation**: `npm install` tries to save you time by only updating what’s necessary in `node_modules`. This incremental approach is great for local development, especially with fast hot-reloading.
+- a clean matching project installed successfully
+- changing `package.json` without updating `package-lock.json` exited with `EUSAGE`
+- npm did not repair the lockfile during `npm ci`
 
-## Why `npm ci` behaves differently from `npm install`
+That strict failure is the point. It tells you the commit does not describe one dependency tree.
 
-- **Lockfile-first philosophy**: `npm ci` completely trusts the lockfile. No version guessing, no automatic upgrades. Just precise, byte-for-byte consistency.
-- **The “nuke & pave” node\_modules step**: Every time you run `npm ci`, it wipes out the entire `node_modules` folder before rebuilding it exactly according to the lockfile. This ensures absolute cleanliness, though it can be slower locally if you already have an updated node\_modules.
-- **Strict sync checks**: If my `package-lock.json` and `package.json` aren’t perfectly synced (or if there’s no lockfile), `npm ci` throws an error immediately.
+## The normal local and CI workflow
 
-## When I reach for `npm ci` (and when I don’t)
+Add or update dependencies locally:
 
-Here’s my personal rule-of-thumb:
+```bash
+npm install lodash
+```
 
-- **npm ci:** Always in CI (Continuous Integration) pipelines, Docker builds, and production deployments. It ensures deterministic, fast, and predictable outcomes.
-- **npm install:** Daily local development, especially when frequently adding or upgrading dependencies.
+Review and commit both files:
 
-## Common errors I still hit and quick fixes
+```text
+package.json
+package-lock.json
+```
 
-Despite best practices, I still encounter occasional bumps:
+Then verify the exact committed state:
 
-- **“package-lock.json is out of sync”**: Quickly fix by running `npm install` (to regenerate lockfile) or, for a fresh environment, `rm -rf node_modules && npm ci`.
-- **Native add-ons rebuild loop**: Mitigate by caching the entire npm cache directory (`~/.npm`) between builds. This avoids unnecessary rebuilds with node-gyp.
+```bash
+npm ci
+npm test
+```
 
-## FAQ
+If a teammate or dependency bot changes one file without the other, CI should fail before the build reaches production.
 
-### Does `npm ci` respect .npmrc proxies?
+## Use npm ci in GitHub Actions
 
-Yes, it fully respects npm configuration files. Note: per-project `.npmrc` files override global `.npmrc`.
+Let `setup-node` cache npm's download cache, then run the clean install:
 
-### Can I add a package with `npm ci`?
+```yaml
+steps:
+  - uses: actions/checkout@v4
 
-Nope. Instead, use `npm install lodash@latest` (or your desired package) and commit the updated lockfile.
+  - uses: actions/setup-node@v4
+    with:
+      node-version-file: .nvmrc
+      cache: npm
 
-### Is pnpm still faster?
+  - run: npm ci
+  - run: npm test
+  - run: npm run build
+```
 
-Usually, yes—but npm ci is plenty fast for most scenarios.
+The cache speeds up package downloads. Do not cache and restore `node_modules` over `npm ci`; the command deletes that directory before installing anyway.
 
-## TL;DR
+## Use npm ci in Docker
 
-- Use `npm ci` for speed, consistency, and CI reliability.
-- Use `npm install` locally for flexibility and incremental updates.
-- Always commit and maintain a clean, synced `package-lock.json`.
+Copy dependency manifests before application source so Docker can reuse the install layer:
 
-If you are trying to make installs predictable instead of merely fast, these are the next reads I would compare with it:
+```dockerfile
+FROM node:24-alpine AS build
 
-- [See where Bun fits compared with npm, Yarn, and pnpm](/bun-package-manager)
-- [Hide the npm funding message when you just want clean installs](/npm-fund)
-- [Use Bun in plain PHP projects too, not just Laravel](/bun-php)
-- [Swap npm out for Bun in Laravel without friction](/bun-laravel)
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY . .
+RUN npm run build
+```
+
+When the final runtime needs Node dependencies but not development tools, install production dependencies separately:
+
+```dockerfile
+RUN npm ci --omit=dev
+```
+
+Do not use `--omit=dev` in a frontend build stage when Vite, Tailwind, TypeScript, or another build tool lives in `devDependencies`.
+
+## Keep lockfile creation flags consistent
+
+If `package-lock.json` was created with a flag that changes dependency resolution, `npm ci` needs the same setting. npm's current documentation calls out flags such as `--legacy-peer-deps` and `--install-links`.
+
+Instead of remembering a custom CI command, commit the setting in a project `.npmrc`:
+
+```ini
+legacy-peer-deps=true
+```
+
+Then both commands read the same policy:
+
+```bash
+npm install
+npm ci
+```
+
+Only add the setting your project actually needs. Do not copy `legacy-peer-deps=true` into every repository to silence a dependency problem you have not inspected.
+
+## Fix common npm ci errors
+
+### package.json and package-lock.json are out of sync
+
+Run the normal resolver locally, review its changes, and commit the result:
+
+```bash
+npm install
+npm ci
+```
+
+Do not delete the lockfile just to make CI green. That removes the dependency decision `npm ci` is supposed to enforce.
+
+### A lockfile is missing
+
+Generate and commit it:
+
+```bash
+npm install
+git add package.json package-lock.json
+```
+
+### The lockfile was created with different peer-dependency settings
+
+Re-run `npm install` with the intended setting, save it in the project's `.npmrc`, and commit both files. The automation and local resolver must use the same rules.
+
+### Native packages still rebuild
+
+Caching npm's cache directory avoids many downloads, but native add-ons may still compile when the Node version, operating system, architecture, or available prebuilt binary changes. Pin the Node version and keep the build environment consistent before blaming `npm ci`.
+
+### CI needs only one workspace
+
+`npm ci` supports npm workspace options. Keep one root lockfile and use the same workspace selection your other commands use:
+
+```bash
+npm ci --workspace=apps/web
+```
+
+The official [npm ci documentation](https://docs.npmjs.com/cli/v11/commands/npm-ci) is the source for the current lockfile, flag, and workspace behavior.
+
+Related guides:
+
+- [Compare Bun with pnpm and npm](/bun-package-manager)
+- [Hide the npm funding message](/npm-fund)
+- [Use Bun in a plain PHP project](/bun-php)
+- [Swap npm for Bun in Laravel](/bun-laravel)
