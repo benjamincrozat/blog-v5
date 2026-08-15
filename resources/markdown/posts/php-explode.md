@@ -7,18 +7,16 @@ description: "Use PHP explode() to split a string by a fixed delimiter, understa
 categories:
   - "php"
 published_at: 2023-11-07T23:00:00Z
-modified_at: 2026-03-20T09:46:08Z
+modified_at: 2026-08-15T09:28:36Z
 serp_title: null
 serp_description: null
-canonical_url: null
+canonical_url: ""
 is_commercial: false
 image_disk: "cloudflare-images"
 image_path: "images/posts/5qCHWcOwVfYznTF.jpg"
 sponsored_at: null
 ---
-## Introduction
-
-Use [`explode()`](https://www.php.net/manual/en/function.explode.php) when you already know the exact delimiter and want an array right away. It is the right choice for a comma, pipe, slash, or any other single fixed separator.
+Use [`explode()`](https://www.php.net/manual/en/function.explode.php) when you know the exact delimiter and want an array right away. It is the right choice for a comma, pipe, slash, or any other fixed separator.
 
 ```php
 $tags = explode(', ', 'php, laravel, mysql');
@@ -28,7 +26,20 @@ print_r($tags);
 // Array ( [0] => php [1] => laravel [2] => mysql )
 ```
 
-If the text is messy, quoted, or split by more than one kind of separator, skip to the alternatives section. The two things that usually trip people up are the `limit` argument and choosing `explode()` when the input is not really fixed-delimiter text.
+If the text is messy, quoted, or split by more than one kind of separator, use the alternatives farther down. The two things that usually trip people up are the `limit` argument and the empty values created by delimiters at the edges.
+
+## explode() behavior at a glance
+
+| Input or option | Result |
+| --- | --- |
+| Separator is present | One array element per part |
+| Separator is missing | An array containing the original string |
+| Separator is missing and `limit` is negative | An empty array |
+| String starts or ends with the separator | An empty first or last element |
+| Positive `limit` | At most that many elements; the last contains the remainder |
+| `limit` is `0` | Treated as `1` |
+| Negative `limit` | Omits that many elements from the end |
+| Separator is an empty string | Throws `ValueError` on PHP 8+ |
 
 ## PHP explode() syntax
 
@@ -229,9 +240,7 @@ No. If you need regex matching, use [`preg_split()`](https://www.php.net/manual/
 
 [`implode()`](https://www.php.net/manual/en/function.implode.php). It joins array elements into one string.
 
-## Conclusion
-
-`explode()` is the right PHP function when you want to split a string by one known delimiter. Reach for it first for commas, pipes, slashes, and similar fixed separators. If the input is really CSV, inconsistent whitespace, or pattern-based text, switch to the more appropriate tool instead of forcing `explode()` to do a job it was not built for.
+`explode()` is the right PHP function for one known delimiter. If the input is CSV, inconsistent whitespace, or pattern-based text, switch tools instead of forcing a simple string split to parse a real format.
 
 If you are still cleaning up string handling in PHP, these are the next reads I would keep open:
 

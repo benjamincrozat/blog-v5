@@ -3,11 +3,11 @@ id: "01KKEW27K31T1FCNHMP674ERSA"
 title: "PHP array sort: which function to use and when"
 slug: "php-array-sort"
 author: "benjamincrozat"
-description: "Sort arrays in PHP with sort(), rsort(), asort(), arsort(), ksort(), krsort(), and usort(), and choose the right function for indexed or associative arrays."
+description: "Choose the right PHP array sort function, preserve or reset keys deliberately, use sort flags, and write stable custom and multi-column comparisons."
 categories:
   - "php"
-published_at: 2023-11-09T00:00:00+01:00
-modified_at: 2026-03-14T10:17:05Z
+published_at: 2023-11-08T23:00:00Z
+modified_at: 2026-08-15T09:28:36Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -16,110 +16,198 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/fatzUFHaSxNN3gJ.jpg"
 sponsored_at: null
 ---
-## Introduction
+Use `sort()` for a simple list, `asort()` when associative keys must stay attached to their values, `ksort()` to order by key, and `usort()` for custom rules.
 
-Sorting arrays is a common task in PHP, and the language provides a variety of functions to order elements just the way you need.
+The function name matters because PHP's array sort functions modify the original array, and several of them reset its keys.
 
-The trick is choosing the right one: `sort()` for simple indexed arrays, `asort()` when keys must stay attached to values, `ksort()` for key order, and `usort()` when built-in sorting rules are not enough.
+## PHP array sorting functions compared
 
-Let me show you some of PHP's array sorting capabilities.
+| Function | Sorts by | Order | Keeps keys? | Modifies the input? |
+| --- | --- | --- | --- | --- |
+| `sort()` | Value | Ascending | No | Yes |
+| `rsort()` | Value | Descending | No | Yes |
+| `asort()` | Value | Ascending | Yes | Yes |
+| `arsort()` | Value | Descending | Yes | Yes |
+| `ksort()` | Key | Ascending | Yes | Yes |
+| `krsort()` | Key | Descending | Yes | Yes |
+| `usort()` | Value with your callback | Your callback | No | Yes |
+| `uasort()` | Value with your callback | Your callback | Yes | Yes |
+| `uksort()` | Key with your callback | Your callback | Yes | Yes |
 
-## How to sort arrays in PHP
+On current PHP versions, these functions return `true`. They do not return the sorted array.
 
-When you have a simple indexed array that needs reordering, `sort()` and `rsort()` are the straightforward choices for ascending and descending order, respectively.
-
-For `sort()`:
+## Sort a list in ascending or descending order
 
 ```php
-$fruits = ["Banana", "Apple", "Orange"];
+$fruits = ['Banana', 'Apple', 'Orange'];
 
 sort($fruits);
 
-var_dump($fruits);
+// ['Apple', 'Banana', 'Orange']
 ```
 
-Once sorted, the `$fruits` array will be:
+Use `rsort()` for descending order:
 
 ```php
-["Apple", "Banana", "Orange"]
+$scores = [12, 5, 28];
+
+rsort($scores);
+
+// [28, 12, 5]
 ```
 
-Now, what to do when you have an associative array? The `sort()` function won't cut it.
+Both functions assign new zero-based numeric keys. That makes them a good fit for lists, not arrays where the original keys carry meaning.
 
-## Maintaining key association with asort() and arsort()
+## Preserve associative keys with asort() and arsort()
 
-Associative arrays require maintaining the relationship between keys and values. `asort()` sorts in ascending order by value, maintaining key association, and `arsort()` does the same in descending order.
-
-Example of `asort()`:
+`asort()` orders by value while keeping each key attached:
 
 ```php
 $prices = [
-    "Apple" => 1.2,
-    "Banana" => 0.5,
-    "Orange" => 0.9,
+    'Apple' => 1.20,
+    'Banana' => 0.50,
+    'Orange' => 0.90,
 ];
 
 asort($prices);
 
-var_dump($prices);
+// [
+//     'Banana' => 0.50,
+//     'Orange' => 0.90,
+//     'Apple' => 1.20,
+// ]
 ```
 
-The sorted `$prices` array now looks like this:
+Use `arsort()` for the same operation in descending order.
 
-```php
-[
-    "Banana" => 0.5,
-    "Orange" => 0.9,
-    "Apple" => 1.2,
-]
-```
+## Sort an associative array by key
 
-## Key-centric sorting with ksort() and krsort()
-
-To sort an associative array by its keys, `ksort()` for ascending order and `krsort()` for descending order are your go-to functions.
-
-Using `ksort()`:
+Use `ksort()` or `krsort()` when the keys determine the order:
 
 ```php
 $products = [
-    "product3" => "Chair",
-    "product1" => "Desk",
-    "product2" => "Lamp",
+    'product3' => 'Chair',
+    'product1' => 'Desk',
+    'product2' => 'Lamp',
 ];
 
 ksort($products);
 
-var_dump($products);
+// [
+//     'product1' => 'Desk',
+//     'product2' => 'Lamp',
+//     'product3' => 'Chair',
+// ]
 ```
 
-## Custom sorting with usort(), uasort(), and uksort()
+The values do not change. Only the order of their keys does.
 
-What we saw until now will probably cover 99% of your needs.
+## Do not assign the return value
 
-But sometimes, you need a sorting logic that's not built-in. For these instances, `usort()` for value-based, `uasort()` for value-based with preserved keys, and `uksort()` for key-based custom sorting. Each requires a user-defined comparison function.
+This is wrong:
 
-An example with `usort()`:
+```php
+$sorted = sort($fruits);
+
+// $sorted is true, not an array.
+```
+
+If you need to keep the original array, copy it first:
+
+```php
+$sorted = $fruits;
+sort($sorted);
+```
+
+## Choose the comparison mode with sort flags
+
+Most sorting functions accept a flag as their second argument.
+
+| Flag | Comparison |
+| --- | --- |
+| `SORT_REGULAR` | PHP's normal comparison rules |
+| `SORT_NUMERIC` | Compare values numerically |
+| `SORT_STRING` | Compare values as strings |
+| `SORT_NATURAL` | Natural order, so `file2` comes before `file10` |
+| `SORT_LOCALE_STRING` | Compare using the current locale |
+| `SORT_FLAG_CASE` | Combine with `SORT_STRING` or `SORT_NATURAL` for case-insensitive sorting |
+
+Numeric strings are a common reason to set the flag explicitly:
+
+```php
+$values = ['20', '3', '100'];
+
+sort($values, SORT_NUMERIC);
+
+// ['3', '20', '100']
+```
+
+For file-like names, `natsort()` is easier to read:
+
+```php
+$files = ['file10.txt', 'file2.txt', 'file1.txt'];
+
+natsort($files);
+$files = array_values($files);
+
+// ['file1.txt', 'file2.txt', 'file10.txt']
+```
+
+`natsort()` preserves keys, which is why I used `array_values()` when I wanted a clean list afterward. Use `natcasesort()` when letter case should not affect the natural order.
+
+## Write a custom comparison with usort()
+
+A comparison callback must return:
+
+- a negative integer when the first value should come first
+- zero when the values are equal for sorting
+- a positive integer when the second value should come first
+
+The spaceship operator makes that compact:
 
 ```php
 $numbers = [3, 2, 5, 6, 1];
 
-usort($numbers, function ($a, $b) {
-    return $a <=> $b; // The spaceship operator
-});
+usort($numbers, fn (int $a, int $b): int => $a <=> $b);
 
-var_dump($numbers);
+// [1, 2, 3, 5, 6]
 ```
 
-With the custom function, `$numbers` will be sorted as:
+Do not return only `$a > $b`. A boolean cannot describe all three outcomes reliably.
+
+Use `uasort()` instead when the original keys must survive. Use `uksort()` when your callback compares keys rather than values.
+
+## Sort rows by more than one column
+
+Compare the main field first, then use a second comparison when the first one ties:
 
 ```php
-[1, 2, 3, 5, 6];
+$users = [
+    ['name' => 'Zoe', 'score' => 90],
+    ['name' => 'Ana', 'score' => 95],
+    ['name' => 'Ben', 'score' => 95],
+];
+
+usort($users, function (array $a, array $b): int {
+    return ($b['score'] <=> $a['score'])
+        ?: ($a['name'] <=> $b['name']);
+});
+
+// Ana 95, Ben 95, Zoe 90
 ```
 
-Of course, in that case, using `sort()` would be better. I just wanted to let you know that custom sorting logic is possible! 🙂
+The score comparison is reversed for descending order. Names use the normal ascending comparison.
 
-If sorting data is only one piece of the array cleanup work you do all the time, these are the next reads I would keep nearby:
+## Equal values keep their original order on PHP 8+
 
-- [Reset array keys cleanly when the indexes get weird](/php-array-values)
-- [Filter PHP arrays cleanly without awkward loops](/php-array-filter)
-- [Map arrays in PHP without overcomplicating the callback](/php-array-map)
+PHP's array sorting functions are stable as of PHP 8.0. When the comparison says two values are equal, their previous relative order is retained.
+
+That means the callback above needs a name comparison only if name order is a real requirement. If insertion order is the intended tie-breaker, return `0` and let the stable sort preserve it.
+
+The practical rule is to choose key behavior first, then direction, then a comparison flag or callback. That prevents most sorting surprises before the code runs.
+
+Related guides:
+
+- [Filter arrays and understand preserved keys](/php-array-filter)
+- [Reset array keys with array_values()](/php-array-values)
+- [Map arrays without changing their shape by accident](/php-array-map)

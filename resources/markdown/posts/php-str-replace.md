@@ -3,11 +3,11 @@ id: "01KKEW27MJ9HYRQFW9G3BG0KXY"
 title: "PHP str_replace(): examples, gotchas, and alternatives"
 slug: "php-str-replace"
 author: "benjamincrozat"
-description: "Use PHP str_replace() to replace one string, many strings, or array values, and know when str_ireplace() or preg_replace() is the better fit."
+description: "Use PHP str_replace() for exact text, count changes, understand left-to-right replacements, and choose str_ireplace(), strtr(), or preg_replace() when needed."
 categories:
   - "php"
-published_at: 2023-07-10T00:00:00+02:00
-modified_at: 2026-03-18T21:02:00+00:00
+published_at: 2023-07-09T22:00:00Z
+modified_at: 2026-08-15T09:28:36Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -16,8 +16,6 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/generated/php-str-replace.png"
 sponsored_at: null
 ---
-## Introduction
-
 **Use [`str_replace()`](https://www.php.net/str_replace) when you want to replace exact text in PHP.**
 
 ```php
@@ -29,6 +27,13 @@ echo str_replace('12', '13', $title);
 ```
 
 That is the quick answer most searchers want.
+
+| Replacement job | Use |
+| --- | --- |
+| Exact, case-sensitive text | `str_replace()` |
+| Exact text regardless of ASCII letter case | `str_ireplace()` |
+| Several one-pass character or substring translations | `strtr()` |
+| A regex pattern or capture group | `preg_replace()` |
 
 The useful part is knowing when `str_replace()` stops being the right tool:
 
@@ -158,7 +163,7 @@ echo str_ireplace('php', 'PHP', 'Php is fun');
 Use [`preg_replace()`](https://www.php.net/preg_replace) when the match is a pattern:
 
 ```php
-echo preg_replace('/\d+/', '#', 'Version 8.4.16');
+echo preg_replace('/\d+/', '#', 'Version 8.5.9');
 
 // Version #.#.#
 ```
@@ -187,6 +192,18 @@ Because PHP replaces `A` with `B`, then sees that new `B` and replaces it with `
 
 If you need one-pass character translation, [`strtr()`](https://www.php.net/strtr) is often the safer fit.
 
+Here is the difference with the same input:
+
+```php
+echo str_replace(['A', 'B', 'C'], ['B', 'C', 'D'], 'ABC');
+// DDD
+
+echo strtr('ABC', ['A' => 'B', 'B' => 'C', 'C' => 'D']);
+// BCD
+```
+
+`strtr()` does not run a replacement through the later replacements again.
+
 ### A shorter replacement array means empty strings
 
 If the replacement array has fewer items than the search array, PHP uses an empty string for the rest:
@@ -211,9 +228,7 @@ echo str_replace('é', 'e', 'café');
 
 The more relevant Unicode caveat is with [`str_ireplace()`](https://www.php.net/str_ireplace): as of PHP 8.2, its case folding is ASCII-only, so non-ASCII bytes are compared by byte value.
 
-## Conclusion
-
-For exact string replacement in PHP, `str_replace()` is still the right default. The real value is knowing when to step up to `str_ireplace()` or `preg_replace()`, and when array replacement behavior will give you results that look random until you remember PHP processes them left to right.
+For exact string replacement, `str_replace()` is the right default. Reach for `strtr()` when replacements must not cascade, `str_ireplace()` when ASCII case should not matter, and `preg_replace()` only when the match is truly a pattern.
 
 If you are still cleaning up string handling in everyday PHP code, these are the next reads I would keep nearby:
 
