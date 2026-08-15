@@ -1,10 +1,11 @@
 {{--
-Shows a curated link card and accepts the link record, loading priority, attributes, and slot content.
+Shows a curated link card and accepts the link record, image visibility, loading priority, attributes, and slot content.
 --}}
 
 @props([
     'link',
     'priority' => false,
+    'showImage' => true,
 ])
 
 <div {{ $attributes }}>
@@ -12,13 +13,15 @@ Shows a curated link card and accepts the link record, loading priority, attribu
         href="{{ $link->url }}"
         target="_blank"
     >
-        @if ($link->image_url)
+        @if ($showImage && $link->image_url)
             <img
                 loading="{{ $priority ? 'eager' : 'lazy' }}"
                 decoding="async"
                 fetchpriority="{{ $priority ? 'high' : 'low' }}"
                 src="{{ $link->image_url }}"
                 alt="{{ $link->title  }}"
+                width="1280"
+                height="720"
                 class="object-cover rounded-xl ring-1 shadow-md transition-opacity shadow-black/5 aspect-video hover:opacity-50 ring-black/5"
             />
         @else
@@ -65,6 +68,8 @@ Shows a curated link card and accepts the link record, loading priority, attribu
             loading="lazy"
             src="{{ $link->user->avatar }}"
             alt="{{ $link->user->name }}"
+            width="40"
+            height="40"
             class="rounded-full ring-1 ring-black/5 size-10"
         />
     </div>

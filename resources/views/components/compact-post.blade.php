@@ -11,6 +11,8 @@ Shows a compact post row and accepts the post, attributes, and slot content forw
                 fetchpriority="high"
                 src="{{ $post->image_url }}"
                 alt="{{ $post->title  }}"
+                width="48"
+                height="48"
                 class="object-cover ring-1 shadow-md transition-opacity shadow-black/5 aspect-square hover:opacity-50 ring-black/5 rounded"
             />
         @else

@@ -17,6 +17,8 @@ Renders a comment thread item and accepts the comment, parent reply target, attr
             loading="lazy"
             src="{{ $commentUser->avatar }}"
             alt="{{ $commentUser->name ?? 'Deleted user' }}"
+            width="32"
+            height="32"
             class="flex-none mt-1 rounded-full ring-1 shadow-sm shadow-black/5 ring-black/10 size-7 md:size-8"
         />
 

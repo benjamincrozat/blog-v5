@@ -35,7 +35,7 @@ Displays the home view.
 
     <x-section title="Latest links" id="links" class="mt-24 md:mt-32">
         @if ($links->isNotEmpty())
-            <x-links-grid :$links />
+            <x-links-grid :$links :show-images="false" />
         @endif
 
         <x-btn

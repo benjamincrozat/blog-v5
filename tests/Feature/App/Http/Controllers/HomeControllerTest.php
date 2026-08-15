@@ -28,6 +28,21 @@ it('shows twelve approved links on the homepage', function () {
             && $links->every(fn (Link $link) => $link->relationLoaded('post') && $link->relationLoaded('user')));
 });
 
+it('does not load community preview images on the homepage', function () {
+    $link = Link::factory()->approved()->create([
+        'image_url' => 'https://example.com/large-community-preview.jpg',
+    ]);
+
+    get(route('home'))
+        ->assertOk()
+        ->assertSee($link->title)
+        ->assertDontSee($link->image_url, escape: false);
+
+    get(route('links.index'))
+        ->assertOk()
+        ->assertSee($link->image_url, escape: false);
+});
+
 it('omits the homepage calls to action and about links', function () {
     get(route('home'))
         ->assertDontSee('Who the F are you?')

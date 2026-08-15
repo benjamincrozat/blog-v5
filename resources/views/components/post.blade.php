@@ -16,6 +16,8 @@ Shows a blog post card and accepts the post, loading priority, attributes, and o
                 fetchpriority="{{ $priority ? 'high' : 'low' }}"
                 src="{{ $post->image_url }}"
                 alt="{{ $post->title  }}"
+                width="1280"
+                height="720"
                 class="object-cover rounded-xl ring-1 shadow-md transition-opacity shadow-black/5 aspect-video hover:opacity-50 ring-black/5"
             />
         @else
@@ -44,6 +46,8 @@ Shows a blog post card and accepts the post, loading priority, attributes, and o
             <img
                 src="{{ $post->user->avatar }}"
                 alt="{{ $post->user->name }}"
+                width="40"
+                height="40"
                 class="rounded-full ring-1 ring-black/5 size-10"
             />
         </div>

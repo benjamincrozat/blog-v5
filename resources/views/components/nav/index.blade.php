@@ -44,6 +44,8 @@ Presents the nav index component UI and accepts component props, Blade attribute
                     <img
                         src="{{ auth()->user()->avatar }}"
                         alt="{{ auth()->user()->name }}'s GitHub avatar"
+                        width="28"
+                        height="28"
                         class="mx-auto rounded-full size-6 md:size-7"
                     />
 
