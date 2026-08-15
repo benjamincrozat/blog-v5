@@ -1,14 +1,14 @@
 ---
 id: "01KKEW2780NK2M3H3CFCG87HN6"
-title: "How to check your PHP version quickly"
+title: "How to check your PHP version and active binary"
 slug: "check-php-version"
 author: "benjamincrozat"
-description: "Check your PHP version with php -v, phpversion(), phpinfo(), or Laravel's artisan about command, depending on whether you are in CLI, browser, or a Laravel app."
+description: "Check the PHP version used by your terminal, web server, Laravel app, Docker container, or Herd, then find the active binary and php.ini file."
 categories:
   - "laravel"
   - "php"
-published_at: 2023-09-02T00:00:00+02:00
-modified_at: 2026-03-19T22:39:10Z
+published_at: 2023-09-01T22:00:00Z
+modified_at: 2026-08-15T09:28:36Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -17,63 +17,89 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/4CD3Od4OzsLNBbQ.png"
 sponsored_at: null
 ---
-## Introduction
-
-**To check your PHP version, run `php -v` in your terminal.**
-
-That is the fastest and most reliable method when you have shell access.
-
-If you do not have terminal access, use one of these instead:
-
-- `phpversion()` for a tiny browser-safe output
-- `phpinfo()` if you need full configuration details
-- `php artisan about` inside a Laravel project
-
-## Check PHP version in the CLI
-
-For most people, this is the right answer.
+**Run `php -v` to check the PHP version used by your terminal:**
 
 ```bash
 php -v
 ```
 
-You will get output like this:
+The first line looks like this:
 
 ```text
-PHP 8.4.16 (cli) ...
+PHP 8.5.9 (cli) ...
 ```
 
-That first line is enough if you only want the current version.
+That answers the common question. But it does not prove that your website, queue worker, or Docker container uses the same PHP installation.
 
-### Why `php -v` is usually the best method
+The latest stable release is PHP 8.5.9 as I update this guide. I keep the current stable and preview releases on my [latest PHP version page](/latest-php-version).
 
-- it is fast
-- it works on macOS, Linux, Windows, and WSL
-- it tells you which PHP binary your shell is actually using
+## Pick the command that matches where PHP runs
 
-If you have multiple PHP versions installed, the terminal result may not match the version your web server is using. That is where the browser methods below help.
+| What you need to inspect | Command or method |
+| --- | --- |
+| PHP used by your terminal | `php -v` |
+| First PHP binary in your shell path | `command -v php` on macOS/Linux or `(Get-Command php).Source` in PowerShell |
+| Every PHP binary in your shell path | `which -a php` on macOS/Linux or `where.exe php` on Windows |
+| Loaded CLI configuration | `php --ini` |
+| PHP used by a website | A temporary script using `PHP_VERSION` and `PHP_SAPI` |
+| PHP used by Laravel | `php artisan about` |
+| PHP inside Docker Compose | `docker compose exec app php -v` |
+| PHP selected by Laravel Herd | `herd which-php` and `herd php -v` |
 
-## Check PHP version in the browser
+Replace `app` in the Docker command with the PHP service name from your `compose.yaml` file.
 
-If you need to know what the web server is running, use `phpversion()` or `phpinfo()`.
+## Check the PHP binary, SAPI, and configuration together
 
-### Use `phpversion()` for the cleanest output
+Version mismatches are easier to diagnose when you print more than the version number:
 
-Create a temporary PHP file with:
+```bash
+php -r 'printf("PHP %s | SAPI: %s | Binary: %s\n", PHP_VERSION, PHP_SAPI, PHP_BINARY);'
+```
+
+You should see output similar to this:
+
+```text
+PHP 8.5.9 | SAPI: cli | Binary: /opt/homebrew/bin/php
+```
+
+Then ask PHP which configuration files it loaded:
+
+```bash
+php --ini
+```
+
+For a shorter answer on macOS or Linux:
+
+```bash
+php -i | grep "Loaded Configuration File"
+```
+
+PowerShell has an equivalent:
+
+```powershell
+php -i | Select-String "Loaded Configuration File"
+```
+
+This matters because editing a `php.ini` file that your active PHP process never loads changes nothing. My [php.ini location guide](/php-ini-location) covers the common paths.
+
+## Check the PHP version used by your website
+
+Your web server may use PHP-FPM while the terminal uses another CLI binary. Create a temporary PHP file in the public directory:
 
 ```php
 <?php
 
-echo phpversion();
+header('Content-Type: text/plain');
+
+echo 'PHP: ' . PHP_VERSION . PHP_EOL;
+echo 'SAPI: ' . PHP_SAPI . PHP_EOL;
+echo 'Binary: ' . PHP_BINARY . PHP_EOL;
+echo 'php.ini: ' . (php_ini_loaded_file() ?: 'none') . PHP_EOL;
 ```
 
-That prints only the version string, which makes it the cleaner browser option when you do not need extra details.
+Open the file in your browser and compare its output with the CLI commands above. Delete the file as soon as you finish.
 
-The PHP manual describes `phpversion()` as the function that gets the current PHP version.
-
-### Use `phpinfo()` when you also need configuration details
-
-Create a file like this:
+Use `phpinfo()` only when you need the complete configuration and extension list:
 
 ```php
 <?php
@@ -81,96 +107,80 @@ Create a file like this:
 phpinfo();
 ```
 
-Open it in your browser and look at the top of the page.
+That page exposes far more server information, so it should also be temporary.
 
-This is useful when you need more than the version number, for example:
+## Check PHP in a Laravel project
 
-- loaded extensions
-- active `php.ini`
-- SAPI details
-- environment information
-
-The tradeoff is that `phpinfo()` exposes a lot more information, so do not leave that file publicly accessible after you are done.
-
-## Check PHP version in Laravel
-
-If you are already inside a Laravel project, this is the easiest framework-aware command:
+Laravel gives you the PHP and framework versions in one command:
 
 ```bash
 php artisan about
 ```
 
-You will see the PHP version alongside your Laravel version and other environment details.
+The command still runs through the PHP binary selected by your shell. If the website behaves differently, compare it with the temporary browser script rather than assuming both environments match.
 
-If you want the framework version too, here is the companion guide:
+You can check the framework separately with my [Laravel version guide](/check-laravel-version).
 
-[Ways to check which Laravel version you are running](/check-laravel-version)
-
-## Why the browser and CLI versions sometimes differ
-
-This confusion is extremely common.
-
-Your terminal may use one PHP binary while Apache, nginx, PHP-FPM, Valet, or Herd uses another.
-
-If that happens:
-
-1. run `php -v` in the terminal
-2. check the browser version with `phpversion()` or `phpinfo()`
-3. compare the results
-
-If they are different, you are looking at two different PHP runtimes.
-
-That is usually a configuration issue, not a PHP bug.
-
-## Which method should you use?
-
-Use this simple rule:
-
-| Situation | Best method |
-| --- | --- |
-| You have terminal access | `php -v` |
-| You need the web-server version | `phpversion()` |
-| You need config details too | `phpinfo()` |
-| You are already in a Laravel app | `php artisan about` |
-
-## FAQ
-
-### How do I check my PHP version on macOS?
-
-Run:
+Composer can also tell you whether the current PHP binary and extensions satisfy the installed packages:
 
 ```bash
-php -v
+composer check-platform-reqs
 ```
 
-### How do I check my PHP version on Ubuntu or Debian?
+That is more useful than the version number alone after changing PHP versions.
 
-Run:
+## Check PHP in Docker
+
+Running `php -v` on your computer checks the host, not the container. Run it inside the PHP service instead:
 
 ```bash
-php -v
+docker compose exec app php -v
+docker compose exec app php --ini
 ```
 
-### How do I check my PHP version on Windows?
+If the service is not running, inspect a new container:
 
-Run the same command in Command Prompt, PowerShell, or Windows Terminal:
-
-```powershell
-php -v
+```bash
+docker compose run --rm app php -v
 ```
 
-### How do I check the PHP version used by my website?
+Again, replace `app` with your actual PHP service name.
 
-Use a temporary file with `phpversion()` or `phpinfo()` and open it in the browser. That shows the PHP runtime behind the web server, not just the one in your shell.
+## Check PHP in Laravel Herd
 
-### Which PHP versions are still supported in 2026?
+Herd can manage several PHP versions, so start by checking which binary it selected:
 
-Check the official [PHP supported versions page](https://www.php.net/supported-versions.php) before planning an upgrade. As of March 19, 2026, PHP **8.5** and **8.4** are in active support, while older branches are further along in their lifecycle.
+```bash
+herd which-php
+herd php -v
+```
 
-If you know your PHP version now and need the next step, these are the follow-up reads I would open:
+If plain `php -v` disagrees with `herd php -v`, your shell path is pointing somewhere else. The [Laravel Herd guide](/laravel-herd) covers switching global and per-site versions.
 
-- [Find the `php.ini` file that is actually affecting your setup](/php-ini-location)
-- [Check which Laravel version is running too](/check-laravel-version)
-- [Set up PHP on macOS or Windows with less friction](/laravel-herd)
-- [Run PHP and Laravel more smoothly on macOS](/laravel-valet)
-- [Set up Laravel on macOS without a messy local stack](/laravel-installation-macos)
+## When CLI and browser versions disagree
+
+Do not upgrade random installations until you know which runtime is wrong. Compare these four facts:
+
+| Runtime | Version | SAPI | Loaded configuration |
+| --- | --- | --- | --- |
+| Terminal | `php -v` | `php -r 'echo PHP_SAPI;'` | `php --ini` |
+| Website | `PHP_VERSION` | `PHP_SAPI` | `php_ini_loaded_file()` |
+| Laravel command | `php artisan about` | Usually `cli` | Same as the selected CLI binary |
+| Docker service | `docker compose exec app php -v` | Usually `cli` | Run `php --ini` inside the same container |
+
+Common causes are:
+
+- Homebrew, Herd, Valet, XAMPP, or a system PHP binary appears first in your shell path.
+- The web server still points to an older PHP-FPM service.
+- A long-running queue worker was not restarted after the PHP change.
+- The command ran on the host instead of inside the container.
+- CLI and PHP-FPM load different `php.ini` files.
+
+Once those four facts match, you know you are changing the PHP runtime that actually handles the request.
+
+Related guides:
+
+- [Check the latest stable PHP version and support dates](/latest-php-version)
+- [Show every PHP error while debugging](/php-show-all-errors)
+- [Check which Laravel version is running](/check-laravel-version)
+- [Set up Laravel and PHP with Herd](/laravel-herd)

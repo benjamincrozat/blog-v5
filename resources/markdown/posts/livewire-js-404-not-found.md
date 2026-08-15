@@ -1,14 +1,14 @@
 ---
 id: "01KKEW27H4W10DJG83GXF8EMJ5"
-title: "Fix the /livewire/livewire.js 404 not found error"
+title: "Fix Livewire JavaScript 404 errors in v3 and v4"
 slug: "livewire-js-404-not-found"
 author: "benjamincrozat"
-description: "Learn how to fix the 404 not found error occurring for /livewire/livewire.js."
+description: "Fix Livewire JavaScript 404 errors by checking the v3 or v4 asset route, Nginx rules, route cache, Blade directives, and published assets."
 categories:
   - "livewire"
-published_at: 2023-09-21T00:00:00+02:00
-modified_at: 2023-10-17T00:00:00+02:00
-serp_title: "Fix the /livewire/livewire.js 404 not found error (2025)"
+published_at: 2023-09-20T22:00:00Z
+modified_at: 2026-08-15T09:28:36Z
+serp_title: null
 serp_description: null
 canonical_url: ""
 is_commercial: false
@@ -16,125 +16,144 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/CZyOIx4Jh55u1dx.jpg"
 sponsored_at: null
 ---
-## Introduction
+If Livewire's JavaScript returns a 404, first check which Livewire major your app uses. The URL changed in Livewire 4:
 
-**If you're hitting a frustrating 404 error when requesting `/livewire/livewire.js`, especially on your production server, the good news is the fix is typically straightforward. Let's dig in!**
+| Livewire version | Default JavaScript route |
+| --- | --- |
+| Livewire 4 | `/livewire-{hash}/livewire.js` |
+| Livewire 3 | `/livewire/livewire.js` |
 
-## Why `/livewire/livewire.js` returns a 404 error
+Run these commands before changing Nginx or Apache:
 
-Livewire serves its JavaScript dynamically. Run `php artisan route:list` and you'll spot this route:
-
-```
-GET|HEAD  livewire/livewire.js .......... Livewire\Mechanisms › FrontendAssets@returnJavaScriptAsFile
-```
-
-However, certain server configurations—like mine below—can mistakenly try to handle Livewire's JavaScript file as a static asset:
-
-Here's my Nginx setup:
-
-```
-location ~* \.(?:css|js|mjs|map|jpg|jpeg|gif|png|svg|webp|ico|ttf|woff2?)$ {
-    expires 30d;
-    access_log off;
-    add_header Cache-Control "public, immutable";
-}
+```bash
+composer show livewire/livewire
+php artisan route:list --path=livewire
 ```
 
-Since `/livewire/livewire.js` isn't an actual static file, Nginx ends up giving you a disappointing 404.
+I checked the current behavior with Livewire 4.4.0. Its asset and update routes include a hash derived from the app, so your exact URL will differ from another project's URL.
 
-Luckily, we can easily resolve this.
+## Fix the Livewire 4 JavaScript 404 on Nginx
 
-## How to fix `/livewire/livewire.js` 404 errors
+Livewire 4 serves JavaScript through Laravel at a route such as `/livewire-a1b2c3d4/livewire.js`. A broad Nginx rule for `.js` files can intercept that request and look for a file that does not exist in `public/`.
 
-### Fix for Nginx
+Pass Livewire's hashed routes back to Laravel before your static-asset rule:
 
-Just before the code we saw above, drop in this little snippet:
-
-```
-location = /livewire/livewire.js {
-    expires off;
+```nginx
+location ~ ^/livewire-[a-f0-9]+/ {
     try_files $uri $uri/ /index.php?$query_string;
 }
 ```
 
-Now, Nginx gracefully hands this request back to Laravel.
+This is the pattern in the current [Livewire 4 installation and troubleshooting guide](https://livewire.laravel.com/docs/4.x/installation#livewire-javascript-not-loading-404-error).
 
-You could also have a regex that matches all JavaScript files but livewire.min.js:
+Reload Nginx after validating the configuration:
 
-location ~* ^(?!/livewire/livewire\.min\.js$).*\.(?:css|js|mjs|map|jpg|jpeg|gif|png|svg|webp|ico|ttf|woff2?)$ {
-    expires 30d;
-    access_log off;
-    add_header Cache-Control "public, immutable";
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+The service name can differ on managed servers. Use your host's normal Nginx reload command if `nginx.service` is not how it is installed.
+
+## Fix `/livewire/livewire.js` on Livewire 3
+
+Livewire 3 uses the older `/livewire/livewire.js` route. If Nginx treats every `.js` request as a static file, add an exact exception before that rule:
+
+```nginx
+location = /livewire/livewire.js {
+    try_files $uri $uri/ /index.php?$query_string;
 }
-
-### Apache fix (.htaccess)
-
-If you're an Apache user, update your `.htaccess` with:
-
-```apacheconf
-RewriteCond %{REQUEST_URI} ^/livewire/livewire\.js$
-RewriteRule ^ index.php [L,NC]
 ```
 
-It tells Apache, "Let Laravel handle this one, buddy."
+Do not copy the v3 path into a Livewire 4 app. Confirm the route your installed package actually registered.
 
-## Using Livewire in a sub-directory or with a CDN?
+## Clear a stale route cache
 
-If your Laravel app sits in a sub-directory, adjust `config/livewire.php` to correctly route assets:
+If the web server reaches Laravel but the route is still missing, clear only the route cache:
 
-```php
-// config/livewire.php
-'asset_url' => env('APP_URL') . '/subdirectory',
+```bash
+php artisan route:clear
+php artisan route:list --path=livewire
 ```
 
-If you're serving assets via a CDN like Cloudflare, make sure you exclude `/livewire/*` from caching, or you'll have other headaches!
+Use `route:clear` here instead of clearing every Laravel cache. It tests the likely cause without flushing unrelated application data.
 
-## A better way: bundle Livewire into your JavaScript
+## Check the Blade asset directives
 
-By default, Livewire v3 injects its JavaScript automatically. However, for more control, you can bundle it traditionally.
+Livewire injects its assets automatically when a page contains a Livewire component. I still prefer explicit directives in the layout because they make the asset placement obvious:
 
-If you're using **Vite** (which I recommend), adjust `resources/js/app.js`:
+```blade
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
+    </head>
+    <body>
+        {{ $slot }}
+
+        @livewireScripts
+    </body>
+</html>
+```
+
+If `inject_assets` is `false` in `config/livewire.php`, these directives are required.
+
+## Manually bundle Livewire only when you need control
+
+Most apps should let Livewire serve its own assets. Manual bundling is useful when you need Alpine plugins or a custom initialization order.
+
+Replace `@livewireScripts` with `@livewireScriptConfig`, then import the ESM build in `resources/js/app.js`:
 
 ```js
-import { createLaravelVitePlugin } from 'laravel-vite-plugin'
-import 'laravel-vite-plugin/plugins/livewire'
-import { Livewire } from 'livewire'
+import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm'
+
+// Register Alpine plugins here.
 
 Livewire.start()
 ```
 
-Then disable automatic injection in your config:
+Rebuild your frontend after every Livewire Composer update when you use this setup:
 
-```php
-// config/livewire.php
-'inject_assets' => false,
+```bash
+npm run build
 ```
 
-Using **Laravel Mix**? Here's your quick fix:
+## Publishing Livewire assets is a last resort
 
-```js
-import { Livewire } from '../../vendor/livewire/livewire/dist/livewire.esm'
+If your architecture requires Nginx or a CDN to serve a real file instead of a Laravel route, publish the assets:
 
-Livewire.start()
+```bash
+php artisan livewire:publish --assets
 ```
 
-(Note: Be cautious, as paths might shift slightly between updates.)
+Published files can become stale after `composer update`. Add the official post-update hook if you choose this route:
 
-## Quick troubleshooting checklist
+```json
+{
+    "scripts": {
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=livewire:assets --ansi --force"
+        ]
+    }
+}
+```
 
-Still seeing 404s? Run these quick checks:
+Livewire's docs call published assets unnecessary for most applications. Fixing the route is the simpler default.
 
-* Confirm the route exists: `php artisan route:list | grep livewire.js`
-* Clear caches and restart the server: `php artisan optimize:clear` & server reload.
-* Directly visit `/livewire/livewire.js`. If you see anything other than a 200 status, revisit your web server configuration.
+## A quick diagnosis order
 
-## Conclusion
+1. Run `composer show livewire/livewire`.
+2. Run `php artisan route:list --path=livewire`.
+3. Open the exact JavaScript URL from the rendered `<script>` tag.
+4. If Laravel has the route, fix the Nginx or Apache rule intercepting it.
+5. If the route is absent, run `php artisan route:clear` and check package discovery.
+6. If automatic injection is disabled, add `@livewireStyles` and `@livewireScripts`.
+7. Publish or bundle assets only when your deployment really needs that setup.
 
-The `/livewire/livewire.js` issue typically boils down to server config confusion. But armed with these tweaks, you're set for smooth sailing.
+If you are still smoothing out a Livewire installation, these are the next useful reads:
 
-If you are still smoothing out the rough edges of a Livewire install after fixing the asset path, these are the next reads I would open:
-
-- [See how far wire:navigate can take a Livewire app](/livewire-spa-wire-navigate)
+- [See how far `wire:navigate` can take a Livewire app](/livewire-spa-wire-navigate)
 - [Force a Livewire refresh when state gets stuck](/re-render-livewire-component)
-- [Stop a Livewire component from re-rendering when it shouldn't](/prevent-render-livewire)
+- [Stop a Livewire component from re-rendering when it should not](/prevent-render-livewire)
 - [See when Laravel Volt is the simpler Livewire option](/laravel-volt)

@@ -1,13 +1,13 @@
 ---
 id: "01KKEW27BWD8HYVKQ1X4B0M5AK"
-title: "Laravel clear cache: the commands that matter"
+title: "Laravel clear cache: every command and what it clears"
 slug: "laravel-clear-cache"
 author: "benjamincrozat"
-description: "Use the right Laravel clear cache command for config, routes, views, events, schedules, or everything at once with optimize:clear."
+description: "Use the right Laravel 13 cache command for application data, config, routes, views, events, or schedule locks without clearing more than you intended."
 categories:
   - "laravel"
-published_at: 2022-09-10T00:00:00+02:00
-modified_at: 2026-03-14T10:17:05Z
+published_at: 2022-09-09T22:00:00Z
+modified_at: 2026-08-15T09:28:36Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -16,175 +16,174 @@ image_disk: "cloudflare-images"
 image_path: "images/posts/rOFuL6jd7Tu4wFz.jpg"
 sponsored_at: null
 ---
-## TL;DR
-
-Need to clear Laravel cache? Start with `php artisan optimize:clear` during development, but prefer targeted commands in production so you only rebuild what changed.
-
-![The terminal after running "php artisan optimize" to clear Laravel's cache.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-clear-cache-718bf1cf4dfab9897025.jpg/public)
-
-## Quick reference commands
-
-* **Everything:** `php artisan optimize:clear`
-* **Application cache:** `php artisan cache:clear`
-* **Specific cache store (Redis):** `php artisan cache:clear --store=redis`
-* **Specific cache tags:** `php artisan cache:clear --tags=tag1,tag2`
-* **Config cache:** `php artisan config:clear`
-* **Routes cache:** `php artisan route:clear`
-* **Views cache:** `php artisan view:clear`
-* **Events cache:** `php artisan event:clear`
-* **Schedule locks:** `php artisan schedule:clear-cache`
-
-If you searched for "clear cache Laravel", this is the short answer: use `php artisan optimize:clear` to clear everything during development, or use the specific Artisan command for config, routes, views, events, or application cache when you want a smaller blast radius.
-
-## What's actually cached in Laravel?
-
-Laravel caches several types of data:
-
-1. **Application Data:** Results of database queries or API calls.
-2. **Configuration Files:** Cached config files for faster load.
-3. **Routes:** Cached routes for quicker route matching.
-4. **Views:** Cached compiled Blade templates.
-5. **Events:** Cached event listeners.
-6. **Schedule Locks:** Prevent task overlaps.
-
-## Clear everything (`optimize:clear`)
-
-The fastest way to clear every Laravel cache is:
+To clear Laravel's framework caches during local development, run:
 
 ```bash
 php artisan optimize:clear
 ```
 
-This clears configuration, bootstrap files, events, routes, views, and application caches. Ideal during development but avoid in production as it forces Laravel to rebuild caches, temporarily impacting performance.
+In production, use the smallest command that fixes the problem. `optimize:clear` also calls `cache:clear`, so it can flush real application data from the default cache store.
 
-## Clear a specific cache
+![The terminal after running `php artisan optimize:clear` in Laravel.](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/imported/laravel-clear-cache-718bf1cf4dfab9897025.jpg/public)
 
-### Application cache
+## Laravel cache commands at a glance
 
-Clear general application cache:
+| What you want to clear | Command | What must be rebuilt |
+| --- | --- | --- |
+| Framework caches plus the default application cache | `php artisan optimize:clear` | Config, routes, views, events, and application data as needed |
+| Default application cache store | `php artisan cache:clear` | The app must refill cached values |
+| A named cache store | `php artisan cache:clear redis` | Values in that store must be refilled |
+| Tagged cache values | `php artisan cache:clear --tags=users,posts` | Only the tagged values |
+| Cached configuration | `php artisan config:clear` | Laravel reads config files again |
+| Cached routes | `php artisan route:clear` | Laravel loads route definitions again |
+| Compiled Blade views | `php artisan view:clear` | Views compile on demand |
+| Cached event discovery | `php artisan event:clear` | Event discovery runs again |
+| Scheduler mutexes | `php artisan schedule:clear-cache` | Scheduler locks are recreated as jobs run |
+
+I checked these commands against Laravel 13.25. The named cache store is a positional argument in Laravel 13: use `cache:clear redis`, not `cache:clear --store=redis`.
+
+## What `optimize:clear` really clears
+
+Laravel 13 runs these tasks inside `optimize:clear`:
+
+- `config:clear`
+- `cache:clear`
+- `clear-compiled`
+- `event:clear`
+- `route:clear`
+- `view:clear`
+
+That makes it useful when a local app is stuck on stale framework state. It is broader than many production incidents need.
+
+If you want the framework reset but need to preserve application cache data, Laravel 13 supports:
+
+```bash
+php artisan optimize:clear --except=cache
+```
+
+You can also pass a comma-separated list to `--except` when more than one task must be skipped.
+
+## Clear the application cache
+
+Use this for values stored through Laravel's cache API:
 
 ```bash
 php artisan cache:clear
 ```
 
-Clear Redis-specific cache store:
+To target a configured store, pass its name as the argument:
 
 ```bash
-php artisan cache:clear --store=redis
+php artisan cache:clear redis
 ```
 
-Clear tagged cache items:
+To clear tagged items on a store that supports tags:
 
 ```bash
-php artisan cache:clear --tags=user:123,posts
+php artisan cache:clear --tags=users,posts
 ```
 
-### Configuration cache
+You can combine the store and tag options:
 
-Clears cached config files:
+```bash
+php artisan cache:clear redis --tags=users,posts
+```
+
+### Be careful with shared Redis or Memcached stores
+
+Laravel's [cache documentation](https://laravel.com/docs/13.x/cache#removing-items-from-the-cache) warns that flushing a cache does not respect the configured cache prefix. On a shared store, `cache:clear` or `Cache::flush()` can remove entries owned by another application.
+
+Use separate Redis databases or separate cache infrastructure when applications must not be flushed together.
+
+## Clear config, routes, views, or events
+
+### Configuration
 
 ```bash
 php artisan config:clear
 ```
 
-### Routes cache
+Run this when Laravel is still using an old environment or configuration value. Remember that `env()` should only be called from config files once configuration is cached.
 
-Clears cached routes:
+### Routes
 
 ```bash
 php artisan route:clear
 ```
 
-### Views cache
+Use this when a route was added, removed, or changed but production still behaves as if the old route table exists.
 
-Clears cached Blade views:
+### Blade views
 
 ```bash
 php artisan view:clear
 ```
 
-### Events cache
+This removes compiled Blade templates. It does not delete the Blade source files in `resources/views`.
 
-Clears cached event listeners:
+### Events
 
 ```bash
 php artisan event:clear
 ```
 
-### Schedule locks
+This clears Laravel's event discovery cache. It does not delete listeners or remove queued jobs.
 
-Clears schedule lock cache (useful if cron jobs are stuck):
+### Scheduler locks
 
 ```bash
 php artisan schedule:clear-cache
 ```
 
-## Programmatic clearing (`Cache::forget` vs `flush`)
+Use this when a task protected by `withoutOverlapping()` is stuck behind a stale scheduler mutex.
 
-In your PHP code, clear a specific key:
+## Clear one application value in code
 
-```php
-Cache::forget('key');
-```
-
-Or flush everything (**dangerous on production!**):
+Prefer one key over the whole store:
 
 ```php
-Cache::flush();
+use Illuminate\Support\Facades\Cache;
+
+Cache::forget('dashboard:stats');
 ```
 
-Prefer targeted clears (`forget`) in production to avoid performance hits.
-
-## One-click route for shared hosting
-
-Add this route for easy cache clearing when SSH access is unavailable:
+For tagged data:
 
 ```php
-Route::get('/clear-cache', function () {
-    Artisan::call('optimize:clear');
-	
-    return back()->with('status', 'All caches cleared.');
-})->middleware('auth');
+Cache::tags(['users', 'reports'])->flush();
 ```
 
-**Never expose this publicly in production.**
+Avoid `Cache::flush()` unless you truly intend to empty the entire backing store.
 
-## Troubleshooting: what if Artisan commands fail?
+## Rebuild production caches after a deployment
 
-If Artisan commands themselves throw errors:
+Laravel's matching optimization command is:
 
-1. Manually delete files in `bootstrap/cache/*.php`.
-2. Run `composer dump-autoload` to refresh class mappings.
-3. If a deleted provider causes errors, temporarily recreate the provider class, run `config:clear`, then safely remove it again.
+```bash
+php artisan optimize
+```
 
-## Performance & deployment best Practices
+It caches configuration, events, routes, and views. A common deployment order is:
 
-* **Development:** Frequent clearing is okay.
-* **Production:** Rarely clear caches. Prefer cache warming with `config:cache` and `route:cache` during deployment.
-* **Never** permanently disable caching in production (`CACHE_DRIVER=null`), it's for debugging only.
+```bash
+composer install --no-dev --prefer-dist --optimize-autoloader
+php artisan migrate --force
+php artisan optimize
+```
 
-## Laravel Version Compatibility
+Do not add `cache:clear` to every deployment by habit. Application cache may contain expensive query results, rate-limit state, or other data that should expire normally.
 
-| Laravel Version | Supported Commands                                    |
-| --------------- | ----------------------------------------------------- |
-| ≤ 8             | Basic commands supported; `optimize:clear` from 8.24+ |
-| 9–12            | All commands listed above fully supported             |
+## What to do on shared hosting without SSH
 
-## FAQ
+Use the host's deployment hook, command runner, scheduled task UI, or support channel to run the exact Artisan command you need.
 
-**Does `optimize:clear` delete Redis data?**
-No. It clears application bootstrap, routes, config, views, and events—not Redis data.
+Do not add a permanent `/clear-cache` web route. Even behind authentication, it creates an unnecessary production control surface and makes it too easy to flush the wrong store from a browser request.
 
-**Is `Cache::flush()` safe in production?**
-No. It removes all cached data instantly, potentially causing database spikes.
+If Artisan itself cannot boot, verify the PHP binary, permissions, and active config first. Deleting random files from `bootstrap/cache` should not be the first move.
 
-**What changed in Laravel 12 regarding cache?**
-No significant cache command changes. The commands listed here fully apply.
-
-If cache maintenance is only one part of the operational cleanup you do in Laravel, these are the next reads I would keep open:
+If cache maintenance is only one part of the operational cleanup, these are the next useful reads:
 
 - [Use the Artisan commands you run every day with more confidence](/laravel-artisan)
 - [Use flexible caching when freshness matters as much as speed](/flexible-caching-in-laravel)
 - [See how the failover queue driver keeps jobs from disappearing](/laravel-failover-queue-driver)
 - [See what Laravel Pulse can surface before users do](/laravel-pulse)
-- [Pull Laravel 11 config files into your app only when you need them](/publish-config-files-laravel)
