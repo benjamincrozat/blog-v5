@@ -4,13 +4,8 @@ Displays the home view.
 
 <x-app :title="config('app.name')">
     <div class="container xl:max-w-(--breakpoint-lg)">
-        <div class="text-xl tracking-tight font-normal text-center text-black mb-4">
-            <div class="font-handwriting">Including a ton of scrapers too!</div>
-            <x-heroicon-o-arrow-down class="size-4 mx-auto mt-1" />
-        </div>
-
         <x-typography.headline>
-            The hub for <span class="text-blue-600">50,000</span>+ web developers, monthly
+            The hub for <span class="text-blue-600">50,000</span>+ <span class="line-through">developers</span> agents, monthly
         </x-typography.headline>
 
         <x-typography.subheadline class="mt-6 md:mt-10">
