@@ -3,6 +3,7 @@ config.php
 down
 events.scanned.php
 maintenance.php
+newdebugbar/
 routes.php
 routes.scanned.php
 schedule-*
