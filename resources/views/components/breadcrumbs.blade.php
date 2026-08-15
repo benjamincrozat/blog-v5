@@ -5,22 +5,20 @@ Presents breadcrumb navigation and accepts label and URL pairs, treating items w
 @props(['items'])
 
 <nav
-    {{ $attributes->class('w-full overflow-x-auto overscroll-x-contain') }}
+    {{ $attributes->class('w-full overflow-hidden') }}
     aria-label="Breadcrumb"
-    x-data
-    x-init="$nextTick(() => {
-        if ($el.scrollWidth > $el.clientWidth) {
-            $refs.current?.scrollIntoView({ block: 'nearest', inline: 'end' });
-        }
-    })"
 >
-    <ol class="inline-flex min-w-max items-center gap-1 rounded-full border border-black/[0.06] bg-gray-50 p-1.5 text-sm shadow-sm shadow-black/5">
+    <ol class="inline-flex max-w-full min-w-0 items-center gap-1 rounded-full border border-black/[0.06] bg-gray-50 p-1.5 text-sm shadow-sm shadow-black/5">
         @foreach ($items as $item)
             @php
                 $isCurrentPage = blank($item['url'] ?? null);
             @endphp
 
-            <li class="flex items-center gap-1">
+            <li @class([
+                'flex items-center gap-1',
+                'min-w-0' => $isCurrentPage,
+                'shrink-0' => ! $isCurrentPage,
+            ])>
                 @if (! $loop->first)
                     <x-heroicon-o-chevron-right
                         aria-hidden="true"
@@ -40,9 +38,8 @@ Presents breadcrumb navigation and accepts label and URL pairs, treating items w
                     <span
                         aria-current="page"
                         title="{{ $item['label'] }}"
-                        x-ref="current"
                         @class([
-                            'block max-w-[14rem] truncate rounded-full bg-white px-3 py-1.5 font-medium text-gray-950 ring-1 ring-black/[0.06] shadow-sm shadow-black/5 sm:max-w-[30rem] lg:max-w-[40rem]',
+                            'block min-w-0 max-w-[14rem] truncate rounded-full bg-white px-3 py-1.5 font-medium text-gray-950 ring-1 ring-black/[0.06] shadow-sm shadow-black/5 sm:max-w-[30rem] lg:max-w-[40rem]',
                             'ml-2.5' => ! $loop->first,
                         ])
                     >
