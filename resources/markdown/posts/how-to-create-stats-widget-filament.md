@@ -117,5 +117,4 @@ You can also learn more about [stats widgets](https://filamentphp.com/docs/3.x/w
 If you are fleshing out a Filament panel beyond the default tables, these are the next reads I would open:
 
 - [Make Filament text columns easier to read at a glance](/how-to-format-text-columns-filament)
-- [Compare Nova and Filament before committing to one](/laravel-nova-vs-filament)
 - [See what Laravel Pulse can surface before users do](/laravel-pulse)

@@ -59,7 +59,7 @@ If you are using Laravel Valet, here's how to proceed:
 4. Install the pre-compiled binary for PHP 8.3 (also called "a bottle" in Homebrew's context). This will make the install so much faster. `brew install php@8.3`.
 5. Link it to make sure that the `php` alias targets the right binary: `brew link --overwrite --force php@8.3`.
 
-If you want to learn more about how to install PHP on your Mac, I wrote something for you: [PHP for Mac: get started fast using Laravel Valet](https://benjamincrozat.com/install-php-mac-laravel-valet)
+If you want to learn more about how to install PHP on your Mac, I wrote something for you: [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
 
 ## What's new in PHP 8.3: new features and changes
 

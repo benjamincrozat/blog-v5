@@ -56,7 +56,6 @@ Laravel Pulse also allows developers to create what's called a "custom card," wh
 If Pulse is turning into something you actually want to extend, these are the next Laravel tooling reads I would keep nearby:
 
 - [See what Laravel Pulse can surface before users do](/laravel-pulse)
-- [Build your own Laravel Pulse card once the built-ins are not enough](/custom-laravel-pulse-card)
 - [Build better Artisan prompts without extra ceremony](/laravel-prompts)
 - [See when Laravel Volt is the simpler Livewire option](/laravel-volt)
 - [Make Eloquent models easier for your IDE to understand](/laravel-lift)

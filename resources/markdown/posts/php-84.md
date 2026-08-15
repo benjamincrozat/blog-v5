@@ -49,7 +49,7 @@ PHP 8.4 will be released on November 21, 2024, according to the [preparation tas
 4. Install the pre-compiled binary for PHP 8.4 (also called "a bottle" in Homebrew's context). This will make the install so much faster. `brew install php@8.4`.
 5. Link it to make sure that the `php` alias targets the right binary: `brew link --overwrite --force php@8.4`.
 
-If you want to learn more about how to install PHP on your Mac, I wrote something for you: [PHP for Mac: get started fast using Laravel Valet](https://benjamincrozat.com/install-php-mac-laravel-valet)
+If you want to learn more about how to install PHP on your Mac, I wrote something for you: [PHP for Mac: get started fast using Laravel Valet](/laravel-valet)
 
 ## What's new in PHP 8.4
 

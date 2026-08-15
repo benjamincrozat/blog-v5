@@ -50,7 +50,7 @@ For this article, we use a simple definition: a programming language lets you wr
 - Conditionals (if/else): make decisions based on data.
 - Loops (for/while): repeat actions until a condition changes.
 
-HTML has none of these features and does not execute algorithms. It can express declarative constraints (for example, a form field marked required), but that is not general program logic. If you want more background, see [What is a programming language?](/what-is-a-programming-language).
+HTML has none of these features and does not execute algorithms. It can express declarative constraints (for example, a form field marked required), but that is not general program logic.
 
 ## Why people still call HTML a programming language anyway
 

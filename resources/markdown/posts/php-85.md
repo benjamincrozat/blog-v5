@@ -60,7 +60,7 @@ Tip if you have multiple PHP versions installed: run `brew unlink php` (or anoth
 
 If you prefer not to touch your Homebrew PHP, you can test using the official [PHP Docker images](https://hub.docker.com/_/php). 8.5 tags are available there too.
 
-If you want to learn more about setup on a Mac, I wrote something for you: [Install PHP on macOS (Laravel Valet guide)](https://benjamincrozat.com/install-php-mac-laravel-valet)
+If you want to learn more about setup on a Mac, I wrote something for you: [Install PHP on macOS (Laravel Valet guide)](/laravel-valet)
 
 ## New in PHP 8.5
 

@@ -21,7 +21,7 @@ sponsored_at: null
 
 So, you finally decided to give [Laravel](https://laravel.com) a try.
 
-But how do you even get started? Well, first, you must have a working PHP environment (see how to [install PHP on macOS](https://benjamincrozat.com/install-php-mac-laravel-valet)). Then, you must create a new Laravel project using the official Laravel installer or [Composer](https://getcomposer.org) (the package manager every PHP developer uses to manage dependencies).
+But how do you even get started? Well, first, you must have a working PHP environment (see how to [install PHP on macOS](/laravel-valet)). Then, you must create a new Laravel project using the official Laravel installer or [Composer](https://getcomposer.org) (the package manager every PHP developer uses to manage dependencies).
 
 Feels overwhelming? Don't worry. In this article, I'll show you exactly how to do that.
 
@@ -29,7 +29,7 @@ Feels overwhelming? Don't worry. In this article, I'll show you exactly how to d
 
 ### Using Composer
 
-To install Laravel on macOS, Linux, or WSL, you can create a new project using Composer like so (given you already have a [working PHP environment](https://benjamincrozat.com/install-php-mac-laravel-valet)):
+To install Laravel on macOS, Linux, or WSL, you can create a new project using Composer like so (given you already have a [working PHP environment](/laravel-valet)):
 
 ```bash
 composer create-project laravel/laravel example-app
@@ -59,7 +59,7 @@ Then, you can create a new project:
 laravel new example-app
 ```
 
-**If this command doesn't work, make sure you followed [my guide](https://benjamincrozat.com/install-php-mac-laravel-valet) correctly.**
+**If this command doesn't work, make sure you followed [my guide](/laravel-valet) correctly.**
 
 The Laravel installer even offers options to create a new initialized Git repository with a first commit without having to go through the various prompts:
 

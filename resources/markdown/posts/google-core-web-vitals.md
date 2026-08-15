@@ -75,5 +75,4 @@ https://www.youtube.com/watch?v=ULX4GHcQd9U
 If you want the SEO side of the site to stay grounded in what actually moves the needle, these are the next reads I would keep open:
 
 - [See a real SEO growth story instead of generic advice](/seo-case-study)
-- [Get the technical SEO basics straight without overcomplicating them](/laravel-seo)
 - [Compare analytics tools that respect GDPR constraints](/best-gdpr-compliant-google-analytics-alternatives)

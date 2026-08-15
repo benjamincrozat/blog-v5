@@ -26,7 +26,7 @@ If you're here, it means you're interested in the fascinating world of AI, and y
 
 If you're here, it means you're interested in:
 - Building ChatGPT plugins. This is the right place, so keep reading.
-- Creating innovative new features for your Laravel-based projects by leveraging the power of the GPT language model. In that case, this is still the right place, but the wrong article! I suggest you read ["AI with PHP using OpenAI's API + GPT-3.5 (ChatGPT)"](https://benjamincrozat.com/php-ai)
+- Creating innovative new features for your Laravel-based projects by leveraging the power of the GPT language model. In that case, this is still the right place, but the wrong article! I suggest you read ["AI with PHP using OpenAI's API + GPT-3.5 (ChatGPT)"](/openai-php-client)
 
 Still there? Follow along; this will be fun and way simpler than you think!
 

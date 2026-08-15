@@ -89,5 +89,4 @@ And there you have it! You're now equipped to turn those plain text columns into
 If you are making a Filament panel feel less raw and more polished, these are the next reads I would open:
 
 - [Build a Filament stats widget when the dashboard needs real numbers](/how-to-create-stats-widget-filament)
-- [Compare Nova and Filament before committing to one](/laravel-nova-vs-filament)
 - [See what Laravel Pulse can surface before users do](/laravel-pulse)

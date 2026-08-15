@@ -28,7 +28,7 @@ By the end, you will have two things working:
 - a first successful GPT-5.1 Responses API call
 - a small support-triage workflow that returns strict JSON
 
-If you want the original GPT-5.0 walkthrough first, open my [GPT-5.0 API guide](/gpt-5-api). If you are new to large language models in general, read [how GPT-style LLMs work](/gpt-llm-ai-explanation) before you go further.
+If you want the original GPT-5.0 walkthrough first, open my [GPT-5.0 API guide](/gpt-5-api). If you are new to large language models in general, read [how GPT-style LLMs work](/how-llms-work) before you go further.
 
 ## Get your API key ready
 
@@ -268,4 +268,4 @@ If this guide helped you get a working request but you are still deciding where 
 - [See how the original GPT-5.0 API guide differs from GPT-5.1](/gpt-5-api)
 - [Move this same workflow into PHP with less boilerplate](/openai-php-client)
 - [Compare GPT-5.1 with the more professional-work-focused GPT-5.2](/gpt-52-api)
-- [Build a better mental model for what GPT-style models are actually doing](/gpt-llm-ai-explanation)
+- [Build a better mental model for what GPT-style models are actually doing](/how-llms-work)

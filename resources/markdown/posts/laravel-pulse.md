@@ -143,7 +143,7 @@ That is a big part of the appeal. Pulse starts useful, then grows with your app:
 - expand the cards your team checks most
 - add your own custom cards for business-specific signals
 
-If that is the direction you want to go, [these Laravel Pulse custom cards](/best-laravel-pulse-custom-cards) are a good source of ideas, and [this custom Pulse card tutorial](/custom-laravel-pulse-card) is the next step once you are ready to build your own.
+If that is the direction you want to go, [these Laravel Pulse custom cards](/best-laravel-pulse-custom-cards) are a good source of ideas before you build your own.
 
 ## Laravel Pulse vs Telescope
 
@@ -202,7 +202,6 @@ That is the sweet spot:
 If you want Pulse to become part of how you actually run the app, these are the next reads I would open:
 
 - [Steal ideas for Laravel Pulse cards worth building](/best-laravel-pulse-custom-cards)
-- [Build your own Laravel Pulse card once the built-ins are not enough](/custom-laravel-pulse-card)
 - [Use Laravel Debugbar when you need request-by-request inspection](/laravel-debugbar)
 - [Fix the Livewire JS 404 before it blocks the whole page](/livewire-js-404-not-found)
 - [See how Laravel maintenance mode fits the same operational toolkit](/laravel-maintenance-mode)

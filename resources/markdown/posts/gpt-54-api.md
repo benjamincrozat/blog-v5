@@ -264,4 +264,4 @@ If you want the next useful comparisons from here, these are the ones I would ke
 - [Compare GPT-5.4 with the previous professional-work frontier model, GPT-5.2](/gpt-52-api)
 - [See the original GPT-5.0 API guide to understand where these controls started](/gpt-5-api)
 - [Move this same structured-output pattern into PHP](/openai-php-client)
-- [Get a simpler mental model for how GPT-style systems behave before you build a bigger agent](/gpt-llm-ai-explanation)
+- [Get a simpler mental model for how GPT-style systems behave before you build a bigger agent](/how-llms-work)
