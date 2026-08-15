@@ -38,6 +38,14 @@ Presents the nav index component UI and accepts component props, Blade attribute
             Links
         </x-nav.item>
 
+        <x-nav.item
+            type="button"
+            icon="heroicon-o-magnifying-glass"
+            @click="$dispatch('search')"
+        >
+            Search
+        </x-nav.item>
+
         @auth
             <x-dropdown>
                 <x-slot:btn>
@@ -126,38 +134,10 @@ Presents the nav index component UI and accepts component props, Blade attribute
                 </x-dropdown.divider>
 
                 <x-dropdown.item
-                    icon="heroicon-o-tag"
-                    wire:navigate
-                    href="{{ route('categories.index') }}"
-                >
-                    Categories
-                </x-dropdown.item>
-
-                <x-dropdown.item
-                    icon="heroicon-o-magnifying-glass"
-                    @click="$dispatch('search'); open = false"
-                >
-                    Search
-                </x-dropdown.item>
-
-                <x-dropdown.item
                     icon="heroicon-o-envelope"
                     href="mailto:hello@benjamincrozat.com"
                 >
                     Contact me
-                </x-dropdown.item>
-
-                <x-dropdown.divider>
-                    Freebies
-                </x-dropdown.divider>
-
-                <x-dropdown.item
-                    icon="iconoir-git-fork"
-                    description="This platform is open source and the codebase is becoming bigger fast. There's a lot to learn and this is free."
-                    href="https://github.com/benjamincrozat/blog-v5"
-                    target="_blank"
-                >
-                    Fork the source code
                 </x-dropdown.item>
 
                 <x-dropdown.divider>

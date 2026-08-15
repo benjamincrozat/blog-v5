@@ -5,7 +5,7 @@ use App\Actions\BuildBreadcrumbSchema;
 it('omits the current page URL from the breadcrumb schema', function () {
     $schema = app(BuildBreadcrumbSchema::class)->handle([
         ['label' => 'Home', 'url' => route('home')],
-        ['label' => 'Categories', 'url' => route('categories.index')],
+        ['label' => 'Articles', 'url' => route('posts.index')],
         ['label' => 'Laravel'],
     ]);
 
@@ -22,8 +22,8 @@ it('omits the current page URL from the breadcrumb schema', function () {
             [
                 '@type' => 'ListItem',
                 'position' => 2,
-                'name' => 'Categories',
-                'item' => route('categories.index'),
+                'name' => 'Articles',
+                'item' => route('posts.index'),
             ],
             [
                 '@type' => 'ListItem',

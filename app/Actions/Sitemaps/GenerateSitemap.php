@@ -39,8 +39,6 @@ class GenerateSitemap
                 );
             });
 
-        $sitemap->add(route('categories.index'));
-
         Category::query()
             ->cursor()
             ->each(function (Category $category) use ($sitemap) : void {

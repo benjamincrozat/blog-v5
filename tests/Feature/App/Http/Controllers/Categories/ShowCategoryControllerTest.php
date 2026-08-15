@@ -5,6 +5,7 @@ use App\Models\Category;
 
 use function Pest\Laravel\get;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 it('shows a category', function () {
@@ -13,7 +14,34 @@ it('shows a category', function () {
     get(route('categories.show', $category))
         ->assertOk()
         ->assertViewIs('categories.show')
-        ->assertViewHas('category', $category);
+        ->assertViewHas('category', $category)
+        ->assertViewHas('breadcrumbs', [
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => $category->name],
+        ])
+        ->assertViewHas('breadcrumbSchema', [
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                [
+                    '@type' => 'ListItem',
+                    'position' => 1,
+                    'name' => 'Home',
+                    'item' => route('home'),
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 2,
+                    'name' => $category->name,
+                ],
+            ],
+        ]);
+});
+
+it('does not expose a categories index', function () {
+    expect(Route::has('categories.index'))->toBeFalse();
+
+    get('/categories')->assertNotFound();
 });
 
 it('throws a 404 if the category does not exist', function () {

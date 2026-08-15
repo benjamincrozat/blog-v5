@@ -16,7 +16,7 @@ it('generates a sitemap with the most important pages', function () {
         'canonical_url' => 'https://example.com/original-article',
     ]);
 
-    Category::factory(10)->create();
+    $categories = Category::factory(10)->create();
 
     artisan(GenerateSitemapCommand::class);
 
@@ -35,15 +35,13 @@ it('generates a sitemap with the most important pages', function () {
 
     expect($content)->not->toContain('/authors/');
 
-    expect($content)->toContain(route('categories.index'));
-
-    Category::query()
-        ->cursor()
-        ->each(fn (Category $category) => expect($content)->toContain(route('categories.show', $category->slug)));
+    $categories->each(
+        fn (Category $category) => expect($content)->toContain(route('categories.show', $category->slug)),
+    );
 
     $xml = simplexml_load_string($content);
     $categoryUrl = collect(iterator_to_array($xml->url, false))->first(
-        fn (SimpleXMLElement $url) => str_starts_with((string) $url->loc, route('categories.index') . '/'),
+        fn (SimpleXMLElement $url) => (string) $url->loc === route('categories.show', $categories->first()->slug),
     );
 
     expect($categoryUrl)->not->toBeNull()

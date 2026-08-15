@@ -8,7 +8,6 @@ use App\Http\Controllers\Links\ListLinksController;
 use App\Http\Controllers\Posts\ListPostsController;
 use App\Http\Controllers\Merchants\ShowMerchantController;
 use App\Http\Controllers\Categories\ShowCategoryController;
-use App\Http\Controllers\Categories\ListCategoriesController;
 use App\Http\Controllers\Posts\ShowPostImagePreviewController;
 
 Route::get('/', HomeController::class)
@@ -19,9 +18,6 @@ Route::get('/blog', ListPostsController::class)
 
 Route::get('/preview/posts/{slug}/image', ShowPostImagePreviewController::class)
     ->name('posts.image-preview');
-
-Route::get('/categories', ListCategoriesController::class)
-    ->name('categories.index');
 
 Route::get('/categories/{category:slug}', ShowCategoryController::class)
     ->name('categories.show');

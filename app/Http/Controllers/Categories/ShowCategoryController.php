@@ -21,7 +21,6 @@ class ShowCategoryController extends Controller
     {
         $breadcrumbs = [
             ['label' => 'Home', 'url' => route('home')],
-            ['label' => 'Categories', 'url' => route('categories.index')],
             ['label' => $category->name],
         ];
 
