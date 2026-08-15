@@ -24,6 +24,7 @@ Displays the posts show view.
         'lg:max-w-(--breakpoint-md)' => $post->is_commercial,
     ])>
         <div @class([
+            'min-w-0',
             'lg:col-span-8 xl:col-span-9' => ! $post->is_commercial,
         ])>
             <article>
