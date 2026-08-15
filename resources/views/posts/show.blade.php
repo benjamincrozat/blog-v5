@@ -93,6 +93,8 @@ Displays the posts show view.
                             loading="lazy"
                             src="{{ $post->user->avatar }}"
                             alt="{{ $post->user->name }}"
+                            width="24"
+                            height="24"
                             class="mx-auto mb-2 rounded-full size-6"
                         />
 
@@ -259,6 +261,8 @@ Displays the posts show view.
                                 loading="lazy"
                                 src="{{ $latestComment->user->avatar }}"
                                 alt="{{ $latestComment->user->name }}"
+                                width="32"
+                                height="32"
                                 class="flex-none mt-1 rounded-full ring-1 shadow-sm shadow-black/5 ring-black/10 size-7 md:size-8"
                             />
 
@@ -357,9 +361,9 @@ Displays the posts show view.
     </div>
 
     {{--
-    Includes Article schema only for published posts.
+    Includes Article schema only when this published page is its own canonical source.
     --}}
-    @if ($post->published_at)
+    @if ($post->isPublished() && blank($post->canonical_url))
         @php
             $articleSchema = array_filter([
                 '@context' => 'https://schema.org',

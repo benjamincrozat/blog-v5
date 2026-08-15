@@ -81,6 +81,18 @@ it('keeps standard article schema for non-news posts', function () {
         ->assertDontSee('"@type": "NewsArticle"', escape: false);
 });
 
+it('omits article schema when another URL is canonical', function () {
+    $post = Post::factory()->create([
+        'canonical_url' => 'https://example.com/original-article',
+    ]);
+
+    get(route('posts.show', $post))
+        ->assertOk()
+        ->assertSee('<link rel="canonical" href="https://example.com/original-article" />', escape: false)
+        ->assertDontSee('"@type": "Article"', escape: false)
+        ->assertDontSee('"@type": "NewsArticle"', escape: false);
+});
+
 it('without a SERP title, the title is used', function () {
     $post = Post::factory()->create(['serp_title' => null]);
 

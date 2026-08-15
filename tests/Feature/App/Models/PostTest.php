@@ -239,6 +239,14 @@ it('scopes Google News eligible posts', function () {
     $withLink->categories()->sync([$news->id]);
     Link::factory()->create(['post_id' => $withLink->id]);
 
+    $withCanonicalOverride = Post::factory()->create([
+        'published_at' => now()->subHour(),
+        'canonical_url' => 'https://example.com/original-news',
+        'is_commercial' => false,
+        'sponsored_at' => null,
+    ]);
+    $withCanonicalOverride->categories()->sync([$news->id]);
+
     $newsEligibleIds = Post::query()
         ->newsEligible()
         ->pluck('id');
@@ -246,7 +254,8 @@ it('scopes Google News eligible posts', function () {
     expect($newsEligibleIds)->toContain($eligible->id)
         ->not->toContain($commercial->id)
         ->not->toContain($sponsored->id)
-        ->not->toContain($withLink->id);
+        ->not->toContain($withLink->id)
+        ->not->toContain($withCanonicalOverride->id);
 });
 
 it('belongs to a user', function () {

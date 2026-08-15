@@ -10,10 +10,11 @@ use Spatie\Sitemap\Tags\Url;
 /**
  * Writes the regular sitemap and the Google News sitemap from public content.
  *
- * The regular sitemap includes the main pages, every published post, every
- * category, and the links page. The news sitemap includes at most 1,000 allowed
- * posts from the last 48 hours. Both files are replaced on disk. Nothing is sent
- * or submitted to a search engine.
+ * The regular sitemap includes the main pages, published posts without a canonical
+ * override, every category, and the links page. Category dates are omitted because
+ * their content changes independently of the category row. The news sitemap includes
+ * at most 1,000 allowed posts from the last 48 hours. Both files are replaced on
+ * disk. Nothing is sent or submitted to a search engine.
  */
 class GenerateSitemap
 {
@@ -29,6 +30,7 @@ class GenerateSitemap
 
         Post::query()
             ->published()
+            ->withoutCanonicalOverride()
             ->cursor()
             ->each(function (Post $post) use ($sitemap) : void {
                 $sitemap->add(
@@ -42,10 +44,7 @@ class GenerateSitemap
         Category::query()
             ->cursor()
             ->each(function (Category $category) use ($sitemap) : void {
-                $sitemap->add(
-                    Url::create(route('categories.show', $category->slug))
-                        ->setLastModificationDate($category->modified_at ?? $category->updated_at ?? $category->created_at)
-                );
+                $sitemap->add(route('categories.show', $category->slug));
             });
 
         $sitemap->add(route('links.index'));

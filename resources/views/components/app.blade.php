@@ -10,6 +10,33 @@ Wraps public pages in the shared site chrome and accepts page metadata, flags, a
     'type' => 'website',
 ])
 
+@php
+    $websiteSchema = [
+        '@context' => 'https://schema.org',
+        '@graph' => [
+            [
+                '@type' => 'Organization',
+                '@id' => url('/') . '#organization',
+                'name' => config('app.name'),
+                'url' => url('/'),
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => Vite::asset('resources/img/apple-touch-icon.png'),
+                ],
+            ],
+            [
+                '@type' => 'WebSite',
+                '@id' => url('/') . '#website',
+                'name' => config('app.name'),
+                'url' => url('/'),
+                'publisher' => [
+                    '@id' => url('/') . '#organization',
+                ],
+            ],
+        ],
+    ];
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" class="scroll-smooth">
     <head>
@@ -51,30 +78,7 @@ Wraps public pages in the shared site chrome and accepts page metadata, flags, a
         <x-feed-links />
 
         <script type="application/ld+json">
-            {!! json_encode([
-                '@context' => 'https://schema.org',
-                '@graph' => [
-                    [
-                        '@type' => 'Organization',
-                        '@id' => url('/') . '#organization',
-                        'name' => config('app.name'),
-                        'url' => url('/'),
-                        'logo' => [
-                            '@type' => 'ImageObject',
-                            'url' => Vite::asset('resources/img/apple-touch-icon.png'),
-                        ],
-                    ],
-                    [
-                        '@type' => 'WebSite',
-                        '@id' => url('/') . '#website',
-                        'name' => config('app.name'),
-                        'url' => url('/'),
-                        'publisher' => [
-                            '@id' => url('/') . '#organization',
-                        ],
-                    ],
-                ],
-            ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+            {!! json_encode($websiteSchema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
         </script>
     </head>
     <body {{ $attributes->class('font-light text-gray-600') }} x-data>

@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\File;
 use App\Console\Commands\GenerateSitemapCommand;
 
 it('generates a sitemap with the most important pages', function () {
-    Post::factory(10)->create();
+    $localPosts = Post::factory(10)->create();
+
+    $postWithCanonicalOverride = Post::factory()->create([
+        'canonical_url' => 'https://example.com/original-article',
+    ]);
 
     Category::factory(10)->create();
 
@@ -25,10 +29,9 @@ it('generates a sitemap with the most important pages', function () {
 
     expect($content)->toContain(route('posts.index'));
 
-    Post::query()
-        ->published()
-        ->cursor()
-        ->each(fn (Post $post) => expect($content)->toContain(route('posts.show', $post)));
+    $localPosts->each(fn (Post $post) => expect($content)->toContain(route('posts.show', $post)));
+
+    expect($content)->not->toContain(route('posts.show', $postWithCanonicalOverride));
 
     expect($content)->not->toContain('/authors/');
 
@@ -37,6 +40,14 @@ it('generates a sitemap with the most important pages', function () {
     Category::query()
         ->cursor()
         ->each(fn (Category $category) => expect($content)->toContain(route('categories.show', $category->slug)));
+
+    $xml = simplexml_load_string($content);
+    $categoryUrl = collect(iterator_to_array($xml->url, false))->first(
+        fn (SimpleXMLElement $url) => str_starts_with((string) $url->loc, route('categories.index') . '/'),
+    );
+
+    expect($categoryUrl)->not->toBeNull()
+        ->and(isset($categoryUrl->lastmod))->toBeFalse();
 
     expect($content)->toContain(route('links.index'));
 });
@@ -91,6 +102,14 @@ it('generates a news sitemap with only eligible recent news posts', function () 
     ]);
     $evergreen->categories()->sync([Category::factory()->create(['slug' => 'laravel'])->id]);
 
+    $withCanonicalOverride = Post::factory()->create([
+        'published_at' => now()->subHour(),
+        'canonical_url' => 'https://example.com/original-news',
+        'is_commercial' => false,
+        'sponsored_at' => null,
+    ]);
+    $withCanonicalOverride->categories()->sync([$news->id]);
+
     artisan(GenerateSitemapCommand::class);
 
     $content = File::get(public_path('news-sitemap.xml'));
@@ -103,5 +122,6 @@ it('generates a news sitemap with only eligible recent news posts', function () 
         ->not->toContain(route('posts.show', $commercial))
         ->not->toContain(route('posts.show', $sponsored))
         ->not->toContain(route('posts.show', $withLink))
+        ->not->toContain(route('posts.show', $withCanonicalOverride))
         ->not->toContain(route('posts.show', $evergreen));
 });

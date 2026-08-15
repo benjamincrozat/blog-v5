@@ -24,7 +24,14 @@ it('serves the public site fonts locally', function () {
 });
 
 it('allows large image previews and exposes website schema', function () {
-    get('/')
-        ->assertSee('<meta name="robots" content="max-image-preview:large" />', escape: false)
-        ->assertSee('"@type": "WebSite"', escape: false);
+    $response = get('/')
+        ->assertSee('<meta name="robots" content="max-image-preview:large" />', escape: false);
+
+    preg_match('/<script type="application\/ld\+json">\s*(?<schema>.*?)\s*<\/script>/s', $response->getContent(), $matches);
+
+    $schema = json_decode($matches['schema'] ?? '', true, flags: JSON_THROW_ON_ERROR);
+
+    expect($schema['@context'] ?? null)->toBe('https://schema.org')
+        ->and(collect($schema['@graph'] ?? [])->pluck('@type')->all())
+        ->toBe(['Organization', 'WebSite']);
 });
