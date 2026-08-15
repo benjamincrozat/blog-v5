@@ -39,6 +39,5 @@ If you want a practical blueprint for Docker, Laravel, Traefik, and FrankenPHP, 
 If you are moving from local confidence to something you can run in production without flinching, these next reads help with hosting and deployment decisions:
 
 - [Compare hosting options before you deploy another Laravel app](/best-laravel-hosting-providers)
-- [See how to deploy a PHP or Laravel app on Sevalla step by step](/deploy-php-laravel-apps-sevalla)
 - [See whether Laravel Forge still fits the way you deploy](/laravel-forge)
 - [Compare PHP hosting options before you pay for one](/best-cloud-hosting-provider-php)

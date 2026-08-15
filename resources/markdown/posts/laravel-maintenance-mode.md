@@ -127,6 +127,5 @@ If you are thinking about safer deploys instead of just flipping maintenance mod
 
 - [Use the Artisan commands you run every day with more confidence](/laravel-artisan)
 - [See whether Laravel Forge still fits the way you deploy](/laravel-forge)
-- [See how to deploy a PHP or Laravel app on Sevalla step by step](/deploy-php-laravel-apps-sevalla)
 - [See what Laravel Pulse can surface before users do](/laravel-pulse)
 - [Pick up Laravel habits that keep projects easier to maintain](/laravel-best-practices)

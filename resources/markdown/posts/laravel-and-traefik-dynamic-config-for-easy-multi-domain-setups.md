@@ -59,4 +59,3 @@ If you are still shaping the infrastructure around a multi-domain Laravel deploy
 - [See a production-ready Traefik and FrankenPHP setup for Laravel](/a-production-ready-laravel-setup-with-traefik-and-frankenphp)
 - [Compare hosting options before you deploy another Laravel app](/best-laravel-hosting-providers)
 - [See whether Laravel Forge still fits the way you deploy](/laravel-forge)
-- [See how to deploy a PHP or Laravel app on Sevalla step by step](/deploy-php-laravel-apps-sevalla)

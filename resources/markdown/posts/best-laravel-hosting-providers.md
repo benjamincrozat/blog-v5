@@ -3,13 +3,13 @@ id: "01KKEW27701T2GQ6S0QRFR9C37"
 title: "Best Laravel hosting in 2026: Cloud, Forge, or managed"
 slug: "best-laravel-hosting-providers"
 author: "benjamincrozat"
-description: "Compare Laravel Cloud, Forge with a VPS, Sevalla, Cloudways, and Vultr by deployment workflow, server control, queues, backups, and full cost."
+description: "Compare Laravel Cloud, Forge with a VPS, Cloudways, and Vultr by deployment workflow, server control, queues, backups, and full cost."
 categories:
   - "laravel"
   - "tools"
   - "web-hosting"
 published_at: 2023-12-31T23:00:00Z
-modified_at: 2026-08-15T09:28:36Z
+modified_at: 2026-08-15T10:40:38Z
 serp_title: null
 serp_description: null
 canonical_url: ""
@@ -22,11 +22,10 @@ The best Laravel host depends on one question: **do you want to manage a server?
 
 - Pick [Laravel Cloud](https://cloud.laravel.com/) when you want the Laravel-native platform and no traditional server work.
 - Pick [DigitalOcean](/recommends/digitalocean) with [Laravel Forge](/laravel-forge) when you want control, SSH access, and predictable VPS architecture. That is still this site's setup.
-- Pick [Sevalla](/recommends/kinsta) when you want managed application hosting with simple web, worker, and cron resources.
 - Pick [Cloudways](/recommends/cloudways) when you want a managed cloud server and support around it.
 - Pick [Vultr](/recommends/vultr) with Forge when its regions or VPS options fit better than DigitalOcean.
 
-I did not invent a benchmark score for five different products. I checked current pricing and deployment capabilities in first-party documentation, and I only describe DigitalOcean plus Forge as my own production setup.
+I did not invent a benchmark score for four different products. I checked current pricing and deployment capabilities in first-party documentation, and I only describe DigitalOcean plus Forge as my own production setup.
 
 ## Laravel hosting compared
 
@@ -34,7 +33,6 @@ I did not invent a benchmark score for five different products. I checked curren
 | --- | --- | --- | --- | --- |
 | Laravel Cloud | Starter is pay-as-you-go | No traditional server | Laravel Cloud | Ship Laravel with the least infrastructure work |
 | Forge + DigitalOcean | $12 Forge Hobby + VPS usage | Full SSH and sudo | You, with Forge automation | Control and value across one or more apps |
-| Sevalla | $10/month for the first plan with a custom domain | Platform shell, not a VPS you own | Sevalla | Managed Git-based application hosting |
 | Cloudways | From $11/month | SSH, with less OS control than your own VPS | Cloudways | A managed server with support and backups |
 | Forge + Vultr | $12 Forge Hobby + VPS usage | Full SSH and sudo | You, with Forge automation | VPS control with a different region or compute choice |
 
@@ -93,19 +91,7 @@ The cost you do not see in the plan is ownership. You still need to understand u
 
 [Try DigitalOcean](/recommends/digitalocean)
 
-## 3. Sevalla: best simple managed application host
-
-[Sevalla](/recommends/kinsta) is a managed application platform with separate web, worker, and cron processes. Its pricing is usage-based and easy to model per resource.
-
-The $5 Hobby runtime has only 0.3 GB of RAM and does not support custom domains. The more realistic entry for a public app is the $10 Standard runtime with 0.5 CPU and 1 GB of RAM. Builds, bandwidth, persistent storage, databases, and extra processes can add cost.
-
-Sevalla is a good fit when you want Git-based deployment and managed infrastructure but prefer a general application platform over managing a VPS through Forge.
-
-Before moving a Laravel app, price at least one web process, every always-on worker, the database, storage, build minutes, and outbound bandwidth in [Sevalla's calculator](https://sevalla.com/pricing/calculator/).
-
-[Try Sevalla](/recommends/kinsta)
-
-## 4. Cloudways: best managed-server middle ground
+## 3. Cloudways: best managed-server middle ground
 
 [Cloudways](/recommends/cloudways) manages a cloud server and includes a control panel, support, SSL, staging, monitoring, and automated or on-demand backups. Current standard plans start at $11 per month.
 
@@ -120,7 +106,7 @@ Choose it when you want a familiar server shape but do not want to own routine m
 
 [Try Cloudways](/recommends/cloudways)
 
-## 5. Vultr with Forge: best when the VPS choice drives the decision
+## 4. Vultr with Forge: best when the VPS choice drives the decision
 
 [Vultr](/recommends/vultr) is the alternative I would compare with DigitalOcean when region coverage or a specific compute line matters. The Laravel workflow is otherwise similar: provision it with Forge, deploy from Git, and keep full server access.
 
@@ -150,6 +136,6 @@ That test tells you more than a synthetic homepage benchmark. CPU speed matters,
 
 For a new app where I want the least infrastructure work, I would test Laravel Cloud first.
 
-For control and a predictable VPS setup, I still pick DigitalOcean plus Forge. For managed application hosting, I would compare Sevalla with Laravel Cloud using the real worker and database bill. For a managed server, I would test Cloudways. I would bring Vultr in when its regions or compute options solve a specific need.
+For control and a predictable VPS setup, I still pick DigitalOcean plus Forge. For a managed server, I would test Cloudways. I would bring Vultr in when its regions or compute options solve a specific need.
 
 The best choice is the one that passes the acceptance test with the smallest total cost and the least operational work you do not want to own.
