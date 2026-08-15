@@ -2,6 +2,12 @@
 
 Keep this file limited to repository-specific facts and exceptions. Global instructions, personal preferences, and discovered skills still apply; do not copy them here.
 
+## Purpose
+
+- Build Benjamin Crozat's long-term authority and name recognition among developers who work on similar problems.
+- Publish useful, original work that earns visibility wherever developers look for answers, including search engines and AI assistants.
+- Keep the blog broad enough for Benjamin to share his own views on any topic he chooses.
+
 ## Main is mandatory
 
 - Work in the primary checkout on `main` at all times unless the user explicitly says otherwise in the current task.
