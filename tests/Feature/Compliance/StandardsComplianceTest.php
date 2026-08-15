@@ -119,7 +119,7 @@ it('keeps app classes documented with intentful docblocks', function () {
         $path = str_replace(base_path() . DIRECTORY_SEPARATOR, '', $file->getPathname());
         $code = file_get_contents($file->getPathname());
 
-        if (! preg_match('/(?:(?:abstract|final)\s+)?(class|interface|trait|enum)\s+([A-Za-z_][A-Za-z0-9_]*)/', $code, $match, PREG_OFFSET_CAPTURE)) {
+        if (! preg_match('/^[ \t]*(?:(?:abstract|final|readonly)[ \t]+)*(class|interface|trait|enum)[ \t]+([A-Za-z_][A-Za-z0-9_]*)/m', $code, $match, PREG_OFFSET_CAPTURE)) {
             continue;
         }
 
