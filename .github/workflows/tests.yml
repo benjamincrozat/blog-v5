@@ -2,7 +2,8 @@ name: Run tests
 
 on:
   push:
-  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -10,7 +11,6 @@ permissions:
 jobs:
   tests:
     runs-on: ubuntu-24.04
-    name: PHP 8.5
     services:
       mysql:
         image: mysql:8.4@sha256:b3b90af2a6552ae30c266fdb7d5dd55f3afb72404bb78d37fe8a23eb857fd3fb # 8.4
@@ -25,6 +25,7 @@ jobs:
           --health-timeout=5s
           --health-retries=5
     env:
+      APP_KEY: 'base64:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='
       DB_CONNECTION: mysql
       DB_HOST: 127.0.0.1
       DB_PORT: 3306
@@ -49,25 +50,16 @@ jobs:
           cache: npm
           node-version: 24
 
-      - name: Create .env file
-        run: cp .env.example .env
-
       - name: Install Composer dependencies
-        run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-
-      - name: Generate encryption key
-        run: php artisan key:generate
+        run: composer install --no-interaction --no-scripts --no-progress
 
       - name: Install frontend dependencies
-        env:
-          PUPPETEER_SKIP_DOWNLOAD: true
         run: npm ci
 
-      - name: Audit Composer dependencies
-        run: composer audit --locked --no-interaction
-
-      - name: Audit frontend dependencies
-        run: npm audit --audit-level=high
+      - name: Audit dependencies
+        run: |
+          composer audit --locked --no-interaction
+          npm audit --audit-level=high
 
       - name: Build frontend assets
         run: npm run build
@@ -78,15 +70,7 @@ jobs:
       - name: Run tests
         run: php artisan test --parallel
 
-      - name: Upload logs
-        if: failure()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: laravel-log-php-8.5
-          path: storage/logs/laravel.log
-
   deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: tests
     runs-on: ubuntu-24.04
     permissions: {}
