@@ -83,10 +83,6 @@ Wraps public pages in the shared site chrome and accepts page metadata, flags, a
     </head>
     <body {{ $attributes->class('font-light text-gray-600') }} x-data>
         <div class="flex flex-col min-h-screen">
-            @empty($hideTopAd)
-                <x-ads.top.sevalla />
-            @endempty
-
             @empty($hideNavigation)
                 <header class="container mt-4 xl:max-w-(--breakpoint-lg)">
                     <x-nav />

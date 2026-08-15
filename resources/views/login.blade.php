@@ -3,7 +3,6 @@ Displays the login view.
 --}}
 
 <x-app
-    :hide-top-ad="true"
     :hide-footer="true"
     :hide-navigation="true"
     title="Sign in"

@@ -5,7 +5,6 @@ Displays the posts show view.
 <x-app
     :canonical="filled($post->canonical_url) ? $post->canonical_url : url()->current()"
     :description="$post->serp_description ?: $post->description"
-    :hide-top-ad="$post->is_commercial"
     :image="filled($post->image_url) ? $post->image_url : Vite::asset('resources/img/apple-touch-icon.png')"
     :title="! empty($post->serp_title) ? $post->serp_title : $post->title"
     type="article"
@@ -248,11 +247,9 @@ Displays the posts show view.
         </div>
 
         @if (! $post->is_commercial)
-            <div class="lg:col-span-4 xl:col-span-3">
-                <x-ads.sidebar.sevalla class="max-w-[280px] mx-auto lg:max-w-none lg:mx-0" />
-
+            <div class="hidden lg:col-span-4 lg:block xl:col-span-3">
                 @if ($latestComment)
-                    <div class="hidden mt-16 lg:block">
+                    <div>
                         <p class="font-bold tracking-widest text-black uppercase text-balance">
                             Latest comment
                         </p>
@@ -299,7 +296,9 @@ Displays the posts show view.
                     </div>
                 @endif
 
-                <div class="hidden mt-16 lg:block">
+                <div @class([
+                    'mt-16' => $latestComment,
+                ])>
                     <p class="font-bold tracking-widest text-black uppercase text-balance">
                         Follow me
                     </p>

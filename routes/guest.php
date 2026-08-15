@@ -10,7 +10,6 @@ use App\Http\Controllers\Merchants\ShowMerchantController;
 use App\Http\Controllers\Categories\ShowCategoryController;
 use App\Http\Controllers\Categories\ListCategoriesController;
 use App\Http\Controllers\Posts\ShowPostImagePreviewController;
-use App\Http\Controllers\Advertising\RedirectToAdvertiserController;
 
 Route::get('/', HomeController::class)
     ->name('home');
@@ -40,9 +39,6 @@ Route::get('/jobs/{any}', fn () => abort(410))
 
 Route::get('/newsletter', fn () => abort(410));
 Route::get('/subscribers/{subscriber}/confirm', fn () => abort(410));
-
-Route::get('/redirect/{slug}', RedirectToAdvertiserController::class)
-    ->name('redirect-to-advertiser');
 
 Route::get('/recommends/{slug}', ShowMerchantController::class)
     ->name('merchants.show');

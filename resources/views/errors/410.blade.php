@@ -4,7 +4,6 @@ Displays the errors 410 view.
 
 <x-app
     title="Whoops, this article doesn't exist anymore."
-    :hide-top-ad="true"
     :hide-navigation="true"
     :hide-footer="true"
 >
