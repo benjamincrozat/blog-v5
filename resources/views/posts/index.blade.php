@@ -2,7 +2,12 @@
 Displays the posts index view.
 --}}
 
-<x-app title="The latest articles about web development in {{ date('Y') }}">
+<x-app
+    :canonical="$posts->currentPage() > 1
+        ? route('posts.index', ['page' => $posts->currentPage()])
+        : route('posts.index')"
+    title="The latest articles about web development in {{ date('Y') }}"
+>
     <div class="container mb-12 md:mb-14">
         <x-breadcrumbs :items="$breadcrumbs" />
     </div>

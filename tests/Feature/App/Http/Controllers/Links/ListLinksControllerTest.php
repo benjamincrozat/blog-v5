@@ -115,7 +115,15 @@ it('paginates the links collection', function () {
 
     get(route('links.index'))
         ->assertOk()
+        ->assertSee('<link rel="canonical" href="' . route('links.index') . '" />', escape: false)
         ->assertViewHas('links', fn (LengthAwarePaginator $links) => 12 === $links->count());
+
+    get(route('links.index', ['page' => 2, 'utm_source' => 'test']))
+        ->assertOk()
+        ->assertSee('<link rel="canonical" href="' . route('links.index', ['page' => 2]) . '" />', escape: false);
+
+    get(route('links.index', ['page' => 3]))
+        ->assertNotFound();
 });
 
 it('builds breadcrumbs for the links index', function () {

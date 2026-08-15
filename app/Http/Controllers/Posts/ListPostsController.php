@@ -12,7 +12,8 @@ use App\Actions\BuildBreadcrumbSchema;
  *
  * Posts that represent community links are left out. Recent sponsors come first,
  * then the newest publication date, and results are split into pages of 24. The
- * visible breadcrumbs and JSON-LD use the same list.
+ * visible breadcrumbs and JSON-LD use the same list. Page numbers beyond the
+ * available results return 404 instead of publishing empty archive pages.
  */
 class ListPostsController extends Controller
 {
@@ -23,13 +24,17 @@ class ListPostsController extends Controller
             ['label' => 'Blog'],
         ];
 
+        $posts = Post::query()
+            ->published()
+            ->sponsored()
+            ->latest('published_at')
+            ->whereDoesntHave('link')
+            ->paginate(24);
+
+        abort_if($posts->currentPage() > $posts->lastPage(), 404);
+
         return view('posts.index', [
-            'posts' => Post::query()
-                ->published()
-                ->sponsored()
-                ->latest('published_at')
-                ->whereDoesntHave('link')
-                ->paginate(24),
+            'posts' => $posts,
             'breadcrumbs' => $breadcrumbs,
             'breadcrumbSchema' => app(BuildBreadcrumbSchema::class)->handle($breadcrumbs),
         ]);

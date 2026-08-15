@@ -3,6 +3,9 @@ Displays the categories show view.
 --}}
 
 <x-app
+    :canonical="$posts->currentPage() > 1
+        ? route('categories.show', ['category' => $category, 'page' => $posts->currentPage()])
+        : route('categories.show', $category)"
     :title="'Articles, news, takes, and tutorials about ' . $category->name"
     :description="'Browse articles, news, takes, and tutorials about ' . $category->name . ' for web developers.'"
 >

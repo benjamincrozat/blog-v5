@@ -3,6 +3,9 @@ Displays the links index view.
 --}}
 
 <x-app
+    :canonical="$links->currentPage() > 1
+        ? route('links.index', ['page' => $links->currentPage()])
+        : route('links.index')"
     title="The latest community-written articles about web development in {{ date('Y') }}"
     description="A collection of content created and shared by other web developers."
 >
@@ -23,7 +26,7 @@ Displays the links index view.
             <div class="flex justify-center items-center mt-4 md:mt-6">
                 @foreach ($distinctUserAvatars as $avatar)
                     <div class="overflow-hidden -ml-2 bg-white rounded-full">
-                        <img loading="lazy" src="{{ $avatar }}" class="size-8 md:size-10" />
+                        <img loading="lazy" src="{{ $avatar }}" width="40" height="40" class="size-8 md:size-10" />
                     </div>
                 @endforeach
             </div>

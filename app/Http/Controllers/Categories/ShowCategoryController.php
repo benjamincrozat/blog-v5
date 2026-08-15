@@ -12,7 +12,8 @@ use App\Actions\BuildBreadcrumbSchema;
  *
  * Recently sponsored posts come first, followed by the newest publication date,
  * and results are split into pages of 24. The visible breadcrumbs and JSON-LD
- * use the same data. Laravel's route lookup returns 404 for an unknown category.
+ * use the same data. Unknown categories and page numbers beyond the available
+ * results return 404.
  */
 class ShowCategoryController extends Controller
 {
@@ -27,10 +28,13 @@ class ShowCategoryController extends Controller
         $posts = $category->posts()
             ->published()
             ->sponsored()
-            ->latest('published_at');
+            ->latest('published_at')
+            ->paginate(24);
+
+        abort_if($posts->currentPage() > $posts->lastPage(), 404);
 
         return view('categories.show', compact('category') + [
-            'posts' => $posts->paginate(24),
+            'posts' => $posts,
             'breadcrumbs' => $breadcrumbs,
             'breadcrumbSchema' => app(BuildBreadcrumbSchema::class)->handle($breadcrumbs),
         ]);

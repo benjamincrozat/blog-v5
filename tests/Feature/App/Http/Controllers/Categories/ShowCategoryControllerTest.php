@@ -144,11 +144,16 @@ it('paginates 24 posts per page and keeps the category name visible', function (
     // Page 1: 24 items.
     get(route('categories.show', $category))
         ->assertOk()
+        ->assertSee('<link rel="canonical" href="' . route('categories.show', $category) . '" />', escape: false)
         ->assertViewHas('posts', fn (LengthAwarePaginator $p) => 24 === $p->perPage() && 24 === $p->count());
 
     // Page 2: 6 items.
     get(route('categories.show', [$category, 'page' => 2]))
         ->assertOk()
         ->assertSee($category->name)
+        ->assertSee('<link rel="canonical" href="' . route('categories.show', ['category' => $category, 'page' => 2]) . '" />', escape: false)
         ->assertViewHas('posts', fn (LengthAwarePaginator $p) => 2 === $p->currentPage() && 6 === $p->count());
+
+    get(route('categories.show', [$category, 'page' => 3]))
+        ->assertNotFound();
 });
