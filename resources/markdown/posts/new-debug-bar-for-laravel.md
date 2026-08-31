@@ -8,14 +8,14 @@ categories:
   - "laravel"
   - "packages"
   - "tools"
-published_at: null
+published_at: 2026-08-31T19:31:50Z
 modified_at: null
 serp_title: null
 serp_description: null
 canonical_url: null
 is_commercial: true
-image_disk: null
-image_path: null
+image_disk: "cloudflare-images"
+image_path: "images/posts/01M1CNE735HWA78KZM5GMWZFCD.png"
 sponsored_at: null
 ---
 **The [New Debug Bar](https://newdebugbar.com) is my cleaner take on a familiar Laravel tool.** I did not build it to reinvent debugging. I built it because I was tired of using the old debug bar's dated interface every day.
@@ -36,7 +36,7 @@ The interface is not an afterthought. The compact bar feels sleek, shows the key
 
 Inside, I have put real thought into what appears first, what stays out of the way, and how each detail leads back to the code behind it.
 
-<!-- QUERY_SCREENSHOT -->
+![The New Debug Bar query inspector showing a slow query and its source](https://imagedelivery.net/hYERsDhHaFG137wdGnWeuA/images/posts/01M1CMV135HCKAVJW0C9KFR6E5.png/public)
 
 ## Still early
 
