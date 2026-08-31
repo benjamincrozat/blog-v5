@@ -32,9 +32,9 @@ When I finally found the time, the goal was simple: build the Laravel debug bar 
 
 ## What it does
 
-The small bar stays out of the way until I need it. It shows the main facts about the current request, then opens into a full inspector.
+The interface is not an afterthought. The compact bar feels sleek, shows the key facts, and opens into a full inspector. I can drag it to the top, bottom, or any corner of the screen, and switch between light and dark modes.
 
-From there, I can inspect the route, controller, middleware, queries, timeline, logs, exceptions, models, views, Livewire activity, jobs, mail, events, cache, Redis, and more. I also try to keep the source of each event close by, so it is easier to find the code I need to check.
+Inside, I have put real thought into what appears first, what stays out of the way, and how each detail leads back to the code behind it.
 
 <!-- QUERY_SCREENSHOT -->
 
