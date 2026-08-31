@@ -3,7 +3,7 @@ id: "01M1CGSX1QAQHG5BWWKDAJHH74"
 title: "The New Debug Bar for Laravel"
 slug: "new-debug-bar-for-laravel"
 author: "benjamincrozat"
-description: "The New Debug Bar is my cleaner take on a familiar Laravel tool, built because I wanted a debugging interface I would enjoy using every day."
+description: "The New Debug Bar is my cleaner Laravel debugger, with a built-in MCP server that lets coding agents inspect the same saved requests as the browser interface."
 categories:
   - "laravel"
   - "packages"
@@ -20,6 +20,8 @@ sponsored_at: null
 ---
 **The [New Debug Bar](https://newdebugbar.com) is my cleaner take on a familiar Laravel tool.** I did not build it to reinvent debugging. I built it because I was tired of using the old debug bar's dated interface every day.
 
+It is also built for the way I work now. I can inspect a request in the browser, while a coding agent can read the same saved request through the built-in, local, read-only [Model Context Protocol (MCP) server](https://newdebugbar.com/docs/mcp). The agent gets the exact context instead of guessing from a screenshot or searching through a large log file.
+
 ## Why I built it
 
 The old debug bar still did useful work, but its interface felt crowded and dated. Most of the feedback I received came back to the same point: developers liked having a debug bar, but wanted one that looked and felt better.
@@ -34,15 +36,7 @@ The small bar stays out of the way until I need it. It shows the main facts abou
 
 From there, I can inspect the route, controller, middleware, queries, timeline, logs, exceptions, models, views, Livewire activity, jobs, mail, events, cache, Redis, and more. I also try to keep the source of each event close by, so it is easier to find the code I need to check.
 
-I use a benchmark app called Morrow while building the interface. It gives the New Debug Bar realistic data for every inspector and helps me keep the experience consistent.
-
 <!-- QUERY_SCREENSHOT -->
-
-## Built for developers and coding agents
-
-The New Debug Bar also includes a local, read-only [MCP server](https://newdebugbar.com/docs/mcp). This lets a coding agent inspect the same saved requests as the browser interface.
-
-Instead of guessing from a screenshot or searching through a large log file, the agent can read the exact request data and focus on the parts that matter.
 
 ## Still early
 
