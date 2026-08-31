@@ -44,4 +44,4 @@ The New Debug Bar is not at version 1.0 yet, but it is ready to try. The [websit
 
 I want the project to stay free and open source. If you find it useful, you can [sponsor my work on GitHub](https://github.com/sponsors/benjamincrozat). You can also support the project by [hiring me as a freelance Laravel developer](mailto:hello@benjamincrozat.com).
 
-If you try the New Debug Bar, I would be glad to hear what you think on [GitHub](https://github.com/newdebugbar/newdebugbar).
+Give the New Debug Bar a try. If you find a bug, spot something that needs work, or have feedback, please [open an issue on GitHub](https://github.com/newdebugbar/newdebugbar/issues/new/choose).
