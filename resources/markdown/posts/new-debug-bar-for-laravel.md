@@ -15,7 +15,7 @@ serp_description: null
 canonical_url: null
 is_commercial: true
 image_disk: "cloudflare-images"
-image_path: "images/posts/01M1CNE735HWA78KZM5GMWZFCD.png"
+image_path: "images/posts/01M1PMB4Z33385RH944ATY1RSN.png"
 sponsored_at: null
 ---
 **The [New Debug Bar](https://newdebugbar.com) is my cleaner take on a familiar Laravel tool.** I did not build it to reinvent debugging. I built it because I was tired of using the old debug bar's dated interface every day.
